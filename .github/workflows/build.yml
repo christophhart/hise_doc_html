@@ -1,0 +1,19 @@
+name: Build and Test
+
+on:
+  repository_dispatch:
+    types: [trigger-build]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout this repository
+      uses: actions/checkout@v3
+
+    - name: Pull another repository
+      run:  git clone https://github.com/christoph-hart/hise_documentation.git ./src
+
+    - name: Run build.bat
+      run: .\another-repository\build.bat
