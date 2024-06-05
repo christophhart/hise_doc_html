@@ -1,12 +1,13 @@
 name: Build and Test
 
 on:
+  workflow_dispatch:
   repository_dispatch:
     types: [trigger-build]
 
 jobs:
   build:
-    runs-on: runs-on: [self-hosted, windows]
+    runs-on: [self-hosted, windows]
 
     steps:
     - name: Checkout this repository
