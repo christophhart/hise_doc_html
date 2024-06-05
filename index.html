@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="template/css/style.css">
+	<script src="template/scripts/toc.json"></script>
+	<script language="javascript" src="template/scripts/generate.js"></script>
+</head>
+<body>
+	
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+		</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content">
+			<h1 id="hise-docs">
+				HISE Docs
+			</h1>
+			<img src="Modules_Sampler.webp" style="max-width:43rem;">
+			</img>
+			<p>Welcome to the official <a href="https://github.com/christophhart/HISE"> HISE</a> Documentation.</p>
+<br><hr><br>
+<span class="content-footer-right">Next: <a href="/introduction/index.html">Introduction</span>
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+</div>
+
+	<footer>
+		<div>HISE Docs <img src="template/css/images/pd.svg" width="14px" style="padding: 2px 2px" /> 2019</div>
+	</footer>
+
+	<script src="template/scripts/prism.js"></script>
+	<script src="template/scripts/autoComplete.js"></script>
+	<script src="template/scripts/search.js"></script>
+</body>
+</html>
