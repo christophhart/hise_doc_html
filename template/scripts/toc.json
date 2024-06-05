@@ -3655,12 +3655,6 @@ var rootDb = {
                   "Children": []
                 },
                 {
-                  "URL": "ui-components/floating-tiles/hise/rlottiedevpanel.html",
-                  "Title": "RLottieDevPanel",
-                  "Colour": "#9064FF",
-                  "Children": []
-                },
-                {
                   "URL": "ui-components/floating-tiles/hise/expansioneditbar.html",
                   "Title": "ExpansionEditBar",
                   "Colour": "#9064FF",
@@ -19015,300 +19009,358 @@ var rootDb = {
       "Colour": "#C5AC43",
       "Children": [
         {
-          "URL": "tutorials/recipes/index.html",
-          "Title": "Recipes",
+          "URL": "tutorials/all/index.html",
+          "Title": "All Snippets",
           "Colour": "#C5AC43",
           "Children": [
             {
-              "URL": "tutorials/recipes/event-processing/index.html",
-              "Title": "Event Processing",
-              "Colour": "#C5AC43",
-              "Children": [
-                {
-                  "URL": "tutorials/recipes/event-processing/index.html#press-a-button-to-play-a-note",
-                  "Title": "Press a Button to play a note",
-                  "Colour": "#C5AC43",
-                  "Children": []
-                },
-                {
-                  "URL": "tutorials/recipes/event-processing/index.html#keyswitches-/-coloring",
-                  "Title": "Keyswitches / Coloring",
-                  "Colour": "#C5AC43",
-                  "Children": []
-                },
-                {
-                  "URL": "tutorials/recipes/event-processing/index.html#choke-groups-",
-                  "Title": "Choke Groups ",
-                  "Colour": "#C5AC43",
-                  "Children": []
-                },
-                {
-                  "URL": "tutorials/recipes/event-processing/index.html#microtuner",
-                  "Title": "Microtuner",
-                  "Colour": "#C5AC43",
-                  "Children": []
-                },
-                {
-                  "URL": "tutorials/recipes/event-processing/index.html#use-the-sustain-pedal-to-switch-between-sound-generators",
-                  "Title": "Use the sustain pedal to switch between sound generators",
-                  "Colour": "#C5AC43",
-                  "Children": []
-                },
-                {
-                  "URL": "tutorials/recipes/event-processing/index.html#play-chords-from-single-notes",
-                  "Title": "Play chords from single notes",
-                  "Colour": "#C5AC43",
-                  "Children": []
-                },
-                {
-                  "URL": "tutorials/recipes/event-processing/create-midi-sequence.html",
-                  "Title": "Create a MIDI Sequence",
-                  "Colour": "#C5AC43",
-                  "Children": []
-                }
-              ]
-            },
-            {
-              "URL": "tutorials/recipes/ui/index.html",
-              "Title": "UI",
-              "Colour": "#C5AC43",
-              "Children": [
-                {
-                  "URL": "tutorials/recipes/ui/general.html",
-                  "Title": "General UI",
-                  "Colour": "#C5AC43",
-                  "Children": [
-                    {
-                      "URL": "tutorials/recipes/ui/general.html#link-sliders",
-                      "Title": "Link Sliders",
-                      "Colour": "#C5AC43",
-                      "Children": []
-                    },
-                    {
-                      "URL": "tutorials/recipes/ui/general.html#control-3-parameters-in-3-ranges-with-1-knob.",
-                      "Title": "Control 3 parameters in 3 ranges with 1 Knob.",
-                      "Colour": "#C5AC43",
-                      "Children": []
-                    },
-                    {
-                      "URL": "tutorials/recipes/ui/general.html#switch-samplemaps-with-a-combobox",
-                      "Title": "Switch SampleMaps with a ComboBox",
-                      "Colour": "#C5AC43",
-                      "Children": []
-                    },
-                    {
-                      "URL": "tutorials/recipes/ui/general.html#colour-the-keyboard",
-                      "Title": "Colour the Keyboard",
-                      "Colour": "#C5AC43",
-                      "Children": []
-                    },
-                    {
-                      "URL": "tutorials/recipes/ui/general.html#saving-custom-lfo-shapes",
-                      "Title": "Saving custom LFO Shapes",
-                      "Colour": "#C5AC43",
-                      "Children": []
-                    },
-                    {
-                      "URL": "tutorials/recipes/ui/general.html#tabbed-view",
-                      "Title": "Tabbed View",
-                      "Colour": "#C5AC43",
-                      "Children": []
-                    }
-                  ]
-                },
-                {
-                  "URL": "tutorials/recipes/ui/scriptpanel.html",
-                  "Title": "ScriptPanel Recipes",
-                  "Colour": "#C5AC43",
-                  "Children": [
-                    {
-                      "URL": "tutorials/recipes/ui/scriptpanel.html#open-a-website",
-                      "Title": "Open a Website",
-                      "Colour": "#C5AC43",
-                      "Children": []
-                    },
-                    {
-                      "URL": "tutorials/recipes/ui/scriptpanel.html#rotate-an-image",
-                      "Title": "Rotate an image",
-                      "Colour": "#C5AC43",
-                      "Children": []
-                    },
-                    {
-                      "URL": "tutorials/recipes/ui/scriptpanel.html#loop-a-filmstrip",
-                      "Title": "Loop a filmstrip",
-                      "Colour": "#C5AC43",
-                      "Children": []
-                    },
-                    {
-                      "URL": "tutorials/recipes/ui/scriptpanel.html#modulate-a-circle-with-lfo",
-                      "Title": "Modulate a circle with LFO",
-                      "Colour": "#C5AC43",
-                      "Children": []
-                    },
-                    {
-                      "URL": "tutorials/recipes/ui/scriptpanel.html#a-six-state-button",
-                      "Title": "A six state button",
-                      "Colour": "#C5AC43",
-                      "Children": []
-                    },
-                    {
-                      "URL": "tutorials/recipes/ui/scriptpanel.html#final-code",
-                      "Title": "",
-                      "Colour": "#C5AC43",
-                      "Children": []
-                    },
-                    {
-                      "URL": "tutorials/recipes/ui/scriptpanel.html#a-buttonpack",
-                      "Title": "A ButtonPack",
-                      "Colour": "#C5AC43",
-                      "Children": []
-                    },
-                    {
-                      "URL": "tutorials/recipes/ui/scriptpanel.html#final-code",
-                      "Title": "",
-                      "Colour": "#C5AC43",
-                      "Children": []
-                    },
-                    {
-                      "URL": "tutorials/recipes/ui/scriptpanel.html#a-infinitely-rotatable-head",
-                      "Title": "A infinitely rotatable head",
-                      "Colour": "#C5AC43",
-                      "Children": []
-                    },
-                    {
-                      "URL": "tutorials/recipes/ui/scriptpanel.html#a-vectorized-knob",
-                      "Title": "A vectorized knob",
-                      "Colour": "#C5AC43",
-                      "Children": []
-                    },
-                    {
-                      "URL": "tutorials/recipes/ui/scriptpanel.html#a-ball-shooting-game",
-                      "Title": "",
-                      "Colour": "#C5AC43",
-                      "Children": []
-                    },
-                    {
-                      "URL": "tutorials/recipes/ui/scriptpanel.html#horizontal-list-example",
-                      "Title": "Horizontal List example",
-                      "Colour": "#C5AC43",
-                      "Children": []
-                    },
-                    {
-                      "URL": "tutorials/recipes/ui/scriptpanel.html#full-snippet",
-                      "Title": "",
-                      "Colour": "#C5AC43",
-                      "Children": []
-                    }
-                  ]
-                },
-                {
-                  "URL": "tutorials/recipes/ui/animations.html",
-                  "Title": "Animations in HISE",
-                  "Colour": "#C5AC43",
-                  "Children": [
-                    {
-                      "URL": "tutorials/recipes/ui/animations.html#looped-animation",
-                      "Title": "Looped Animation",
-                      "Colour": "#C5AC43",
-                      "Children": []
-                    },
-                    {
-                      "URL": "tutorials/recipes/ui/animations.html#interaction-based-animation",
-                      "Title": "Interaction based animation",
-                      "Colour": "#C5AC43",
-                      "Children": []
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "URL": "tutorials/recipes/dsp/index.html",
-              "Title": "DSP",
-              "Colour": "#C5AC43",
-              "Children": [
-                {
-                  "URL": "tutorials/recipes/dsp/index.html#1band-dynamic-eq",
-                  "Title": "1Band Dynamic EQ",
-                  "Colour": "#C5AC43",
-                  "Children": []
-                },
-                {
-                  "URL": "tutorials/recipes/dsp/index.html#ping-pong-delay",
-                  "Title": "Ping Pong Delay",
-                  "Colour": "#C5AC43",
-                  "Children": []
-                },
-                {
-                  "URL": "tutorials/recipes/dsp/index.html#stereo-width",
-                  "Title": "Stereo Width",
-                  "Colour": "#C5AC43",
-                  "Children": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "URL": "tutorials/video-tutorials/index.html",
-          "Title": "Video Tutorials",
-          "Colour": "#C5AC43",
-          "Children": [
-            {
-              "URL": "tutorials/video-tutorials/index.html#tutorial-1",
-              "Title": "Tutorial 1: Building HISE from source",
-              "Colour": "#C5AC43",
-              "Children": []
-            },
-            {
-              "URL": "tutorials/video-tutorials/index.html#tutorial-2",
-              "Title": "Tutorial 2: Project Management",
-              "Colour": "#C5AC43",
-              "Children": []
-            },
-            {
-              "URL": "tutorials/video-tutorials/index.html#tutorial-3",
-              "Title": "Tutorial 3: Using Multiple Dynamic Layers",
-              "Colour": "#C5AC43",
-              "Children": []
-            },
-            {
-              "URL": "tutorials/video-tutorials/index.html#hise-2.0",
-              "Title": "HISE 2.0",
-              "Colour": "#C5AC43",
-              "Children": []
-            },
-            {
-              "URL": "tutorials/video-tutorials/index.html#interface-designer",
-              "Title": "Interface Designer: Introduction",
-              "Colour": "#C5AC43",
-              "Children": []
-            },
-            {
-              "URL": "tutorials/video-tutorials/index.html#interface-designer",
-              "Title": "Interface Designer: Widget List",
-              "Colour": "#C5AC43",
-              "Children": []
-            },
-            {
-              "URL": "tutorials/video-tutorials/index.html#interface-designer",
-              "Title": "Interface Designer: Property Editor",
-              "Colour": "#C5AC43",
-              "Children": []
-            },
-            {
-              "URL": "tutorials/video-tutorials/index.html#interface-designer",
-              "Title": "Interface Designer: Editing properties with JSON",
+              "URL": "tutorials/all/index.html#basicsynth",
+              "Title": "BasicSynth",
               "Colour": "#C5AC43",
               "Children": []
             }
           ]
         },
         {
-          "URL": "tutorials/example-projects/index.html",
-          "Title": "Example Projects",
+          "URL": "tutorials/modules/index.html",
+          "Title": "Modules Snippets",
           "Colour": "#C5AC43",
-          "Children": []
+          "Children": [
+            {
+              "URL": "tutorials/modules/index.html#global-modulator-container",
+              "Title": "Global Modulator Container",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/modules/index.html#minimal-sampler-example",
+              "Title": "Minimal Sampler Example",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/modules/index.html#wavetable-example",
+              "Title": "Wavetable Example",
+              "Colour": "#C5AC43",
+              "Children": []
+            }
+          ]
+        },
+        {
+          "URL": "tutorials/midi/index.html",
+          "Title": "MIDI Snippets",
+          "Colour": "#C5AC43",
+          "Children": [
+            {
+              "URL": "tutorials/midi/index.html#monophonic-glide-script",
+              "Title": "Monophonic Glide Script",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/midi/index.html#audio-render-example",
+              "Title": "Audio Render Example",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/midi/index.html#clocksynced-arpeggiator",
+              "Title": "Clocksynced Arpeggiator",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/midi/index.html#custom-event-data-101",
+              "Title": "Custom Event Data 101",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/midi/index.html#custom-event-data-102",
+              "Title": "Custom Event Data 102",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/midi/index.html#custom-event-data-103",
+              "Title": "Custom Event Data 103",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/midi/index.html#micro-tuner",
+              "Title": "Micro Tuner",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/midi/index.html#switch-tabledata",
+              "Title": "Switch TableData",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/midi/index.html#choke-off-note",
+              "Title": "Choke Off Note",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/midi/index.html#play-chords-from-single-notes",
+              "Title": "Play chords from single notes",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/midi/index.html#press-a-button-to-play-a-specific-midi-note",
+              "Title": "Press a button to play a specific MIDI note",
+              "Colour": "#C5AC43",
+              "Children": []
+            }
+          ]
+        },
+        {
+          "URL": "tutorials/scripting/index.html",
+          "Title": "Scripting Snippets",
+          "Colour": "#C5AC43",
+          "Children": [
+            {
+              "URL": "tutorials/scripting/index.html#console",
+              "Title": "Console",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/scripting/index.html#date",
+              "Title": "Date",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/scripting/index.html#recthelpers",
+              "Title": "RectHelpers",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/scripting/index.html#array",
+              "Title": "Array",
+              "Colour": "#C5AC43",
+              "Children": []
+            }
+          ]
+        },
+        {
+          "URL": "tutorials/scriptnode/index.html",
+          "Title": "Scriptnode Snippets",
+          "Colour": "#C5AC43",
+          "Children": [
+            {
+              "URL": "tutorials/scriptnode/index.html#dynamic-voice-routing",
+              "Title": "Dynamic voice routing",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/scriptnode/index.html#faust-zita-reverb",
+              "Title": "Faust Zita Reverb",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/scriptnode/index.html#neural-network-sine-generator",
+              "Title": "Neural Network Sine Generator",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/scriptnode/index.html#ping-pong-delay",
+              "Title": "Ping Pong Delay",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/scriptnode/index.html#scriptnode-oscillator-visualisation",
+              "Title": "Scriptnode Oscillator Visualisation",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/scriptnode/index.html#scriptnode-visualisation-101",
+              "Title": "Scriptnode Visualisation 101",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/scriptnode/index.html#scriptnode-voice-management",
+              "Title": "Scriptnode Voice Management",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/scriptnode/index.html#sidechain-example-1",
+              "Title": "Sidechain Example 1",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/scriptnode/index.html#sidechain-example-2",
+              "Title": "Sidechain Example 2",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/scriptnode/index.html#snex-oneshot-player",
+              "Title": "SNEX Oneshot Player",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/scriptnode/index.html#snex-portamento-oscillator",
+              "Title": "SNEX Portamento Oscillator",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/scriptnode/index.html#snex-saturation",
+              "Title": "SNEX Saturation",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/scriptnode/index.html#stereo-widener",
+              "Title": "Stereo Widener",
+              "Colour": "#C5AC43",
+              "Children": []
+            }
+          ]
+        },
+        {
+          "URL": "tutorials/ui/index.html",
+          "Title": "UI Snippets",
+          "Colour": "#C5AC43",
+          "Children": [
+            {
+              "URL": "tutorials/ui/index.html#glsl-morphball",
+              "Title": "GLSL MorphBall",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/ui/index.html#glsl-slider",
+              "Title": "GLSL Slider",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/ui/index.html#rotate-an-image",
+              "Title": "Rotate an image",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/ui/index.html#a-ball-shooting-game",
+              "Title": "A ball shooting Game",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/ui/index.html#broadcaster-starting-point",
+              "Title": "Broadcaster Starting Point",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/ui/index.html#button-pack",
+              "Title": "Button Pack",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/ui/index.html#control-3-parameters-in-3-ranges-with-1-knob",
+              "Title": "Control 3 parameters in 3 ranges with 1 Knob",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/ui/index.html#glsl-hello-world",
+              "Title": "GLSL Hello World",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/ui/index.html#loop-a-filmstrip",
+              "Title": "Loop a filmstrip",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/ui/index.html#lottie-hello-world",
+              "Title": "Lottie Hello World",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/ui/index.html#modulate-a-circle-with-a-gain-lfo",
+              "Title": "Modulate a circle with a Gain LFO",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/ui/index.html#open-a-website",
+              "Title": "Open a Website",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/ui/index.html#script-references-and-callbacks-for-components",
+              "Title": "Script references and callbacks for components",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/ui/index.html#scriptpanel-slider",
+              "Title": "ScriptPanel Slider",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/ui/index.html#sixstate-filmstrip-button",
+              "Title": "SixState Filmstrip Button",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/ui/index.html#tabbed-view",
+              "Title": "Tabbed View",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/ui/index.html#dynamic-list",
+              "Title": "Dynamic List",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/ui/index.html#saving-custom-lfo-shapes",
+              "Title": "Saving custom LFO Shapes",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/ui/index.html#two-linked-sliders",
+              "Title": "Two linked Sliders",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/ui/index.html#colour-the-keyboard",
+              "Title": "Colour the Keyboard",
+              "Colour": "#C5AC43",
+              "Children": []
+            }
+          ]
         }
       ]
     },

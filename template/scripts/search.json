@@ -3102,12 +3102,6 @@
     "color": "#9064FF"
   },
   {
-    "key": "HISE Floating tiles: RLottieDevPanel",
-    "url": "ui-components/floating-tiles/hise/rlottiedevpanel.html",
-    "weight": 60,
-    "color": "#9064FF"
-  },
-  {
     "key": "HISE Floating tiles: ExpansionEditBar",
     "url": "ui-components/floating-tiles/hise/expansioneditbar.html",
     "weight": 60,
@@ -16620,266 +16614,350 @@
     "color": "#BD6F50"
   },
   {
-    "key": "Examples: Recipes",
-    "url": "tutorials/recipes/index.html",
+    "key": "Examples: All Snippets",
+    "url": "tutorials/all/index.html",
     "weight": 80,
     "color": "#C5AC43"
   },
   {
-    "key": "Examples: Video Tutorials",
-    "url": "tutorials/video-tutorials/index.html",
+    "key": "Examples: Modules Snippets",
+    "url": "tutorials/modules/index.html",
     "weight": 80,
     "color": "#C5AC43"
   },
   {
-    "key": "Examples: Example Projects",
-    "url": "tutorials/example-projects/index.html",
+    "key": "Examples: MIDI Snippets",
+    "url": "tutorials/midi/index.html",
     "weight": 80,
     "color": "#C5AC43"
   },
   {
-    "key": "Recipes: Event Processing",
-    "url": "tutorials/recipes/event-processing/index.html",
+    "key": "Examples: Scripting Snippets",
+    "url": "tutorials/scripting/index.html",
+    "weight": 80,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "Examples: Scriptnode Snippets",
+    "url": "tutorials/scriptnode/index.html",
+    "weight": 80,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "Examples: UI Snippets",
+    "url": "tutorials/ui/index.html",
+    "weight": 80,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "All Snippets: BasicSynth",
+    "url": "tutorials/all/index.html#basicsynth",
     "weight": 70,
     "color": "#C5AC43"
   },
   {
-    "key": "Recipes: UI",
-    "url": "tutorials/recipes/ui/index.html",
+    "key": "Modules Snippets: Global Modulator Container",
+    "url": "tutorials/modules/index.html#global-modulator-container",
     "weight": 70,
     "color": "#C5AC43"
   },
   {
-    "key": "Recipes: DSP",
-    "url": "tutorials/recipes/dsp/index.html",
+    "key": "Modules Snippets: Minimal Sampler Example",
+    "url": "tutorials/modules/index.html#minimal-sampler-example",
     "weight": 70,
     "color": "#C5AC43"
   },
   {
-    "key": "Event Processing: Press a Button to play a note",
-    "url": "tutorials/recipes/event-processing/index.html#press-a-button-to-play-a-note",
-    "weight": 60,
-    "color": "#C5AC43"
-  },
-  {
-    "key": "Event Processing: Keyswitches / Coloring",
-    "url": "tutorials/recipes/event-processing/index.html#keyswitches-/-coloring",
-    "weight": 60,
-    "color": "#C5AC43"
-  },
-  {
-    "key": "Event Processing: Choke Groups ",
-    "url": "tutorials/recipes/event-processing/index.html#choke-groups-",
-    "weight": 60,
-    "color": "#C5AC43"
-  },
-  {
-    "key": "Event Processing: Microtuner",
-    "url": "tutorials/recipes/event-processing/index.html#microtuner",
-    "weight": 60,
-    "color": "#C5AC43"
-  },
-  {
-    "key": "Event Processing: Use the sustain pedal to switch between sound generators",
-    "url": "tutorials/recipes/event-processing/index.html#use-the-sustain-pedal-to-switch-between-sound-generators",
-    "weight": 60,
-    "color": "#C5AC43"
-  },
-  {
-    "key": "Event Processing: Play chords from single notes",
-    "url": "tutorials/recipes/event-processing/index.html#play-chords-from-single-notes",
-    "weight": 60,
-    "color": "#C5AC43"
-  },
-  {
-    "key": "Event Processing: Create a MIDI Sequence",
-    "url": "tutorials/recipes/event-processing/create-midi-sequence.html",
-    "weight": 60,
-    "color": "#C5AC43"
-  },
-  {
-    "key": "UI: General UI",
-    "url": "tutorials/recipes/ui/general.html",
-    "weight": 60,
-    "color": "#C5AC43"
-  },
-  {
-    "key": "UI: ScriptPanel Recipes",
-    "url": "tutorials/recipes/ui/scriptpanel.html",
-    "weight": 60,
-    "color": "#C5AC43"
-  },
-  {
-    "key": "UI: Animations in HISE",
-    "url": "tutorials/recipes/ui/animations.html",
-    "weight": 60,
-    "color": "#C5AC43"
-  },
-  {
-    "key": "General UI: Link Sliders",
-    "url": "tutorials/recipes/ui/general.html#link-sliders",
-    "weight": 50,
-    "color": "#C5AC43"
-  },
-  {
-    "key": "General UI: Control 3 parameters in 3 ranges with 1 Knob.",
-    "url": "tutorials/recipes/ui/general.html#control-3-parameters-in-3-ranges-with-1-knob.",
-    "weight": 50,
-    "color": "#C5AC43"
-  },
-  {
-    "key": "General UI: Switch SampleMaps with a ComboBox",
-    "url": "tutorials/recipes/ui/general.html#switch-samplemaps-with-a-combobox",
-    "weight": 50,
-    "color": "#C5AC43"
-  },
-  {
-    "key": "General UI: Colour the Keyboard",
-    "url": "tutorials/recipes/ui/general.html#colour-the-keyboard",
-    "weight": 50,
-    "color": "#C5AC43"
-  },
-  {
-    "key": "General UI: Saving custom LFO Shapes",
-    "url": "tutorials/recipes/ui/general.html#saving-custom-lfo-shapes",
-    "weight": 50,
-    "color": "#C5AC43"
-  },
-  {
-    "key": "General UI: Tabbed View",
-    "url": "tutorials/recipes/ui/general.html#tabbed-view",
-    "weight": 50,
-    "color": "#C5AC43"
-  },
-  {
-    "key": "ScriptPanel Recipes: Open a Website",
-    "url": "tutorials/recipes/ui/scriptpanel.html#open-a-website",
-    "weight": 50,
-    "color": "#C5AC43"
-  },
-  {
-    "key": "ScriptPanel Recipes: Rotate an image",
-    "url": "tutorials/recipes/ui/scriptpanel.html#rotate-an-image",
-    "weight": 50,
-    "color": "#C5AC43"
-  },
-  {
-    "key": "ScriptPanel Recipes: Loop a filmstrip",
-    "url": "tutorials/recipes/ui/scriptpanel.html#loop-a-filmstrip",
-    "weight": 50,
-    "color": "#C5AC43"
-  },
-  {
-    "key": "ScriptPanel Recipes: Modulate a circle with LFO",
-    "url": "tutorials/recipes/ui/scriptpanel.html#modulate-a-circle-with-lfo",
-    "weight": 50,
-    "color": "#C5AC43"
-  },
-  {
-    "key": "ScriptPanel Recipes: A six state button",
-    "url": "tutorials/recipes/ui/scriptpanel.html#a-six-state-button",
-    "weight": 50,
-    "color": "#C5AC43"
-  },
-  {
-    "key": "ScriptPanel Recipes: A ButtonPack",
-    "url": "tutorials/recipes/ui/scriptpanel.html#a-buttonpack",
-    "weight": 50,
-    "color": "#C5AC43"
-  },
-  {
-    "key": "ScriptPanel Recipes: A infinitely rotatable head",
-    "url": "tutorials/recipes/ui/scriptpanel.html#a-infinitely-rotatable-head",
-    "weight": 50,
-    "color": "#C5AC43"
-  },
-  {
-    "key": "ScriptPanel Recipes: A vectorized knob",
-    "url": "tutorials/recipes/ui/scriptpanel.html#a-vectorized-knob",
-    "weight": 50,
-    "color": "#C5AC43"
-  },
-  {
-    "key": "ScriptPanel Recipes: Horizontal List example",
-    "url": "tutorials/recipes/ui/scriptpanel.html#horizontal-list-example",
-    "weight": 50,
-    "color": "#C5AC43"
-  },
-  {
-    "key": "Animations in HISE: Looped Animation",
-    "url": "tutorials/recipes/ui/animations.html#looped-animation",
-    "weight": 50,
-    "color": "#C5AC43"
-  },
-  {
-    "key": "Animations in HISE: Interaction based animation",
-    "url": "tutorials/recipes/ui/animations.html#interaction-based-animation",
-    "weight": 50,
-    "color": "#C5AC43"
-  },
-  {
-    "key": "DSP: 1Band Dynamic EQ",
-    "url": "tutorials/recipes/dsp/index.html#1band-dynamic-eq",
-    "weight": 60,
-    "color": "#C5AC43"
-  },
-  {
-    "key": "DSP: Ping Pong Delay",
-    "url": "tutorials/recipes/dsp/index.html#ping-pong-delay",
-    "weight": 60,
-    "color": "#C5AC43"
-  },
-  {
-    "key": "DSP: Stereo Width",
-    "url": "tutorials/recipes/dsp/index.html#stereo-width",
-    "weight": 60,
-    "color": "#C5AC43"
-  },
-  {
-    "key": "Video Tutorials: Tutorial 1: Building HISE from source",
-    "url": "tutorials/video-tutorials/index.html#tutorial-1",
+    "key": "Modules Snippets: Wavetable Example",
+    "url": "tutorials/modules/index.html#wavetable-example",
     "weight": 70,
     "color": "#C5AC43"
   },
   {
-    "key": "Video Tutorials: Tutorial 2: Project Management",
-    "url": "tutorials/video-tutorials/index.html#tutorial-2",
+    "key": "MIDI Snippets: Monophonic Glide Script",
+    "url": "tutorials/midi/index.html#monophonic-glide-script",
     "weight": 70,
     "color": "#C5AC43"
   },
   {
-    "key": "Video Tutorials: Tutorial 3: Using Multiple Dynamic Layers",
-    "url": "tutorials/video-tutorials/index.html#tutorial-3",
+    "key": "MIDI Snippets: Audio Render Example",
+    "url": "tutorials/midi/index.html#audio-render-example",
     "weight": 70,
     "color": "#C5AC43"
   },
   {
-    "key": "Video Tutorials: HISE 2.0",
-    "url": "tutorials/video-tutorials/index.html#hise-2.0",
+    "key": "MIDI Snippets: Clocksynced Arpeggiator",
+    "url": "tutorials/midi/index.html#clocksynced-arpeggiator",
     "weight": 70,
     "color": "#C5AC43"
   },
   {
-    "key": "Video Tutorials: Interface Designer: Introduction",
-    "url": "tutorials/video-tutorials/index.html#interface-designer",
+    "key": "MIDI Snippets: Custom Event Data 101",
+    "url": "tutorials/midi/index.html#custom-event-data-101",
     "weight": 70,
     "color": "#C5AC43"
   },
   {
-    "key": "Video Tutorials: Interface Designer: Widget List",
-    "url": "tutorials/video-tutorials/index.html#interface-designer",
+    "key": "MIDI Snippets: Custom Event Data 102",
+    "url": "tutorials/midi/index.html#custom-event-data-102",
     "weight": 70,
     "color": "#C5AC43"
   },
   {
-    "key": "Video Tutorials: Interface Designer: Property Editor",
-    "url": "tutorials/video-tutorials/index.html#interface-designer",
+    "key": "MIDI Snippets: Custom Event Data 103",
+    "url": "tutorials/midi/index.html#custom-event-data-103",
     "weight": 70,
     "color": "#C5AC43"
   },
   {
-    "key": "Video Tutorials: Interface Designer: Editing properties with JSON",
-    "url": "tutorials/video-tutorials/index.html#interface-designer",
+    "key": "MIDI Snippets: Micro Tuner",
+    "url": "tutorials/midi/index.html#micro-tuner",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "MIDI Snippets: Switch TableData",
+    "url": "tutorials/midi/index.html#switch-tabledata",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "MIDI Snippets: Choke Off Note",
+    "url": "tutorials/midi/index.html#choke-off-note",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "MIDI Snippets: Play chords from single notes",
+    "url": "tutorials/midi/index.html#play-chords-from-single-notes",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "MIDI Snippets: Press a button to play a specific MIDI note",
+    "url": "tutorials/midi/index.html#press-a-button-to-play-a-specific-midi-note",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "Scripting Snippets: Console",
+    "url": "tutorials/scripting/index.html#console",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "Scripting Snippets: Date",
+    "url": "tutorials/scripting/index.html#date",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "Scripting Snippets: RectHelpers",
+    "url": "tutorials/scripting/index.html#recthelpers",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "Scripting Snippets: Array",
+    "url": "tutorials/scripting/index.html#array",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "Scriptnode Snippets: Dynamic voice routing",
+    "url": "tutorials/scriptnode/index.html#dynamic-voice-routing",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "Scriptnode Snippets: Faust Zita Reverb",
+    "url": "tutorials/scriptnode/index.html#faust-zita-reverb",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "Scriptnode Snippets: Neural Network Sine Generator",
+    "url": "tutorials/scriptnode/index.html#neural-network-sine-generator",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "Scriptnode Snippets: Ping Pong Delay",
+    "url": "tutorials/scriptnode/index.html#ping-pong-delay",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "Scriptnode Snippets: Scriptnode Oscillator Visualisation",
+    "url": "tutorials/scriptnode/index.html#scriptnode-oscillator-visualisation",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "Scriptnode Snippets: Scriptnode Visualisation 101",
+    "url": "tutorials/scriptnode/index.html#scriptnode-visualisation-101",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "Scriptnode Snippets: Scriptnode Voice Management",
+    "url": "tutorials/scriptnode/index.html#scriptnode-voice-management",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "Scriptnode Snippets: Sidechain Example 1",
+    "url": "tutorials/scriptnode/index.html#sidechain-example-1",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "Scriptnode Snippets: Sidechain Example 2",
+    "url": "tutorials/scriptnode/index.html#sidechain-example-2",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "Scriptnode Snippets: SNEX Oneshot Player",
+    "url": "tutorials/scriptnode/index.html#snex-oneshot-player",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "Scriptnode Snippets: SNEX Portamento Oscillator",
+    "url": "tutorials/scriptnode/index.html#snex-portamento-oscillator",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "Scriptnode Snippets: SNEX Saturation",
+    "url": "tutorials/scriptnode/index.html#snex-saturation",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "Scriptnode Snippets: Stereo Widener",
+    "url": "tutorials/scriptnode/index.html#stereo-widener",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "UI Snippets: GLSL MorphBall",
+    "url": "tutorials/ui/index.html#glsl-morphball",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "UI Snippets: GLSL Slider",
+    "url": "tutorials/ui/index.html#glsl-slider",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "UI Snippets: Rotate an image",
+    "url": "tutorials/ui/index.html#rotate-an-image",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "UI Snippets: A ball shooting Game",
+    "url": "tutorials/ui/index.html#a-ball-shooting-game",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "UI Snippets: Broadcaster Starting Point",
+    "url": "tutorials/ui/index.html#broadcaster-starting-point",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "UI Snippets: Button Pack",
+    "url": "tutorials/ui/index.html#button-pack",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "UI Snippets: Control 3 parameters in 3 ranges with 1 Knob",
+    "url": "tutorials/ui/index.html#control-3-parameters-in-3-ranges-with-1-knob",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "UI Snippets: GLSL Hello World",
+    "url": "tutorials/ui/index.html#glsl-hello-world",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "UI Snippets: Loop a filmstrip",
+    "url": "tutorials/ui/index.html#loop-a-filmstrip",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "UI Snippets: Lottie Hello World",
+    "url": "tutorials/ui/index.html#lottie-hello-world",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "UI Snippets: Modulate a circle with a Gain LFO",
+    "url": "tutorials/ui/index.html#modulate-a-circle-with-a-gain-lfo",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "UI Snippets: Open a Website",
+    "url": "tutorials/ui/index.html#open-a-website",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "UI Snippets: Script references and callbacks for components",
+    "url": "tutorials/ui/index.html#script-references-and-callbacks-for-components",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "UI Snippets: ScriptPanel Slider",
+    "url": "tutorials/ui/index.html#scriptpanel-slider",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "UI Snippets: SixState Filmstrip Button",
+    "url": "tutorials/ui/index.html#sixstate-filmstrip-button",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "UI Snippets: Tabbed View",
+    "url": "tutorials/ui/index.html#tabbed-view",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "UI Snippets: Dynamic List",
+    "url": "tutorials/ui/index.html#dynamic-list",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "UI Snippets: Saving custom LFO Shapes",
+    "url": "tutorials/ui/index.html#saving-custom-lfo-shapes",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "UI Snippets: Two linked Sliders",
+    "url": "tutorials/ui/index.html#two-linked-sliders",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "UI Snippets: Colour the Keyboard",
+    "url": "tutorials/ui/index.html#colour-the-keyboard",
     "weight": 70,
     "color": "#C5AC43"
   },

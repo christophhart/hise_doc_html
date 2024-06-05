@@ -42,7 +42,7 @@
 </h1>
 <p class="comment"><code>core.peak</code>
 </p>
-<img src="images/sn_screen_peak.png"></img>
+<img src="images/sn_screen_core__peak.png"></img>
 <p>Sends the maximum input value as control signal<br>This node will analyse the signal input and detect the (absolute) maximum value which is then sent as control value to any connected target. The value will be calculated using this formula:</p>
 <pre><code class="language-javascript line-numbers">output = Math.max(Math.abs(signalMin), Math.abs(signalMax))</code></pre>
 <p>So it will fold a negative signal back into the 0...1 range and send this as normalised value to its targets. If you want to convert a audio signal into this value range, use the <a href="scriptnode/list/math/sig2mod.html">sig2mod</a>

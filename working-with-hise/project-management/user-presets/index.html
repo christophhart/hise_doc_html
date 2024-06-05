@@ -101,7 +101,7 @@
 </ol>
 <p>The values are set according to this files top-down flow. There are a few edge cases in which you need to be aware of this: If you have a Slider that controls the <a href="hise-modules/sound-generators/list/streamingsampler.html#chains">Sample Start offset</a>
  of a <a href="hise-modules/sound-generators/list/streamingsampler.html">Sampler</a>
- and a Combobox that selects the different <a href="tutorials/recipes/ui/general.html#switch-samplemaps-with-a-combobox">SampleMap indexes</a>
+ and a Combobox that selects the different <a href="tutorials/recipes/ui/general#switch-samplemaps-with-a-combobox">SampleMap indexes</a>
 , the Slider must be placed after the ComboBox to set the values in this order:</p>
 <ol><li>Load the new SampleMap including samples</li>
 <li>Apply the sample start offset modulation value to the new sample set.</li>
@@ -109,9 +109,9 @@
 <p>If the order is wrong, you will end up changing the sample start offset of the old samples, and then load the SampleMap which resets the start offset to the original values. In this case the Slider will not have any effect.</p>
 <h2 id="file-management"><b>File Management</b>
 </h2>
-<p>These files are saved in the <a href="working-with-hise/project-management/projects-folders/user-presets.html">UserPresets</a>
+<p>These files are saved in the <a href="working-with-hise/project-management/projects-folders/user-presets">UserPresets</a>
  folder, which is either the subfolder of your project folder during development, or a subfolder in your <b>app data</b>
- directory when you are using the compiled plugin. The <a href="ui-components/floating-tiles/plugin/presetbrowser.html">Preset Browser</a>
+ directory when you are using the compiled plugin. The <a href="ui-components/floating-tiles/plugin/presetbrowser">Preset Browser</a>
  mirrors the file structure found in this directory. By default it uses a three level hierarchy (Banks -> Categories -> Presets), but you can change it to a 2-level or even flat list hierarchy if that is not apprpriate for your project (simple FX plugins usually need only one level of hierarchy).</p>
 <h2 id="user-presets-in-compiled-plugins"><b>User presets in compiled plugins</b>
 </h2>
@@ -140,12 +140,12 @@
 <pre><code class="language-javascript line-numbers">const var presetLabel = Content.getComponent("PresetLabel");
 presetLabel.set("text", "Init"); // or whatever you call your init preset</code></pre>
 <p class="comment">Speaking of default values.. Please make sure that the <code>defaultValue</code>
- property of each <a href="ui-components/plugin-components/index.html">UI Component</a>
+ property of each <a href="ui-components/plugin-components">UI Component</a>
  will match the value in the <code>onInit</code>
  callback. Some hosts (ProTools AFAIK) will override the init preset with the default values for all plugin parameters so if these values differ, you may end up with two versions of your plugin's initial state.</p>
 <h2 id="scripting-access-to-user-presets"><b>Scripting Access to User Presets</b>
 </h2>
-<p>The <a href="scripting/scripting-api/engine/index.html">Engine</a>
+<p>The <a href="scripting/scripting-api/engine">Engine</a>
  Scripting API holds the methods to access the User Preset system with scripting:</p>
 <pre><code class="language-javascript line-numbers">// Returns the current UserPresets name
 Engine.getCurrentUserPresetName(); 
