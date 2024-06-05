@@ -13,8 +13,10 @@ jobs:
     - name: Checkout this repository
       uses: actions/checkout@v3
 
+    
+
     - name: Pull another repository
-      run:  git clone https://github.com/christoph-hart/hise_documentation.git ./src
+      run:  git clone https://github.com/christoph-hart/hise_documentation.git
 
     - name: Run build.bat
       run: .\another-repository\build.bat
