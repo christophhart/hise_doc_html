@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="integer_index<typename-lt,-bool-checkonassign>"><b>integer_index<typename LT, bool CheckOnAssign></b>
+</h1>
+<p>The base class for integer indexes.<br>keyword: index::integer, index: 0<br></p>
+<p>This class can be used to safely access an array with a defined out-of-bounds behaviour:- wrapped: wrap indexes over the upper limit into the valid range (=modulo operator)<br></p>
+<ul><li>clamped: clamps to the highest / lowest valid index:<br></li>
+<li>zeroed: when the index is invalid, a zero value will be used<br></li>
+<li>looped: like wrapped, but negative indexes get wrapped around too<br></li>
+<li>unsafe: zero overhead, unsafe array access<br></li>
+</ul>
+<p><br>In order to use this class, just create an instance of it with the integer index you try to access, then pass this object into the []-operator of the span<T> or dyn<T> container:<br></p>
+<pre><code class="language-clike line-numbers">// pass the index into the constructor
+index::wrapped<0, false> idx(6);
+
+// create a dummy data array
+span<float, 5> data = {1, 2, 3, 4, 5 };
+
+// using this index will wrap around the data bounds.
+auto x = data[idx]; // => 6</code></pre>
+<p><br>You can supply a compile-time boundary as template argument that will lead to optimized code (but then it's your responsibility to make sure you call it with suitable container types).<br>An integer index class can be further refined into a <a href="scriptnode/snex_api/index_types/float_index.html">float_index</a>
+ in order to use (normalised) float numbers as index.<br> </p>
+<h2 id="class-methods"><b>Class methods</b>
+</h2>
+<h3 id="integer_index"><b>integer_index</b>
+</h3>
+<pre><code class="language-clike line-numbers">integer_index(Type initValue=Type(0))</code></pre>
+<p>Creates an index with the given init value.<br> </p>
+<h3 id="operator="><b>operator=</b>
+</h3>
+<pre><code class="language-clike line-numbers">integer_index & operator=(Type v)</code></pre>
+<p>Assigns the given integer value to this object.<br> </p>
+<h3 id="operator++"><b>operator++</b>
+</h3>
+<pre><code class="language-clike line-numbers">integer_index & operator++()</code></pre>
+<p>The index type supports preincrementation so you can use it in a loop.<br> </p>
+<h3 id="operator++"><b>operator++</b>
+</h3>
+<pre><code class="language-clike line-numbers">int operator++(int)</code></pre>
+<p>Postinc will always return a checked index because it will return an integer value. Use preincrementation if possible.<br> </p>
+<h3 id="operator--"><b>operator--</b>
+</h3>
+<pre><code class="language-clike line-numbers">integer_index & operator--()</code></pre>
+<p>Predecrement operator with a bound check.<br> </p>
+<h3 id="operator+"><b>operator+</b>
+</h3>
+<pre><code class="language-clike line-numbers">integer_index operator+(int delta) const</code></pre>
+<p>Returns a copy of that index type with the delta value added to its value.<br> </p>
+<h3 id="operator-"><b>operator-</b>
+</h3>
+<pre><code class="language-clike line-numbers">integer_index operator-(int delta) const</code></pre>
+<p>Returns a copy of that index type with the delta subtracted from its value.<br> </p>
+<h3 id="next"><b>next</b>
+</h3>
+<pre><code class="language-clike line-numbers">bool next() const</code></pre>
+<p>increments the index and returns true if it's within the bounds. This only works with unsafe and compile-time sized index types.<br> </p>
+<h3 id="operator-int"><b>operator int</b>
+</h3>
+<pre><code class="language-clike line-numbers">operator int() const</code></pre>
+<p>Cast operator to an integer value. This only works with compile-time sized indexes.<br> </p>
+<h3 id="setlooprange"><b>setLoopRange</b>
+</h3>
+<pre><code class="language-clike line-numbers">void setLoopRange(int start, int end)</code></pre>
+<p>Sets the loop range (only valid for index::looped)<br> </p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scriptnode/snex_api/index_types/lerp.html">lerp<typename IndexType></a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

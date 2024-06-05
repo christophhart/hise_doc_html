@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content">

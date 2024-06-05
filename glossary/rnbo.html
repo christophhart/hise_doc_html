@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="rnbo-import"><b>RNBO Import</b>
+</h1>
+<p>The purpose of this documentation is to provide a guide on how to import a DSP patch from RNBO into HISE. </p>
+<p><a href="https://rnbo.cycling74.com">RNBO</a>
+ is a subset of Max/MSP and was released in December 2022. The RNBO integration in HISE supports a number of powerful capabilities, including:</p>
+<ul><li> MIDI communication</li>
+<li> Tempo syncing, including transport start/stop and BPM synchronization</li>
+<li> Modulation output (only in scriptnode) using the <code>outport</code>
+ object with the <code>mod</code>
+ tag ID</li>
+<li> HISE complex data types (Tables, SliderPacks, and AudioFiles) can be used as data buffers within an RNBO patch.</li>
+</ul>
+<p>In this process, we will use the template builder in HISE to create the necessary wrapper code and compile the patch as a dynamic-link library (DLL). This will allow us to seamlessly integrate the patch into scriptnode and use it within HISE, either as node inside scriptnode or as Hardcoded effect module.</p>
+<p class="comment">If you are familiar with the process of integrating third-party C++ DSP code or using the Faust Integration in HISE, the process of integrating RNBO should be relatively straightforward because you'll be using the same basic concept as these other integration processes.</p>
+<h2 id="export-the-rnbo-patch"><b>Export the RNBO Patch</b>
+</h2>
+<p>To begin the process of exporting the DSP patch from RNBO, you will need to open the patch in RNBO and navigate to the "Export" menu (it's a button on the right edge of the window). Here, you will find options for exporting the patch as C++ classes.</p>
+<p>To ensure that the patch is exported correctly, you will need to configure the following settings: </p>
+<table><thead><td><b>Setting </b>
+</td>
+<td><b>Value </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>Output directory </td>
+<td><code>DspNetworks/ThirdParty/src</code>
+ </td>
+<td>This setting determines the folder where the exported patch will be saved. It is important to use the correct output directory, as this is where HISE will look for the patch when it is time to build the wrapper code. </td>
+</tr>
+<tr><td>ExportName </td>
+<td><code>your_patch_name</code>
+ </td>
+<td>This setting determines the name of the exported patch. It must be unique within your HISE project, and it must also be a valid C++ identifier (see below). </td>
+</tr>
+<tr><td>ClassName </td>
+<td><code>your_patch_name</code>
+ </td>
+<td>This setting determines the name of the C++ class that will be created for the patch. </td>
+</tr>
+<tr><td>Polyphony settings </td>
+<td>"Disabled" </td>
+<td>This setting determines whether the patch will be exported with polyphonic capabilities. In this case, we want to disable polyphony as it must be disabled in order to use the patch with HISE. However, you can enable the HISE polyphony in the next step if you want to play the patch in a polyphonic scriptnode context. </td>
+</tr>
+</table>
+<p>Make sure to use the same C++ Identifier for the ExportName and ClassName. A valid C++ identifier is a name that is used to identify a variable, function, class, or any other entity in C++. There are a few rules that must be followed when naming an identifier in C++:</p>
+<ol><li> An identifier must start with a letter or an underscore (<code>_</code>
+).</li>
+<li> An identifier cannot contain any whitespace characters.</li>
+<li> An identifier can only contain letters, digits or underscores (_).</li>
+<li> An identifier can't be a reserved keywords (<code>if</code>
+, <code>while</code>
+, <code>public</code>
+, ...).</li>
+</ol>
+<p>For example, the following are all valid C++ identifiers:</p>
+<ul><li><code>myVariable</code>
+</li>
+<li><code>_privateVariable</code>
+</li>
+<li><code>someFunction</code>
+</li>
+</ul>
+<p>On the other hand, the following are all invalid C++ identifiers:</p>
+<ul><li><code>2ndVariable</code>
+ (starts with a digit)</li>
+<li><code>my variable</code>
+ (contains whitespace)</li>
+<li><code>for</code>
+ (a reserved keyword)</li>
+</ul>
+<p>Once you have configured these settings, you can go ahead and export the patch by clicking the "Export" button. This will generate the necessary C++ files and save them to the specified output directory. After the export process is finished, open HISE and use it to build the C++ wrapper template.</p>
+<h2 id="create-the-hise-c++-wrapper"><b>Create the HISE C++ wrapper</b>
+</h2>
+<p>To create the C++ wrapper code for the RNBO patch, you will need to use the template builder in HISE. Here is the process for creating the template:</p>
+<ol><li>Open HISE and navigate to the "Tools" menu.</li>
+<li>Select the "Create Template for RNBO Patch" option.</li>
+<li>In the template builder window that appears, use the drop-down menu to select the C++ file for the RNBO patch that you exported in the previous step.</li>
+<li>Adjust the configuration options as necessary. These may include the number of channels and the polyphony settings. Every setting has a help button with more information.</li>
+<li>Press the "OK" button to create the wrapper code. This will generate a new file in the "ThirdParty" folder of your HISE project.</li>
+<li>Once the wrapper code has been created, you will need to export the DLL and restart HISE in order for the changes to take effect.</li>
+</ol>
+<p>Once the wrapper code has been created, you can use the RNBO patch like any other third-party C++ node in HISE. This can be done either through hardcoded FX or by using scriptnode with your HISE project. </p>
+<p>This should conclude the process using the most basic feature set. Now we'll take a look at more advanced concepts for a tighter integration of RNBO patches with HISE / scriptnode</p>
+<h3 id="enable-modulation-output"><b>Enable modulation output</b>
+</h3>
+<p>To set up your RNBO patch to send a modulation signal that can be applied to any parameter in scriptnode, you will need to enable the <b>Modulation</b>
+ feature in the template builder. This will allow the HISE wrapper to listen for messages at the <code>outport</code>
+ object with the <code>mod</code>
+ tag, and send the value to any connected modulation targets </p>
+<p>To enable a periodic modulation event after each audio buffer, you can add an <code>inport</code>
+ object with the <code>postrender</code>
+ tag to your RNBO patch. This will send out a "bang" message after each buffer has been processed. To determine the number of samples being processed between calls to the <code>postrender</code>
+ inport, you can add another inport with the <code>blocksize</code>
+ tag. This inport will be called whenever the processing specifications change, and can be used to adjust the modulation event accordingly.</p>
+<p class="comment">This is consistent with the way how modulation works in scriptnode and allows you to control the modulation resolution using the <code>fix_block</code>
+ containers.</p>
+<p>Here is an example of an RNBO patch that replicates the functionality of the <code>core.peak</code>
+ node in HISE:</p>
+<img src="https://i.imgur.com/nZOAcAy.png"></img>
+<p>As you can see, this patch uses the <code>outport</code>
+ with the <code>mod</code>
+ tag to send a periodic modulation signal (the signal cable that is fed into the <code>peakamp~</code>
+ object), and the <code>inport</code>
+ objects with the <code>postrender</code>
+ and <code>blocksize</code>
+ tags to enable a "once-per-buffer" update rate. By following a similar approach, you can set up your RNBO patch to send a modulation signal that can be applied to any parameter in scriptnode.</p>
+<h3 id="use-complex-data-slots"><b>Use complex data slots</b>
+</h3>
+<p>In HISE, all three of the main complex UI elements (Table, SliderPack, and AudioFile) operate on the same data type: a <code>float</code>
+ array. This array can be passed as a reference to an RNBO patch, allowing you to access and manipulate it within the patch. This allows you to, for example, control the sample that you want to feed into a granular synthesizer using a HISE <code>ScriptingAudioWaveform</code>
+ widget, or draw the wavetable function for a custom oscillator using a <code>Table</code>
+ UI element.</p>
+<p>The communication between HISE and RNBO is straightforward: all you need to do is define a <code>buffer~</code>
+ object in RNBO with a unique <code>name</code>
+ attribute (which can be any string, but it is recommended to use a valid C++ identifier for future-proofing purposes) and the <code>external</code>
+ attribute set to 1. This tells RNBO that the data is coming from the outside, and is necessary in order to use the HISE UI elements to manipulate the data.</p>
+<p>Then in the Template builder, you just need to enter this ID into the fields of the data type you want to use it for. </p>
+<p>Example: </p>
+<ol><li>Add a <code>buffer~ @name my_table @external 1</code>
+ object in RNBO</li>
+<li>Add <code>my_table</code>
+ to the <code>Table IDs</code>
+ field of the Template builder</li>
+</ol>
+<p>When you compile the node, it will show a single table that you can connect to an external slot or reference from your main interface just like any other table in HISE.</p>
+<p>There are a few things to keep in mind when handling audio files in RNBO: RNBO expects the data to be in an interleaved format, where all samples of a single channel are written consecutively. To handle this, the RNBO wrapper will need to duplicate the buffer data and convert the format, which will unfortunately double the memory usage. In addition, multi-format audio files (such as SFZ or Samplemap) are not supported, so you can only use a single audio file per slot.</p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="tutorials/index.html">Examples</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart (assisted by ChatGPT)<br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

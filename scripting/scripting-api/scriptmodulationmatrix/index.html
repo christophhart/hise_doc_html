@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="scriptmodulationmatrix"><b>ScriptModulationMatrix</b>
+</h1>
+<p><br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="addmodulatortarget"><b>addModulatorTarget</b>
+</h2>
+<p class="comment">Adds a global modulator at the given mod chain for sample accurate modulation.</p>
+<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.addModulatorTarget(var targetData)</code></pre>
+<p><br><br></p>
+<h2 id="addparametertarget"><b>addParameterTarget</b>
+</h2>
+<p class="comment">Adds a (low resolution) parameter modulation slot.</p>
+<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.addParameterTarget(var targetData)</code></pre>
+<p><br><br></p>
+<h2 id="canconnect"><b>canConnect</b>
+</h2>
+<p class="comment">Checks whether the modulation connection can be made.</p>
+<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.canConnect(String source, String target)</code></pre>
+<p><br><br></p>
+<h2 id="clearallconnections"><b>clearAllConnections</b>
+</h2>
+<p class="comment">Removes all connections.</p>
+<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.clearAllConnections()</code></pre>
+<p><br><br></p>
+<h2 id="connect"><b>connect</b>
+</h2>
+<p class="comment">Adds (or removes) a connection from the source to the target.</p>
+<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.connect(String sourceId, String targetId, bool addConnection)</code></pre>
+<p><br><br></p>
+<h2 id="frombase64"><b>fromBase64</b>
+</h2>
+<p class="comment">Loads the state from a previously exported Base64 string.</p>
+<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.fromBase64(String b64)</code></pre>
+<p><br><br></p>
+<h2 id="getcomponentid"><b>getComponentId</b>
+</h2>
+<p class="comment">Get the component ID for the given modulation target ID.</p>
+<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.getComponentId(String targetId)</code></pre>
+<p><br><br></p>
+<h2 id="getconnectiondata"><b>getConnectionData</b>
+</h2>
+<p class="comment">Get the connection data for the given component.</p>
+<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.getConnectionData(String componentId)</code></pre>
+<p><br><br></p>
+<h2 id="getintensitysliderdata"><b>getIntensitySliderData</b>
+</h2>
+<p class="comment">Creates a range object that can be passed into setTableRowData to update the slider range.</p>
+<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.getIntensitySliderData(String sourceId, String targetId)</code></pre>
+<p><br><br></p>
+<h2 id="getmodvalue"><b>getModValue</b>
+</h2>
+<p class="comment">Get the current modulation value for the connected component.</p>
+<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.getModValue(var component)</code></pre>
+<p><br><br></p>
+<h2 id="getsourcelist"><b>getSourceList</b>
+</h2>
+<p class="comment">Return a list of all sources.</p>
+<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.getSourceList()</code></pre>
+<p><br><br></p>
+<h2 id="gettargetid"><b>getTargetId</b>
+</h2>
+<p class="comment">Get the target ID for the given component.</p>
+<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.getTargetId(String componentId)</code></pre>
+<p><br><br></p>
+<h2 id="gettargetlist"><b>getTargetList</b>
+</h2>
+<p class="comment">Return a list of all targets.</p>
+<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.getTargetList()</code></pre>
+<p><br><br></p>
+<h2 id="getvaluemodedata"><b>getValueModeData</b>
+</h2>
+<p class="comment">Creates a JSON object that can be passed into the setTableRowData to update the combobox.</p>
+<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.getValueModeData(String sourceId, String targetId)</code></pre>
+<p><br><br></p>
+<h2 id="setconnectioncallback"><b>setConnectionCallback</b>
+</h2>
+<p class="comment">Set a callback that will be executed whenever the matrix state changes.</p>
+<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.setConnectionCallback(var updateFunction)</code></pre>
+<p><br><br></p>
+<h2 id="seteditcallback"><b>setEditCallback</b>
+</h2>
+<p class="comment">Set a callback that will be executed when the user clicks on "Edit connections".</p>
+<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.setEditCallback(var editFunction)</code></pre>
+<p><br><br></p>
+<h2 id="setnummodulationslots"><b>setNumModulationSlots</b>
+</h2>
+<p class="comment">Sets the amount of modulation targets created for each [voice start, time-variant, envelope] modulation type.</p>
+<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.setNumModulationSlots(var numSlotArray)</code></pre>
+<p><br><br></p>
+<h2 id="setuseundomanager"><b>setUseUndoManager</b>
+</h2>
+<p class="comment">Enables the undo manager for all modulation edit actions.</p>
+<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.setUseUndoManager(bool shouldUseUndoManager)</code></pre>
+<p><br><br></p>
+<h2 id="tobase64"><b>toBase64</b>
+</h2>
+<p class="comment">Creates a Base64 string of all connections.</p>
+<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.toBase64()</code></pre>
+<p><br><br></p>
+<h2 id="updateconnectiondata"><b>updateConnectionData</b>
+</h2>
+<p class="comment">Update the connections in the list.</p>
+<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.updateConnectionData(var connectionList)</code></pre>
+<p><br><br></p>
+<h2 id="updateintensity"><b>updateIntensity</b>
+</h2>
+<p class="comment">Update the intensity for the given connection.</p>
+<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.updateIntensity(String source, String target, float intensityValue)</code></pre>
+<p><br><br></p>
+<h2 id="updatevaluemode"><b>updateValueMode</b>
+</h2>
+<p class="comment">Update the value mode from the combobox item ID.</p>
+<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.updateValueMode(String source, String target, String valueMode)</code></pre>
+<p><br><br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/scriptpanel/index.html">ScriptPanel</a>
+</span>
+
+<p class="content-footer-metadata"><br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

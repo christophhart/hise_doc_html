@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="processdata<int-c>"><b>ProcessData<int C></b>
+</h1>
+<p>A data structure that contains the processing context for a DSP algorithm.<br>It has a compile-time channel amount to that you can use channel loop iterators without performance overhead (because it will be most likely unrolled).<br>This class is extremely lightweight to fit into 32 bytes and contains:<br></p>
+<ul><li>a pointer to the audio data<br></li>
+<li>a pointer to the event data<br></li>
+<li>the number of samples / events<br></li>
+<li>a reset flag that can be used to control the execution of polyphonic voices<br></li>
+</ul>
+<p><br>It also provides a few tools to make the code as lean as possible by providing access to its data using one of the three toXXXData functions:<br></p>
+<ul><li>toChannelData() for channel based processing<br></li>
+<li>toFrameData() that creates a <a href="scriptnode/snex_api/helper_classes/frameprocessor.html">FrameProcessor</a>
+ object for frame based processing<br></li>
+<li>toEventData() that creates a dyn<HiseEvent> so you can process the events<br> </li>
+</ul>
+<p><br></p>
+<h2 id="static-functions"><b>Static functions</b>
+</h2>
+<h3 id="getnumchannels"><b>getNumChannels</b>
+</h3>
+<pre><code class="language-clike line-numbers">int getNumChannels()</code></pre>
+<p>Gets the number of channels.<br> </p>
+<h2 id="class-methods"><b>Class methods</b>
+</h2>
+<h3 id="processdata"><b>ProcessData</b>
+</h3>
+<pre><code class="language-clike line-numbers">ProcessData(float **d, int numSamples_, int numChannels_=NumChannels)</code></pre>
+<p>Creates a ProcessDataFix object from the given data pointer.<br> </p>
+<h3 id="begin"><b>begin</b>
+</h3>
+<pre><code class="language-clike line-numbers">ChannelPtr * begin() const</code></pre>
+<p>Allows iteration over the channel data.<br>The <a href="scriptnode/snex_api/data_structures/channelptr.html">ChannelPtr</a>
+ return type can be passed into the toChannelData() method in order to create a dyn<float> object that can be used to iterate over the channel's sample data:<br></p>
+<pre><code class="language-clike line-numbers">ProcessData<2> data;
+
+for(auto& ch: data)
+{
+    // Pass the `ch` iterator into the `toChannelData` function
+    // in order to iterator over the float samples...
+    for(float& s: data.toChannelData(ch))
+    {
+        s *= 0.5f;
+    }
+}</code></pre>
+<p><br></p>
+<h3 id="end"><b>end</b>
+</h3>
+<pre><code class="language-clike line-numbers">ChannelPtr * end() const</code></pre>
+<p>see begin().<br> </p>
+<h3 id="operator[]"><b>operator[]</b>
+</h3>
+<pre><code class="language-clike line-numbers">dyn< float > operator[](int channelIndex)</code></pre>
+<p>creates a iteratable channel object for the .<br> </p>
+<h3 id="toframedata"><b>toFrameData</b>
+</h3>
+<pre><code class="language-clike line-numbers">FrameProcessor< C > toFrameData()</code></pre>
+<p>Generates a frame processor that allows frame-based iteration over all given channels.<br> </p>
+<h3 id="getnumsamples"><b>getNumSamples</b>
+</h3>
+<pre><code class="language-clike line-numbers">int getNumSamples() const</code></pre>
+<p>Returns the amount of samples for this processing block. This value is guaranteed to be less than the blockSize value passed into the last prepare()<br></p>
+<h3 id="tochanneldata"><b>toChannelData</b>
+</h3>
+<pre><code class="language-clike line-numbers">block toChannelData(const ChannelPtr &channelStart) const</code></pre>
+<p>Converts a <a href="scriptnode/snex_api/data_structures/channelptr.html">ChannelPtr</a>
+ to a block.<br> </p>
+<h3 id="toeventdata"><b>toEventData</b>
+</h3>
+<pre><code class="language-clike line-numbers">dyn< HiseEvent > toEventData() const</code></pre>
+<p>Creates a buffer of HiseEvents for the given chunk.<br> </p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scriptnode/snex_api/helper_classes/index.html">SNEX helper classes</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

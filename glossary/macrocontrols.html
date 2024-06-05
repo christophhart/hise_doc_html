@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="macro-control-system"><img src="images/icon_macro-controls.png"></img>
+<b>Macro Control System</b>
+</h1>
+<p><br>The macro control system is a handy and convenient way to create up to 8 controls that change multiple parameters of different modules.</p>
+<p>It is inspired (read: stolen) by the way Ableton Live handles macro parameters in an Audio Effect Rack and might be an easier alternative to writing scripting callbacks for controlling multiple parameters.</p>
+<p class="comment">if you're running HISE as plugin, you'll notice that the macro controls are published to the DAW as plugin parameters by default.</p>
+<h2 id="creating-macro-controls"><b>Creating macro controls</b>
+</h2>
+<p>There are 8 macro control slots available so in order to use them click on the </p>
+<img style="max-width:32px;" src="images/icon_macro-controls.png"></img>
+<p>icon in the main topbar of HISE. It will open up the <a href="ui-components/floating-tiles/hise/macrocontrols.html">MacroControls</a>
+ in a popup that looks like this:</p>
+<img src="ui-components/floating-tiles/hise/macrocontrols.html"></img>
+<p>You can use the 8 knobs to change the macro controls, however there's nothing mapped yet, so they are disabled.<br>In order to assign macro controls, you just need to click on the edit icon next to the name (eg. <b>Macro 1</b>
+). The green outline around the macro indicates that now it is in edit mode so you can change the name by double clicking on it and connect controls to it: as soon as you touch and change a control, it will be deactivated and assigned to this macro control which is indicated like this:</p>
+<img src="images/custom/macro_controlled_parameter.png"></img>
+<p> </p>
+<p class="comment">You can remove a connection quickly by right-clicking on an assigned control and choose "<b>Remove Macro Control</b>
+".</p>
+<h2 id="editing-macro-connections"><b>Editing macro connections</b>
+</h2>
+<p>Each macro control can have an arbitrary amount of connections to module parameters. You can modify and remove these connections in the Macro Edit Table which will automatically show up in the right panel as soon as you're entering the edit mode for a macro control.</p>
+<img src="images/custom/macro_control_table.png"></img>
+<p> </p>
+<p>It is a table with a row for each connection that you've made for that particular macro control. It shows these columns:</p>
+<table><thead><td><b>Processor </b>
+</td>
+<td><b>Parameter </b>
+</td>
+<td><b>Inverted </b>
+</td>
+<td><b>Min </b>
+</td>
+<td><b>Max </b>
+</td>
+</thead>
+<tr><td>The ID of the module </td>
+<td>the ID of the parameter </td>
+<td>inverts the range </td>
+<td>the min value (when the macro control is all to the left) </td>
+<td>the max value (when the macro control is all to the right) </td>
+</tr>
+</table>
+<p>If you want to delete a connection click on a row and press <b>Delete</b>
+. If you want to clear all collections at once, right click on the macro control knob and choose <b>Clear Macro Control</b>
+.</p>
+<h2 id="advanced-connections"><b>Advanced connections</b>
+</h2>
+<p>Controlling parameters directly is not the only way that the macro control system can be used: </p>
+<ul><li>the <a href="hise-modules/modulators/time-variant-modulators/list/macromodulator.html">Macro Modulator</a>
+ which grabs the macro control value and turns it into a time-variant modulation signal </li>
+<li>the <code>core.macro</code>
+ node which allows to use a macro control in order to modulate things inside a scriptnode network (not yet implemented, will be added shortly). </li>
+</ul>
+<p>The reason why you would want to use one of those is that they might result in a better sound when modulating the value, because they allow smoothing of the parameter.<br></p>
+<h2 id="using-macro-controls"><b>Using macro controls</b>
+</h2>
+<p>Now that we have connected the macro control to its targets we can take a look at how to control the macro control itself.</p>
+<p>Basically there are three ways of doing this:</p>
+<ol><li>Hardwire a MIDI CC to a macro control</li>
+<li>Assign a control on your scripted interface</li>
+<li>Use the scripting API directly</li>
+</ol>
+<h3 id="midi-control"><b>MIDI Control</b>
+</h3>
+<p>You can hardwire a certain CC to control a macro control. The procedure is similar to mapping controls on your compiled project to a MIDI control: </p>
+<ol><li>Right click on the knob and select <b>MIDI Learn</b>
+.</li>
+<li>Move the controller once. </li>
+</ol>
+<p>From then on the macro control will be controlled by the MIDI CC until you remove it by right clicking on the knob and selecting <b>Remove MIDI CC</b>
+.</p>
+<p class="comment">In this case the MIDI message will be consumed by the macro control and not be passed on to the rest of HISE</p>
+<h3 id="assign-a-ui-control"><b>Assign a UI control</b>
+</h3>
+<p>Every UI control has the <code>macroControl</code>
+ property which tells the system to control the connected macro with it. So if you want to control a macro control with a knob, just set its <code>macroControl</code>
+ property to the index you want.</p>
+<p class="comment">Be aware that this will "disconnect" it from anything else: it will not control the parameter assigned by the <code>processorId</code>
+ and <code>parameterId</code>
+ and the scripting callback will not be fired anymore.</p>
+<p>Now if you do this, be aware that the range of the macro control is <code>0 - 127</code>
+. So whatever control you use, it has to use that value range, or you will not be able to control the full range of the macro control.</p>
+<h3 id="set-the-macro-value-using-the-scripting-api"><b>Set the macro value using the Scripting API</b>
+</h3>
+<p>If you want to have precise control when and what value you want to send to the macro control (or use a UI component which hasn't the correct range), you can use the scripting call <a href="scripting/scripting-api/synth/index.html#setmacrocontrol">Synth.setMacroControl</a>
+ to directly send the value to the given macro control.</p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="glossary/rnbo.html">RNBO Import</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>08.09.2019<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

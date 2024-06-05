@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="clone_cable"><b>clone_cable</b>
+</h1>
+<p class="comment"><code>control.clone_cable</code>
+</p>
+<img src="images/sn_screen_clone_cable.png"></img>
+<p>Send different values to cloned nodes</p>
+<h2 id="parameters"><b>Parameters</b>
+</h2>
+<table><thead><td><b>ID </b>
+</td>
+<td><b>Range </b>
+</td>
+<td><b>Default </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>NumClones </td>
+<td>1.00 - 16.00 </td>
+<td>1.00 </td>
+<td>The number of clones </td>
+</tr>
+<tr><td>Value </td>
+<td>0.00 - 1.00 </td>
+<td>0.00 </td>
+<td>The (normalised) input value </td>
+</tr>
+<tr><td>Gamma </td>
+<td>0.00 - 1.00 </td>
+<td>0.00 </td>
+<td>An additional parameter that skews the output of certain nodes </td>
+</tr>
+</table>
+<p><br>This node can be used to modulate and change parameters of child nodes of a <a href="scriptnode/list/container/clone.html">container.clone</a>
+ node. </p>
+<p>In order to use this node, just drag its modulation source to a parameter of the first clone, set the mode and change the value parameter.</p>
+<p class="comment">Be aware that as soon as you have connected the node, the NumClones will be overriden (and updated) by the actual number of clones that is used in the target clone container (so you don't have to keep these in sync manually).</p>
+<p>There are several modes available that determine how the value that is being send to each clone is being calculated. </p>
+<table><thead><td><b>Mode </b>
+</td>
+<td><b>Description </b>
+</td>
+<td><b>Gamma </b>
+</td>
+<td><b>Example </b>
+</td>
+<td><b>Midi </b>
+</td>
+</thead>
+<tr><td>Spread </td>
+<td>spreads the value from the mid point (bipolar) </td>
+<td>Changes the curve from linear to something logarithmishly </td>
+<td>Detune, Stereo spread </td>
+<td>No </td>
+<td>Scale </td>
+<td>scales the value from zero to value (unipolar) </td>
+<td>Changes the curve to a polynomial </td>
+<td>delay times </td>
+<td>No </td>
+</tr>
+<tr><td>Random </td>
+<td>sends a random value </td>
+<td>nothing </td>
+<td>phase offset for reducing chorus effect </td>
+<td>No </td>
+</tr>
+<tr><td>Harmonic </td>
+<td>sends a multiple of the input value </td>
+<td>nothing </td>
+<td>frequency for additive synthesis </td>
+<td>Yes </td>
+</tr>
+<tr><td>Fixed </td>
+<td>sends a fixed value to all nodes </td>
+<td>nothing </td>
+<td>anything that needs to be modulated </td>
+<td>Yes </td>
+</tr>
+<tr><td>Nyquist </td>
+<td>caps the value once the harmonics exceed the nyquist frequency </td>
+<td>the "Q" factor of the filter </td>
+<td>antialiasing for additive synthesis </td>
+<td>Yes </td>
+</tr>
+<tr><td>Triangle </td>
+<td>reduces the start and end points by a certain amount </td>
+<td>skews the curve </td>
+<td>attenuation of left / right </td>
+<td>No </td>
+</tr>
+<tr><td>Ducker </td>
+<td>a fixed value only determined by the amount of voices </td>
+<td>determines the level of attenuation </td>
+<td>normalisation of volume for unisono voices </td>
+<td>No </td>
+</tr>
+</table>
+<p>As you can see a few of those modes react to MIDI input (the normalised frequency value of a note on message) if they exist inside a context that processes MIDI messages.</p>
+<p class="comment">If you connect them to a frequency parameter, make sure to select the unskewed range from 0-20000Hz (the "Linear 0 - 20kHz" preset in the range drop down menu)</p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scriptnode/list/control/xfader.html">xfader</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>24.09.2021<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

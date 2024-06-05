@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="sampler"><b>Sampler</b>
+</h1>
+<p>Type ID: <code>StreamingSampler</code>
+<br>Interface classes: <a href="scripting/scripting-api/sampler/index.html">Sampler</a>
+ <a href="scripting/scripting-api/tableprocessor/index.html">TableProcessor</a>
+ <a href="scripting/scripting-api/routingmatrix/index.html">RoutingMatrix</a>
+<br></p>
+<p class="comment"><b>The sampler module of HISE</b>
+<br></p>
+<img src="images/module_screenshot_streamingsampler.png"></img>
+<p><br></p>
+<p>One of the key highlights of HISE is to build sample based VSTis. The main module for that task is the <a href="hise-modules/sound-generators/list/streamingsampler.html">Sampler</a>
+.<br></p>
+<p>The Sampler is a disk streaming sampler which leverages the full power of the <b>HISE</b>
+ Engine. It is optimized to play a lot of voices in parallel and allows to map samples in SampleMaps up to an individual SampleMap-size of 4GB. </p>
+<p>The samples can be arranged in a three-dimensional map to account for Note number(x), Velocity(y) and Round Robin Groups(z) and a lot of tools are provided to map and edit your samples quick and efficiently. </p>
+<img style="max-width:400px;" src="images/custom/samplemapaxis.svg"></img>
+<p><b>General Workflow</b>
+:</p>
+<ul><li>Put your samples in the projects <a href="working-with-hise/project-management/projects-folders/samples.html">Samples</a>
+ Folder.</li>
+<li>Create a Sampler and map and save your samples into a <code>.xml</code>
+ SampleMap with its <a href="ui-components/floating-tiles/hise/samplemapeditor.html">Map Editor</a>
+. The saved SampleMaps will show up in the projects <a href="working-with-hise/project-management/projects-folders/sample-maps.html">SampleMaps</a>
+ Folder. </li>
+<li>Collect an compress all samples in a SampleMap with the <a href="sampler.html#export-to-hlac-monolith">HISE Lossless Audio Codec</a>
+ (<code>.ch1</code>
+) into a single monolith file. </li>
+<li>When the development of the plugin is ready, all HLAC monolith files can be bundled in a <a href="hise-modules/sound-generators/list/streamingsampler#hise-resources-archive-file">HISE Resource</a>
+ (<code>.hr1</code>
+) Archive File, that can be distributed to the user. </li>
+</ul>
+<h2 id="sampler-tabs"><b>Sampler Tabs</b>
+</h2>
+<p>The Sampler features four special edit tabs:</p>
+<ul><li><a href="working-with-hise/workspaces/sampler-workspace/sample-table">Sampler Settings</a>
+</li>
+<li><a href="working-with-hise/workspaces/sampler-workspace/sample-settings">Sample Editor</a>
+</li>
+<li><a href="working-with-hise/workspaces/sampler-workspace/sample-editor">Map Editor</a>
+</li>
+<li><a href="working-with-hise/workspaces/sampler-workspace/sample-map-editor">Table View</a>
+</li>
+</ul>
+<p>Additional to the default chains, it features two extra <a href="hise-modules/sound-generators/list/streamingsampler#chains-">Modulation Chains</a>
+ to modulate the <b>Sample Start</b>
+ of samples and the <b>Group Fade</b>
+ between different RRGroups.</p>
+<h2 id="sample-maps"><b>Sample Maps</b>
+</h2>
+<p>You can load and save <b>SampleMaps</b>
+ independently from the Sampler as human-readable <code>.xml</code>
+ files, which makes it an own sampler file format. It saves all the individual sample-settings that you give your samples in the Map- and Sample-Editor.</p>
+<pre><code class="language-javascript line-numbers"><?xml version="1.0" encoding="UTF-8"?>
+
+<samplemap ID="" RRGroupAmount="2" MicPositions=";">
+  <sample Root="62" LoKey="62" HiKey="63" LoVel="0" HiVel="127" RRGroup="2"
+          FileName="{PROJECT_FOLDER}Folk Harp/EWHarp_Normal_A#1_v2_RR1.wav"
+          Duplicate="1" Pan="5" Pitch="4" Volume="-10" SampleStart="515"
+          LoopStart="3934" LoopXFade="216" SampleStartMod="10036" LoopEnabled="1"/>
+  <sample Root="62" LoKey="62" HiKey="63" LoVel="0" HiVel="127" RRGroup="1"
+          FileName="{PROJECT_FOLDER}Folk Harp/EWHarp_Normal_A#1_v2_RR2.wav"
+          Duplicate="1" Normalized="1" NormalizedPeak="42.6667" LoopEnabled="1"
+          SampleStart="50803" SampleEnd="304376" SampleStartMod="51418"
+          Pitch="1" Pan="-8" Volume="2"/>
+</samplemap></code></pre>
+<h2 id="timestretching"><b>Timestretching</b>
+</h2>
+<p>Starting with HISE 3.5.1 the sampler module has an inbuilt timestretching mode that allows you to independently control pitch and time of your samplemaps.</p>
+<p>It's using the (slightly modified) timestretching algorithm from <a href="https://github.com/Signalsmith-Audio/signalsmith-stretch">signalsmith</a>
+ which is a pretty new library with a reasonably good performance / sound quality ratio. It's licensed permissively which means that the library can be embedded into the HISE codebase and used in proprietary projects.</p>
+<p>In order to use the timestretching mode, just switch the mode in the Sampler Settings and adjust the stretch ratio using either the slider on the Sampler Settings (if applicable) or the scripting API call <a href="scripting/scripting-api/sampler#settimestretchratio">Sampler.setTimestretchRatio()</a>
+. There are four modes which define how this stretch ratio is applied to the samples:</p>
+<table><thead><td><b>Mode </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><code>Disabled</code>
+ </td>
+<td>The default state with timestretching disabled. There's almost no CPU overhead if this is disabled to ensure that the CPU performance of most projects will stay the same. </td>
+</tr>
+<tr><td><code>VoiceStart</code>
+ </td>
+<td>This mode will use the current stretch ratio and apply it statically to new voices. This allows you to define different stretch ratios for different voices. </td>
+</tr>
+<tr><td><code>TimeVariant</code>
+ </td>
+<td>This mode will apply the current stretch ratio to all voices. This allows you to define a dynamic stretch ratio, but all voices will have the same ratio. </td>
+</tr>
+<tr><td><code>TempoSynced</code>
+ </td>
+<td>This mode will ignore the manual stretch ratio and automatically sync the stretch ratio to the BPM of the master clock. By default it tries to detect the musical length of a sample using the current tempo, but that automatic detection can be overriden by supplying a <code>NumQuarters</code>
+ property to the timestretching options. </td>
+</tr>
+</table>
+<p>Be aware that if the timestretch mode is anything else than <code>Disabled</code>
+, it will process the sample using the timestretching library, even if the time and pitch ratio are 1.</p>
+<p class="comment">If the timestretching is enabled, any pitch modulation (using the modulation or root note detune) will not change the pitch using resampling but with the pitch transposition of the timestretch algorithm which retains the duration of the sample.</p>
+<h3 id="timestretching-options"><b>Timestretching Options</b>
+</h3>
+<p>In addition to the timestretching mode, there are several other options which allow you to customize the timestretching:</p>
+<table><thead><td><b>Property </b>
+</td>
+<td><b>Type </b>
+</td>
+<td><b>Default </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><code>Mode</code>
+ </td>
+<td><code>String</code>
+ </td>
+<td><code>"Disabled"</code>
+ </td>
+<td>the timestretching mode (as described above). Changing this mode will kill all voices and refresh the voice states on the background thread. </td>
+</tr>
+<tr><td><code>SkipLatency</code>
+ </td>
+<td><code>bool</code>
+ </td>
+<td><code>false</code>
+ </td>
+<td>If true, starting a new voice will skip the inherent latency of the timestretching algorithm. This vastly improves the timing of the voice, however it comes with a pretty steep CPU overhead because it has to (silently) calculate the timestretched signal for the duration of the latency (about 50ms). </td>
+</tr>
+<tr><td><code>NumQuarters</code>
+ </td>
+<td><code>double</code>
+ </td>
+<td><code>0.0</code>
+ </td>
+<td>if this is not 0.0, it will skip the automatic detection of the sample length when in tempo-synced mode and use this value to determine the BPM of the source sample (so you will need to set this to the value of your loop lengths). </td>
+</tr>
+<tr><td><code>Tonality</code>
+ </td>
+<td><code>double</code>
+ </td>
+<td><code>0.0</code>
+ </td>
+<td>This value allows you to <a href="https://signalsmith-audio.co.uk/code/stretch/#how-to-use-pitch-shifting">retain the timbre</a>
+ when using pitch transposition. </td>
+</tr>
+</table>
+<p>Be aware that there is no UI interface for these properties in HISE (except for the mode). Instead, you will have to use the scripting API calls that query and set these properties from a JSON object.</p>
+<pre><code class="language-javascript line-numbers">// fetch the current state
+const var obj = Sampler.getTimestretchOptions();
+
+// print out all properties
+Console.print(trace(obj));
+
+// Apply your changed
+obj.SkipLatency = true;
+
+// Update the options
+Sampler.setTimestretchOptions(obj);</code></pre>
+<h2 id="compress-and-export"><b>Compress and Export</b>
+</h2>
+<h3 id="export-to-hlac-(monolith)"><b>Export to HLAC (Monolith)</b>
+</h3>
+<img style="max-width:32px;" src="images/icon_convert-to-monolith.png"></img>
+<p>A freshly mapped SampleMap plays the samples directly from the Samples folder. This is not the most efficient way to play samples, though, especially if you have a lot of mapped samples. </p>
+<p>Here the HLAC (HISE Lossless Audio Codec) comes in to compress all the SampleMaps samples into one big "monolith" chunk. <b>Export to HLAC</b>
+ will render your samples in a single compressed file, to have faster access to the audio material. This shrinks the overall filesize + speeds up general file access. The <code>.ch1</code>
+ monolith files will end up in the root directory of the <a href="working-with-hise/project-management/projects-folders/samples">Samples Folder</a>
+.</p>
+<p class="comment">Read this Forum entry of Christoph if you want to understand how it works behind the hood: <a href="https://forum.hise.audio/topic/236/hise-lossless-audio-codec-is-ready">HISE Lossless Audio Codec is ready</a>
+ </p>
+<p>There are three modes in which the HLAC (.ch1) file can be processed: </p>
+<h4 id="no-normalization"><b>No Normalization</b>
+</h4>
+<p><b>No Normalization</b>
+ just takes the samples and compresses them into the monolith file.</p>
+<h4 id="normalise-every-sample"><b>Normalise every sample</b>
+</h4>
+<p>This <b>normalises every sample</b>
+ individually and compressed them together. </p>
+<h4 id="full-dynamics"><b>Full Dynamics</b>
+</h4>
+<p><b>Full Dynamics</b>
+ is a mode that leverages the higher resolution of 24bit samples. </p>
+<p>Behind the scenes <b>Full Dynamics</b>
+ still uses 16bit, but normalises the samples internally in chunks of 1024 samples so that decaying samples still use the full available bit depth.</p>
+<p>This way you get the advantages of a 16bit signal path (half memory usage for all the streaming buffers) but the quantisation noise at the end of a sample is not audible anymore (which can happen if you heavily compress or distort the sound).</p>
+<p>During the extraction process of the samples the user can decide for herself if she favors disk usage or sound quality. But with Full Dynamics enabled, the .hr1 archive file uses 24bit FLAC encoding, otherwise the normalisation would be pointless.</p>
+<p class="comment">If your material is 16bit from the start, you won‘t get any benefits from using Full Dynamics. Just disable it at exporting and the end user will not have this option.</p>
+<h3 id="hise-resources-archive-file"><b>Hise Resources Archive File</b>
+</h3>
+<p>If you want to distribute the samples to the enduser you have the option to compress the monoliths (lossless) further for delivery. <a href="working-with-hise/menu-reference/export#export-samples-for-installer">Export > Export Samples for installer</a>
+.</p>
+<p>The HLAC codec is optimized for maximal decoding performance so a standard lossless algorithm like FLAC can provide you with a 10%-20% better compression ratio. </p>
+<p>The Hise Resource is a file archive that uses the FLAC codec and splits up the files into customizable chunks of 500MB - 1GB. So if you compress a 3.7GB library and choose 1GB file size, you will get these files:</p>
+<pre><code class="language-javascript line-numbers">Samples.hr1 // 1GB
+Samples.hr2 // 1GB
+Samples.hr3 // 1GB
+Samples.hr4 // 700MB</code></pre>
+<p>When the user runs the plugin for the first time they will be asked to locate the HR files that were shipped with the instrument/plugin. The monoliths will be extracted to their chosen location, after which the user can opt-in to delete the HR files.</p>
+<p>A thorough explanation of this process can be found on the excellent user manual of David Healey's <a href="https://librewave.com/knowledge-base/sample-library-installation-guide/?v=3a52f3c22ed6#Installing_the_samples">Sofia Woodwinds</a>
+:</p>
+<h2 id="parameters-"><b>Parameters </b>
+</h2>
+<table><thead><td><b>#</b>
+<b> </b>
+</td>
+<td><b>ID </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>4 </td>
+<td><code>PreloadSize</code>
+ </td>
+<td>The preload size in samples for all samples that are loaded into the sampler. If the preload size is <code>-1</code>
+, then the whole sample will be loaded into memory. </td>
+</tr>
+<tr><td>5 </td>
+<td><code>BufferSize</code>
+ </td>
+<td>The buffer size of the streaming buffers (2 per voice) in samples.<br>The sampler uses two buffers which are swapped (one is used for reading from disk and one is used to supply the sampler with the audio data) </td>
+</tr>
+<tr><td>6 </td>
+<td><code>VoiceAmount</code>
+ </td>
+<td>The amount of voices that the sampler can play.<br></td>
+</tr>
+<tr><td>7 </td>
+<td><code>RRGroupAmount</code>
+ </td>
+<td>The number of groups that are cycled in a round robin manier. This is effectively just another dimension for mapping samples and can be used for many different purposes (handling round robins is just the default). </td>
+</tr>
+<tr><td>8 </td>
+<td><code>SamplerRepeatMode</code>
+ </td>
+<td>Determines how the sampler treats repeated notes.<br> </td>
+</tr>
+<tr><td>9 </td>
+<td><code>PitchTracking</code>
+ </td>
+<td>Enables pitch ratio modification for different notes than the root note. Disable this for drum samples. </td>
+</tr>
+<tr><td>10 </td>
+<td><code>OneShot</code>
+ </td>
+<td>Plays the whole sample (ignores the note off) if set to enabled. </td>
+</tr>
+<tr><td>11 </td>
+<td><code>CrossfadeGroups</code>
+ </td>
+<td>If enabled, the groups are played simultanously and can be crossfaded with the Group-Fade Modulation Chain. </td>
+</tr>
+<tr><td>12 </td>
+<td><code>Purged</code>
+ </td>
+<td>If <i>Enabled</i>
+, it will unload all preload buffers and deactivate the sample playback to save memory. The <b>Lazy load</b>
+ option unloads all preload buffers and delays the preloading of a sample until it is triggered for the first time. </td>
+</tr>
+<tr><td>13 </td>
+<td><code>Reversed</code>
+ </td>
+<td>If this is true, the samples will be fully loaded into preload buffer and reversed </td>
+</tr>
+<tr><td>14 </td>
+<td><code>UseStaticMatrix</code>
+ </td>
+<td>If this is true, then the routing matrix will not be resized when you load a sample map with another mic position amount. </td>
+</tr>
+<tr><td>15 </td>
+<td><code>LowPassEnvelopeOrder</code>
+ </td>
+<td>- </td>
+</tr>
+<tr><td>16 </td>
+<td><code>Timestretching</code>
+ </td>
+<td>- </td>
+</tr>
+</table>
+<h2 id="chains-"><b>Chains </b>
+</h2>
+<table><thead><td><b>#</b>
+<b> </b>
+</td>
+<td><b>ID </b>
+</td>
+<td><b>Restriction </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>4 </td>
+<td>Sample Start </td>
+<td>Allows modification of the sample start if the sound allows this. The modulation range is depending on the <i>SampleStartMod</i>
+ value of each sample. </td>
+</tr>
+<tr><td>5 </td>
+<td>Group Fade </td>
+<td>Fades between the RR groups. This can be used for crossfading dynamics samples. </td>
+</tr>
+<tr><td>4 </td>
+<td>Sample Start </td>
+<td>All types </td>
+<td>- </td>
+</tr>
+</table>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="hise-modules/sound-generators/list/scriptsynth.html">Scriptnode Synthesiser</a>
+</span>
+
+<p class="content-footer-metadata"><br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

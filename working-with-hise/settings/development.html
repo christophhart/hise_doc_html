@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="development-settings"><b>Development Settings</b>
+</h1>
+<h2 id="compiler"><b>Compiler</b>
+</h2>
+<h3 id="hise-path"><b>Hise Path</b>
+</h3>
+<p>This is the path to the source code of HISE. It must be the root folder of the repository (so that the folders <code>hi_core</code>
+, <code>hi_modules</code>
+ etc. are immediate child folders.<br>This will be used for the compilation of the exported plugins and also contains all necessary SDKs (ASIO, VST, etc).</p>
+<p class="comment">Always make sure you are using the <b>exact</b>
+ same source code that was used to build HISE or there will be unpredicatble issues.</p>
+<h3 id="visual-studio-version"><b>Visual Studio Version</b>
+</h3>
+<p>Set the VS version that you've installed. Make sure you always use the latest one, since I need to regularly deprecate the oldest version</p>
+<h3 id="use-ipp"><b>Use IPP</b>
+</h3>
+<p>If enabled, HISE uses the FFT routines from the Intel Performance Primitive library (which can be downloaded for free) in order to speed up the convolution reverb</p>
+<p class="comment">If you use the convolution reverb in your project, this is almost mandatory, but there are a few other places that benefit from having this library</p>
+<h3 id="legacy-cpusupport"><b>Legacy CPUSupport</b>
+</h3>
+<p>If enabled, then all SSE instructions are replaced by their native implementation. This can be used to compile a version that runs on legacy CPU models.</p>
+<h3 id="rebuild-pool-files"><b>Rebuild Pool Files</b>
+</h3>
+<p>If enabled, the pool files for SampleMaps, AudioFiles and Images are deleted and rebuild everytime you export a plugin.You can turn this off in order to speed up compilation times, however be aware that in this case you need to delete them manuallywhenever you change the referenced data in any way or it will use the deprecated cached files.</p>
+<h3 id="support32-bit-mac-os"><b>Support32 Bit Mac OS</b>
+</h3>
+<p>If enabled (which is still the default), the compiler will build both 32bit and 64bit versions as universal binary on macOS. However since 32bit binaries are deprecated in the most recent versions of macOS / XCode, you can tell the exporter to just generate 64bit binaries by disabling this flag. If you see this error messag in the compile terminal:</p>
+<p class="comment">error: The i386 architecture is deprecated. You should update your ARCHS build setting to remove the i386 architecture.</p>
+<p>Just disable this flag and try again.</p>
+<h3 id="custom-node-path"><b>Custom Node Path</b>
+</h3>
+<p>This is the path to the directory where the additional nodes are stored. If you want to use this feature, recompile HISE with the HI_ENABLE_CUSTOM_NODES flag.</p>
+<h3 id="faust-path"><b>Faust Path</b>
+</h3>
+<p>Set the path to your Faust installation here. It will be used to look up the standard faust libraries on platforms which don't have a default path. There should be at least the following directories inside: "share", "lib", "include"</p>
+<h3 id="faust-external-editor"><b>Faust External Editor</b>
+</h3>
+<p>If enabled, the edit button in the faust node will launch an external editor for editing the faust source files. If disabled, it will use a FaustCodeEditor floating tile</p>
+<h3 id="enable-loris"><b>Enable Loris</b>
+</h3>
+<p>If you want to use the Loris toolkit in HISE, you need to enable this setting and download and copy the Loris DLL to the expected location</p>
+<p class="comment">The repository can be found here: <code>https://github.com/christophhart/loris-tools/</code>
+</p>
+<h2 id="scripting"><b>Scripting</b>
+</h2>
+<h3 id="enable-callstack"><b>Enable Callstack</b>
+</h3>
+<p>This enables a stacktrace that shows the order of function calls that lead to the error (or breakpoint).</p>
+<h4 id="example:-"><b>Example: </b>
+</h4>
+<pre><code class="language-javascript line-numbers">Interface: Breakpoint 1 was hit 
+:  someFunction() - Line 5, column 18
+:  onNoteOn() - Line 3, column 2</code></pre>
+<p>A breakpoint was set on the function <code>someFunction</code>
+ You can see in the stacktrace that it was called in the <code>onNoteOn</code>
+ callback.<br>Double clicking on the line in the console jumps to each location.</p>
+<h3 id="enable-optimizations"><b>Enable Optimizations</b>
+</h3>
+<p>Enables some compiler optimizations like constant folding or dead code removal for the HiseScript compiler</p>
+<p class="comment">This setting is baked into a plugin when you compile it</p>
+<h3 id="global-script-path"><b>Global Script Path</b>
+</h3>
+<p>There is a folder that can be used to store global script files like additional API functions or generic UI Component definitions.By default, this folder is stored in the application data folder, but you can choose to redirect it to another location, which may be useful if you want to put it under source control.You can include scripts that are stored in this location by using the <code>{GLOBAL_SCRIPT_FOLDER}</code>
+ wildcard:<code>javascript// Includes 'File.js'include("{GLOBAL_SCRIPT_FOLDER}File.js");</code>
+</p>
+<h3 id="compile-timeout"><b>Compile Timeout</b>
+</h3>
+<p>Sets the timeout for the compilation of a script in <b>seconds</b>
+. Whenever the compilation takes longer, it will abort and show a error message.This prevents hanging if you accidentally create endless loops like this:</p>
+<pre><code class="language-javascript line-numbers">while(true)
+ x++;</code></pre>
+<h3 id="code-font-size"><b>Code Font Size</b>
+</h3>
+<p>Changes the default font size for the console, all code editors and the script watch table</p>
+<p class="comment">You can temporarily change the font size for individual elements using Cmd+Scrollwheel, however this will not be persistent.</p>
+<h3 id="enable-debug-mode"><b>Enable Debug Mode</b>
+</h3>
+<p>This enables the debug logger which creates a log file containing performance issues and system specifications.It's the same functionality as found in the compiled plugins.</p>
+<h3 id="save-connected-files-on-compile"><b>Save Connected Files On Compile</b>
+</h3>
+<p>If this is enabled, it will save a connected script file everytime the script is compiled. By default this is disabled, but if you want to apply changes to a connected script file, you will have to enable this setting</p>
+<h3 id="enable-mouse-positioning"><b>Enable Mouse Positioning</b>
+</h3>
+<p>Sets the default value of whether the interface designer should allow dragging UI components with the mouse</p>
+<p class="comment">This was always enabled, but on larger projects it's easy to accidentally drag UI elements when you really just wanted to select them so this gives you the option to remove the dragging.</p>
+<p>Note that you can always choose to enable / disable dragging in the interface designer menu bar, and this only sets the default value. It's still enabled by default so the HISE forum doesn't get swamped with bug reports that the interface designer stopped working...</p>
+<h3 id="warn-if-undefined-parameters"><b>Warn If Undefined Parameters</b>
+</h3>
+<p>If enabled, it will print a warning with a callstack if you try to call a function<br>on a dynamic object reference with an undefined function.</p>
+<p class="comment">This only works if you haven't set <code>HISE_WARN_UNDEFINED_PARAMETER_CALLS</code>
+ to 0, then it will just abort execution and throw an error</p>
+<h2 id="other"><b>Other</b>
+</h2>
+<h3 id="use-open-gl"><b>Use Open GL</b>
+</h3>
+<p>Enable this in order to use OpenGL for the UI rendering of the HISE app. This might drastically accelerate the UI performance, so if you have a laggy UI in HISE, try this option</p>
+<p class="comment">Be aware that this does not affect whether your compiled project uses OpenGL (as this can be defined separately).</p>
+<h3 id="global-sample-path"><b>Global Sample Path</b>
+</h3>
+<p>If you want to redirect all sample locations to a global sample path (eg. on a dedicated hard drive or the Dropbox folder), you can set it here.Then you can just put a redirection file using the <code>{GLOBAL_SAMPLE_FOLDER}</code>
+ wildcard into each sample folder that you want to redirect</p>
+<h3 id="enable-autosave"><b>Enable Autosave</b>
+</h3>
+<p>The autosave function will store up to 5 archive files called <code>AutosaveXXX.hip</code>
+ in the archive folder of the project.In a rare and almost never occuring event of a crash, this might be your saviour...</p>
+<h3 id="autosave-interval"><b>Autosave Interval</b>
+</h3>
+<p>The interval for the autosaver in minutes. This must be a number between <code>1</code>
+ and <code>30</code>
+.</p>
+<h3 id="audio-thread-guard-enabled"><b>Audio Thread Guard Enabled</b>
+</h3>
+<p>Watches for illegal calls in the audio thread. Use this during script development to catch allocations etc.</p>
+<h3 id="external-editor-path"><b>External Editor Path</b>
+</h3>
+<p>You can specifiy the executable of an audio editor here and then use the button in the sample editor to open the currently selected files in the editor</p>
+<p class="comment">You can use any editor that accepts filenames as command-line argument</p>
+<h3 id="auto-show-workspace"><b>Auto Show Workspace</b>
+</h3>
+<p>If this is activated, clicking on a workspace icon (or loading a new patch) will ensure that the workspace is visible (so if it's folded, it will be unfolded.</p>
+<p class="comment">Disable this setting if you are using a custom workspace environment with a second window.</p>
+<h3 id="enable-shader-line-numbers"><b>Enable Shader Line Numbers</b>
+</h3>
+<p>Enables proper support for line numbers when editing GLSL shader files. This injects a <code>#line</code>
+ preprocessor before your code so that the line numbers will be displayed correctly.<br><br> </p>
+<p class="comment">Old graphic cards (eg. the integrated Intel HD ones) do not support this, so if you get a weird GLSL compile error, untick this line.</p>
+<h2 id="documentation"><b>Documentation</b>
+</h2>
+<h3 id="doc-repository"><b>Doc Repository</b>
+</h3>
+<p>The folder of the <code>hise_documentation</code>
+ repository. If you want to contribute to the documentation you can setup this folder.Otherwise it will use the cached version that was downloaded from the HISE doc server</p>
+<h3 id="refresh-on-startup"><b>Refresh On Startup</b>
+</h3>
+<p>If enabled, HISE will download the latest documentation files from the server when you start HISE. It needs an internet connection for thisIt will download two files, <code>Content.dat</code>
+ and <code>Images.dat</code>
+, which contain a compressed version of the HISE documentation</p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="working-with-hise/settings/audio-midi.html">Audio MIDI</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>18.03.2019<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

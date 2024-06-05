@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="table"><b>Table</b>
+</h1>
+<p class="comment">An UI element that can be used to edit a curve.</p>
+<img src="images/ui-controls/table.png"></img>
+<h2 id="special-properties"><b>Special Properties</b>
+</h2>
+<table><thead><td><b>Property ID </b>
+</td>
+<td><b>Default Value </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><code>tableIndex</code>
+ </td>
+<td>0 </td>
+<td>the table index (starting with 0) of the table that you want to control. In most cases it will just be zero, but eg. the Table Envelope has two tables (0 = Attack, 1 = Release). It might be possible that you have to <a href="working-with-hise/workspaces/scripting-workspace/canvas.html#toolbar">rebuild</a>
+ the interface after changing this value to apply the changes. </td>
+</tr>
+<tr><td><code>customColours</code>
+ </td>
+<td>0 </td>
+<td>if true, it will use a flat design with customizable colours, otherwise it will look like the thing above. </td>
+</tr>
+</table>
+<p>The Table UI component is one of the most used complex components throughout HISE and can be used to change the curve of many things:</p>
+<ul><li>velocity curves</li>
+<li>CC curves</li>
+<li>wave shaping</li>
+</ul>
+<p>Each module that uses a table for anything can be referenced as <a href="scripting/scripting-api/tableprocessor/index.html">TableProcessor</a>
+ which offers ways of changing the curve by scripting calls.</p>
+<p>You can also use it on your compiled plugin with a lot of customization options.</p>
+<h2 id="using-the-table"><b>Using the Table</b>
+</h2>
+<p>By default, each table has a line that starts at the bottom left and goes all the way to the top right. This is similar to the output function:</p>
+<p><code>y = x</code>
+</p>
+<p>where input equals output. It has at least two points which are tied to the left and right edge of the table. You can click anywhere to create a new point, drag it around and change the curve by hovering over a point and moving the mousewheel. If you right click on a point it will be removed.</p>
+<p class="comment">If you're inside the main workspace, you need to use Cmd + Mousewheel to prevent accidently changing the curve if you scroll around</p>
+<h2 id="scripting-api-"><b>Scripting API </b>
+</h2>
+<p><a href="scripting/scripting-api/scripttable/index.html">ScriptTable</a>
+</p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="ui-components/plugin-components/viewport.html">Viewport</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>18.03.2019<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

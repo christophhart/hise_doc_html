@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="messageholder"><b>MessageHolder</b>
+</h1>
+<p><br>This object mirrors the functionality of the <a href="scripting/scripting-api/message/index.html">Message</a>
+ class, but operates on an arbitrary event (while the <code>Message</code>
+ class will only work inside a MIDI callback and operates on the current event that caused the callback).</p>
+<p>This can be useful for one of these occasions:</p>
+<ul><li>MIDI file processing (<a href="scripting/scripting-api/midiplayer/index.html#geteventlist">MidiPlayer.getEventList()</a>
+ will return an array of objects of this type.</li>
+<li>Storing MIDI messages for later processing using <a href="scripting/scripting-api/message/index.html#store">Message.store()</a>
+</li>
+<li>Send previously stored messages using <a href="scripting/scripting-api/synth/index.html#addmessagefromholder">Synth.addMessageFromHolder()</a>
+</li>
+<li>Debugging (<a href="scripting/scripting-api/messageholder/index.html#dump">dump()</a>
+ prints out a nice string that contains useful information)</li>
+</ul>
+<p>You can create an object using the API call <a href="scripting/scripting-api/engine/index.html#createmessageholder">Engine.createMessageHolder()</a>
+<br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="addtotimestamp"><b>addToTimestamp</b>
+</h2>
+<p class="comment">Adds the given sample amount to the current timestamp.</p>
+<pre><code class="language-javascript line-numbers">MessageHolder.addToTimestamp(int deltaSamples)</code></pre>
+<p><br><br></p>
+<h2 id="clone"><b>clone</b>
+</h2>
+<p class="comment">Returns a copy of this message holder object.</p>
+<pre><code class="language-javascript line-numbers">MessageHolder.clone()</code></pre>
+<p><br><br></p>
+<h2 id="dump"><b>dump</b>
+</h2>
+<p class="comment">Creates a info string for debugging.</p>
+<pre><code class="language-javascript line-numbers">MessageHolder.dump()</code></pre>
+<p><br><br></p>
+<h2 id="getchannel"><b>getChannel</b>
+</h2>
+<p class="comment">Returns the MIDI Channel from 1 to 16.</p>
+<pre><code class="language-javascript line-numbers">MessageHolder.getChannel()</code></pre>
+<p><br><br></p>
+<h2 id="getcoarsedetune"><b>getCoarseDetune</b>
+</h2>
+<p class="comment">Returns the coarse detune amount in semitones.</p>
+<pre><code class="language-javascript line-numbers">MessageHolder.getCoarseDetune()</code></pre>
+<p><br><br></p>
+<h2 id="getcontrollernumber"><b>getControllerNumber</b>
+</h2>
+<p class="comment">returns the controller number or 'undefined', if the message is neither controller nor pitch wheel nor aftertouch.</p>
+<pre><code class="language-javascript line-numbers">MessageHolder.getControllerNumber()</code></pre>
+<p><br><br></p>
+<h2 id="getcontrollervalue"><b>getControllerValue</b>
+</h2>
+<p class="comment">Returns the value of the controller.</p>
+<pre><code class="language-javascript line-numbers">MessageHolder.getControllerValue()</code></pre>
+<p><br><br></p>
+<h2 id="geteventid"><b>getEventId</b>
+</h2>
+<p class="comment">Returns the event id of the current message.</p>
+<pre><code class="language-javascript line-numbers">MessageHolder.getEventId()</code></pre>
+<p><br><br></p>
+<h2 id="getfinedetune"><b>getFineDetune</b>
+</h2>
+<p class="comment">Returns the fine detune amount int cents.</p>
+<pre><code class="language-javascript line-numbers">MessageHolder.getFineDetune()</code></pre>
+<p><br><br></p>
+<h2 id="getgain"><b>getGain</b>
+</h2>
+<p class="comment">Returns the volume of the note.</p>
+<pre><code class="language-javascript line-numbers">MessageHolder.getGain()</code></pre>
+<p><br><br></p>
+<h2 id="getmonophonicaftertouchpressure"><b>getMonophonicAftertouchPressure</b>
+</h2>
+<p class="comment">Returns the aftertouch value of the monophonic aftertouch message.</p>
+<pre><code class="language-javascript line-numbers">MessageHolder.getMonophonicAftertouchPressure()</code></pre>
+<p><br><br></p>
+<h2 id="getnotenumber"><b>getNoteNumber</b>
+</h2>
+<p class="comment">Return the note number. This can be called only on midi event callbacks.</p>
+<pre><code class="language-javascript line-numbers">MessageHolder.getNoteNumber()</code></pre>
+<p><br><br></p>
+<h2 id="getpolyaftertouchnotenumber"><b>getPolyAfterTouchNoteNumber</b>
+</h2>
+<p class="comment">Returns the polyphonic aftertouch note number.</p>
+<pre><code class="language-javascript line-numbers">MessageHolder.getPolyAfterTouchNoteNumber()</code></pre>
+<p><br><br></p>
+<h2 id="getpolyaftertouchpressurevalue"><b>getPolyAfterTouchPressureValue</b>
+</h2>
+<p class="comment">Checks if the message is a POLYPHONIC aftertouch message (Use isChannelPressure() for monophonic aftertouch).</p>
+<pre><code class="language-javascript line-numbers">MessageHolder.getPolyAfterTouchPressureValue()</code></pre>
+<p><br><br></p>
+<h2 id="gettimestamp"><b>getTimestamp</b>
+</h2>
+<p class="comment">Returns the current timestamp.</p>
+<pre><code class="language-javascript line-numbers">MessageHolder.getTimestamp()</code></pre>
+<p><br><br></p>
+<h2 id="gettransposeamount"><b>getTransposeAmount</b>
+</h2>
+<p class="comment">Gets the tranpose value.</p>
+<pre><code class="language-javascript line-numbers">MessageHolder.getTransposeAmount()</code></pre>
+<p><br><br></p>
+<h2 id="getvelocity"><b>getVelocity</b>
+</h2>
+<p class="comment">Returns the Velocity.</p>
+<pre><code class="language-javascript line-numbers">MessageHolder.getVelocity()</code></pre>
+<p><br><br></p>
+<h2 id="ignoreevent"><b>ignoreEvent</b>
+</h2>
+<p class="comment">Ignores the event.</p>
+<pre><code class="language-javascript line-numbers">MessageHolder.ignoreEvent(bool shouldBeIgnored=true)</code></pre>
+<p><br><br></p>
+<h2 id="iscontroller"><b>isController</b>
+</h2>
+<p class="comment">Returns true if the event is a CC controller event.</p>
+<pre><code class="language-javascript line-numbers">MessageHolder.isController()</code></pre>
+<p><br><br></p>
+<h2 id="ismonophonicaftertouch"><b>isMonophonicAfterTouch</b>
+</h2>
+<p class="comment">Checks if the message is a MONOPHONIC aftertouch message.</p>
+<pre><code class="language-javascript line-numbers">MessageHolder.isMonophonicAfterTouch()</code></pre>
+<p><br><br></p>
+<h2 id="isnoteoff"><b>isNoteOff</b>
+</h2>
+<p class="comment">Returns true if the event is a note-off event.</p>
+<pre><code class="language-javascript line-numbers">MessageHolder.isNoteOff()</code></pre>
+<p><br><br></p>
+<h2 id="isnoteon"><b>isNoteOn</b>
+</h2>
+<p class="comment">Returns true if the event is a note-on event.</p>
+<pre><code class="language-javascript line-numbers">MessageHolder.isNoteOn()</code></pre>
+<p><br><br></p>
+<h2 id="ispolyaftertouch"><b>isPolyAftertouch</b>
+</h2>
+<p class="comment">Checks if the message is a POLYPHONIC aftertouch message (Use isChannelPressure() for monophonic aftertouch).</p>
+<pre><code class="language-javascript line-numbers">MessageHolder.isPolyAftertouch()</code></pre>
+<p><br><br></p>
+<h2 id="setchannel"><b>setChannel</b>
+</h2>
+<p class="comment">Changes the MIDI channel from 1 to 16.</p>
+<pre><code class="language-javascript line-numbers">MessageHolder.setChannel(int newChannel)</code></pre>
+<p><br><br></p>
+<h2 id="setcoarsedetune"><b>setCoarseDetune</b>
+</h2>
+<p class="comment">Sets the coarse detune amount in semitones.</p>
+<pre><code class="language-javascript line-numbers">MessageHolder.setCoarseDetune(int semiToneDetune)</code></pre>
+<p><br><br></p>
+<h2 id="setcontrollernumber"><b>setControllerNumber</b>
+</h2>
+<p class="comment">Changes the ControllerNumber.</p>
+<pre><code class="language-javascript line-numbers">MessageHolder.setControllerNumber(int newControllerNumber)</code></pre>
+<p><br><br></p>
+<h2 id="setcontrollervalue"><b>setControllerValue</b>
+</h2>
+<p class="comment">Changes the controller value (range 0 - 127).</p>
+<pre><code class="language-javascript line-numbers">MessageHolder.setControllerValue(int newControllerValue)</code></pre>
+<p><br><br></p>
+<h2 id="setfinedetune"><b>setFineDetune</b>
+</h2>
+<p class="comment">Sets the fine detune amount in cents.</p>
+<pre><code class="language-javascript line-numbers">MessageHolder.setFineDetune(int cents)</code></pre>
+<p><br><br></p>
+<h2 id="setgain"><b>setGain</b>
+</h2>
+<p class="comment">Sets the volume of the note (-100 = silence).</p>
+<pre><code class="language-javascript line-numbers">MessageHolder.setGain(int gainInDecibels)</code></pre>
+<p><br><br></p>
+<h2 id="setmonophonicaftertouchpressure"><b>setMonophonicAfterTouchPressure</b>
+</h2>
+<p class="comment">Sets the pressure value of the monophonic aftertouch message</p>
+<pre><code class="language-javascript line-numbers">MessageHolder.setMonophonicAfterTouchPressure(int pressure)</code></pre>
+<p><br><br></p>
+<h2 id="setnotenumber"><b>setNoteNumber</b>
+</h2>
+<p class="comment">Changes the note number.</p>
+<pre><code class="language-javascript line-numbers">MessageHolder.setNoteNumber(int newNoteNumber)</code></pre>
+<p><br><br></p>
+<h2 id="setpolyaftertouchnotenumberandpressurevalue"><b>setPolyAfterTouchNoteNumberAndPressureValue</b>
+</h2>
+<p class="comment">Copied from MidiMessage.</p>
+<pre><code class="language-javascript line-numbers">MessageHolder.setPolyAfterTouchNoteNumberAndPressureValue(int noteNumber, int aftertouchAmount)</code></pre>
+<p><br><br></p>
+<h2 id="setstartoffset"><b>setStartOffset</b>
+</h2>
+<p class="comment">Sets the start offset.</p>
+<pre><code class="language-javascript line-numbers">MessageHolder.setStartOffset(int offset)</code></pre>
+<p><br><br></p>
+<h2 id="settimestamp"><b>setTimestamp</b>
+</h2>
+<p class="comment">Sets the timestamp in samples.</p>
+<pre><code class="language-javascript line-numbers">MessageHolder.setTimestamp(int timestampSamples)</code></pre>
+<p><br><br></p>
+<h2 id="settransposeamount"><b>setTransposeAmount</b>
+</h2>
+<p class="comment">Transposes the note on.</p>
+<pre><code class="language-javascript line-numbers">MessageHolder.setTransposeAmount(int tranposeValue)</code></pre>
+<p><br><br></p>
+<h2 id="settype"><b>setType</b>
+</h2>
+<p class="comment">Sets the type of the event.</p>
+<pre><code class="language-javascript line-numbers">MessageHolder.setType(int type)</code></pre>
+<p><br><br></p>
+<h2 id="setvelocity"><b>setVelocity</b>
+</h2>
+<p class="comment">Changes the velocity (range 1 - 127).</p>
+<pre><code class="language-javascript line-numbers">MessageHolder.setVelocity(int newVelocity)</code></pre>
+<p><br><br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/midiautomationhandler/index.html">MidiAutomationHandler</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>21.06.2019<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

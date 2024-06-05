@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="scriptedviewport"><b>ScriptedViewport</b>
+</h1>
+<p><br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="addtomacrocontrol"><b>addToMacroControl</b>
+</h2>
+<p class="comment">Adds the knob / button to a macro controller (from 0 to 7).</p>
+<pre><code class="language-javascript line-numbers">ScriptedViewport.addToMacroControl(int macroIndex)</code></pre>
+<p><br><br></p>
+<h2 id="changed"><b>changed</b>
+</h2>
+<p class="comment">Call this to indicate that the value has changed (the onControl callback will be executed.</p>
+<pre><code class="language-javascript line-numbers">ScriptedViewport.changed()</code></pre>
+<p><br><br></p>
+<h2 id="createlocallookandfeel"><b>createLocalLookAndFeel</b>
+</h2>
+<p class="comment">Returns a local look and feel if it was registered before.</p>
+<pre><code class="language-javascript line-numbers">ScriptedViewport.createLocalLookAndFeel()</code></pre>
+<p><br><br></p>
+<h2 id="fadecomponent"><b>fadeComponent</b>
+</h2>
+<p class="comment">Toggles the visibility and fades a component using the global animator.</p>
+<pre><code class="language-javascript line-numbers">ScriptedViewport.fadeComponent(bool shouldBeVisible, int milliseconds)</code></pre>
+<p><br><br></p>
+<h2 id="get"><b>get</b>
+</h2>
+<p class="comment">returns the value of the property.</p>
+<pre><code class="language-javascript line-numbers">ScriptedViewport.get(String propertyName)</code></pre>
+<p><br><br></p>
+<h2 id="getallproperties"><b>getAllProperties</b>
+</h2>
+<p class="comment">Returns a list of all property IDs as array.</p>
+<pre><code class="language-javascript line-numbers">ScriptedViewport.getAllProperties()</code></pre>
+<p><br><br></p>
+<h2 id="getchildcomponents"><b>getChildComponents</b>
+</h2>
+<p class="comment">Returns list of component's children</p>
+<pre><code class="language-javascript line-numbers">ScriptedViewport.getChildComponents()</code></pre>
+<p><br><br></p>
+<h2 id="getglobalpositionx"><b>getGlobalPositionX</b>
+</h2>
+<p class="comment">Returns the absolute x-position relative to the interface.</p>
+<pre><code class="language-javascript line-numbers">ScriptedViewport.getGlobalPositionX()</code></pre>
+<p><br><br></p>
+<h2 id="getglobalpositiony"><b>getGlobalPositionY</b>
+</h2>
+<p class="comment">Returns the absolute y-position relative to the interface.</p>
+<pre><code class="language-javascript line-numbers">ScriptedViewport.getGlobalPositionY()</code></pre>
+<p><br><br></p>
+<h2 id="getheight"><b>getHeight</b>
+</h2>
+<p class="comment">Returns the height of the component.</p>
+<pre><code class="language-javascript line-numbers">ScriptedViewport.getHeight()</code></pre>
+<p><br><br></p>
+<h2 id="getid"><b>getId</b>
+</h2>
+<p class="comment">Returns the ID of the component.</p>
+<pre><code class="language-javascript line-numbers">ScriptedViewport.getId()</code></pre>
+<p><br><br></p>
+<h2 id="getlocalbounds"><b>getLocalBounds</b>
+</h2>
+<p class="comment">Returns a [x, y, w, h] array that was reduced by the given amount.</p>
+<pre><code class="language-javascript line-numbers">ScriptedViewport.getLocalBounds(float reduceAmount)</code></pre>
+<p><br><br></p>
+<h2 id="getoriginalrowindex"><b>getOriginalRowIndex</b>
+</h2>
+<p class="comment">Returns the index of the original data passed into setTableRowData.</p>
+<pre><code class="language-javascript line-numbers">ScriptedViewport.getOriginalRowIndex(int rowIndex)</code></pre>
+<p><br><br></p>
+<h2 id="getvalue"><b>getValue</b>
+</h2>
+<p class="comment">Returns the current value.</p>
+<pre><code class="language-javascript line-numbers">ScriptedViewport.getValue()</code></pre>
+<p><br><br></p>
+<h2 id="getvaluenormalized"><b>getValueNormalized</b>
+</h2>
+<p class="comment">Returns the normalized value.</p>
+<pre><code class="language-javascript line-numbers">ScriptedViewport.getValueNormalized()</code></pre>
+<p><br><br></p>
+<h2 id="getwidth"><b>getWidth</b>
+</h2>
+<p class="comment">Returns the width of the component.</p>
+<pre><code class="language-javascript line-numbers">ScriptedViewport.getWidth()</code></pre>
+<p><br><br></p>
+<h2 id="grabfocus"><b>grabFocus</b>
+</h2>
+<p class="comment">Call this method in order to grab the keyboard focus for this component.</p>
+<pre><code class="language-javascript line-numbers">ScriptedViewport.grabFocus()</code></pre>
+<p><br><br></p>
+<h2 id="losefocus"><b>loseFocus</b>
+</h2>
+<p class="comment">Call this method in order to give away the focus for this component.</p>
+<pre><code class="language-javascript line-numbers">ScriptedViewport.loseFocus()</code></pre>
+<p><br><br></p>
+<h2 id="sendrepaintmessage"><b>sendRepaintMessage</b>
+</h2>
+<p class="comment">Manually sends a repaint message for the component.</p>
+<pre><code class="language-javascript line-numbers">ScriptedViewport.sendRepaintMessage()</code></pre>
+<p><br><br></p>
+<h2 id="set"><b>set</b>
+</h2>
+<p class="comment">Sets the property.</p>
+<pre><code class="language-javascript line-numbers">ScriptedViewport.set(String propertyName, var value)</code></pre>
+<p><br><br></p>
+<h2 id="setcolour"><b>setColour</b>
+</h2>
+<p class="comment">sets the colour of the component (BG, IT1, IT2, TXT).</p>
+<pre><code class="language-javascript line-numbers">ScriptedViewport.setColour(int colourId, int colourAs32bitHex)</code></pre>
+<p><br><br></p>
+<h2 id="setconsumedkeypresses"><b>setConsumedKeyPresses</b>
+</h2>
+<p class="comment">Registers a selection of key presses to be consumed by this component.</p>
+<pre><code class="language-javascript line-numbers">ScriptedViewport.setConsumedKeyPresses(var listOfKeys)</code></pre>
+<p><br><br></p>
+<h2 id="setcontrolcallback"><b>setControlCallback</b>
+</h2>
+<p class="comment">Pass a inline function for a custom callback event.</p>
+<pre><code class="language-javascript line-numbers">ScriptedViewport.setControlCallback(var controlFunction)</code></pre>
+<p><br><br></p>
+<h2 id="seteventtypesforvaluecallback"><b>setEventTypesForValueCallback</b>
+</h2>
+<p class="comment">Specify the event types that should trigger a setValue() callback.</p>
+<pre><code class="language-javascript line-numbers">ScriptedViewport.setEventTypesForValueCallback(var eventTypeList)</code></pre>
+<p><br>If you want the table to store the current selection in its value slot (for saving & restoring), you can supply a list of event types that trigger a call to <code>setValue()</code>
+. The parameter must be a array of strings from this list:</p>
+<pre><code class="language-javascript line-numbers">["Selection", "SingleClick", "DoubleClick", "ReturnKey" ]</code></pre>
+<p>The value that is stored is either the row index (starting with 0) or if you're in multi-column mode, an array with the data <code>[columnIndex, rowIndex]</code>
+ (again, zero-based).</p>
+<p class="comment">Be aware that using this method will also make the table use the undo manager if the <code>useUndoManager</code>
+ flag is set.</p>
+<p>Note that if you have assigned a callback to the table with <a href="scripting/scripting-api/scriptedviewport/index.html#settablecallback">setTableCallback</a>
+, the JSON object of the callback will have set the type to <code>SetValue</code>
+ or <code>Undo</code>
+ if you call <code>setValue()</code>
+ or <code>Engine.undo()</code>
+, so you should handle those cases gracefully in your callback too.<br></p>
+<h2 id="setkeypresscallback"><b>setKeyPressCallback</b>
+</h2>
+<p class="comment">Adds a callback to react on key presses (when this component is focused).</p>
+<pre><code class="language-javascript line-numbers">ScriptedViewport.setKeyPressCallback(var keyboardFunction)</code></pre>
+<p><br><br></p>
+<h2 id="setlocallookandfeel"><b>setLocalLookAndFeel</b>
+</h2>
+<p class="comment">Attaches the local look and feel to this component.</p>
+<pre><code class="language-javascript line-numbers">ScriptedViewport.setLocalLookAndFeel(var lafObject)</code></pre>
+<p><br><br></p>
+<h2 id="setposition"><b>setPosition</b>
+</h2>
+<p class="comment">Sets the position of the component.</p>
+<pre><code class="language-javascript line-numbers">ScriptedViewport.setPosition(int x, int y, int w, int h)</code></pre>
+<p><br><br></p>
+<h2 id="setpropertiesfromjson"><b>setPropertiesFromJSON</b>
+</h2>
+<p class="comment">Restores all properties from a JSON object.</p>
+<pre><code class="language-javascript line-numbers">ScriptedViewport.setPropertiesFromJSON( var jsonData)</code></pre>
+<p><br><br></p>
+<h2 id="settablecallback"><b>setTableCallback</b>
+</h2>
+<p class="comment">Set a function that is notified for all user interaction with the table.</p>
+<pre><code class="language-javascript line-numbers">ScriptedViewport.setTableCallback(var callbackFunction)</code></pre>
+<p><br>You can assign a callback that will be executed whenever there is an user interaction with the table:</p>
+<ul><li>selection changes (using keyboard or mouse clicks)</li>
+<li>click / double click on cells</li>
+<li>deleting a row (pressing delete when one or multiple rows are selected)</li>
+<li>slider drag </li>
+<li>button click</li>
+</ul>
+<p>The parameter you pass in must be a function with a single parameter, which will hold a JSON object with the callback data. It will have these properties:</p>
+<table><thead><td><b>Property </b>
+</td>
+<td><b>Type </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>Type </td>
+<td>String </td>
+<td>A string indicating the callback type. This can be one of these values: <code>"Slider"</code>
+, <code>"Button"</code>
+, <code>"Selection"</code>
+, <code>"Click"</code>
+, <code>"DoubleClick"</code>
+, <code>"ReturnKey"</code>
+, <code>"DeleteRow"</code>
+ </td>
+</tr>
+<tr><td>rowIndex </td>
+<td>int </td>
+<td>the (zero-based) row index </td>
+</tr>
+<tr><td>columnID </td>
+<td>String </td>
+<td>the ID of the column as defined with the setColumnData function. </td>
+</tr>
+<tr><td>value </td>
+<td>number or object </td>
+<td>Depending on the callback type, this is either the value of the UI element (slider or button) or the entire row data for the other event types. </td>
+</tr>
+</table>
+<p><br></p>
+<h2 id="settablecolumns"><b>setTableColumns</b>
+</h2>
+<p class="comment">Define the columns of the table. This can only be done in the onInit callback.</p>
+<pre><code class="language-javascript line-numbers">ScriptedViewport.setTableColumns(var columnMetadata)</code></pre>
+<p><br>This method can be used to define the column layout of the table. It expects a single argument with a list of JSON objects for every column you want to add to your table. This function must be called after setting the table metadata and before populating the table with row data.</p>
+<table><thead><td><b>Property </b>
+</td>
+<td><b>Type </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>ID </td>
+<td>String </td>
+<td>A unique ID for each column. </td>
+</tr>
+<tr><td>Type </td>
+<td>String </td>
+<td>Defines the UI element for the given column. This can be either <code>"Text"</code>
+, <code>"Button"</code>
+, <code>"Slider"</code>
+ or <code>"ComboBox"</code>
+. </td>
+</tr>
+<tr><td>Label </td>
+<td>String </td>
+<td>A string that is used for the column header. If this is undefined, the ID property will be used instead. </td>
+</tr>
+<tr><td>Focus </td>
+<td>bool </td>
+<td>If MultiColumnMode is enabled, this will control whether a left / right key press will focus this cell. Set to false if you want to skip that column (default is true). </td>
+</tr>
+<tr><td>Visible </td>
+<td>bool </td>
+<td>By default all columns are visible, but you can hide a column in order to use the ID as hidden metadata. </td>
+</tr>
+<tr><td>MinWidth </td>
+<td>int </td>
+<td>the minimum size of the column. </td>
+</tr>
+<tr><td>MaxWidth </td>
+<td>int </td>
+<td>the maximum width of the column. -1 for auto-fit </td>
+</tr>
+<tr><td>Width </td>
+<td>int </td>
+<td>the standard width of the column. If undefined, it will use the minimum width. </td>
+</tr>
+</table>
+<h4 id="sliders"><b>Sliders</b>
+</h4>
+<p>If the column should be a slider you will have these additional properties:</p>
+<table><thead><td><b>Property </b>
+</td>
+<td><b>Type </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>MinValue </td>
+<td>double </td>
+<td>the minimum value. </td>
+</tr>
+<tr><td>MaxValue </td>
+<td>double </td>
+<td>the maximum value. </td>
+</tr>
+<tr><td>SkewFactor </td>
+<td>double </td>
+<td>the skew factor. </td>
+</tr>
+<tr><td>StepSize </td>
+<td>double </td>
+<td>the step size. </td>
+</tr>
+</table>
+<p class="comment">You can override the default look and feel of the slider with the "drawLinearSlider" method.</p>
+<h4 id="buttons"><b>Buttons</b>
+</h4>
+<p>If the column should display a button, you can use these additional properties:</p>
+<table><thead><td><b>Property </b>
+</td>
+<td><b>Type </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>Toggle </td>
+<td>bool </td>
+<td>whether the button is momentary or has a toggle state. </td>
+</tr>
+<tr><td>Text </td>
+<td>String </td>
+<td>The text to show on the display. </td>
+</tr>
+</table>
+<p class="comment">You can override the default look and feel of the button with the "drawToggleButton" method.</p>
+<h4 id="comboboxes"><b>Comboboxes</b>
+</h4>
+<p>If the columns should display a Combobox, you can use these additional properties:</p>
+<table><thead><td><b>Property </b>
+</td>
+<td><b>Type </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>items </td>
+<td>Array </td>
+<td>The list of items you want to show </td>
+</tr>
+<tr><td>ValueMode </td>
+<td>String </td>
+<td>defines how the value is supposed to be interpreted. </td>
+</tr>
+<tr><td>Value </td>
+<td>var </td>
+<td>defines the default value of the combobox. The format of the value is defined by the ValueMode property </td>
+</tr>
+<tr><td>Text </td>
+<td>String </td>
+<td>The text to show when nothing is selected. </td>
+</tr>
+</table>
+<p>The <code>ValueMode</code>
+ property defines how the value is supposed to be interpreted. There are three options:</p>
+<ul><li>"ID" uses a one-based integer (so the first value is 1). This is how the combobox in HISE works and is the default</li>
+<li>"Index" uses a zero-based integer (so the first value is 0). </li>
+<li>"Text" expects a string as value and searches the items to set it to the respective entry</li>
+</ul>
+<p>The properties <code>Value</code>
+ and <code>items</code>
+ are dynamic, which means that you can pass in a JSON object into setTableRowData() to define different item lists for different rows:</p>
+<pre><code class="language-javascript line-numbers">const var ModTable = Content.getComponent("Viewport1");
+
+ModTable.setTableMode({
+	"MultiColumnMode": false,
+	"HeaderHeight": 32,
+	"RowHeight": 32,
+	"ScrollOnDrag": false
+});
+
+ModTable.setTableRowData([
+{
+	"Source": "Source",
+	"Mode": 
+	{
+		"items": ["Yes", "No", "Maybe"],
+		"Value": "No"
+	}
+},
+{
+	"Source": "Other Source",
+	"Mode": 
+	{
+		"items": ["Some other item", "Second"],
+		"Value": "Second"
+	}
+}]);
+
+ModTable.setTableColumns([
+{
+	"ID": "Source",
+	"Type": "Text",
+	"MinWidth": 150
+},
+{
+	"ID": "Mode",
+	"Type": "ComboBox",
+	"MinWidth": 80,
+	"Toggle": true,
+	"Text": "Default",
+	"ValueMode": "Text"
+}
+]);</code></pre>
+<p class="comment">You can override the default look and feel of the combobox with the "drawComboBox" method.<br></p>
+<h2 id="settablemode"><b>setTableMode</b>
+</h2>
+<p class="comment">Turns this viewport into a table with the given metadata. This can only be done in the onInit callback.</p>
+<pre><code class="language-javascript line-numbers">ScriptedViewport.setTableMode(var tableMetadata)</code></pre>
+<p><br>Calling this function will turn this Viewport into a table with multiple columns and dynamic row data. The function expects a JSON object as single argument which contains some metadata properties that define the appearance and behaviour of the table.</p>
+<table><thead><td><b>Property </b>
+</td>
+<td><b>Type </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>MultiColumnMode </td>
+<td>bool </td>
+<td>If enabled, the table will treat each column as individual data entity (see above for a detailed explanation of this mode). </td>
+</tr>
+<tr><td>HeaderHeight </td>
+<td>int </td>
+<td>The height of the column header. If this is 0, it will be hidden. </td>
+</tr>
+<tr><td>RowHeight </td>
+<td>int </td>
+<td>the height of each row. </td>
+</tr>
+<tr><td>MultiSelection </td>
+<td>bool </td>
+<td>if enabled, this allows selection of multiple rows at once. </td>
+</tr>
+<tr><td>ScrollOnDrag </td>
+<td>bool </td>
+<td>if enabled, dragging the mouse will scroll the viewport (like on a web browser). If disabled, you'll need to use the scrollbars. </td>
+</tr>
+<tr><td>SliderRangeIdSet </td>
+<td>String </td>
+<td>if you're using sliders in a cell, you can define which ID set is used to fetch the range limits. This is useful if you're displaying JSON data with a fixed format (eg. the output of <a href="scripting/scripting-api/midiautomationhandler/index.html#getautomationdataobject">Midiautomationhandler.getAutomationDataObject()</a>
+). The possible values are <code>"scriptnode"</code>
+, <code>"ScriptComponent"</code>
+, <code>"MidiAutomation"</code>
+ and <code>"MidiAutomationFull"</code>
+ (check the console output for a list of range ids that is used when you call this method with this property). </td>
+</tr>
+<tr><td>CallbackOnSliderDrag </td>
+<td>bool </td>
+<td>This controls whether the sliders in the table will send a update while dragging or just when you lift the mouse button. In some cases, you will need to skip the updates while dragging because it will spawn a heavyweight operation that you only want to perform once (eg. when setting the automation data from the JSON object). </td>
+</tr>
+</table>
+<p>This function needs to be called before any other function related to tables. Also be aware that calling this function is only possible during the onInit callback.</p>
+<h3 id="multi-column-mode"><b>Multi-column mode</b>
+</h3>
+<p>If you set the <code>MultiColumnMode</code>
+ property to true, it will cause repaints whenever you hover over cells. This can be useful if you want to arrange your data in a 2D space (eg. if you're creating a browser that displays multiple files in a row). You can also use <code>setValue()</code>
+ with a <code>[columnIndex, rowIndex]</code>
+ array to set the active cell programatically (and if the viewport has the <code>saveInPreset</code>
+ flag, it will cause a callback when you load user presets). </p>
+<p>In this mode, the viewport will also support horizontal navigation with the left-right arrow keys and it will fire the table callback whenever a cell has changed.</p>
+<p class="comment">Please be aware that the default appearance will still highlight the entire row, so you need to customize the <code>drawTableCell</code>
+ function with a LAF object. In this callback, the <code>selected</code>
+ property will stil be true for the entire row, but you can use the <code>clicked</code>
+ and <code>hover</code>
+ property to figure out which cell is active / hovered.</p>
+<p><br></p>
+<h2 id="settablerowdata"><b>setTableRowData</b>
+</h2>
+<p class="comment">Update the row data for the table.</p>
+<pre><code class="language-javascript line-numbers">ScriptedViewport.setTableRowData(var tableData)</code></pre>
+<p><br>If you have setup this Viewport as a table, you can use this method in order to populate the rows of the table.</p>
+<p>The argument must be a list of JSON objects, which must define a value for every column ID:</p>
+<ul><li>Button columns must be true or false</li>
+<li>Slider columns must be a number</li>
+<li>Text columns must be a string</li>
+</ul>
+<p class="comment">The data you pass in will not be copied, so if you modify the data, it will update the table content.</p>
+<p>Also dragging the slider or clicking the button in a column will update the values in this object (so you don't have to do this manually in the table callback).<br></p>
+<h2 id="settablesortfunction"><b>setTableSortFunction</b>
+</h2>
+<p class="comment">Sets a custom function that can be used in order to sort the table if the user clicks on a column header.</p>
+<pre><code class="language-javascript line-numbers">ScriptedViewport.setTableSortFunction(var sortFunction)</code></pre>
+<p><br><br></p>
+<h2 id="settooltip"><b>setTooltip</b>
+</h2>
+<p class="comment">Shows a informative text on mouse hover.</p>
+<pre><code class="language-javascript line-numbers">ScriptedViewport.setTooltip( String tooltip)</code></pre>
+<p><br><br></p>
+<h2 id="setvaluenormalized"><b>setValueNormalized</b>
+</h2>
+<p class="comment">Sets the current value from a range 0.0 ... 1.0.</p>
+<pre><code class="language-javascript line-numbers">ScriptedViewport.setValueNormalized(double normalizedValue)</code></pre>
+<p><br><br></p>
+<h2 id="setvaluewithundo"><b>setValueWithUndo</b>
+</h2>
+<p class="comment">Sets the current value and adds it to the undo list. Don't call this from onControl!</p>
+<pre><code class="language-javascript line-numbers">ScriptedViewport.setValueWithUndo(var newValue)</code></pre>
+<p><br><br></p>
+<h2 id="setzlevel"><b>setZLevel</b>
+</h2>
+<p class="comment">Changes the depth hierarchy (z-axis) of sibling components (Back, Default, Front or AlwaysOnTop).</p>
+<pre><code class="language-javascript line-numbers">ScriptedViewport.setZLevel(String zLevel)</code></pre>
+<p><br><br></p>
+<h2 id="showcontrol"><b>showControl</b>
+</h2>
+<p class="comment">Hides / Shows the control.</p>
+<pre><code class="language-javascript line-numbers">ScriptedViewport.showControl(bool shouldBeVisible)</code></pre>
+<p><br><br></p>
+<h2 id="updatecontentpropertyinternal"><b>updateContentPropertyInternal</b>
+</h2>
+<p class="comment">This updates the internal content data object from the script processor.</p>
+<pre><code class="language-javascript line-numbers">ScriptedViewport.updateContentPropertyInternal(int propertyId,  var newValue)</code></pre>
+<p><br><br></p>
+<h2 id="updatevaluefromprocessorconnection"><b>updateValueFromProcessorConnection</b>
+</h2>
+<p class="comment">Updates the value from the processor connection. Call this method whenever the module state has changed and you want to refresh the knob value to show the current state.</p>
+<pre><code class="language-javascript line-numbers">ScriptedViewport.updateValueFromProcessorConnection()</code></pre>
+<p><br><br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/scriptfloatingtile/index.html">ScriptFloatingTile</a>
+</span>
+
+<p class="content-footer-metadata"><br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

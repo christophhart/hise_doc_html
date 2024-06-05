@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="modulatorsynth"><b>ModulatorSynth</b>
+</h1>
+<p>The base class for all sound generators in HISE.<br>It is a extension of the juce::Synthesiser class with the following additions:<br></p>
+<ul><li>slots for adding MIDI processing modules, modulators and effects<br></li>
+<li>usage of the <a href="cpp_api/hise/classhise_1_1_hise_event.html">HiseEvent</a>
+ type instead of the MidiMessage.<br></li>
+</ul>
+<p><br>If you're know your way around writing a sound generator based on the juce::Synthesiser class, the adaption to this class should be very straight forward.<br> </p>
+<h2 id="class-hierarchy"><b>Class Hierarchy</b>
+</h2>
+<h3 id="base-classes"><b>Base Classes</b>
+</h3>
+<ul><li><code>Synthesiser</code>
+<br></li>
+<li><a href="cpp_api/hise/classhise_1_1_processor.html">hise::Processor</a>
+<br></li>
+<li><code>hise::RoutableProcessor</code>
+<br></li>
+</ul>
+<h3 id="derived-classes"><b>Derived Classes</b>
+</h3>
+<ul><li><code>hise::JavascriptModulatorSynth</code>
+<br></li>
+<li><code>hise::JavascriptSynthesiser</code>
+<br></li>
+<li><code>hise::ModulatorSynthChain</code>
+<br></li>
+<li><code>hise::ModulatorSynthGroup</code>
+<br></li>
+</ul>
+<h2 id="public-types"><b>Public types</b>
+</h2>
+<h3 id="enum-parameters"><b>enum Parameters</b>
+</h3>
+<table><thead><td><b>Name </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><code>Gain</code>
+ </td>
+<td>the volume as gain factor from 0...1 </td>
+</tr>
+<tr><td><code>Balance</code>
+ </td>
+<td>the stereo balance from -100 to 100 </td>
+</tr>
+<tr><td><code>VoiceLimit</code>
+ </td>
+<td>the amount of voices </td>
+</tr>
+<tr><td><code>KillFadeTime</code>
+ </td>
+<td>the fade time when voices are killed module_list </td>
+</tr>
+</table>
+<h2 id="class-methods"><b>Class methods</b>
+</h2>
+<h3 id="exportasvaluetree"><b>exportAsValueTree</b>
+</h3>
+<pre><code class="language-clike line-numbers">ValueTree exportAsValueTree() const override</code></pre>
+<p>This saves the <a href="cpp_api/hise/classhise_1_1_processor.html">Processor</a>
+.<br>It saves the ID, the bypassed state and the fold state. It also saves all child processors. You can overwrite this function and add more properties and their child processors but make sure you call the base class method.<br>For primitive values, you can use the macro saveAttribute(name, nameAsString):<br>You don't need to save the editor states, as the first 32 bits of EditorState is saved.<br></p>
+<pre><code class="language-clike line-numbers">ValueTree exportAsValueTree() const override
+{
+    // must be named 'v' for the macros
+    ValueTree v = BaseClass::exportAsValueTree(); 
+
+    saveAttribute(attributeName, "AttributeName");
+
+    // ...
+
+    if(useTable) saveTable(tableVariableName, "TableVariableNameData");
+
+    return v;
+};</code></pre>
+<p><br><a href="cpp_api/hise/classhise_1_1_modulator_synth.html#restorefromvaluetree">restoreFromValueTree()</a>
+<br><br></p>
+<h3 id="restorefromvaluetree"><b>restoreFromValueTree</b>
+</h3>
+<pre><code class="language-clike line-numbers">void restoreFromValueTree(const ValueTree &v) override</code></pre>
+<p>Restores a previously saved ValueTree.<br>The value tree must be created with exportAsValueTree or it will be unpredictable. The child processors are created automatically (both for chains and processors with fixed internal chains, but you should overwrite this method if your <a href="cpp_api/hise/classhise_1_1_processor.html">Processor</a>
+ uses parameters.<br>There is a handy macro saveAttribute(name, nameAsString) for this purpose.<br></p>
+<pre><code class="language-clike line-numbers">restoreFromValueTree(const ValueTree &v) override // parameter must be named 'v' for the macros
+{
+    // replace BaseClass with the class name of the immediate base class
+    BaseClass::restoreFromValueTree(v); 
+    
+    loadAttribute(attributeName, "AttributeName");
+    // ...
+    
+    // If your Processor uses tables: 
+    if(useTable) loadTable(tableVariableName, "TableVariableData");
+}</code></pre>
+<p><br><a href="cpp_api/hise/classhise_1_1_modulator_synth.html#exportasvaluetree">exportAsValueTree()</a>
+<br><br></p>
+<h3 id="getattribute"><b>getAttribute</b>
+</h3>
+<pre><code class="language-clike line-numbers">float getAttribute(int parameterIndex) const override</code></pre>
+<p>returns the attribute with the specified index (use a enum in the derived class).<br> </p>
+<h3 id="setinternalattribute"><b>setInternalAttribute</b>
+</h3>
+<pre><code class="language-clike line-numbers">void setInternalAttribute(int parameterIndex, float newValue) override</code></pre>
+<p>Changes a <a href="cpp_api/hise/classhise_1_1_processor.html">Processor</a>
+ parameter.<br>Overwrite this method to do your handling. Call the overloaded method with the notification type parameter for external changes.<br>parameterIndexthe parameter index (use a enum from the derived class)<br> newValuethe new value between 0.0 and 1.0<br> <br></p>
+<h3 id="getdefaultvalue"><b>getDefaultValue</b>
+</h3>
+<pre><code class="language-clike line-numbers">float getDefaultValue(int parameterIndex) const override</code></pre>
+<p>Overwrite this and return the default value.<br> </p>
+<h3 id="getchildprocessor"><b>getChildProcessor</b>
+</h3>
+<pre><code class="language-clike line-numbers">Processor * getChildProcessor(int processorIndex) override</code></pre>
+<p>This must be overriden by every <a href="cpp_api/hise/classhise_1_1_processor.html">Processor</a>
+ and return the <a href="cpp_api/hise/classhise_1_1_chain.html">Chain</a>
+ with the <a href="cpp_api/hise/classhise_1_1_chain.html">Chain</a>
+ index.<br>You can either:- return nullptr, if the <a href="cpp_api/hise/classhise_1_1_processor.html">Processor</a>
+ uses no internal chains<br></p>
+<ul><li>one of the internal chains (it's recommended to use the InternalChains enum for this case)<br></li>
+<li>return the <a href="cpp_api/hise/classhise_1_1_processor.html">Processor</a>
+ at the index if the <a href="cpp_api/hise/classhise_1_1_processor.html">Processor</a>
+ is a <a href="cpp_api/hise/classhise_1_1_chain.html">Chain</a>
+. You can use it's handler's getProcessor() method.<br> </li>
+</ul>
+<p><br></p>
+<h3 id="getnumchildprocessors"><b>getNumChildProcessors</b>
+</h3>
+<pre><code class="language-clike line-numbers">int getNumChildProcessors() const override</code></pre>
+<p>This must return the number of Child processors.<br>If this <a href="cpp_api/hise/classhise_1_1_processor.html">Processor</a>
+ is a <a href="cpp_api/hise/classhise_1_1_chain.html">Chain</a>
+, you can use it's getHandler()->getNumProcessor() method.<br> </p>
+<h3 id="getnuminternalchains"><b>getNumInternalChains</b>
+</h3>
+<pre><code class="language-clike line-numbers">int getNumInternalChains() const override</code></pre>
+<p>If your processor uses internal chains, you can return the number here.<br>This is used by the ProcessorEditor to make the chain button bar.<br> </p>
+<h3 id="createeditor"><b>createEditor</b>
+</h3>
+<pre><code class="language-clike line-numbers">ProcessorEditorBody * createEditor(ProcessorEditor *parentEditor) override</code></pre>
+<p>Creates a ProcessorEditor for this <a href="cpp_api/hise/classhise_1_1_processor.html">Processor</a>
+ and returns the pointer.<br>If you subclass this, just allocate a ProcessorEditor of the desired type on the heap and return it. Remember to pass the <a href="cpp_api/hise/classhise_1_1_processor.html">Processor</a>
+ as parameter to allow asynchronous GUI notification. The concept between <a href="cpp_api/hise/classhise_1_1_processor.html">Processor</a>
+ and ProcessorEditor is the same as AudioProcessor and AudioProcessorEditor.<br> </p>
+<h3 id="rendernextblockwithmodulators"><b>renderNextBlockWithModulators</b>
+</h3>
+<pre><code class="language-clike line-numbers">void renderNextBlockWithModulators(AudioSampleBuffer &outputAudio, const HiseEventBuffer &inputMidi)</code></pre>
+<p>Call this instead of Synthesiser::renderNextBlock to let the ModulatorChains to their work.<br>This only renders the TimeVariantModulators (like a master effect) and calculates the voice modulation, so make sure you actually apply the voice modulation in the subclassed ModulatorSynthVoice callback.<br> </p>
+<h3 id="prevoicerendering"><b>preVoiceRendering</b>
+</h3>
+<pre><code class="language-clike line-numbers">void preVoiceRendering(int startSample, int numThisTime)</code></pre>
+<p>This method is called to handle all modulatorchains just before the voice rendering.<br> </p>
+<h3 id="rendervoice"><b>renderVoice</b>
+</h3>
+<pre><code class="language-clike line-numbers">void renderVoice(int startSample, int numThisTime)</code></pre>
+<p>This method is called to actually render all voices. It operates on the internal buffer of the ModulatorSynth.<br> </p>
+<h3 id="postvoicerendering"><b>postVoiceRendering</b>
+</h3>
+<pre><code class="language-clike line-numbers">void postVoiceRendering(int startSample, int numThisTime)</code></pre>
+<p>This method is called to handle all modulatorchains after the voice rendering and handles the GUI metering. It assumes stereo mode.<br>The rendered buffer is supplied as reference to be able to apply changes here after all voices are rendered (eg. gain).<br> </p>
+<h3 id="getcolour"><b>getColour</b>
+</h3>
+<pre><code class="language-clike line-numbers">Colour getColour() const override</code></pre>
+<p>Overwrite this method if you want a special colour.<br>This colour will be used in the debug console and in the editor.<br> </p>
+<h3 id="handlehiseevent"><b>handleHiseEvent</b>
+</h3>
+<pre><code class="language-clike line-numbers">void handleHiseEvent(const HiseEvent &e)</code></pre>
+<p>Same functionality as Synthesiser::handleMidiEvent(), but sends the midi event to all Modulators in the chains.<br> </p>
+<h3 id="preparetoplay"><b>prepareToPlay</b>
+</h3>
+<pre><code class="language-clike line-numbers">void prepareToPlay(double sampleRate, int samplesPerBlock)</code></pre>
+<p>This sets up the synth and the ModulatorChains.<br>Call this instead of Synthesiser::setCurrentPlaybackSampleRate(). It also sets the <a href="cpp_api/hise/classhise_1_1_modulator_chain.html">ModulatorChain</a>
+'s voice amount, so be sure you add all SynthesiserVoices before you call this function.<br> </p>
+<h3 id="setbypassed"><b>setBypassed</b>
+</h3>
+<pre><code class="language-clike line-numbers">void setBypassed(bool shouldBeBypassed, NotificationType notifyChangeHandler=dontSendNotification) noexcept override</code></pre>
+<p>This bypasses the processor. You don't have to check in the processors logic itself, normally the chain should do that for you.<br> </p>
+<h3 id="killallvoiceswithnotenumber"><b>killAllVoicesWithNoteNumber</b>
+</h3>
+<pre><code class="language-clike line-numbers">void killAllVoicesWithNoteNumber(int noteNumber)</code></pre>
+<p>Kills the note with the specified note number.<br>This stops the note with a small fade out (instead of noteoff which can result in very long release times if the envelope says so<br> </p>
+<h3 id="killlastvoice"><b>killLastVoice</b>
+</h3>
+<pre><code class="language-clike line-numbers">int killLastVoice(bool allowTailOff=true)</code></pre>
+<p>Kills the voice that is playing for the longest time.<br> </p>
+<h3 id="arevoicesactive"><b>areVoicesActive</b>
+</h3>
+<pre><code class="language-clike line-numbers">bool areVoicesActive() const</code></pre>
+<p>Call this from the message thread and it'll kill all voices at the next buffer.<br>Pass in a lambda and it will execute this asynchronously as soon as all voices are killed<br>@functionToExecuteWhenKilled: a lambda that will be executed as soon as the voices are killed @executeOnAudioThread: if true, the lambda will be synchronously called on the audio thread<br> </p>
+<h3 id="soundcanbeplayed"><b>soundCanBePlayed</b>
+</h3>
+<pre><code class="language-clike line-numbers">bool soundCanBePlayed(ModulatorSynthSound *sound, int midiChannel, int midiNoteNumber, float velocity)</code></pre>
+<p>Checks if the message fits the sound, but can be overriden to implement other group start logic.<br> </p>
+<h3 id="noteon"><b>noteOn</b>
+</h3>
+<pre><code class="language-clike line-numbers">void noteOn(const HiseEvent &m)</code></pre>
+<p>Same functionality as Synthesiser::noteOn(), but calls calculateVoiceStartValue() if a new voice is started.<br> </p>
+<h3 id="collectsoundstobestarted"><b>collectSoundsToBeStarted</b>
+</h3>
+<pre><code class="language-clike line-numbers">int collectSoundsToBeStarted(const HiseEvent &m)</code></pre>
+<p>This method should go through all sounds that are playable and fill the soundsToBeStarted array.<br> </p>
+<h3 id="getvoiceindex"><b>getVoiceIndex</b>
+</h3>
+<pre><code class="language-clike line-numbers">int getVoiceIndex(const SynthesiserVoice *v) const</code></pre>
+<p>Returns the voice index for the voice (the index in the internal voice array). This is needed for the ModulatorChains to know which voice is started.<br> </p>
+<h3 id="addprocessorswhenempty"><b>addProcessorsWhenEmpty</b>
+</h3>
+<pre><code class="language-clike line-numbers">void addProcessorsWhenEmpty()</code></pre>
+<p>Adds a SimpleEnvelope to a empty ModulatorSynth to prevent clicks.<br> </p>
+<h3 id="initrendercallback"><b>initRenderCallback</b>
+</h3>
+<pre><code class="language-clike line-numbers">void initRenderCallback()</code></pre>
+<p>Clears the internal buffer. This must be called by subclasses for every renderNextBlockWithModulators.<br> </p>
+<h3 id="setgain"><b>setGain</b>
+</h3>
+<pre><code class="language-clike line-numbers">void setGain(float newGain)</code></pre>
+<p>sets the gain of the ModulatorSynth from 0.0 to 1.0.<br> </p>
+<h3 id="setbalance"><b>setBalance</b>
+</h3>
+<pre><code class="language-clike line-numbers">void setBalance(float newBalance)</code></pre>
+<p>sets the balance from -1.0 (left) to 1.0 (right) and applies a equal power pan rule.<br> </p>
+<h3 id="getbalance"><b>getBalance</b>
+</h3>
+<pre><code class="language-clike line-numbers">float getBalance(bool getRightChannelGain) const</code></pre>
+<p>Returns the calculated (equal power) pan value for either the left or the right channel.<br> </p>
+<h3 id="getgain"><b>getGain</b>
+</h3>
+<pre><code class="language-clike line-numbers">float getGain() const</code></pre>
+<p>Returns the gain of the ModulatorSynth from 0.0 to 1.0.<br> </p>
+<h3 id="setgroup"><b>setGroup</b>
+</h3>
+<pre><code class="language-clike line-numbers">void setGroup(ModulatorSynthGroup *parent)</code></pre>
+<p>Sets the parent group. This can only be called once, since synths are not supposed to change their parents.<br> </p>
+<h3 id="getgroup"><b>getGroup</b>
+</h3>
+<pre><code class="language-clike line-numbers">ModulatorSynthGroup * getGroup() const</code></pre>
+<p>Returns the ModulatorSynthGroup that this ModulatorSynth belongs to.<br> </p>
+<h3 id="isingroup"><b>isInGroup</b>
+</h3>
+<pre><code class="language-clike line-numbers">bool isInGroup() const</code></pre>
+<p>Checks if the Synth was added to a group.<br> </p>
+<h3 id="getindexingroup"><b>getIndexInGroup</b>
+</h3>
+<pre><code class="language-clike line-numbers">int getIndexInGroup() const</code></pre>
+<p>Returns the index of the child synth if it resides in a group and -1 if not.<br> </p>
+<h3 id="getplayingsynth"><b>getPlayingSynth</b>
+</h3>
+<pre><code class="language-clike line-numbers">ModulatorSynth * getPlayingSynth()</code></pre>
+<p>Returns either itself or the group that is playing its voices.<br> </p>
+<h3 id="setclockspeed"><b>setClockSpeed</b>
+</h3>
+<pre><code class="language-clike line-numbers">void setClockSpeed(ClockSpeed newClockSpeed)</code></pre>
+<p>Sets the interval for the internal clock callback.<br> </p>
+<h3 id="getconstantpitchvalues"><b>getConstantPitchValues</b>
+</h3>
+<pre><code class="language-clike line-numbers">const float * getConstantPitchValues() const</code></pre>
+<p>Returns the pointer to the calculated pitch buffers for the ModulatorSynthVoice's render callback.<br> </p>
+<h3 id="handleretriggerednote"><b>handleRetriggeredNote</b>
+</h3>
+<pre><code class="language-clike line-numbers">void handleRetriggeredNote(ModulatorSynthVoice *voice)</code></pre>
+<p>specifies the behaviour when a note is started that is already ringing. By default, it is killed, but you can overwrite it to make something else.<br> </p>
+<h3 id="getpitchvaluesforvoice"><b>getPitchValuesForVoice</b>
+</h3>
+<pre><code class="language-clike line-numbers">float * getPitchValuesForVoice() const</code></pre>
+<p>Returns a read pointer to the calculated pitch values.<br> </p>
+<h3 id="getfreevoice"><b>getFreeVoice</b>
+</h3>
+<pre><code class="language-clike line-numbers">ModulatorSynthVoice * getFreeVoice(SynthesiserSound *s, int midiChannel, int midiNoteNumber)</code></pre>
+<p>Returns a read pointer to the calculated pitch values. Used by Synthgroups to render their pitch values on the voice value.<br> </p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="cpp_api/hise/classhise_1_1_pool_base.html">PoolBase</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="slider"><b>Slider</b>
+</h1>
+<p class="comment">The knob / slider element can be used to set values with dragging.</p>
+<img src="images/ui-controls/knob.png"></img>
+<h2 id="special-properties"><b>Special Properties</b>
+</h2>
+<table><thead><td><b>Property ID </b>
+</td>
+<td><b>Default Value </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><code>mode</code>
+ </td>
+<td>Linear </td>
+<td>Select between, Linear, Frequency, Decibel, Time... to adjust the sliders value display to its connected modules domain type. </td>
+</tr>
+<tr><td><code>style</code>
+ </td>
+<td>Knob </td>
+<td>Display the Slider as a knob, vertical or horizontal slider. </td>
+</tr>
+<tr><td><code>stepSize</code>
+ </td>
+<td>0.01 </td>
+<td>Select the resolution of the value display </td>
+</tr>
+<tr><td><code>middlePosition</code>
+ </td>
+<td>-1.0 </td>
+<td>Set the value of the sliders middle position. If this value is skewed, the scale of the values will adapt accordingly. </td>
+</tr>
+<tr><td><code>suffix</code>
+ </td>
+<td><code>""</code>
+ </td>
+<td>Set a custom suffix </td>
+</tr>
+<tr><td><code>filmstripImage</code>
+ </td>
+<td>Use default skin </td>
+<td>Select a filmstrip to replace the default slider skin. See more below </td>
+</tr>
+<tr><td><code>numStrips</code>
+ </td>
+<td>0 </td>
+<td>Set the amount your filmstrips strips. </td>
+</tr>
+<tr><td><code>isVertical</code>
+ </td>
+<td><code>true</code>
+ </td>
+<td>Set to false if not vertical (depreciated) </td>
+</tr>
+<tr><td><code>scaleFactor</code>
+ </td>
+<td>1.0 </td>
+<td>if you use a filmstrip, this scalefactor will be used to resize the image. You can use this to support Retina displays. </td>
+</tr>
+<tr><td><code>mouseSensitivity</code>
+ </td>
+<td>1.0 </td>
+<td>Adjust this value to finetune how quick/slow you can drag the slider. </td>
+</tr>
+<tr><td><code>dragDirection</code>
+ </td>
+<td>Diagonal </td>
+<td>Select a drag direction </td>
+</tr>
+<tr><td><code>showValuePopup</code>
+ </td>
+<td>No </td>
+<td>Displays a Value Popup that shows the sliders value </td>
+</tr>
+<tr><td><code>showTextBox</code>
+ </td>
+<td><code>true</code>
+ </td>
+<td>If in horizontal or vertical mode: show slider value or not. </td>
+</tr>
+<tr><td><code>scrollWheel</code>
+ </td>
+<td><code>true</code>
+ </td>
+<td>o description. </td>
+</tr>
+<tr><td><code>enableMidiLearn</code>
+ </td>
+<td><code>true</code>
+ </td>
+<td>o description. </td>
+</tr>
+<tr><td><code>sendValueOnDrag</code>
+ </td>
+<td><code>true</code>
+ </td>
+<td>o description. </td>
+</tr>
+</table>
+<h2 id="filmstripping"><b>Filmstripping</b>
+</h2>
+<h2 id="scripting-api"><b>Scripting API</b>
+</h2>
+<p><a href="scripting/scripting-api/scriptslider/index.html">ScriptSlider</a>
+</p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="ui-components/plugin-components/floating-tile.html">Floating Tile</a>
+</span>
+
+<p class="content-footer-metadata">Dominik Mayer<br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

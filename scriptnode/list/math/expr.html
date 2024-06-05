@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="expr"><b>expr</b>
+</h1>
+<p class="comment"><code>math.expr</code>
+</p>
+<img src="images/sn_screen_expr.png"></img>
+<p>A dynamic expression node that uses a SNEX math formula for processing the signal.</p>
+<h2 id="parameters"><b>Parameters</b>
+</h2>
+<table><thead><td><b>ID </b>
+</td>
+<td><b>Range </b>
+</td>
+<td><b>Default </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>Value </td>
+<td>0.00 - 1.00 </td>
+<td>1.00 </td>
+<td>an additional input parameter that can be used in the expression. </td>
+</tr>
+</table>
+<p><br>This node evaluates a expression formula and calculates the output for every sample in the signal. This makes it the swiss-army knife of the math operators - every other math operator as well as more complex waveshaping algorithms can be implemented with this node.</p>
+<p>It uses the SNEX JIT compiler, which means that in order to use this node in a compiled plugin, you will have to compile the network to a hardcoded effect. Therefore it is recommended to stick to the inbuilt math operator nodes until it gets inconvenient or impossible, then use this node instead.</p>
+<p class="comment">Some inbuilt math nodes also use vectorized operations (eg. SIMD multiplication / addition) so it might also increase the CPU performance when you stick to the inbuilt operators.</p>
+<p>The <code>expr</code>
+ node focuses on simplicity so there are a few limitations:</p>
+<ol><li>you can't declare variables, everything must be a single line of code</li>
+<li>you have only a single value parameter that can be used for changing the output of the node.</li>
+</ol>
+<p>If one of these limitations prevent the usage of this node in your use case, take a look at the fully-fledged SNEX nodes.</p>
+<ul><li><a href="scriptnode/list/core/snex_shaper.html">core.snex_shaper</a>
+: A node with an API suitable for implementing (stateful) waveshapers</li>
+<li><a href="scriptnode/list/core/snex_node.html">core.snex_node</a>
+: A general purpose node with the full API for every callback</li>
+</ul>
+<h3 id="how-to-use-the-expr-node"><b>How to use the expr node</b>
+</h3>
+<p>You can enter a formula (aka one line of code) using the SNEX language syntax (which in this subset is very similar to HiseScript) and if there is no error, the node will evaluate that expression and process every audio sample with the given formula. </p>
+<p>The code you put in always has this form:</p>
+<pre><code class="language-javascript line-numbers">output = something * input + possibleUse * value</code></pre>
+<p>As you can see, you get a single parameter that you can use for changing the formula that needs to be addressed as <code>value</code>
+ (note the lower case).</p>
+<p>Here are a few examples:</p>
+<pre><code class="language-javascript line-numbers">// clipper (same as math.clip)
+output = Math.range(input, -1.0f * value, 1.0f * value)
+
+// sig2mod
+output = 0.5f * input + 0.5f;
+
+// sine waveshaper with dry wet mixer
+output = (1.0f - value) * input + value * Math.sin(Math.PI * 2.0 * value * input);
+
+// rectifier
+output = input > 0.0f ? value : -1.0f * value;</code></pre>
+<p>There is a variant of this node that can be used to evaluate cable connections called <a href="scriptnode/list/control/cable_expr.html">control.cable_expr</a>
+</p>
+<h3 id="snex-syntax"><b>SNEX Syntax</b>
+</h3>
+<p>SNEX is a subset of C / C++ and the syntax for the expression node is a subset of SNEX - basically anything that can be put into a single line. You will most likely use these operators:</p>
+<ul><li>predefined variable names: <code>input</code>
+ for the sample that is processed and <code>value</code>
+ for the current value of the single parameter</li>
+<li>binary math operators (<code>+ - * /</code>
+)</li>
+<li>comparison operators (<code>> == >= != !</code>
+)</li>
+<li>more complex math functions. Just like in SNEX, the math function library exactly mirrors the <a href="scripting/scripting-api/math/index.html">Math</a>
+ API class syntax in HiseScript, so you can use stuff like <code>Math.max(Math.random(), Math.tanh(value))</code>
+</li>
+<li>ternary operators: <code>x ? y : z</code>
+</li>
+</ul>
+<h3 id="value-types"><b>Value types</b>
+</h3>
+<p>There is one thing that causes some hiccups for many people coming from HiseScript and want to write their first expression: SNEX is a strictly typed language with three different numeric types: <code>int</code>
+, <code>float</code>
+ and <code>double</code>
+. It's important to know that the <code>input</code>
+ and <code>value</code>
+ variables are single precision (32 bit) floating point numbers. This is because that's how an audio signal is represented in HISE. </p>
+<p class="comment">Be aware that when using the <a href="scriptnode/list/control/cable_expr.html">cable_expr</a>
+ node, the <code>value</code>
+ variable is a double precision floating point number. This is because all parameter connections are using double precision (there are a few use cases where single precision might not be enough).</p>
+<p>Usually the compiler will figure out if it has to implicitely cast (=convert) one floating point type to the other, so</p>
+<pre><code class="language-javascript line-numbers">output = input * 3.0;</code></pre>
+<p>will work and the compiler will implicitely convert <code>3.0</code>
+ to a <code>float</code>
+, then perform the multiplication. It still complains about this by setting the compiler state to yellow so if you're a good boy you're going to write the cast explicitely:</p>
+<pre><code class="language-javascript line-numbers">// no warning, green light
+output = input * (float)3.0;
+
+// or if you're not completely delusional:
+output = input * 3.0f;</code></pre>
+<p>Also, all <code>Math.xxx()</code>
+ functions exist in two (or if suitable even three) versions:</p>
+<pre><code class="language-javascript line-numbers">//       float <= float    double <= double
+output = Math.abs(input) + Math.abs(-3.0);</code></pre>
+<p>so the first function call will call the function <code>float Math.abs(float input)</code>
+ and the second will call <code>double Math.abs(double input)</code>
+. However, if the compiler cannot clearly deduce which function it should use, it will throw an error:</p>
+<pre><code class="language-javascript line-numbers">//       ???? <=  float, double
+output = Math.min(input, 3.0);</code></pre>
+<p>There are only two suitable functions (<code>float Math.min(float, float)</code>
+ and <code>double Math.min(double, double)</code>
+), but since one argument is <code>float</code>
+ and the other one is <code>double</code>
+ the compiler has no way to know which function to pick. In order to solve this compilation error, you will have to explicitely cast again:</p>
+<pre><code class="language-javascript line-numbers">//       float <=  float, float
+output = Math.min(input, 3.0f);</code></pre>
+<h3 id="user-interface"><b>User interface</b>
+</h3>
+<p>The expression node has a user interface with multiple functions</p>
+<p>The input field for the expression formula:</p>
+<img style="max-width:1000px;" src="images/custom/scriptnode/expr1.png"></img>
+<p>A button to enable Debug mode:</p>
+<img style="max-width:1000px;" src="images/custom/scriptnode/expr2.png"></img>
+<p>A status indicator for checking the compilation state (green = OK, yellow = some warnings, red = error):</p>
+<img style="max-width:1000px;" src="images/custom/scriptnode/expr3.png"></img>
+<p>A visualisation of the input to output curve.</p>
+<img style="max-width:1000px;" src="images/custom/scriptnode/expr4.png"></img>
+<h3 id="debug-mode"><b>Debug mode</b>
+</h3>
+<p>You can click on the debug button on the top right in order to enter debug mode. Depending on the compile state, it will do one of the following:</p>
+<ol><li>If the compile state is yellow, it will show you the compiler warning that you can then fix</li>
+<li>If the compile state is green, it will print the input -> output value pairs so you can see exactly what the function is doing.</li>
+</ol>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scriptnode/list/math/fmod.html">fmod</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>01.06.2024<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

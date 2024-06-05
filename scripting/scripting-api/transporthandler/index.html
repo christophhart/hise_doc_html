@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="transporthandler"><b>TransportHandler</b>
+</h1>
+<p><br>This class can be used to register callbacks that react on certain host tranport events. As of now, these events are supported:</p>
+<ul><li>Tempo changes</li>
+<li>Time signature changes</li>
+<li>Transport state changes (only playback)</li>
+<li>Beat changes</li>
+<li>Grid events (a synched timer with a customizable frequency)</li>
+</ul>
+<p>In order to use it, just create an object with <a href="scripting/scripting-api/engine/index.html#createtransporthandler">Engine.createTransportHandler()</a>
+and then use the functions to register callbacks.</p>
+<h3 id="execution-modes"><b>Execution modes</b>
+</h3>
+<p>There are two execution modes for the callbacks: <b>synchronous</b>
+ and <b>asynchronous</b>
+. Synchronous means that the callback will be executed directly in the audio thread as soon as a state change is detected. This should be used for any logic regarding playback (eg. for implementing custom arpeggiators).<br>However if you want your UI to react on the host transport state, you must use the asynchronous mode.</p>
+<p class="comment">You can specify the mode when you pass in the callbacks into the register functions. Be aware that each transport handler has two slots, so you can register two different callbacks for the synchronous and asynchronous execution.</p>
+<p>This example will demonstrate all features of this class by implementing a simple metronome that should react to your host.</p>
+<pre><code class="language-javascript line-numbers">HiseSnippet 1721.3oc4WstaaTDEd23rkFWLzhpP7yQQHUGvjZW5MABUGmKsVzjXEmVnRHUMd2isG5tyXlc1jZphD+jGi9XvO4QoOB8MnblYu3cC1oFKZ.AVIVdly4Ly27ctLmoiT3BggBok8JGNdDXY+9NcGyUC2bHkwsZukk8G5bnjxCGIjpCgPkUqwinggfmksco6qUxdkksLed88ZQ8obWXxTVVOVvbgGxBXpIy1o42x782g5AGxBxo8Ma11Uv2T3KhP.Uxot0Hp6ynCf8nZ0Vxwx9Ba6wTBYWEUAgV1K2R3Mt6Pww7X8eLKj0yGzCZX0EWn3o2Q36oQrdVqMGx785jdvCsrrc5LgFJESCW0YWlGKa9IzwkMBHSrHOeXuzYAuF4gW84Gd14f2xwv6JNcckrQpIRzX6RNs4JP1mhtf7vJVWqk9sK3ro.0fqVOf9LXGINHyhp2td8ZjaUu9ZeckxUJe8qSNbHKjf+oFBjvwb2gn9hHbbZ7.YHk64CRxwCYtCIGiNUxHe5XiEAfRqe.P3BjLpTFcsgJxQTIJl7Mjs4CXbXcWIfbUVH1ChWwpYfX2Hznd.gxILtOZAoeD2UwDbbVWZTHPXp3sVFo0wr4zHOl.+Et3dUJeZCE7V3lVsG9UM7.tGbbKpbMRkxunRYB9wW3R8ILODkljg0odd6gGh84UaTib25jOOyJxmQZbiZ3+2oFwvbZ6iMRer2ue+s.jQ.uVi29Hj3a6Uk4oWCixmjbHa2mLVDQbQ9b.f7aD9kfzm5imtgfDpU3LRy4L7GSphldMTDteXpFILpmxGsGS43CH+HSg9WyljRWZ94QsSHGhm.B4WSQFDQQefBPtiDpnXTJYDHYBu0pTFOLgfZeCqsoAiU0XrVBQl4q1ATXX.t9ADeZOvufS+PHXj.YzzHvAfZSANEGGTcUizU0qzDK1SDLS8QYmR6s.9YnuQ5orniHbl5ixVM6bsm3Xxwflikv.VHRnX3n.OmRBxKDQ+rPqPz4Tv+PvHI+dXUrPsGMZjGFrm3AzKdJyZN9ITqwsWKaIqxgiMhWKK9zLTaX0UUvyUqVijpCFYtJoUmcQrW9jX7mtEcYC3TUjDl01HBpQ7zzzjMBY4haCJLIF2PnEDFaa19l6vklbOiclE1ASQvn0IaLR+wqcuAwWGrpNQMQMx8HwSFt9.I.bxWkMVBd4Q.561Bn3tbTLsyh8GDVw7sBUqxpRf9KccmbNSyBVUHyxFEGARIyyTBJjg27oWKInKZJ3XpIFLULZHzWnldB0oIkbEmlBsno7bDCpTNRAqFim1IjROeL9K0uUXIPi6YRfQAHqkq.YR4t0J+hxqT9jxjSKpe+oJSmLIE9lJ3SQr95d4YYXUdTPOPVCyO8ifLEw68JdwpyruXM+89tw414TTvayYp8GA7YccqURAA7WOp8VTEUeCbxbndXQQESCA6sfiv5sw2GuhyVP3yThQHRyphXYWVYjVI415GpKJZwv6jeOGS5p0ymz7ySZNdxf1M6i6XbaO50tOMxWYomqK6my0wzFMOl4oFNYBVyg.avvbMa8fl.RcTC6XWR600K4MZTWWmPeZe6n0wAKDjCqMi9aAqOYJXMFeN15Ixiaq4iUMUkxgzKex+nH8RylQw7vb3726kCmur2BhyWN9Lv4uZWDmoUVQcuf0uX8l3Ny+ScZh86J7h7ophMAq67OQ.l.WnaScGk7PlZb9WF7Noy34EtWwoCC6LY53coofWLk+cMdSdmQEms62GbUS.6xN678myOpvIFKkc1fS8GGBoulHcXiB3oUDhXYwHwW0riDKGhcgDWNLY5K1ztTQvWZ9JbOEt6.QjBu7eWpRxvDGm8hB5hgutl9Y3Xyl5f7kz0uiGWWOVCht.2yL3M3mDgMzisSD1HUXd+yGDeRtjSW7oClF5MjxGaFS9N5Q.49.Gj5HsFy5QwM+A1ql2GEOZteT79tJb6S5pJrvB2EBXGhEeByO4iBwm5A+zA5P+7yuofJmpnWeucvC4TsoqtERSNzFAhHtpPNSo4NP8uviyW9e0ON+7qhYo4CtukT8URwXWVvHeXa9QfO1SiAieT5UMoyVLtdWrE1QCEbladm9AXiyrAC.YdrO0CzFJE1G5jYtZyC.eflO.9Sa9PLviJQdBVPtnw7yEmk+5SbhgKQmLR9uwMck9e4McmKWbbdrGATWo3otwOTRGKeQyL34lmzo3t5wjFVlGOoaxr950sBvJhO00US2eAxOS2lar.17kKfM2bAr4VKfM2dAr4NKfM28LsQeYzFQJQPbpHNQmsMunz1dattObSTu0e.zpy6sH</code></pre>
+<h2 id="the-hise-master-clock"><b>The HISE master clock</b>
+</h2>
+<p>This object will also grant you access to the master clock of HISE, which itself can be either free-running or synched to the host clock. This lets you control most time-synched modules in a very flexible way, including:</p>
+<ul><li>MIDI Players</li>
+<li>Arpeggiators</li>
+<li>LFOs</li>
+</ul>
+<p>In order to use the master clock with modules, you need to</p>
+<ol><li>enable the grid callback</li>
+<li>set the synchronisation mode to one of the four available modes</li>
+<li>turn on clock synching for every module that should be synched to the master clock.</li>
+<li>start / stop the internal clock manually (or let the host do that for you when synching externally).</li>
+</ol>
+<p>When the synchronisation is active, the following modules will change their behaviour:</p>
+<h3 id="midi-players"><b>MIDI Players</b>
+</h3>
+<p>Starting and stopping the MIDI player will be ignored. Instead if the clock playback state changes, it will seek to the current position and start the playback on the next grid callback (this means that it you can start the DAW playback at the middle of a bar and it will jump to the correct position).</p>
+<p>The grid callback will determine the resolution of when the MIDI player is started, so you can choose the time resolution that works best for you.</p>
+<h3 id="arpeggiator-(not-implemented-yet)"><b>Arpeggiator (not implemented yet)</b>
+</h3>
+<p>Pressing a note will not start the arpeggiator playback, but just add the list to the notes to play. If the clock is running, it will start the arpeggiator on the next grid event. If the playback is stopped, the arpeggiator will turn off.</p>
+<h3 id="lfo"><b>LFO</b>
+</h3>
+<p>The LFO will not move unless the clock is running. It will also be resynched on every audio callback to match the playback position.</p>
+<p><br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="isnonrealtime"><b>isNonRealtime</b>
+</h2>
+<p class="comment">This will return true if the DAW is currently bouncing the audio to a file. You can use this in the transport change callback to modify your processing chain.</p>
+<pre><code class="language-javascript line-numbers">TransportHandler.isNonRealtime()</code></pre>
+<p><br><br></p>
+<h2 id="sendgridsynconnextcallback"><b>sendGridSyncOnNextCallback</b>
+</h2>
+<p class="comment">sends a message on the next grid callback to resync the external clock.</p>
+<pre><code class="language-javascript line-numbers">TransportHandler.sendGridSyncOnNextCallback()</code></pre>
+<p><br><br></p>
+<h2 id="setenablegrid"><b>setEnableGrid</b>
+</h2>
+<p class="comment">Enables a high precision grid timer.</p>
+<pre><code class="language-javascript line-numbers">TransportHandler.setEnableGrid(bool shouldBeEnabled, int tempoFactor)</code></pre>
+<p><br><br></p>
+<h2 id="setlinkbpmtosyncmode"><b>setLinkBpmToSyncMode</b>
+</h2>
+<p class="comment">If enabled, this will link the internal / external BPM to the sync mode.</p>
+<pre><code class="language-javascript line-numbers">TransportHandler.setLinkBpmToSyncMode(bool shouldPrefer)</code></pre>
+<p><br><br></p>
+<h2 id="setonbeatchange"><b>setOnBeatChange</b>
+</h2>
+<p class="comment">Registers a callback to changes in the musical position (bars / beats).</p>
+<pre><code class="language-javascript line-numbers">TransportHandler.setOnBeatChange(var sync, var f)</code></pre>
+<p><br>Registers a callback that will be executed for every beat. The function must have two parameters:</p>
+<ol><li>a counter for the current beat index (<code>int</code>
+) </li>
+<li>whether the beat is the beginning of a new bar (<code>bool</code>
+)</li>
+</ol>
+<p>Be aware that a beat is defined by the denominator of the time signature (so a 6/8 time signature will call this method twice as often as a 3/4 time signature).<br></p>
+<h2 id="setonbypass"><b>setOnBypass</b>
+</h2>
+<p class="comment">Registers a callback that will be executed asynchronously when the plugin's bypass state changes.</p>
+<pre><code class="language-javascript line-numbers">TransportHandler.setOnBypass(var f)</code></pre>
+<p><br>This can be used to register a callback that will react on bypass changes of the plugin.</p>
+<p>Almost every DAW has the ability to bypass plugins so they will not process the incoming audio. Unfortunately <a href="https://forum.juce.com/t/hosts-not-calling-processblockbypassed/15307">none</a>
+ of the plugin architectures have a clear API to detect the <a href="https://forum.juce.com/t/current-state-of-bypass-management/54662">bypass</a>
+ state and my initial test show a success rate of 0% trying to catch this event across multiple hosts. Also there are multiple concepts of bypassing, some are called disabling, some rely on a hidden plugin parameter and in total it's complete crazy town over there.</p>
+<p>So the solution I went for is a simple watchdog: at every audio buffer that is rendered, it will bump a watchdog timer and if that timer is not bumped for the duration of 10 audio buffers, then it will assume that the plugin was bypassed in whatever way the host decide it would be best. This is not a 100% accurate solution (because the bypass event will be detected with a delay of about 100 ms at 512 buffer size) but it let's you implement some UI features like <a href="https://forum.hise.audio/topic/8739/scriptnode-external-display-buffer-when-plugin-bypassed">clearing out peak meters</a>
+ etc.</p>
+<p>The function will simply expect a single parameter that should be a function with a single argument that will indicate whether the plugin is bypassed or not. The function will not be called on the audio thread but on the UI thread so you don't need to be cautious about realtime safety here.</p>
+<pre><code class="language-javascript line-numbers">const var th = Engine.createTransportHandler();
+
+th.setOnBypass(function(isBypassed)
+{
+	if(isBypassed)
+	{
+		PeakMeter.clear(); // whatever...
+		someTimer.stopTimer();
+	}
+	else
+	{
+		// resume the timer that detects the peak
+		someTimer.startTimer(30);
+	}
+});</code></pre>
+<p class="comment">If you want to simulate the behaviour of bypassing the plugin during development, you can use the new bypass button at the top left of the HISE controller popup (next to the master clock controls).<br></p>
+<h2 id="setongridchange"><b>setOnGridChange</b>
+</h2>
+<p class="comment">Registers a callback to changes in the grid.</p>
+<pre><code class="language-javascript line-numbers">TransportHandler.setOnGridChange(var sync, var f)</code></pre>
+<p><br><br></p>
+<h2 id="setonsignaturechange"><b>setOnSignatureChange</b>
+</h2>
+<p class="comment">Registers a callback to time signature changes.</p>
+<pre><code class="language-javascript line-numbers">TransportHandler.setOnSignatureChange(var sync, var f)</code></pre>
+<p><br>Registers a callback that will be executed as soon as the time signature changes. It expects a function with two parameters:</p>
+<ol><li>Nominator</li>
+<li>Denominator</li>
+</ol>
+<p>So for a 6/8 time signature, the first parameter will be 6 and the second one will be 8.</p>
+<p class="comment">The callback you supply here is also executed once at registration (so that it will pick up the current time signature).<br></p>
+<h2 id="setontempochange"><b>setOnTempoChange</b>
+</h2>
+<p class="comment">Registers a callback to tempo changes.</p>
+<pre><code class="language-javascript line-numbers">TransportHandler.setOnTempoChange(var sync, var f)</code></pre>
+<p><br>Registers a callback that will be executed as soon as the host tempo changes. It expects a function with a single parameter that will contain the tempo value.</p>
+<p class="comment">It will also be executed once when you register this callback so you can query the current tempo.<br></p>
+<h2 id="setontransportchange"><b>setOnTransportChange</b>
+</h2>
+<p class="comment">Registers a callback to transport state changes (playing / stopping).</p>
+<pre><code class="language-javascript line-numbers">TransportHandler.setOnTransportChange(var sync, var f)</code></pre>
+<p><br>Registers a callback that will be executed as soon as the host playback is being started / stopped.</p>
+<p>It expects a function with a single parameter that will contain the transport state as <code>bool</code>
+ value.</p>
+<p class="comment">This function will also be called once at registration.<br></p>
+<h2 id="setsyncmode"><b>setSyncMode</b>
+</h2>
+<p class="comment">Sets the sync mode for the global clock.</p>
+<pre><code class="language-javascript line-numbers">TransportHandler.setSyncMode(int syncMode)</code></pre>
+<p><br><br></p>
+<h2 id="startinternalclock"><b>startInternalClock</b>
+</h2>
+<p class="comment">Starts the internal master clock.</p>
+<pre><code class="language-javascript line-numbers">TransportHandler.startInternalClock(int timestamp)</code></pre>
+<p><br><br></p>
+<h2 id="stopinternalclock"><b>stopInternalClock</b>
+</h2>
+<p class="comment">Stops the internal master clock.</p>
+<pre><code class="language-javascript line-numbers">TransportHandler.stopInternalClock(int timestamp)</code></pre>
+<p><br><br></p>
+<h2 id="stopinternalclockonexternalstop"><b>stopInternalClockOnExternalStop</b>
+</h2>
+<p class="comment">Sets the internal clock to stop when the external clock was stopped.</p>
+<pre><code class="language-javascript line-numbers">TransportHandler.stopInternalClockOnExternalStop(bool shouldStop)</code></pre>
+<p><br><br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/unlocker/index.html">Unlocker</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>29.04.2021<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

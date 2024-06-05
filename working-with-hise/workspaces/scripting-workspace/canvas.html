@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="interface-designer"><img src="images/icon_scriptcontent.png"></img>
+<b>Interface Designer</b>
+</h1>
+<img src="images/custom/interface-designer.png"></img>
+<p>The Interface Designer is split in three parts:</p>
+<ul><li>The <a href="working-with-hise/workspaces/scripting-workspace/canvas.html#canvas">Canvas</a>
+, a WYSIWYG editor for your plugins GUI. </li>
+<li>The <a href="working-with-hise/workspaces/scripting-workspace/canvas.html#component-list">Component List</a>
+ which is a value-tree representation of all the UI Components that have been added to the Canvas.</li>
+<li>The <a href="working-with-hise/workspaces/scripting-workspace/canvas.html#property-editor">Property Editor</a>
+, with which you can change the properties of each UI Component, on the fly.</li>
+</ul>
+<h2 id="canvas"><b>Canvas</b>
+</h2>
+<img src="images/custom/canvas.png"></img>
+<p>The Canvas shows your plugins Graphical User Interface if you connect an Interface ScriptProcessor to it. (If you don't see anything yet, create a new User Interface by clicking the house symbol in the top-bar.)</p>
+<p>With the Pen/Lock symbol in the Toolbar you can toggle between the <b>Edit</b>
+ and <b>Play</b>
+-Mode. In <b>Edit Mode</b>
+ you can <b>right-click</b>
+ on the interface to create new UI Components and edit their properties in the Property Editor.</p>
+<p>When you lock down the interface into <b>Play Mode</b>
+ you can use the UI Components as in a compiled plugin.</p>
+<h3 id="toolbar"><b>Toolbar</b>
+</h3>
+<p>The Toolbar features convenient helpers, like a zoom selector, undo/redo functions and automatic positioners.</p>
+<table><thead><td><b>Icon </b>
+</td>
+<td><b>Shortcut </b>
+</td>
+<td><b>Name </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><img src="images/icon_showall.png"></img>
+</td>
+<td><code> </code>
+ </td>
+<td>Showall </td>
+<td>description </td>
+</tr>
+<tr><td><img src="images/icon_edit.png"></img>
+</td>
+<td><code>F4</code>
+ </td>
+<td>Edit </td>
+<td>Toggles the canvas between play mode(where you can actually use the Components) and edit mode where you can edit them and drag them around. </td>
+</tr>
+<tr><td><img src="images/icon_editoff.png"></img>
+</td>
+<td><code>F4</code>
+ </td>
+<td>Editoff </td>
+<td>Toggles the canvas between play mode(where you can actually use the Components) and edit mode where you can edit them and drag them around. </td>
+</tr>
+<tr><td><img src="images/icon_lock.png"></img>
+</td>
+<td><code> </code>
+ </td>
+<td>Lock </td>
+<td>description </td>
+</tr>
+<tr><td><img src="images/icon_move.png"></img>
+</td>
+<td><code> </code>
+ </td>
+<td>Move </td>
+<td>description </td>
+</tr>
+<tr><td><img src="images/icon_cancel.png"></img>
+</td>
+<td><code>escape</code>
+ </td>
+<td>Cancel </td>
+<td>Deselects all items </td>
+</tr>
+<tr><td><img src="images/icon_undo.png"></img>
+</td>
+<td><code>ctrl + Z</code>
+ </td>
+<td>Undo </td>
+<td>Undo the last property change. This is using the global undo manager, so it also undoes drag operations in the Component List or property changes in the Property Editor. </td>
+</tr>
+<tr><td><img src="images/icon_redo.png"></img>
+</td>
+<td><code>ctrl + Y</code>
+ </td>
+<td>Redo </td>
+<td>Same as undo says Captain Obvious. </td>
+</tr>
+<tr><td><img src="images/icon_rebuild.png"></img>
+</td>
+<td><code>ctrl + F5</code>
+ </td>
+<td>Rebuild </td>
+<td>Refreshes the UI model. </td>
+</tr>
+<tr><td><img src="images/icon_learn.png"></img>
+</td>
+<td><code> </code>
+ </td>
+<td>Learn </td>
+<td>description </td>
+</tr>
+<tr><td><img src="images/icon_vertical-align.png"></img>
+</td>
+<td><code> </code>
+ </td>
+<td>Vertical Align </td>
+<td>Align the selection vertically on the left edge. </td>
+</tr>
+<tr><td><img src="images/icon_horizontal-align.png"></img>
+</td>
+<td><code> </code>
+ </td>
+<td>Horizontal Align </td>
+<td>Align the selection horizontally on the top edge. </td>
+</tr>
+<tr><td><img src="images/icon_vertical-distribute.png"></img>
+</td>
+<td><code> </code>
+ </td>
+<td>Vertical Distribute </td>
+<td>Distribute the selection vertically with equal space. </td>
+</tr>
+<tr><td><img src="images/icon_horizontal-distribute.png"></img>
+</td>
+<td><code> </code>
+ </td>
+<td>Horizontal Distribute </td>
+<td>Distribute the selection horizontally with equal space. </td>
+</tr>
+<tr><td><img src="images/icon_edit-json.png"></img>
+</td>
+<td><code>J</code>
+ </td>
+<td>Edit Json </td>
+<td>description </td>
+</tr>
+<tr><td><img src="images/icon_suspend.png"></img>
+</td>
+<td><code> </code>
+ </td>
+<td>Suspend </td>
+<td>description </td>
+</tr>
+</table>
+<p class="comment">Behind the scenes, HISE uses a layer called ScriptComponent that wraps around the data model for each control. It stores a reference to the data and communicates between the actual GUI you see and the script / UI model in the backend. However, in some cases these connections may break and you'll wind up with a somewhat broken interface. This can easily be fixed by deleting all those wrappers and create them new from the UI model. You can do that with the <b>Rebuild Button</b>
+. If you only rebuild the interface, your ScriptProcessor script will not automatically be recompiled, so in order to make a full reset, you need to rebuild the interface first, and then recompile your script.</p>
+<h3 id="select-and-position-ui-components"><b>Select and position UI Components</b>
+</h3>
+<p>You can select components by clicking on them or dragging a lasso around many, for multiple selection. While holding the <b>Command/Ctrl key</b>
+ you can add and delete components from the selection. To deselect all components, press the <b>Escape key</b>
+.</p>
+<p>You can move the selected Components with <b>Mouse Dragging</b>
+ or the <b>Arrow Keys</b>
+ on your keyboard. The Modifier Keys change their effect depending on each method: </p>
+<table><thead><td><b>Modifier Key </b>
+</td>
+<td><b>Arrows Keys </b>
+</td>
+<td><b>Mouse Dragging </b>
+</td>
+</thead>
+<tr><td><b>Cmd / Ctrl </b>
+ </td>
+<td>Move the component in a 10px grid </td>
+<td>10px grid </td>
+</tr>
+<tr><td><b>Shift</b>
+ </td>
+<td>Change the width/height of the component </td>
+<td>Restrict the movement to horizontal / vertical</td>
+</tr>
+<tr><td><b>Alt</b>
+ </td>
+<td>- </td>
+<td>Duplicates the selected component<br></td>
+</tr>
+</table>
+<p class="comment">You have to start a Mouse drag before the Modifier Keys take effect.</p>
+<p class="comment">You can combine Modifier Keys. <code>Shift + Cmd + Right-Key</code>
+ will increase the selections component width by 10 pixels.</p>
+<h2 id="component-list"><b>Component List</b>
+</h2>
+<img src="images/custom/component-list.png"></img>
+<p>The <a href="ui-components/floating-tiles/hise/scriptcomponentlist.html">Component List</a>
+ shows a list of all UI Components that have been added to the Interface. You can add new components in here, too.</p>
+<p>The Z-order of the components starts on the top (background) and advances to the bottom (front).</p>
+<p>You can group components into each other. Create a <a href="ui-components/plugin-components/panel.html">Panel</a>
+ or a <a href="ui-components/plugin-components/viewport.html">Viewport</a>
+ and add or drag other components beneath them in the Component List. This will group components together, which makes it easy to implement page-like logic for complex projects.</p>
+<p>The little <b>green/red dot</b>
+ indicates if an UIComponent has its <code>saveinPreset</code>
+-property set to true or false. Learn more about this in the <a href="working-with-hise/project-management/user-presets/index.html">User Presets</a>
+ chapter.<br></p>
+<h2 id="property-editor"><b>Property Editor</b>
+</h2>
+<img src="images/custom/property-editor.png"></img>
+<p>The Property Editor displays a list of all available properties of a selected component. All UI Components have the same core properties like <b>ID</b>
+ and <b>Component Size</b>
+, but they may vary widely in their additional properties, depending on their specific use. Have a look at <a href="ui-components/plugin-components/index.html">Plugin Components</a>
+ for a list of all <b>Common-, and Component Specific properties</b>
+. </p>
+<p>When you select multiple components, the property change will affect all selected components. If the selection has varying property values, it will show an asterisk, indicating that you are editing multiple values.</p>
+<h3 id="set-the-id"><b>Set the ID</b>
+</h3>
+<p>The textbox in the top row is used to change the <b>ID</b>
+ of the component.</p>
+<p class="comment">Bear in mind that the ID is <b>ridiculously important</b>
+ for further processing - preset restoring, script referencing, resolving the UI parent hierarchy etc. - Try to pick a name once and stick to it because changing the ID later on will become more and more unpleasant over time.</p>
+<h3 id="copying-selected-properties-as-json"><b>Copying selected properties as JSON</b>
+</h3>
+<p>On the top-right of the Property Editor you can find two litte icons for copy & pasting properties with a JSON dump. With this functionality you can transfer multiple property values to other UI Components without hustle.<br> </p>
+<ul><li>Select a component and set its properties to your needs.</li>
+<li>Click on the property name to select it. You'll notice that it lights up. Use the usual modifier keys (Ctrl/Shift) to select multiple properties.</li>
+<li>Hit the <b>Copy</b>
+ Button to create a JSON dump in your clipboard containing all selected properties including their values. </li>
+<li>Select all components that you want to paste the property selection to.</li>
+<li>Click on the <b>Paste</b>
+ button to apply the property values for the entire selection.</li>
+</ul>
+<p class="comment">If you still have older HISE projects or are interested in the <a href="https://github.com/christophhart/hise_documentation/blob/master/NewInterfaceDesigner.md">History</a>
+ of the Interface Designer, please have a look at this link that explains the transition to the current Interface Designer concept. </p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="working-with-hise/workspaces/scripting-workspace/code-editor.html">The Code editor</a>
+</span>
+
+<p class="content-footer-metadata"><br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

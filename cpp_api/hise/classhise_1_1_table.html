@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="table"><b>Table</b>
+</h1>
+<p>A table is a data structure that allows editing of a look up table with a TableEditor. It uses a list of graph points to create a path which is rendered to a float array of the desired size.<br> </p>
+<h2 id="class-hierarchy"><b>Class Hierarchy</b>
+</h2>
+<h3 id="base-classes"><b>Base Classes</b>
+</h3>
+<ul><li><code>hise::SafeChangeBroadcaster</code>
+<br></li>
+</ul>
+<h3 id="derived-classes"><b>Derived Classes</b>
+</h3>
+<ul><li><code>hise::DiscreteTable</code>
+<br></li>
+<li><code>hise::MidiTable</code>
+<br></li>
+<li><code>hise::SampleLookupTable</code>
+<br></li>
+</ul>
+<h2 id="public-types"><b>Public types</b>
+</h2>
+<h3 id="enum-datatype"><b>enum DataType</b>
+</h3>
+<table><thead><td><b>Name </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><code>Midi</code>
+ </td>
+<td>in this mode, the table contains 128 elements and can be used for everything midi-related. </td>
+</tr>
+<tr><td><code>SampleLookupTable</code>
+ </td>
+<td>in this mode, the table contains 2048 elements and can be used for holding everything sample-related (waveforms, envelopes, etc.) </td>
+</tr>
+</table>
+<h2 id="class-methods"><b>Class methods</b>
+</h2>
+<h3 id="table"><b>Table</b>
+</h3>
+<pre><code class="language-clike line-numbers">Table()</code></pre>
+<p>Creates a new table of the specified type.<br> </p>
+<h3 id="gettablesize"><b>getTableSize</b>
+</h3>
+<pre><code class="language-clike line-numbers">int getTableSize() const =0</code></pre>
+<p>Overwrite this and return the table size.<br> </p>
+<h3 id="setgraphpoints"><b>setGraphPoints</b>
+</h3>
+<pre><code class="language-clike line-numbers">void setGraphPoints(const Array< GraphPoint > &newGraphPoints, int numPoints)</code></pre>
+<p>Sets the GraphPoints. If you need to refresh the internal table, you also have to call <a href="cpp_api/hise/classhise_1_1_table.html#filllookuptable">fillLookUpTable()</a>
+.<br> </p>
+<h3 id="exportdata"><b>exportData</b>
+</h3>
+<pre><code class="language-clike line-numbers">String exportData() const</code></pre>
+<p>Exports the data as base64 encoded String. This is not a ValueTree (so RestorableObject is no base class from Table), because it needs to be embedded in an XML attribute<br><a href="cpp_api/hise/classhise_1_1_table.html#restoredata">restoreData()</a>
+<br><br></p>
+<h3 id="restoredata"><b>restoreData</b>
+</h3>
+<pre><code class="language-clike line-numbers">void restoreData(const String &savedString)</code></pre>
+<p>Restores the data from a base64 encoded String.<br><a href="cpp_api/hise/classhise_1_1_table.html#exportdata">exportData()</a>
+<br><br></p>
+<h3 id="getnumgraphpoints"><b>getNumGraphPoints</b>
+</h3>
+<pre><code class="language-clike line-numbers">int getNumGraphPoints() const</code></pre>
+<p>Returns the number of graph points<br> </p>
+<h3 id="getgraphpoint"><b>getGraphPoint</b>
+</h3>
+<pre><code class="language-clike line-numbers">GraphPoint getGraphPoint(int pointIndex) const</code></pre>
+<p>Get a copy of the graph point at pointIndex.<br> </p>
+<h3 id="createpath"><b>createPath</b>
+</h3>
+<pre><code class="language-clike line-numbers">void createPath(Path &normalizedPath) const</code></pre>
+<p>This generates a normalized path from the GraphPoint array.<br>This is called by the editor to draw the path under the DragPoints.<br> </p>
+<h3 id="filllookuptable"><b>fillLookUpTable</b>
+</h3>
+<pre><code class="language-clike line-numbers">void fillLookUpTable()</code></pre>
+<p>Fills the look up table with the graph points generated from calculateGraphPoints()<br>Don't call this too often as it is quite heavy!<br> </p>
+<h3 id="getwritepointer"><b>getWritePointer</b>
+</h3>
+<pre><code class="language-clike line-numbers">float * getWritePointer()=0</code></pre>
+<p>Overwrite this and return a pointer to the data array.<br> </p>
+<h3 id="getxvaluetext"><b>getXValueText</b>
+</h3>
+<pre><code class="language-clike line-numbers">String getXValueText(float value)</code></pre>
+<p>This returns a String that can be used for displaying purposes.<br>You can supply a lambda for the conversion using setTextConverter().<br> </p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="cpp_api/hise/classhise_1_1_tempo_listener.html">TempoListener</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

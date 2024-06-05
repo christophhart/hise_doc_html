@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="frame1_block"><b>frame1_block</b>
+</h1>
+<p class="comment"><code>container.frame1_block</code>
+</p>
+<img src="images/sn_screen_frame1_block.png"></img>
+<p>A container that performs the processing on per-sample basis.<br>A useful abstraction in DSP processing is the usage of buffers: instead of calculating one output sample at a time, the host will send bigger chunks of the signal as an array of floating point numbers which can be calculated all at once. This yields an enormous performance advantage (eg. by using SIMD data operations), but also reducing the overhead of function calls and branching). The obvious disadvantage is the introduced latency since the host needs to wait until the buffer is full before sending the signal to the plugin.<br></p>
+<p>However there are a few use cases where the processing of a scriptnode patch needs to resort to per-sample calculation: most of them can be summarized by requiring a modulation signal in the audio rate frequency that cannot be downsampled without introducing artifacts.<br></p>
+<p>If that is the case, you will need to wrap the critical part of your network into one of these nodes and they will process their child nodes for each sample giving them the opportunity to true sample accuracy. However this comes with a <b>significant</b>
+ CPU overhead which most likely will exceed the actual processing time of most nodes so its highly recommended to only use this if its really necessary.</p>
+<p class="comment">Even if you need a fast update rate of your modulation, try if a <code>fix8_block</code>
+ container is enough precision - it will reduce the CPU overhead by a factor of 8!</p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scriptnode/list/container/framex_block.html">framex_block</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>24.06.2019<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

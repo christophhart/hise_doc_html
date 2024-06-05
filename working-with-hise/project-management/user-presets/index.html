@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="user-presets"><b>User Presets</b>
+</h1>
+<p>Loading and restoring the state of your plugin / app is a vital feature that's used in different occasions:</p>
+<ul><li>When you load up your plugin / app on <b>Initialisation</b>
+: This sets your initial values when starting up a fresh instance, or if you recompile your plugins ScriptProcessor script during development.</li>
+<li>When you select a <b>User preset</b>
+: A User preset can be either shipped with the plugin as <b>Factory Preset</b>
+ or created by the user (eg. with the <a href="ui-components/floating-tiles/plugin/presetbrowser.html">PresetBrowser</a>
+). </li>
+<li>When you re-load the plugin / app in a <b>DAW Session</b>
+: If you save a session in your DAW, your plugin needs to restore the saved state.</li>
+</ul>
+<p>All of these are handled by the User Preset system in HISE.</p>
+<h2 id="definition"><b>Definition</b>
+</h2>
+<p class="comment">A User preset is "a save-state of <b>Interface values</b>
+ from all <b>Restorable UI controls</b>
+ that you have defined in your <b>Main interface</b>
+". </p>
+<p> It will be saved in your projects <a href="working-with-hise/project-management/projects-folders/user-presets.html">UserPresets</a>
+ Folder. Let's tear apart that definition for further explanation:</p>
+<ul><li><b>Main Interface</b>
+<br>The Script Processor that you use for creating the main interface. By adding controls to this interface, you are building up a data model that is used for the User preset system.</li>
+</ul>
+<ul><li><b>Restorable UI control</b>
+<br>You'll certainly want to (re-)store some UI Components with a User Preset, while excluding other components from the UserPreset system (Navigation buttons, page handlers and buttons that load other user presets). You can do this with setting the <code>saveInPreset</code>
+ property of each <a href="ui-components/plugin-components/index.html">Plugin Component</a>
+ to enabled or disabled.</li>
+</ul>
+<p><br></p>
+<ul><li><b>Interface values</b>
+<br>The current value of the UI Component. Behind the scenes this value is a <code>var</code>
+ variable with its Data type depending on the kind of UI Component you use (Sliders will use a double precision floating point value, Buttons a boolean value and Comboboxes an integer number for the selected index starting with 1).<br>Since it's a <code>var</code>
+, it can even hold objects and arrays which is a backdoor for implementing a custom user preset system if you are not satisfied with the possibilities of HISE <a href="ui-components/floating-tiles/plugin/presetbrowser.html">Presetbrowser</a>
+.</li>
+</ul>
+<p>An important aspect of this definition is that it does <b>NOT</b>
+ save the state of any other HISE Module. So if you:</p>
+<ol><li>Add a sampler</li>
+<li>Load a samplemap (in the samplemap editor) and save the user preset</li>
+<li>Load another samplemap and save another preset</li>
+</ol>
+<p>both user presets will not contain any data about which sample map is stored <b>UNTIL</b>
+ you hook up the loading of the samplemap to a UI control on your main interface. In 99% of the use cases you will need that UI control anyway and for the 1% of data that should be really an internal property that you don't want to show to the user. If thats the case just add a control and set its <code>visiblity</code>
+ to <code>false</code>
+, so it won't be shown on your UI.</p>
+<h2 id="data-layout"><b>Data Layout</b>
+</h2>
+<p>A User preset is saved in the <code>.xml</code>
+ format. Let's take a look at a basic example with a Slider called "Volume" and a Button called "Bypass":</p>
+<pre><code class="language-javascript line-numbers">HiseSnippet 699.3ocsUttaSCCEG2tqdZsbQLId.5G2jFnTXafDRvn2PUv1pHiI91jmi6p0bribbFqBw6FOR7F.GmjtjBoiEjne6b4u6O6ykLwnY73XsAgacx7HNBeeh+bkcV+YTgBMd.3mL7ZZXjji5MOhFGyCPX7ZuyEF2pIJ82OdSOpjpX7BWHzoZAi+AQnvV3cxAuWHkinA7SDgkxd2CFyzp9ZoNAPYMhGJhxtjdA+HpKsFDDd8gABq13aoVdLjSOcvb+Y5unxx+TQr3b.RvnKxGNnL2n9yDxfIKtlwHDt4jhK8ZYW5GSNTDHtwewk+QoA5Tnn7a.twxH0bIj5tJjFokAtCXE3gKgWyL71j3yLhHaQDGa2iLVY4loT1xklrbQ3uS5qgDT1mFRujOx.F2HXq8871oyddda+poIJlUnUczpizV9wps1t8Wa2p82Z242CMcZkwb+MFsTxMUF1UoM2lvsTIgmyM6z4JpLgeShv0e4220uauurracoD0pwJg83HdtcQEnaEU.T9yFTKZjSHjpMsR7v7JguTDvMHAbHaPNUKSftzT5KO.fVk5dIVqVkqNqzsPMAmp7SiGPsTW2PNL.fQbiU3dGvC3WAiVY8FsHC3wWZ0QozFFoUNzwM+67dc4wu4kMPq9fpB8RGjn7A85CP+YuLLQoCRjT6xiYt8I4Afdik5mcMspXgcd48M0X1yqxYuJq72Qb2jLQXYypl2FUvqqU5+Lu4axd.Y3zobls.1ljQe9ecsUMP4i5DqPcwgTqQ.MDjiRB8gk4LNPhRwkwtd6FtghLauE859bUPpwOge4A65rw4A6tHHJjxL5yXYSUtckaj5AXRk9YhVjCc1c5tXZxwcHr.+LFy8P7Df7pU7rZq340Vwt0Vwd0Vw90VwKpshWdKJbes7sIVcX1XA3XxvzMYX7PEE5pR6.Q+RfIlyu</code></pre>
+<p>If you create a User preset, you will get a <code>.xml</code>
+ file that looks like this:</p>
+<pre><code class="language-javascript line-numbers"><Preset>
+    <Control type="ScriptSlider" id="Volume" value="0.125"/>
+    <Control type="ScriptButton" id="Bypass" value="0"/>
+</Preset></code></pre>
+<p>Loading the user preset will go through this list and set the value for each Control (UI Component) or execute its respective callback.</p>
+<ol><li>Controls which are connected to a Processor parameter just set the parameter of the Module as if you would have interacted with the Control via mouse / keyboard.</li>
+<li>Controls which have a scripted callback will execute their callbacks asynchronously.</li>
+</ol>
+<p>The values are set according to this files top-down flow. There are a few edge cases in which you need to be aware of this: If you have a Slider that controls the <a href="hise-modules/sound-generators/list/streamingsampler.html#chains">Sample Start offset</a>
+ of a <a href="hise-modules/sound-generators/list/streamingsampler.html">Sampler</a>
+ and a Combobox that selects the different <a href="tutorials/recipes/ui/general.html#switch-samplemaps-with-a-combobox">SampleMap indexes</a>
+, the Slider must be placed after the ComboBox to set the values in this order:</p>
+<ol><li>Load the new SampleMap including samples</li>
+<li>Apply the sample start offset modulation value to the new sample set.</li>
+</ol>
+<p>If the order is wrong, you will end up changing the sample start offset of the old samples, and then load the SampleMap which resets the start offset to the original values. In this case the Slider will not have any effect.</p>
+<h2 id="file-management"><b>File Management</b>
+</h2>
+<p>These files are saved in the <a href="working-with-hise/project-management/projects-folders/user-presets.html">UserPresets</a>
+ folder, which is either the subfolder of your project folder during development, or a subfolder in your <b>app data</b>
+ directory when you are using the compiled plugin. The <a href="ui-components/floating-tiles/plugin/presetbrowser.html">Preset Browser</a>
+ mirrors the file structure found in this directory. By default it uses a three level hierarchy (Banks -> Categories -> Presets), but you can change it to a 2-level or even flat list hierarchy if that is not apprpriate for your project (simple FX plugins usually need only one level of hierarchy).</p>
+<h2 id="user-presets-in-compiled-plugins"><b>User presets in compiled plugins</b>
+</h2>
+<p>If you export a project it will embed all .presets found in the projects UserPresets directory into the plugin. After the user has installed the plugin and loads it up for the first time (or more precisely, if there are no existing user presets in the expected directory), it will extract the user presets as factory content into the predefined location found in:</p>
+<p><b>Windows</b>
+:</p>
+<pre><code class="language-javascript line-numbers">%APPDATA%/Roaming/<Company>/<Product>/User Presets</code></pre>
+<p><b>macOS</b>
+:</p>
+<pre><code class="language-javascript line-numbers">~/Library/Application Support/<Company>/<Product>/User Presets</code></pre>
+<p>This process will take place if this directory is empty doesn't exist yet. If you want to ship an update with new user presets you will have to make sure that people can add them manually. Also be aware that on the end user side the folder is called <code>User Presets</code>
+ (instead of the nerdy <code>UserPresets</code>
+).</p>
+<h2 id="the-init-preset"><b>The Init Preset</b>
+</h2>
+<p>Every project has an initial state which will be the state when the user for the first time instantiates the plugin or loads the app. It will be the exact state of your project when you exported it in HISE. In some cases this may be subideal because:</p>
+<ul><li>It may deprive the user of the funtctionality to reset the plugin to a vanilla state</li>
+<li>It may be messy (you might end up changing values accidently before exporting which would change the default state)</li>
+<li>The Scripting call <code>Engine.getCurrentUserPresetName()</code>
+ will return an empty string.</li>
+<li>If you are using Git, it will create a lot of noise in a commit because the control values will be all over the place.</li>
+</ul>
+<p>The solution to all these problems is to create a <b>Init user preset</b>
+ that contains the exact state how you want your project to load up. During development, everytime before you (.xml) save the project (or every time you want to save it and commit it to Git) just load the Init preset before saving. This will make sure that the control values are always the same reducing Git noise and general unpredictability. The user can load the init state to reset your plugin to default values, and even if <code>Engine.getCurrentUserPresetName()</code>
+ still returns an empty string, you can hardcode a preset Label to show the initial name on startup:</p>
+<pre><code class="language-javascript line-numbers">const var presetLabel = Content.getComponent("PresetLabel");
+presetLabel.set("text", "Init"); // or whatever you call your init preset</code></pre>
+<p class="comment">Speaking of default values.. Please make sure that the <code>defaultValue</code>
+ property of each <a href="ui-components/plugin-components/index.html">UI Component</a>
+ will match the value in the <code>onInit</code>
+ callback. Some hosts (ProTools AFAIK) will override the init preset with the default values for all plugin parameters so if these values differ, you may end up with two versions of your plugin's initial state.</p>
+<h2 id="scripting-access-to-user-presets"><b>Scripting Access to User Presets</b>
+</h2>
+<p>The <a href="scripting/scripting-api/engine/index.html">Engine</a>
+ Scripting API holds the methods to access the User Preset system with scripting:</p>
+<pre><code class="language-javascript line-numbers">// Returns the current UserPresets name
+Engine.getCurrentUserPresetName(); 
+
+// Returns an Array with Strings of all UserPreset derived from the UserPresets folder
+const var x = Engine.getUserPresetList(); 
+for (i in x)
+    Console.print(i);
+
+// Loads a User preset with a string (relative path to the .preset file without the file ending) 
+Engine.loadUserPreset("New Directory/test");
+
+// Loads the next/previous UserPreset, with a boolean to stay in the same directory
+Engine.loadNextUserPreset(1);
+Engine.loadPreviousUserPreset(1);
+
+// Saves the current plugin state as new User Preset
+Engine.saveUserPreset("test2");</code></pre>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="working-with-hise/workspaces/index.html">Workspaces</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>19.06.2019<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

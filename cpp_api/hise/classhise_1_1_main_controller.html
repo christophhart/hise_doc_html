@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="maincontroller"><b>MainController</b>
+</h1>
+<p>The grand central station of HISE.<br>The MainController class represents the instance of a HISE project and can be used to access quasi-global data / methods.<br>It is divided into multiple sub-classes which encapsulate different logic in order to bring some order into the enormous task of handling everything:<br></p>
+<ul><li>the SampleManager subclass handles pooling / preloading of samples<br></li>
+<li>the MacroManager (which itself has multiple subclasses) handle all automation / MIDI controller tasks<br></li>
+<li>the UserPresetHandler takes care of the loading / browsing of user presets.<br></li>
+</ul>
+<p><br>Implementations of this class are also derived by the juce::AudioProcessor and some other helper classes. Check out the hise::FrontendProcessor class for actual usage in a C++ HISE project.<br>Most classes just want a reference to the MainController instance. If you want to use it in your C++ classes, I recommend subclassing it from <a href="cpp_api/hise/classhise_1_1_controlled_object.html">ControlledObject</a>
+, which exists for this sole purpose.<br> </p>
+<h2 id="class-hierarchy"><b>Class Hierarchy</b>
+</h2>
+<h3 id="base-classes"><b>Base Classes</b>
+</h3>
+<ul><li><code>hise::GlobalScriptCompileBroadcaster</code>
+<br></li>
+<li><code>hise::OverlayMessageBroadcaster</code>
+<br></li>
+<li><code>hise::ThreadWithQuasiModalProgressWindow::Holder</code>
+<br></li>
+<li><code>Timer</code>
+<br></li>
+</ul>
+<h2 id="class-methods"><b>Class methods</b>
+</h2>
+<h3 id="compileallscripts"><b>compileAllScripts</b>
+</h3>
+<pre><code class="language-clike line-numbers">void compileAllScripts()</code></pre>
+<p>Compiles all scripts in the main synth chain<br> </p>
+<h3 id="allnotesoff"><b>allNotesOff</b>
+</h3>
+<pre><code class="language-clike line-numbers">void allNotesOff(bool resetSoftBypassState=false)</code></pre>
+<p>Call this if you want all voices to stop.<br> </p>
+<h3 id="beginparameterchangegesture"><b>beginParameterChangeGesture</b>
+</h3>
+<pre><code class="language-clike line-numbers">void beginParameterChangeGesture(int index)</code></pre>
+<p>same as AudioProcessor::beginParameterGesture().<br> </p>
+<h3 id="endparameterchangegesture"><b>endParameterChangeGesture</b>
+</h3>
+<pre><code class="language-clike line-numbers">void endParameterChangeGesture(int index)</code></pre>
+<p>same as AudioProcessor::beginParameterGesture().<br> </p>
+<h3 id="setpluginparameter"><b>setPluginParameter</b>
+</h3>
+<pre><code class="language-clike line-numbers">void setPluginParameter(int index, float newValue)</code></pre>
+<p>sets the plugin parameter to the new Value.<br> </p>
+<h3 id="getuptime"><b>getUptime</b>
+</h3>
+<pre><code class="language-clike line-numbers">double getUptime() const noexcept</code></pre>
+<p>Returns the uptime in seconds.<br> </p>
+<h3 id="getbpm"><b>getBpm</b>
+</h3>
+<pre><code class="language-clike line-numbers">double getBpm() const noexcept</code></pre>
+<p>returns the tempo as bpm.<br> </p>
+<h3 id="skin"><b>skin</b>
+</h3>
+<pre><code class="language-clike line-numbers">void skin(Component &c)</code></pre>
+<p>skins the given component (applies the global look and feel to it).<br> </p>
+<h3 id="addtempolistener"><b>addTempoListener</b>
+</h3>
+<pre><code class="language-clike line-numbers">void addTempoListener(TempoListener *t)</code></pre>
+<p>adds a <a href="cpp_api/hise/classhise_1_1_tempo_listener.html">TempoListener</a>
+ to the main controller that will receive a callback whenever the host changes the tempo.<br> </p>
+<h3 id="removetempolistener"><b>removeTempoListener</b>
+</h3>
+<pre><code class="language-clike line-numbers">void removeTempoListener(TempoListener *t)</code></pre>
+<p>removes a <a href="cpp_api/hise/classhise_1_1_tempo_listener.html">TempoListener</a>
+.<br> </p>
+<h3 id="getmainsynthchain"><b>getMainSynthChain</b>
+</h3>
+<pre><code class="language-clike line-numbers">ModulatorSynthChain * getMainSynthChain()=0</code></pre>
+<p>this must be overwritten by the derived class and return the master synth chain.<br> </p>
+<h3 id="getcpuusage"><b>getCpuUsage</b>
+</h3>
+<pre><code class="language-clike line-numbers">float getCpuUsage() const</code></pre>
+<p>Returns the time that the plugin spends in its processBlock method.<br> </p>
+<h3 id="getnumactivevoices"><b>getNumActiveVoices</b>
+</h3>
+<pre><code class="language-clike line-numbers">int getNumActiveVoices() const</code></pre>
+<p>Returns the amount of playing voices.<br> </p>
+<h3 id="isinitialised"><b>isInitialised</b>
+</h3>
+<pre><code class="language-clike line-numbers">bool isInitialised() const noexcept</code></pre>
+<p>This returns always true after the processor was initialised.<br> </p>
+<h3 id="setglobalpitchfactor"><b>setGlobalPitchFactor</b>
+</h3>
+<pre><code class="language-clike line-numbers">void setGlobalPitchFactor(double pitchFactorInSemiTones)</code></pre>
+<p>This sets the global pitch factor.<br> </p>
+<h3 id="getglobalpitchfactor"><b>getGlobalPitchFactor</b>
+</h3>
+<pre><code class="language-clike line-numbers">double getGlobalPitchFactor() const</code></pre>
+<p>This returns the global pitch factor.<br>Use this in your startVoice method and multiplicate it with your angleDelta.<br> </p>
+<h3 id="getglobalpitchfactorsemitones"><b>getGlobalPitchFactorSemiTones</b>
+</h3>
+<pre><code class="language-clike line-numbers">double getGlobalPitchFactorSemiTones() const</code></pre>
+<p>This returns the global pitch factor as semitones.<br>This can be used for displaying / saving purposes.<br> </p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="cpp_api/hise/classhise_1_1_midi_player.html">MidiPlayer</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

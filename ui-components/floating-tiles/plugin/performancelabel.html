@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="performancelabel"><b>PerformanceLabel</b>
+</h1>
+<p class="comment">Shows the plugins CPU, RAM and Voices Use.</p>
+<img src="images/floating-tiles/performancelabel.png"></img>
+<table><thead><td><b>ID </b>
+</td>
+<td><b>Default Value </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><code>Font</code>
+ </td>
+<td>Oxygen Bold </td>
+<td>Select a Font </td>
+</tr>
+<tr><td><code>FontSize</code>
+ </td>
+<td>14.0 </td>
+<td>Change the Fonts size </td>
+</tr>
+</table>
+<h2 id="cpu"><b>CPU</b>
+</h2>
+<p>The <b>CPU</b>
+ value returns the percentage of time that the CPU needs to calculate the content of the current audio buffer.</p>
+<p>E.g.: 30% means that if you have to fill 512 samples that will produce 10ms of audio at 44,1kHz, it might take up to 3 ms to calculate it. </p>
+<p><a href="https://forum.hise.audio/topic/1548/cpu-usage-again">Discussion in the Forum</a>
+</p>
+<h2 id="scripting-calls"><b>Scripting calls</b>
+</h2>
+<p>You can get access to the PerformanceLabels individual values with these Scripting methods:</p>
+<p><a href="scripting/scripting-api/engine/index.html#getcpuusage">Engine.getCpuUsage()</a>
+</p>
+<p><a href="scripting/scripting-api/engine/index.html#getmemoryusage">Engine.getMemoryUsage()</a>
+</p>
+<p><a href="scripting/scripting-api/engine/index.html#getnumvoices">Engine.getNumVoices()</a>
+</p>
+<pre><code class="language-javascript line-numbers">Console.print(Engine.getCpuUsage());
+
+Console.print(Engine.getMemoryUsage());
+
+Console.print(Engine.getNumVoices());</code></pre>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="ui-components/floating-tiles/plugin/activityled.html">ActivityLed</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>18.03.2019<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

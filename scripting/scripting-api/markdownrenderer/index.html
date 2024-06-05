@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="markdownrenderer"><b>MarkdownRenderer</b>
+</h1>
+<p><br>The <a href="ui-components/floating-tiles/plugin/markdownpanel.html">MarkdownPanel</a>
+ is a FloatingTile that can be used to display the documentation for your plugin using the markdown syntax. However for some use cases, this is overkill and requires to setup a file directory (unless you give it a custom string to parse).</p>
+<p>If you need more customizability, you can now create an object of this type using <a href="scripting/scripting-api/content/index.html#createmarkdownrenderer">Content.createMarkdownRenderer()</a>
+ and use it to render dynamic markdown text directly on a Panel (or any other paint callback with a <code>Graphics</code>
+ object like LAF functions).</p>
+<p>In order to use it, create an object, give it a string to display, set the width of the render area (so that it can calculate the line breaks and layout) and then call <a href="scripting/scripting-api/graphics/index.html#drawmarkdowntext">Graphics.drawMarkdownText()</a>
+ in order to render it on your panel.</p>
+<p><br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="getstyledata"><b>getStyleData</b>
+</h2>
+<p class="comment">Returns the current style data.</p>
+<pre><code class="language-javascript line-numbers">MarkdownRenderer.getStyleData()</code></pre>
+<p><br>Returns an object containing the style information for the markdown text.<br></p>
+<h2 id="setimageprovider"><b>setImageProvider</b>
+</h2>
+<p class="comment">Creates an image provider from the given JSON data that resolves image links.</p>
+<pre><code class="language-javascript line-numbers">MarkdownRenderer.setImageProvider(var data)</code></pre>
+<p><br>This function lets you define an image provider which is used to resolve image links in the markdown text</p>
+<p>By default, the image rendering is non-functional when using a MarkdownRenderer, but you can supply it with image files and even <a href="scripting/scripting-api/path/index.html">Path</a>
+ objects to render a path. The parameter you pass in must be a JSON object with a list of metadata objects that will be used to determine how to resolve image links.</p>
+<table><thead><td><b>Property </b>
+</td>
+<td><b>Type </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><code>URL</code>
+ </td>
+<td>String </td>
+<td>the URL that points to the image. Should be a relative and valid markdown link URL </td>
+</tr>
+<tr><td><code>Type</code>
+ </td>
+<td><code>"Path"</code>
+ or <code>"Image"</code>
+ </td>
+<td>A string describing the type of the image - whether its a (pooled) image or a monochromatic icon rendered from a path. </td>
+</tr>
+<tr><td><code>Data</code>
+ </td>
+<td>String or <a href="scripting/scripting-api/path/index.html">Path</a>
+ </td>
+<td>Depending on the type, this must either be a image reference (using the <code>{PROJECT_FOLDER}</code>
+) wildcard or a reference to a path object. Note: You can also just pass in the Base64 string describing the path so you don't need to create a path object just for this function. </td>
+</tr>
+<tr><td><code>Colour</code>
+ </td>
+<td>32bit (ARGB) </td>
+<td>the colour of the path (only useful when rendering a path obviously). </td>
+</tr>
+</table>
+<p>Note that you can use the non-standard syntax of defining the size of the path inside the link:</p>
+<ul><li>if you want it to have an absolute size, use <code>![](link-to-image:80px)</code>
+.</li>
+<li>if you want it to have a relative size, use <code>![](link-to-image:50%)</code>
+</li>
+</ul>
+<h4 id="example:"><b>Example:</b>
+</h4>
+<pre><code class="language-javascript line-numbers">const var md = Content.createMarkdownRenderer();
+
+const var p = Content.createPath();
+
+// Create a triangle
+p.startNewSubPath(0.0, 0.0);
+p.lineTo(1.0, 1.0);
+p.lineTo(0.0, 1.0);
+p.closeSubPath();
+
+const var imageData = 
+[
+{
+	"URL": "my-path",
+	"Type": "Path",
+	"Data": p,
+	"Colour": Colours.blue
+}];
+
+md.setImageProvider(imageData);
+
+md.setText("### Example\n> Please render a path like an icon\n![](/my-path:30%)this is text after the icon");
+
+md.setTextBounds([10, 10, 200, 9000]);
+
+const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{
+	g.fillAll(0xFF111111);
+	g.drawMarkdownText(md);
+});</code></pre>
+<p><br></p>
+<h2 id="setstyledata"><b>setStyleData</b>
+</h2>
+<p class="comment">Sets the style data for the markdown renderer.</p>
+<pre><code class="language-javascript line-numbers">MarkdownRenderer.setStyleData(var styleData)</code></pre>
+<p><br>Allows you to style the markdown output. In order to use it, get a JSON object with the default values using <a href="scripting/scripting-api/markdownrenderer/index.html#getstyledata">getStyleData()</a>
+, then change the properties and call this method.</p>
+<p class="comment">It's very likely that these properties will change over time (which is why I don't provide a soon-to-be-deprecated list of available properties). The best "documentation" for the available properties is using <code>Console.print(trace(md.getStyleData()))</code>
+.</p>
+<p><br></p>
+<h2 id="settext"><b>setText</b>
+</h2>
+<p class="comment">Set the markdown text to be displayed.</p>
+<pre><code class="language-javascript line-numbers">MarkdownRenderer.setText( String markdownText)</code></pre>
+<p><br>Sets the text and parses the markdown elements. You need to call this before rendering the text obviously.</p>
+<p class="comment">If you want a newline, you need to use the raw <code>\n</code>
+ character<br></p>
+<h2 id="settextbounds"><b>setTextBounds</b>
+</h2>
+<p class="comment">Parses the text for the specified area and returns the used height (might be more or less than the height of the area passed in).</p>
+<pre><code class="language-javascript line-numbers">MarkdownRenderer.setTextBounds(var area)</code></pre>
+<p><br>Call this after you've set the text in order to create the layout of the text. This will also set the absolute position in the graphics context later. The argument must be a valid Rectangle (= array of 4 float numbers), however since the height is being calculated automatically, there's absolutely no reason to NOT use <code>9000</code>
+ as height.<br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/math/index.html">Math</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>02.07.2022<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

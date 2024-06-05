@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="unorderedstack"><b>UnorderedStack</b>
+</h1>
+<p><br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="asbuffer"><b>asBuffer</b>
+</h2>
+<p class="comment">Returns a buffer that refers the data.</p>
+<pre><code class="language-javascript line-numbers">UnorderedStack.asBuffer(bool getAllElements)</code></pre>
+<p><br><br></p>
+<h2 id="clear"><b>clear</b>
+</h2>
+<p class="comment">Clears the stack.</p>
+<pre><code class="language-javascript line-numbers">UnorderedStack.clear()</code></pre>
+<p><br><br></p>
+<h2 id="contains"><b>contains</b>
+</h2>
+<p class="comment">checks if the number is in the stack.</p>
+<pre><code class="language-javascript line-numbers">UnorderedStack.contains(var value)</code></pre>
+<p><br><br></p>
+<h2 id="copyto"><b>copyTo</b>
+</h2>
+<p class="comment">Copies the stack into the given container.</p>
+<pre><code class="language-javascript line-numbers">UnorderedStack.copyTo(var target)</code></pre>
+<p><br><br></p>
+<h2 id="insert"><b>insert</b>
+</h2>
+<p class="comment">Inserts a number at the end of the stack.</p>
+<pre><code class="language-javascript line-numbers">UnorderedStack.insert(var value)</code></pre>
+<p><br><br></p>
+<h2 id="isempty"><b>isEmpty</b>
+</h2>
+<p class="comment">Checks if any number is present in the stack.</p>
+<pre><code class="language-javascript line-numbers">UnorderedStack.isEmpty()</code></pre>
+<p><br><br></p>
+<h2 id="remove"><b>remove</b>
+</h2>
+<p class="comment">removes the given number and fills the gap.</p>
+<pre><code class="language-javascript line-numbers">UnorderedStack.remove(var value)</code></pre>
+<p><br><br></p>
+<h2 id="removeelement"><b>removeElement</b>
+</h2>
+<p class="comment">Removes the element at the given number and fills the gap.</p>
+<pre><code class="language-javascript line-numbers">UnorderedStack.removeElement(int index)</code></pre>
+<p><br><br></p>
+<h2 id="removeifequal"><b>removeIfEqual</b>
+</h2>
+<p class="comment">Removes the matching event from the stack and puts it in the holder.</p>
+<pre><code class="language-javascript line-numbers">UnorderedStack.removeIfEqual(var holder)</code></pre>
+<p><br><br></p>
+<h2 id="setiseventstack"><b>setIsEventStack</b>
+</h2>
+<p class="comment">Sets this stack to hold HISE events rather than floating point numbers.</p>
+<pre><code class="language-javascript line-numbers">UnorderedStack.setIsEventStack(bool shouldBeEventStack, var eventCompareFunction)</code></pre>
+<p><br><br></p>
+<h2 id="size"><b>size</b>
+</h2>
+<p class="comment">Returns the number of values in the stack.</p>
+<pre><code class="language-javascript line-numbers">UnorderedStack.size()</code></pre>
+<p><br><br></p>
+<h2 id="storeevent"><b>storeEvent</b>
+</h2>
+<p class="comment">Stores the event into the message holder.</p>
+<pre><code class="language-javascript line-numbers">UnorderedStack.storeEvent(int index, var holder)</code></pre>
+<p><br><br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/userpresethandler/index.html">UserPresetHandler</a>
+</span>
+
+<p class="content-footer-metadata"><br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

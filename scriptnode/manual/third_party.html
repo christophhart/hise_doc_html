@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="third-party-c++-nodes"><b>Third Party C++ Nodes</b>
+</h1>
+<p><br>If you <a href="working-with-hise/menu-reference/export/index.html#compile-dsp-networks-as-dll">export</a>
+ your scriptnode network as dynamic library, it will create a C++ file for each network. HISE will then load this code as dynamic library and allows you to use the C++ version of your networks inside HISE (either as "frozen" DspNetwork, a node inside a network or as HardcodedFX module). </p>
+<p>When you export your plugin, it will include these files into the C++ compilation so that you don't need to bother about shipping the dynamic library file alongside your plugin / app.</p>
+<p>But it doesn't stop there. This system can also be used to add any arbitrary C++ DSP code as node and even lets you run HISE under your IDE's debugger (VS or XCode) while developing the C++ nodes.</p>
+<p>In order to do so, you just need to add your files in the subfolder <code>DspNetworks/ThirdParty</code>
+, and then use the same workflow like when you're exporting DspNetworks. When creating your nodes, you need to follow these rules:</p>
+<ul><li>One file per node. The file must have the file extension <code>.h</code>
+ and must be named exactly like the node that it represents.</li>
+<li>Any additional source code must be placed in the <code>src</code>
+ subfolder of the directory (and then included by the node file).</li>
+<li>If you want to use your nodes inside a DspNetwork that you want to compile, you have to define a <code>node_properties.json</code>
+ file that contains information required by the code generator.</li>
+<li>The file must define a class inside the <code>project</code>
+ namespace with the same name as the node and the class must be a valid node class.</li>
+</ul>
+<p>The API looks very similar to the classes that you use inside a <code>snex_node</code>
+. But the most simplest way to follow these rules is to use the tool function in the file menu <b>Create Third Party C++ node template</b>
+. This will create a file with your desired name and adds a C++ class that compiles as node with all required functions and metadata informations (it will also create the node_properties.json file with some default flags). From there you can start implementing your DSP algorithms (or write the glue code to embed third party algorithms from the <code>src</code>
+ subfolder).</p>
+<p class="comment">If you're on Windows, you can choose to close HISE after the dll compilation and run the dll in the VS debugger by double clicking on the solution file. On macOS it's a little bit more complicated because you have to select HISE as debug executable in the Xcode scheme editor.</p>
+<h3 id="attention!"><b>Attention!</b>
+</h3>
+<p>One thing you need to watch out for: when exporting the dll file, HISE will create a copy of all the files in the <code>ThirdParty</code>
+ folder and move it to the dll <code>DspNetwork/Binaries/Source</code>
+ folder as well as to the<br><code>PROJECT_ROOT/AdditionalSourceCode/nodes</code>
+ folder (for when you export your main project later on). Depending on your workflow, you might end up editing the copies of the file in these temporary build locations. This will result in data loss if you reexport the DspNetwork because it will then overwrite your edited files with the original ones from the <code>ThirdParty</code>
+ folder. In order to avoid this, <b>make sure to copy your edited files back to the </b>
+<b>ThirdParty</b>
+<b> folder before reexporting!</b>
+</p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scriptnode/101/index.html">Scriptnode 101</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>14.06.2022<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

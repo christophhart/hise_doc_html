@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="lerp<typename-indextype>"><b>lerp<typename IndexType></b>
+</h1>
+<p>A index type with linear interpolation<br>This index type builts upon the <a href="scriptnode/snex_api/index_types/float_index.html">float_index</a>
+ type and offers inbuilt interpolation when accessing a floating point array!<br></p>
+<pre><code class="language-clike line-numbers">span<float, 4> data = { 10.0f, 11.0f, 12.0f, 13.0f };
+
+// First we define an integer index with the wrap logic and a matching upper limit
+// to the span above
+using WrapIndex = index::wrapped<4, true>;
+
+// Now we take this index and transform it to an unscaled float index
+// using double precision as input
+using FloatIndex = index::unscaled<double, WrapIndex>;
+
+// We can now wrap the float index into the lerp template and get linear interpolation.
+using Interpolator = index::lerp<FloatIndex>;
+
+Interpolator idx(5.5); // the wrap logic transforms this to 1.5
+
+// Calculate the interpolated value (11.5f)
+auto x = data[idx];
+
+// Compile error! The interpolation will calculate a value so you can't reference it!
+auto& x = data[idx];</code></pre>
+<p><br></p>
+<h2 id="class-methods"><b>Class methods</b>
+</h2>
+<h3 id="lerp"><b>lerp</b>
+</h3>
+<pre><code class="language-clike line-numbers">lerp(Type initValue=Type(0))</code></pre>
+<p>Create a interpolator with the given value.<br> </p>
+<h3 id="operator="><b>operator=</b>
+</h3>
+<pre><code class="language-clike line-numbers">lerp & operator=(Type v)</code></pre>
+<p>Assign a new value to the interpolator.<br> </p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scriptnode/snex_api/math_api/index.html">SNEX math functions</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

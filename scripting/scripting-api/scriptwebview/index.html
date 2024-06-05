@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="scriptwebview"><b>ScriptWebView</b>
+</h1>
+<p><br>The WebView widget allows you to render parts of your UI with the native browser technology on your OS. The integration into HISE is pretty straightforward and it allows bidirectional communication and resource management.</p>
+<p>In order to use the webview, just create it, set its bounds and then give it a root directory and a initial file to render. </p>
+<h3 id="component-properties"><b>Component Properties</b>
+</h3>
+<p>There are a few special component properties that can be used to define the behaviour of the WebView</p>
+<table><thead><td><b>Property </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><code>rootDirectory</code>
+ </td>
+<td>A folder on your harddrive that will be used as root folder for all URLs </td>
+</tr>
+<tr><td><code>indexFile</code>
+ </td>
+<td>A relative file path from the root directory to the HTML file you want to display initially. </td>
+</tr>
+<tr><td><code>enableCache</code>
+ </td>
+<td>If this is true, then it will not reload the files from disk and cache every resource that you have requested. Usually you want to keep this off during development and then set it to true when you're done (this property needs to be enabled when you want to embed & export the web resources) </td>
+</tr>
+<tr><td><code>enablePersistence</code>
+ </td>
+<td>if true, then every function call and JS code passed into evaluate() will be logged and called when a new webview is created. This allows a persistent state (see below for a more detailed explanation </td>
+</tr>
+</table>
+<p>In addition to the "trivial" integration of a native webview handle into HISE there are a few quality of life improvements that will make working with a webview in HISE morestraightforward:</p>
+<h3 id="resource-management"><b>Resource management</b>
+</h3>
+<p>During development, the files will be loaded from disk but for a compiled plugin you can embed all the resources into your plugin and load it from memory (so that you won't have to distribute the web files to the end user).</p>
+<p class="comment">The embedding of the resources is purely optional and depends on whether the web resource root directory is a child of the HISE project folder - if it is, then we'll assume that the end user will not have your HISE project folder and embed it, but if the web root is somewhere else (eg. the app data folder) then we'll assume that you will prefer installing the web files on the end user's machine.</p>
+<p>Also keep in mind that if you want to embed the resources that have to be loaded at the time you export the plugin.</p>
+<h3 id="automatic-scaling-"><b>Automatic scaling </b>
+</h3>
+<p>We're still living in plugin-world where responsiveness is not the status quo and the only thing that people have started to expect is to resize the UI while keeping the aspect ratio the same. The zoom level system of HISE is extended into the webview, which means that whenever you change the scaling factor it will resize the UI handle and change the browser's zoom level to match the scale factor (exactly as if you would use Ctrl+/- in your browser).</p>
+<h3 id="persistence"><b>Persistence</b>
+</h3>
+<p>The lifetime of the webview is decoupled from the application state so we need to find a way to tell a webview that was created later to be updated to the current app state. For example if you show the value of a slider in the web view you would want it to display the correct slider value if you close and reopen the plugin window. The way that HISE handles this is that it keeps track of all communication between the HISE layer and the webview and then "repeats" every message after a new webview has been created (think of it as a "recap of everything that happened until now").</p>
+<p>There are a few things to keep in mind:</p>
+<ol><li>The WebView should be considered as a pure, stateless UI element that can be destroyed and recreated without interrupting the data model or signal processing of your plugin (since that's how plugins work). Updating the data model will always be the responsibility of HISE.</li>
+<li>The Webview is a native UI handle that is placed on top of the plugin interface. This means that you can't use any alpha blending or masking and put UI elements behind / infront of it.</li>
+<li>During development, this might create a few glitches (the scale factor might be off if you're displaying a webview in the Interface designer, or it might overlap<br> components there.<br> </li>
+</ol>
+<p class="comment">Make sure to checkout the tutorial project in the <a href="https://github.com/christophhart/hise_tutorial/WebViewExample">HISE  tutorial</a>
+ repo which contains multiple use cases</p>
+<p><br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="addtomacrocontrol"><b>addToMacroControl</b>
+</h2>
+<p class="comment">Adds the knob / button to a macro controller (from 0 to 7).</p>
+<pre><code class="language-javascript line-numbers">ScriptWebView.addToMacroControl(int macroIndex)</code></pre>
+<p><br><br></p>
+<h2 id="bindcallback"><b>bindCallback</b>
+</h2>
+<p class="comment">Binds a HiseScript function to a Javascript callback id.</p>
+<pre><code class="language-javascript line-numbers">ScriptWebView.bindCallback( String callbackId,  var functionToCall)</code></pre>
+<p><br>This will bind a callable HiseScript object (so either a function, an inline function or a broadcaster) to a function id in the WebView so you can call it from within JS in the web browser. In order to use this, just pass in a function ID that you will then use in JS to call this and a function with a single parameter. This parameter will be an array with all arguments that you pass into the JS function. You can also return a value which will then be used in a JS Promise to be evaluated asynchronously later:</p>
+<h4 id="javascript-in-your-webview:"><b>Javascript in your webview:</b>
+</h4>
+<pre><code class="language-javascript line-numbers">someFunction({"value": Math.random()}).then ((result) => 
+{ 
+    console.log(result);
+});</code></pre>
+<h4 id="hisescript"><b>HiseScript</b>
+</h4>
+<pre><code class="language-javascript line-numbers">wv.bindCallback("someFunction", function(args)
+{
+	Console.print(args.value);
+	return args.value * 2.0;
+});</code></pre>
+<p><br></p>
+<h2 id="callfunction"><b>callFunction</b>
+</h2>
+<p class="comment">Calls the JS function (in the global scope) with the given arguments.</p>
+<pre><code class="language-javascript line-numbers">ScriptWebView.callFunction( String javascriptFunction,  var args)</code></pre>
+<p><br>You can use this method in order to (asynchronously) call a JS function that is visible to the global scope (=attached to the global windows). This function should not be called on the audio thread as it involves string allocation and JSON parsing, so make sure you defer the call if you want to react on a MIDI input (or signal cable).</p>
+<h4 id="hisescript"><b>HiseScript</b>
+</h4>
+<pre><code class="language-javascript line-numbers">wv.callFunction("someFunction", {"value": Math.random()});</code></pre>
+<h4 id="javascript-in-your-webview:"><b>Javascript in your webview:</b>
+</h4>
+<p>You will need to define a JS function in your webview code somewhere like this:</p>
+<pre><code class="language-javascript line-numbers">// I'm not a web guy, but tucking it to the window object raises the chances of it being
+// resolved correctly...
+window.someFunction = function(args)
+{
+	console.log(args.value); // something between 0 and 1...
+};</code></pre>
+<p class="comment">Note that there is no return value (because it can't be guaranteed that there is a webview present and if it is the function will be executed asynchronously on the message thread.</p>
+<p><br></p>
+<h2 id="changed"><b>changed</b>
+</h2>
+<p class="comment">Call this to indicate that the value has changed (the onControl callback will be executed.</p>
+<pre><code class="language-javascript line-numbers">ScriptWebView.changed()</code></pre>
+<p><br><br></p>
+<h2 id="createlocallookandfeel"><b>createLocalLookAndFeel</b>
+</h2>
+<p class="comment">Returns a local look and feel if it was registered before.</p>
+<pre><code class="language-javascript line-numbers">ScriptWebView.createLocalLookAndFeel()</code></pre>
+<p><br><br></p>
+<h2 id="evaluate"><b>evaluate</b>
+</h2>
+<p class="comment">Evaluates the code in the web view. You need to pass in an unique identifier so that it will initialise new web views correctly.</p>
+<pre><code class="language-javascript line-numbers">ScriptWebView.evaluate( String identifier,  String jsCode)</code></pre>
+<p><br>You can tell the WebView to execute any chunk of JS code with this method - it will pass the string to the native browser API so make sure you follow the conventions here (I'm not a web guy lol).</p>
+<p>One thing to keep in mind is that you need to pass in a unique ID for each time you call this function. This will store the JS string into a dictionary and then call it with the last JS code when a new WebView is created (to allow persistence).<br></p>
+<h2 id="fadecomponent"><b>fadeComponent</b>
+</h2>
+<p class="comment">Toggles the visibility and fades a component using the global animator.</p>
+<pre><code class="language-javascript line-numbers">ScriptWebView.fadeComponent(bool shouldBeVisible, int milliseconds)</code></pre>
+<p><br><br></p>
+<h2 id="get"><b>get</b>
+</h2>
+<p class="comment">returns the value of the property.</p>
+<pre><code class="language-javascript line-numbers">ScriptWebView.get(String propertyName)</code></pre>
+<p><br><br></p>
+<h2 id="getallproperties"><b>getAllProperties</b>
+</h2>
+<p class="comment">Returns a list of all property IDs as array.</p>
+<pre><code class="language-javascript line-numbers">ScriptWebView.getAllProperties()</code></pre>
+<p><br><br></p>
+<h2 id="getchildcomponents"><b>getChildComponents</b>
+</h2>
+<p class="comment">Returns list of component's children</p>
+<pre><code class="language-javascript line-numbers">ScriptWebView.getChildComponents()</code></pre>
+<p><br><br></p>
+<h2 id="getglobalpositionx"><b>getGlobalPositionX</b>
+</h2>
+<p class="comment">Returns the absolute x-position relative to the interface.</p>
+<pre><code class="language-javascript line-numbers">ScriptWebView.getGlobalPositionX()</code></pre>
+<p><br><br></p>
+<h2 id="getglobalpositiony"><b>getGlobalPositionY</b>
+</h2>
+<p class="comment">Returns the absolute y-position relative to the interface.</p>
+<pre><code class="language-javascript line-numbers">ScriptWebView.getGlobalPositionY()</code></pre>
+<p><br><br></p>
+<h2 id="getheight"><b>getHeight</b>
+</h2>
+<p class="comment">Returns the height of the component.</p>
+<pre><code class="language-javascript line-numbers">ScriptWebView.getHeight()</code></pre>
+<p><br><br></p>
+<h2 id="getid"><b>getId</b>
+</h2>
+<p class="comment">Returns the ID of the component.</p>
+<pre><code class="language-javascript line-numbers">ScriptWebView.getId()</code></pre>
+<p><br><br></p>
+<h2 id="getlocalbounds"><b>getLocalBounds</b>
+</h2>
+<p class="comment">Returns a [x, y, w, h] array that was reduced by the given amount.</p>
+<pre><code class="language-javascript line-numbers">ScriptWebView.getLocalBounds(float reduceAmount)</code></pre>
+<p><br><br></p>
+<h2 id="getvalue"><b>getValue</b>
+</h2>
+<p class="comment">Returns the current value.</p>
+<pre><code class="language-javascript line-numbers">ScriptWebView.getValue()</code></pre>
+<p><br><br></p>
+<h2 id="getvaluenormalized"><b>getValueNormalized</b>
+</h2>
+<p class="comment">Returns the normalized value.</p>
+<pre><code class="language-javascript line-numbers">ScriptWebView.getValueNormalized()</code></pre>
+<p><br><br></p>
+<h2 id="getwidth"><b>getWidth</b>
+</h2>
+<p class="comment">Returns the width of the component.</p>
+<pre><code class="language-javascript line-numbers">ScriptWebView.getWidth()</code></pre>
+<p><br><br></p>
+<h2 id="grabfocus"><b>grabFocus</b>
+</h2>
+<p class="comment">Call this method in order to grab the keyboard focus for this component.</p>
+<pre><code class="language-javascript line-numbers">ScriptWebView.grabFocus()</code></pre>
+<p><br><br></p>
+<h2 id="losefocus"><b>loseFocus</b>
+</h2>
+<p class="comment">Call this method in order to give away the focus for this component.</p>
+<pre><code class="language-javascript line-numbers">ScriptWebView.loseFocus()</code></pre>
+<p><br><br></p>
+<h2 id="reset"><b>reset</b>
+</h2>
+<p class="comment">Resets the entire webview.</p>
+<pre><code class="language-javascript line-numbers">ScriptWebView.reset()</code></pre>
+<p><br>This will clear all internal caches of the web view data model which might help with some glitches during development.<br></p>
+<h2 id="sendrepaintmessage"><b>sendRepaintMessage</b>
+</h2>
+<p class="comment">Manually sends a repaint message for the component.</p>
+<pre><code class="language-javascript line-numbers">ScriptWebView.sendRepaintMessage()</code></pre>
+<p><br><br></p>
+<h2 id="set"><b>set</b>
+</h2>
+<p class="comment">Sets the property.</p>
+<pre><code class="language-javascript line-numbers">ScriptWebView.set(String propertyName, var value)</code></pre>
+<p><br><br></p>
+<h2 id="setcolour"><b>setColour</b>
+</h2>
+<p class="comment">sets the colour of the component (BG, IT1, IT2, TXT).</p>
+<pre><code class="language-javascript line-numbers">ScriptWebView.setColour(int colourId, int colourAs32bitHex)</code></pre>
+<p><br><br></p>
+<h2 id="setconsumedkeypresses"><b>setConsumedKeyPresses</b>
+</h2>
+<p class="comment">Registers a selection of key presses to be consumed by this component.</p>
+<pre><code class="language-javascript line-numbers">ScriptWebView.setConsumedKeyPresses(var listOfKeys)</code></pre>
+<p><br><br></p>
+<h2 id="setcontrolcallback"><b>setControlCallback</b>
+</h2>
+<p class="comment">Pass a inline function for a custom callback event.</p>
+<pre><code class="language-javascript line-numbers">ScriptWebView.setControlCallback(var controlFunction)</code></pre>
+<p><br><br></p>
+<h2 id="setindexfile"><b>setIndexFile</b>
+</h2>
+<p class="comment">Sets the file to be displayed by the WebView.</p>
+<pre><code class="language-javascript line-numbers">ScriptWebView.setIndexFile(var indexFile)</code></pre>
+<p><br><br></p>
+<h2 id="setkeypresscallback"><b>setKeyPressCallback</b>
+</h2>
+<p class="comment">Adds a callback to react on key presses (when this component is focused).</p>
+<pre><code class="language-javascript line-numbers">ScriptWebView.setKeyPressCallback(var keyboardFunction)</code></pre>
+<p><br><br></p>
+<h2 id="setlocallookandfeel"><b>setLocalLookAndFeel</b>
+</h2>
+<p class="comment">Attaches the local look and feel to this component.</p>
+<pre><code class="language-javascript line-numbers">ScriptWebView.setLocalLookAndFeel(var lafObject)</code></pre>
+<p><br><br></p>
+<h2 id="setposition"><b>setPosition</b>
+</h2>
+<p class="comment">Sets the position of the component.</p>
+<pre><code class="language-javascript line-numbers">ScriptWebView.setPosition(int x, int y, int w, int h)</code></pre>
+<p><br><br></p>
+<h2 id="setpropertiesfromjson"><b>setPropertiesFromJSON</b>
+</h2>
+<p class="comment">Restores all properties from a JSON object.</p>
+<pre><code class="language-javascript line-numbers">ScriptWebView.setPropertiesFromJSON( var jsonData)</code></pre>
+<p><br><br></p>
+<h2 id="settooltip"><b>setTooltip</b>
+</h2>
+<p class="comment">Shows a informative text on mouse hover.</p>
+<pre><code class="language-javascript line-numbers">ScriptWebView.setTooltip( String tooltip)</code></pre>
+<p><br><br></p>
+<h2 id="setvalue"><b>setValue</b>
+</h2>
+<p class="comment">Sets the current value</p>
+<pre><code class="language-javascript line-numbers">ScriptWebView.setValue(var newValue)</code></pre>
+<p><br><br></p>
+<h2 id="setvaluenormalized"><b>setValueNormalized</b>
+</h2>
+<p class="comment">Sets the current value from a range 0.0 ... 1.0.</p>
+<pre><code class="language-javascript line-numbers">ScriptWebView.setValueNormalized(double normalizedValue)</code></pre>
+<p><br><br></p>
+<h2 id="setvaluewithundo"><b>setValueWithUndo</b>
+</h2>
+<p class="comment">Sets the current value and adds it to the undo list. Don't call this from onControl!</p>
+<pre><code class="language-javascript line-numbers">ScriptWebView.setValueWithUndo(var newValue)</code></pre>
+<p><br><br></p>
+<h2 id="setzlevel"><b>setZLevel</b>
+</h2>
+<p class="comment">Changes the depth hierarchy (z-axis) of sibling components (Back, Default, Front or AlwaysOnTop).</p>
+<pre><code class="language-javascript line-numbers">ScriptWebView.setZLevel(String zLevel)</code></pre>
+<p><br><br></p>
+<h2 id="showcontrol"><b>showControl</b>
+</h2>
+<p class="comment">Hides / Shows the control.</p>
+<pre><code class="language-javascript line-numbers">ScriptWebView.showControl(bool shouldBeVisible)</code></pre>
+<p><br><br></p>
+<h2 id="updatecontentpropertyinternal"><b>updateContentPropertyInternal</b>
+</h2>
+<p class="comment">This updates the internal content data object from the script processor.</p>
+<pre><code class="language-javascript line-numbers">ScriptWebView.updateContentPropertyInternal(int propertyId,  var newValue)</code></pre>
+<p><br><br></p>
+<h2 id="updatevaluefromprocessorconnection"><b>updateValueFromProcessorConnection</b>
+</h2>
+<p class="comment">Updates the value from the processor connection. Call this method whenever the module state has changed and you want to refresh the knob value to show the current state.</p>
+<pre><code class="language-javascript line-numbers">ScriptWebView.updateValueFromProcessorConnection()</code></pre>
+<p><br><br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/server/index.html">Server</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>27.05.2023<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

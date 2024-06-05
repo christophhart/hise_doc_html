@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="array"><b>Array</b>
+</h1>
+<h1 id="array-class-reference"><b>Array Class Reference</b>
+</h1>
+<h2 id="basic-usage"><b>Basic usage</b>
+</h2>
+<pre><code class="language-javascript line-numbers">const var a = [];         // Declare an array
+a[0] = 12;                // Set the element at position 0 to 12
+a[1] = "Hello";           // Set the element at position 1 to "Hello"
+Console.print(a.length);  // Print the length (in this case 2)
+a.clear();                // Deletes all items from the array</code></pre>
+<p><br>If you have used another programming language before, this might look pretty familiar. Be aware that you can add / delete items from the array despite having it declared as <code>const var</code>
+. The "constness" just refers to the assignment, so you can't reassign this variable to another value.</p>
+<h2 id="iterating-over-an-array"><b>Iterating over an array</b>
+</h2>
+<p>Basically there are two ways of iterating (= going over each element in the array):</p>
+<table><thead><td><b>Range-based Loop </b>
+</td>
+<td><b>Index-based Loop </b>
+</td>
+</thead>
+<tr><td><code>for(element in array)</code>
+ </td>
+<td><code>for(i = 0; i < array.length; i++)</code>
+ </td>
+</tr>
+<tr><td> This is the preferred method, because it has a clearer syntax (and is faster). As long as you don't need to know the index of the element, it's recommended to use this method. </td>
+<td>If you need the index of the current item in the loop (eg. because you iterate over multiple arrays at once), use this loop. </td>
+</tr>
+</table>
+<p>The index based loop construct is the only place where you can define anonymous variables (so that <code>for(i = 0...</code>
+ doesn't throw a compile error).</p>
+<h2 id="ownership-&-lifetime"><b>Ownership & lifetime</b>
+</h2>
+<p>An array is reference counted, which means that if you assign an array to another variable, it will use the same array.</p>
+<pre><code class="language-javascript line-numbers">const var a = [1, 5, 6];
+const var b = a;
+
+a[0] = 10;           // set the first element of a
+Console.print(b[0]); // the first element of b will also be 10</code></pre>
+<p><br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="clear"><b>clear</b>
+</h2>
+<p class="comment">Clears the array.</p>
+<pre><code class="language-javascript line-numbers">Array.clear()</code></pre>
+<p><br>This is a quick operation (the allocated storage space will not be freed), so you can use it in a realtime callback.<br></p>
+<h2 id="concat"><b>concat</b>
+</h2>
+<p class="comment">Concatenates (joins) two or more arrays</p>
+<pre><code class="language-javascript line-numbers">Array.concat(var argumentList)</code></pre>
+<p><br><br></p>
+<h2 id="contains"><b>contains</b>
+</h2>
+<p class="comment">Searches for the element in the array.</p>
+<pre><code class="language-javascript line-numbers">Array.contains(var elementToLookFor)</code></pre>
+<p><br><br></p>
+<h2 id="find"><b>find</b>
+</h2>
+<p class="comment">Returns the value of the first element that passes the function test.</p>
+<pre><code class="language-javascript line-numbers">Array.find(var testFunction, var optionalThisObject)</code></pre>
+<p><br><br></p>
+<h2 id="indexof"><b>indexOf</b>
+</h2>
+<p class="comment">Searches the array and returns the first index.</p>
+<pre><code class="language-javascript line-numbers">Array.indexOf(var elementToLookFor, int startOffset, int typeStrictness)</code></pre>
+<p><br>Return the index of the first occurence or <code>-1</code>
+ if the item can't be found.</p>
+<pre><code class="language-javascript line-numbers">const var a = [1, 5, 5];
+a.indexOf(5); // will return 1
+a.indexOf("5"); // will also return 1, the search is not type-strict.</code></pre>
+<p><br></p>
+<h2 id="insert"><b>insert</b>
+</h2>
+<p class="comment">Inserts the given arguments at the firstIndex.</p>
+<pre><code class="language-javascript line-numbers">Array.insert(int firstIndex, var argumentList)</code></pre>
+<p><br><br></p>
+<h2 id="isarray"><b>isArray</b>
+</h2>
+<p class="comment">Checks if the given variable is an array.</p>
+<pre><code class="language-javascript line-numbers">Array.isArray(var variableToTest)</code></pre>
+<p><br><br></p>
+<h2 id="join"><b>join</b>
+</h2>
+<p class="comment">Joins the array into a string with the given separator.</p>
+<pre><code class="language-javascript line-numbers">Array.join(var separatorString)</code></pre>
+<p><br>This method is useful when you want to change the item list of some UI controls, for example a <a href="ui-components/plugin-components/combobox.html">Combobox</a>
+.</p>
+<pre><code class="language-javascript line-numbers">const var list = ["item1", "item2", "item3"];     // Creates a list of all available samplemaps
+const var box = Content.addComboBox("box", 0, 0); // Creates a combobox
+box.set("items", list.join("\n"));                // sets the list as items</code></pre>
+<p>The opposite of this method is <a href="scripting/scripting-api/string/index.html#split">String.split()</a>
+<br></p>
+<h2 id="map"><b>map</b>
+</h2>
+<p class="comment">Creates a new array from calling a function for every array element.</p>
+<pre><code class="language-javascript line-numbers">Array.map(var testFunction, var optionalThisObject)</code></pre>
+<p><br><br></p>
+<h2 id="pop"><b>pop</b>
+</h2>
+<p class="comment">Removes and returns the last element.</p>
+<pre><code class="language-javascript line-numbers">Array.pop()</code></pre>
+<p><br><br></p>
+<h2 id="push"><b>push</b>
+</h2>
+<p class="comment">Adds the given element at the end and returns the size.</p>
+<pre><code class="language-javascript line-numbers">Array.push(var elementToInsert)</code></pre>
+<p><br>If you know that you are going to add multiple elements, you can call <a href="scripting/scripting-api/array/index.html#reserve">Array.reserve()</a>
+ to preallocate the amount of elements and improve performance:</p>
+<pre><code class="language-javascript line-numbers">const var a = [];
+
+// Uncomment this to see the performance improvement:
+//a.reserve(100);
+
+Console.start();
+for(i = 0; i < 100; i++)
+{
+    a.push(5);
+}
+Console.stop()</code></pre>
+<p><br></p>
+<h2 id="pushifnotalreadythere"><b>pushIfNotAlreadyThere</b>
+</h2>
+<p class="comment">Adds the given element at the end and returns the size.</p>
+<pre><code class="language-javascript line-numbers">Array.pushIfNotAlreadyThere(var elementToInsert)</code></pre>
+<p><br><br></p>
+<h2 id="remove"><b>remove</b>
+</h2>
+<p class="comment">Removes all instances of the given element.</p>
+<pre><code class="language-javascript line-numbers">Array.remove(var elementToRemove)</code></pre>
+<p><br><br></p>
+<h2 id="removeelement"><b>removeElement</b>
+</h2>
+<p class="comment">Removes the element at the given position.</p>
+<pre><code class="language-javascript line-numbers">Array.removeElement(int index)</code></pre>
+<p><br><br></p>
+<h2 id="reserve"><b>reserve</b>
+</h2>
+<p class="comment">Reserves the space needed for the given amount of elements.</p>
+<pre><code class="language-javascript line-numbers">Array.reserve(int numElements)</code></pre>
+<p><br>If you are going to populate this array in a realtime callback, you need to make sure that there is enough storage allocated in order to avoid reallocation. This method can be used to preallocate slots that can be filled later.</p>
+<p>Be aware that this method will not change the <code>Array.length</code>
+ property:</p>
+<pre><code class="language-javascript line-numbers">const var array = [];       // create a new array
+array.reserve(128);         // allocate 128 items
+Console.print(array.length) // will output 0;
+array[64] = 190;            // this will not allocate
+Console.print(array.length) // will print 65</code></pre>
+<p><br></p>
+<p class="comment">This method will allocate enough memory to hold primitive values, but if you are going to store complex objects (arrays or objects), calling <code>Array.reserve()</code>
+ will not prevent reallocation.<br></p>
+<h2 id="reverse"><b>reverse</b>
+</h2>
+<p class="comment">Reverses the order of the elements in the array.</p>
+<pre><code class="language-javascript line-numbers">Array.reverse()</code></pre>
+<p><br><br></p>
+<h2 id="sort"><b>sort</b>
+</h2>
+<p class="comment">Sorts the array.</p>
+<pre><code class="language-javascript line-numbers">Array.sort()</code></pre>
+<p><br>This will sort the array using a sensible sort algorithm:</p>
+<ul><li>Numbers will be sorted naturally, </li>
+<li>Strings will be sorted alphabetically</li>
+<li>Objects and arrays will not be sorted.</li>
+</ul>
+<pre><code class="language-javascript line-numbers">const var a = [1, 6, 4, 2, 1];
+a.sort();
+
+for(i in a)
+    Console.print(i); 
+
+// Result: 1, 1, 2, 4, 6</code></pre>
+<p><br></p>
+<h2 id="sortnatural"><b>sortNatural</b>
+</h2>
+<p class="comment">Sorts array of numbers, objects, or strings with "number in string" priority. Can also sort a combination of all types</p>
+<pre><code class="language-javascript line-numbers">Array.sortNatural()</code></pre>
+<p><br><br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/audiofile/index.html">AudioFile</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>13.03.2019<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

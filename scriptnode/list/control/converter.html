@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="converter"><b>converter</b>
+</h1>
+<p class="comment"><code>control.converter</code>
+</p>
+<img src="images/sn_screen_converter.png"></img>
+<p>Converts an input value using one of various predefined domain converters</p>
+<h2 id="parameters"><b>Parameters</b>
+</h2>
+<table><thead><td><b>ID </b>
+</td>
+<td><b>Range </b>
+</td>
+<td><b>Default </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>Value </td>
+<td>0.00 - 1.00 </td>
+<td>0.00 </td>
+<td>The input value to be converted </td>
+</tr>
+</table>
+<p><br>The control.converter node allows you to convert an input value from one form to another using a predefined domain converter. This can be useful for situations where you need to manipulate data in a specific way or format it for a specific purpose.</p>
+<p>In order to use it, just connect the Value parameter to the modulation source and the modulation output of this node to the target parameter. Then you can select one of these modes for the appropriate conversion</p>
+<table><thead><td><b>Mode </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>Ms2Freq </td>
+<td>Converts from milliseconds to frequency (Hz)</td>
+</tr>
+<tr><td>Freq2Ms </td>
+<td>Converts from frequency (Hz) to milliseconds<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></td>
+</tr>
+<tr><td>Ms2Samples </td>
+<td>Converts from milliseconds to samples </td>
+</tr>
+<tr><td>Samples2Ms </td>
+<td>Converts from samples to milliseconds</td>
+</tr>
+<tr><td>Ms2BPM </td>
+<td>Converts from milliseconds to beats per minute (BPM)</td>
+</tr>
+<tr><td>Pitch2St </td>
+<td>Converts from pitch (Hz) to semitones (st)</td>
+</tr>
+<tr><td>St2Pitch </td>
+<td>Converts from semitones (st) to pitch (Hz)</td>
+</tr>
+<tr><td>Pitch2Cent </td>
+<td>Converts from pitch (Hz) to cents</td>
+</tr>
+<tr><td>Cent2Pitch </td>
+<td>Converts from cents to pitch (Hz)</td>
+</tr>
+<tr><td>Midi2Freq </td>
+<td>Converts from MIDI note number to frequency (Hz)</td>
+</tr>
+<tr><td>Gain2dB </td>
+<td>Converts from gain (amplification) to decibels (dB)</td>
+</tr>
+<tr><td>dB2Gain </td>
+<td>Converts from decibels (dB) to gain (amplification)</td>
+</tr>
+</table>
+<p class="comment">Note that both the input and output connections are unscaled (= they ignore the source / target range and send whatever value comes out of the conversion).</p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scriptnode/list/control/clone_cable.html">clone_cable</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>04.07.2022<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

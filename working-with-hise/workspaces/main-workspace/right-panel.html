@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="right-panel"><b>Right Panel</b>
+</h1>
+<img src="images/custom/right-panel.png"></img>
+<p>The Right Panel features five preselected <a href="ui-components/floating-tiles/hise/index.html">HISE Floating Tiles</a>
+ to ease your workflow when working in the Module Panel.</p>
+<ul><li>In the <a href="ui-components/floating-tiles/hise/macrotable.html">MacroTable</a>
+ you can adjust and refine the Macro values that you can set with the <a href="ui-components/floating-tiles/hise/macrocontrols.html">Macro Controls</a>
+ in the main topbar. </li>
+<li>The <a href="ui-components/floating-tiles/hise/scriptwatchtable.html">ScriptWatchTable</a>
+, <a href="ui-components/floating-tiles/hise/interfacepropertyeditor.html">InterfacePropertyEditor</a>
+ and <a href="ui-components/floating-tiles/hise/console.html">Console</a>
+ help you out when you use a <a href="hise-modules/midi-processors/list/scriptprocessor.html">Script Processor</a>
+ directly in the Module Panel. </li>
+<li>The <a href="ui-components/floating-tiles/hise/plotter">Plotter</a>
+ visualizes the modulation values of <a href="hise-modules/modulators">Modulators</a>
+ when you hit the visualization button in each modulators topbar.</li>
+</ul>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="working-with-hise/workspaces/scripting-workspace/canvas.html">Interface Designer</a>
+</span>
+
+<p class="content-footer-metadata"><br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

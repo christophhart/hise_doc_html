@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="expansionhandler"><b>Expansionhandler</b>
+</h1>
+<p><br>This class will offer functions to manage expansions. In order to use it, create one with the function <a href="scripting/scripting-api/engine/index.html#createexpansionhandler">Engine.createExpansionHandler()</a>
+.</p>
+<p class="comment">In earlier versions of HISE, this class was globally available (like the <code>Message</code>
+ or <code>Server</code>
+ class). However for stability reasons the lifetime had to be limited so it's required to create an object in the <code>onInit</code>
+ callback.</p>
+<p><br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="encodewithcredentials"><b>encodeWithCredentials</b>
+</h2>
+<p class="comment">Encrypts the given hxi file.</p>
+<pre><code class="language-javascript line-numbers">ExpansionHandler.encodeWithCredentials(var hxiFile)</code></pre>
+<p><br>This method takes the credentials object that was passed into <a href="scripting/scripting-api/expansionhandler/index.html#setcredentials">Expansionhandler.setCredentials()</a>
+ and embeds it into the given .hxi file, then copies this file as <code>info.hxp</code>
+ to the expansion folder.</p>
+<p>The most basic example for how to use it would be to show a browser to the user,let it select a downloaded hxi file and then call this function in the file callback:</p>
+<pre><code class="language-javascript line-numbers">// Create a wrapper object around the expansion handler
+const var expHandler = Engine.createExpansionHandler();
+
+function installExp(hxiFile)
+{
+    expHandler.encodeWithCredentials(hxiFile);
+};
+
+FileSystem.browse(FileSystem.Documents, 
+                  false,   // read
+                  "*.hxi", // hxi
+                  installExp); // callback</code></pre>
+<p>But you can of course implement a more complex system using the Server download API.<br></p>
+<h2 id="getcurrentexpansion"><b>getCurrentExpansion</b>
+</h2>
+<p class="comment">Returns the currently active expansion (if there is one).</p>
+<pre><code class="language-javascript line-numbers">ExpansionHandler.getCurrentExpansion()</code></pre>
+<p><br><br></p>
+<h2 id="getexpansion"><b>getExpansion</b>
+</h2>
+<p class="comment">Returns the expansion with the given name</p>
+<pre><code class="language-javascript line-numbers">ExpansionHandler.getExpansion(var name)</code></pre>
+<p><br><br></p>
+<h2 id="getexpansionforinstallpackage"><b>getExpansionForInstallPackage</b>
+</h2>
+<p class="comment">Checks if the expansion is already installed and returns a reference to the expansion if it exists.</p>
+<pre><code class="language-javascript line-numbers">ExpansionHandler.getExpansionForInstallPackage(var packageFile)</code></pre>
+<p><br><br></p>
+<h2 id="getexpansionlist"><b>getExpansionList</b>
+</h2>
+<p class="comment">Returns a list of all available expansions.</p>
+<pre><code class="language-javascript line-numbers">ExpansionHandler.getExpansionList()</code></pre>
+<p><br><br></p>
+<h2 id="getuninitialisedexpansions"><b>getUninitialisedExpansions</b>
+</h2>
+<p class="comment">Returns a list of all expansions that aren't loaded properly yet.</p>
+<pre><code class="language-javascript line-numbers">ExpansionHandler.getUninitialisedExpansions()</code></pre>
+<p><br><br></p>
+<h2 id="installexpansionfrompackage"><b>installExpansionFromPackage</b>
+</h2>
+<p class="comment">Decompresses the samples and installs the .hxi / .hxp file.</p>
+<pre><code class="language-javascript line-numbers">ExpansionHandler.installExpansionFromPackage(var packageFile, var sampleDirectory)</code></pre>
+<p><br>If you have included the .hxi as metadata during the <a href="working-with-hise/menu-reference/export/index.html#export-samples-for-installer">Sample export</a>
+, you can use this function to automatically extract the samples, copy the expansion file (and encrypt it if you have user credentials available) and refresh the list.</p>
+<p>This operation will be asynchronously executed on the sample loading thread, which means you can use the <a href="scripting/scripting-api/scriptpanel/index.html#setloadingcallback">ScriptPanel.setLoadingCallback</a>
+ function which will notify the user about the progress (extracting large sample sets might take a while so you most likely want some indication about the process).</p>
+<p class="comment">If you want to do more specific tasks at the start and / or end of the installation routine, you can use the <a href="scripting/scripting-api/expansionhandler/index.html#setinstallcallback">Expansionhandler.setInstallCallback()</a>
+ function.</p>
+<p>The function expects two parameters, the first must be a file object that points to the .hr1 file you want to install and the second parameter must be either a constant from the FileSystem class or a file object pointing to an (existing) folder:</p>
+<table><thead><td><b>2nd Parameter </b>
+</td>
+<td><b>Effect </b>
+</td>
+</thead>
+<tr><td><code>FileSystem.Expansions</code>
+ </td>
+<td>The samples will be copied to the expansion folder. This means they end up in the AppData directory of your system drive which is not the best idea if you have lots of samples </td>
+</tr>
+<tr><td><code>FileSystem.Samples</code>
+ </td>
+<td>The samples will be copied to the global sample folder that you can specified with the CustomSettingsPanel(!LINK). It will create an symlink file in the Expansion's Sample folder to redirect anything to the global sample folder. </td>
+</tr>
+<tr><td>Custom folder object </td>
+<td>This will create a symlink file in the Expansion's sample folder to point to any arbitrary location. You can use this to setup your own sample management system and allow the user to spread the samples across multiple locations. </td>
+</tr>
+</table>
+<p>You can change / query the folder you specify later on using the <a href="scripting/scripting-api/expansion/index.html#setsamplefolder">Expansion.setSampleFolder()</a>
+ and <a href="scripting/scripting-api/expansion/index.html#getsamplefolder">Expansion.getSampleFolder()</a>
+ methods.</p>
+<p> </p>
+<p><br> </p>
+<h2 id="refreshexpansions"><b>refreshExpansions</b>
+</h2>
+<p class="comment">Call this to refresh the expansion list.</p>
+<pre><code class="language-javascript line-numbers">ExpansionHandler.refreshExpansions()</code></pre>
+<p><br>If the user has installed a new expansion, you will need to call this function in order to refresh the list of expansions and initialise new expansions.<br>The function will go through all the folders in the expansion root folder and tries to initialise any expansion that isn't loaded yet (either because it is new <b>or because it couldn't been initialised yet because of missing encryption information</b>
+).<br>This step is only necessary when you implement a manual installation routine, but it will be called automatically at these events:</p>
+<ol><li>User enters license credentials (causes a reload of all encrypted expansions with the new user credentials)</li>
+<li>User encodes a new Expansion with <a href="scripting/scripting-api/expansionhandler/index.html#encodewithcredentials">Expansionhandler.encodeWithCredentials()</a>
+ (will be called automatically afterwards).</li>
+<li>User installs an expansion from a package with <a href="scripting/scripting-api/expansionhandler/index.html#installexpansionfrompackage">Expansionhandler.installExpansionFromPackage()</a>
+<br></li>
+</ol>
+<h2 id="setallowedexpansiontypes"><b>setAllowedExpansionTypes</b>
+</h2>
+<p class="comment">Sets a list of allowed expansion types that can be loaded.</p>
+<pre><code class="language-javascript line-numbers">ExpansionHandler.setAllowedExpansionTypes(var typeList)</code></pre>
+<p><br>If you encrypt Expansions for your project, you most likely want to avoid that the user can just load in unencrypted expansions. In order to prevent this, you can specify the types that can be loaded using this method.</p>
+<p class="comment">During development / debugging you will need to have all types enabled, but don't forget to change that before release.</p>
+<p>The argument must be an array with numbers for the type that are available as constants of the ExpansionHandler class:</p>
+<pre><code class="language-javascript line-numbers">ExpansionHandler.FileBased
+ExpansionHandler.Intermediate
+ExpansionHandler.Encrypted</code></pre>
+<p><br></p>
+<h2 id="setcredentials"><b>setCredentials</b>
+</h2>
+<p class="comment">Set a credentials object that can be embedded into each expansion.</p>
+<pre><code class="language-javascript line-numbers">ExpansionHandler.setCredentials(var newCredentials)</code></pre>
+<p><br>If you have a licensing scheme that offers a unique identification for each user, you can use this object to pass it to the ExpansionHandler so it can encode this data into the <a href="working-with-hise/project-management/expansions/encrypted_expansion.html">expansions</a>
+<br></p>
+<h2 id="setcurrentexpansion"><b>setCurrentExpansion</b>
+</h2>
+<p class="comment">Sets the current expansion as active expansion.</p>
+<pre><code class="language-javascript line-numbers">ExpansionHandler.setCurrentExpansion(var expansionName)</code></pre>
+<p><br>Be aware that while there is only one expansion that can be active at the same time, it does not mean that you can't load content from multiple expansions at once (and you don't need to call this function before you want to load some data from an expansion).<br>It is more an additional feature that allows you to eg. adapt the UI to the most recently loaded expansion.</p>
+<p>Whenever you call this method, the function that was specified at <a href="scripting/scripting-api/expansionhandler/index.html#setexpansioncallback">Expansionhandler.setExpansionCallback()</a>
+ is being executed with a reference to the active <a href="scripting/scripting-api/expansion/index.html">Expansion</a>
+ object as parameter.<br></p>
+<h2 id="setencryptionkey"><b>setEncryptionKey</b>
+</h2>
+<p class="comment">Set a encryption key that will be used to encrypt the content (deprecated).</p>
+<pre><code class="language-javascript line-numbers">ExpansionHandler.setEncryptionKey(String newKey)</code></pre>
+<p><br>Call this function if you want to use the encrypted Expansion type in order to protect your expansions against unauthorized usage. The key you pass in must be a valid Blowfish key, so any String up to 72 characters is fine.</p>
+<p class="comment">Be aware that you need to pass in the exact same key you specified in the Project Settings' <b>Expansion Key</b>
+ property.</p>
+<p>As soon as you call this method, the expansion handler will reinitialise the expansions that are encrypted and try to decrypt them with the new key.<br></p>
+<h2 id="seterrorfunction"><b>setErrorFunction</b>
+</h2>
+<p class="comment">Sets a error function that will be executed.</p>
+<pre><code class="language-javascript line-numbers">ExpansionHandler.setErrorFunction(var newErrorFunction)</code></pre>
+<p><br>If something goes wrong with the initialisation of an expansion, you can specify a function that is called with an error message that you can show to the user somehow.</p>
+<p>The function you pass as <code>newErrorFunction</code>
+ must have two parameters:</p>
+<ol><li>the error message</li>
+<li>a flag indicating a critical error (a critical error will stop the plugin).</li>
+</ol>
+<p>This function will be called by the expansion logic inside HISE, however you can also call it manually using the<br><a href="scripting/scripting-api/expansionhandler/index.html#seterrormessage">Expansionhandler.setErrorMessage()</a>
+ function</p>
+<p>Be aware that the error function is owned by the wrapper object not the global expansion manager (so it goes out of scope as soon as the wrapper object is destructed).<br></p>
+<h2 id="seterrormessage"><b>setErrorMessage</b>
+</h2>
+<p class="comment">Calls the error function specified with setErrorFunction.</p>
+<pre><code class="language-javascript line-numbers">ExpansionHandler.setErrorMessage(String errorMessage)</code></pre>
+<p><br><br></p>
+<h2 id="setexpansioncallback"><b>setExpansionCallback</b>
+</h2>
+<p class="comment">Set a function that will be called whenever a expansion is being loaded.</p>
+<pre><code class="language-javascript line-numbers">ExpansionHandler.setExpansionCallback(var expansionLoadedCallback)</code></pre>
+<p><br>Whenever an expansion is switched, this function will be called so you can react on the event. This happens at these opportunities:</p>
+<ol><li>A preset from an expansion is loaded</li>
+<li><a href="scripting/scripting-api/expansionhandler/index.html#setcurrentexpansion">Expansionhandler.setCurrentExpansion()</a>
+ was called</li>
+<li>An expansion was selected in the dropdown list in the HISE Expansion Edit bar</li>
+</ol>
+<p>Be aware that the expansion callback is owned by the wrapper object not the global expansion manager (so it goes out of scope as soon as the wrapper object is destructed).<br></p>
+<h2 id="setinstallcallback"><b>setInstallCallback</b>
+</h2>
+<p class="comment">Set a function that will be called during installation of a new expansion.</p>
+<pre><code class="language-javascript line-numbers">ExpansionHandler.setInstallCallback(var installationCallback)</code></pre>
+<p><br>This callback expects one argument that will contain an object with some information about the installation status.</p>
+<table><thead><td><b>Property </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><code>obj.Status</code>
+ </td>
+<td>A status code indicating the state of the installation: <code>0</code>
+ before the extraction starts, <code>1</code>
+ during the extraction and <code>2</code>
+ if the extraction is finished. The callback is guaranteed to be executed with <code>2</code>
+ at least once. </td>
+</tr>
+<tr><td><code>obj.Expansion</code>
+ </td>
+<td>If the installation (and optional initialisation using the authentication credentials) suceeded, this will contain a reference to the expansion so you can do some post-installation tasks. </td>
+</tr>
+<tr><td><code>obj.Progress</code>
+ </td>
+<td>This contains the extraction progress. It's basically the same as <code>Engine.getPreloadProgress</code>
+. </td>
+</tr>
+<tr><td><code>obj.SourceFile</code>
+ </td>
+<td>The package file that is being extracted. </td>
+</tr>
+<tr><td><code>obj.TargetFolder</code>
+ </td>
+<td>The directory where the expansion is being installed to. </td>
+</tr>
+<tr><td><code>obj.SampleFolder</code>
+ </td>
+<td>The sample folder that is being used for the samples. </td>
+</tr>
+</table>
+<p>You can use this callback for different tasks that might suit your handling of expansions:</p>
+<ul><li>deleting the .hr1 file after a sucessful installation</li>
+<li>rebuilding user presets after an expansion update</li>
+<li>automatically switching to the installed expansion using <code>ExpansionHandler.setCurrentExpansion()</code>
+</li>
+</ul>
+<pre><code class="language-javascript line-numbers">const var t = FileSystem.getFolder(FileSystem.Desktop).getChildFile("test.hr1");
+const var e = Engine.createExpansionHandler();
+
+function installCallback(obj)
+{
+    if(obj.Status == 2 && isDefined(obj.Expansion))
+    {
+        // make sure the user presets are updated
+        obj.Expansion.rebuildUserPresets();
+        
+        // ask the user if he wants to delete the archive file...
+        Engine.showYesNoWindow("Installation sucessful", 
+                               "Do you want to delete the archive file", 
+        function(ok)
+        {
+            if(ok)
+                t.deleteFileOrDirectory();                
+        });
+    }
+};
+
+e.setInstallCallback(installCallback);
+e.installExpansionFromPackage(t, FileSystem.Expansions);</code></pre>
+<p><br></p>
+<h2 id="setinstallfulldynamics"><b>setInstallFullDynamics</b>
+</h2>
+<p class="comment">Sets whether the installExpansionFromPackage function should install full dynamics.</p>
+<pre><code class="language-javascript line-numbers">ExpansionHandler.setInstallFullDynamics(bool shouldInstallFullDynamics)</code></pre>
+<p><br><br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/fft/index.html">FFT</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>11.03.2021<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="polydata<typename-t,-int-numvoices>"><b>PolyData<typename T, int NumVoices></b>
+</h1>
+<p>A data structure that handles polyphonic voice data.<br>In order to use it, create it (just like a span) and then use the range-based iterator to fetch the data.<br>Depending on the context of the loop, it will either iterate over all values or just pick the one for the currently active voice. In order for this to work, you need to call prepare with a valid voice index pointer.<br>The element type T can be any class with a default constructor. For the sake of optimizations, NumVoices has to be a number of two at all times. It's recommended to use either 1 or the preprocessor definition NUM_POLYPHONIC_VOICES, which offers a global way to set the max voice count per project.<br>If the PolyData class is being used with NumVoices=1, the compiler should be able to remove the overhead of the class completely so you don't get any performance penalty by making your classes capable of handling polyphony!<br></p>
+<pre><code class="language-clike line-numbers">// A SNEX node is usually templated with the polyphony voice count
+// so you can also forward it to every PolyData member of your class
+template <int NV> struct my_class
+{
+    // Wrap the data that defines a voice state into a PolyData
+    // container.
+    // Note: you can use more complex types than just a primitive
+    // integer and for performance reasons (cache alignment) it's
+    // actually recommended to create one data structure that holds
+    // the entire state.
+    PolyData<float, NV> data;
+
+    void prepare(PrepareSpecs ps)
+    {
+        // All you need to do is to forward the prepare
+        // call to *every* PolyData container that you
+        // want to use.
+        data.prepare(ps);
+    }
+
+    // This is your render callback where you want to use the state
+    template <typename PD> void process(PD& pd)
+    {
+        // the get() method will point to the current voice
+        // (so if the 8th voice is rendered, it would be a the same
+        // as a `data[7]` access for a standard container)
+        auto& current_data = data.get();
+
+        // Do whatever you want with the current voice state
+        current_data = Math.fmod(current_data + 0.1f, 1.0f);
+    }
+
+    // If you want to change the data through a parameter callback
+    // it's recommended to use the iterator.
+    template <int P> void setParameter(double value)
+    {
+        // the iterator will either loop through
+        // all data elements if it's outside a
+        // voice rendering (most likely caused by a UI callback)
+        // or just one element of the active voice (most likely used
+        // by modulation inside the audio rendering).
+
+        for(auto& d: data)
+            d = (float)value;
+    }
+
+    // The reset() callback will either be called after initialisation
+    // or when a voice is started. Again, using the iterator makes sure that
+    // it resets all values at initialisation and just the current voice
+    // at voice start (just like the parameter callback).
+    void reset()
+    {
+        for(auto& d: data)
+            d = 0.0f;
+    }
+};
+
+// This will create a polyphonic version of your node with the
+// global HISE polyphonic voice count (defaults to 256).
+using poly_class = my_class<NUM_POLYPHONIC_VOICES>;
+
+// a monophonic version of your node. Note that this will produce
+// the exact same machine code as if you would just use a normal
+// integer variable so there is absolutely no CPU overhead!
+using mono_class = my_class<1>;</code></pre>
+<p><br></p>
+<h2 id="class-methods"><b>Class methods</b>
+</h2>
+<h3 id="prepare"><b>prepare</b>
+</h3>
+<pre><code class="language-clike line-numbers">void prepare(const PrepareSpecs &sp)</code></pre>
+<p>Call this method with a <a href="scriptnode/snex_api/data_structures/preparespecs.html">PrepareSpecs</a>
+ objet and it will setup the handling of the polyphony.<br>It will use the int pointer in the <a href="scriptnode/snex_api/data_structures/preparespecs.html">PrepareSpecs</a>
+ object to figure out whether the voice rendering is enabled / active and what data slot to use.<br>There are multiple states of the value at the sp.voiceIndex address:<br></p>
+<ul><li>1: the voice rendering is currently inactive (because it's called by the message thread or during initialization. Using the for loop now will result in an iteration over all elements.<br></li>
+</ul>
+<p>nullptr: the voice rendering is disabled. The class will act like PolyData<T, 1>, (however it will still take the memory of NUM_VOICES elements).<br>any number: the voice rendering is active and the for-loop will just iterate once with the given number as offset from the data start.<br> </p>
+<h3 id="get"><b>get</b>
+</h3>
+<pre><code class="language-clike line-numbers">T & get() const</code></pre>
+<p>If you know that you're inside a rendering context, you can use this function instead of the for-loop syntax. Be aware that the performance will be the same, it's just a bit less to type.<br> </p>
+<h3 id="begin"><b>begin</b>
+</h3>
+<pre><code class="language-clike line-numbers">T * begin() const</code></pre>
+<p>Allows range-based for loops to work inside the voice context.<br> </p>
+<h3 id="getvoiceindexfordebugging"><b>getVoiceIndexForDebugging</b>
+</h3>
+<pre><code class="language-clike line-numbers">String getVoiceIndexForDebugging() const</code></pre>
+<p>Just used during development.<br> </p>
+<h3 id="getfirst"><b>getFirst</b>
+</h3>
+<pre><code class="language-clike line-numbers">const T & getFirst() const</code></pre>
+<p>Returns a reference to the first data. This can be used for UI purposes.<br> </p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scriptnode/snex_api/containers/span.html">span<class T, int Size, int Alignment></a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

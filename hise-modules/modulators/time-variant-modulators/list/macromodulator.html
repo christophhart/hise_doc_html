@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="macro-modulator"><b>Macro Modulator</b>
+</h1>
+<p>Type ID: <code>MacroModulator</code>
+<br>Interface classes: <a href="scripting/scripting-api/tableprocessor/index.html">TableProcessor</a>
+<br></p>
+<p class="comment"><b>A Modulator that uses the value of a macro control as modulation signal.</b>
+<br></p>
+<img src="images/module_screenshot_macromodulator.png"></img>
+<p><br><br>The Macro Modulator is another way of using the <a href="glossary/macrocontrols.html">Macro Control System</a>
+. It is useful if:</p>
+<ol><li>you want to smooth the changes of the macro value in order to remove zipper noises</li>
+<li>you want to change the range with a table</li>
+</ol>
+<p>The way you use it is remarkably similar to a <a href="hise-modules/modulators/time-variant-modulators/list/globaltimevariantmodulator.html">GlobalTimeVariantModulator</a>
+, but instead of the global modulation value, it will fetch the "global macro value".</p>
+<h2 id="parameters-"><b>Parameters </b>
+</h2>
+<table><thead><td><b>#</b>
+<b> </b>
+</td>
+<td><b>ID </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>0 </td>
+<td><code>MacroIndex</code>
+ </td>
+<td>the index of the macro control that is used by this module. If you're using the module UI, just select one in the drop down box, but if you're manually setting this parameter be aware that it starts with 1. </td>
+</tr>
+<tr><td>1 </td>
+<td><code>SmoothTime</code>
+ </td>
+<td>smoothes the parameter changes (just like with the Control Modulator). </td>
+</tr>
+<tr><td>2 </td>
+<td><code>UseTable</code>
+ </td>
+<td>you can enable a Table to process the incoming macro value to add extra control over the range. </td>
+</tr>
+<tr><td>3 </td>
+<td><code>MacroValue</code>
+ </td>
+<td>this just holds the current value so you can grab it if you want to display it in some kind. </td>
+</tr>
+</table>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="hise-modules/modulators/time-variant-modulators/list/midicontroller.html">MIDI Controller</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>18.03.2019<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

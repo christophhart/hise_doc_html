@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="graphics"><b>Graphics</b>
+</h1>
+<p><br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="adddropshadowfromalpha"><b>addDropShadowFromAlpha</b>
+</h2>
+<p class="comment">Adds a drop shadow based on the alpha values of the current image.</p>
+<pre><code class="language-javascript line-numbers">Graphics.addDropShadowFromAlpha(var colour, int radius)</code></pre>
+<p><br><br></p>
+<h2 id="addnoise"><b>addNoise</b>
+</h2>
+<p class="comment">Adds noise to the current layer.</p>
+<pre><code class="language-javascript line-numbers">Graphics.addNoise(var noiseAmount)</code></pre>
+<p><br>This adds pixelated noise to the current graphics layer. The parameter can either be a double number that will indicate the "gain" of the noise (= the transparency), or you can supply a JSON object that allows more fine grained control over the noise parameters.</p>
+<table><thead><td><b>Property </b>
+</td>
+<td><b>Type </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><code>alpha</code>
+ </td>
+<td>double </td>
+<td>the transparency of the noise layer. </td>
+</tr>
+<tr><td><code>monochromatic</code>
+ </td>
+<td>bool </td>
+<td>whether the noise should be black & white only </td>
+</tr>
+<tr><td><code>scaleFactor</code>
+ </td>
+<td>float </td>
+<td>a scale factor that is applied to the noise. </td>
+</tr>
+<tr><td><code>area</code>
+ </td>
+<td><code>[x, y, w, h]</code>
+ </td>
+<td>the area that should be painted with the noise. </td>
+</tr>
+</table>
+<p class="comment">HISE will cache internal images filled with the noise for performance reasons, however this means that using this method increases the memory usage (depending on the noise area size).<br></p>
+<h2 id="applygamma"><b>applyGamma</b>
+</h2>
+<p class="comment">Applies a gamma correction to the current layer.</p>
+<pre><code class="language-javascript line-numbers">Graphics.applyGamma(float gamma)</code></pre>
+<p><br><br></p>
+<h2 id="applygradientmap"><b>applyGradientMap</b>
+</h2>
+<p class="comment">Applies a gradient map to the brightness level of the current layer.</p>
+<pre><code class="language-javascript line-numbers">Graphics.applyGradientMap(var darkColour, var brightColour)</code></pre>
+<p><br><br></p>
+<h2 id="applyhsl"><b>applyHSL</b>
+</h2>
+<p class="comment">Applies a HSL grading on the current layer.</p>
+<pre><code class="language-javascript line-numbers">Graphics.applyHSL(float hue, float saturation, float lightness)</code></pre>
+<p><br><br></p>
+<h2 id="applymask"><b>applyMask</b>
+</h2>
+<p class="comment">Applies a mask to the current layer.</p>
+<pre><code class="language-javascript line-numbers">Graphics.applyMask(var path, var area, bool invert)</code></pre>
+<p><br><br></p>
+<h2 id="applysepia"><b>applySepia</b>
+</h2>
+<p class="comment">Applies an oldschool sepia filter on the current layer.</p>
+<pre><code class="language-javascript line-numbers">Graphics.applySepia()</code></pre>
+<p><br><br></p>
+<h2 id="applyshader"><b>applyShader</b>
+</h2>
+<p class="comment">Applies an OpenGL shader to the panel. Returns false if the shader could not be compiled.</p>
+<pre><code class="language-javascript line-numbers">Graphics.applyShader(var shader, var area)</code></pre>
+<p><br>You can use this method in order to render the <a href="scripting/scripting-api/scriptshader/index.html">ScriptShader</a>
+ object to the given area (relative to the ScriptPanel's boundaries).<br></p>
+<h2 id="applysharpness"><b>applySharpness</b>
+</h2>
+<p class="comment">Applies a sharpen / soften filter on the current layer.</p>
+<pre><code class="language-javascript line-numbers">Graphics.applySharpness(int delta)</code></pre>
+<p><br><br></p>
+<h2 id="applyvignette"><b>applyVignette</b>
+</h2>
+<p class="comment">Applies a vignette (dark corners on the current layer.</p>
+<pre><code class="language-javascript line-numbers">Graphics.applyVignette(float amount, float radius, float falloff)</code></pre>
+<p><br><br></p>
+<h2 id="beginblendlayer"><b>beginBlendLayer</b>
+</h2>
+<p class="comment">Begins a new layer that will use the given blend effect.</p>
+<pre><code class="language-javascript line-numbers">Graphics.beginBlendLayer(String blendMode, float alpha)</code></pre>
+<p><br><br></p>
+<h2 id="beginlayer"><b>beginLayer</b>
+</h2>
+<p class="comment">Starts a new Layer.</p>
+<pre><code class="language-javascript line-numbers">Graphics.beginLayer(bool drawOnParent)</code></pre>
+<p><br><br></p>
+<h2 id="boxblur"><b>boxBlur</b>
+</h2>
+<p class="comment">Applies a box blur to the current layer.</p>
+<pre><code class="language-javascript line-numbers">Graphics.boxBlur(var blurAmount)</code></pre>
+<p><br><br></p>
+<h2 id="desaturate"><b>desaturate</b>
+</h2>
+<p class="comment">Removes all colour from the current layer.</p>
+<pre><code class="language-javascript line-numbers">Graphics.desaturate()</code></pre>
+<p><br><br></p>
+<h2 id="drawalignedtext"><b>drawAlignedText</b>
+</h2>
+<p class="comment">Draws a text with the given alignment (see the Label alignment property).</p>
+<pre><code class="language-javascript line-numbers">Graphics.drawAlignedText(String text, var area, String alignment)</code></pre>
+<p><br><br></p>
+<h2 id="drawalignedtextshadow"><b>drawAlignedTextShadow</b>
+</h2>
+<p class="comment">Renders a (blurred) shadow for the text.</p>
+<pre><code class="language-javascript line-numbers">Graphics.drawAlignedTextShadow(String text, var area, String alignment, var shadowData)</code></pre>
+<p><br>This method uses the awesome <a href="https://github.com/sudara/melatonin_blur">melatonin blur</a>
+ library for a fast text shadow rendering. It has the similar parameters as the <code>drawAlignedText</code>
+ function, but expects a JSON object with the shadow parameters as additional last argument. The JSON object can have these properties that will define the appearance of the shadow:</p>
+<table><thead><td><b>Property </b>
+</td>
+<td><b>Type </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><code>Colour</code>
+ </td>
+<td>int or String or constant </td>
+<td>the colour of the shadow. </td>
+</tr>
+<tr><td><code>Offset</code>
+ </td>
+<td><code>[x, y]</code>
+ </td>
+<td>A point array indicating the offset of the shadow. </td>
+</tr>
+<tr><td><code>Radius</code>
+ </td>
+<td>int </td>
+<td>the amount of blur in pixels. 0 means no blur at all. </td>
+</tr>
+<tr><td><code>Spread</code>
+ </td>
+<td>int </td>
+<td>the scaling of the shadow. Using positive values will make the shadow bigger. </td>
+</tr>
+<tr><td><code>Inner</code>
+ </td>
+<td>bool </td>
+<td>Whether to render a outer shadow (drop shadow) or an inner shadow (inner glow). </td>
+</tr>
+</table>
+<p>Here's some funk for y'all:</p>
+<pre><code class="language-javascript line-numbers">const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{
+	g.setFontWithSpacing("Comic Sans MS", 40.0, 0.05);
+	g.drawAlignedTextShadow("funky", this.getLocalBounds(0), "centred", { "Colour": Colours.red, "Offset": [0, 4], "Radius": 10});
+	g.drawAlignedTextShadow("funky", this.getLocalBounds(0), "centred", { "Colour": Colours.green, "Offset": [2, 2], "Radius": 0});
+	g.setColour(Colours.white);
+	g.drawAlignedText("funky", this.getLocalBounds(0), "centred");
+});</code></pre>
+<p><br></p>
+<h2 id="drawdropshadow"><b>drawDropShadow</b>
+</h2>
+<p class="comment">Draws a drop shadow around a rectangle.</p>
+<pre><code class="language-javascript line-numbers">Graphics.drawDropShadow(var area, var colour, int radius)</code></pre>
+<p><br><br></p>
+<h2 id="drawdropshadowfrompath"><b>drawDropShadowFromPath</b>
+</h2>
+<p class="comment">Draws a drop shadow from a path.</p>
+<pre><code class="language-javascript line-numbers">Graphics.drawDropShadowFromPath(var path, var area, var colour, int radius, var offset)</code></pre>
+<p><br>This will draw a blurred version of the path that you can use to create a drop shadow effect.</p>
+<pre><code class="language-javascript line-numbers">const var Panel = Content.addPanel("Panel", 0, 0);
+
+const var p = Content.createPath();
+
+// pass an array with numbers to load SVG images
+p.loadFromData([110,109,0,245,207,67,128,217,36,67,108,0,236,189,67,128,89,69,67,108,0,
+                245,207,67,128,217,101,67,108,192,212,207,67,128,53,81,67,98,217,93,211,
+                67,51,180,80,67,123,228,219,67,2,123,91,67,128,144,224,67,0,149,101,67,
+                98,39,209,224,67,29,247,89,67,79,60,223,67,36,224,61,67,0,245,207,67,0,
+                12,54,67,108,0,245,207,67,128,217,36,67,99,109,128,33,193,67,0,168,88,
+                67,108,0,66,193,67,0,76,109,67,98,231,184,189,67,77,205,109,67,69,50,
+                181,67,126,6,99,67,64,134,176,67,128,236,88,67,98,154,69,176,67,99,138,
+                100,67,49,218,177,67,174,80,128,67,128,33,193,67,192,58,132,67,108,128,
+                33,193,67,0,212,140,67,108,192,42,211,67,0,40,121,67,108,128,33,193,67,
+                0,168,88,67,99,101,0,0]);
+
+Panel.setPaintRoutine(function(g)
+{
+    g.fillAll(Colours.grey);
+    var area = [20, 20, 100, 100];
+    
+    g.drawDropShadowFromPath(p, area, 0x88000000, 5, [0, 5]);
+    g.setColour(Colours.white);
+    g.fillPath(p, area);
+});</code></pre>
+<p><br></p>
+<h2 id="drawellipse"><b>drawEllipse</b>
+</h2>
+<p class="comment">Draws a ellipse in the given area.</p>
+<pre><code class="language-javascript line-numbers">Graphics.drawEllipse(var area, float lineThickness)</code></pre>
+<p><br><br></p>
+<h2 id="drawfftspectrum"><b>drawFFTSpectrum</b>
+</h2>
+<p class="comment">Draws the spectrum of the FFT object to the panel.</p>
+<pre><code class="language-javascript line-numbers">Graphics.drawFFTSpectrum(var fftObject, var area)</code></pre>
+<p><br><br></p>
+<h2 id="drawfittedtext"><b>drawFittedText</b>
+</h2>
+<p class="comment">Tries to draw a text string inside a given space.</p>
+<pre><code class="language-javascript line-numbers">Graphics.drawFittedText(String text, var area, String alignment, int maxLines, float scale)</code></pre>
+<p><br><br></p>
+<h2 id="drawhorizontalline"><b>drawHorizontalLine</b>
+</h2>
+<p class="comment">Draws a (non interpolated) horizontal line.</p>
+<pre><code class="language-javascript line-numbers">Graphics.drawHorizontalLine(int y, float x1, float x2)</code></pre>
+<p><br><br></p>
+<h2 id="drawimage"><b>drawImage</b>
+</h2>
+<p class="comment">Draws a image into the area.</p>
+<pre><code class="language-javascript line-numbers">Graphics.drawImage(String imageName, var area, int xOffset, int yOffset)</code></pre>
+<p><br><br></p>
+<h2 id="drawline"><b>drawLine</b>
+</h2>
+<p class="comment">Draws a line.</p>
+<pre><code class="language-javascript line-numbers">Graphics.drawLine(float x1, float x2, float y1, float y2, float lineThickness)</code></pre>
+<p><br><br></p>
+<h2 id="drawmarkdowntext"><b>drawMarkdownText</b>
+</h2>
+<p class="comment">Draws the text of the given markdown renderer to its specified area.</p>
+<pre><code class="language-javascript line-numbers">Graphics.drawMarkdownText(var markdownRenderer)</code></pre>
+<p><br><br></p>
+<h2 id="drawmultilinetext"><b>drawMultiLineText</b>
+</h2>
+<p class="comment">Break to new lines when the text becomes wider than maxWidth.</p>
+<pre><code class="language-javascript line-numbers">Graphics.drawMultiLineText(String text, var xy, int maxWidth, String alignment, float leading)</code></pre>
+<p><br><br></p>
+<h2 id="drawpath"><b>drawPath</b>
+</h2>
+<p class="comment">Draws the given path.</p>
+<pre><code class="language-javascript line-numbers">Graphics.drawPath(var path, var area, var strokeStyle)</code></pre>
+<p><br>The stroke style can be either just a number (then it determines the stroke thickness), or a JSON object that allows a more fine grained control over the stroke behaviour:</p>
+<pre><code class="language-javascript line-numbers">const var c = Content.createPath();
+
+c.startNewSubPath(0.0, 0.0);
+c.lineTo(0.0, 1.0);
+c.lineTo(1.0, 0.0);
+c.lineTo(0.5, 1.0);
+
+const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{
+    g.fillAll(0x22FFFFFF);
+    g.setColour(Colours.white);
+    
+    var p = {};               // Pick one of these:
+    p.EndCapStyle = "butt";   // ["butt", "square", "rounded"]
+    p.JointStyle = "rounded"; // ["mitered", "curved","beveled"]
+    p.Thickness = 12.0;
+    
+	g.drawPath(c, this.getLocalBounds(p.Thickness), p);
+});</code></pre>
+<p>For a detailed explanation of these properties, take a look at the JUCE API documentation here:</p>
+<p class="comment"><a href="https://docs.juce.com/master/classPathStrokeType.html#af1cf21018ccb9aa84572c1da4ae513b8">JUCE PathStrokeStyle API</a>
+<br></p>
+<h2 id="drawrect"><b>drawRect</b>
+</h2>
+<p class="comment">Draws a rectangle.</p>
+<pre><code class="language-javascript line-numbers">Graphics.drawRect(var area, float borderSize)</code></pre>
+<p><br><br></p>
+<h2 id="drawrepaintmarker"><b>drawRepaintMarker</b>
+</h2>
+<p class="comment">fills the entire component with a random colour to indicate a UI repaint.</p>
+<pre><code class="language-javascript line-numbers">Graphics.drawRepaintMarker( String label)</code></pre>
+<p><br><br></p>
+<h2 id="drawroundedrectangle"><b>drawRoundedRectangle</b>
+</h2>
+<p class="comment">Draws a rounded rectangle. cornerData can be either a float number (for the corner size) or a JSON object for more customization options.</p>
+<pre><code class="language-javascript line-numbers">Graphics.drawRoundedRectangle(var area, var cornerData, float borderSize)</code></pre>
+<p><br><br></p>
+<h2 id="drawsvg"><b>drawSVG</b>
+</h2>
+<p class="comment">Draws a SVG object within the given bounds and opacity.</p>
+<pre><code class="language-javascript line-numbers">Graphics.drawSVG(var svgObject, var bounds, float opacity)</code></pre>
+<p><br><br></p>
+<h2 id="drawtext"><b>drawText</b>
+</h2>
+<p class="comment">Draws a centered and vertically stretched text.</p>
+<pre><code class="language-javascript line-numbers">Graphics.drawText(String text, var area)</code></pre>
+<p><br><br></p>
+<h2 id="drawtriangle"><b>drawTriangle</b>
+</h2>
+<p class="comment">Draws a triangle rotated by the angle in radians.</p>
+<pre><code class="language-javascript line-numbers">Graphics.drawTriangle(var area, float angle, float lineThickness)</code></pre>
+<p><br><br></p>
+<h2 id="drawverticalline"><b>drawVerticalLine</b>
+</h2>
+<p class="comment">Draws a (non interpolated) vertical line.</p>
+<pre><code class="language-javascript line-numbers">Graphics.drawVerticalLine(int x, float y1, float y2)</code></pre>
+<p><br><br></p>
+<h2 id="endlayer"><b>endLayer</b>
+</h2>
+<p class="comment">flushes the current layer.</p>
+<pre><code class="language-javascript line-numbers">Graphics.endLayer()</code></pre>
+<p><br><br></p>
+<h2 id="fillall"><b>fillAll</b>
+</h2>
+<p class="comment">Fills the whole area with the given colour.</p>
+<pre><code class="language-javascript line-numbers">Graphics.fillAll(var colour)</code></pre>
+<p><br><br></p>
+<h2 id="fillellipse"><b>fillEllipse</b>
+</h2>
+<p class="comment">Fills a ellipse in the given area.</p>
+<pre><code class="language-javascript line-numbers">Graphics.fillEllipse(var area)</code></pre>
+<p><br><br></p>
+<h2 id="fillpath"><b>fillPath</b>
+</h2>
+<p class="comment">Fills a Path.</p>
+<pre><code class="language-javascript line-numbers">Graphics.fillPath(var path, var area)</code></pre>
+<p><br><br></p>
+<h2 id="fillrect"><b>fillRect</b>
+</h2>
+<p class="comment">Fills a rectangle with the given colour.</p>
+<pre><code class="language-javascript line-numbers">Graphics.fillRect(var area)</code></pre>
+<p><br><br></p>
+<h2 id="fillroundedrectangle"><b>fillRoundedRectangle</b>
+</h2>
+<p class="comment">Fills a rounded rectangle. cornerData can be either a float number (for the corner size) or a JSON object for more customization options.</p>
+<pre><code class="language-javascript line-numbers">Graphics.fillRoundedRectangle(var area, var cornerData)</code></pre>
+<p><br><br></p>
+<h2 id="filltriangle"><b>fillTriangle</b>
+</h2>
+<p class="comment">Fills a triangle rotated by the angle in radians.</p>
+<pre><code class="language-javascript line-numbers">Graphics.fillTriangle(var area, float angle)</code></pre>
+<p><br><br></p>
+<h2 id="flip"><b>flip</b>
+</h2>
+<p class="comment">Flips the canvas at the center.</p>
+<pre><code class="language-javascript line-numbers">Graphics.flip(bool horizontally, var totalArea)</code></pre>
+<p><br><br></p>
+<h2 id="gaussianblur"><b>gaussianBlur</b>
+</h2>
+<p class="comment">Applies gaussian blur to the current layer.</p>
+<pre><code class="language-javascript line-numbers">Graphics.gaussianBlur(var blurAmount)</code></pre>
+<p><br><br></p>
+<h2 id="getstringwidth"><b>getStringWidth</b>
+</h2>
+<p class="comment">Returns the width of the string using the current font.</p>
+<pre><code class="language-javascript line-numbers">Graphics.getStringWidth(String text)</code></pre>
+<p><br><br></p>
+<h2 id="rotate"><b>rotate</b>
+</h2>
+<p class="comment">Rotates the canvas around center <code>[x, y]</code>
+ by the given amount in radian.</p>
+<pre><code class="language-javascript line-numbers">Graphics.rotate(var angleInRadian, var center)</code></pre>
+<p><br><br></p>
+<h2 id="setcolour"><b>setColour</b>
+</h2>
+<p class="comment">Sets the current colour.</p>
+<pre><code class="language-javascript line-numbers">Graphics.setColour(var colour)</code></pre>
+<p><br><br></p>
+<h2 id="setfont"><b>setFont</b>
+</h2>
+<p class="comment">Sets the current font.</p>
+<pre><code class="language-javascript line-numbers">Graphics.setFont(String fontName, float fontSize)</code></pre>
+<p><br><br></p>
+<h2 id="setfontwithspacing"><b>setFontWithSpacing</b>
+</h2>
+<p class="comment">Sets the current font with the specified spacing between the characters.</p>
+<pre><code class="language-javascript line-numbers">Graphics.setFontWithSpacing(String fontName, float fontSize, float spacing)</code></pre>
+<p><br><br></p>
+<h2 id="setgradientfill"><b>setGradientFill</b>
+</h2>
+<p class="comment">Sets the current gradient via an array [Colour1, x1, y1, Colour2, x2, y2]</p>
+<pre><code class="language-javascript line-numbers">Graphics.setGradientFill(var gradientData)</code></pre>
+<p><br>This method allows you to set the current brush to a gradient. The parameter you pass in must be an array that has at least 6 elements:</p>
+<ol><li>The first colour</li>
+<li>The x-position of the first colour</li>
+<li>The y-position of the first colour</li>
+<li>The second colour</li>
+<li>The x-position of the second colour</li>
+<li>The y-position of the second colour</li>
+<li>whether the gradient is radial: <code>true</code>
+ or <code>false</code>
+ (optional)</li>
+<li>An additional colour (optional)</li>
+<li>The normalised position for the additional colour (eg. <code>0.5</code>
+ if it should be in the middle) (optional)</li>
+<li>The next additional colour (optional)</li>
+<li>The normalised position for the second additional colour (optional)</li>
+<li>...</li>
+</ol>
+<h3 id="examples"><b>Examples</b>
+</h3>
+<pre><code class="language-javascript line-numbers">// A blurry white ball in the middle
+g.setGradientFill([Colours.white, 100.0, 100.0,
+				   Colours.black, 50.0, 50.0,
+				   true]);
+
+// A top down gradient with a black bar in the middle and white at the edges
+g.setGradientFill([Colours.white, 0.0, 0.0,
+				   Colours.white, 0.0, 100.0,
+				   false,
+				   Colours.black, 0.5]);</code></pre>
+<p><br></p>
+<h2 id="setopacity"><b>setOpacity</b>
+</h2>
+<p class="comment">Sets a global transparency level.</p>
+<pre><code class="language-javascript line-numbers">Graphics.setOpacity(float alphaValue)</code></pre>
+<p><br><br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/lorismanager/index.html">LorisManager</a>
+</span>
+
+<p class="content-footer-metadata"><br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="audiofile"><b>AudioFile</b>
+</h1>
+<p><br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="getcontent"><b>getContent</b>
+</h2>
+<p class="comment">Returns the current audio data as array of channels.</p>
+<pre><code class="language-javascript line-numbers">AudioFile.getContent()</code></pre>
+<p><br><br></p>
+<h2 id="getcurrentlydisplayedindex"><b>getCurrentlyDisplayedIndex</b>
+</h2>
+<p class="comment">Returns the current sample position (from 0 to numSamples).</p>
+<pre><code class="language-javascript line-numbers">AudioFile.getCurrentlyDisplayedIndex()</code></pre>
+<p><br><br></p>
+<h2 id="getcurrentlyloadedfile"><b>getCurrentlyLoadedFile</b>
+</h2>
+<p class="comment">Returns the reference string for the currently loaded file.</p>
+<pre><code class="language-javascript line-numbers">AudioFile.getCurrentlyLoadedFile()</code></pre>
+<p><br><br></p>
+<h2 id="getnumsamples"><b>getNumSamples</b>
+</h2>
+<p class="comment">returns the amount of samples.</p>
+<pre><code class="language-javascript line-numbers">AudioFile.getNumSamples()</code></pre>
+<p><br><br></p>
+<h2 id="getsamplerate"><b>getSampleRate</b>
+</h2>
+<p class="comment">Returns the samplerate of the audio file.</p>
+<pre><code class="language-javascript line-numbers">AudioFile.getSampleRate()</code></pre>
+<p><br><br></p>
+<h2 id="linkto"><b>linkTo</b>
+</h2>
+<p class="comment">Links this audio file to the other</p>
+<pre><code class="language-javascript line-numbers">AudioFile.linkTo(var other)</code></pre>
+<p><br><br></p>
+<h2 id="loadfile"><b>loadFile</b>
+</h2>
+<p class="comment">Loads an audio file from the given reference.</p>
+<pre><code class="language-javascript line-numbers">AudioFile.loadFile( String filePath)</code></pre>
+<p><br><br></p>
+<h2 id="setcontentcallback"><b>setContentCallback</b>
+</h2>
+<p class="comment">Sets a callback that is being executed when a new file is loaded (or the sample range changed).</p>
+<pre><code class="language-javascript line-numbers">AudioFile.setContentCallback(var contentFunction)</code></pre>
+<p><br><br></p>
+<h2 id="setdisplaycallback"><b>setDisplayCallback</b>
+</h2>
+<p class="comment">Sets a callback that is being executed when the playback position changes.</p>
+<pre><code class="language-javascript line-numbers">AudioFile.setDisplayCallback(var displayFunction)</code></pre>
+<p><br><br></p>
+<h2 id="setrange"><b>setRange</b>
+</h2>
+<p class="comment">Sets a new sample range.</p>
+<pre><code class="language-javascript line-numbers">AudioFile.setRange(int min, int max)</code></pre>
+<p><br><br></p>
+<h2 id="update"><b>update</b>
+</h2>
+<p class="comment">Sends an update message to all registered listeners.</p>
+<pre><code class="language-javascript line-numbers">AudioFile.update()</code></pre>
+<p><br><br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/audiosampleprocessor/index.html">AudioSampleProcessor</a>
+</span>
+
+<p class="content-footer-metadata"><br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="sample"><b>Sample</b>
+</h1>
+<p><br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="deletesample"><b>deleteSample</b>
+</h2>
+<p class="comment">Deletes the sample from the Sampler (not just this reference!).</p>
+<pre><code class="language-javascript line-numbers">Sample.deleteSample()</code></pre>
+<p><br><br></p>
+<h2 id="duplicatesample"><b>duplicateSample</b>
+</h2>
+<p class="comment">Duplicates the sample.</p>
+<pre><code class="language-javascript line-numbers">Sample.duplicateSample()</code></pre>
+<p><br><br></p>
+<h2 id="get"><b>get</b>
+</h2>
+<p class="comment">Returns the sample property.</p>
+<pre><code class="language-javascript line-numbers">Sample.get(int propertyIndex)</code></pre>
+<p><br><br></p>
+<h2 id="getcustomproperties"><b>getCustomProperties</b>
+</h2>
+<p class="comment">Returns an object that can hold additional properties.</p>
+<pre><code class="language-javascript line-numbers">Sample.getCustomProperties()</code></pre>
+<p><br><br></p>
+<h2 id="getid"><b>getId</b>
+</h2>
+<p class="comment">Returns the ID of the property (use this with the setFromJSONMethod).</p>
+<pre><code class="language-javascript line-numbers">Sample.getId(int id)</code></pre>
+<p><br><br></p>
+<h2 id="getrange"><b>getRange</b>
+</h2>
+<p class="comment">Returns the value range that the given property can have (eg. the loop end might not go beyond the sample end.</p>
+<pre><code class="language-javascript line-numbers">Sample.getRange(int propertyIndex)</code></pre>
+<p><br><br></p>
+<h2 id="loadintobufferarray"><b>loadIntoBufferArray</b>
+</h2>
+<p class="comment">Loads the sample into a array of buffers for analysis.</p>
+<pre><code class="language-javascript line-numbers">Sample.loadIntoBufferArray()</code></pre>
+<p><br><br></p>
+<h2 id="referstosamesample"><b>refersToSameSample</b>
+</h2>
+<p class="comment">Checks if the otherSample object refers to the same sample as this.</p>
+<pre><code class="language-javascript line-numbers">Sample.refersToSameSample(var otherSample)</code></pre>
+<p><br><br></p>
+<h2 id="replaceaudiofile"><b>replaceAudioFile</b>
+</h2>
+<p class="comment">Writes the content of the audio data (array of buffers) into the audio file. This is undoable!.</p>
+<pre><code class="language-javascript line-numbers">Sample.replaceAudioFile(var audioData)</code></pre>
+<p><br><br></p>
+<h2 id="set"><b>set</b>
+</h2>
+<p class="comment">Sets the sample property.</p>
+<pre><code class="language-javascript line-numbers">Sample.set(int propertyIndex, var newValue)</code></pre>
+<p><br><br></p>
+<h2 id="setfromjson"><b>setFromJSON</b>
+</h2>
+<p class="comment">Sets the properties from a JSON object.</p>
+<pre><code class="language-javascript line-numbers">Sample.setFromJSON(var object)</code></pre>
+<p><br><br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/sampler/index.html">Sampler</a>
+</span>
+
+<p class="content-footer-metadata"><br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

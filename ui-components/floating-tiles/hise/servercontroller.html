@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="servercontroller"><b>ServerController</b>
+</h1>
+<p><br></p>
+<p>Connects to module type: <a href="hise-modules/midi-processors/list/scriptprocessor.html">Script Processor</a>
+</p>
+<p class="comment">A floating tile for debugging server activity</p>
+<img src="images/floating-tiles/servercontroller.png"></img>
+<table><thead><td><b>ID </b>
+</td>
+<td><b>Default Value </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><code>Font</code>
+ </td>
+<td>Oxygen Bold </td>
+<td>no description </td>
+</tr>
+<tr><td><code>FontSize</code>
+ </td>
+<td>14.0 </td>
+<td>no description </td>
+</tr>
+<tr><td><code>ProcessorId</code>
+ </td>
+<td><code>""</code>
+ </td>
+<td>no description </td>
+</tr>
+<tr><td><code>Index</code>
+ </td>
+<td>-1 </td>
+<td>no description </td>
+</tr>
+<tr><td><code>FollowWorkspace</code>
+ </td>
+<td><code>false</code>
+ </td>
+<td>no description </td>
+</tr>
+</table>
+<p><br></p>
+<p>The ServerController floating tile offers a few helpful tools during the development of <a href="scripting/scripting-api/server/index.html">Server</a>
+ related tasks. It shows a list of all outgoing URL requests, their state / metrics and the parameter and JSON response.<br>Also it contains a list of all downloads and some tools to start / stop / resume the downloads and show the target location</p>
+<h2 id="toolbar"><b>Toolbar</b>
+</h2>
+<p>At the top of this floating tile you'll find a few buttons which allow you to show / hide the data tables and control the server state:</p>
+<ul><li>The status LED will indicate the state of the server</li>
+<li>The Play / Pause button will control whether the server thread will be executing the requests. You can use this for stepping through the requests while debugging</li>
+<li>You can delete completed downloads / invalidated URL requests</li>
+<li>Show / Hide the URL Request Table / Download Table</li>
+</ul>
+<h2 id="url-request-table"><b>URL Request Table</b>
+</h2>
+<p>The URL request table displays every call to <code>Server.callWithGET()</code>
+ / <code>Server.callWithPOST()</code>
+ and offers a few tools to help with server development:</p>
+<table><thead><td><b>Column </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><b>LED</b>
+ </td>
+<td>An colour icon that shows the state (grey = not executed, green = OK, red = some error code) </td>
+</tr>
+<tr><td><b>Status</b>
+ </td>
+<td>The HTTP status code for that request </td>
+</tr>
+<tr><td><b>URL</b>
+ </td>
+<td>The exact URL that is called </td>
+</tr>
+<tr><td><b>Timestamp</b>
+ </td>
+<td>The time since the last <code>Server.setBaseURL()</code>
+ call (which can be considered as <i>server uptime</i>
+) </td>
+</tr>
+<tr><td><b>Duration</b>
+ </td>
+<td>The exact time that the server took for the response in milliseconds </td>
+</tr>
+<tr><td><b>Parameter</b>
+ </td>
+<td>A button that opens a JSON editor with the parameters that were used in the URL request. You can edit the parameters and then press F5 to change them in the original URL - which might be handy before you resend the request </td>
+</tr>
+<tr><td><b>Response</b>
+ </td>
+<td>If the status code was 200 (OK), you can inspect the JSON response by clicking here. </td>
+</tr>
+<tr><td><b>Resend</b>
+ </td>
+<td>Resends the URL request again (and executes the callback when there is a response). This is the same as calling the script function again. </td>
+</tr>
+</table>
+<p class="comment">Be aware that if you recompile your script, you will loose the ability of resending an URL request (because the callback is invalidated by the recompilation).</p>
+<h2 id="download-table"><b>Download Table</b>
+</h2>
+<p>This table will show a list of all downloads and offer some tools to stop / resume the download. If you are implementing your own download display using ScriptPanels, this table will help you validate the functionality.</p>
+<table><thead><td><b>Column </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><b>LED</b>
+ </td>
+<td>A colour icon with a status indicator </td>
+</tr>
+<tr><td><b>Status</b>
+ </td>
+<td>A descriptive text for the download status </td>
+</tr>
+<tr><td><b>URL</b>
+ </td>
+<td>the source URL of the download </td>
+</tr>
+<tr><td><b>Download Size</b>
+ </td>
+<td>The amount of downloaded data / the download size </td>
+</tr>
+<tr><td><b>Download Speed</b>
+ </td>
+<td>The download speed </td>
+</tr>
+<tr><td><b>Pause</b>
+ </td>
+<td>Allows you to pause / resume the download </td>
+</tr>
+<tr><td><b>Abort</b>
+ </td>
+<td>Cancels the download (and deletes the downloaded file) </td>
+</tr>
+<tr><td><b>ShowFile</b>
+ </td>
+<td>Opens an Explorer / Finder and shows the target file </td>
+</tr>
+</table>
+<p>Everything that is being displayed in this table can be queried using the <code>Download</code>
+(LINK!) object. In combination with dynamic ScriptPanels using <a href="scripting/scripting-api/scriptpanel/index.html#addchildpanel">this method</a>
+ you can implement a fully customizable view of the pending downloads.</p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="ui-components/floating-tiles/hise/nodepropertypanel.html">NodePropertyPanel</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>20.03.2021<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

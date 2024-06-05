@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="raw::taskaftersuspension"><b>raw::TaskAfterSuspension</b>
+</h1>
+<p>A wrapper around a task that is supposed to take a while and is not allowed to be executed simultaneously to the audio rendering.<br>Some tasks that interfere with the audio rendering (eg. adding / removing modules, swapping samples) have to make sure that the audio thread is not running in parallel. Therefore HISE has a "suspended task" system which kills all voices, waits until the voices have gracefully faded out (including FX tails for reverb effects), then suspends the audio rendering until the task has been completed on a background thread with a minimal amount of locking.<br>In HISE, this system is used for each one of these events:<br></p>
+<ul><li>Compilation of scripts<br></li>
+<li>Hot swapping of samplemaps<br></li>
+<li>Loading User Presets<br></li>
+<li>Adding / Removing Modules<br></li>
+</ul>
+<p><br>You can see this system in action if you do one of these things in HISE while playing notes.<br>In order to use that system from your own C++ code, just create a lambda that follows the <a href="cpp_api/hise/structhise_1_1_safe_function_call.html">hise::SafeFunctionCall</a>
+ definition and pass it to the <a href="cpp_api/raw/classhise_1_1raw_1_1_task_after_suspension.html#call">call()</a>
+ function:<br></p>
+<pre><code class="language-clike line-numbers">auto f = [mySampleMap](hise::Processor* p)
+{
+    // You know it's a sampler, so no need for a dynamic_cast
+    auto sampler = static_cast<hise::ModulatorSampler*>(p);
+
+    // Call whatever you need to do.
+    // (Actually this call makes no sense, since it's already wrapped in a suspended execution)
+    sampler->loadSampleMap(mySampleMap);
+
+    // The lambda definition requires you to return this.
+    return hise::SafeFunctionCall::OK;
+};
+
+TaskAfterSuspension::call(mc, f);</code></pre>
+<p><br>This makes sure that the lambda will be executed on the given thread after all voices are killed. However this doesn't necessarily mean asynchronous execution: if you're calling this on the target thread and all voices are already killed, it will be executed synchronously. You can check this with the ReturnType enum passed back from the <a href="cpp_api/raw/classhise_1_1raw_1_1_task_after_suspension.html#call">call()</a>
+ method. This reduces the debugging headaches of asynchronous callbacks wherever possible.<br> </p>
+<h2 id="public-types"><b>Public types</b>
+</h2>
+<h3 id="enum-returntype"><b>enum ReturnType</b>
+</h3>
+<table><thead><td><b>Name </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><code>ExecutedSynchronously</code>
+ </td>
+<td>If the audio was already suspended and the method was called from the same thread as the desired target thread, this will be returned from the call. </td>
+</tr>
+<tr><td><code>DeferredToThread</code>
+ </td>
+<td>If the audio needs to be suspended and / or the method was called from another thread than the target thread, this will be returned in order to indicate that the function was not yet executed. </td>
+</tr>
+</table>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="cpp_api/raw/classhise_1_1raw_1_1_u_i_connection.html">raw::UIConnection</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

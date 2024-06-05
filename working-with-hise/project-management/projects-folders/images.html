@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="images"><b>Images</b>
+</h1>
+<p>As the self explanatory name suggests, this is the place for all embedded images - filmstrips and backgrounds. Also, all other artwork-related data like custom fonts or the icon should be put here.</p>
+<p>HISE supports the most important image types (JPG, GIF and PNG), however it's preferred to use PNG format since it offers the best compression ratio and decompression performance. There is one thing you need to know about images: they can get really big and waste a lot of memory. The reason is that the images will be decompressed and stored in memory as 32bit bitmaps, so retina filmstrips of a 3D rendered knob can easily eat up hundreds of megabyte of RAM.If you're using retina images, be aware that HISE uses a "logical" resolution that is the same as the non-retina pixel size, however you can just feed it with high resolution images and it will automatically scale them correctly (and for non-retina images, use a downscaled version).</p>
+<p>Apart from custom backgrounds and filmstrips, there are a few hardcoded locations that HISE will use to look for commonly used image data:</p>
+<ul><li><b>Icon</b>
+: just add a transparent, square PNG called <code>Icon.png</code>
+ in the Images folder and it will be used as application icon (we recommend at least a 256x256 resolution). For plugins this won't have any effect.</li>
+<li><b>Splash Screen</b>
+: you can add a splash screen that will be shown during application launch. In this case, just drop a <code>SplashScreen.png</code>
+ file (or for iPhone screens a <code>SplashScreeniPhone.png</code>
+). It's recommend to use the same resolution as your final UI size, otherwise things will look weird.</li>
+<li><b>Custom keyboard filmstrips</b>
+: If you want to use a customized keyboard, you can add images for each of the 12 keys (up and down state). Take a look at the <a href="ui-components/floating-tiles/plugin/keyboard.html">Keyboard</a>
+ floating tile for more information.</li>
+<li><b>Fonts</b>
+: if you are using a custom font, the end user will most likely not have it installed on his computer. So in order to make sure that your UI will look the same you will need to embed any non-standard font that you use into the project. In order to do so, put them all into the <code>Fonts</code>
+ subdirectory of the Images folder (for more information, take a look at the <a href="scripting/scripting-api/engine/index.html#loadfontas">Engine.loadFontAs(String fileName, String fontId)</a>
+ that loads custom fonts).</li>
+<li><b>About Page</b>
+: the <a href="ui-components/floating-tiles/plugin/aboutpagepanel.html">AboutPagePanel</a>
+-Floating Tile can use a custom background image. Just add a file called <code>about.png</code>
+ in the Images folder and it will use it.</li>
+</ul>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="working-with-hise/project-management/projects-folders/presets.html">Presets</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

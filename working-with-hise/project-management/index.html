@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="project-folder"><img src="images/icon_filebrowser.png"></img>
+<b>Project Folder</b>
+</h1>
+<h2 id="project-folder"><b>Project Folder</b>
+</h2>
+<p>A new project in HISE will hold predefined sub-folders with all the files, data and scripts that you need in your instrument/plugin.</p>
+<p>These folders are categorized according to their filetype and usage:</p>
+<img src="images/custom/folder.png"></img>
+<p><a href="working-with-hise/project-management/projects-folders/additional-source-code.html">AdditionalSourceCode</a>
+ - The place for additional C++ files that are using the <a href="cpp_api/index.html">C++ API</a>
+.</p>
+<p><a href="working-with-hise/project-management/projects-folders/audio-files.html">AudioFiles</a>
+ - Single audio-files that can be used in the <a href="hise-modules/sound-generators/list/audiolooper.html">Audio Loop Player</a>
+ or the <a href="hise-modules/effects/list/convolution.html">Convolution Reverb</a>
+.</p>
+<p><a href="working-with-hise/project-management/projects-folders/binaries.html">Binaries</a>
+ - Contains the <code>Source</code>
+ and <code>temp</code>
+ folders that are necessary to compile your instrument. After compilation your exported plugins will show up here in a <code>Compiled</code>
+-Folder</p>
+<p><a href="working-with-hise/project-management/projects-folders/images.html">Images</a>
+ - A folder that can contain image files and filmstrips for usage in the interface designer as well as a few predefined hooks (e.g. splashscreen and fonts). Per scripting accessible via <code>"{PROJECT_FOLDER}image.png"</code>
+.</p>
+<p><a href="working-with-hise/project-management/projects-folders/meta-data">MetaData</a>
+ - The Metadata _info files (.xml) in the projects root folder hold the project specific settings.</p>
+<p><a href="working-with-hise/project-management/projects-folders/midi-files">MidiFiles</a>
+ - A folder for MIDI files used in the <a href="hise-modules/midi-processors/list/midiplayer">Midiplayer</a>
+</p>
+<p><a href="working-with-hise/project-management/projects-folders/presets">Presets</a>
+ - Contains the <b>HISE Preset files</b>
+ (<code>.hip</code>
+), which are the save-files of your Projects plugin architecture. The auto-save files will also show up here.</p>
+<p><a href="working-with-hise/project-management/projects-folders/sample-maps">SampleMaps</a>
+ - When you mapped samples in the <a href="hise-modules/sound-generators/list/streamingsampler">Sampler</a>
+ this folder will hold the <code>SampleMap.xml</code>
+'s that point to your samples.</p>
+<p><a href="working-with-hise/project-management/projects-folders/samples">Samples</a>
+ - The folder for your samples and the compressed <code>.ch1</code>
+-monolith files.</p>
+<p><a href="working-with-hise/project-management/projects-folders/scripts">Scripts</a>
+ - If you create an interface for your instrument this folder will hold the main <code>interface.js</code>
+-file + all the scripts that you need for building the GUI and user-interactions of your instrument.</p>
+<p><a href="working-with-hise/project-management/projects-folders/user-presets">UserPresets</a>
+ - The folder for the User-<code>.presets</code>
+ that can save different states of your instruments GUI. You can easily organize these with the <a href="ui-components/floating-tiles/plugin/presetbrowser">Presetbrowser</a>
+-FloatingTile.</p>
+<p><a href="working-with-hise/project-management/projects-folders/xml-preset-backups">XmlPresetBackups</a>
+ - The folder for your <b>HISE presets</b>
+ human readable <code>.xml</code>
+ savefiles. </p>
+<h2 id="workflow-"><b>Workflow </b>
+</h2>
+<p>During development, HISE will fetch all files from these folders. When you export a plugin or standalone app it will embed the data into the plugin and read it directly from memory. </p>
+<p>But be aware that file-reloading is not always consistent: some files are loaded and cached on startup, some files are <a href="https://en.wikipedia.org/wiki/Lazy_loading">lazy loaded</a>
+ when you actually need them, and some files (you might have a clue which ones) are directly streamed from disk. </p>
+<p>Note that you _can_ use files from outside the project folder, however it is <b>highly recommended</b>
+ not to do this. The reason: you won't be able to transfer the project to another computer without breaking some links, let alone exporting the plugin and expecting the external resources to be resolved. </p>
+<p>As long as way stay in the HISE Project paradigm we can use it's a relative path system to: </p>
+<ul><li>load SampleMaps using the Scripting API</li>
+<li>load different audio files into the looper or the convolution reverb</li>
+<li>link images</li>
+<li>create user presets that load & save interface states</li>
+</ul>
+<p>Oh, and samples that will be played through the streaming engine, will obviously also use this system. Two concepts are therefore fundamental to understand: <b>File Pools</b>
+ and the <b>Project Folder Wildcard</b>
+.</p>
+<h2 id="file-pools"><b>File Pools</b>
+</h2>
+<p>There are a few data types (<a href="ui-components/floating-tiles/hise/samplepooltable">SamplePool</a>
+, <a href="ui-components/floating-tiles/hise/imagepool">ImagePool</a>
+, <a href="ui-components/floating-tiles/hise/midifilepool">MidifilePool</a>
+, <a href="ui-components/floating-tiles/hise/audiofilepool">AudiofilePool</a>
+, <a href="ui-components/floating-tiles/hise/samplemappool">SampleMapPool</a>
+) in HISE that use a pool system that caches loaded resources as long as they are used. These pools makes sure that you reuse internal data (so that when eg. two convolution reverbs use the same impulse response, they will use the same audio buffer in the memory).</p>
+<p>Some file types are even cached from the beginning: They are loaded into the pool on startup and then the files aren't accessed directly anymore but the cached data is used instead. </p>
+<p class="comment">This might lead to a few quirks that are often solved by restarting HISE after changing a file in order to use the updated version instead of the cached one.</p>
+<h2 id="project-folder-wildcard"><b>Project Folder Wildcard</b>
+</h2>
+<p>There are multiple occasions in HISE where you need to use external resources, and all of them use the HISE project system - some of them (like SampleMaps) do this implicitely and you don't have to bother about how it works, but in some situations (mostly when using Scripting API calls that access an external resource) you will have to supply a String that is resolved to the desired resource. </p>
+<p>For these situations you will need the <b>Project Folder Wildcard</b>
+: everytime you want to access a file inside the main Project Folder, just prepend: </p>
+<pre><code class="language-javascript line-numbers">{PROJECT_FOLDER}</code></pre>
+<p> to the relative path from the subfolder and HISE will resolve the resource automatically - for both files during development as well as for embedded data in the compiled product and across all operating systems.</p>
+<p>A little example: Your project folder is <code>C:\My Funky Project</code>
+ and you want to load a image called <code>BG12_final.png</code>
+ that is located in the folder <code>C:\My Funky Project\Images\Backgrounds</code>
+</p>
+<p>Following the logic described above, you will need to use this wildcard:</p>
+<pre><code class="language-javascript line-numbers">panel.loadImage("{PROJECT_FOLDER}Backgrounds/BG12_final");</code></pre>
+<p>There are two things that deserve some attention:</p>
+<ol><li>If you're working in Windows, you're probably used to use the backslash <code>\</code>
+ for the path delimiter. Be aware that this won't work on any Unix based OS, so HISE uses the <code>/</code>
+ character for path delimiters for the ultimate cross-platform experience. Also note how you don't need to add a <code>/</code>
+ directly after the project folder wildcard but append just the relative path to the desired file location.</li>
+<li>If you want to load images, you will most likely use files from the Images subdirectory. HISE is smart enough to assume this too. This means you can (and must) omit <code>Images/</code>
+ from the path string. In this case, <code>{PROJECT_FOLDER}</code>
+ will not point to the actual HISE project folder, <b>but to the subdirectory that is appropriate to the context</b>
+. Now depending on the API call this might vary: <a href="scripting/scripting-api/audiosampleprocessor#setfile">AudioSampleProcessor.setFile()</a>
+ will automatically use the <a href="working-with-hise/project-management/projects-folders/audio-files">AudioFiles</a>
+ subdirectory. For some API calls, you even don't need the project folder wildcard, because you are not supposed to use anything outside the subdirectory. Examples for this behaviour is <a href="scripting/scripting-api/sampler#loadsamplemap">Sampler.loadSampleMap()</a>
+ which automatically searches in the <b>SampleMaps</b>
+ Folder and the <code>include()</code>
+ command that includes other script files from the <b>Scripts</b>
+ Folder.</li>
+</ol>
+<h2 id="best-practices"><b>Best Practices</b>
+</h2>
+<h3 id="manually-editing-xml-files"><b>Manually editing XML files</b>
+</h3>
+<p>If you've read through the chapters of each folder, you'll notice that almost all data files use the XML data format. This has an important advantage: you can use your favourite text editor for batch processing files. </p>
+<p>In the end, the HISE application is just <i>one way</i>
+ of editing these files and depending on the use case, opening a text editor and doing search and replace operations will be highly more efficient (this will also enable you to work around some of the quirks of HISE). Especially when it comes to sample mapping, this is sometimes an invaluable tool.</p>
+<p>You are probably wondering why the XML format was chosen over the JSON data format, which would be a suitable candidate given the scripting engine is built upon Javascript. The reason is compatibility towards a native binary tree data structure built into JUCE: the <a href="https://docs.juce.com/master/classValueTree.html">ValueTree</a>
+. If you're not a hardcore C++ programmer, you don't need to understand the details of this implementation, just note that this binary data format comprises a convenient 1:1 translation into XML and is used all across HISE:</p>
+<ul><li>HISE snippets and the encoded states for modules are Base64 encoded strings that use a ValueTree</li>
+<li><code>.hip</code>
+ files are ValueTrees</li>
+<li>the entire Plugin-Interface data model is built upon a ValueTree</li>
+<li>All files that are XML files during development will be converted to ValueTrees in the compiled project.</li>
+</ul>
+<p>Although, there are a few situations where the XML data format and the JSON format are used at the same time (for example if you are storing objects as values for a ScriptPanel in user presets). This results in rather ugly constructs (a stringified JSON with lots of weird escape sequences) but is a necessary evil the for all the benefits we get from the ValueTree data structure.</p>
+<h3 id="using-git-with-hise"><b>Using Git with HISE</b>
+</h3>
+<p>If you're coming from a development environment like KONTAKT which puts all files into one big binary chunk, you're probably wondering about the rationale of such a system. The answer is simple. The binary/XML encapsulation permits compatibility with version control systems like Git. If you don't know what Git is, please take a few hours to learn about version control in general and Git in particular. This is a standard for any kind of serious software development and not using it deprives you of many advantages.</p>
+<p>Having multiple files enables the version control system to track changes more precisely and simplifies simultaneous development: you can work on script files while another person is building the module structure or mapping the samples and you both will be able to commit your changes without conflicts (and even if you're working on the same file, in most cases the merge process is pretty straight forward because almost every data file is human-readable).</p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="working-with-hise/project-management/projects-folders/index.html">Project Folders</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

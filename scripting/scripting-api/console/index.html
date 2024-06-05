@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="console"><b>Console</b>
+</h1>
+<p><br>The console object allows you to print any value to the console of <b>HISE</b>
+.</p>
+<pre><code class="language-javascript line-numbers">Console.print("Hello World " + 3.4); // Prints "Hello World + 3.4 to the console.
+
+Console.assertEqual(x, y); // You could write assertion tests to check your code. 
+
+Console.start(); // You can benchmark your scripts Compile-time with:
+Console.stop(); // wrapping these two Console commands around your code.</code></pre>
+<p><br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="assertequal"><b>assertEqual</b>
+</h2>
+<p class="comment">Throws an error message if the values are not equal.</p>
+<pre><code class="language-javascript line-numbers">Console.assertEqual(var v1, var v2)</code></pre>
+<p><br><br></p>
+<h2 id="assertisdefined"><b>assertIsDefined</b>
+</h2>
+<p class="comment">Throws an error message if the value is undefined.</p>
+<pre><code class="language-javascript line-numbers">Console.assertIsDefined(var value)</code></pre>
+<p><br><br></p>
+<h2 id="assertisobjectorarray"><b>assertIsObjectOrArray</b>
+</h2>
+<p class="comment">Throws an error message if the value is not an object or array.</p>
+<pre><code class="language-javascript line-numbers">Console.assertIsObjectOrArray(var value)</code></pre>
+<p><br><br></p>
+<h2 id="assertlegalnumber"><b>assertLegalNumber</b>
+</h2>
+<p class="comment">Throws an error message if the value is not a legal number (eg. string or array or infinity or NaN).</p>
+<pre><code class="language-javascript line-numbers">Console.assertLegalNumber(var value)</code></pre>
+<p><br><br></p>
+<h2 id="assertnostring"><b>assertNoString</b>
+</h2>
+<p class="comment">Throws an error message if the value is a string.</p>
+<pre><code class="language-javascript line-numbers">Console.assertNoString(var value)</code></pre>
+<p><br><br></p>
+<h2 id="asserttrue"><b>assertTrue</b>
+</h2>
+<p class="comment">Throws an error message if the condition is not true.</p>
+<pre><code class="language-javascript line-numbers">Console.assertTrue(var condition)</code></pre>
+<p><br><br></p>
+<h2 id="blink"><b>blink</b>
+</h2>
+<p class="comment">Sends a blink message to the current editor.</p>
+<pre><code class="language-javascript line-numbers">Console.blink()</code></pre>
+<p><br><br></p>
+<h2 id="breakindebugger"><b>breakInDebugger</b>
+</h2>
+<p class="comment">Throws an assertion in the attached debugger.</p>
+<pre><code class="language-javascript line-numbers">Console.breakInDebugger()</code></pre>
+<p><br><br></p>
+<h2 id="clear"><b>clear</b>
+</h2>
+<p class="comment">Clears the console.</p>
+<pre><code class="language-javascript line-numbers">Console.clear()</code></pre>
+<p><br><br></p>
+<h2 id="print"><b>print</b>
+</h2>
+<p class="comment">Prints a message to the console.</p>
+<pre><code class="language-javascript line-numbers">Console.print(var debug)</code></pre>
+<p><br><br></p>
+<h2 id="startbenchmark"><b>startBenchmark</b>
+</h2>
+<p class="comment">Starts the benchmark. You can give it a name that will be displayed with the result if desired.</p>
+<pre><code class="language-javascript line-numbers">Console.startBenchmark()</code></pre>
+<p><br><br></p>
+<h2 id="stop"><b>stop</b>
+</h2>
+<p class="comment">Causes the execution to stop().</p>
+<pre><code class="language-javascript line-numbers">Console.stop(bool condition)</code></pre>
+<p><br><br></p>
+<h2 id="stopbenchmark"><b>stopBenchmark</b>
+</h2>
+<p class="comment">Stops the benchmark and prints the result.</p>
+<pre><code class="language-javascript line-numbers">Console.stopBenchmark()</code></pre>
+<p><br><br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/content/index.html">Content</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>04.06.2019<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

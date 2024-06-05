@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="ui-components"><b>UI Components</b>
+</h1>
+<img style="max-width:560px;" src="images/custom/ui-components.png"></img>
+<p><b>UI Components</b>
+ cover all clickable User Interface elements of <b>HISE</b>
+. </p>
+<ul><li><a href="ui-components/plugin-components/index.html">Plugin Components</a>
+ are basic UI Components that you can add to the plugins interface with the <a href="working-with-hise/workspaces/scripting-workspace/canvas.html">Interface Designer</a>
+. (<a href="ui-components/plugin-components/knob.html">Slider</a>
+, <a href="ui-components/plugin-components/button.html">Button</a>
+, <a href="ui-components/plugin-components/combobox.html">ComboBox</a>
+, etc..). You can customize their colors or exchange their graphics with filmstrips. </li>
+</ul>
+<p>Two of these are somewhat special: </p>
+<ul><li>The <a href="ui-components/plugin-components/panel.html">Panel</a>
+ is a generic Scripting Panel, that can be fully customized with scriptable <a href="ui-components/plugin-components/panel.html#the-paint-routine">Paint Routine</a>
+, <a href="ui-components/plugin-components/panel.html#the-mouseevent-callback">MouseEvent-</a>
+ and <a href="ui-components/plugin-components/panel.html#the-timer-callback">Timer Callbacks</a>
+.<br></li>
+</ul>
+<ul><li><a href="ui-components/floating-tiles/plugin/index.html">Plugin Floating Tiles</a>
+ are hard-coded interface elements with which you can add predefined functionalities to your plugin. (<a href="ui-components/floating-tiles/plugin/keyboard.html">Keyboard</a>
+, <a href="ui-components/floating-tiles/plugin/customsettings.html">CustomSettings</a>
+, <a href="ui-components/floating-tiles/plugin/presetbrowser.html">PresetBrowser</a>
+, etc..)</li>
+</ul>
+<p>Because the <b>HISE</b>
+ interface itself is built with Floating Tiles, you're able to access all its elements in <a href="ui-components/floating-tiles/hise/index.html">HISE Floating Tiles</a>
+. In connection with the <a href="ui-components/floating-tiles/layout/index.html">Layout Floating Tiles</a>
+ you can adapt your version of <b>HISE</b>
+ to your needs. Like in the Main Workspaces <a href="working-with-hise/workspaces/main-workspace/left-panel.html">Left Panel</a>
+ or the [Custom Workspace]link. (See: <a href="working-with-hise/menu-reference/view/index.html#enable-layout-mode">Enable Layout Mode</a>
+)<br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="ui-components/plugin-components/index.html"></a>
+</span>
+
+<p class="content-footer-metadata"><br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

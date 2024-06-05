@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="externaldata"><b>ExternalData</b>
+</h1>
+<p>HISE has a few complex inbuilt data structures that are connected to various UI elements (Tables, SliderPacks) etc.<br>The access to those classes and their underlying data is handled by this class.<br>This class is used as parameter in the setExternalData callback, which will be called whenever something changes.<br>It's usually good practice to keep a copy of the last ExternalData around in your class to refer blocks to it or synchronize access using a DataReadLock or - more unusual - DataWriteLock.<br> </p>
+<h2 id="public-types"><b>Public types</b>
+</h2>
+<h3 id="enum-datatype"><b>enum DataType</b>
+</h3>
+<table><thead><td><b>Name </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><code>Table</code>
+ </td>
+<td>the data of a Table object (a look up table with 512 float numbers) </td>
+</tr>
+<tr><td><code>SliderPack</code>
+ </td>
+<td>the data of a SliderPack (a resizable array of float numbers) </td>
+</tr>
+<tr><td><code>AudioFile</code>
+ </td>
+<td>a multichannel audio file with some metadata (loop points, samplerate). </td>
+</tr>
+<tr><td><code>FilterCoefficients</code>
+ </td>
+<td>filter coefficients that can be used for displaying purposes </td>
+</tr>
+<tr><td><code>DisplayBuffer</code>
+ </td>
+<td>a FIFO buffer that can be used for analysing / visualisations </td>
+</tr>
+</table>
+<h2 id="class-members"><b>Class members</b>
+</h2>
+<h4 id="datatype"><b>dataType</b>
+</h4>
+<pre><code class="language-clike line-numbers">DataType dataType = DataType::numDataTypes</code></pre>
+<p>the data type of the target data.<br> </p>
+<h4 id="numsamples"><b>numSamples</b>
+</h4>
+<pre><code class="language-clike line-numbers">int numSamples = 0</code></pre>
+<p>The number of samples (= the length of the float array)<br> </p>
+<h4 id="numchannels"><b>numChannels</b>
+</h4>
+<pre><code class="language-clike line-numbers">int numChannels = 0</code></pre>
+<p>The number of audio channels (usually 1 if not an audio file).<br> </p>
+<h4 id="isxyzaudiodata"><b>isXYZAudioData</b>
+</h4>
+<pre><code class="language-clike line-numbers">int isXYZAudioData = 0</code></pre>
+<p>Specifies whether the data points to a multichannel sample set.<br> </p>
+<h4 id="data"><b>data</b>
+</h4>
+<pre><code class="language-clike line-numbers">void* data = nullptr</code></pre>
+<p>An untyped pointer to the actual data.<br> </p>
+<h4 id="obj"><b>obj</b>
+</h4>
+<pre><code class="language-clike line-numbers">hise::ComplexDataUIBase* obj = nullptr</code></pre>
+<p>A pointer to the complex data object that is used for eg. UI updates.<br> </p>
+<h4 id="samplerate"><b>sampleRate</b>
+</h4>
+<pre><code class="language-clike line-numbers">double sampleRate = 0.0</code></pre>
+<p>the samplerate (if the data is an audio file).<br> </p>
+<h2 id="class-methods"><b>Class methods</b>
+</h2>
+<h3 id="externaldata"><b>ExternalData</b>
+</h3>
+<pre><code class="language-clike line-numbers">template <typename T>  ExternalData(T &other, DataType type)</code></pre>
+<p>Creates an external data object from a constant value class.<br> </p>
+<h3 id="referblockto"><b>referBlockTo</b>
+</h3>
+<pre><code class="language-clike line-numbers">void referBlockTo(block &b, int channelIndex) const</code></pre>
+<p>assigns a block container to the data type. If the external data is pointing to an audio file you can specify the channelIndex.<br> </p>
+<h3 id="setdisplayedvalue"><b>setDisplayedValue</b>
+</h3>
+<pre><code class="language-clike line-numbers">void setDisplayedValue(double valueToDisplay)</code></pre>
+<p>This will send a update message to the UI so you can implement eg. a playback position.<br> </p>
+<h3 id="isempty"><b>isEmpty</b>
+</h3>
+<pre><code class="language-clike line-numbers">bool isEmpty() const</code></pre>
+<p>Returns true if there is no data associated with this object.<br> </p>
+<h3 id="isxyz"><b>isXYZ</b>
+</h3>
+<pre><code class="language-clike line-numbers">bool isXYZ() const</code></pre>
+<p>If the ExternalData object points to audio data this specifies whether it's a multisample set or a single sample.<br> </p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scriptnode/snex_api/data_structures/preparespecs.html">PrepareSpecs</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="timer"><b>Timer</b>
+</h1>
+<p><br>This class will run a periodic callback with a customizable interval in order to implement UI interactions / animations. The frequency of the callbacks is not exact as it will be scheduled by the scripting background process to be approximately the time that you want it to be, but this means that you must not use this for any kind of MIDI processing logic (use the inbuild onTimer callback for this as this is sample accurate).</p>
+<h2 id="suspending-the-timerobject"><b>Suspending the TimerObject</b>
+</h2>
+<p>Contrary to the timer callback of a ScriptPanel, this callback will not be suspended when the interface is not shown, which means it keeps running when the interface is hidden. Depending on how your project is using these objects, this might create a significant overhead when using multiple instances. If you want to suspend the callbacks of this object to, you have to use the <a href="scripting/scripting-api/content/index.html#setsuspendtimercallback">Content.setSuspendTimerCallback</a>
+ method and start / stop the timer manually.</p>
+<pre><code class="language-javascript line-numbers">// Let's use a broadcaster for this
+const var suspendBroadcaster = Engine.createBroadcaster({
+	"id": "suspendBroadcaster",
+	"args": [ "isSuspended" ]
+});
+
+// If you comment out this line, you'll see that the timer callback is
+// still being executed while the panel callback is suspended properly.
+Content.setSuspendTimerCallback(suspendBroadcaster);
+
+const var to = Engine.createTimerObject();
+
+to.setTimerCallback(function()
+{
+	Console.print("to" + Math.random());
+});
+
+// by using a broadcaster, we can attach each timer object exactly where we define it,
+// so you don't have to keep track of all your timers at a global location
+suspendBroadcaster.addListener(to, "suspend timer object", function(isSuspended)
+{
+	if(isSuspended)
+		this.stopTimer();
+	else
+		this.startTimer(400);
+});
+
+
+to.startTimer(400);
+
+const var panel = Content.addPanel("Panel1", 0, 0);
+
+panel.setTimerCallback(function()
+{
+	Console.print("panel" + Math.random());
+});
+
+panel.startTimer(500);</code></pre>
+<p><br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="getmillisecondssincecounterreset"><b>getMilliSecondsSinceCounterReset</b>
+</h2>
+<p class="comment">Returns the duration from the last counter reset.</p>
+<pre><code class="language-javascript line-numbers">Timer.getMilliSecondsSinceCounterReset()</code></pre>
+<p><br><br></p>
+<h2 id="istimerrunning"><b>isTimerRunning</b>
+</h2>
+<p class="comment">Checks if the timer is active.</p>
+<pre><code class="language-javascript line-numbers">Timer.isTimerRunning()</code></pre>
+<p><br><br></p>
+<h2 id="resetcounter"><b>resetCounter</b>
+</h2>
+<p class="comment">Resets the internal counter.</p>
+<pre><code class="language-javascript line-numbers">Timer.resetCounter()</code></pre>
+<p><br><br></p>
+<h2 id="settimercallback"><b>setTimerCallback</b>
+</h2>
+<p class="comment">Sets the function that will be called periodically.</p>
+<pre><code class="language-javascript line-numbers">Timer.setTimerCallback(var callbackFunction)</code></pre>
+<p><br><br></p>
+<h2 id="starttimer"><b>startTimer</b>
+</h2>
+<p class="comment">Starts the timer.</p>
+<pre><code class="language-javascript line-numbers">Timer.startTimer(int intervalInMilliSeconds)</code></pre>
+<p><br><br></p>
+<h2 id="stoptimer"><b>stopTimer</b>
+</h2>
+<p class="comment">Stops the timer.</p>
+<pre><code class="language-javascript line-numbers">Timer.stopTimer()</code></pre>
+<p><br><br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/transporthandler/index.html">TransportHandler</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>07.02.2024<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

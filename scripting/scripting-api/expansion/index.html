@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="expansion"><b>Expansion</b>
+</h1>
+<p>This object can be used to query the properties of a given expansion and modify it. The creation of this object is usually done by the ExpansionHandler and its various calls.</p>
+<p class="comment">Be aware that you don't need this class in order to load content from an expansion as it's already resolved through the Expansion wildcard<br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="getaudiofilelist"><b>getAudioFileList</b>
+</h2>
+<p class="comment">Returns a list of all available audio files in the expansion.</p>
+<pre><code class="language-javascript line-numbers">Expansion.getAudioFileList()</code></pre>
+<p><br>This returns a list of all audio files that are included in the given Expansion. Also it will load all audio files into the pool so they are available in the list.<br></p>
+<h2 id="getdatafilelist"><b>getDataFileList</b>
+</h2>
+<p class="comment">Returns a list of all available data files in the expansion.</p>
+<pre><code class="language-javascript line-numbers">Expansion.getDataFileList()</code></pre>
+<p><br><br></p>
+<h2 id="getexpansiontype"><b>getExpansionType</b>
+</h2>
+<p class="comment">returns the expansion type. Use the constants of ExpansionHandler to resolve the integer number.</p>
+<pre><code class="language-javascript line-numbers">Expansion.getExpansionType()</code></pre>
+<p><br><br></p>
+<h2 id="getimagelist"><b>getImageList</b>
+</h2>
+<p class="comment">Returns a list of all available images in the expansion.</p>
+<pre><code class="language-javascript line-numbers">Expansion.getImageList()</code></pre>
+<p><br><br></p>
+<h2 id="getmidifilelist"><b>getMidiFileList</b>
+</h2>
+<p class="comment">Returns a list of all available MIDI files in the expansion.</p>
+<pre><code class="language-javascript line-numbers">Expansion.getMidiFileList()</code></pre>
+<p><br><br></p>
+<h2 id="getproperties"><b>getProperties</b>
+</h2>
+<p class="comment">Returns an object containing all properties of the expansion.</p>
+<pre><code class="language-javascript line-numbers">Expansion.getProperties()</code></pre>
+<p><br>This returns a JSON object with the properties of the Expansion pack. Be aware that this might be subject to change, but the current properties are:</p>
+<ul><li><code>Name</code>
+: the name of the expansion pack</li>
+<li><code>Version</code>
+: the version number of the expansion pack</li>
+<li><code>Blowfish-Key</code>
+: the key that is used to encode the expansion pack data.</li>
+</ul>
+<p>Protip: You might not want to display the blowfish key somewhere on your interface...</p>
+<p><br></p>
+<h2 id="getrootfolder"><b>getRootFolder</b>
+</h2>
+<p class="comment">Returns the root folder for this expansion.</p>
+<pre><code class="language-javascript line-numbers">Expansion.getRootFolder()</code></pre>
+<p><br><br></p>
+<h2 id="getsamplefolder"><b>getSampleFolder</b>
+</h2>
+<p class="comment">Returns the folder where this expansion looks for samples.</p>
+<pre><code class="language-javascript line-numbers">Expansion.getSampleFolder()</code></pre>
+<p><br>This will return either the local Samples subfolder of the expansion folder or another one that was set with either <a href="scripting/scripting-api/expansion/index.html#setsamplefolder">Expansion.setSampleFolder()</a>
+ or <a href="scripting/scripting-api/expansionhandler/index.html#installexpansionfrompackage">ExpansionHandler.installFromPackage()</a>
+<br></p>
+<h2 id="getsamplemaplist"><b>getSampleMapList</b>
+</h2>
+<p class="comment">Returns a list of all available sample maps in the expansion.</p>
+<pre><code class="language-javascript line-numbers">Expansion.getSampleMapList()</code></pre>
+<p><br><br></p>
+<h2 id="getuserpresetlist"><b>getUserPresetList</b>
+</h2>
+<p class="comment">Returns a list of all available user presets in the expansion.</p>
+<pre><code class="language-javascript line-numbers">Expansion.getUserPresetList()</code></pre>
+<p><br><br></p>
+<h2 id="getwildcardreference"><b>getWildcardReference</b>
+</h2>
+<p class="comment">Returns a valid wildcard reference ((<code>{EXP::Name}relativePath</code>
+) for the expansion.</p>
+<pre><code class="language-javascript line-numbers">Expansion.getWildcardReference(var relativePath)</code></pre>
+<p><br><br></p>
+<h2 id="loaddatafile"><b>loadDataFile</b>
+</h2>
+<p class="comment">Attempts to parse a JSON file in the AdditionalSourceCode directory of the expansion.</p>
+<pre><code class="language-javascript line-numbers">Expansion.loadDataFile(var relativePath)</code></pre>
+<p><br>The <code>AdditionalSourceCode</code>
+ directory in the project folder of a HISE project is reserved for C++ files which will be compiled on plugin export.<br>In an expansion pack, this directory can be used for any arbtitrary kind of text content, however the most useful recommended format to use for this is JSON.</p>
+<p>This method (and it's friend <a href="scripting/scripting-api/expansion/index.html#writedatafile">Expansion.writeDataFile()</a>
+ can be used to fetch (and write) data to this directory.<br></p>
+<h2 id="rebuilduserpresets"><b>rebuildUserPresets</b>
+</h2>
+<p class="comment">Reextracts (and overrides) the user presets from the given expansion. Only works with intermediate / encrypted expansions.</p>
+<pre><code class="language-javascript line-numbers">Expansion.rebuildUserPresets()</code></pre>
+<p><br>If the expansion contains <b>User Presets</b>
+, they will be extracted automatically when you install the expansion the first time.<br>However if you update an existing expansion, the installation procedure will not override the user presets by default. If you want to ship new / modified user presets with your expansion update, you will need to call this manually after the installation of the expansion is finished.<br></p>
+<p>The most convenient place for calling this method is the install callback that can be defined with <a href="scripting/scripting-api/expansionhandler/index.html#setinstallcallback">Expansionhandler.setInstallCallback()</a>
+<br></p>
+<h2 id="setallowduplicatesamples"><b>setAllowDuplicateSamples</b>
+</h2>
+<p class="comment">Sets whether the samples are allowed to be duplicated for this expansion. Set this to false if you operate on the same samples differently.</p>
+<pre><code class="language-javascript line-numbers">Expansion.setAllowDuplicateSamples(bool shouldAllowDuplicates)</code></pre>
+<p><br><br></p>
+<h2 id="setsamplefolder"><b>setSampleFolder</b>
+</h2>
+<p class="comment">Changes the sample folder of that particular expansion.</p>
+<pre><code class="language-javascript line-numbers">Expansion.setSampleFolder(var newSampleFolder)</code></pre>
+<p><br>Be aware that this function will not move any samples to the new location, so the user has to do this step manually.<br>The most recommended way to choose a sample folder is during the installation from a package using the <a href="scripting/scripting-api/expansionhandler/index.html#installexpansionfrompackage">ExpansionHandler.installFromPackage()</a>
+ call.<br>However this function let's you offer the user a way to fix a false sample path without having to hack around with a text editor.</p>
+<p>It's also recommended to hint to the user that he might want to restart the plugin after changing this location in order to remove any chances that the old sample path is still being cached somewhere.<br></p>
+<h2 id="unloadexpansion"><b>unloadExpansion</b>
+</h2>
+<p class="comment">Unloads this expansion so it will not show up in the list of expansions until the next restart.</p>
+<pre><code class="language-javascript line-numbers">Expansion.unloadExpansion()</code></pre>
+<p><br><br></p>
+<h2 id="writedatafile"><b>writeDataFile</b>
+</h2>
+<p class="comment">Writes the given data into the file in the AdditionalSourceCode directory of the expansion.</p>
+<pre><code class="language-javascript line-numbers">Expansion.writeDataFile(var relativePath, var dataToWrite)</code></pre>
+<p><br><br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/expansionhandler/index.html">ExpansionHandler</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

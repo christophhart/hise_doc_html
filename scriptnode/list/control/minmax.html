@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="minmax"><b>minmax</b>
+</h1>
+<p class="comment"><code>control.minmax</code>
+</p>
+<img src="images/sn_screen_minmax.png"></img>
+<p>Calculates the output value using a dynamic range</p>
+<h2 id="parameters"><b>Parameters</b>
+</h2>
+<table><thead><td><b>ID </b>
+</td>
+<td><b>Range </b>
+</td>
+<td><b>Default </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>Value </td>
+<td>0.00 - 1.00 </td>
+<td>0.00 </td>
+<td>no description. </td>
+</tr>
+<tr><td>Minimum </td>
+<td>0.00 - 1.00 </td>
+<td>0.00 </td>
+<td>no description. </td>
+</tr>
+<tr><td>Maximum </td>
+<td>0.00 - 1.00 </td>
+<td>1.00 </td>
+<td>no description. </td>
+</tr>
+<tr><td>Skew </td>
+<td>0.10 - 10.00 </td>
+<td>1.00 </td>
+<td>no description. </td>
+</tr>
+<tr><td>Step </td>
+<td>0.00 - 1.00 </td>
+<td>0.00 </td>
+<td>no description. </td>
+</tr>
+<tr><td>Polarity </td>
+<td>0.00 - 1.00 </td>
+<td>0.00 </td>
+<td>no description. </td>
+</tr>
+</table>
+<p><br>Scriptnode parameters are usually defined by their target range - unless they are unscaled, then they just send out or forward the value defined by the input. So if you want to convert a normalized modulation input to a range, all you need to do is to hook it up to a target and it will be automatically converted. </p>
+<p>So on the first look this node seems to be redundant, however you need to be aware that the target range of a parameter is supposed to be static (and yes while you can change the range using scripting calls, in a exported node this will not be possible). So if you need to dynamically change the range of a parameter (for example make a pitch detune "coarse" with +-12 semitones or "fine" (with +-100 cents)), this node can be used to change the ranges.</p>
+<p>Obviously that means that the modulation output of this node is unscaled - because if you went through the trouble of defining a modulation range like this you don't care about the static target range anymore. So another way of looking at this node would be a scaled-to-unscaled converter</p>
+<p class="comment">Be aware that the <a href="scriptnode/list/control/normaliser.html">normaliser</a>
+ is the exact counterpart to this node (it takes an unscaled parameter and turns it into a normalised scaled parameter).</p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scriptnode/list/control/bang.html">bang</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>03.07.2022<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

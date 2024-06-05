@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="types::dyn"><b>Types::dyn</b>
+</h1>
+<p>The dyn template class is an array that is only referencing memory that is owned by something else.<br>It can be freely resized, redirected and allows a fast and safe iteration and []-operator access using the index type.<br>Maybe the most important usage of this class is a dyn<float> which has an alias called block.<br> class T</p>
+<h2 id="class-methods"><b>Class methods</b>
+</h2>
+<h3 id="operator="><b>operator</b>
+<b>=</b>
+</h3>
+<pre><code class="language-clike line-numbers">dyn< float > & operator*=(float s)</code></pre>
+<p>Multiplies a dyn<float> container with a scalar value. This is a quick way of multiplying an entire block with a single float number.<br></p>
+<pre><code class="language-clike line-numbers">template <typename ProcessDataType> void process(ProcessDataType& data)
+{
+    // Create a dyn<float> reference to the left channel
+    auto b = data[0];
+     
+    // multiply the entire block with 0.5f (-6dB)
+    b *= 0.5f;
+}</code></pre>
+<p><br></p>
+<h3 id="operator="><b>operator</b>
+=</h3>
+<pre><code class="language-clike line-numbers">dyn< float > & operator*=(const dyn< float > &other)</code></pre>
+<p>Multiplies a dyn<float> container with another block (of the same size).<br></p>
+<pre><code class="language-clike line-numbers">template <typename ProcessDataType> void process(ProcessDataType& data)
+{
+    // Create a dyn<float> reference to the left channel
+    auto l = data[0];
+    auto r = data[1];
+     
+    // multiply the entire block with 0.5f (-6dB)
+    l *= r;
+}</code></pre>
+<p><br></p>
+<h3 id="operator+="><b>operator+=</b>
+</h3>
+<pre><code class="language-clike line-numbers">dyn< float > & operator+=(float s)</code></pre>
+<p>Adds a constant value to a dyn<float> container.<br></p>
+<pre><code class="language-clike line-numbers">template <typename ProcessDataType> void process(ProcessDataType& data)
+{
+    // Create a dyn<float> reference to the left channel
+    auto b = data[0];
+     
+    // add a DC Offset with -12dB
+    b += 0.125f;
+}</code></pre>
+<p><br></p>
+<h3 id="operator+="><b>operator+=</b>
+</h3>
+<pre><code class="language-clike line-numbers">dyn< float > & operator+=(const dyn< float > &other)</code></pre>
+<p>Adds a dyn<float> container to another block (of the same size).<br></p>
+<pre><code class="language-clike line-numbers">template <typename ProcessDataType> void process(ProcessDataType& data)
+{
+    // Create a dyn<float> reference to the left channel
+    auto l = data[0];
+    auto r = data[1];
+     
+    // mix the left channel with the right channel
+    l += r;
+}</code></pre>
+<p><br></p>
+<h3 id="begin"><b>begin</b>
+</h3>
+<pre><code class="language-clike line-numbers">T * begin() const</code></pre>
+<p>This allows a range-based loop iterator to go through each element of the dyn array.<br>You will never use this method directly, but use the range-based for loop syntax from C++:<br></p>
+<pre><code class="language-clike line-numbers">dyn<float> d1;
+span<float, 8> data = { 0.0f, 1.0f, 2.0f, 3.0f,
+                         4.0f, 5.0f, 6.0f, 7.0f };
+
+// let d1 point to the entire data block
+d1.referTo(data, data.size(), 0);
+ 
+// loop through all elements and add two.
+// Note the &-qualifier which tells the loop
+// to grab a reference so you can actually modify
+// the element!
+for(auto& element: d1)
+{
+    element += 2.0f;
+}
+ 
+// If you omit the &-qualifier, it will create a
+// local copy of the element and not write it back
+// to the array.
+for(auto element: d1)
+{
+    element += 200.0f;
+}
+ 
+auto mustBeTrue = data[0] == 2.0f; // not 202.0f!</code></pre>
+<p><br></p>
+<h3 id="size"><b>size</b>
+</h3>
+<pre><code class="language-clike line-numbers">int size() const noexcept</code></pre>
+<p>Returns the size of the array. Be aware that this is not a compile time constant.<br> </p>
+<h3 id="referto"><b>referTo</b>
+</h3>
+<pre><code class="language-clike line-numbers">void referTo(OtherContainer &t, int newSize=-1, int offset=0)</code></pre>
+<p>Refers to a given container. A dyn container does not store its own memory, but can be used to reference other data containers (either another dyn or a span with the same type:<br></p>
+<pre><code class="language-clike line-numbers">// Create a block of float data
+span<float, 8> data = { 0.0f, 1.0f, 2.0f, 3.0f,
+                        4.0f, 5.0f, 6.0f, 7.0f };
+                         
+// Create two dyn<float> containers
+dyn<float> d1;
+dyn<float> d2;
+
+// let d1 point to the entire data block
+d1.referTo(data, 8, 0);
+ 
+// let d2 point to the three elements starting at index 2
+d2.referTo(data, 3, 2);
+ 
+auto same1 = d1[0] == data[0]; // true
+auto same2 = d2[0] == data[2]; // true</code></pre>
+<p><br>The second argument is the length of the dyn (so if you call <a href="cpp_api/hise/structsnex_1_1_types_1_1dyn#size">size()</a>
+ later this value will be returned). The third parameter acts as offset so you can create slices of another container. Obviously, offset + newSize must be smaller or equal to the size of the original container.<br> </p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scriptnode/snex_api/data_structures/index.html">SNEX data structures</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

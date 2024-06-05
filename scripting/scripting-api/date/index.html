@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="date"><b>Date</b>
+</h1>
+<p><br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="getsystemtimeiso8601"><b>getSystemTimeISO8601</b>
+</h2>
+<p class="comment">Returns a fully described string of this date and time in milliseconds or ISO-8601 format (using the local timezone) with or without divider characters.</p>
+<pre><code class="language-javascript line-numbers">Date.getSystemTimeISO8601(bool includeDividerCharacters)</code></pre>
+<p><br><br></p>
+<h2 id="getsystemtimems"><b>getSystemTimeMs</b>
+</h2>
+<p class="comment">Returns the system time in milliseconds.</p>
+<pre><code class="language-javascript line-numbers">Date.getSystemTimeMs()</code></pre>
+<p><br><br></p>
+<h2 id="iso8601tomilliseconds"><b>ISO8601ToMilliseconds</b>
+</h2>
+<p class="comment">Returns a date string to time in milliseconds.</p>
+<pre><code class="language-javascript line-numbers">Date.ISO8601ToMilliseconds(String iso8601)</code></pre>
+<p><br><br></p>
+<h2 id="millisecondstoiso8601"><b>millisecondsToISO8601</b>
+</h2>
+<p class="comment">Returns a time in milliseconds to a date string.</p>
+<pre><code class="language-javascript line-numbers">Date.millisecondsToISO8601(int64 miliseconds, bool includeDividerCharacters)</code></pre>
+<p><br><br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/displaybuffer/index.html">DisplayBuffer</a>
+</span>
+
+<p class="content-footer-metadata"><br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

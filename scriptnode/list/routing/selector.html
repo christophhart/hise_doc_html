@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="selector"><b>selector</b>
+</h1>
+<p class="comment"><code>routing.selector</code>
+</p>
+<img src="images/sn_screen_selector.png"></img>
+<p>dynamically route input channels to output channels</p>
+<h2 id="parameters"><b>Parameters</b>
+</h2>
+<table><thead><td><b>ID </b>
+</td>
+<td><b>Range </b>
+</td>
+<td><b>Default </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>ChannelIndex </td>
+<td>0.00 - 16.00 </td>
+<td>0.00 </td>
+<td>The first source or target channel index that is used for the routing </td>
+</tr>
+<tr><td>NumChannels </td>
+<td>1.00 - 16.00 </td>
+<td>1.00 </td>
+<td>How many channels you want to route. This must be less than the number of available channels </td>
+</tr>
+<tr><td>SelectOutput </td>
+<td>0.00 - 1.00 </td>
+<td>0.00 </td>
+<td>If <code>true</code>
+, it will route the first <code>NumChannels</code>
+ input channels to the output channels using the <code>ChannelIndex</code>
+ as offset. If <code>false</code>
+, it will route <code>NumChannels</code>
+ input channels at the offset <code>ChannelIndex</code>
+ to the first <code>NumChannels</code>
+ output channels. </td>
+</tr>
+<tr><td>ClearOtherChannels </td>
+<td>0.00 - 1.00 </td>
+<td>1.00 </td>
+<td>If <code>true</code>
+, it will clear all other channels that are not routed, otherwise it will just add it to the existing signal. </td>
+</tr>
+</table>
+<p><br>This node allows you to create dynamic routing configurations - for static routing setups the <a href="scriptnode/list/routing/matrix.html">routing.matrix</a>
+ node might be a better match. You can either route an arbitrary amount of input channels to the first output channels or the first X input channels to any output channel.</p>
+<p>The graph of the connections will show exactly what's going on:</p>
+<table><thead><td><b>Graph </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><img src="images/scriptnode/selector3_1.png"></img>
+</td>
+<td>Route the third input channel to the first output channel. </td>
+</tr>
+<tr><td><img src="images/scriptnode/selector12_34.png"></img>
+</td>
+<td>Route the first input pair to output channel 3/4. </td>
+</tr>
+<tr><td><img src="images/scriptnode/selector1_2.png"></img>
+</td>
+<td>Copy the left channel to the right channel. </td>
+</tr>
+</table>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scriptnode/list/routing/global_receive.html">global_receive</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>18.07.2023<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

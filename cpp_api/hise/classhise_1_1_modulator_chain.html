@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="modulatorchain"><b>ModulatorChain</b>
+</h1>
+<p>A chain of Modulators that can be processed serially.<br>A ModulatorChain can hold three different types of Modulators:<br></p>
+<ul><li>VoiceStartModulators that calculate their value only if the voice has been started.<br></li>
+<li>VariantModulators which calculate their value for each sample<br></li>
+<li>EnvelopeModulators which calculate their value for each sample and each voice<br></li>
+</ul>
+<p><br>In order to make a ModulatorChain work, you have to- create one while specifying a Mode and the voice amount.<br></p>
+<ul><li>populate it with modulators via <a href="cpp_api/hise/classhise_1_1_modulator_chain.html#gethandler">getHandler()</a>
+->addModulator().<br></li>
+<li>overwrite <a href="cpp_api/hise/classhise_1_1_modulator_chain.html#getnumchildprocessors">getNumChildProcessors()</a>
+, <a href="cpp_api/hise/classhise_1_1_processor.html#getnuminternalchains">getNumInternalChains()</a>
+ and <a href="cpp_api/hise/classhise_1_1_modulator_chain.html#getchildprocessor">getChildProcessor()</a>
+ (const and not const)<br></li>
+<li><br></li>
+</ul>
+<p>In your code you have to call all these methods at the appropriate time / place:<br></p>
+<ul><li>initialize it with the sample rate and the block size via '<a href="cpp_api/hise/classhise_1_1_modulator_chain.html#preparetoplay">prepareToPlay()</a>
+'<br></li>
+<li>initialize a buffer that will store the modulation values.<br></li>
+<li>call the functions handleMidiEvent() and renderNextBlock() to make sure it gets the midi messages and does its processing.<br></li>
+<li>call the functions <a href="cpp_api/hise/classhise_1_1_modulator_chain.html#startvoice">startVoice()</a>
+, <a href="cpp_api/hise/classhise_1_1_modulator_chain.html#stopvoice">stopVoice()</a>
+, renderVoice(), and <a href="cpp_api/hise/classhise_1_1_modulator_chain.html#reset">reset()</a>
+ for every voice that should use this chain. (Skip this for monophonic modulation<br></li>
+</ul>
+<p><br>You might want to use the functions shouldBeProcessed(), <a href="cpp_api/hise/classhise_1_1_modulator_chain.html#isplaying">isPlaying()</a>
+, getVoiceValues()<br>For an example usage of an polyphonic ModulatorChain, take a look at the WavetableSynth class. For an example usage of an monophonic ModulatorChain, the LfoModulator class is your friend.<br> </p>
+<h2 id="class-hierarchy"><b>Class Hierarchy</b>
+</h2>
+<h3 id="base-classes"><b>Base Classes</b>
+</h3>
+<ul><li><a href="cpp_api/hise/classhise_1_1_chain.html">hise::Chain</a>
+<br></li>
+<li><code>hise::EnvelopeModulator</code>
+<br></li>
+</ul>
+<h2 id="class-methods"><b>Class methods</b>
+</h2>
+<h3 id="modulatorchain"><b>ModulatorChain</b>
+</h3>
+<pre><code class="language-clike line-numbers">ModulatorChain(MainController *mc, const String &id, int numVoices, Modulation::Mode m, Processor *p)</code></pre>
+<p>Creates a new modulator chain. You have to specify the voice amount and the Modulation::Mode<br></p>
+<h3 id="createeditor"><b>createEditor</b>
+</h3>
+<pre><code class="language-clike line-numbers">ProcessorEditorBody * createEditor(ProcessorEditor *parentEditor) override</code></pre>
+<p>Creates a ProcessorEditor for this <a href="cpp_api/hise/classhise_1_1_processor.html">Processor</a>
+ and returns the pointer.<br>If you subclass this, just allocate a ProcessorEditor of the desired type on the heap and return it. Remember to pass the <a href="cpp_api/hise/classhise_1_1_processor.html">Processor</a>
+ as parameter to allow asynchronous GUI notification. The concept between <a href="cpp_api/hise/classhise_1_1_processor.html">Processor</a>
+ and ProcessorEditor is the same as AudioProcessor and AudioProcessorEditor.<br> </p>
+<h3 id="gethandler"><b>getHandler</b>
+</h3>
+<pre><code class="language-clike line-numbers">Chain::Handler * getHandler() override</code></pre>
+<p>Returns the handler that is used to add / delete Modulators in the chain. Use this if you want to change the modulator.<br> </p>
+<h3 id="gethandler"><b>getHandler</b>
+</h3>
+<pre><code class="language-clike line-numbers">const Chain::Handler * getHandler() const override</code></pre>
+<p>read only access to the Handler.<br> </p>
+<h3 id="getfactorytype"><b>getFactoryType</b>
+</h3>
+<pre><code class="language-clike line-numbers">FactoryType * getFactoryType() const override</code></pre>
+<p>Returns the Factory type this processor is using.<br> </p>
+<h3 id="getcolour"><b>getColour</b>
+</h3>
+<pre><code class="language-clike line-numbers">Colour getColour() const override</code></pre>
+<p>Overwrite this method if you want a special colour.<br>This colour will be used in the debug console and in the editor.<br> </p>
+<h3 id="setfactorytype"><b>setFactoryType</b>
+</h3>
+<pre><code class="language-clike line-numbers">void setFactoryType(FactoryType *newFactoryType) override</code></pre>
+<p>Sets the FactoryType that will be used.<br> </p>
+<h3 id="preparetoplay"><b>prepareToPlay</b>
+</h3>
+<pre><code class="language-clike line-numbers">void prepareToPlay(double sampleRate, int samplesPerBlock) override</code></pre>
+<p>Sets the sample rate for all modulators in the chain and initialized the UpdateMerger.<br> </p>
+<h3 id="getnumchildprocessors"><b>getNumChildProcessors</b>
+</h3>
+<pre><code class="language-clike line-numbers">int getNumChildProcessors() const override</code></pre>
+<p>Wraps the handlers method.<br> </p>
+<h3 id="getchildprocessor"><b>getChildProcessor</b>
+</h3>
+<pre><code class="language-clike line-numbers">Processor * getChildProcessor(int processorIndex) override</code></pre>
+<p>Wraps the handlers method.<br> </p>
+<h3 id="getparentprocessor"><b>getParentProcessor</b>
+</h3>
+<pre><code class="language-clike line-numbers">Processor * getParentProcessor() override</code></pre>
+<p>Overwrite this and return the processor that owns this chain if it exists.<br> </p>
+<h3 id="getparentprocessor"><b>getParentProcessor</b>
+</h3>
+<pre><code class="language-clike line-numbers">const Processor * getParentProcessor() const override</code></pre>
+<p>Overwrite this and return the processor that owns this chain if it exists.<br> </p>
+<h3 id="getchildprocessor"><b>getChildProcessor</b>
+</h3>
+<pre><code class="language-clike line-numbers">const Processor * getChildProcessor(int processorIndex) const override</code></pre>
+<p>Wraps the handlers method.<br> </p>
+<h3 id="reset"><b>reset</b>
+</h3>
+<pre><code class="language-clike line-numbers">void reset(int voiceIndex) override</code></pre>
+<p>Resets all envelopes. This can be used for envelopes that do not control the main gain value and therefore do not switch back to IDLE if the note stops playing before the envelope is finished.<br>Also their display is updated to clear remaining tails (that aren't cleared because of a missing update call to UpdateMerger.<br> </p>
+<h3 id="handlehiseevent"><b>handleHiseEvent</b>
+</h3>
+<pre><code class="language-clike line-numbers">void handleHiseEvent(const HiseEvent &m) override</code></pre>
+<p>Sends the midi message all modulators.<br>You can't use the voice index here, since it is not guaranteed if the message starts a note.<br> </p>
+<h3 id="isplaying"><b>isPlaying</b>
+</h3>
+<pre><code class="language-clike line-numbers">bool isPlaying(int voiceIndex) const override</code></pre>
+<p>Checks if any of the EnvelopeModulators wants to keep the voice from being killed.<br>If no envelopes are active, it checks if the voice was recently started or stopped using an internal array.<br> </p>
+<h3 id="startvoice"><b>startVoice</b>
+</h3>
+<pre><code class="language-clike line-numbers">float startVoice(int voiceIndex) override</code></pre>
+<p>Calls the start voice function for all voice start modulators and envelope modulators and sends a display message.<br> </p>
+<h3 id="stopvoice"><b>stopVoice</b>
+</h3>
+<pre><code class="language-clike line-numbers">void stopVoice(int voiceIndex) override</code></pre>
+<p>Calls the stopVoice function for all envelope modulators.<br> </p>
+<h3 id="setinternalattribute"><b>setInternalAttribute</b>
+</h3>
+<pre><code class="language-clike line-numbers">void setInternalAttribute(int, float) override</code></pre>
+<p>Changes a <a href="cpp_api/hise/classhise_1_1_processor.html">Processor</a>
+ parameter.<br>Overwrite this method to do your handling. Call the overloaded method with the notification type parameter for external changes.<br>parameterIndexthe parameter index (use a enum from the derived class)<br> newValuethe new value between 0.0 and 1.0<br> <br></p>
+<h3 id="getattribute"><b>getAttribute</b>
+</h3>
+<pre><code class="language-clike line-numbers">float getAttribute(int) const override</code></pre>
+<p>returns the attribute with the specified index (use a enum in the derived class).<br> </p>
+<h3 id="createsubclassedstate"><b>createSubclassedState</b>
+</h3>
+<pre><code class="language-clike line-numbers">ModulatorState * createSubclassedState(int) const override</code></pre>
+<p>Overwrite this method and return a newly created ModulatorState of the desired subclass. It will be owned by the <a href="cpp_api/hise/classhise_1_1_modulator.html">Modulator</a>
+.<br> </p>
+<h3 id="setisvoicestartchain"><b>setIsVoiceStartChain</b>
+</h3>
+<pre><code class="language-clike line-numbers">void setIsVoiceStartChain(bool isVoiceStartChain_)</code></pre>
+<p>If you want the chain to only process voice start modulators, set this to true.<br> </p>
+<h3 id="newrendermonophonicvalues"><b>newRenderMonophonicValues</b>
+</h3>
+<pre><code class="language-clike line-numbers">void newRenderMonophonicValues(int startSample, int numSamples)</code></pre>
+<p>This overrides the TimeVariant::renderNextBlock method and only calculates the TimeVariant modulators.<br>It assumes that the other modulators are calculated before with renderVoice().<br>bufferthe buffer that will be filled with the values of the timevariant modulation result.<br> <br></p>
+<h3 id="calculateblock"><b>calculateBlock</b>
+</h3>
+<pre><code class="language-clike line-numbers">void calculateBlock(int, int) override</code></pre>
+<p>Does nothing (the complete renderNextBlock method is overwritten.<br> </p>
+<h3 id="getconstantvoicevalue"><b>getConstantVoiceValue</b>
+</h3>
+<pre><code class="language-clike line-numbers">float getConstantVoiceValue(int voiceIndex) const</code></pre>
+<p>Iterates all voice start modulators and returns the value either between 0.0 and 1.0 (GainMode) or -1.0 ... 1.0 (Pitch Mode).<br> </p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="cpp_api/hise/classhise_1_1_modulator_synth.html">ModulatorSynth</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

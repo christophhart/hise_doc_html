@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="silent_killer"><b>silent_killer</b>
+</h1>
+<p class="comment"><code>envelope.silent_killer</code>
+</p>
+<img src="images/sn_screen_silent_killer.png"></img>
+<p>A node that sends a voice reset message when silence is detected.</p>
+<h2 id="parameters"><b>Parameters</b>
+</h2>
+<table><thead><td><b>ID </b>
+</td>
+<td><b>Range </b>
+</td>
+<td><b>Default </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>Threshold </td>
+<td>-120.00 - -60.00 </td>
+<td>-100.00 </td>
+<td>Sets the threshold level (in dB) below which the audio signal is considered silent. </td>
+</tr>
+<tr><td>Active </td>
+<td>0.00 - 1.00 </td>
+<td>1.00 </td>
+<td>A boolean parameter that suspends the silence detection if set to false </td>
+</tr>
+</table>
+<p>The most epic <code>silent_killer</code>
+ node is designed to manage voices of a HISE sound generator by sending a voice reset message as soon as silence is detected. It continuously monitors the audio signal for each voice and when the signal falls below the specified threshold level (and the <code>Active</code>
+ parameter is <b>enabled</b>
+), the node sends a voice reset message that can be picked up by a <a href="hise-modules/modulators/envelopes/list/scriptnodevoicekiller.html">Scriptnode Voice Killer</a>
+ to kill the voice.</p>
+<h3 id="midi-processing"><b>MIDI Processing</b>
+</h3>
+<p>If the node is sitting in a MIDI processing context (which it will be by default if used in a scriptnode synthesiser), then it will store an internal state that will be set to <code>true</code>
+ as long as the note is being held (so a note off message sets it back to false). The idea is that your voice might encounter short periods of silence (eg. from a LFO modulating the amplitude with a square signal) which should not trigger the silence detection.</p>
+<h3 id="alternative"><b>Alternative</b>
+</h3>
+<p>Detecting the silence to kill a note can be considered a very brute force way of managing voices and in most cases it might be better to use the <a href="scriptnode/list/envelope/voice_manager.html">voice_manager</a>
+ node which can send a voice reset message on much more predictable events.</p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scriptnode/list/routing/matrix.html">matrix</a>
+</span>
+
+<p class="content-footer-metadata">[Your Name]<br>30.05.2024<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

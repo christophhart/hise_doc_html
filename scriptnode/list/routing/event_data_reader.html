@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="event_data_reader"><b>event_data_reader</b>
+</h1>
+<p class="comment"><code>routing.event_data_reader</code>
+</p>
+<img src="images/sn_screen_event_data_reader.png"></img>
+<p>Read the additional event data in a DSP network</p>
+<h2 id="parameters"><b>Parameters</b>
+</h2>
+<table><thead><td><b>ID </b>
+</td>
+<td><b>Range </b>
+</td>
+<td><b>Default </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>SlotIndex </td>
+<td>0.00 - 16.00 </td>
+<td>0.00 </td>
+<td>The data slot index that should be read </td>
+</tr>
+<tr><td>Static </td>
+<td>0.00 - 1.00 </td>
+<td>0.00 </td>
+<td>Whether to read the value once at the note on message processing or for every buffer </td>
+</tr>
+</table>
+<p><br>This node lets you create a modulation signal out of the additional data that is stored per event. Just pick a slot index and it will read the values from the data storage depending on the event that was processed last.</p>
+<p class="comment">In order for this to work, this node needs to be put in a MIDI processing context and the global routing manager has to be initialised externally.</p>
+<p>The node operates in two different modes depending on its <b>Static</b>
+ parameter:</p>
+<ol><li>If <b>Static</b>
+ is off, then it will continuously read out the event data of the last event ID that was processed for each buffer and send out a modulation signal whenever this changes. This works polyphonically, so if you play multiple voices, it will correctly read out the values of the ID that started each respective voice.</li>
+<li>If <b>Static</b>
+ is enabled, then it will only send a (single) modulation value to its targets when the event is processed and there was a value written to the matching event ID and slot index.</li>
+</ol>
+<p>So basically it replicates the behaviour of the EventData Voice Start Modulator (Static == On) and the EventData Envelope (Static == Off).</p>
+<p>This node can be compiled within a DLL network as it does not depend on dynamic connections.</p>
+<p class="comment">Take a look at the series of examples in the snippet browser called <code>Custom Event Data ...</code>
+ for an introduction use case of this concept.</p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scriptnode/list/analyse/index.html">analyse</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>21.05.2024<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="plugin-components"><b>Plugin Components</b>
+</h1>
+<p><b>HISE</b>
+ features a bunch of commonly used interface controls. Below you see a list of common properties that the most of the Plugin Components share:</p>
+<h3 id="list-of-common-properties"><b>List of common properties</b>
+</h3>
+<table><thead><td><b>Property </b>
+</td>
+<td><b>Type </b>
+</td>
+<td><b>Default Value </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><code>text</code>
+ </td>
+<td>String </td>
+<td>the ID of the control </td>
+<td>The name or text that is being displayed.How this text is exactly shown(or if it's used at all) depends on the control type. </td>
+</tr>
+<tr><td><code>enabled</code>
+</td>
+<td>Boolean </td>
+<td>true </td>
+<td>If the control should react on mouse events.Child components will inherit this property. </td>
+</tr>
+<tr><td><code>visible</code>
+ </td>
+<td>Boolean </td>
+<td>true </td>
+<td>If the control is displayed or hidden.Child components will inherit this property. </td>
+</tr>
+<tr><td><code>tooltip</code>
+ </td>
+<td>String </td>
+<td>Empty </td>
+<td>A informative text that will popup if you hover over the control. </td>
+</tr>
+<tr><td><code>useUndoManager</code>
+ </td>
+<td>Boolean </td>
+<td>false </td>
+<td>If enabled, value changes can be undone with the scripting calls <a href="scripting/scripting-api/engine/index.html#undo">Engine.undo()</a>
+ </td>
+</tr>
+<tr><td><code>macroControl</code>
+ </td>
+<td>Number(1 - 8) </td>
+<td>-1 </td>
+<td>Connect this control to a macro control slot. </td>
+</tr>
+<tr><td><code>linkedTo</code>
+ </td>
+<td>String </td>
+<td>Empty </td>
+<td>This property can be used to link certain controls to another control (the value must be the ID of the other control. In this case it will simply mirror the other one and can be used to duplicate controls on different pages. </td>
+</tr>
+<tr><td><code>saveInPreset</code>
+ </td>
+<td>Boolean </td>
+<td>Depends on the type </td>
+<td>If true, this control will be saved in a user preset as well as restored on recompilation.If false, controls will not be stored in the preset and their control callback will not be fired after compilation.This is a very important property and you definitely need to know when to use it. </td>
+</tr>
+<tr><td><code>isPluginParameter</code>
+ </td>
+<td>Boolean </td>
+<td>false </td>
+<td>If enabled, it exposes this control to a DAW for host automation. </td>
+</tr>
+<tr><td><code>pluginParameterName</code>
+ </td>
+<td>String </td>
+<td>Empty </td>
+<td>If this control is a plugin parameter, it will use this name for displaying in the host. </td>
+</tr>
+<tr><td><code>isMetaParameter</code>
+ </td>
+<td>Boolean </td>
+<td>false </td>
+<td>If this control is a plugin parameter and causes other parameters to change their values (eg. a sync button that changes the values of the delay time knob), you'll have to set this to true in order to be fully standard compliant (Logic is known to cause issues when this isn't handled properly). </td>
+</tr>
+<tr><td><code>processorId</code>
+ </td>
+<td>Module ID </td>
+<td>Empty </td>
+<td>The module that is controlled by this control. </td>
+</tr>
+<tr><td><code>parameterId</code>
+ </td>
+<td>Parameter ID </td>
+<td>Empty </td>
+<td>the parameter ID of the module specified above that should be controlled.Use these two properties in order to hook up the control to a single parameter using the exact same range you specified below.As soon as you need something more complex, you need to use the scripting callbacks for it. </td>
+</tr>
+<tr><td><code>defaultValue</code>
+ </td>
+<td>Number </td>
+<td>0.0 </td>
+<td>The default value for the control (if available). This value will be used at initialisation and if you load a user preset that has no stored value for this particular control (which happens if you add a control and try to load a user preset built with an older version). Sliders / Knobs will also use this as double click value. </td>
+</tr>
+<tr><td><code>x</code>
+, <code>y</code>
+, <code>width</code>
+, <code>height</code>
+ </td>
+<td>Number </td>
+<td>Various </td>
+<td>The absolute pixel position / size of the control.You can use the sliders to change them relatively or just input a number into the text field to set all selected controls to the same value. </td>
+</tr>
+<tr><td><code>bgColour</code>
+, <code>itemColour</code>
+, <code>itemColour2</code>
+, <code>textColour</code>
+ </td>
+<td>String or hex number </td>
+<td>Various </td>
+<td>the colours for the given control.How these colours are used differs between the control types, but in most cases, <code>bgColour</code>
+ is the background colour and <code>textColour</code>
+ is used for rendering the text, otherwise it would be a bit weird. </td>
+</tr>
+</table>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="ui-components/plugin-components/button.html">Button</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

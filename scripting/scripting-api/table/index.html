@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="table"><b>Table</b>
+</h1>
+<p><br>This can be created with <a href="scripting/scripting-api/tableprocessor/index.html#gettable">TableProcessor.getTable()</a>
+<br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="addtablepoint"><b>addTablePoint</b>
+</h2>
+<p class="comment">Adds a new table point (x and y are normalized coordinates).</p>
+<pre><code class="language-javascript line-numbers">Table.addTablePoint(float x, float y)</code></pre>
+<p><br><br></p>
+<h2 id="getcurrentlydisplayedindex"><b>getCurrentlyDisplayedIndex</b>
+</h2>
+<p class="comment">Returns the current ruler position (from 0 to 1).</p>
+<pre><code class="language-javascript line-numbers">Table.getCurrentlyDisplayedIndex()</code></pre>
+<p><br><br></p>
+<h2 id="gettablepointsasarray"><b>getTablePointsAsArray</b>
+</h2>
+<p class="comment">Returns an array containing all table points ([[x0, y0, curve0], ...]).</p>
+<pre><code class="language-javascript line-numbers">Table.getTablePointsAsArray()</code></pre>
+<p><br><br></p>
+<h2 id="gettablevaluenormalised"><b>getTableValueNormalised</b>
+</h2>
+<p class="comment">Returns the value of the table at the given input (0.0 ... 1.0).</p>
+<pre><code class="language-javascript line-numbers">Table.getTableValueNormalised(double normalisedInput)</code></pre>
+<p><br><br></p>
+<h2 id="linkto"><b>linkTo</b>
+</h2>
+<p class="comment">Makes this table refer to the given table.</p>
+<pre><code class="language-javascript line-numbers">Table.linkTo(var otherTable)</code></pre>
+<p><br><br></p>
+<h2 id="reset"><b>reset</b>
+</h2>
+<p class="comment">Resets the table with the given index to a 0..1 line.</p>
+<pre><code class="language-javascript line-numbers">Table.reset()</code></pre>
+<p><br><br></p>
+<h2 id="setcontentcallback"><b>setContentCallback</b>
+</h2>
+<p class="comment">Sets a callback that is being executed when a point is added / removed / changed.</p>
+<pre><code class="language-javascript line-numbers">Table.setContentCallback(var contentFunction)</code></pre>
+<p><br><br></p>
+<h2 id="setdisplaycallback"><b>setDisplayCallback</b>
+</h2>
+<p class="comment">Sets a callback that is being executed when the ruler position changes.</p>
+<pre><code class="language-javascript line-numbers">Table.setDisplayCallback(var displayFunction)</code></pre>
+<p><br><br></p>
+<h2 id="settablepoint"><b>setTablePoint</b>
+</h2>
+<p class="comment">Sets the point with the given index to the values.</p>
+<pre><code class="language-javascript line-numbers">Table.setTablePoint(int pointIndex, float x, float y, float curve)</code></pre>
+<p><br><br></p>
+<h2 id="settablepointsfromarray"><b>setTablePointsFromArray</b>
+</h2>
+<p class="comment">Sets the table points from a multidimensional array ([x0, y0, curve0], ...]).</p>
+<pre><code class="language-javascript line-numbers">Table.setTablePointsFromArray(var pointList)</code></pre>
+<p><br><br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/tableprocessor/index.html">TableProcessor</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>29.05.2024<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

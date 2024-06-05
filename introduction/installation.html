@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="installation"><b>Installation</b>
+</h1>
+<h2 id="get-hise"><b>Get HISE</b>
+</h2>
+<p>If you haven't installed HISE already, grab the latest <a href="https://github.com/christophhart/HISE/releases/">stable release</a>
+ and come on board! If you want to compile on Linux please take a look at the <a href="https://github.com/christophhart/HISE?tab=readme-ov-file#how-to-compile-hise">readme</a>
+.</p>
+<h3 id="system-requirements"><b>System Requirements</b>
+</h3>
+<ul><li>Minimum Windows 7 / OSX 10.6 /<br></li>
+<li>32bit / 64bit</li>
+<li>a quite modern CPU (like every other audio software, HISE can be quite demanding regarding memory / cpu speed.)</li>
+<li>at least 2GB RAM</li>
+</ul>
+<p><b>Recommended:</b>
+</p>
+<ul><li>a soundcard with a ASIO driver</li>
+<li>a MIDI keyboard</li>
+<li>more RAM</li>
+</ul>
+<p>After installing you should be able to start HISE either as a Standalone or as plugin inside your DAW. With the stable release you should be ready to go and be able to prototype your first instrument and check out HISE. A crucial part is still missing, though: </p>
+<p class="comment">If you want to compile and export your VSTis and plugins with HISE you have to take a few extra steps and install some required software:</p>
+<h2 id="setting-up-vsti/plugin-compilation"><b>Setting up VSTi/plugin compilation</b>
+</h2>
+<p><b>HISE</b>
+ itself does not compile anything by itself, but congregates your HISE-project's scripts and files and outsources the heavy lifting to your system compilers. That is why you have to install a suitable <b>IDE</b>
+ (Integrated Development Environment) on your OS environment and a some additional SDKs (Software Development Kits).<br></p>
+<p>Let's get started: Below is a list of every application required for compiling & exporting virtual instruments with <b>HISE</b>
+. They are all free, but some require that you register an account at their company's website.</p>
+<table><thead><td><b>Tool </b>
+</td>
+<td><b>Type </b>
+</td>
+<td><b>Link </b>
+</td>
+<td><b>Explanation </b>
+</td>
+</thead>
+<tr><td><b>HISE</b>
+ </td>
+<td>Source Code </td>
+<td><a href="https://github.com/christophhart/HISE">Github</a>
+ </td>
+<td>The source code that contains the HISE engine.</td>
+</tr>
+<tr><td><b>IDE</b>
+ </td>
+<td>Application </td>
+<td><a href="https://www.visualstudio.com/vs/older-downloads/">Visual Studio 2017</a>
+ for Windows / <a href="https://download.developer.apple.com/Developer_Tools/Xcode_10.3/Xcode_10.3.xip">XCode <= 10.3</a>
+ for macOS<br></td>
+<td>The main application for compiling native applications for each platform. They come shipped with command-line compilers, so if everything runs smooth you don't need to touch the IDE once.<br></td>
+</tr>
+<tr><td><b>VST SDK</b>
+ </td>
+<td>Source Code </td>
+<td><a href="https://www.steinberg.net/en/company/developers.html">Steinberg Website</a>
+ </td>
+<td>If you want to compile VST plugins, you'll need to download the VST SDK from Steinberg yourself (for licensing reasons it can't be distributed with <b>HISE</b>
+). Grab the <code>VST 3 Audio Plug-Ins SDK</code>
+ from their website and extract it. In the extracted folder you'll find a .bat file that you have to execute. The folder <code>VST3_SDK</code>
+ has to be renamed to <code>VST3 SDK</code>
+ (get rid of that pesky underscore) and be put in your <b>HISE</b>
+ source code folder under <code>HISE > tools > SDK ></code>
+. </td>
+</tr>
+<tr><td><b>ASIO SDK</b>
+ </td>
+<td>Source Code</td>
+<td><a href="https://www.steinberg.net/en/company/developers.html">Steinberg Website</a>
+ </td>
+<td>If you are building a standalone application on Windows, you might want to support the low latency ASIO driver. Get <code>ASIO SDK</code>
+ from their website and put the extracted <code>ASIOSDK2.3</code>
+ in <code>HISE > tools > SDK ></code>
+, too. </td>
+</tr>
+<tr><td><b>Intel IPP</b>
+ </td>
+<td>Application (1.2GB) </td>
+<td><a href="https://registrationcenter-download.intel.com/akdlm/IRC_NAS/5b53016a-9182-4ac3-8aff-5a605825d090/w_ipp_oneapi_p_2021.8.0.46353_offline.exe">Download</a>
+ </td>
+<td>It's strongly recommended to use this library because it will improve the performance drastically and it's obligatory for the convolution reverb.</td>
+</tr>
+</table>
+<p>After installing these programs we're almost ready for compiling plugins with <b>HISE</b>
+. In a last step we have to point your <b>HISE</b>
+ instance to the HISE source-code via the <b>HISE Path</b>
+ Setting.</p>
+<h3 id="configure-the-settings"><b>Configure the Settings</b>
+</h3>
+<p>To access the Settings dialog, choose <b>File -> Preferences</b>
+ or click the little gear symbol on the right of the tool-bar. Now set the <b>HISE Path</b>
+, which has to point to the root <b>HISE</b>
+-source-code folder that you downloaded or cloned earlier.</p>
+<img src="images/custom/hise-path.png"></img>
+<p>Scroll to the Compiler Settings section in the HISE Settings. You can insert your path by hand or select the <b>HISE</b>
+ source code folder location with the Browse button.</p>
+<p>In the Settings you will encounter many other options to adjust your project. Have a look at <a href="working-with-hise/settings/index.html">HISE Settings</a>
+ to learn more about them.</p>
+<p>BTW: There you'll also find the Audio & MIDI Settings to adjust and connect your sound-card, drivers and MIDI Equipment.</p>
+<img src="images/custom/audio-settings.png"></img>
+<h2 id="compile-the-latest-hise"><b>Compile the latest HISE</b>
+</h2>
+<p>A nice side effect of having installed these tools is that you are now able to compile <b>HISE</b>
+ yourself! In this way you can work with the bleeding edge <a href="https://github.com/christophhart/HISE/tree/develop">development branch</a>
+ and don't have to wait for upcoming stable build releases.<br></p>
+<p><b>HISE</b>
+ ships with an adapted version of the <a href="https://juce.com/discover/projucer">JUCE Projucer</a>
+ that can be found @ <code>HISE/tools/projucer/Projucer</code>
+. The Projucer is a user-friendly application that allows you to deploy <b>HISE</b>
+ on different platforms in conjunction with your preferred IDE.</p>
+<img src="https://juce.com/discover/projucer"></img>
+<p>Open the <b>Projucer</b>
+ and select (<b>File > Open</b>
+) the 'HISE Standalone.jucer' file that you can find in the <code>HISE/projects/standalone/</code>
+ folder. It will present you with compile (debug/release) options for MacOS, Windows and Linux.</p>
+<p>Select the Release Version for your applicable IDE and select <b>File > Save Project and Open in IDE</b>
+. This will open the latest HISE source code in your IDE (VS, XCode etc..). Hit the <b>Compile</b>
+-Button in your IDE (something with a play-arrow) and let the compiler proceed. </p>
+<p>A few seconds (and compiler warnings) later a brand-new version of <b>HISE</b>
+ should jump up. You can find the newly compiled executable in <code>HISE\projects\standalone\Builds\VisualStudio2022\x64\Release\App\</code>
+.</p>
+<h2 id="installation-faq"><b>Installation FAQ</b>
+</h2>
+<p>If you encounter problems installing HISE or face unencountered challenges please post your problem in the <a href="https://forum.hise.audio">HISE Forum</a>
+ and we'll try to help you. </p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="introduction/tour/index.html">Quick Tour</a>
+</span>
+
+<p class="content-footer-metadata"><br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

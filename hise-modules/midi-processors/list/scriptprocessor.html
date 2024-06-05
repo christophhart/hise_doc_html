@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="script-processor"><img src="images/icon_script.png"></img>
+<b>Script Processor</b>
+</h1>
+<p>Type ID: <code>ScriptProcessor</code>
+<br></p>
+<p class="comment"><b>MIDI Processor that allows scripting.</b>
+<br></p>
+<img src="images/module_screenshot_scriptprocessor.png"></img>
+<p><br></p>
+<p>The ScriptProcessor is the basic module for injecting scripts in <b>HISE</b>
+. You can add it to the MIDIProcessor Chain of every sound generator and container, and in this way separate scripts according to their dedicated place and use. They are processed top-down in the tree order of the <b>HISE</b>
+ preset (parents first).</p>
+<p>You can use the ScriptProcessors directly in the Main-Workspace or connect its interface to the Code Editor in the Scripting Workspace for more space and interoperability with the Interface Designer. </p>
+<p>A handy shortcut: When you click on the ScriptProcessors little <b>open-in</b>
+ Button it will open in the Scripting Workspace.</p>
+<p>There are also a few other modules that use scripting in <b>HISE</b>
+. The Script Modulators and Script FX. </p>
+<h3 id="callbacks"><b>Callbacks</b>
+</h3>
+<img src="images/scripting/callback-bar.png"></img>
+<p>Beneath the top-bar of the ScriptProcessor you can find the <b>Callback-Tabs</b>
+. Each one of them opens a dedicated coding window, prepopulated with a script-function to access these callbacks. </p>
+<p>A <a href="https://en.wikipedia.org/wiki/Callback_(computer_programming">Callback</a>
+ gives you access to scripting that is triggered by certain events. With this you can react to incoming MIDI Messages or events that are triggered by the user on the User Interface.</p>
+<h2 id="the-oninit-callback"><b>The </b>
+<b>onInit</b>
+<b>-callback</b>
+</h2>
+<p>The <code>OnInit</code>
+-callback is the 'main' callback that is getting executed (initialized) every time the script is compiled [F5] or freshly loaded. It is therefore the right place to define variables and script references, especially if you want to use them in other callbacks.</p>
+<p>The <code>OnInit</code>
+-Tab is therefore not really a callback, but more like the main script-document to that the other Tabs are (+ scripts can be) attached.<br></p>
+<p class="comment">There is a compile time-out that will abort the script execution to prevent endless loops. You can adjust this value using the <a href="working-with-hise/settings/development.html#compile-timeout">Compile Timeout</a>
+ setting.</p>
+<h2 id="the-onnoteon-callback"><b>The </b>
+<b>onNoteOn</b>
+<b>-callback</b>
+</h2>
+<p>If you press any Key on your MIDI-device or receive a MIDI-Message from a DAW, this callback will get executed. You can catch informations of the incoming MIDI messages via the Scripting APIs <a href="scripting/scripting-api/message/index.html">Message</a>
+ object:</p>
+<pre><code class="language-javascript line-numbers">function onNoteOn()
+{
+  Console.print("NoteNumber: " + Message.getNoteNumber());
+  Console.print("Velocity: " + Message.getVelocity());
+}</code></pre>
+<p>For a few use-cases of the <code>onNoteOn()</code>
+-callback please have a look at the MIDI-Handling Recipes.</p>
+<h2 id="the-onnoteoff-callback"><b>The </b>
+<b>onNoteOff</b>
+<b>-callback</b>
+</h2>
+<p>This callback will react to MIDI-noteOff messages. Most of the time when you write a <code>onNoteOn</code>
+ script, you also have to care about the <code>onNoteOff</code>
+ behaviour. If you don't it's pretty easy to get stuck notes.</p>
+<p class="comment">Do not rely on the assumption that every noteOff message is preceded by a note on message (for example if you start the playback of your host between a note on and a note off)</p>
+<h2 id="the-oncontroller-callback"><b>The </b>
+<b>onController</b>
+<b>-callback</b>
+</h2>
+<p>If MIDI controller messages come in (eg. modulation wheel, pitch wheel, aftertouch), this callback will get executed.You can catch the Controllers with...:</p>
+<pre><code class="language-javascript line-numbers">function onController()
+{
+  Console.print(Message.getControllerNumber());
+  Console.print(Message.getControllerValue());
+}</code></pre>
+<h2 id="the-ontimer-callback"><b>The </b>
+<b>onTimer</b>
+<b>-callback</b>
+</h2>
+<p>Every sound generator has its own (pretty accurate) timer that runs on the audio thread.</p>
+<p>By default, the timer is not running, but there are some API functions (<code>Synth.startTimer()</code>
+ and <code>Synth.stopTimer()</code>
+) that provide control over the timer. </p>
+<p>If you start a timer, this callback will be called periodically (depending on the timer frequency).</p>
+<p class="comment">The timer frequency is limited to 40ms (this should be enough for almost any case and prevent CPU freezing)</p>
+<h2 id="the-oncontrol-callback"><b>The </b>
+<b>onControl</b>
+<b>-callback</b>
+</h2>
+<p>The <code>onControl</code>
+-callback is a dedicated callback for handling the interactions of all UIComponents. Whenever you use a UIComponent with a defined script reference, this callback will be executed. The best way to use it, is to catch the component with a <code>switch</code>
+ function: </p>
+<pre><code class="language-javascript line-numbers">function onControl(number, value)
+{
+    switch(number) // number selects the component and switches between them in "case" they are used.
+    {
+        case XKnob:
+        {
+            Panel1.set("x", value * 100);
+        }
+        case YKnob:
+        {
+            var yplace = (value < 0.5) ? 0 : 70; // ternary operator [(if true) ?(do) this :(or) that] to switch between values
+            Panel1.set("y", yplace);
+            break;
+        }
+        case Button1:
+        {
+            
+        }
+    };
+}</code></pre>
+<p>If you don't want to separate the UI-logic from other parts of your scripting (e.g in support of a more modular approach) consider using <a href="scripting/scripting-in-hise/index.html#create-custom-oncontrol-callbacks">Custom Callbacks</a>
+.</p>
+<h2 id="audio-thread-and-deferred-callbacks"><b>Audio thread and Deferred callbacks</b>
+</h2>
+<p>While the <code>OnInit</code>
+-callback gets executes every time the script gets initialized, and the <code>OnControl</code>
+-callback if an UIComponents has registered an interaction, the other callbacks ( <code>onNoteOn</code>
+, <code>onNoteOff</code>
+, <code>onController</code>
+, <code>onTimer</code>
+ ) live in the audio-thread. </p>
+<p>This distinction is important to know, because the audiothread is critical in performing the audio-related tasks of your instrument. That also means: When you do too heavy calculating here, you can crash the audio output or limit the performance of your plugin.</p>
+<p>The <b>audio thread</b>
+ is a high priority thread that ensures stable real time performance. In a standard plugin setting the host will call a function in the plugin to fill its supplied audio buffer. The size of this buffer determines the time that the plugin has to make its audio-calculations. Whenever the plugins calculations exceed the required buffer-time, a drop out will occur (because the buffer could not be filled in time).</p>
+<p>On the other hand, you can be sure that the timing will always be sample accurate and with no delay regardless if the host is playing normally or rendering.</p>
+<p>There are some scenarios where you don't need this accuracy. Complex interfaces that react on MIDI input for example don't need this perfect accuracy so the callbacks can safely deferred to the message thread. </p>
+<p>The <b>message thread</b>
+ is the thread supplied by the operating system which is used to render the graphical interface and react to user input from mouse or keyboard.</p>
+<p>A heavy calculation on this thread does not result in audio drop outs (because it will be yielded to let the higher priority thread do its job). Instead you'll end up with a laggy interface, which is not the nicest thing but definetely the better choice compared to an audio drop out.</p>
+<p>For these cases, there is the API call <code>Synth.deferCallbacks(true);</code>
+. But be aware that you can't defer only selected callbacks of a script (there's a "all or none"-policy for deferring).reflect this.</p>
+<ul><li>if a callback is deferred (= not running on the audio thread), the callback name will have a <code>(D)</code>
+ suffix to indicate the threading state.</li>
+</ul>
+<p>Be aware that if no interface of your plugin is opened, deferred callbacks will not get executed, because for this case the UI rendering is deliberately bypassed to save up resources. </p>
+<h2 id="include-external-files"><b>include</b>
+<b> External Files</b>
+</h2>
+<p>As your scripts grow larger you can quickly loose oversight over complex scripts. The ScriptProcessor has a inbuilt tool to handle this kind of problem.</p>
+<p>If you select a codeblock in the ScriptEditor and <b>right-click</b>
+, you can find an option to <b>Move selection to external file</b>
+.</p>
+<p>This command creates a new <code>.js</code>
+ file out of your selection and saves it into the <a href="working-with-hise/project-management/projects-folders/scripts.html">Scripts Folder</a>
+, deletes the selected code and includes the newly created external script with the <code>include("");</code>
+ command. </p>
+<p>After you have included the external <code>.js</code>
+ file you can access it with the Callback-dropdown-selector in the ScriptEditors topbar.</p>
+<p>This separation of code blocks is not only great for code clarity but also if you want to reuse certain scripts in your next projects. You just have to drop them in the <b>Scripts Folder</b>
+ and <code>include("");</code>
+ them in your current project.<br> </p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="hise-modules/midi-processors/list/transposer.html">Transposer</a>
+</span>
+
+<p class="content-footer-metadata"><br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

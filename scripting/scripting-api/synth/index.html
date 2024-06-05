@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="synth"><b>Synth</b>
+</h1>
+<p>The <code>Synth</code>
+ Object grants access to the current Sound Generators internals (scoped). Depending on the type of Sound Generator, there are some function which will not work, because they are limited to a certain Processor type (You will get a error message if you try to use a illegal API call)</p>
+<p><br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="addcontroller"><b>addController</b>
+</h2>
+<p class="comment">Adds a controller to the buffer.</p>
+<pre><code class="language-javascript line-numbers">Synth.addController(int channel, int number, int value, int timeStampSamples)</code></pre>
+<p><br><br></p>
+<h2 id="addeffect"><b>addEffect</b>
+</h2>
+<p class="comment">Adds a effect (index = -1 to append it at the end).</p>
+<pre><code class="language-javascript line-numbers">Synth.addEffect( String type,  String id, int index)</code></pre>
+<p><br><br></p>
+<h2 id="addmessagefromholder"><b>addMessageFromHolder</b>
+</h2>
+<p class="comment">Adds the event from the given holder and returns a event id for note ons.</p>
+<pre><code class="language-javascript line-numbers">Synth.addMessageFromHolder(var messageHolder)</code></pre>
+<p><br><br></p>
+<h2 id="addmodulator"><b>addModulator</b>
+</h2>
+<p class="comment">Adds a Modulator to the synth's chain. If it already exists, it returns the index.</p>
+<pre><code class="language-javascript line-numbers">Synth.addModulator(int chainId,  String type,  String id)</code></pre>
+<p><br><br></p>
+<h2 id="addnoteoff"><b>addNoteOff</b>
+</h2>
+<p class="comment">Adds a note off to the buffer.</p>
+<pre><code class="language-javascript line-numbers">Synth.addNoteOff(int channel, int noteNumber, int timeStampSamples)</code></pre>
+<p><br><br></p>
+<h2 id="addnoteon"><b>addNoteOn</b>
+</h2>
+<p class="comment">Adds a note on to the buffer.</p>
+<pre><code class="language-javascript line-numbers">Synth.addNoteOn(int channel, int noteNumber, int velocity, int timeStampSamples)</code></pre>
+<p><br>Be aware that if you call this method with a positive timestamp, it might create a stuck note if you don't ensure that the note-off message you create has a timestamp bigger than this.</p>
+<p>There's a shortcut to solving this issue: the new API call <a href="scripting/scripting-api/synth/index.html#setfixnoteonafternoteoff">Synth.setFixNoteOnAfterNoteOff()</a>
+ which performs a few safe checks to prevent stuck notes in this scenario.<br></p>
+<h2 id="addpitchfade"><b>addPitchFade</b>
+</h2>
+<p class="comment">Adds a pitch fade to the given event ID.</p>
+<pre><code class="language-javascript line-numbers">Synth.addPitchFade(int eventId, int fadeTimeMilliseconds, int targetCoarsePitch, int targetFinePitch)</code></pre>
+<p><br><br></p>
+<h2 id="addtofront"><b>addToFront</b>
+</h2>
+<p class="comment">Adds the interface to the Container's body (or the frontend interface if compiled)</p>
+<pre><code class="language-javascript line-numbers">Synth.addToFront(bool addToFront)</code></pre>
+<p><br><br></p>
+<h2 id="addvolumefade"><b>addVolumeFade</b>
+</h2>
+<p class="comment">Fades all voices with the given event id to the target volume (in decibels).</p>
+<pre><code class="language-javascript line-numbers">Synth.addVolumeFade(int eventId, int fadeTimeMilliseconds, int targetVolume)</code></pre>
+<p><br><br></p>
+<h2 id="attachnote"><b>attachNote</b>
+</h2>
+<p class="comment">Attaches an artificial note to be stopped when the original note is stopped.</p>
+<pre><code class="language-javascript line-numbers">Synth.attachNote(int originalNoteId, int artificialNoteId)</code></pre>
+<p><br><br></p>
+<h2 id="createbuilder"><b>createBuilder</b>
+</h2>
+<p class="comment">Creates a Builder object that can be used to create the module tree.</p>
+<pre><code class="language-javascript line-numbers">Synth.createBuilder()</code></pre>
+<p><br><br></p>
+<h2 id="defercallbacks"><b>deferCallbacks</b>
+</h2>
+<p class="comment">Defers all callbacks to the message thread (midi callbacks become read-only).</p>
+<pre><code class="language-javascript line-numbers">Synth.deferCallbacks(bool makeAsynchronous)</code></pre>
+<p><br><br></p>
+<h2 id="getalleffects"><b>getAllEffects</b>
+</h2>
+<p class="comment">Returns an array of all effects that match the given regex.</p>
+<pre><code class="language-javascript line-numbers">Synth.getAllEffects(String regex)</code></pre>
+<p><br><br></p>
+<h2 id="getallmodulators"><b>getAllModulators</b>
+</h2>
+<p class="comment">Returns an array of all modulators that match the given regex.</p>
+<pre><code class="language-javascript line-numbers">Synth.getAllModulators(String regex)</code></pre>
+<p><br><br></p>
+<h2 id="getattribute"><b>getAttribute</b>
+</h2>
+<p class="comment">Returns the attribute of the parent synth.</p>
+<pre><code class="language-javascript line-numbers">Synth.getAttribute(int attributeIndex)</code></pre>
+<p><br><br></p>
+<h2 id="getaudiosampleprocessor"><b>getAudioSampleProcessor</b>
+</h2>
+<p class="comment">Returns the child synth with the supplied name.</p>
+<pre><code class="language-javascript line-numbers">Synth.getAudioSampleProcessor( String name)</code></pre>
+<p><br><br></p>
+<h2 id="getchildsynth"><b>getChildSynth</b>
+</h2>
+<p class="comment">Returns the child synth with the supplied name.</p>
+<pre><code class="language-javascript line-numbers">Synth.getChildSynth( String name)</code></pre>
+<p><br><br></p>
+<h2 id="getchildsynthbyindex"><b>getChildSynthByIndex</b>
+</h2>
+<p class="comment">Returns the child synth with the given index.</p>
+<pre><code class="language-javascript line-numbers">Synth.getChildSynthByIndex(int index)</code></pre>
+<p><br><br></p>
+<h2 id="getdisplaybuffersource"><b>getDisplayBufferSource</b>
+</h2>
+<p class="comment">Returns a reference to a processor that holds a display buffer.</p>
+<pre><code class="language-javascript line-numbers">Synth.getDisplayBufferSource( String name)</code></pre>
+<p><br><br></p>
+<h2 id="geteffect"><b>getEffect</b>
+</h2>
+<p class="comment">Returns the Effect with the supplied name. Can only be called in onInit(). It looks also in all child processors.</p>
+<pre><code class="language-javascript line-numbers">Synth.getEffect( String name)</code></pre>
+<p><br><br></p>
+<h2 id="getidlist"><b>getIdList</b>
+</h2>
+<p class="comment">Searches the child processors and returns a list with every ID of the given type.</p>
+<pre><code class="language-javascript line-numbers">Synth.getIdList( String type)</code></pre>
+<p><br><br></p>
+<h2 id="getmidiplayer"><b>getMidiPlayer</b>
+</h2>
+<p class="comment">Creates a reference to the given MIDI player.</p>
+<pre><code class="language-javascript line-numbers">Synth.getMidiPlayer( String playerId)</code></pre>
+<p><br><br></p>
+<h2 id="getmidiprocessor"><b>getMidiProcessor</b>
+</h2>
+<p class="comment">Returns the MidiProcessor with the supplied name. Can not be the own name!</p>
+<pre><code class="language-javascript line-numbers">Synth.getMidiProcessor( String name)</code></pre>
+<p><br><br></p>
+<h2 id="getmodulator"><b>getModulator</b>
+</h2>
+<p class="comment">Returns the Modulator with the supplied name. Can be only called in onInit. It looks also in all child processors.</p>
+<pre><code class="language-javascript line-numbers">Synth.getModulator( String name)</code></pre>
+<p><br><br></p>
+<h2 id="getmodulatorindex"><b>getModulatorIndex</b>
+</h2>
+<p class="comment">Returns the index of the Modulator in the chain with the supplied chainId</p>
+<pre><code class="language-javascript line-numbers">Synth.getModulatorIndex(int chainId,  String id)</code></pre>
+<p><br><br></p>
+<h2 id="getnumchildsynths"><b>getNumChildSynths</b>
+</h2>
+<p class="comment">Returns the number of child synths. Works with SynthGroups and SynthChains.</p>
+<pre><code class="language-javascript line-numbers">Synth.getNumChildSynths()</code></pre>
+<p><br><br></p>
+<h2 id="getnumpressedkeys"><b>getNumPressedKeys</b>
+</h2>
+<p class="comment">Returns the number of pressed keys (!= the number of playing voices!).</p>
+<pre><code class="language-javascript line-numbers">Synth.getNumPressedKeys()</code></pre>
+<p><br><br></p>
+<h2 id="getroutingmatrix"><b>getRoutingMatrix</b>
+</h2>
+<p class="comment">Creates a reference to the routing matrix of the given processor.</p>
+<pre><code class="language-javascript line-numbers">Synth.getRoutingMatrix( String processorId)</code></pre>
+<p><br><br></p>
+<h2 id="getsampler"><b>getSampler</b>
+</h2>
+<p class="comment">Returns the first sampler with the name name.</p>
+<pre><code class="language-javascript line-numbers">Synth.getSampler( String name)</code></pre>
+<p><br><br></p>
+<h2 id="getsliderpackprocessor"><b>getSliderPackProcessor</b>
+</h2>
+<p class="comment">Returns the sliderpack processor with the given name.</p>
+<pre><code class="language-javascript line-numbers">Synth.getSliderPackProcessor( String name)</code></pre>
+<p><br><br></p>
+<h2 id="getslotfx"><b>getSlotFX</b>
+</h2>
+<p class="comment">Returns the first slot with the given name.</p>
+<pre><code class="language-javascript line-numbers">Synth.getSlotFX( String name)</code></pre>
+<p><br><br></p>
+<h2 id="gettableprocessor"><b>getTableProcessor</b>
+</h2>
+<p class="comment">Returns the table processor with the given name.</p>
+<pre><code class="language-javascript line-numbers">Synth.getTableProcessor( String name)</code></pre>
+<p><br><br></p>
+<h2 id="gettimerinterval"><b>getTimerInterval</b>
+</h2>
+<p class="comment">Returns the current timer interval in seconds.</p>
+<pre><code class="language-javascript line-numbers">Synth.getTimerInterval()</code></pre>
+<p><br><br></p>
+<h2 id="isartificialeventactive"><b>isArtificialEventActive</b>
+</h2>
+<p class="comment">Checks if the artificial event is active</p>
+<pre><code class="language-javascript line-numbers">Synth.isArtificialEventActive(int eventId)</code></pre>
+<p><br><br></p>
+<h2 id="iskeydown"><b>isKeyDown</b>
+</h2>
+<p class="comment">Checks if the given key is pressed.</p>
+<pre><code class="language-javascript line-numbers">Synth.isKeyDown(int noteNumber)</code></pre>
+<p><br><br></p>
+<h2 id="islegatointerval"><b>isLegatoInterval</b>
+</h2>
+<p class="comment">Checks if any key is pressed.</p>
+<pre><code class="language-javascript line-numbers">Synth.isLegatoInterval()</code></pre>
+<p><br><br></p>
+<h2 id="issustainpedaldown"><b>isSustainPedalDown</b>
+</h2>
+<p class="comment">Returns true if the sustain pedal is pressed.</p>
+<pre><code class="language-javascript line-numbers">Synth.isSustainPedalDown()</code></pre>
+<p><br><br></p>
+<h2 id="istimerrunning"><b>isTimerRunning</b>
+</h2>
+<p class="comment">Checks if the timer for this script is running.</p>
+<pre><code class="language-javascript line-numbers">Synth.isTimerRunning()</code></pre>
+<p><br><br></p>
+<h2 id="noteoff"><b>noteOff</b>
+</h2>
+<p class="comment">Sends a note off message. The envelopes will tail off.</p>
+<pre><code class="language-javascript line-numbers">Synth.noteOff(int noteNumber)</code></pre>
+<p><br><br></p>
+<h2 id="noteoffbyeventid"><b>noteOffByEventId</b>
+</h2>
+<p class="comment">Sends a note off message for the supplied event ID. This is more stable than the deprecated noteOff() method.</p>
+<pre><code class="language-javascript line-numbers">Synth.noteOffByEventId(int eventId)</code></pre>
+<p><br><br></p>
+<h2 id="noteoffdelayedbyeventid"><b>noteOffDelayedByEventId</b>
+</h2>
+<p class="comment">Sends a note off message for the supplied event ID with the given delay in samples.</p>
+<pre><code class="language-javascript line-numbers">Synth.noteOffDelayedByEventId(int eventId, int timestamp)</code></pre>
+<p><br><br></p>
+<h2 id="noteofffromui"><b>noteOffFromUI</b>
+</h2>
+<p class="comment">Injects a note off to the incoming MIDI buffer (similar to playNoteFromUI).</p>
+<pre><code class="language-javascript line-numbers">Synth.noteOffFromUI(int channel, int noteNumber)</code></pre>
+<p><br><br></p>
+<h2 id="playnote"><b>playNote</b>
+</h2>
+<p class="comment">Plays a note and returns the event id. Be careful or you get stuck notes!</p>
+<pre><code class="language-javascript line-numbers">Synth.playNote(int noteNumber, int velocity)</code></pre>
+<p><br><br></p>
+<h2 id="playnotefromui"><b>playNoteFromUI</b>
+</h2>
+<p class="comment">Injects a note on to the incoming MIDI buffer (just as if the virtual keyboard was pressed.</p>
+<pre><code class="language-javascript line-numbers">Synth.playNoteFromUI(int channel, int noteNumber, int velocity)</code></pre>
+<p><br><br></p>
+<h2 id="playnotewithstartoffset"><b>playNoteWithStartOffset</b>
+</h2>
+<p class="comment">Plays a note and returns the event id with the given channel and start offset.</p>
+<pre><code class="language-javascript line-numbers">Synth.playNoteWithStartOffset(int channel, int number, int velocity, int offset)</code></pre>
+<p><br><br></p>
+<h2 id="removeeffect"><b>removeEffect</b>
+</h2>
+<p class="comment">Removes the given effect.</p>
+<pre><code class="language-javascript line-numbers">Synth.removeEffect(var effect)</code></pre>
+<p><br><br></p>
+<h2 id="removemodulator"><b>removeModulator</b>
+</h2>
+<p class="comment">Removes the modulator.</p>
+<pre><code class="language-javascript line-numbers">Synth.removeModulator(var mod)</code></pre>
+<p><br><br></p>
+<h2 id="sendcontroller"><b>sendController</b>
+</h2>
+<p class="comment">Sends a controller event to the synth.</p>
+<pre><code class="language-javascript line-numbers">Synth.sendController(int controllerNumber, int controllerValue)</code></pre>
+<p><br><br></p>
+<h2 id="sendcontrollertochildsynths"><b>sendControllerToChildSynths</b>
+</h2>
+<p class="comment">The same as sendController (for backwards compatibility)</p>
+<pre><code class="language-javascript line-numbers">Synth.sendControllerToChildSynths(int controllerNumber, int controllerValue)</code></pre>
+<p><br><br></p>
+<h2 id="setattribute"><b>setAttribute</b>
+</h2>
+<p class="comment">Sets an attribute of the parent synth.</p>
+<pre><code class="language-javascript line-numbers">Synth.setAttribute(int attributeIndex, float newAttribute)</code></pre>
+<p><br><br></p>
+<h2 id="setclockspeed"><b>setClockSpeed</b>
+</h2>
+<p class="comment">Sets the internal clock speed.</p>
+<pre><code class="language-javascript line-numbers">Synth.setClockSpeed(int clockSpeed)</code></pre>
+<p><br><br></p>
+<h2 id="setfixnoteonafternoteoff"><b>setFixNoteOnAfterNoteOff</b>
+</h2>
+<p class="comment">Adds a few additional safe checks to prevent stuck notes from note offs being processed before their note-on message.</p>
+<pre><code class="language-javascript line-numbers">Synth.setFixNoteOnAfterNoteOff(bool shouldBeFixed)</code></pre>
+<p><br>If you're doing any kind of time-manipulation in your MIDI processing, you might end up with a scenario where a note on message is scheduled after its respective note-off message (and with respective note-off message I'm talking about the note-on message with the same event ID). There are usually two reasons for this: either because you're calling <a href="scripting/scripting-api/synth/index.html#addnoteon">Synth.addNoteOn()</a>
+ with a positive timestamp or <a href="scripting/scripting-api/message/index.html#delayevent">Message.delayEvent()</a>
+ with an existing event.</p>
+<p>The default behaviour of HISE until now was that it was simply your problem to deal with that and if you've created a note-on in the future, the only way to prevent it from creating a stuck note is to make sure that the note-off has a timestamp bigger than the note-on.</p>
+<p>That's where this method comes in handy. Just call this once in your <code>onInit</code>
+ script of the script that does the processing and it will magically solve this problem with two safe checks:</p>
+<ol><li>If a note-off message is about to be processed, it will look in the event queue of scheduled events if there is a note-on message with the same ID but a bigger timestamp and then cancel this event.</li>
+<li>If you call any of the API methods that create an artificial note-off, it will also check the queue for future note-on events and perform the same check.</li>
+</ol>
+<p>The first check solves hanging notes from <code>Message.delayEvent()</code>
+ and the latter will solve all issues with artificial note pairs having the wrong timestamp order.</p>
+<p class="comment">Important: this is a per-sound generator setting, so calling it in your Interface script will not affect the MIDI processing of the child sound generator that actually does the MIDI manipulation!</p>
+<p><br></p>
+<h2 id="setmacrocontrol"><b>setMacroControl</b>
+</h2>
+<p class="comment">Sets one of the eight macro controllers to the newValue.</p>
+<pre><code class="language-javascript line-numbers">Synth.setMacroControl(int macroIndex, float newValue)</code></pre>
+<p><br>Calling this method will have the same effect as turning the respective <a href="glossary/macrocontrols.html">Macro Control</a>
+ but you can use it for a more fine-grained control about what and when to send the value change.</p>
+<p>Unlike everything else in a proper programming language, the range of the <code>macroIndex</code>
+ argument starts with 1 (to be consistent with the labels in HISE).</p>
+<p>The <code>value</code>
+ argument is expected to be in the <code>0 - 127</code>
+ value range, but it doesn't need to be an integer.</p>
+<p class="comment">It's your responsibility to watch out that this call does not occur in a control that is connected to the same macro control or you might end up getting a recursive loop and freeze your system!<br></p>
+<h2 id="setmodulatorattribute"><b>setModulatorAttribute</b>
+</h2>
+<p class="comment">Sets a ModulatorAttribute.</p>
+<pre><code class="language-javascript line-numbers">Synth.setModulatorAttribute(int chainId, int modulatorIndex, int attributeIndex, float newValue)</code></pre>
+<p><br><br></p>
+<h2 id="setshouldkillretriggerednote"><b>setShouldKillRetriggeredNote</b>
+</h2>
+<p class="comment">If set to true, this will kill retriggered notes (default).</p>
+<pre><code class="language-javascript line-numbers">Synth.setShouldKillRetriggeredNote(bool killNote)</code></pre>
+<p><br><br></p>
+<h2 id="setuseuniformvoicehandler"><b>setUseUniformVoiceHandler</b>
+</h2>
+<p class="comment">Use a uniform voice index for the given container.</p>
+<pre><code class="language-javascript line-numbers">Synth.setUseUniformVoiceHandler(String containerId, bool shouldUseUniformVoiceHandling)</code></pre>
+<p><br>This is a new feature introduced with HISE 3.5.0 and ensures that all sound generators will use the same voice index whenever a new voice is started. Synchronizing the voice indexes comes with a slight overhead (so it's disabled by default), but it allows you to use envelope modulators as global modulation source because now it can properly fetch the required modulation values because it's guaranteed that the voice indexes will match.</p>
+<p>In order to use this function, call it with a container ID that you want to be used as root for the voice unification. This is not required to be the master container, so you can still perform additional MIDI processing (arpeggiators, glide scripts etc). However you need to ensure that beyond that point every sound generator will start not more than one voice for each incoming MIDI event.<br></p>
+<h2 id="setvoicegainvalue"><b>setVoiceGainValue</b>
+</h2>
+<p class="comment">Applies a gain factor to a specified voice.</p>
+<pre><code class="language-javascript line-numbers">Synth.setVoiceGainValue(int voiceIndex, float gainValue)</code></pre>
+<p><br><br></p>
+<h2 id="setvoicepitchvalue"><b>setVoicePitchValue</b>
+</h2>
+<p class="comment">Applies a pitch factor (0.5 ... 2.0) to a specified voice.</p>
+<pre><code class="language-javascript line-numbers">Synth.setVoicePitchValue(int voiceIndex, double pitchValue)</code></pre>
+<p><br><br></p>
+<h2 id="starttimer"><b>startTimer</b>
+</h2>
+<p class="comment">Starts the timer of the synth.</p>
+<pre><code class="language-javascript line-numbers">Synth.startTimer(double seconds)</code></pre>
+<p><br><br></p>
+<h2 id="stoptimer"><b>stopTimer</b>
+</h2>
+<p class="comment">Stops the timer of the synth. You can call this also in the timer callback.</p>
+<pre><code class="language-javascript line-numbers">Synth.stopTimer()</code></pre>
+<p><br><br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/table/index.html">Table</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>18.03.2019<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

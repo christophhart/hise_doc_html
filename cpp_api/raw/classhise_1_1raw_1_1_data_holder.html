@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="raw::dataholder"><b>raw::DataHolder</b>
+</h1>
+<p>This class acts as glue to link your <a href="cpp_api/raw/classhise_1_1raw_1_1_main_processor.html">MainProcessor</a>
+ and MainEditor instances into your HISE project.<br>If you use the raw API to create HISE projects, you just need to create two classes:<br></p>
+<ul><li>A <a href="cpp_api/raw/classhise_1_1raw_1_1_main_processor.html">raw::MainProcessor</a>
+ object that manages all the data / logic<br></li>
+<li>A raw::MainEditor object that defines your user interface.<br></li>
+</ul>
+<p><br>Then you need to return an instance of this class with the two classes as template arguments from the FrontendProcessor::createPresetRaw() method - or just use the CREATE_RAW_PROCESSOR macro that takes care of this for you:<br></p>
+<pre><code class="language-clike line-numbers">class MyProcessor: public raw::MainProcessor
+{
+    // [...]
+};
+
+class MyInterface: public raw::MainEditor
+{
+    // [...]
+};
+
+CREATE_RAW_PROCESSOR(MyProcessor, MyInterface);</code></pre>
+<p><br></p>
+<h2 id="class-hierarchy"><b>Class Hierarchy</b>
+</h2>
+<h3 id="base-classes"><b>Base Classes</b>
+</h3>
+<ul><li><a href="cpp_api/raw/classhise_1_1raw_1_1_data_holder_base.html">hise::raw::DataHolderBase</a>
+<br></li>
+<li><code>hise::raw::MainProcessor::ConnectedObject< MainProcessorClass ></code>
+<br></li>
+</ul>
+<p>class MainProcessorClassclass EditorClass</p>
+<h2 id="class-methods"><b>Class methods</b>
+</h2>
+<h3 id="createeditor"><b>createEditor</b>
+</h3>
+<pre><code class="language-clike line-numbers">Component * createEditor() override</code></pre>
+<p>Overwrite this method and return your plugin's main editor.<br> </p>
+<h3 id="exportasvaluetree"><b>exportAsValueTree</b>
+</h3>
+<pre><code class="language-clike line-numbers">ValueTree exportAsValueTree() const override</code></pre>
+<p>Overwrite this method and return a representation of the object as ValueTree.<br> </p>
+<h3 id="restorefromvaluetree"><b>restoreFromValueTree</b>
+</h3>
+<pre><code class="language-clike line-numbers">void restoreFromValueTree(const ValueTree &previouslyExportedState) override</code></pre>
+<p>Overwrite this method and restore the properties of this object using the referenced ValueTree.<br> </p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="cpp_api/raw/classhise_1_1raw_1_1_data_holder_base.html">raw::DataHolderBase</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

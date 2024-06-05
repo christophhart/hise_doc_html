@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="midiplayer"><b>MidiPlayer</b>
+</h1>
+<p>A player for MIDI sequences.<br>This module plays MidiFiles when its internal transport is activated. It acts as common core module for multiple "overlays" (MIDI loopers, Piano roll, step sequencer, etc.)<br> </p>
+<h2 id="class-hierarchy"><b>Class Hierarchy</b>
+</h2>
+<h3 id="base-classes"><b>Base Classes</b>
+</h3>
+<ul><li><a href="cpp_api/hise/classhise_1_1_midi_processor.html">hise::MidiProcessor</a>
+<br></li>
+<li><a href="cpp_api/hise/classhise_1_1_tempo_listener.html">hise::TempoListener</a>
+<br></li>
+</ul>
+<h2 id="public-types"><b>Public types</b>
+</h2>
+<h3 id="enum-specialparameters"><b>enum SpecialParameters</b>
+</h3>
+<table><thead><td><b>Name </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><code>CurrentPosition</code>
+ </td>
+<td>the current position within the current MIDI file (non-persistent) </td>
+</tr>
+<tr><td><code>CurrentSequence</code>
+ </td>
+<td>the index of the currently played sequence (not zero based for combobox compatibility) </td>
+</tr>
+<tr><td><code>CurrentTrack</code>
+ </td>
+<td>the index of the currently played track within a sequence. </td>
+</tr>
+<tr><td><code>LoopEnabled</code>
+ </td>
+<td>toggles between oneshot and loop playback </td>
+</tr>
+<tr><td><code>LoopStart</code>
+ </td>
+<td>start of the (loop) playback </td>
+</tr>
+<tr><td><code>LoopEnd</code>
+ </td>
+<td>end of the (loop) playback </td>
+</tr>
+</table>
+<h2 id="class-methods"><b>Class methods</b>
+</h2>
+<h3 id="tempochanged"><b>tempoChanged</b>
+</h3>
+<pre><code class="language-clike line-numbers">void tempoChanged(double newTempo) override</code></pre>
+<p>@ internal<br> </p>
+<h3 id="clearsequences"><b>clearSequences</b>
+</h3>
+<pre><code class="language-clike line-numbers">void clearSequences(NotificationType notifyListeners=sendNotification)</code></pre>
+<p>Clears all sequences. This also clears the undo history.<br> </p>
+<h3 id="exportasvaluetree"><b>exportAsValueTree</b>
+</h3>
+<pre><code class="language-clike line-numbers">ValueTree exportAsValueTree() const override</code></pre>
+<p>@ internal<br> </p>
+<h3 id="restorefromvaluetree"><b>restoreFromValueTree</b>
+</h3>
+<pre><code class="language-clike line-numbers">void restoreFromValueTree(const ValueTree &v) override</code></pre>
+<p>@ internal<br> </p>
+<h3 id="createeditor"><b>createEditor</b>
+</h3>
+<pre><code class="language-clike line-numbers">ProcessorEditorBody * createEditor(ProcessorEditor *parentEditor) override</code></pre>
+<p>@ internal<br> </p>
+<h3 id="getattribute"><b>getAttribute</b>
+</h3>
+<pre><code class="language-clike line-numbers">float getAttribute(int index) const</code></pre>
+<p>@ internal<br> </p>
+<h3 id="setinternalattribute"><b>setInternalAttribute</b>
+</h3>
+<pre><code class="language-clike line-numbers">void setInternalAttribute(int index, float newAmount) override</code></pre>
+<p>@ internal<br> </p>
+<h3 id="loadmidifile"><b>loadMidiFile</b>
+</h3>
+<pre><code class="language-clike line-numbers">void loadMidiFile(PoolReference reference)</code></pre>
+<p>Loads the given pooled MIDI file and adds it to the end of the list.<br> </p>
+<h3 id="isprocessingwholebuffer"><b>isProcessingWholeBuffer</b>
+</h3>
+<pre><code class="language-clike line-numbers">bool isProcessingWholeBuffer() const override</code></pre>
+<p>@ internal<br> </p>
+<h3 id="preparetoplay"><b>prepareToPlay</b>
+</h3>
+<pre><code class="language-clike line-numbers">void prepareToPlay(double sampleRate_, int samplesPerBlock_)</code></pre>
+<p>@ internal<br> </p>
+<h3 id="preprocessbuffer"><b>preprocessBuffer</b>
+</h3>
+<pre><code class="language-clike line-numbers">void preprocessBuffer(HiseEventBuffer &buffer, int numSamples) override</code></pre>
+<p>@ internal<br> </p>
+<h3 id="processhiseevent"><b>processHiseEvent</b>
+</h3>
+<pre><code class="language-clike line-numbers">void processHiseEvent(HiseEvent &m) noexcept override</code></pre>
+<p>@ internal<br> </p>
+<h3 id="addsequencelistener"><b>addSequenceListener</b>
+</h3>
+<pre><code class="language-clike line-numbers">void addSequenceListener(SequenceListener *newListener)</code></pre>
+<p>Adds a sequence listener that will be notified about changes to the sequences.<br> </p>
+<h3 id="removesequencelistener"><b>removeSequenceListener</b>
+</h3>
+<pre><code class="language-clike line-numbers">void removeSequenceListener(SequenceListener *listenerToRemove)</code></pre>
+<p>Removes a sequence listener that was registered to this player.<br> </p>
+<h3 id="getplaystate"><b>getPlayState</b>
+</h3>
+<pre><code class="language-clike line-numbers">PlayState getPlayState() const</code></pre>
+<p>Returns the play state as integer.<br> </p>
+<h3 id="getnumsequences"><b>getNumSequences</b>
+</h3>
+<pre><code class="language-clike line-numbers">int getNumSequences() const</code></pre>
+<p>Returns the number of sequences loaded into this player.<br> </p>
+<h3 id="getcurrentsequence"><b>getCurrentSequence</b>
+</h3>
+<pre><code class="language-clike line-numbers">HiseMidiSequence * getCurrentSequence() const</code></pre>
+<p>Returns the currently played sequence.<br> </p>
+<h3 id="getsequenceid"><b>getSequenceId</b>
+</h3>
+<pre><code class="language-clike line-numbers">Identifier getSequenceId(int index=-1) const</code></pre>
+<p>Returns the ID used for the given sequence. If -1 is used as index, the current sequence will be used.<br> </p>
+<h3 id="getplaybackposition"><b>getPlaybackPosition</b>
+</h3>
+<pre><code class="language-clike line-numbers">double getPlaybackPosition() const</code></pre>
+<p>Returns the current playback position from 0...1.<br> </p>
+<h3 id="flushedit"><b>flushEdit</b>
+</h3>
+<pre><code class="language-clike line-numbers">void flushEdit(const Array< HiseEvent > &newEvents)</code></pre>
+<p>Applies the list of events to the currently loaded sequence. This operation is undo-able.<br>It locks the sequence just for a very short time so you should be able to use this from any thread without bothering about multi-threading.<br> </p>
+<h3 id="clearcurrentsequence"><b>clearCurrentSequence</b>
+</h3>
+<pre><code class="language-clike line-numbers">void clearCurrentSequence()</code></pre>
+<p>Clears the current sequence and any recorded events.<br> </p>
+<h3 id="getundomanager"><b>getUndoManager</b>
+</h3>
+<pre><code class="language-clike line-numbers">UndoManager * getUndoManager()</code></pre>
+<p>Returns the undo manager used for all editing operations.<br>This differs from the default undo manager for parameter changes because edits might get triggered by UI controls and it would be difficult to deinterleave parameter changes and MIDI edits.<br> </p>
+<h3 id="setflushrecordingonstop"><b>setFlushRecordingOnStop</b>
+</h3>
+<pre><code class="language-clike line-numbers">void setFlushRecordingOnStop(bool shouldFlushRecording)</code></pre>
+<p>If set to false, the recording will not be flushed and you can preprocess it.<br> </p>
+<h3 id="resetcurrentsequence"><b>resetCurrentSequence</b>
+</h3>
+<pre><code class="language-clike line-numbers">void resetCurrentSequence()</code></pre>
+<p>Resets the current sequence back to its pooled state. This operation is undo-able.<br> </p>
+<h3 id="getpoolreference"><b>getPoolReference</b>
+</h3>
+<pre><code class="language-clike line-numbers">PoolReference getPoolReference(int index=-1)</code></pre>
+<p>Returns the PoolReference for the given sequence.<br>If -1 is passed, the current sequence index will be used.<br> </p>
+<h3 id="play"><b>play</b>
+</h3>
+<pre><code class="language-clike line-numbers">bool play(int timestampInBuffer=0)</code></pre>
+<p>Starts playing the sequence from the beginning.<br>You can supply a timestamp that delays this operation - this can also be used for sample accurate triggering by passing in the timestamp of the current event within the buffer.<br> </p>
+<h3 id="stop"><b>stop</b>
+</h3>
+<pre><code class="language-clike line-numbers">bool stop(int timestampInBuffer=0)</code></pre>
+<p>Stops the playback and resets the position.<br>You can supply a timestamp that delays this operation - this can also be used for sample accurate triggering by passing in the timestamp of the current event within the buffer.<br> </p>
+<h3 id="record"><b>record</b>
+</h3>
+<pre><code class="language-clike line-numbers">bool record(int timestampInBuffer=0)</code></pre>
+<p>Starts recording. If the sequence is already playing, it switches into overdub mode, otherwise it also starts playing.<br> </p>
+<h3 id="prepareforrecording"><b>prepareForRecording</b>
+</h3>
+<pre><code class="language-clike line-numbers">void prepareForRecording(bool copyExistingEvents=true)</code></pre>
+<p>This prepares the internal event queue for recording. Can be called on any thread including the audio thread.<br> </p>
+<h3 id="finishrecording"><b>finishRecording</b>
+</h3>
+<pre><code class="language-clike line-numbers">void finishRecording()</code></pre>
+<p>Finishes the recording. Can be called on any thread including the audio thread.<br> </p>
+<h3 id="getlistofcurrentlyrecordedevents"><b>getListOfCurrentlyRecordedEvents</b>
+</h3>
+<pre><code class="language-clike line-numbers">HiseMidiSequence::Ptr getListOfCurrentlyRecordedEvents()</code></pre>
+<p>Creates a temporary sequence containing all the events from the currently recorded event list.<br> </p>
+<h3 id="getlistofcurrentlyrecordedeventsraw"><b>getListOfCurrentlyRecordedEventsRaw</b>
+</h3>
+<pre><code class="language-clike line-numbers">const Array< HiseEvent > & getListOfCurrentlyRecordedEventsRaw() const</code></pre>
+<p>Returns the array of HiseEvents without conversion to a HiseMidiSequence.<br> </p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="cpp_api/hise/classhise_1_1_midi_processor.html">MidiProcessor</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

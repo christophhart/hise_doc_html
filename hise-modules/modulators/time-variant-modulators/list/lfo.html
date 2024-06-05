@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="lfo"><b>LFO</b>
+</h1>
+<p>Type ID: <code>LFO</code>
+<br></p>
+<p class="comment"><b>A LFO Modulator modulates the signal with a low frequency</b>
+<br></p>
+<img src="images/module_screenshot_lfo.png"></img>
+<p><br></p>
+<h2 id="parameters-"><b>Parameters </b>
+</h2>
+<table><thead><td><b>#</b>
+<b> </b>
+</td>
+<td><b>ID </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>0 </td>
+<td><code>Frequency</code>
+ </td>
+<td>Changes the frequency of the LFO from 0.5 - 10Hz </td>
+</tr>
+<tr><td>1 </td>
+<td><code>FadeIn</code>
+ </td>
+<td>Time to Fade the LFO to full intensity in ms. Be aware: not linear. </td>
+</tr>
+<tr><td>2 </td>
+<td><code>WaveFormType</code>
+ </td>
+<td>Choose a LFO Waveform </td>
+</tr>
+<tr><td>3 </td>
+<td><code>Legato</code>
+ </td>
+<td>Turn Legato on/off </td>
+</tr>
+<tr><td>4 </td>
+<td><code>TempoSync</code>
+ </td>
+<td>Syncs the LFO to the Main Tempo </td>
+</tr>
+<tr><td>5 </td>
+<td><code>SmoothingTime</code>
+ </td>
+<td>Smooth the LFO </td>
+</tr>
+<tr><td>6 </td>
+<td><code>NumSteps</code>
+ </td>
+</tr>
+<tr><td>7 </td>
+<td><code>LoopEnabled</code>
+ </td>
+</tr>
+<tr><td>8 </td>
+<td><code>PhaseOffset</code>
+ </td>
+<td>Offsets the phase of the oscillator. @ 0% down from 1 (top of sinus-hill), 25% down from 0.5, 50% up from 0, 75% up from 0.5 . </td>
+</tr>
+<tr><td>9 </td>
+<td><code>SyncToMasterClock</code>
+ </td>
+<td>- </td>
+</tr>
+<tr><td>10 </td>
+<td><code>IgnoreNoteOn</code>
+ </td>
+<td>- </td>
+</tr>
+</table>
+<h2 id="chains-"><b>Chains </b>
+</h2>
+<table><thead><td><b>#</b>
+<b> </b>
+</td>
+<td><b>ID </b>
+</td>
+<td><b>Restriction </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>0 </td>
+<td>LFO Intensity Mod </td>
+<td>No global modulators </td>
+<td>Modulates the intensity of the LFO. </td>
+</tr>
+</table>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="hise-modules/modulators/time-variant-modulators/list/globaltimevariantmodulator.html">GlobalTimeVariantModulator</a>
+</span>
+
+<p class="content-footer-metadata">chris<br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

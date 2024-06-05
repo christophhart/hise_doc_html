@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="snex_shaper<class-shapertype>"><b>snex_shaper<class ShaperType></b>
+</h1>
+<p>A SNEX node that can be used to implement waveshaping algorithms.<br>If you're writing a waveshaper that transforms the audio signal, you can use this class. It gives you a special callback and also a display that shows the waveshaper function.<br>Be aware that if you export this node to C++, it will use this class as template to create a full node, but in SNEX you don't need to supply the ShaperType template parameter.<br> The default code template forwards all rendering functions to a single getSample(float input) method. As long as you your algorithm is stateless, you can just implement the logic there, otherwise you have to adapt the boilerplate process calls accordingly:<br></p>
+<pre><code class="language-clike line-numbers">// this will be called for every sample in every channel
+float getSample(float input)
+{
+    return input;
+}
+
+// these callbacks just forward to the method above
+template <typename T> void process(T& data)
+{
+    for(auto ch: data)
+    {
+        for(auto& s: data.toChannelData(ch))
+        {
+            s = getSample(s);
+        }
+    }
+}
+
+template <typename T> void processFrame(T& data)
+{
+    for(auto& s: data)
+        s = getSample(s);
+}</code></pre>
+<p><br></p>
+<h2 id="class-methods"><b>Class methods</b>
+</h2>
+<h3 id="prepare"><b>prepare</b>
+</h3>
+<pre><code class="language-clike line-numbers">void prepare(PrepareSpecs ps)</code></pre>
+<p><a href="scriptnode/snex_api/node_types/snex_node.html">snex_node::prepare()</a>
+<br><br></p>
+<h3 id="reset"><b>reset</b>
+</h3>
+<pre><code class="language-clike line-numbers">void reset()</code></pre>
+<p><a href="scriptnode/snex_api/node_types/snex_node.html">snex_node::reset()</a>
+<br><br></p>
+<h3 id="process"><b>process</b>
+</h3>
+<pre><code class="language-clike line-numbers">template <typename ProcessDataType> void process(ProcessDataType &data)</code></pre>
+<p><a href="scriptnode/snex_api/node_types/snex_node.html">snex_node::process</a>
+<br><br></p>
+<h3 id="processframe"><b>processFrame</b>
+</h3>
+<pre><code class="language-clike line-numbers">template <typename FrameDataType> void processFrame(FrameDataType &data)</code></pre>
+<p><a href="scriptnode/snex_api/node_types/snex_node.html">snex_node::processFrame</a>
+<br><br></p>
+<h3 id="setexternaldata"><b>setExternalData</b>
+</h3>
+<pre><code class="language-clike line-numbers">void setExternalData(const ExternalData &d, int index)</code></pre>
+<p>snex_node::setExternalData().<br> <br></p>
+<h3 id="setparameter"><b>setParameter</b>
+</h3>
+<pre><code class="language-clike line-numbers">template <int P> void setParameter(double v)</code></pre>
+<p>snex_node::setParameter<P>()<br> <br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scriptnode/snex_api/node_types/snexsource.html">SnexSource</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

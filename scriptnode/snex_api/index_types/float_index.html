@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="float_index<typename-floattype,-typename-integerindextype,-bool-isnormalised>"><b>float_index<typename FloatType, typename IntegerIndexType, bool IsNormalised></b>
+</h1>
+<p>A second level index type which takes a integer index type and allows floating point number indexing.<br>There are two modes that this index can operate in: unscaled and scaled. The latter allows indexing using a normalized value between 0...1 which is very common in DSP applications.<br></p>
+<pre><code class="language-clike line-numbers">using MyIntegerIndex = index::clamped<512, false>;
+using MyFloatIndex = index::scaled<double, MyIntegerIndex>;
+
+span<float, 512> data;
+
+MyFloatIndex idx(0.5);
+
+data[0.5] = 90.0f; // data[256] = 90.0f</code></pre>
+<p><br></p>
+<h2 id="class-methods"><b>Class methods</b>
+</h2>
+<h3 id="float_index"><b>float_index</b>
+</h3>
+<pre><code class="language-clike line-numbers">float_index(FloatType initValue=0)</code></pre>
+<p>Creates a float_index with the given value.<br> </p>
+<h3 id="getalpha"><b>getAlpha</b>
+</h3>
+<pre><code class="language-clike line-numbers">FloatType getAlpha(int limit) const</code></pre>
+<p>This will return the fractional part of the index. You won't need to use this manually.<br> </p>
+<h3 id="operator="><b>operator=</b>
+</h3>
+<pre><code class="language-clike line-numbers">float_index & operator=(FloatType v_)</code></pre>
+<p>Assigns a new value to the index.<br> </p>
+<h3 id="operator+"><b>operator+</b>
+</h3>
+<pre><code class="language-clike line-numbers">float_index operator+(FloatType t) const</code></pre>
+<p>Adds the given value to the index.<br> </p>
+<h3 id="operator-"><b>operator-</b>
+</h3>
+<pre><code class="language-clike line-numbers">float_index operator-(FloatType t) const</code></pre>
+<p>Subtracts the index.<br> </p>
+<h3 id="operator-floattype"><b>operator FloatType</b>
+</h3>
+<pre><code class="language-clike line-numbers">operator FloatType() const</code></pre>
+<p>Cast the index to the native float type. You can only do this with a fixed boundary type.<br> </p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scriptnode/snex_api/index_types/hermite.html">hermite<typename IndexType></a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

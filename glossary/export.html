@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="export-and-deployment"><b>Export and Deployment</b>
+</h1>
+<h2 id="export-and-deployment-"><b>Export and Deployment </b>
+</h2>
+<p>If you use the .hr1 resource file (which I highly recommend for distribution), the user has to extract the monolith data to a customizable location, and it will automatically create a link file for you.</p>
+<h3 id="install-procedure-(user)"><b>Install Procedure (User)</b>
+</h3>
+<p>Let's go through the install procedure in the eyes of a user. </p>
+<p>https://librewave.com/knowledge-base/sample-library-installation-guide/#Installing_the_samples</p>
+<h4 id="config-directory"><b>Config directory</b>
+</h4>
+<p>During installation of the plugin a <b>config directory</b>
+ with the Plugin <code>Name</code>
+ (equivalent to the Project Settings <code>Name</code>
+ in the <b>HISE</b>
+ Settings) will be created on the users computer. The location of this folder will vary depending on your operating system.</p>
+<p>GNU/Linux: <code>/home/<Username>/.config/<Company>/<Name></code>
+Windows: <code>Users/<Username>/AppData/Roaming/<Company>/<Name></code>
+MacOS: <code>~/Library/Application Support/<Company>/<Name></code>
+ or <code>~/Music/<Company>/<Name></code>
+</p>
+<p>It contains these folders:</p>
+<p><code>AudioFilesExpansionsLogsUser PresetsDeviceSettings.xmlGeneralSettings.xmlLinkWindows</code>
+</p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="glossary/git.html">Version Control with Git</a>
+</span>
+
+<p class="content-footer-metadata"><br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

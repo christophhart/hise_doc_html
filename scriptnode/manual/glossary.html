@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="scriptnode-glossary"><b>Scriptnode Glossary</b>
+</h1>
+<h1 id="scriptnode-glossary"><b>Scriptnode Glossary</b>
+</h1>
+<p>There are a few concepts in scriptnode which will be used throughout the interface and this documentation which are important to understand.</p>
+<h2 id="dsp-network"><b>DSP Network</b>
+</h2>
+<p>A DSP Network is the main object that will bypass the scripting callbacks of a script module and use it's signal graph instead. It is the entry point to the world of scriptnode and can be activated by the magic spell <code>const var myNetwork = Engine.createDspNetwork("someName");</code>
+. There's a powerful API of function calls that you can use with <code>myNetwork</code>
+ to buildup the signal path via scripting.</p>
+<p>The lifetime of a DspNetwork object will exceed the compilation (just like a UI component), so if you recompile the script it will look for the one with the given name and just return a reference to it.</p>
+<h2 id="signal"><b>Signal</b>
+</h2>
+<p>An important abstraction that scriptnode does for you is to combine multiple audiochannels into one "signal" that flows through the DSP network: the rationale behind this is that for most of the use cases you don't care about the channel amount (or even make it compatible with different channel configurations). Plus having to duplicate the signal graph for stereo processing is pretty annoying. So Unless specified otherwise, a node will process all channels of the signal that it receives. The gain module doesn't care whether it has to process 16 channels or one channel, it just operates on how many channels it has to do.Another aspect of the signal is the samplerate and buffer size. As you may know, any processing of an audiosignal is usually done in chunks of multiple samples (buffer size) at once with a given samplerate. Now while HISE has a "static" samplerate and buffersize which is defined by the user (or the host that it's operating in), nodes in scriptnode can be processed in different settings: the <code>container.oversample</code>
+ nodes will multiply both the samplerate and the buffer size with the oversampling factor, and the <code>container.framex_block</code>
+ nodes will bring down the buffer size to exactly <code>1</code>
+ which gives you the possiblity for sample-accurate modulation of parameters.</p>
+<p>The good thing is that you don't have to care about all this: as soon as you drop a node somewhere, it will be initialised with the required specifications for this location and starts processing the incoming audio samples.</p>
+<h2 id="node"><b>Node</b>
+</h2>
+<p>A node is an object within the graph that processes the signal and the most simple building block of any graph you'll create in scriptnode. It's visual representation contains a header, a (optional) body and a list of sliders for its parameters.</p>
+<h2 id="factory"><b>Factory</b>
+</h2>
+<p>A factory is a collection of nodes that belong together and is used to create nodes using their path (<code>factory.node</code>
+). The most important factories are the <code>container</code>
+ factory and the <code>core</code>
+ factory, but there are a few other factories.</p>
+<h2 id="container"><b>Container</b>
+</h2>
+<p>A container is a node that contains a list of other nodes. There are many different containers which differ in the way they process their children. Containers can be nested to create complex signal path arrangements. The root node is a <code>container.chain</code>
+ node, which processes its children serially.</p>
+<p>Containers can exported to Cpp modules, which turns them into dedicated nodes.</p>
+<h2 id="parameter"><b>Parameter</b>
+</h2>
+<p>A parameter is a number that will change the behaviour of a node. Unlike the signal graph which still follows the tree paradigm, Parameters can be connected to basically anything (the only limitation is that container parameters can only connect to their children or it breaks the rules of encapsulation). Nodes have a fixed amount of parameters, but Containers can have a dynamic amount of parameters that connect to parameters of their child nodes to build up "macro" parameters.</p>
+<h3 id="range"><b>Range</b>
+</h3>
+<p>Unlike parameters in HISE, scriptnode parameters do not have a fixed range (but rather a default range that you can change to whatever you need). A range does not only define a min and max value, but also three other properties:</p>
+<ul><li><b>SkewFactor</b>
+. A skew factor of 1.0 is linear and other values will "skew" the curve to the min value (skew < 1.0) or max value (skew > 1.0). It's calculated using the formula <code>Math.pow(normalizedInput, skewFactor)</code>
+</li>
+<li><b>StepSize</b>
+. A step size that allows the parameter to act in discrete steps. <b>Important:</b>
+ this property is exclusive to the skew factor so you can either have a skewed range or a discrete range.</li>
+<li><b>Inverted</b>
+: swaps the min and max value for inverting the curve</li>
+</ul>
+<p>You can change the ranges anytime, either by right-clicking on the knob and change its properties in the popup editor, or by using the range editor which gives you a more intuitive approach. If you hover over the parameter and click on the two-faced arrow left to the knob, it will show the range editor (which you can close by double clicking on it or right click and unselect "Make sticky").</p>
+<p class="comment">You can also temporarily show the range editor by hovering over a knob while holding down the alt key. This gives you the ability of quickly changing multiple parameters.</p>
+<p>With the range editor you can:</p>
+<ul><li>change the range limits by dragging either the left or right edge (shift click to enter a value)</li>
+<li>change the skew by dragging up or down the middle (shift click to enter a value)</li>
+<li>use the context menu for more options:</li>
+</ul>
+<table><thead><td><b>Item </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>Make sticky </td>
+<td>Closes the range editor </td>
+</tr>
+<tr><td>Load Range Preset </td>
+<td>Quickly set the range to a predefined list of range presets. </td>
+</tr>
+<tr><td>Save Range Preset </td>
+<td>Save the current range to be used later on. This information will be stored in the <code>RangePresets.xml</code>
+ file of the HISE app data folder. </td>
+</tr>
+<tr><td>Reset Range </td>
+<td>Resets the range to the exact state when you opened the range editor. </td>
+</tr>
+<tr><td>Reset skew </td>
+<td>Removes the skewing of the range making it a perfectly flat line. </td>
+</tr>
+<tr><td>Invert range </td>
+<td>swaps the min and max values so that the value is inverted. This will not affect the UI interaction of dragging the knob because we're not in crazy-town, but if you modulate that parameter, the modulation will be inverted. </td>
+</tr>
+<tr><td>Copy range to source </td>
+<td>If the parameter is connected to another parameter as target, you can sync the ranges between the source and target parameter by copying the target range to the source range (in many cases you just want them to have the same range, especially if you only link a single parameter) </td>
+</tr>
+</table>
+<h3 id="scaled-vs.-unscaled-parameters"><b>Scaled vs. unscaled parameters</b>
+</h3>
+<p>There are two types of parameters in scriptnode: scaled (aka normalized) parameters and unscaled parameters. A <i>scaled parameter</i>
+ expects the input to be within the 0...1 range and converts the input value to its own range. This is the default behaviour and allows you to adjust the "modulation" amount directly by changing the target range of the knob (this wasn't the case in early versions of scriptnode and lead to many issues and data redundancy). However there are a few use cases where you don't want this behaviour and directly use the source value without any conversion. These types of parameters (so-called <i>unscaled parameters</i>
+) have a little <code>U</code>
+ icon displayed next to its knob. A few examples of these nodes are:</p>
+<ul><li>the <code>control.converter</code>
+ node: the range of its value parameter shouldn't matter, what goes in, comes out as converted value no matter the range</li>
+<li>the <code>cable.expr</code>
+ node: if you jump through the hoops of defining a custom SNEX function to convert your signal value, you don't want it to </li>
+</ul>
+<p class="comment">Some control nodes that process a cable value come in two different forms to ensure that the modulation chain can be carried out with the desired mode in mind. Eg. the <code>control.pma</code>
+ node has a <code>control.pma_unscaled</code>
+ variant that allows you to "pass through" the value that you hook up to its <b>Value</b>
+ parameter.</p>
+<h2 id="modulation-source"><b>Modulation Source</b>
+</h2>
+<p>A modulation source will analyse the signal and use its value to control a parameter of another node. Depending on the parent container type, it will update the target once per sample, once per block or once per defined interval. This can be used to create dynamic EQs, modulating effects, etc.</p>
+<h2 id="connection"><b>Connection</b>
+</h2>
+<p>A Connection (represented by a cable) will control its target by the source, which can be either a Parameter of a container or a modulation source. A connection has a min and max value, interval and skew factor, which controls the range of how it will change the destination as well as some other properties (readymade converters or different math operation modes). There is also the possiblility of bypassing these properties altoghether and calculate the value send to the targets using a SNEX expression.</p>
+<h2 id="property"><b>Property</b>
+</h2>
+<p>A property is a more "static" attribute of a node - it can't be controlled on audio rate and rather defines the behaviour of the node - eg. whether it should react on MIDI input or the name of the inline function to execute as callback. Properties can be edited by right-clicking on the header of a node.</p>
+<p>Every property has a <code>public</code>
+ attribute, which controls whether the property should be modifiable when you export the module as Cpp node: an internal table that contains a special gain curve is supposed to be an internal property and not changeable from the outside, but a file reference to the impulse response of your complex convolution reverb should be changeable. In this case, the property will be renamed to use its ID (so the <code>File</code>
+ property of the node <code>MyReverb</code>
+ will be named <code>MyReverb.File</code>
+ in the exported Cpp node).</p>
+<h2 id="polyphony"><b>Polyphony</b>
+</h2>
+<p>Scriptnode has a inbuilt concept of polyphony - nodes which have a "state" exist in two versions: a monophonic one and a polyphonic one with a "state" per voice. As soon as you create a DSP Network in a polyphonic script module, it will create the polyphonic version and use HISE's voice management system to handle the polyphonic states automatically. </p>
+<p class="comment">A polyphonic node will always have the suffix <code>[poly]</code>
+ in its header. This is a quick way to see which nodes have a polyphonic state.</p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scriptnode/manual/snex.html">SNEX</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>24.06.2019<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

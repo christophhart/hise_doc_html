@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="documentation"><b>Documentation</b>
+</h1>
+<p>The <b>Documentation</b>
+ folder in your project will contain all files related to the documentation of your project. It is the root for all URLs that you'll use to link between pages.</p>
+<p class="comment">Be aware that the contents of this folder will not be embedded into the plugin, but have to be compiled separately and shipped to the end user as described <a href="ui-components/floating-tiles/plugin/markdownpanel.html#-updating-the-documentation">here</a>
+.</p>
+<p><b>The file system</b>
+<br>The markdown documentation system uses relative paths in order to resolve links. This allows you to create links that will work on HTML pages as well as the embedded docs. The compatibility with HTML URLs oppose some restrictions on the filenames for folders and files inside this directory:</p>
+<p><b>Filename conventions</b>
+</p>
+<p>In order to be compatible with web URLs, any link has to follow these rules:</p>
+<ul><li>just lowercase</li>
+<li>no space (use <code>-</code>
+ as word separator)</li>
+</ul>
+<p>In order to find out the link URL of a markdown file you have to:</p>
+<ol><li>Start with the relative file path from the documentation folder.</li>
+<li>Replace backslashes (<code>\</code>
+) with slashes (<code>/</code>
+) and make sure it starts with a slash <code>/</code>
+</li>
+<li>omit the file extension (.md)</li>
+<li>Add an optional anchor to jump to a location within this page.</li>
+</ol>
+<p class="comment">There is one special file: the <code>readme.md</code>
+ file, which is used if you just supply an URL to a folder. If you have a little bit of experience with web design, it's similar to the procedure where it appends an <code>index.html</code>
+ to a URL that points to a folder.<br>That means if you want to link to a readme.md file, just omit readme.md and use the path to the parent directory instead.</p>
+<p><b>Example</b>
+</p>
+<p> Our project is located at <code>C:\MyProject</code>
+ and we want to create a link to the headline <b>Driver Settings</b>
+ in the file <code>C:\MyProject\Documentation\settings-page\audio-settings.md</code>
+.</p>
+<ol><li>the relative path is <code>settings-page\audio-settings.md</code>
+.</li>
+<li>with the correct slashes it becomes <code>/settings-page/audio-settings.md</code>
+.</li>
+<li>without file extension it's <code>/settings-page/audio-settings</code>
+.</li>
+<li>we'll URLify the headline and append it as anchor with a hashtag: <code>/settings-page/audio-settings#driver-settings</code>
+</li>
+</ol>
+<p>Another example: we want to point at the file <code>C:\MyProject\Documentation\effect-page\readme.md</code>
+.<br></p>
+<p>Since it is a readme.md file, we can omit the entire filename and end up with <code>/effect-page</code>
+.</p>
+<p><b>Images</b>
+</p>
+<p>If you want to show images in your documentation, you need to put them all into the <code>/images</code>
+ subfolder of this folder (or you can link to a web URL with an image). Links to images are a little bit different than to text URLs:</p>
+<ol><li>You don't omit the file extension (since it can be a PNG, a JPG or even a GIF)</li>
+<li>Every image has to be in the <code>images</code>
+ subfolder (so it's guaranteed to start with <code>/images/</code>
+.</li>
+<li>You can embed all kinds of images - even SVG images. Be aware that they will be scaled to 100% width unless you give them a fixed with using the <code>url:100px</code>
+ syntax.</li>
+</ol>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="working-with-hise/project-management/projects-folders/expansions.html">Expansions</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>19.09.2019<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

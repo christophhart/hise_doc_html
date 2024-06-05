@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="sine-wave-generator"><b>Sine Wave Generator</b>
+</h1>
+<p>Type ID: <code>SineSynth</code>
+<br>Interface classes: <a href="scripting/scripting-api/routingmatrix/index.html">RoutingMatrix</a>
+<br></p>
+<p class="comment"><b>A simple and lightweight sine wave generator.</b>
+<br></p>
+<img src="images/module_screenshot_sinesynth.png"></img>
+<p><br></p>
+<p>It can be used to drive a FM Synthesiser, or stacked together for Additive Synthesis or used as simple enhancement of another sound.</p>
+<p>It has two operating modes for the pitch definition :	</p>
+<table><thead><td><b>Musical </b>
+</td>
+<td><b>Harmonic </b>
+</td>
+</thead>
+<tr><td>in octaves / semitones. </td>
+<td>As harmonics compared to the root frequency. Use this mode for additive synthesis - it will allow to define the harmonic structure of the resulting sound more clearly. </td>
+</tr>
+</table>
+<p>	It also has a internal Wave - Shaper effect, that allows to quickly add some harmonics to dirten up the sound.</p>
+<h2 id="parameters-"><b>Parameters </b>
+</h2>
+<table><thead><td><b>#</b>
+<b> </b>
+</td>
+<td><b>ID </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>4 </td>
+<td><code>OctaveTranspose</code>
+ </td>
+<td>If the mode is set to Musical, this defines the coarse frequency. </td>
+</tr>
+<tr><td>5 </td>
+<td><code>SemiTones</code>
+ </td>
+<td>If the mode is set to Musical, this defines the fine frequency in semitones. </td>
+</tr>
+<tr><td>6 </td>
+<td><code>UseFreqRatio</code>
+ </td>
+<td>Toggles between the two modes for the pitch definition. </td>
+</tr>
+<tr><td>7 </td>
+<td><code>CoarseFreqRatio</code>
+ </td>
+<td>If the mode is set to Harmonics, this defines the harmonic index(1 being the root frequency). </td>
+</tr>
+<tr><td>8 </td>
+<td><code>FineFreqRatio</code>
+ </td>
+<td>If the mode is set to Harmonics, this defines the fine frequency(as factor). </td>
+</tr>
+<tr><td>9 </td>
+<td><code>SaturationAmount</code>
+ </td>
+<td>The saturation amount for the internal wave shaper.Use this to quickly add some harmonics. </td>
+</tr>
+</table>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="hise-modules/sound-generators/list/synthgroup.html">Syntesizer Group</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

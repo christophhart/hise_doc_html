@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="markdowneditor"><b>MarkdownEditor</b>
+</h1>
+<p>The markdown editor floating tile is a text editor similar to the <a href="ui-components/floating-tiles/hise/scripteditor.html">Script Editor</a>
+, but focuses on editing markdown files.<br>There are plenty of text editors and specialiced markdown editors available, however there are a few reasons to use this one:</p>
+<h4 id="wysiwyg"><b>WYSIWYG</b>
+</h4>
+<p>The Markdown parser in HISE is not 100% standard compliant, so there might be a few things that look differently or fail to parse. Writing the markdown inside HISE and previewing at the same time is a good way to check the rendered output.</p>
+<h4 id="workflow"><b>Workflow</b>
+</h4>
+<p>The documentation editing workflow in HISE is optimized for working on documentations. You can right click on any link in the preview to create a properly formatted markdown link, or open the currently viewed page in a new editor tab.</p>
+<h4 id="inbuilt-markdown-generators"><b>Inbuilt Markdown generators</b>
+</h4>
+<p>The HISE Markdown editor offers some tools that autogenerate links, image links and tables which are guaranteed to work in the Markdown parser. If you create new files, it will automatically create a <a href="working-with-hise/project-management/documentation/index.html#yaml-header">YAML Header</a>
+that will be used to properly format the TOC and indexes for the search engine.</p>
+<h3 id="the-top-bar"><b>The Top Bar</b>
+</h3>
+<table><thead><td><b>Icon </b>
+</td>
+<td><b>Key </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><img src="images/icon_rebuild.png"></img>
+</td>
+<td><b>F5</b>
+ </td>
+<td>Toggles live preview. If disabled, pressing F5 shows the current editor's content in the connected MarkdownPanel. </td>
+</tr>
+<tr><td><img src="images/icon_new-samplemap.png"></img>
+</td>
+<td>- </td>
+<td>Creates a new file with a YAML header template. </td>
+</tr>
+<tr><td><img src="images/icon_load-samplemap.png"></img>
+</td>
+<td>- </td>
+<td>opens a file </td>
+</tr>
+<tr><td><img src="images/icon_save-samplemap.png"></img>
+</td>
+<td>Cmd+S </td>
+<td>Saves the file. </td>
+</tr>
+<tr><td>Link </td>
+<td>- </td>
+<td>Shows the link generator, which takes the current clipboard content and formats it as markdown link. </td>
+</tr>
+<tr><td>Image </td>
+<td>- </td>
+<td>Shows the image link generator. You can either choose an embedded icon or select an image which will be copied into the <code>images</code>
+ subdirectory. </td>
+</tr>
+<tr><td>Table </td>
+<td>- </td>
+<td>A HISE compliant table generator </td>
+</tr>
+<tr><td><img src="images/icon_settings.png"></img>
+</td>
+<td>- </td>
+<td>Opens the doc settings in HISE to point to the documentation repository. </td>
+</tr>
+</table>
+<p> </p>
+<h3 id="the-editor"><b>The Editor</b>
+</h3>
+<p>The editor is the default JUCE text editor with a syntax highlighter for markdown. Please do not ask for line-break support :)</p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="ui-components/floating-tiles/hise/servercontroller.html">ServerController</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>18.03.2019<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

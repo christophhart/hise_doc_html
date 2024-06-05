@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="threads"><b>Threads</b>
+</h1>
+<h1 id="threads"><b>Threads</b>
+</h1>
+<p>The Threads API class provides information about various threads and some helper functions regarding multithreaded actions. This is an extremely advanced topic but it allows you to control and synchronize the different threads in a complex HISE project.</p>
+<p>Basically you have 4 main thread types running simultaneously in HISE:</p>
+<ol><li>the <b>Audio thread</b>
+ which renders the audio buffers coming from the DAW. This is the thread with the highest priority and making sure that this isn't interrupted or stalled should be your top priority. The utilisation of this thread will show up as CPU usage in your DAW meter.</li>
+<li>the <b>Scripting thread</b>
+, which executes all non-synchronous scripting callbacks</li>
+<li>the <b>Message thread</b>
+ which renders the interface using either OpenGL or the software renderer. If you're using OpenGL, the rendering will be done on a separate thread than the rest of the UI stuff (handling mouse callbacks, etc), however this thread will hold the Message Thread lock so from our point of view, it's the same thread.</li>
+<li>the <b>Loading thread</b>
+ which performs various tasks. In normal operation mode this is used to fetch the samples from the disk, but if you initialise the plugin or load user presets / swap samplemaps, it will be executed on this thread </li>
+</ol>
+<p>These threads are available as constant of this class and it's <b>HIGHLY</b>
+ recommended to never use magic numbers but these constants.</p>
+<pre><code class="language-javascript line-numbers">Threads.Audio; 		// Audio Thread
+Threads.UI;    		// Message Thread
+Threads.Scripting; 	// Scripting Thread
+Threads.Loading;	// Loading Thread
+Threads.Unknown;	// Any other thread (eg. a custom background task)
+Threads.Free; 		// Idle Thread (mostly used when querying lock states)</code></pre>
+<p>Now you might ask yourself: if every script callback is executed on the <b>Scripting Thread</b>
+, why should I need this class at all? Well, there are a few exceptions to that rule:</p>
+<ul><li>non-deferred MIDI callbacks are executed on the <b>Audio Thread</b>
+</li>
+<li>custom LAF methods are executed on the <b>Message Thread</b>
+</li>
+<li>when you load a user preset (or initialise the plugin), control callbacks are executed on the <b>Loading Thread</b>
+</li>
+</ul>
+<p>With the exception of the latter, all these multithreaded use cases are not synchronised by default (with the rationale of preferring data race conditions over deadlocks and priority inversions). The exception is the user preset load, which locks the scripting thread by default during the operation. However if you start doing complex operations or even using a BackgroundTask object to perform a heavyweight task on a dedicated background thread, you might want to start thinking about proper synchronisation options and this is where this class comes in handy.</p>
+<h2 id="how-to-synchronize-threads"><b>How to synchronize threads</b>
+</h2>
+<p>Be aware that there are no methods for locking any thread in this API class, it only offers constants for thread identification as well as querying methods for checking the lock state of a given thread or getting information about the current thread.</p>
+<p>If you want to lock the threads, you will have to use the <a href="scripting/scripting-in-hise/additions-in-hise.html#scoped-statements">scoped statement</a>
+ <code>.lock(Threads.xxx)</code>
+, which ensures that the lock is guaranteed to be released after the scope even in a case of a script error (or if you simply forget to release it). This is consistent with the RAII concept that is used for locking threads in JUCE (and subsequently HISE).</p>
+<p>This code example spawns off a timer and a background thread and uses the .lock() scoped statement in order to avoid simultaneuos execution:</p>
+<pre><code class="language-javascript line-numbers">// set this to false in order to deactivate the locking
+const var LOCK = true;
+reg isTimerRunning = false;
+
+const var timer = Engine.createTimerObject();
+timer.setTimerCallback(function()
+{
+	.trace("TIMER CALLBACK")
+	.set(isTimerRunning, true);
+	
+	for(i = 0; i < 4000; i++)
+		Math.sin(i);
+});
+
+timer.startTimer(15);
+
+const var backgroundTask = Engine.createBackgroundTask("big task");
+
+backgroundTask.callOnBackgroundThread(function(t)
+{
+	.print("background task")
+	.trace("BACKGROUND TASK");
+	
+	for(i = 0; i < 1000; i++)
+	{
+		.if(LOCK):lock(Threads.Scripting);
+		
+		for(j = 0; j < 1000; j++);
+		{
+			Math.sin(j);
+
+			if(isTimerRunning)
+			{
+				Console.print("ERROR: RACE CONDITION");
+			}
+		}
+	}
+});</code></pre>
+<p>The perfetto profiling timeline looks like this:</p>
+<img src="images/perfetto/lock2.png"></img>
+<p>And if we zoom into one of the script events, we can see that the locking is working as expected. The "Waiting for ScriptLock" phase means that either one of the threads is waiting for the other to complete and there is no simultaneos execution: while the <b>TIMER CALLBACK</b>
+ is being executed, the <b>BACKGROUND TASK</b>
+ is stalling and vice versa. </p>
+<img src="images/perfetto/lock1.png"></img>
+<p class="comment">You might notice how the <b>TIMER CALLBACK</b>
+ is waiting much longer than the <b>BACKGROUND TASK</b>
+. This is because there is almost no "idle" time between lock operations in the background task where the timer callback could grab the lock, so it must wait extremely long until it hits the lucky spot where the lock is released.</p>
+<h2 id="inspector-perfetto"><b>Inspector Perfetto</b>
+</h2>
+<p>Multithreading is maybe one of the most complex topics in programming, so let's take a look at <a href="ui-components/floating-tiles/hise/perfettowebviewer.html">an example</a>
+ that shows how the threads are interacting with each other. We're using the Perfetto Viewer to get a timeline of all events and investigate the details.</p>
+<p><br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="getcurrentthread"><b>getCurrentThread</b>
+</h2>
+<p class="comment">Returns the thread ID of the thread that is calling this method.</p>
+<pre><code class="language-javascript line-numbers">Threads.getCurrentThread()</code></pre>
+<p><br>The return value is one of the constants of this class, so if you can compare it against those. If you just want to dump the thread info to the console, you should use getCurrentThreadName() as this returns a string.<br></p>
+<h2 id="getcurrentthreadname"><b>getCurrentThreadName</b>
+</h2>
+<p class="comment">Returns the name of the current thread (for debugging purposes only!).</p>
+<pre><code class="language-javascript line-numbers">Threads.getCurrentThreadName()</code></pre>
+<p><br><br></p>
+<h2 id="getlockerthread"><b>getLockerThread</b>
+</h2>
+<p class="comment">Returns the thread ID of the thread the locks the given thread ID.</p>
+<pre><code class="language-javascript line-numbers">Threads.getLockerThread(int threadThatIsLocked)</code></pre>
+<p><br><br></p>
+<h2 id="isaudiorunning"><b>isAudioRunning</b>
+</h2>
+<p class="comment">Returns true if the audio callback is running or false if it's suspended during a load operation.</p>
+<pre><code class="language-javascript line-numbers">Threads.isAudioRunning()</code></pre>
+<p><br>During some operations (eg. sample map loading, user preset switch etc), the audio thread is suspended and the loading thread is performing the operation. During that time, this method will return true so you can check if the current function is part of a heavyweight task.</p>
+<p><br></p>
+<h2 id="iscurrentlyexporting"><b>isCurrentlyExporting</b>
+</h2>
+<p class="comment">Returns true if the audio exporter is currently rendering the audio on a background thread.</p>
+<pre><code class="language-javascript line-numbers">Threads.isCurrentlyExporting()</code></pre>
+<p><br><br></p>
+<h2 id="islocked"><b>isLocked</b>
+</h2>
+<p class="comment">Returns true if the given thread is currently locked.</p>
+<pre><code class="language-javascript line-numbers">Threads.isLocked(int thread)</code></pre>
+<p><br><br></p>
+<h2 id="islockedbycurrentthread"><b>isLockedByCurrentThread</b>
+</h2>
+<p class="comment">Returns true if the given thread is currently locked by the current thread.</p>
+<pre><code class="language-javascript line-numbers">Threads.isLockedByCurrentThread(int thread)</code></pre>
+<p><br><br></p>
+<h2 id="killvoicesandcall"><b>killVoicesAndCall</b>
+</h2>
+<p class="comment">Kills all voices, suspends the audio processing and calls the given function on the loading thread. Returns true if the function was executed synchronously.</p>
+<pre><code class="language-javascript line-numbers">Threads.killVoicesAndCall( var functionToExecute)</code></pre>
+<p><br><br></p>
+<h2 id="tostring"><b>toString</b>
+</h2>
+<p class="comment">Returns the name of the given string (for debugging purposes only!).</p>
+<pre><code class="language-javascript line-numbers">Threads.toString(int thread)</code></pre>
+<p><br><br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/threadsafestorage/index.html">ThreadSafeStorage</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>29.11.2023<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

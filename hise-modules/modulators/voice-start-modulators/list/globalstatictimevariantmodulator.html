@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="globalstatictimevariantmodulator"><b>GlobalStaticTimeVariantModulator</b>
+</h1>
+<p>Type ID: <code>GlobalStaticTimeVariantModulator</code>
+<br>Interface classes: <a href="scripting/scripting-api/tableprocessor/index.html">TableProcessor</a>
+<br></p>
+<p class="comment"><b>Grabs the current value of a global </b>
+<a href="hise-modules/modulators/time-variant-modulators/index.html">Time Variant Modulator</a>
+.<br></p>
+<img src="hise-modules/modulators/time-variant-modulators/index.html"></img>
+<p><br></p>
+<p>If you have a time variant modulator in the Global Modulator Container, you can connect it to one of these modules or to a <a href="hise-modules/modulators/time-variant-modulators/list/globaltimevariantmodulator.html">GlobalTimeVariantModulator</a>
+.<br></p>
+<p>This module will take the current value of the source modulator at the time of the voice start and use it as constant value just like any other <a href="hise-modules/modulators/voice-start-modulators/index.html">Voice Start Modulators</a>
+.</p>
+<p>There are a few occasions where you want to use one of those instead of its time variant sibling:</p>
+<ul><li>if you're controlling the dynamics with a CC modulator, this can be used on the release samples to retain the volume at the start of the release phase resulting in a more natural sound.</li>
+<li>some modulation targets do not allow a time varying modulation (eg. the sample start modulation of the sampler), or they sound ugly when modulated (the <a href="scriptnode/list/fx/haas.html">fx.haas</a>
+ node is not suppose to change its stereo position after the voice has started).</li>
+</ul>
+<h3 id="example-patch"><b>Example Patch</b>
+</h3>
+<pre><code class="language-javascript line-numbers">HiseSnippet 1463.3oc4YsrbaaCEkTxnMtIw1IMS6L8wLZ5zcI0iUSZ5iMQOrThqewQz0Ic5hLvjPRXBI.KInaTW28cU+D5eP+.xGPVzeg9GzEce6E.T7gkhLsFkD6FtfCwE3dwAWbeAPqPtCIJhGZXt7AiBHFlWAYOhIF1dHlxL1ZSCyUP6hiDjvZZRsFEfihHtFllUuujf4xKYnd9660B6gYNjLRFFGxoNjcn9TQFUqFaS875hcIGP8yM56zXKGNqM2iGC3oJZCi.rySvCH6gkCqBxv7s53RE7PaAVPhLLWpE2cj8P9Owzi+PZD8HOhrQcCaPPZxc4dtRDK+1n8Ppmq030cjAHTqLsPUsV3FncotzT5YZi0TcTKii75CyJyBd0Oc3UeJvyHG5VRiN.Db2XOrnHxjaGIcP4E2o1hIHrHpXT9sqy.b2XgC2qgrnBmgSGuUlBdgMpW13MYy+pnN86SbDYfcIT2GMu6zyGTtjFJe.59d7ivdYJPNS.nhDpv0Gmzcsz9qkNf5yvU8OKqqZPocUMqVTiTsb19SwcboWCtiKd662chslnEpG4YH9lYNHuhFxHzNc2OQCBekAx5mNH6FR9wXByYLwm87m+O2SZhrUlEVieswCwGS5yC80SXF66PF.STdJGP7C3PVGm7Vi19btXHkMnng2MZrCmGzggA0fadgXMDGQ1ue+HhHuXZGGI39iwhJIhsfDrIVfML+Azcuy5vS+aJe+0sgW2d+ES6IBVM+9CUJsEmbmLcKStmdNOGfFwo1SW.P7LyZU8MyrV83wBvOcWrHj9THzxdw91PZAGBfDFi3ASDxrhzWT2dCYakKNg4pZ7uvSRm0ksMS5r93NMlLB1kQ1PVNUsppE66oZWS5oW69DH+2jQydomCbeGAL8GDhYQA7nBB1l3SOfyjZ8LheWDQZ72SZIUHnEGGN0tffuvhbp7XiEwgJSxl97X1X723u94+3dmL2bISqTrdxbi+bRR64LEXp+Ryv.xfATogRxIcxQonoyBq5FCY8YDX6AhkH+Lj6ACUnPzJHamPZfnUrP.QVntRRZTjP5XrWbAyJiRHiqh5QfrhEEg1C7ExtsG0EpwTx9pJGZHmYBsSfg0ZTFg.dqfDT33LrHxIf0TBv9IzS.CcvhxnF.IvCEaSFc1UlEWHADh61L9QmT.2ZRMwZIBnM2+HdK9SUh35HacBORJ4xsXxAiqhzwZ5gYCHSrRJ0VxxH6gw866QlkhXIM6Wu.6VvoxUh3Fnwg0x0Q5ZAABxUUm0Ghpe20Se5rI7ZOK30QMadFlqCIdbGH45jyUFxKLe8uYqlPYYaCy2siszsK87cczND1.wvxOaOQNaG9svr8HtktsQ4rHtFJI6mMwCxfyOMq6oJj2GserHHVr.D00P6Z0AB0ENVXYBoRoExpRgzg4NgHVy3bxkZLm4OVUi22F07AaZ2KorP0205vNFLRCHESdrKmwCFxYzBGvoGApWZv.RXdzO0kTSg.L+ZGGdbAquMIN3QSPUO3TJOypglxND.Z4G3CfUbV6OsgRboD9keqgMbzoBUL88OqGXTgyUXS2euQGGNr8Pl0Vv7ezGTIMSfb4pEYMUEZmuOBwJiwpdG47MXuBRYVbQPutJJwf8BghcEThuzEAU6aLm5cNyHfzX4cj0nFR3v7q8czMq08QEyGXgyGTswCotvYXyQXwE+zrzoYALU60eZ17W0Ux+i5iRtGUoaxg3PJlIRW.JreYzdvgSAX.oWOUX2hFv8vgxew.b36CvJHJG6wjPglOEQ88CVAIK0gAlWRch4sl0ss+Mm3ZTWXahFSpS9jDfnW0uPMykPSpVp7+F0xqhqc5Uwb3icB4O1QWRszI3RJJv5lo9smKi1U1tV8zJnQar9FF9TW5icbjw69LHV4z44ymCdt8bvyclCd9h4fm6NG77kyAOe0L4Qd6UMiEbecrRffUGsmgY5Olvrpw+gm0.4C</code></pre>
+<p>This snippet contains a sine wave synthesiser that runs through an arpeggiator. There's a global LFO that connects to the stereo modulation through either a static or a normal <code>GlobalTimeVariantModulator</code>
+</p>
+<p>By default the normal one is activated. If you press a note you will hear something that resembles a monophonic LFO modulation of the stereo positions.<br>However if you turn it off and enable the static one instead, you will hear a much more interesting effect: the samples are placed at a fixed stereo position and "remain" there gives them a more distinctive positioning.</p>
+<h2 id="parameters-"><b>Parameters </b>
+</h2>
+<table><thead><td><b>#</b>
+<b> </b>
+</td>
+<td><b>ID </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>0 </td>
+<td><code>UseTable</code>
+ </td>
+<td>Can be used to change the incoming value using a <a href="ui-components/plugin-components/table.html">Table</a>
+ </td>
+</tr>
+<tr><td>1 </td>
+<td><code>Inverted</code>
+ </td>
+<td>inverts the output value with the formula <code>1.0 - value</code>
+ (after it is sent through the table if <code>UseTable</code>
+ is enabled). </td>
+</tr>
+</table>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="hise-modules/modulators/voice-start-modulators/list/globalvoicestartmodulator.html">GlobalVoiceStartModulator</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>29.06.2019<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

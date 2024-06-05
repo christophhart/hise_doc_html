@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="extra_mod"><b>extra_mod</b>
+</h1>
+<p class="comment"><code>core.extra_mod</code>
+</p>
+<img src="images/sn_screen_extra_mod.png"></img>
+<p>Receives the signal from one of the extra modulation chains in the Scriptnode Synthesiser</p>
+<h2 id="parameters"><b>Parameters</b>
+</h2>
+<table><thead><td><b>ID </b>
+</td>
+<td><b>Range </b>
+</td>
+<td><b>Default </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>Index </td>
+<td>0.00 - 1.00 </td>
+<td>0.00 </td>
+<td>selects the modulation chain to listen to (either 0 or 1) </td>
+</tr>
+</table>
+<p><br>This node is similar to the <a href="scriptnode/list/core/pitch_mod.html">pitch_mod</a>
+ node and listens to <b>local</b>
+ modulator signals within a Scriptnode Synthesiser patch.<br></p>
+<p>A scriptnode synthesiser has two additional modulation chains which are not used by anything by default. However if you want to design a custom synth and want to offer the ability of sample accurate modulation of certain parameters (eg. the hard-sync of a custom VA synthesiser), you can use this node to pickup whatever modulation signal you create in one of the two extra modulation slots.</p>
+<p class="comment">This node is only useful inside a Scriptnode Synthesiser patch (or in a polyphonic FX patch that is used by a scriptnode synthesiser).</p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scriptnode/list/core/global_mod.html">global_mod</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>31.05.2024<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

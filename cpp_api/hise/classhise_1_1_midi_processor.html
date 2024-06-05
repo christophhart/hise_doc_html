@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="midiprocessor"><b>MidiProcessor</b>
+</h1>
+<p>A MidiProcessor processes a MidiBuffer.<br>It can be used to change the incoming MIDI data before it is sent to a <a href="cpp_api/hise/classhise_1_1_modulator_synth.html">ModulatorSynth</a>
+. Note that if you want to create your own MIDI processors, you should use the HardcodedScriptProcessor as base class since it offers a simpler integration of existing Javascript code and a cleaner API.<br> </p>
+<h2 id="class-hierarchy"><b>Class Hierarchy</b>
+</h2>
+<h3 id="base-classes"><b>Base Classes</b>
+</h3>
+<ul><li><a href="cpp_api/hise/classhise_1_1_processor.html">hise::Processor</a>
+<br></li>
+</ul>
+<h3 id="derived-classes"><b>Derived Classes</b>
+</h3>
+<ul><li><a href="cpp_api/hise/classhise_1_1_midi_player.html">hise::MidiPlayer</a>
+<br></li>
+<li><code>hise::MidiProcessorChain</code>
+<br></li>
+<li><a href="cpp_api/raw/classhise_1_1raw_1_1_main_processor.html">hise::raw::MainProcessor</a>
+<br></li>
+<li><code>hise::ScriptBaseMidiProcessor</code>
+<br></li>
+</ul>
+<h2 id="class-methods"><b>Class methods</b>
+</h2>
+<h3 id="midiprocessor"><b>MidiProcessor</b>
+</h3>
+<pre><code class="language-clike line-numbers">MidiProcessor(MainController *m, const String &id)</code></pre>
+<p>Creates a new MidiProcessor. You can supply a <a href="cpp_api/hise/classhise_1_1_modulator_synth.html">ModulatorSynth</a>
+ which owns the MidiProcessor to allow the processor to change its properties.<br> </p>
+<h3 id="getcolour"><b>getColour</b>
+</h3>
+<pre><code class="language-clike line-numbers">Colour getColour() const</code></pre>
+<p>Overwrite this method if you want a special colour.<br>This colour will be used in the debug console and in the editor.<br> </p>
+<h3 id="getspecialsymbol"><b>getSpecialSymbol</b>
+</h3>
+<pre><code class="language-clike line-numbers">Path getSpecialSymbol() const override</code></pre>
+<p>Overwrite this method if you want to supply a custom symbol for the <a href="cpp_api/hise/classhise_1_1_processor.html">Processor</a>
+.<br>By default, it creates an empty Path, so you either have to set a custom Symbol using <a href="cpp_api/hise/classhise_1_1_processor.html#setsymbol">setSymbol()</a>
+, or overwrite the <a href="cpp_api/hise/classhise_1_1_midi_processor.html#getspecialsymbol">getSpecialSymbol()</a>
+ method in a subclass.<br> </p>
+<h3 id="getchildprocessor"><b>getChildProcessor</b>
+</h3>
+<pre><code class="language-clike line-numbers">Processor * getChildProcessor(int) override</code></pre>
+<p>Normally a MidiProcessor has no child processors, but it is virtual for the MidiProcessorChain.<br> </p>
+<h3 id="getnumchildprocessors"><b>getNumChildProcessors</b>
+</h3>
+<pre><code class="language-clike line-numbers">int getNumChildProcessors() const override</code></pre>
+<p>Normally a MidiProcessor has no child processors, but it is virtual for the MidiProcessorChain.<br> </p>
+<h3 id="createeditor"><b>createEditor</b>
+</h3>
+<pre><code class="language-clike line-numbers">ProcessorEditorBody * createEditor(ProcessorEditor *parentEditor) override</code></pre>
+<p>If you want an editor that is more than the header, overwrite this method and return a subclass of ProcessorEditorBody.<br> </p>
+<h3 id="processhiseevent"><b>processHiseEvent</b>
+</h3>
+<pre><code class="language-clike line-numbers">void processHiseEvent(HiseEvent &e)=0</code></pre>
+<p>Process the incoming event.<br> </p>
+<h3 id="ignoreevent"><b>ignoreEvent</b>
+</h3>
+<pre><code class="language-clike line-numbers">void ignoreEvent()</code></pre>
+<p>If this method is called within processMidiMessage(), the message will be ignored.<br> </p>
+<h3 id="preprocessbuffer"><b>preprocessBuffer</b>
+</h3>
+<pre><code class="language-clike line-numbers">void preprocessBuffer(HiseEventBuffer &buffer, int numSamples)</code></pre>
+<p>Overwrite this method if your processor wants to process the entire buffer at once in addition of single messages.<br>By default this is deactivated, but if you override isProcessingWholeBuffer() and return true, it will use this method.<br> </p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="cpp_api/hise/classhise_1_1_modulator.html">Modulator</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

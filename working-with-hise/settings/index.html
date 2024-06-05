@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="settings"><img src="images/icon_settings.png"></img>
+<b>Settings</b>
+</h1>
+<img src="images/custom/settingswindow.png"></img>
+<p> You can change the preferences of HISE in the settings dialog, which opens when you click on the Settings icon on the top right of HISE or with <b>File > Settings</b>
+. The settings are organized into multiple categories.</p>
+<h2 id="setting-files"><b>Setting files</b>
+</h2>
+<p>HISE will create XML files for each setting category at the sensible location for this:</p>
+<ul><li>Project and User settings will be stored in the Project folder (<code>ProjectInfo.xml</code>
+ and <code>UserSettings.xml</code>
+)</li>
+<li>the other settings will be stored in the HISE app data folder.</li>
+</ul>
+<h2 id="categories"><b>Categories</b>
+</h2>
+<table><thead><td><b>Category </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><a href="working-with-hise/settings/project.html">Project Settings</a>
+ </td>
+<td>The project specific settings </td>
+</tr>
+<tr><td><a href="working-with-hise/settings/development.html">Development Settings</a>
+ </td>
+<td>The preferences for development in HISE </td>
+</tr>
+<tr><td><a href="working-with-hise/settings/audio-midi.html">Audio Settings</a>
+ </td>
+<td>The audio settings dialogue. </td>
+</tr>
+</table>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="working-with-hise/settings/project.html">Name</a>
+</span>
+
+<p class="content-footer-metadata"><br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="fft"><b>fft</b>
+</h1>
+<p class="comment"><code>analyse.fft</code>
+</p>
+<img src="images/sn_screen_fft.png"></img>
+<p>A spectrum analyser<br>This node will analyse the spectrum of the audio signal and display a FFT graph. If you want to show the spectrum on your main user interface, you need to register it as an external DisplayBuffer, then grab a <a href="scripting/scripting-api/displaybuffersource/index.html">reference</a>
+ to it and <a href="scripting/scripting-api/scriptringbuffer#createpath">render</a>
+ the output.</p>
+<h3 id="changing-fft-properties"><b>Changing FFT properties</b>
+</h3>
+<p>You can change the FFT properties (window type, FFT size, decibel range etc) by supplying a JSON object and passing it to <a href="scripting/scripting-api/scriptringbuffer#setringbufferproperties">this method</a>
+.<br>The default FFT property object is:</p>
+<pre><code class="language-javascript line-numbers">{
+  "BufferLength": 8192,
+  "WindowType": "Blackman Harris",
+  "DecibelRange": [
+    -50.0,
+    0.0
+  ],
+  "UsePeakDecay": false,
+  "UseDecibelScale": true,
+  "YGamma": 1.0,
+  "Decay": 0.699999988079071,
+  "UseLogarithmicFreqAxis": true
+}</code></pre>
+<p class="comment">You can also edit the properties if you click on the button at the bottom right and edit the JSON in the popup but be aware that there is currently no persistency for these modifications (so when you reload your HISE patch, it will revert to the default).</p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scriptnode/list/analyse/goniometer.html">goniometer</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>18.07.2023<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

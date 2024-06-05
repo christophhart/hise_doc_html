@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="sampler-settings"><b>Sampler Settings</b>
+</h1>
+<img src="images/custom/sampler-settings.png"></img>
+<p> </p>
+<p>The Settings for the Sampler Module. They set how the sampler engine treats your samples with Disk IO-, Voice-, Group- and Playback Settings.</p>
+<h2 id="disk-io-settings	"><b>Disk IO Settings	</b>
+</h2>
+<table><thead><td><b>name </b>
+</td>
+<td><b>default value </b>
+</td>
+<td><b>description </b>
+</td>
+</thead>
+<tr><td>Buffer Size </td>
+<td>4096 </td>
+<td>Sets the buffer size of the Sampler. The sampler uses two streaming buffers which are swapped (one is used for reading from disk and one is used to supply the sampler with the audio data). </td>
+</tr>
+<tr><td>Preload Size </td>
+<td>8192 </td>
+<td>Change the preload size in samples for all samples that are loaded into the sampler. If the preload size is set to <code>-1</code>
+, the whole sample will be loaded into memory.</td>
+</tr>
+<tr><td>Purge Channel </td>
+<td>NoMultiChannel </td>
+<td>Purge the Channel when using MultiChannel</td>
+</tr>
+<tr><td>Memory </td>
+<td>0.00MB </td>
+<td>Shows the memory usage of the loaded samplemap </td>
+</tr>
+<tr><td>Disk Usage </td>
+<td>0.0% </td>
+<td>Shows the disk usage of the played samples </td>
+</tr>
+<tr><td>Purge All </td>
+<td>Disabled </td>
+<td>If Purge All is set to Enabled, all samples of this sampler won't be loaded into memory. </td>
+</tr>
+</table>
+<p class="comment">In the Disk IO Settings you can see the Memory and the Disk Usage of the sampler. The memory usage includes the streaming buffers, so if you want to decrease the memory usage, consider lowering the Buffer Size (which increases the disk performance) or reduce the voice amount.</p>
+<h2 id="voice-settings"><b>Voice Settings</b>
+</h2>
+<table><thead><td><b>name </b>
+</td>
+<td><b>default value </b>
+</td>
+<td><b>description </b>
+</td>
+</thead>
+<tr><td>Amount </td>
+<td>256 </td>
+<td>The hard limit of voices that this synth can play. </td>
+</tr>
+<tr><td>Soft Limit </td>
+<td>256 </td>
+<td>The soft limit of voices that this sampler plays before it<br>starts to fade out voices.<br> </td>
+</tr>
+<tr><td>Fade Time </td>
+<td>20 </td>
+<td>If you play more than the number of soft-limit voices this setting will determine the fadeout time of each voice that is going to be killed in ms. </td>
+</tr>
+</table>
+<h2 id="group-settings"><b>Group Settings</b>
+</h2>
+<table><thead><td><b>name </b>
+</td>
+<td><b>default value </b>
+</td>
+<td><b>description </b>
+</td>
+</thead>
+<tr><td>RR Groups </td>
+<td>1 </td>
+<td>Set the amount of RRGroups of the Sampler </td>
+</tr>
+<tr><td>Group FX </td>
+<td>Disabled </td>
+<td>Enable, to play all groups simultanously. The crossfade can be modulated in the Group Fade Modulation Chain. </td>
+</tr>
+<tr><td>Edit FX </td>
+<td>Group 1 </td>
+<td>Set the crossfade table for each RRGroup if Group XF is enabled. Invert the table to crossfade between different groups. </td>
+</tr>
+</table>
+<p><br></p>
+<h2 id="playback-settings"><b>Playback Settings</b>
+</h2>
+<table><thead><td><b>name </b>
+</td>
+<td><b>default value </b>
+</td>
+<td><b>description </b>
+</td>
+</thead>
+<tr><td>Pitch Track </td>
+<td>Enabled </td>
+<td>Change the samples pitch ratio with Root note. Disable this for drum samples. </td>
+</tr>
+<tr><td>Retrigger </td>
+<td>Kill Duplicate </td>
+<td>Determines how the sampler treats repeated notes: <b>Kill Note</b>
+, <b>Note Off</b>
+, <b>Do nothing</b>
+, <b>Kill Duplicate</b>
+ </td>
+</tr>
+<tr><td>Playback </td>
+<td>Normal </td>
+<td>Switch between <b>Normal</b>
+ and <b>Reverse</b>
+ Playback. <b>One Shot</b>
+ plays the whole sample (ignores the NoteOff). </td>
+</tr>
+</table>
+<h3 id="scripting"><b>Scripting</b>
+</h3>
+<p>You can access most of these properties with scripting. Use a generic script reference to access the Samplers Audio Settings. </p>
+<pre><code class="language-javascript line-numbers">const var Sampler1 = Synth.getChildSynth("Sampler1");</code></pre>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="working-with-hise/workspaces/sampler-workspace/sample-table.html">Sample Table</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>18.03.2019<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

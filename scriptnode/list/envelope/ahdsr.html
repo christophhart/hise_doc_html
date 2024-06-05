@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="ahdsr"><b>ahdsr</b>
+</h1>
+<p class="comment"><code>envelope.ahdsr</code>
+</p>
+<img src="images/sn_screen_ahdsr.png"></img>
+<p>An AHDSR envelope generator for shaping audio signals.</p>
+<h2 id="parameters"><b>Parameters</b>
+</h2>
+<table><thead><td><b>ID </b>
+</td>
+<td><b>Range </b>
+</td>
+<td><b>Default </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>Attack </td>
+<td>0.00 - 10000.00 </td>
+<td>10.00 </td>
+<td>Sets the time it takes for the envelope to rise from 0 to the Attack Level. This is the initial phase of the envelope. </td>
+</tr>
+<tr><td>AttackLevel </td>
+<td>0.00 - 1.00 </td>
+<td>1.00 </td>
+<td>Determines the level the envelope reaches at the end of the attack phase. </td>
+</tr>
+<tr><td>Hold </td>
+<td>0.00 - 10000.00 </td>
+<td>20.00 </td>
+<td>Specifies the time the envelope stays at the Attack Level before entering the decay phase. </td>
+</tr>
+<tr><td>Decay </td>
+<td>0.00 - 10000.00 </td>
+<td>300.00 </td>
+<td>Sets the time it takes for the envelope to fall from the Attack Level to the Sustain level. </td>
+</tr>
+<tr><td>Sustain </td>
+<td>0.00 - 1.00 </td>
+<td>0.50 </td>
+<td>Defines the level at which the envelope holds during the sustain phase until the key is released. </td>
+</tr>
+<tr><td>Release </td>
+<td>0.00 - 10000.00 </td>
+<td>20.00 </td>
+<td>Sets the time it takes for the envelope to fall from the Sustain level to 0 after the key is released. </td>
+</tr>
+<tr><td>AttackCurve </td>
+<td>0.00 - 1.00 </td>
+<td>0.50 </td>
+<td>Adjusts the curvature of the attack phase, affecting the shape of the ramp-up. </td>
+</tr>
+<tr><td>Retrigger </td>
+<td>0.00 - 1.00 </td>
+<td>0.00 </td>
+<td>Enables or disables retriggering of the envelope when a new note is played. </td>
+</tr>
+<tr><td>Gate </td>
+<td>0.00 - 1.00 </td>
+<td>0.00 </td>
+<td>Controls the gate signal that triggers the envelope. </td>
+</tr>
+</table>
+<p>The <code>ahdsr_base</code>
+ node is an AHDSR (Attack, Hold, Decay, Sustain, Release) envelope generator used to shape the dynamics of an audio signal over time. This node is a 1:1 replicate of the stock HISE AHDSR envelope modulator.</p>
+<h2 id="midi-processing"><b>MIDI Processing</b>
+</h2>
+<p>If the envelope is in a MIDI processing context, it will trigger the gate based on the MIDI messages. The envelope can be configured to retrigger when a new note is played (in a monophonic context, as polyphonic envelopes will be rendered for each voice).</p>
+<h2 id="modulation-outputs"><b>Modulation Outputs</b>
+</h2>
+<ul><li><b>CV</b>
+: An audio-rate modulation output that sends out the envelope value at each audio buffer. The output range is 0 to 1.</li>
+<li><b>GT</b>
+: An audio-rate modulation output that sends out a pulse whenever the gate value changes. The output range is 0 to 1. Note that this is not the actual Gate parameter, but will remain open for the release phase too. The purpose of this modulation output is to control the voice management logic in HISE so that you can tell when a voice should stop being rendered by connecting it to a <a href="scriptnode/list/envelope/voice_manager.html">voice_manager</a>
+ node.</li>
+</ul>
+<p>In addition to providing modulation outputs, the envelope node also processes the audio signal by applying the envelope to the amplitude of the signal. This allows you to use the envelope node to modulate the gain of the signal directly, without the need to use the modulation outputs.</p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scriptnode/list/envelope/silent_killer.html">silent_killer</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>30.05.2024<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

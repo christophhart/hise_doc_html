@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="granulator"><b>granulator</b>
+</h1>
+<p class="comment"><code>core.granulator</code>
+</p>
+<img src="images/sn_screen_granulator.png"></img>
+<p>A granular synthesizer that creates complex textures by processing small audio segments called grains.</p>
+<h2 id="parameters"><b>Parameters</b>
+</h2>
+<table><thead><td><b>ID </b>
+</td>
+<td><b>Range </b>
+</td>
+<td><b>Default </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>Position </td>
+<td>0.00 - 1.00 </td>
+<td>0.00 </td>
+<td>Sets the playback position within the audio file. </td>
+</tr>
+<tr><td>Pitch </td>
+<td>0.50 - 2.00 </td>
+<td>1.00 </td>
+<td>Adjusts the pitch ratio for grain playback. </td>
+</tr>
+<tr><td>GrainSize </td>
+<td>20.00 - 800.00 </td>
+<td>80.00 </td>
+<td>Determines the size of each grain in milliseconds. </td>
+</tr>
+<tr><td>Density </td>
+<td>0.00 - 1.00 </td>
+<td>0.00 </td>
+<td>Adjusts the density of grains, controlling the time interval between the start of each grain. Higher values result in more frequent grain generation. </td>
+</tr>
+<tr><td>Spread </td>
+<td>0.00 - 1.00 </td>
+<td>0.00 </td>
+<td>Sets the stereo spread of grains. </td>
+</tr>
+<tr><td>Detune </td>
+<td>0.00 - 1.00 </td>
+<td>0.00 </td>
+<td>Introduces slight pitch variations between grains, adding a detuned effect. </td>
+</tr>
+</table>
+<p>The <code>granulator</code>
+ node is a granular synthesizer that generates complex and evolving soundscapes by processing small segments of audio called grains. It supports a range of parameters for controlling the characteristics of the grains. It can create rich, textured soundscapes and effects by overlapping and modulating the grains.</p>
+<h3 id="polyphony"><b>Polyphony</b>
+</h3>
+<p>The granulator does not support polyphony in the sense that it can be used in a polyphonic context with individual voices. Instead, it will process multiple MIDI notes by equally distributing the grain pitches to the pressed keys:</p>
+<ul><li>if you press a single key, each grain will use that pitch. </li>
+<li>if you press a second key, every other grain will use the second pitch</li>
+<li>if you press a third key, the grains will cycling through the three notes and are repitched to match all pressed keys.</li>
+</ul>
+<p>The best way to understand this procedure is to use a low density and then press keys which are far apart from each other. This will result in an "arpeggiator like" effect, but once you up the density or play notes which are more tightly voiced, it will merge into one sound scape</p>
+<p>This leads to an equal "density" of grains no matter how many keys you pressed which is a desirable quality in the granular synthesiser.</p>
+<p class="comment">In order for that to work, the granulator must be put into a <a href="scriptnode/list/container/midichain.html">midichain</a>
+ so that it can process the incoming MIDI messages.</p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scriptnode/list/math/abs.html">abs</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>30.05.2024<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

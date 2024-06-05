@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="scriptpanel"><b>ScriptPanel</b>
+</h1>
+<p><br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="addchildpanel"><b>addChildPanel</b>
+</h2>
+<p class="comment">Adds a child panel to this panel.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.addChildPanel()</code></pre>
+<p><br>This function will create and return an anonymous panel and add it to the panel as child component (similar to setting the <code>parentComponent</code>
+ property). However there are two important differences:</p>
+<ol><li>You can call this function any time and <b>add (and remove)</b>
+ these panels after the onInit callback.</li>
+<li>The panels that you create with this method will not be listed in the component list (and therefore can not store / restore their value with user presets et al).</li>
+</ol>
+<p>The main use case for this method is to create dynamic components which have a varying amount of sub-elements: tables with modulation connections, effect slots, and basically anything that has a dynamic amount that can be changed in your script.</p>
+<p class="comment">Be aware that these panels are not accessible to the interface designer, so you have to set every property using scripting API calls.</p>
+<p>You can call this method again on the new panel and create a nested architecture of child panels. In order to delete the panel (and any child panel), use the <a href="scripting/scripting-api/scriptpanel/index.html#removefromparent">removeFromParent()</a>
+ method. </p>
+<p>For an example use case, take a look at the <a href="tutorials/recipes/ui/scriptpanel.html#horizontal-list-example">Horizontal List Recipe</a>
+<br></p>
+<h2 id="addtomacrocontrol"><b>addToMacroControl</b>
+</h2>
+<p class="comment">Adds the knob / button to a macro controller (from 0 to 7).</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.addToMacroControl(int macroIndex)</code></pre>
+<p><br><br></p>
+<h2 id="changed"><b>changed</b>
+</h2>
+<p class="comment">Call this to indicate that the value has changed (the onControl callback will be executed.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.changed()</code></pre>
+<p><br><br></p>
+<h2 id="closeaspopup"><b>closeAsPopup</b>
+</h2>
+<p class="comment">Closes the popup manually.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.closeAsPopup()</code></pre>
+<p><br><br></p>
+<h2 id="createlocallookandfeel"><b>createLocalLookAndFeel</b>
+</h2>
+<p class="comment">Returns a local look and feel if it was registered before.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.createLocalLookAndFeel()</code></pre>
+<p><br><br></p>
+<h2 id="fadecomponent"><b>fadeComponent</b>
+</h2>
+<p class="comment">Toggles the visibility and fades a component using the global animator.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.fadeComponent(bool shouldBeVisible, int milliseconds)</code></pre>
+<p><br><br></p>
+<h2 id="get"><b>get</b>
+</h2>
+<p class="comment">returns the value of the property.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.get(String propertyName)</code></pre>
+<p><br><br></p>
+<h2 id="getallproperties"><b>getAllProperties</b>
+</h2>
+<p class="comment">Returns a list of all property IDs as array.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.getAllProperties()</code></pre>
+<p><br><br></p>
+<h2 id="getanimationdata"><b>getAnimationData</b>
+</h2>
+<p class="comment">Returns a JSON object containing the data of the animation object.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.getAnimationData()</code></pre>
+<p><br>This method will return an object containing the properties of the current animation in this panel:</p>
+<table><thead><td><b>Property </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><code>active</code>
+ </td>
+<td>whether an animation is active. This might be false if the animation couldn't be loaded. </td>
+</tr>
+<tr><td><code>currentFrame</code>
+ </td>
+<td>the current frame that is displayed. You can use this in the timer callback to increase it in order to create a moving image. </td>
+</tr>
+<tr><td><code>numFrames</code>
+ </td>
+<td>the total number of frames in this animation. </td>
+</tr>
+<tr><td><code>frameRate</code>
+ </td>
+<td>the suggested framerate. You don't need to use this value, but you might want to call <code>Panel.startTimer(1000.0 / data.frameRate)</code>
+ with it. </td>
+</tr>
+</table>
+<p>These properties will be updated if you load another animation or change the frame, so you just need to call this method once and then access its properties.</p>
+<p><br></p>
+<h2 id="getchildcomponents"><b>getChildComponents</b>
+</h2>
+<p class="comment">Returns list of component's children</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.getChildComponents()</code></pre>
+<p><br><br></p>
+<h2 id="getchildpanellist"><b>getChildPanelList</b>
+</h2>
+<p class="comment">Returns a list of all panels that have been added as child panel.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.getChildPanelList()</code></pre>
+<p><br>This creates an array with references to all panels that have been created using <code>addChildPanel()</code>
+. Be aware that this only takes one level of hierarchy into account, so if you have nested child panels, the list will only contain the top level panels.</p>
+<p>See <a href="scripting/scripting-api/scriptpanel/index.html#addchildpanel">addChildPanel()</a>
+, <a href="scripting/scripting-api/scriptpanel/index.html#getparentpanel">getParentPanel()</a>
+ and <a href="scripting/scripting-api/scriptpanel/index.html#removefromparent">removeFromParent()</a>
+<br></p>
+<h2 id="getglobalpositionx"><b>getGlobalPositionX</b>
+</h2>
+<p class="comment">Returns the absolute x-position relative to the interface.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.getGlobalPositionX()</code></pre>
+<p><br><br></p>
+<h2 id="getglobalpositiony"><b>getGlobalPositionY</b>
+</h2>
+<p class="comment">Returns the absolute y-position relative to the interface.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.getGlobalPositionY()</code></pre>
+<p><br><br></p>
+<h2 id="getheight"><b>getHeight</b>
+</h2>
+<p class="comment">Returns the height of the component.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.getHeight()</code></pre>
+<p><br><br></p>
+<h2 id="getid"><b>getId</b>
+</h2>
+<p class="comment">Returns the ID of the component.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.getId()</code></pre>
+<p><br><br></p>
+<h2 id="getlocalbounds"><b>getLocalBounds</b>
+</h2>
+<p class="comment">Returns a [x, y, w, h] array that was reduced by the given amount.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.getLocalBounds(float reduceAmount)</code></pre>
+<p><br><br></p>
+<h2 id="getparentpanel"><b>getParentPanel</b>
+</h2>
+<p class="comment">Returns the panel that this panel has been added to with addChildPanel.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.getParentPanel()</code></pre>
+<p><br><br></p>
+<h2 id="getvalue"><b>getValue</b>
+</h2>
+<p class="comment">Returns the current value.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.getValue()</code></pre>
+<p><br><br></p>
+<h2 id="getvaluenormalized"><b>getValueNormalized</b>
+</h2>
+<p class="comment">Returns the normalized value.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.getValueNormalized()</code></pre>
+<p><br><br></p>
+<h2 id="getwidth"><b>getWidth</b>
+</h2>
+<p class="comment">Returns the width of the component.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.getWidth()</code></pre>
+<p><br><br></p>
+<h2 id="grabfocus"><b>grabFocus</b>
+</h2>
+<p class="comment">Call this method in order to grab the keyboard focus for this component.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.grabFocus()</code></pre>
+<p><br><br></p>
+<h2 id="isimageloaded"><b>isImageLoaded</b>
+</h2>
+<p class="comment">Checks if the image has been loaded into the panel</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.isImageLoaded(String prettyName)</code></pre>
+<p><br><br></p>
+<h2 id="isvisibleaspopup"><b>isVisibleAsPopup</b>
+</h2>
+<p class="comment">Returns true if the popup is currently showing.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.isVisibleAsPopup()</code></pre>
+<p><br><br></p>
+<h2 id="loadimage"><b>loadImage</b>
+</h2>
+<p class="comment">Loads a image which can be drawn with the paint function later on.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.loadImage(String imageName, String prettyName)</code></pre>
+<p><br><br></p>
+<h2 id="losefocus"><b>loseFocus</b>
+</h2>
+<p class="comment">Call this method in order to give away the focus for this component.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.loseFocus()</code></pre>
+<p><br><br></p>
+<h2 id="removefromparent"><b>removeFromParent</b>
+</h2>
+<p class="comment">Removes the panel from its parent panel if it was created with addChildPanel().</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.removeFromParent()</code></pre>
+<p><br>If you want to remove a panel from the interface that has been created with <a href="scripting/scripting-api/scriptpanel/index.html#addchildpanel">addChildPanel()</a>
+, call this method and it will remove the panel from the parent and update the UI.<br></p>
+<h2 id="repaint"><b>repaint</b>
+</h2>
+<p class="comment">Triggers an asynchronous repaint.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.repaint()</code></pre>
+<p><br><br></p>
+<h2 id="repaintimmediately"><b>repaintImmediately</b>
+</h2>
+<p class="comment">Calls the paint routine immediately.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.repaintImmediately()</code></pre>
+<p><br><br></p>
+<h2 id="set"><b>set</b>
+</h2>
+<p class="comment">Sets the property.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.set(String propertyName, var value)</code></pre>
+<p><br><br></p>
+<h2 id="setanimation"><b>setAnimation</b>
+</h2>
+<p class="comment">Sets an JSON animation.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.setAnimation(String base64LottieAnimation)</code></pre>
+<p><br>You can use <a href="https://airbnb.design/lottie/">Lottie</a>
+ animation files to be displayed in a ScriptPanel.</p>
+<p>Just load an animation into the <a href="ui-components/floating-tiles/hise/rlottiedevpanel.html">Lottie Developer Panel</a>
+, compress it to a Base64 string and give it to this method and you can start using the frames inside the animation with <a href="scripting/scripting-api/scriptpanel/index.html#setanimationframe">setAnimationFrame</a>
+.</p>
+<p class="comment">Be aware that there is no built in animation functionality, but you can easily create "moving images" by using the <a href="scripting/scripting-api/scriptpanel/index.html#settimercallback">timer callback</a>
+ for it.<br></p>
+<h2 id="setanimationframe"><b>setAnimationFrame</b>
+</h2>
+<p class="comment">Sets a frame to be displayed.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.setAnimationFrame(int numFrame)</code></pre>
+<p><br>Once you've loaded an animation into the panel with <a href="scripting/scripting-api/scriptpanel/index.html#setanimation">setAnimation</a>
+, you can call this method and supply the frame index you want to display.<br>Calling this method will pick the frame and immediately repaint the panel.</p>
+<p>In order to find out, which frame you want to display, use the <a href="scripting/scripting-api/scriptpanel/index.html#getanimationdata">getAnimationData</a>
+ method which returns an object with the animation specs.</p>
+<p><br></p>
+<h2 id="setcolour"><b>setColour</b>
+</h2>
+<p class="comment">sets the colour of the component (BG, IT1, IT2, TXT).</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.setColour(int colourId, int colourAs32bitHex)</code></pre>
+<p><br><br></p>
+<h2 id="setconsumedkeypresses"><b>setConsumedKeyPresses</b>
+</h2>
+<p class="comment">Registers a selection of key presses to be consumed by this component.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.setConsumedKeyPresses(var listOfKeys)</code></pre>
+<p><br>A key stroke from your computer keyboard can be registered to fire a callback using <a href="scripting/scripting-api/scriptpanel/index.html#setkeypresscallback">ScriptPanel.setKeyPressCallback()</a>
+. However if you do this, you most likely want this key stroke to be "consumed" (so it won't trigger other actions as it progresses upwards the component tree).</p>
+<p>Before this method was introduced, you had to return <code>true</code>
+ in the callback for a consumed key press (the JUCE keyboard callbacks work similar to this so I copied the behaviour), but that forced the callback to run synchronously in the message thread which is not ideal - also if you forget to return true (which <a href="https://github.com/christophhart/HISE/issues/511">everybody</a>
+ did), the callback ended up being fired multiple times which caused some irritations.</p>
+<p>So instead this method was introduced that you must call <b>before</b>
+<br>calling <code>setKeyPressCallback()</code>
+ with either a single key press "object" or an array of key presses. A key press object can be either a string description of the key press like it's supplied in the callback argument or a JSON object like the callback parameter. </p>
+<p class="comment">You can also use the special string "all" to make the component consume every single key stroke, which is the default behaviour when you don't call this method (so compiled plugins will still work as they don't report compilation errors).</p>
+<p>By using the same format as the callback parameter you can use this procedure for creating the filter list:</p>
+<ol><li>Call this function with "all".</li>
+<li>Register a key callback, then dump the parameter JSON object.</li>
+<li>Hit the key combination(s) that you want to consume.</li>
+<li>Copy the JSON objects from the console into this function call.</li>
+<li>Cleanup and paste the objects back into the first function call</li>
+</ol>
+<p>So if you use this:</p>
+<pre><code class="language-javascript line-numbers">const var panel = Content.addPanel("p", 0, 0);
+
+panel.setConsumedKeyPresses("all");
+
+panel.setKeyPressCallback(function(obj)
+{
+	Console.print(trace(obj));
+});</code></pre>
+<p>then clicking on the panel (to gain focus) and pressing any key will yield something like this output:</p>
+<pre><code class="language-javascript line-numbers">Interface: {
+  "isFocusChange": false,
+  "character": "",
+  "specialKey": true,
+  "isWhitespace": false,
+  "isLetter": false,
+  "isDigit": false,
+  "keyCode": 63238,
+  "description": "shift + F3",
+  "shift": true,
+  "cmd": false,
+  "alt": false
+}</code></pre>
+<p>This JSON object is a bit noisy as it provides additional information that we don't really need so we can reduce the number of required properties and paste it back into our first function call:</p>
+<pre><code class="language-javascript line-numbers">panel.setConsumedKeyPresses({
+  "keyCode": 63238,
+  "shift": true,
+  "cmd": false,
+  "alt": false
+});</code></pre>
+<p>So from now on, the function will only react on "Shift + F3 key presses". If you use a single key press this also brings the additional benefit of not having to branch at all so you can just rawdog your logic into the callback without any if checks.</p>
+<p><br></p>
+<h2 id="setcontrolcallback"><b>setControlCallback</b>
+</h2>
+<p class="comment">Pass a inline function for a custom callback event.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.setControlCallback(var controlFunction)</code></pre>
+<p><br><br></p>
+<h2 id="setdraggingbounds"><b>setDraggingBounds</b>
+</h2>
+<p class="comment">If <code>allowedDragging</code>
+ is enabled, it will define the boundaries where the panel can be dragged.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.setDraggingBounds(var area)</code></pre>
+<p><br><br></p>
+<h2 id="setfiledropcallback"><b>setFileDropCallback</b>
+</h2>
+<p class="comment">Sets a file drop callback.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.setFileDropCallback(String callbackLevel, String wildcard, var dropFunction)</code></pre>
+<p><br>This function allows a file to be dropped on the panel that you can use for any purpose. It's basically the same functionality as the <a href="scripting/scripting-api/filesystem/index.html#browse">FileSystem.browse()</a>
+ call, but with a different UX that some people might prefer over the native file dialogue.</p>
+<p>The function expects three parameters, the first one will determine at which events the callback will be exeucted and must be one of these Strings (similar to the <code>callbackLevel</code>
+ property):</p>
+<table><thead><td><b>String </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><code>"No Callbacks"</code>
+ </td>
+<td>Ignore all file drag operations (default). </td>
+</tr>
+<tr><td><code>"Drop Only"</code>
+ </td>
+<td>Only fires the callback when the file was dropped. </td>
+</tr>
+<tr><td><code>"Drop & Hover"</code>
+ </td>
+<td>Additionally fires a callback when a dragged file enters / exits the panel. </td>
+</tr>
+<tr><td><code>"All Callbacks"</code>
+ </td>
+<td>Also fires the callback when you move the dragged file inside the panel. </td>
+</tr>
+</table>
+<p>If you pass in an empty String, it will deactivate the callback like <code>"No Callbacks"</code>
+. You can use this parameter to limit the execution of the callback to match your implementation: if you only want to react to a file being dropped, then use <code>"Drop Only"</code>
+ and the other callback levels offer a way for you to change the UI to let the user know that the file can be dropped (on top of the OS-native mouse cursor change).</p>
+<p>The second parameter is a wildcard that filters the file types that can be dropped on the panel. The format is the usual file wildcard format, so <code>*.txt</code>
+ or <code>*.*</code>
+.<br>If you want multiple wildcards, use a semicolon or comma: <code>*.aiff,*.wav,*.mp3</code>
+.</p>
+<p>The third parameter is the function that is executed at all events specified by the callback level parameter. It must be a (inline) function with a single parameter that contains a JSON object with the file drop status information:</p>
+<table><thead><td><b>Property </b>
+</td>
+<td><b>Type </b>
+</td>
+<td><b>Event </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><code>x</code>
+ </td>
+<td><code>int</code>
+ </td>
+<td>Move, Enter, Drop </td>
+<td>the <code>x</code>
+ position relative to the top left of the panel of the drag event. </td>
+</tr>
+<tr><td><code>y</code>
+ </td>
+<td><code>int</code>
+ </td>
+<td>Move, Enter, Drop </td>
+<td>the <code>y</code>
+ position relative to the top left of the panel of the drag event. </td>
+</tr>
+<tr><td><code>hover</code>
+ </td>
+<td><code>bool</code>
+ </td>
+<td>Move, Enter, Drop, Exit </td>
+<td><code>true</code>
+ if the file is currently being dragged over the panel. </td>
+</tr>
+<tr><td><code>drop</code>
+ </td>
+<td><code>bool</code>
+ </td>
+<td>Move, Enter, Drop, Exit </td>
+<td><code>true</code>
+ if the file is being dropped. </td>
+</tr>
+<tr><td><code>fileName</code>
+ </td>
+<td><code>String</code>
+ </td>
+<td>Drop </td>
+<td>The absolute path of the file being dropped. </td>
+</tr>
+</table>
+<p class="comment">If you need a <a href="scripting/scripting-api/file/index.html">File</a>
+ object from the file being dropped, just use the new <a href="scripting/scripting-api/filesystem/index.html#fromabsolutepath">FileSystem.fromAbsolutePath()</a>
+ method</p>
+<p>If you want to store the filename as value in a user preset, you need to wrap the String into a JSON object like this:</p>
+<pre><code class="language-javascript line-numbers">Panel1.setFileDropCallback("All Callbacks", "*.wav", function(f)
+{
+    if(f.drop)
+    {
+        // We can't pass in only the filename
+        // (a String is forbidden as preset value in order
+        // to prevent subtle bugs) so we need to create
+        // a simple object with a single property
+        var x = {};
+        x.fileName = f.fileName;
+        
+        // We could also just have passed in f to the function,
+        // but this reduces the noise a bit
+        this.setValue(x);
+        this.changed();
+    }
+});
+
+inline function onPanel1Control(component, value)
+{
+    // This might be empty (at initialisation or for whatever reason)...
+    if(isDefined(value.fileName))
+    {
+        var myFile = FileSystem.fromAbsolutePath(value.fileName);
+        // Do something with myFile...
+    }
+};</code></pre>
+<p><br></p>
+<h2 id="setimage"><b>setImage</b>
+</h2>
+<p class="comment">Disables the paint routine and just uses the given (clipped) image.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.setImage(String imageName, int xOffset, int yOffset)</code></pre>
+<p><br><br></p>
+<h2 id="setismodalpopup"><b>setIsModalPopup</b>
+</h2>
+<p class="comment">If this is set to true, the popup will be modal with a dark background that can be clicked to close.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.setIsModalPopup(bool shouldBeModal)</code></pre>
+<p><br><br></p>
+<h2 id="setkeypresscallback"><b>setKeyPressCallback</b>
+</h2>
+<p class="comment">Adds a callback to react on key presses (when this component is focused).</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.setKeyPressCallback(var keyboardFunction)</code></pre>
+<p><br>If you want the Panel to react on key strokes (from the computer keyboard, not the MIDI controller), you can attach a function with this method.<br>The function you pass in must have a single parameter which will contain the details of the key that was pressed (see below).</p>
+<p>You will also need to call <a href="scripting/scripting-api/scriptpanel/index.html#setconsumedkeypresses">setConsumedKeyPresses()</a>
+ and supply a list of key presses that you expect this component to consume (and not doing this will cause a compilation error to ensure that you don't accidentaly forget this and cause other issues later down the line).</p>
+<p class="comment">This is a breaking change introduced in May 2024 to ensure that the callbacks can be executed asynchronously to match the behaviour of <a href="scripting/scripting-api/content/index.html#setkeypresscallback">Content.setKeyPress()</a>
+. </p>
+<p> If it is not consumed, the key press will trickle down the parent hierarchy until it finds a suitable target, so in order to avoid multiple actions with a single key press, make sure to register any key press if appropriate.</p>
+<p class="comment">Also be aware that this function can be used with each component type (Labels, Buttons, etc), it's not limited to ScriptPanels</p>
+<p>In addition to the event of a key press, this function will also be called when the keyboard focus shifts towards or from this component. This can be used to refresh the appearance and indicate in some way that the Panel is focused (or not).</p>
+<table><thead><td><b>Property </b>
+</td>
+<td><b>Type </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><code>isFocusChange</code>
+ </td>
+<td><code>bool</code>
+ </td>
+<td>whether this callback was invoked because of a focus change (or a key press) </td>
+</tr>
+<tr><td><code>hasFocus</code>
+ </td>
+<td><code>bool</code>
+ </td>
+<td>if the callback was invoked because of a focus change, this will indicate whether it has the focus or not. </td>
+</tr>
+<tr><td><code>character</code>
+ </td>
+<td><code>String</code>
+ </td>
+<td>a character representation for the given key press. This is case sensitive, so pressing Shift+A will result in <code>A</code>
+, while pressing <code>A</code>
+ without the shift modifier will result in <code>a</code>
+. </td>
+</tr>
+<tr><td><code>keyCode</code>
+ </td>
+<td><code>int</code>
+ </td>
+<td>the ASCII code for the key press. This can be also used to check for special keys. </td>
+</tr>
+<tr><td><code>specialKey</code>
+ </td>
+<td><code>bool</code>
+ </td>
+<td>this is true if the key press is not a printable character, eg. <code>F5</code>
+ or <code>backspace</code>
+. You can still fetch the key codes to distinguish the events. </td>
+</tr>
+<tr><td><code>description</code>
+ </td>
+<td><code>String</code>
+ </td>
+<td>A textual representation of the key press, which is helpful during debugging. </td>
+</tr>
+<tr><td><code>shift</code>
+ </td>
+<td><code>bool</code>
+ </td>
+<td>whether the shift key was held down. </td>
+</tr>
+<tr><td><code>cmd</code>
+ </td>
+<td><code>bool</code>
+ </td>
+<td>whether the command (or ctrl) key was held down. </td>
+</tr>
+<tr><td><code>alt</code>
+ </td>
+<td><code>bool</code>
+ </td>
+<td>whether the alt key was held down. </td>
+</tr>
+</table>
+<p>If you want to "complete" the text input, you might want to call <a href="scripting/scripting-api/scriptpanel/index.html#losefocus">ScriptPanel.loseFocus()</a>
+ from inside the callback.</p>
+<p>This example snippet will turn a Panel into a very simple Label:</p>
+<pre><code class="language-javascript line-numbers">const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{
+	g.fillAll(0x22FFFFFF);
+	g.setColour(0x55FFFFFF);
+
+	if(this.data.hasFocus)
+		g.drawRect(this.getLocalBounds(0), 1.0);
+
+	g.setColour(Colours.white);
+	g.drawAlignedText(this.data.text, this.getLocalBounds(0), "centred");
+});
+
+Panel1.setKeyPressCallback(function(obj) 
+{
+	// Take a look at this in the console
+	Console.print(trace(obj));
+	
+	if(obj.isFocusChange)
+	{
+		this.data.hasFocus = obj.hasFocus;
+	}
+	else
+	{
+		switch(obj.keyCode)
+		{
+			// ESCAPE: Delete the text
+			case 27: this.data.text = ""; 
+				     break;
+			// RETURN KEY: just lose the focus
+			case 13: this.loseFocus();  
+					 break;
+			// BACKSPACE: Remove the last character
+			case 8:  this.data.text = this.data.text.substring(0, this.data.text.length-1);
+					 break;
+			// Append any non-special character
+			default: if(!obj.specialKey)
+						this.data.text += obj.character;				
+		}
+	}
+		
+	this.repaint();
+});</code></pre>
+<p><br></p>
+<h2 id="setloadingcallback"><b>setLoadingCallback</b>
+</h2>
+<p class="comment">Sets a loading callback that will be called when the preloading starts or finishes.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.setLoadingCallback(var loadingCallback)</code></pre>
+<p><br>The loading of samples will be executed asynchronously on a background thread (in fact the same thread used for streaming the samples).</p>
+<p>If you call <code>Sampler.loadSampleMap()</code>
+ or any other function that changes the sample content, it will kill all voices, load it on the background thread.</p>
+<p>If you want your UI to reflect this behaviour, you can use a ScriptPanel as "loading indicator". Just register a function with this method and change the appearance accordingly:</p>
+<pre><code class="language-javascript line-numbers">// Example: Preloading callback
+// this code will add a panel which will flash white during the preloading of new samples.
+
+const var panel = Content.addPanel("Panel", 0, 0);
+
+panel.data.colour = Colours.grey;
+
+panel.setPaintRoutine(function(g)
+{
+	g.fillAll(this.data.colour);
+});
+
+// This function will be executed whenever the preload state changes
+panel.setLoadingCallback(function(isPreloading)
+{
+	if(isPreloading)
+        this.data.colour = Colours.white;
+    else
+        this.data.colour = Colours.grey;
+        
+    // Update the UI
+    this.repaint();
+});</code></pre>
+<p><br></p>
+<h2 id="setlocallookandfeel"><b>setLocalLookAndFeel</b>
+</h2>
+<p class="comment">Attaches the local look and feel to this component.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.setLocalLookAndFeel(var lafObject)</code></pre>
+<p><br><br></p>
+<h2 id="setmousecallback"><b>setMouseCallback</b>
+</h2>
+<p class="comment">Sets a mouse callback.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.setMouseCallback(var mouseCallbackFunction)</code></pre>
+<p><br><br></p>
+<h2 id="setmousecursor"><b>setMouseCursor</b>
+</h2>
+<p class="comment">Sets a Path as mouse cursor for this panel.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.setMouseCursor(var pathIcon, var colour, var hitPoint)</code></pre>
+<p><br><br></p>
+<h2 id="setpaintroutine"><b>setPaintRoutine</b>
+</h2>
+<p class="comment">Sets a paint routine (a function with one parameter).</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.setPaintRoutine(var paintFunction)</code></pre>
+<p><br><br></p>
+<h2 id="setpopupdata"><b>setPopupData</b>
+</h2>
+<p class="comment">Sets a FloatingTile that is used as popup. The position is a array [x , y, width, height] that is used for the popup dimension</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.setPopupData(var jsonData, var position)</code></pre>
+<p><br><br></p>
+<h2 id="setposition"><b>setPosition</b>
+</h2>
+<p class="comment">Sets the position of the component.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.setPosition(int x, int y, int w, int h)</code></pre>
+<p><br><br></p>
+<h2 id="setpropertiesfromjson"><b>setPropertiesFromJSON</b>
+</h2>
+<p class="comment">Restores all properties from a JSON object.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.setPropertiesFromJSON( var jsonData)</code></pre>
+<p><br><br></p>
+<h2 id="settimercallback"><b>setTimerCallback</b>
+</h2>
+<p class="comment">Sets a timer callback.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.setTimerCallback(var timerCallback)</code></pre>
+<p><br><br></p>
+<h2 id="settooltip"><b>setTooltip</b>
+</h2>
+<p class="comment">Shows a informative text on mouse hover.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.setTooltip( String tooltip)</code></pre>
+<p><br><br></p>
+<h2 id="setvalue"><b>setValue</b>
+</h2>
+<p class="comment">Sets the current value</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.setValue(var newValue)</code></pre>
+<p><br><br></p>
+<h2 id="setvaluenormalized"><b>setValueNormalized</b>
+</h2>
+<p class="comment">Sets the current value from a range 0.0 ... 1.0.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.setValueNormalized(double normalizedValue)</code></pre>
+<p><br><br></p>
+<h2 id="setvaluewithundo"><b>setValueWithUndo</b>
+</h2>
+<p class="comment">Sets the current value and adds it to the undo list. Don't call this from onControl!</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.setValueWithUndo(var newValue)</code></pre>
+<p><br><br></p>
+<h2 id="setvaluewithundo"><b>setValueWithUndo</b>
+</h2>
+<p class="comment">Sets a new value, stores this action in the undo manager and calls the control callbacks.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.setValueWithUndo(var oldValue, var newValue, var actionName)</code></pre>
+<p><br><br></p>
+<h2 id="setzlevel"><b>setZLevel</b>
+</h2>
+<p class="comment">Changes the depth hierarchy (z-axis) of sibling components (Back, Default, Front or AlwaysOnTop).</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.setZLevel(String zLevel)</code></pre>
+<p><br><br></p>
+<h2 id="showaspopup"><b>showAsPopup</b>
+</h2>
+<p class="comment">Opens the panel as popup.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.showAsPopup(bool closeOtherPopups)</code></pre>
+<p><br><br></p>
+<h2 id="showcontrol"><b>showControl</b>
+</h2>
+<p class="comment">Hides / Shows the control.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.showControl(bool shouldBeVisible)</code></pre>
+<p><br><br></p>
+<h2 id="startexternalfiledrag"><b>startExternalFileDrag</b>
+</h2>
+<p class="comment">Starts dragging an external file (or a number of files).</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.startExternalFileDrag(var fileOrFilesToDrag, bool moveOriginalFiles, var finishCallback)</code></pre>
+<p><br><br></p>
+<h2 id="startinternaldrag"><b>startInternalDrag</b>
+</h2>
+<p class="comment">Starts dragging something inside the UI.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.startInternalDrag(var dragData)</code></pre>
+<p><br><br></p>
+<h2 id="unloadallimages"><b>unloadAllImages</b>
+</h2>
+<p class="comment">Unload all images from the panel.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.unloadAllImages()</code></pre>
+<p><br><br></p>
+<h2 id="updatecontentpropertyinternal"><b>updateContentPropertyInternal</b>
+</h2>
+<p class="comment">This updates the internal content data object from the script processor.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.updateContentPropertyInternal(int propertyId,  var newValue)</code></pre>
+<p><br><br></p>
+<h2 id="updatevaluefromprocessorconnection"><b>updateValueFromProcessorConnection</b>
+</h2>
+<p class="comment">Updates the value from the processor connection. Call this method whenever the module state has changed and you want to refresh the knob value to show the current state.</p>
+<pre><code class="language-javascript line-numbers">ScriptPanel.updateValueFromProcessorConnection()</code></pre>
+<p><br><br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/scriptshader/index.html">ScriptShader</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>18.03.2019<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

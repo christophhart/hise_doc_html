@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="projecthandler"><b>ProjectHandler</b>
+</h1>
+<p>This class handles the file management inside HISE.<br>It assumes a working directory and supplies correct paths for all OSes relative to the project root folder.<br> </p>
+<h2 id="class-hierarchy"><b>Class Hierarchy</b>
+</h2>
+<h3 id="base-classes"><b>Base Classes</b>
+</h3>
+<ul><li><code>hise::FileHandlerBase</code>
+<br></li>
+</ul>
+<h2 id="class-methods"><b>Class methods</b>
+</h2>
+<h3 id="isredirected"><b>isRedirected</b>
+</h3>
+<pre><code class="language-clike line-numbers">bool isRedirected(ProjectHandler::SubDirectories dir) const</code></pre>
+<p>Checks if a directory is redirected.<br> </p>
+<h3 id="isactive"><b>isActive</b>
+</h3>
+<pre><code class="language-clike line-numbers">bool isActive() const</code></pre>
+<p>Checks if the ProjectHandler is active (if a directory is set).<br> </p>
+<h3 id="creatersakey"><b>createRSAKey</b>
+</h3>
+<pre><code class="language-clike line-numbers">void createRSAKey() const</code></pre>
+<p>Fills the given array with the contents of the specified directory. If 'sortByTime' is true, the most recent files will be the first items in the list.<br> </p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="cpp_api/hise/structhise_1_1_safe_function_call.html">SafeFunctionCall</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="sliderpackdata"><b>SliderPackData</b>
+</h1>
+<p><br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="frombase64"><b>fromBase64</b>
+</h2>
+<p class="comment">Restores the data from the B64 string.</p>
+<pre><code class="language-javascript line-numbers">SliderPackData.fromBase64( String b64)</code></pre>
+<p><br><br></p>
+<h2 id="getcurrentlydisplayedindex"><b>getCurrentlyDisplayedIndex</b>
+</h2>
+<p class="comment">Returns the currently displayed slider index.</p>
+<pre><code class="language-javascript line-numbers">SliderPackData.getCurrentlyDisplayedIndex()</code></pre>
+<p><br><br></p>
+<h2 id="getdataasbuffer"><b>getDataAsBuffer</b>
+</h2>
+<p class="comment">Returns a Buffer object containing all slider values (as reference).</p>
+<pre><code class="language-javascript line-numbers">SliderPackData.getDataAsBuffer()</code></pre>
+<p><br><br></p>
+<h2 id="getnumsliders"><b>getNumSliders</b>
+</h2>
+<p class="comment">Returns the amount of sliders.</p>
+<pre><code class="language-javascript line-numbers">SliderPackData.getNumSliders()</code></pre>
+<p><br><br></p>
+<h2 id="getstepsize"><b>getStepSize</b>
+</h2>
+<p class="comment">Returns the step size.</p>
+<pre><code class="language-javascript line-numbers">SliderPackData.getStepSize()</code></pre>
+<p><br><br></p>
+<h2 id="getvalue"><b>getValue</b>
+</h2>
+<p class="comment">Returns the value at the given position.</p>
+<pre><code class="language-javascript line-numbers">SliderPackData.getValue(int index)</code></pre>
+<p><br><br></p>
+<h2 id="linkto"><b>linkTo</b>
+</h2>
+<p class="comment">Links the sliderpack to the other slider pack.</p>
+<pre><code class="language-javascript line-numbers">SliderPackData.linkTo(var other)</code></pre>
+<p><br><br></p>
+<h2 id="setallvalues"><b>setAllValues</b>
+</h2>
+<p class="comment">Sets all values.</p>
+<pre><code class="language-javascript line-numbers">SliderPackData.setAllValues(var value)</code></pre>
+<p><br><br></p>
+<h2 id="setallvalueswithundo"><b>setAllValuesWithUndo</b>
+</h2>
+<p class="comment">Sets all values with an undo operation.</p>
+<pre><code class="language-javascript line-numbers">SliderPackData.setAllValuesWithUndo(var value)</code></pre>
+<p><br><br></p>
+<h2 id="setassignisundoable"><b>setAssignIsUndoable</b>
+</h2>
+<p class="comment">Enables undo support for []-operator assignments.</p>
+<pre><code class="language-javascript line-numbers">SliderPackData.setAssignIsUndoable(bool shouldBeUndoable)</code></pre>
+<p><br><br></p>
+<h2 id="setcontentcallback"><b>setContentCallback</b>
+</h2>
+<p class="comment">Sets a callback that is being executed when a point is added / removed / changed.</p>
+<pre><code class="language-javascript line-numbers">SliderPackData.setContentCallback(var contentFunction)</code></pre>
+<p><br><br></p>
+<h2 id="setdisplaycallback"><b>setDisplayCallback</b>
+</h2>
+<p class="comment">Sets a callback that is being executed when the ruler position changes.</p>
+<pre><code class="language-javascript line-numbers">SliderPackData.setDisplayCallback(var displayFunction)</code></pre>
+<p><br><br></p>
+<h2 id="setnumsliders"><b>setNumSliders</b>
+</h2>
+<p class="comment">Sets the amount of sliders.</p>
+<pre><code class="language-javascript line-numbers">SliderPackData.setNumSliders(var numSliders)</code></pre>
+<p><br><br></p>
+<h2 id="setrange"><b>setRange</b>
+</h2>
+<p class="comment">Sets the range.</p>
+<pre><code class="language-javascript line-numbers">SliderPackData.setRange(double minValue, double maxValue, double stepSize)</code></pre>
+<p><br><br></p>
+<h2 id="setusepreallocatedlength"><b>setUsePreallocatedLength</b>
+</h2>
+<p class="comment">Sets a preallocated length that will retain values when the slider pack is resized below that limit.</p>
+<pre><code class="language-javascript line-numbers">SliderPackData.setUsePreallocatedLength(int length)</code></pre>
+<p><br><br></p>
+<h2 id="setvalue"><b>setValue</b>
+</h2>
+<p class="comment">Sets the value at the given position.</p>
+<pre><code class="language-javascript line-numbers">SliderPackData.setValue(int sliderIndex, float value)</code></pre>
+<p><br><br></p>
+<h2 id="setvaluewithundo"><b>setValueWithUndo</b>
+</h2>
+<p class="comment">Sets a single value at the given position with undo support.</p>
+<pre><code class="language-javascript line-numbers">SliderPackData.setValueWithUndo(int sliderIndex, float value)</code></pre>
+<p><br><br></p>
+<h2 id="tobase64"><b>toBase64</b>
+</h2>
+<p class="comment">Exports the data to a B64 string.</p>
+<pre><code class="language-javascript line-numbers">SliderPackData.toBase64()</code></pre>
+<p><br><br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/sliderpackprocessor/index.html">SliderPackProcessor</a>
+</span>
+
+<p class="content-footer-metadata"><br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="string"><b>String</b>
+</h1>
+<p><br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="capitalize"><b>capitalize</b>
+</h2>
+<p class="comment">Converts a string to start case (first letter of every word is uppercase).</p>
+<pre><code class="language-javascript line-numbers">String.capitalize()</code></pre>
+<p><br><br></p>
+<h2 id="charat"><b>charAt</b>
+</h2>
+<p class="comment">Returns the character at the given index.</p>
+<pre><code class="language-javascript line-numbers">String.charAt(int index)</code></pre>
+<p><br><br></p>
+<h2 id="charcodeat"><b>charCodeAt</b>
+</h2>
+<p class="comment">Returns the character at the given position as ASCII number.</p>
+<pre><code class="language-javascript line-numbers">String.charCodeAt(var index)</code></pre>
+<p><br><br></p>
+<h2 id="concat"><b>concat</b>
+</h2>
+<p class="comment">Joins two or more strings, and returns a new joined strings.</p>
+<pre><code class="language-javascript line-numbers">String.concat(var stringlist)</code></pre>
+<p><br><br></p>
+<h2 id="contains"><b>contains</b>
+</h2>
+<p class="comment">Checks if the string contains the given substring.</p>
+<pre><code class="language-javascript line-numbers">String.contains(String otherString)</code></pre>
+<p><br><br></p>
+<h2 id="decrypt"><b>decrypt</b>
+</h2>
+<p class="comment">Decrypt a string from Blowfish encryption.</p>
+<pre><code class="language-javascript line-numbers">String.decrypt(var key)</code></pre>
+<p><br><br></p>
+<h2 id="encrypt"><b>encrypt</b>
+</h2>
+<p class="comment">Encrypt a string using Blowfish encryption.</p>
+<pre><code class="language-javascript line-numbers">String.encrypt(var key)</code></pre>
+<p><br><br></p>
+<h2 id="getintvalue"><b>getIntValue</b>
+</h2>
+<p class="comment">Attempts to parse the string as integer number.</p>
+<pre><code class="language-javascript line-numbers">String.getIntValue()</code></pre>
+<p><br><br></p>
+<h2 id="gettrailingintvalue"><b>getTrailingIntValue</b>
+</h2>
+<p class="comment">Attempts to parse a integer number at the end of the string.</p>
+<pre><code class="language-javascript line-numbers">String.getTrailingIntValue()</code></pre>
+<p><br><br></p>
+<h2 id="hash"><b>hash</b>
+</h2>
+<p class="comment">Creates a unique hash from the string.</p>
+<pre><code class="language-javascript line-numbers">String.hash()</code></pre>
+<p><br><br></p>
+<h2 id="indexof"><b>indexOf</b>
+</h2>
+<p class="comment">Returns the position of the first found occurrence of a specified value in a string.</p>
+<pre><code class="language-javascript line-numbers">String.indexOf(var substring)</code></pre>
+<p><br><br></p>
+<h2 id="lastindexof"><b>lastIndexOf</b>
+</h2>
+<p class="comment">Returns the position of the last found occurrence of a specified value in a string.</p>
+<pre><code class="language-javascript line-numbers">String.lastIndexOf(var substring)</code></pre>
+<p><br><br></p>
+<h2 id="replace"><b>replace</b>
+</h2>
+<p class="comment">Returns a copy of the string and replaces all occurences of <code>a</code>
+ with <code>b</code>
+.</p>
+<pre><code class="language-javascript line-numbers">String.replace(var substringToLookFor, var replacement)</code></pre>
+<p><br><br></p>
+<h2 id="split"><b>split</b>
+</h2>
+<p class="comment">Splits the string into an array with the given separator.</p>
+<pre><code class="language-javascript line-numbers">String.split(var separatorString)</code></pre>
+<p><br><br></p>
+<h2 id="splitcamelcase"><b>splitCamelCase</b>
+</h2>
+<p class="comment">Splits the string at uppercase characters (so MyValue becomes ["My", "Value"].</p>
+<pre><code class="language-javascript line-numbers">String.splitCamelCase()</code></pre>
+<p><br><br></p>
+<h2 id="substring"><b>substring</b>
+</h2>
+<p class="comment">Returns the substring in the given range.</p>
+<pre><code class="language-javascript line-numbers">String.substring(int startIndex, int endIndex)</code></pre>
+<p><br><br></p>
+<h2 id="tolowercase"><b>toLowerCase</b>
+</h2>
+<p class="comment">Converts a string to lowercase letters.</p>
+<pre><code class="language-javascript line-numbers">String.toLowerCase()</code></pre>
+<p><br><br></p>
+<h2 id="touppercase"><b>toUpperCase</b>
+</h2>
+<p class="comment">Converts a string to uppercase letters.</p>
+<pre><code class="language-javascript line-numbers">String.toUpperCase()</code></pre>
+<p><br><br></p>
+<h2 id="trim"><b>trim</b>
+</h2>
+<p class="comment">Returns a copy of this string with any whitespace characters removed from the start and end.</p>
+<pre><code class="language-javascript line-numbers">String.trim()</code></pre>
+<p><br><br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/synth/index.html">Synth</a>
+</span>
+
+<p class="content-footer-metadata"><br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

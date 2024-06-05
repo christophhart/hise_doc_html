@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="fft"><b>FFT</b>
+</h1>
+<p><br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="dumpspectrum"><b>dumpSpectrum</b>
+</h2>
+<p class="comment">Dumps the spectrum image to the given file (as PNG image).</p>
+<pre><code class="language-javascript line-numbers">FFT.dumpSpectrum(var file, bool output)</code></pre>
+<p><br><br></p>
+<h2 id="getspectrum2dparameters"><b>getSpectrum2DParameters</b>
+</h2>
+<p class="comment">Returns the JSON data for the spectrum parameters.</p>
+<pre><code class="language-javascript line-numbers">FFT.getSpectrum2DParameters()</code></pre>
+<p><br><br></p>
+<h2 id="prepare"><b>prepare</b>
+</h2>
+<p class="comment">Allocates the buffers required for processing.</p>
+<pre><code class="language-javascript line-numbers">FFT.prepare(int powerOfTwoSize, int maxNumChannels)</code></pre>
+<p><br><br></p>
+<h2 id="process"><b>process</b>
+</h2>
+<p class="comment">Process the given data (either a buffer or a array of buffers.</p>
+<pre><code class="language-javascript line-numbers">FFT.process(var dataToProcess)</code></pre>
+<p><br><br></p>
+<h2 id="setenableinversefft"><b>setEnableInverseFFT</b>
+</h2>
+<p class="comment">This enables the inverse transform that will reconstruct the signal from the processed FFT.</p>
+<pre><code class="language-javascript line-numbers">FFT.setEnableInverseFFT(bool shouldApplyReverseTransformToInput)</code></pre>
+<p><br><br></p>
+<h2 id="setenablespectrum2d"><b>setEnableSpectrum2D</b>
+</h2>
+<p class="comment">Enables the creation of a 2D spectrograph image.</p>
+<pre><code class="language-javascript line-numbers">FFT.setEnableSpectrum2D(bool shouldBeEnabled)</code></pre>
+<p><br><br></p>
+<h2 id="setmagnitudefunction"><b>setMagnitudeFunction</b>
+</h2>
+<p class="comment">Sets a function that will be executed with the amplitude information of the FFT bins.</p>
+<pre><code class="language-javascript line-numbers">FFT.setMagnitudeFunction(var newMagnitudeFunction, bool convertToDecibels)</code></pre>
+<p><br><br></p>
+<h2 id="setoverlap"><b>setOverlap</b>
+</h2>
+<p class="comment">Sets an overlap (from 0...1) for the chunks.</p>
+<pre><code class="language-javascript line-numbers">FFT.setOverlap(double percentageOfOverlap)</code></pre>
+<p><br><br></p>
+<h2 id="setphasefunction"><b>setPhaseFunction</b>
+</h2>
+<p class="comment">Sets a function that will be executed with the phase information of the FFT bins.</p>
+<pre><code class="language-javascript line-numbers">FFT.setPhaseFunction(var newPhaseFunction)</code></pre>
+<p><br><br></p>
+<h2 id="setspectrum2dparameters"><b>setSpectrum2DParameters</b>
+</h2>
+<p class="comment">Sets the spectrum data from the JSON object.</p>
+<pre><code class="language-javascript line-numbers">FFT.setSpectrum2DParameters(var jsonData)</code></pre>
+<p><br><br></p>
+<h2 id="setwindowtype"><b>setWindowType</b>
+</h2>
+<p class="comment">Sets a window function that will be applied to the data chunks before processing.</p>
+<pre><code class="language-javascript line-numbers">FFT.setWindowType(int windowType)</code></pre>
+<p><br><br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/file/index.html">File</a>
+</span>
+
+<p class="content-footer-metadata"><br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

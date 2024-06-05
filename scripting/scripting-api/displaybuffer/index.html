@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="displaybuffer"><b>DisplayBuffer</b>
+</h1>
+<p><br>There are a lot of nodes in scriptnode which offer some kind of visualisation data:</p>
+<ul><li>oscillators have a waveform display</li>
+<li>peak modules have a modulation plotter</li>
+<li>envelopes have a envelope curve</li>
+<li>fft analysers have the frequency spectrum</li>
+</ul>
+<p>By default, they are only visible inside the scriptnode editor, but you can choose to expose certain data sources to your UI. </p>
+<h3 id="how-to-connect-a-displaybuffer"><b>How to connect a DisplayBuffer</b>
+</h3>
+<ol><li>Make sure to expose the display buffer of the node you want to visualise by assigning an <b>External Data slot</b>
+ to it (click on the plot icon next to the display on the node editor and choose a free slot in the popup menu). Be aware that this system is using a single-writer rule, so you can't assign multiple nodes to the same external slot!</li>
+<li>Generate a (typed) reference to a <a href="scripting/scripting-api/displaybuffersource/index.html">DisplayBufferSource</a>
+ by passing in the ID of the script module that hosts the network.</li>
+<li>Call <a href="scripting/scripting-api/displaybuffersource/index.html#getdisplaybuffer">DisplayBufferSource.getDisplayBuffer()</a>
+ with the index of the data slot that you assigned in step 1</li>
+</ol>
+<p><br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="copyreadbuffer"><b>copyReadBuffer</b>
+</h2>
+<p class="comment">Copies the read buffer into a preallocated target buffer. The target buffer must have the same size.</p>
+<pre><code class="language-javascript line-numbers">DisplayBuffer.copyReadBuffer(var targetBuffer)</code></pre>
+<p><br><br></p>
+<h2 id="createpath"><b>createPath</b>
+</h2>
+<p class="comment">Creates a path objects scaled to the given bounds and sourceRange</p>
+<pre><code class="language-javascript line-numbers">DisplayBuffer.createPath(var dstArea, var sourceRange, var normalisedStartValue)</code></pre>
+<p><br>If you want to draw a path using the buffer data (for oscilloscopes or plotters), this function will do the heavy lifting for you and supply you with a <a href="scripting/scripting-api/path/index.html">Path</a>
+ object that you can directly draw on a <a href="scripting/scripting-api/scriptpanel/index.html">ScriptPanel</a>
+.</p>
+<p>The parameters for this function allow a fine-grained control over the appearance of the path:</p>
+<table><thead><td><b>Parameter </b>
+</td>
+<td><b>Type </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><code>dstArea</code>
+ </td>
+<td><code>[x, y, w, h]</code>
+ </td>
+<td>the target rectangle for the path (it will be scaled automatically to fit this rectangle). </td>
+</tr>
+<tr><td><code>sourceRange</code>
+ </td>
+<td><code>[x, y, w, h]</code>
+ </td>
+<td>a rectangle that will determine the "input scale". s[0] and s[1] are the min and max values that you want to draw and s[2] and s[3] define the index range if <code>s[3] == -1</code>
+ then it will use the entire buffer. </td>
+</tr>
+<tr><td><code>start</code>
+ </td>
+<td><code>double</code>
+ </td>
+<td>the normalised start and end value that can be used to control the start and end points of the path. </td>
+</tr>
+</table>
+<p>Here are a few example use cases:</p>
+<pre><code class="language-javascript line-numbers">// Oscilloscope:
+d.createPath([0, 0, w, h],   // target rectangle 
+             [-1, 1, 0, -1], // samplerange 0 - numSamples,
+                             // valuerange: from -1 to 1
+             0.0);           // start at the center (bipolar)
+
+// Plotter
+d.createPath([0, 0, w, h],   // target rectangle 
+             [0, 1, 0, -1],  // samplerange 0 - numSamples,
+                             // valuerange: from 0 to 1
+             0.0);           // start at the bottom (unibipolar)
+
+// Inverted Plotter
+d.createPath([0, 0, w, h],   // target rectangle 
+             [0, 1, 0, -1],  // samplerange 0 - numSamples,
+                             // valuerange: from 0 to 1
+             1.0);           // start at the top (negative)</code></pre>
+<p class="comment">Be aware that the path that is created is not closed (so you need to call <a href="scripting/scripting-api/path/index.html#closesubpath">Path.closeSubPath()</a>
+ manually if you need a closed path.<br></p>
+<h2 id="getreadbuffer"><b>getReadBuffer</b>
+</h2>
+<p class="comment">Returns a reference to the internal read buffer.</p>
+<pre><code class="language-javascript line-numbers">DisplayBuffer.getReadBuffer()</code></pre>
+<p><br>This function returns the raw Buffer containing the visualisation data that you can use for implementing a custom visualisation.</p>
+<p>This is the most low-level access to the data and the other methods available offer a more "refined" access.<br></p>
+<h2 id="getresizedbuffer"><b>getResizedBuffer</b>
+</h2>
+<p class="comment">Resamples the buffer to a fixed size.</p>
+<pre><code class="language-javascript line-numbers">DisplayBuffer.getResizedBuffer(int numDestSamples, int resampleMode)</code></pre>
+<p><br>The size of the display buffer is not static and depends on the source signal. If your visualisation depends on a fixed buffer length, you can use this method to automatically rescale the buffer content.<br>This will create a copy of the buffer with the given sample amount and use a sensible default algorithm to do the resampling.</p>
+<p class="comment">If you want to pass the buffer to a shader as uniform make sure to resample it to be below 1024.<br></p>
+<h2 id="setactive"><b>setActive</b>
+</h2>
+<p class="comment">Enables or disables the ring buffer.</p>
+<pre><code class="language-javascript line-numbers">DisplayBuffer.setActive(bool shouldBeActive)</code></pre>
+<p><br><br></p>
+<h2 id="setringbufferproperties"><b>setRingBufferProperties</b>
+</h2>
+<p class="comment">Sets the ring buffer properties from an object (Use the JSON from the Edit Properties popup).</p>
+<pre><code class="language-javascript line-numbers">DisplayBuffer.setRingBufferProperties(var propertyData)</code></pre>
+<p><br><br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/displaybuffersource/index.html">DisplayBufferSource</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>01.06.2021<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

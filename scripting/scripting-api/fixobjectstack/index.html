@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="fixobjectstack"><b>FixObjectStack</b>
+</h1>
+<p><br>This data container in an enhancement of the <a href="scripting/scripting-api/fixobjectarray/index.html">FixObjectArray</a>
+ and keeps track of the amount of "used" elements.</p>
+<p>It's special behaviour is that it always guarantees a dense structure: removing elements will just move the last element into the empty position. This will destroy the "order" of elements, but for use cases where the elements are not directly related with each other, this is a good trade-off because it allows very fast insertions & removal operations.</p>
+<pre><code class="language-javascript line-numbers">// This is the init state of our stack
+[0, 1, 2, 3];
+
+// Insert X
+
+[0, 1, 2, 3, X];
+
+// Remove 2, move X into the gap
+
+[0, 1, X, 3];
+
+// Insert Y at the end
+
+[0, 1, X, 3, Y]</code></pre>
+<p><br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="clear"><b>clear</b>
+</h2>
+<p class="comment">Clears the stack.</p>
+<pre><code class="language-javascript line-numbers">FixObjectStack.clear() override</code></pre>
+<p><br>Like <a href="scripting/scripting-api/fixobjectarray/index.html#clear">FixObjectArray.clear()</a>
+, this is a rather slow operation because it will iterate over the entire data range. If you want to "reset" the state in a realtime context, using <code>clearQuick()</code>
+ might be a better candidate.<br></p>
+<h2 id="clearquick"><b>clearQuick</b>
+</h2>
+<p class="comment">Clears the stack by moving the end pointer to the start (leaving its elements in the same state).</p>
+<pre><code class="language-javascript line-numbers">FixObjectStack.clearQuick()</code></pre>
+<p><br><br></p>
+<h2 id="contains"><b>contains</b>
+</h2>
+<p class="comment">checks if the array contains the object.</p>
+<pre><code class="language-javascript line-numbers">FixObjectStack.contains(var obj)</code></pre>
+<p><br><br></p>
+<h2 id="copy"><b>copy</b>
+</h2>
+<p class="comment">Copies the property from each element into a buffer (or array).</p>
+<pre><code class="language-javascript line-numbers">FixObjectStack.copy(String propertyName, var target)</code></pre>
+<p><br><br></p>
+<h2 id="fill"><b>fill</b>
+</h2>
+<p class="comment">Fills the array with the given object.</p>
+<pre><code class="language-javascript line-numbers">FixObjectStack.fill(var obj)</code></pre>
+<p><br><br></p>
+<h2 id="frombase64"><b>fromBase64</b>
+</h2>
+<p class="comment">Restores an array from a previously exported state.</p>
+<pre><code class="language-javascript line-numbers">FixObjectStack.fromBase64( String b64)</code></pre>
+<p><br><br></p>
+<h2 id="indexof"><b>indexOf</b>
+</h2>
+<p class="comment">Returns the index of the first element that matches the given object.</p>
+<pre><code class="language-javascript line-numbers">FixObjectStack.indexOf(var obj)</code></pre>
+<p><br><br></p>
+<h2 id="insert"><b>insert</b>
+</h2>
+<p class="comment">Inserts a element to the stack.</p>
+<pre><code class="language-javascript line-numbers">FixObjectStack.insert(var obj)</code></pre>
+<p><br><br></p>
+<h2 id="isempty"><b>isEmpty</b>
+</h2>
+<p class="comment">Checks whether the stack is empty.</p>
+<pre><code class="language-javascript line-numbers">FixObjectStack.isEmpty()</code></pre>
+<p><br><br></p>
+<h2 id="remove"><b>remove</b>
+</h2>
+<p class="comment">Removes the element from the stack and fills up the gap.</p>
+<pre><code class="language-javascript line-numbers">FixObjectStack.remove(var obj)</code></pre>
+<p><br><br></p>
+<h2 id="removeelement"><b>removeElement</b>
+</h2>
+<p class="comment">Removes the element at the given index and fills the gap.</p>
+<pre><code class="language-javascript line-numbers">FixObjectStack.removeElement(int index)</code></pre>
+<p><br><br></p>
+<h2 id="set"><b>set</b>
+</h2>
+<p class="comment">Replaces the object if it exists or inserts it at the end.</p>
+<pre><code class="language-javascript line-numbers">FixObjectStack.set(var obj)</code></pre>
+<p><br><br></p>
+<h2 id="size"><b>size</b>
+</h2>
+<p class="comment">Returns the number of used elements in the stack.</p>
+<pre><code class="language-javascript line-numbers">FixObjectStack.size()  override</code></pre>
+<p><br><br></p>
+<h2 id="sort"><b>sort</b>
+</h2>
+<p class="comment">Sorts the array with the given compare function.</p>
+<pre><code class="language-javascript line-numbers">FixObjectStack.sort()</code></pre>
+<p><br><br></p>
+<h2 id="tobase64"><b>toBase64</b>
+</h2>
+<p class="comment">Exports the memory region of the entire array as Base64 encoded string.</p>
+<pre><code class="language-javascript line-numbers">FixObjectStack.toBase64()</code></pre>
+<p><br><br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/globalcable/index.html">GlobalCable</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>18.12.2023<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

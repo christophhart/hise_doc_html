@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="arpeggiator"><b>Arpeggiator</b>
+</h1>
+<p>Type ID: <code>Arpeggiator</code>
+<br></p>
+<p class="comment"><b>A Arpeggiator module</b>
+<br></p>
+<img src="images/module_screenshot_arpeggiator.png"></img>
+<p><br></p>
+<p>This module was originally written by Elan Hickler as Javascript version and then ported to C++ by Christoph Hart.</p>
+<h2 id="parameters-"><b>Parameters </b>
+</h2>
+<table><thead><td><b>#</b>
+<b> </b>
+</td>
+<td><b>ID </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>0 </td>
+<td><code>BypassButton</code>
+ </td>
+<td>Bypasses the arpeggiator. You can call this from other MIDI callbacks to stop it from running. </td>
+</tr>
+<tr><td>1 </td>
+<td><code>ResetButton</code>
+ </td>
+<td>- </td>
+</tr>
+<tr><td>2 </td>
+<td><code>NumStepSlider</code>
+ </td>
+<td>- </td>
+</tr>
+<tr><td>3 </td>
+<td><code>StepReset</code>
+ </td>
+<td>- </td>
+</tr>
+<tr><td>4 </td>
+<td><code>StepSkipSlider</code>
+ </td>
+<td>- </td>
+</tr>
+<tr><td>5 </td>
+<td><code>SortKeysButton</code>
+ </td>
+<td>- </td>
+</tr>
+<tr><td>6 </td>
+<td><code>SpeedKnob</code>
+ </td>
+<td>- </td>
+</tr>
+<tr><td>7 </td>
+<td><code>SequenceComboBox</code>
+ </td>
+<td>- </td>
+</tr>
+<tr><td>8 </td>
+<td><code>OctaveRange</code>
+ </td>
+<td>- </td>
+</tr>
+<tr><td>9 </td>
+<td><code>Shuffle</code>
+ </td>
+<td>- </td>
+</tr>
+<tr><td>10 </td>
+<td><code>CurrentValue</code>
+ </td>
+<td>- </td>
+</tr>
+<tr><td>11 </td>
+<td><code>EnableTie</code>
+ </td>
+<td>- </td>
+</tr>
+<tr><td>12 </td>
+<td><code>packBg</code>
+ </td>
+<td>- </td>
+</tr>
+<tr><td>13 </td>
+<td><code>SemiToneSliderPack</code>
+ </td>
+<td>- </td>
+</tr>
+<tr><td>14 </td>
+<td><code>VelocitySliderPack</code>
+ </td>
+<td>- </td>
+</tr>
+<tr><td>15 </td>
+<td><code>LengthSliderPack</code>
+ </td>
+<td>- </td>
+</tr>
+<tr><td>16 </td>
+<td><code>ChannelSelector</code>
+ </td>
+<td>- </td>
+</tr>
+<tr><td>17 </td>
+<td><code>OutputChannelSelector</code>
+ </td>
+<td>- </td>
+</tr>
+<tr><td>18 </td>
+<td><code>MPEStartChannel</code>
+ </td>
+<td>- </td>
+</tr>
+<tr><td>19 </td>
+<td><code>MPEEndChannel</code>
+ </td>
+<td>- </td>
+</tr>
+<tr><td>20 </td>
+<td><code>Hold</code>
+ </td>
+<td>- </td>
+</tr>
+<tr><td>21 </td>
+<td><code>NoteLabel</code>
+ </td>
+<td>- </td>
+</tr>
+<tr><td>22 </td>
+<td><code>VeloLabel</code>
+ </td>
+<td>- </td>
+</tr>
+<tr><td>23 </td>
+<td><code>LengthLabel</code>
+ </td>
+<td>- </td>
+</tr>
+<tr><td>24 </td>
+<td><code>MIDILabel1</code>
+ </td>
+<td>- </td>
+</tr>
+<tr><td>25 </td>
+<td><code>MIDILabel2</code>
+ </td>
+<td>- </td>
+</tr>
+<tr><td>26 </td>
+<td><code>MIDILabel3</code>
+ </td>
+<td>- </td>
+</tr>
+<tr><td>27 </td>
+<td><code>MIDILabel4</code>
+ </td>
+<td>- </td>
+</tr>
+</table>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="hise-modules/midi-processors/list/ccswapper.html">CC Swapper</a>
+</span>
+
+<p class="content-footer-metadata"><br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

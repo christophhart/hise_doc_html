@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="keyboard"><b>Keyboard</b>
+</h1>
+<p class="comment">A highly customizable virtual MIDI keyboard.</p>
+<img src="images/floating-tiles/keyboard.png"></img>
+<table><thead><td><b>ID </b>
+</td>
+<td><b>Default Value </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><code>Font</code>
+ </td>
+<td>Oxygen Bold </td>
+<td>no description </td>
+</tr>
+<tr><td><code>FontSize</code>
+ </td>
+<td>14.0 </td>
+<td>no description </td>
+</tr>
+<tr><td><code>CustomGraphics</code>
+ </td>
+<td><code>false</code>
+ </td>
+<td>if true, it looks in {IMAGE_FOLDER}/keyboard for files called up_0.png ... to up_11.png and down_0.png to down_11.png. The files have to be present to render the whole keyboard. </td>
+</tr>
+<tr><td><code>KeyWidth</code>
+ </td>
+<td>14 </td>
+<td>set the width of the keys </td>
+</tr>
+<tr><td><code>LowKey</code>
+ </td>
+<td>9 </td>
+<td>the lowest visible key as MIDI note number (C2 = 48). </td>
+</tr>
+<tr><td><code>HiKey</code>
+ </td>
+<td>127 </td>
+<td>set the highest key to display - no need to change that actually :) </td>
+</tr>
+<tr><td><code>BlackKeyRatio</code>
+ </td>
+<td>0.7 </td>
+<td>change the relative height of the black keys </td>
+</tr>
+<tr><td><code>DefaultAppearance</code>
+ </td>
+<td><code>true</code>
+ </td>
+<td>set this to false to use custom graphics </td>
+</tr>
+<tr><td><code>DisplayOctaveNumber</code>
+ </td>
+<td><code>false</code>
+ </td>
+<td>Show the OctaveNumbers C-2 - C7 on each C key </td>
+</tr>
+<tr><td><code>ToggleMode</code>
+ </td>
+<td><code>false</code>
+ </td>
+<td>no description </td>
+</tr>
+<tr><td><code>MidiChannel</code>
+ </td>
+<td>1 </td>
+<td>Connect the keyboard to a MidiChannel, defaults to 1 </td>
+</tr>
+<tr><td><code>MPEKeyboard</code>
+ </td>
+<td><code>false</code>
+ </td>
+<td>if the MPE mode is enabled, this keyboard will show a MPE style keyboard with multi touch support. </td>
+</tr>
+<tr><td><code>MPEStartChannel</code>
+ </td>
+<td>2 </td>
+<td>Set the MPE Start Channel </td>
+</tr>
+<tr><td><code>MPEEndChannel</code>
+ </td>
+<td>16 </td>
+<td>Set the MPE End Channel </td>
+</tr>
+<tr><td><code>UseVectorGraphics</code>
+ </td>
+<td><code>true</code>
+ </td>
+<td>Toggle between the (old) filmstrip and the new vector based keyboard </td>
+</tr>
+<tr><td><code>UseFlatStyle</code>
+ </td>
+<td><code>false</code>
+ </td>
+<td>If VectorGraphics are activated you can change this value for a flat keyboard </td>
+</tr>
+</table>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="ui-components/floating-tiles/plugin/midioverlaypanel.html">MidiOverlayPanel</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="tools-menu"><b>Tools Menu</b>
+</h1>
+<p>The tools menu contains commands that perform useful tasks during development. It is loosely categorised into these sections:</p>
+<ul><li>Sample Management</li>
+<li>Scripting Tools</li>
+<li>License Management</li>
+</ul>
+<h3 id="recompile-all-scripts"><b>Recompile all scripts</b>
+</h3>
+<p><b>Shortcut:</b>
+ <code>shift + F5</code>
+<br></p>
+<h3 id="check-javascript-objects-for-cyclic-references"><b>Check Javascript objects for cyclic references</b>
+</h3>
+<h3 id="show-svg-to-path-converter"><b>Show SVG to Path Converter</b>
+</h3>
+<h3 id="show-broadcaster-wizard"><b>Show Broadcaster Wizard</b>
+</h3>
+<h3 id="apply-sample-map-properties-to-sample-files"><b>Apply sample map properties to sample files</b>
+</h3>
+<p>This function will render audio related samplemap properties into the sample files and update the samplemap. This allows a <b>destructive</b>
+ editing step for all static properties that can be baked into the samples. You can use this to:</p>
+<ul><li>trim the samples to their actual length</li>
+<li>bake in loop crossfades</li>
+<li>apply one of the envelopes (pitch, volume or low pass). </li>
+</ul>
+<p>Doing this increases the performance of the sample playback a little bit, and trimming the samples will reduce the file size / loading times (HLAC monoliths will encode the entire sample file). So unless you are planning to change these properties dynamically (which is rather unusual), this might be a useful step in the predistribution stage.</p>
+<p class="comment">This is a destructive operation on sensitive material (usually sample files are not checked into a version control system), so <b>make sure to make a manual copy of the original files before proceeding!</b>
+ In addition to any manual backup, there is an automatic backup that is being made before every step, but there might be edge cases that might result in total data loss.</p>
+<p>If you select this function in the menu bar, you'll see this dialog:</p>
+<img src="images/custom/applysamplemapproperties.png"></img>
+<p>Select the samplemap you want to "render" and then choose a suffix for the backup folder. This will create a folder in your project directory under</p>
+<pre><code class="language-javascript line-numbers">%PROJECT_ROOT%/SampleBackups/%SAMPLEMAP%%SUFFIX%/</code></pre>
+<p>which will contain the samplemap in the state before this process as well with all samples that are about to be processed. </p>
+<p class="comment">If the folder already exists, the process will not render the samplemap again, but reverse the process and overwrite all files with the content from said backup folder. This will be indicated by the status message saying <b>"Press OK to restore the backup from ..."</b>
+</p>
+<p>Now you can select all properties that you want to render. You can choose to render all properties at once or just a few selected ones (use the preset box to the right to quickly setup common options).</p>
+<p>Press OK and it will make a backup of the samplemap and all audio files, and then process the properties to the samples in the sample folder</p>
+<p>There are a few things to know about the process:</p>
+<ul><li>if the samplemap that you want to render is already encoded as HLAC monolith, it will discard the monolith and resort to the original audio files, so make sure they are still there. You will then have to reencode the HLAC monolith after this step.</li>
+<li>you can't run this process with samplemaps that uses multiple references to a single sample file because of error system overload.</li>
+<li>you can't run this process with samplemaps that reference samples outside the sample folder which is a bad practice anyway and should be avoided at all cost!</li>
+</ul>
+<h3 id="import-archived-samples"><b>Import archived samples</b>
+</h3>
+<p>Imports the monolith samples from a <b>.hrx</b>
+ Sample resource file.</p>
+<p>This shows a similar dialog as the end user will see when loading the plugin for the first time. You can point to the <code>.hr1</code>
+ file and it will extract the samples into the <b>Samples</b>
+ subfolder of your project.</p>
+<h3 id="force-duplicate-search-in-pool-when-loading-samples"><b>Force duplicate search in pool when loading samples</b>
+</h3>
+<h3 id="convert-all-samples-to-monolith-+-samplemap"><b>Convert all samples to Monolith + Samplemap</b>
+</h3>
+<h3 id="update-samplemap-ids-based-on-file-names"><b>Update SampleMap Ids based on file names</b>
+</h3>
+<h3 id="convert-sfz-files-to-samplemaps"><b>Convert SFZ files to SampleMaps</b>
+</h3>
+<h3 id="show-wavetable-creator"><b>Show Wavetable Creator</b>
+</h3>
+<h3 id="export-wavetables-to-monolith"><b>Export Wavetables to monolith</b>
+</h3>
+<p>This will grab all .hwt files in the AudioFiles folder and write it into one big chunk that will be saved in the Samples folder. Using this will improve the distributability of the Wavetables, as you can simply copy them like your HLAC files (If you're exporting the samples as .HR1, the monolith file will also be part of that archive).</p>
+<p class="comment">Be aware that as soon as you've create a Wavetable monolith file, it will use its content to display the list of available wavetables, so if you keep changing the original wavetables, it will not reflect those changes.</p>
+<h3 id="show-dsp-network-dll-info"><b>Show DSP Network DLL info</b>
+</h3>
+<h3 id="record-one-second-audio-file"><b>Record one second audio file</b>
+</h3>
+<p>Records <b>seven</b>
+ seconds of HISE output and saves it into a .wav file. After the time passed, a filebrowser with the file will show up. This makes it easy to analyse the output with external tools.<br></p>
+<h3 id="simulate-varying-audio-buffer-size"><b>Simulate varying audio buffer size</b>
+</h3>
+<h3 id="create-c++-template-for-rnbo-patch"><b>Create C++ template for RNBO patch</b>
+</h3>
+<h3 id="create-c++-third-party-node-template"><b>Create C++ third party node template</b>
+</h3>
+<h3 id="create-rsa-key-pair"><b>Create RSA Key pair</b>
+</h3>
+<h3 id="create-dummy-license-file"><b>Create Dummy License File</b>
+</h3>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="working-with-hise/menu-reference/view/index.html">View</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>18.03.2019<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

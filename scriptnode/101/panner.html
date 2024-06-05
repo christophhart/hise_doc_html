@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="chapter-3:-panner"><b>Chapter 3: Panner</b>
+</h1>
+<p><br></p>
+<h3 id="introduction"><b>Introduction</b>
+</h3>
+<p>In this tutorial we'll create a stereo panner effect. This example will demonstrate how to split the signal into Left & Right channels.For this purpose we'll need a parameter which will control the gain of both L/R channels in an opposite way : increasing the Left channel's gain will decrease the Right channel's and vice-versa.</p>
+<p><b>The nodes we'll use :</b>
+ </p>
+<ul><li>1x <a href="scriptnode/list/container/multi.html">container.multi</a>
+</li>
+<li>1x <a href="scriptnode/list/control/xfader.html">control.xfader</a>
+</li>
+<li>2x <a href="scriptnode/list/core/gain.html">core.gain</a>
+</li>
+</ul>
+<h3 id="signal-flow"><b>Signal Flow</b>
+</h3>
+<p>Let's start a new network and add the <code>container.multi</code>
+ node and rename it "ChannelSplit" : </p>
+<p class="comment">Reminder : to rename nodes : right click on the title bar</p>
+<img src="https://user-images.githubusercontent.com/84969276/142730197-73ac1486-9a4f-47e2-a231-fe8507402463.png"></img>
+<p>Now, add a gain node and duplicate it with Ctrl/Cmd + D : </p>
+<img src="https://user-images.githubusercontent.com/84969276/142757342-8c7940c4-98e6-4daa-be2f-54a2fa6d6cc2.png"></img>
+<p>See the cables which connect every nodes ? this is your signal flow. You can easily see whether you're working with mono or stereo signals.</p>
+<img src="https://user-images.githubusercontent.com/84969276/142757373-dc8f9479-5079-4f4f-b4d8-52f44e527aee.png"></img>
+<h3 id="connect-everything"><b>Connect everything</b>
+</h3>
+<p>In order to control both gain the way we want, we'll add now the <code>control.xfader</code>
+ before the <code>container.multi</code>
+. The default crossfading curves are linear. Since we're dealing with decibel values, we have to set the curves to RMS. Just use the dedicated menu :</p>
+<img src="https://user-images.githubusercontent.com/84969276/142757400-c009bba1-1601-4721-a644-4c9ba93b21f2.png"></img>
+<p>Then create a <code>Pan</code>
+ parameter and connect everything like on this picture : </p>
+<img src="https://user-images.githubusercontent.com/84969276/142757418-e9c32ed1-14c5-4f3e-bf4f-396c444e0ebd.png"></img>
+<p>Now our <code>Pan</code>
+ parameter controls the crossfade between two values. The both target icons labelled "1" & "2" are modulation sources which are controlled by the <code>control.xfader</code>
+.</p>
+<p>Even if we could leave everything like this, we can do one more thing : here our <code>Pan</code>
+ values range is set to (0...1). Since we're making a Panner effect, it would be more logical to set it to (-1...1).To do so, open the range editor of the <code>Pan</code>
+ parameter like we did in the previous tutorial : </p>
+<img src="https://user-images.githubusercontent.com/84969276/142757445-12d66873-db3e-4b09-b876-9da9c156b8fb.png"></img>
+<p>And don't forget to set the same values to your GUI's Pan knob :</p>
+<img src="https://user-images.githubusercontent.com/84969276/142757499-b1308b37-75b4-48a3-bf9c-2cabaad6d45c.png"></img>
+<p>And voila again. Now you know how to split the left and right channels.</p>
+<pre><code class="language-javascript line-numbers">HiseSnippet 1321.3oc6X0rbaaCDFTRPwxIoMYZe.zQmYRzPJqDaO8Pc7OJUSic3X55o2x.SBYgQj.bHghsZmduuUsOR8MncW9iHnirislIoWhNYr6hc+v9yG.sahxmmlpRHVcNcdLmX8Hp2bodx9SXBIYzADquk5o4IbUWWlTxSH6MOlklxCHVVMeCZjUmVjre+yOtGKjI84UhHjyTBe9aEQBckT2c+YQX3PV.+TQjg0C1cjuRtuJTMC.TSpMIl4OkcA+XFZVCJwp8gABsJwSyz7ThUq8TAy8lntTla+YhTw4gbbgCwCbTt3gpv.DwnTx9SDgAtkG7TB3E2pzPy7zv2SORDHVHuJc7jLEcq1gY9vpQc30rF7bLgmsA7VBjrLfTqbH8TpmehHVWoAwyCoijP8YLCR6lPI2Vh0eS2WAFH08hXS4CSfEK1vF86a+7tN8se1OLdlzWKTxtJ4wJM+cxMd15+95cV+OVu60UMd7R0ggIQEFxSVpZrRmbaabC4rny4IOu6GXgy3KLDN90yozaNmZVx8yO0FFpjijB86h4xapQfTjpv7eAp.S0YY+uoH66EJBfo.Ajj6PmJUmCiEjLHa10S9kQGvzrRGA9DhSLOQKvif0A7O.SE4k0NzC3oS0p3LaihURDAVctCg8ppPNZ24UKNXWM+JvGqQKlYipMl9WQhffPtqJUfk.SbGWlMFAAZ8hsO7JXNLAFAg1FTNEkCSweTGJLanBlExz0GXPVhBEX3L6RwVQI.i4lrHWeJp0caJ51Gxuqv8oTWg1exxwaikfWnF+4FuEbROld33wbecEXaQG9q2JAz8FJ2Uxn0K5Kg3i.wnUYYjP+IsZfONgCcS7SUtgr4ajxhhC4m.n84cOOT4O0S7a7OlknnubOzhM7mfwJLcUHSZemInctUBZxIpYZg7hiX5DALGROdVjGbskOe+BzAxrZfbJ4qsw0X2hGWFjs3egeEJcv0VEJcJUVQGQNlquTkLMqXT72PoHm++77KcGeE40ggpKQNDQQqKTBxj4pBmGOQIE9nnbKJA5qiTyPBmbzBtWE.m+1CY9PdZtKSOAGJP5TnqimzyeQ22RK5YMVPB0sjwHMOYhts7l87DA.inLpN7d8lnd730HO9TL.qQuZLCo8pAlmjAFnH2qPa8f+IBTKChXPRwJXdtQ9icf5nAzOKmXuIse1.ooosQ1CdoET5IG4A0uKQxiSYIWv0Y92TPwsARdVyZZ8kfCQji7qsou8vgmRbM4bamwhRNRHKB3ZzW3Xa2ylbD6pEX.WCuVKFGhv2vX2CrI6myfcrcbdEzTOkeYd5jX8czW1aP+982xdqsFr8.mMs2o9Q3th3GPOYza9o+2frQACIqJWAE6pfmGIyH6.qwB4Cn4hd8LsJBnEJojqtBXQ8jXzb9XJN.wC8hCg21diiKQyB0h6WK5RmEJZJpEmGBwIg26BLMeuhPiZYrlFYr1e9KW4mlrdiqmxWNPtdoaMJFy6GPPC1z1wdSvfc1Y6A6rksSw6m8hTJ8DfKubVtMsO5cxW9zxinmvS45b2Vy4DSZKy1vxQuu1X70Fi5Lg2rl5bjn+yeRe0YoMbVVBc4hqCsu8KFZUdwvhavqcyPIi6mhct1IH6UnlW.+H5nzyPs9rvRjAugYU9xquHulKh4mndewaWvCzZYRfzoL6euQG5Q35tNkeNYdRA9XMw688wG6+BXRX46o+JrmMWg8LXE1yKWg87pUXOasB6Y6acO3+omBlHrsFD3dXVykk0gRF7cBYejC4+.r0rCQC</code></pre>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scriptnode/101/drywet.html">Chapter 3: Dry / Wet FX</a>
+</span>
+
+<p class="content-footer-metadata">Matt_SF<br>21.11.2021<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

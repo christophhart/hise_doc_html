@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="networktest"><b>NetworkTest</b>
+</h1>
+<p><br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="addruntimefunction"><b>addRuntimeFunction</b>
+</h2>
+<p class="comment">Sets a function that will be executed at the given time to simulate live user input.</p>
+<pre><code class="language-javascript line-numbers">NetworkTest.addRuntimeFunction(var f, int timestamp)</code></pre>
+<p><br><br></p>
+<h2 id="checkcompilehashcodes"><b>checkCompileHashCodes</b>
+</h2>
+<p class="comment">Checks whether the hash code of all compiled nodes match their network file.</p>
+<pre><code class="language-javascript line-numbers">NetworkTest.checkCompileHashCodes()</code></pre>
+<p><br><br></p>
+<h2 id="createasciidiff"><b>createAsciiDiff</b>
+</h2>
+<p class="comment">Creates a ASCII diff with 'X' as error when the datas don't match.</p>
+<pre><code class="language-javascript line-numbers">NetworkTest.createAsciiDiff(var data1, var data2, int numLines)</code></pre>
+<p><br><br></p>
+<h2 id="createbuffercontentasasciiart"><b>createBufferContentAsAsciiArt</b>
+</h2>
+<p class="comment">Creates a string that vaguely represents the buffer data content.</p>
+<pre><code class="language-javascript line-numbers">NetworkTest.createBufferContentAsAsciiArt(var buffer, int numLines)</code></pre>
+<p><br><br></p>
+<h2 id="dumpnetworkasxml"><b>dumpNetworkAsXml</b>
+</h2>
+<p class="comment">Creates a XML representation of the current network.</p>
+<pre><code class="language-javascript line-numbers">NetworkTest.dumpNetworkAsXml()</code></pre>
+<p><br><br></p>
+<h2 id="expectequals"><b>expectEquals</b>
+</h2>
+<p class="comment">Compares the two data types and returns a error message if they don't match.</p>
+<pre><code class="language-javascript line-numbers">NetworkTest.expectEquals(var data1, var data2, float errorDb)</code></pre>
+<p><br><br></p>
+<h2 id="getdllinfo"><b>getDllInfo</b>
+</h2>
+<p class="comment">Returns an object containing the information about the project dll.</p>
+<pre><code class="language-javascript line-numbers">NetworkTest.getDllInfo()</code></pre>
+<p><br><br></p>
+<h2 id="getlasttestexception"><b>getLastTestException</b>
+</h2>
+<p class="comment">Returns the exception that was caused by the last test run (or empty if fine).</p>
+<pre><code class="language-javascript line-numbers">NetworkTest.getLastTestException()</code></pre>
+<p><br><br></p>
+<h2 id="getlistofallcompileablenodes"><b>getListOfAllCompileableNodes</b>
+</h2>
+<p class="comment">Returns the list of all nodes that can be compiled.</p>
+<pre><code class="language-javascript line-numbers">NetworkTest.getListOfAllCompileableNodes()</code></pre>
+<p><br><br></p>
+<h2 id="getlistofcompilednodes"><b>getListOfCompiledNodes</b>
+</h2>
+<p class="comment">Returns the list of all compiled nodes.</p>
+<pre><code class="language-javascript line-numbers">NetworkTest.getListOfCompiledNodes()</code></pre>
+<p><br><br></p>
+<h2 id="runtest"><b>runTest</b>
+</h2>
+<p class="comment">runs the test and returns the buffer.</p>
+<pre><code class="language-javascript line-numbers">NetworkTest.runTest()</code></pre>
+<p><br><br></p>
+<h2 id="setprocessspecs"><b>setProcessSpecs</b>
+</h2>
+<p class="comment">Set the processing specifications for the test run.</p>
+<pre><code class="language-javascript line-numbers">NetworkTest.setProcessSpecs(int numChannels, double sampleRate, int blockSize)</code></pre>
+<p><br><br></p>
+<h2 id="settestproperty"><b>setTestProperty</b>
+</h2>
+<p class="comment">Sets a test property.</p>
+<pre><code class="language-javascript line-numbers">NetworkTest.setTestProperty(String id, var value)</code></pre>
+<p><br><br></p>
+<h2 id="setwaitingtime"><b>setWaitingTime</b>
+</h2>
+<p class="comment">Sets a time to wait between calling prepare and processing the data.</p>
+<pre><code class="language-javascript line-numbers">NetworkTest.setWaitingTime(int timeToWaitMs)</code></pre>
+<p><br><br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/neuralnetwork/index.html">NeuralNetwork</a>
+</span>
+
+<p class="content-footer-metadata"><br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

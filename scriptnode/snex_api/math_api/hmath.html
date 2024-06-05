@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="hmath"><b>hmath</b>
+</h1>
+<p>This class holds all math functions available in SNEX.<br> </p>
+<h2 id="static-functions"><b>Static functions</b>
+</h2>
+<h3 id="sign"><b>sign</b>
+</h3>
+<pre><code class="language-clike line-numbers">double sign(double value)</code></pre>
+<p>Calculates the sign of a number.<br> </p>
+<h3 id="abs"><b>abs</b>
+</h3>
+<pre><code class="language-clike line-numbers">double abs(double value)</code></pre>
+<p>Calculates the absolute value of a number.<br> </p>
+<h3 id="round"><b>round</b>
+</h3>
+<pre><code class="language-clike line-numbers">double round(double value)</code></pre>
+<p>Rounds the value to the next multiple of 1.<br> </p>
+<h3 id="range"><b>range</b>
+</h3>
+<pre><code class="language-clike line-numbers">double range(double value, double lower, double upper)</code></pre>
+<p>Clamps the value between a lower and upper limit.<br> </p>
+<h3 id="min"><b>min</b>
+</h3>
+<pre><code class="language-clike line-numbers">double min(double value1, double value2)</code></pre>
+<p>Returns the smaller value.<br> </p>
+<h3 id="max"><b>max</b>
+</h3>
+<pre><code class="language-clike line-numbers">double max(double value1, double value2)</code></pre>
+<p>Returns the bigger value.<br> </p>
+<h3 id="randomdouble"><b>randomDouble</b>
+</h3>
+<pre><code class="language-clike line-numbers">double randomDouble()</code></pre>
+<p>Generates a double precision random number.<br> </p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scriptnode/snex_api/node_types/index.html">SNEX Node Types</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

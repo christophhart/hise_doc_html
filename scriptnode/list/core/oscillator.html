@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="oscillator"><b>oscillator</b>
+</h1>
+<p class="comment"><code>core.oscillator</code>
+</p>
+<img src="images/sn_screen_oscillator.png"></img>
+<p>A polyphonic tone generator with multiple waveforms.</p>
+<h2 id="parameters"><b>Parameters</b>
+</h2>
+<table><thead><td><b>ID </b>
+</td>
+<td><b>Range </b>
+</td>
+<td><b>Default </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>Mode </td>
+<td>0.00 - 4.00 </td>
+<td>0.00 </td>
+<td>Selects the waveform type. </td>
+</tr>
+<tr><td>Frequency </td>
+<td>20.00 - 20000.00 </td>
+<td>220.00 </td>
+<td>Sets the frequency of the oscillator in Hertz (Hz). </td>
+</tr>
+<tr><td>Freq Ratio </td>
+<td>1.00 - 16.00 </td>
+<td>1.00 </td>
+<td>no description. </td>
+</tr>
+<tr><td>Gate </td>
+<td>0.00 - 1.00 </td>
+<td>1.00 </td>
+<td>Controls the gate state of the oscillator. When the gate is on (value 1.0), the oscillator is active and produces sound. When the gate is off (value 0.0), the </td>
+</tr>
+<tr><td>Phase </td>
+<td>0.00 - 1.00 </td>
+<td>0.00 </td>
+<td>Sets the starting phase of the waveform. The phase value ranges from 0.0 to 1.0, representing a full cycle of the waveform. </td>
+</tr>
+<tr><td>Gain </td>
+<td>0.00 - 1.00 </td>
+<td>1.00 </td>
+<td>Adjusts the output gain of the oscillator. This parameter controls the amplitude of the generated waveform, ranging from 0.0 (silent) to 1.0 (full volume). </td>
+</tr>
+</table>
+<p>The <code>oscillator</code>
+ node is a versatile polyphonic tone generator that produces various waveforms. It is suitable for a wide range of audio synthesis applications, from creating basic tones to complex sound design. The node supports multiple voices, making it suitable for polyphonic synthesis.</p>
+<p>There are 5 waveforms that can be generated with this node:</p>
+<ul><li>Sine</li>
+<li>Triangle</li>
+<li>Saw</li>
+<li>Square</li>
+<li>Noise</li>
+</ul>
+<p class="comment">The waveforms with a rich harmonic spectrum (triangle, saw and square) are using the PolyBLEP antialiasing algorithm to reduce aliasing artifacts. However this means they are not "mathematically" correct so for LFO purposes you might want to look at more naive tone generators like the <a href="scriptnode/list/core/ramp.html">ramp</a>
+.</p>
+<p>When inserted in a MIDI processing context, the oscillator responds to MIDI events (note on and note off messages), to control its gate state and frequency. If you want to ignore the frequency calculated by the MIDI input, you might have to put it in a <a href="scriptnode/list/container/no_midi.html">no_midi</a>
+ container.</p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scriptnode/list/core/phasor_fm.html">phasor_fm</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>30.05.2024<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

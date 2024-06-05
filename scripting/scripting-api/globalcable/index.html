@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="global-cable"><b>Global Cable</b>
+</h1>
+<p><br>Global cables can be used in order to send values across HISE projects and even from / to OSC sources. If want to attach scripting callbacks to value changes of a global cable or send values from a script, this object will come in handy.</p>
+<p>In order to use it, just create a reference to the global routing manager using <code>Engine.getGlobalRoutingManager()</code>
+, then call <code>GlobalRoutingManager.getCable(id)</code>
+ with a unique ID for the given cable. Then you can send values through it, attach synchronous and asynchronous callbacks, add some range conversion tools etc.</p>
+<h3 id="using-a-cable-as-osc-address"><b>Using a cable as OSC address</b>
+</h3>
+<p>If you want to use a cable as OSC address that can send and receive values from external applications, you just need to prepend <code>/</code>
+ before the id, so any cable that has an ID like this:</p>
+<pre><code class="language-javascript line-numbers">/some_osc_id</code></pre>
+<p>will automatically be used as OSC address as soon as you start using the global routing system as OSC server.<br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="connecttoglobalmodulator"><b>connectToGlobalModulator</b>
+</h2>
+<p class="comment">Connects the cable to a global LFO modulation output as source.</p>
+<pre><code class="language-javascript line-numbers">GlobalCable.connectToGlobalModulator( String lfoId, bool addToMod)</code></pre>
+<p><br><br></p>
+<h2 id="connecttomacrocontrol"><b>connectToMacroControl</b>
+</h2>
+<p class="comment">Connects the cable to a macro control.</p>
+<pre><code class="language-javascript line-numbers">GlobalCable.connectToMacroControl(int macroIndex, bool macroIsTarget, bool filterRepetitions)</code></pre>
+<p><br>This function connects the macro control system and the global routing system by letting you send / receive value changes from macro controls. In order to use it, just call this method to assign any cable to a macro index. </p>
+<table><thead><td><b>Parameter </b>
+</td>
+<td><b>Values </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><code>macroIndex</code>
+ </td>
+<td>int from 0 to 7 </td>
+<td>the macro control that you want to connect to the global cable </td>
+</tr>
+<tr><td><code>macroIsTarget</code>
+ </td>
+<td>bool </td>
+<td>whether the macro control should control the global cable or vice versa (obviously this can't be bidirectional to prevent feedback loops) </td>
+</tr>
+<tr><td><code>filterRepetitions</code>
+ </td>
+<td>bool </td>
+<td>whether the cable should filter out repetitions of the same value. This might vastly decrease the CPU usage if you're modulating the cable value and don't want to send a new macro value each block. </td>
+</tr>
+</table>
+<p><br></p>
+<h2 id="connecttomoduleparameter"><b>connectToModuleParameter</b>
+</h2>
+<p class="comment">Connects the cable to a module parameter using a JSON object for defining the range.</p>
+<pre><code class="language-javascript line-numbers">GlobalCable.connectToModuleParameter( String processorId, var parameterIndexOrId, var targetObject)</code></pre>
+<p><br><br></p>
+<h2 id="getvalue"><b>getValue</b>
+</h2>
+<p class="comment">Returns the value (converted to the input range).</p>
+<pre><code class="language-javascript line-numbers">GlobalCable.getValue()</code></pre>
+<p><br>This function will return the current value of the cable after converting it using the range you defined with one of the range methods. If you need the normalised value, check out the <code>getValueNormalised()</code>
+ function.<br></p>
+<h2 id="getvaluenormalised"><b>getValueNormalised</b>
+</h2>
+<p class="comment">Returns the normalised value between 0...1</p>
+<pre><code class="language-javascript line-numbers">GlobalCable.getValueNormalised()</code></pre>
+<p><br><br></p>
+<h2 id="registercallback"><b>registerCallback</b>
+</h2>
+<p class="comment">Registers a function that will be executed whenever a value is sent through the cable.</p>
+<pre><code class="language-javascript line-numbers">GlobalCable.registerCallback(var callbackFunction, var synchronous)</code></pre>
+<p><br>This function will register a callable object (either a inline function, a function or a broadcaster) to the cable. It expects a single argument that will contain the value of the cable. You can either register it as synchronous callback or as asynchronous callback. The latter will filter out repetitions and will be called on the UI thread.</p>
+<p>Be aware that if you've set a range then the value that will be passed into the callback will be converted from the normalised 0...1 range to whatever range you need.<br></p>
+<h2 id="setrange"><b>setRange</b>
+</h2>
+<p class="comment">Set the input range using a min and max value (no steps / no skew factor).</p>
+<pre><code class="language-javascript line-numbers">GlobalCable.setRange(double min, double max)</code></pre>
+<p><br><br></p>
+<h2 id="setrangewithskew"><b>setRangeWithSkew</b>
+</h2>
+<p class="comment">Set the input range using a min and max value and a mid point for skewing the range.</p>
+<pre><code class="language-javascript line-numbers">GlobalCable.setRangeWithSkew(double min, double max, double midPoint)</code></pre>
+<p><br><br></p>
+<h2 id="setrangewithstep"><b>setRangeWithStep</b>
+</h2>
+<p class="comment">Set the input range using a min and max value as well as a step size.</p>
+<pre><code class="language-javascript line-numbers">GlobalCable.setRangeWithStep(double min, double max, double stepSize)</code></pre>
+<p><br><br></p>
+<h2 id="setvalue"><b>setValue</b>
+</h2>
+<p class="comment">Sends the value to all targets (after converting it from the input range.</p>
+<pre><code class="language-javascript line-numbers">GlobalCable.setValue(double inputWithinRange)</code></pre>
+<p><br>This will convert the value using the supplied range and send it through the cable.</p>
+<p class="comment">Be aware that calling this method will not trigger any scripting callbacks attached to itself.<br></p>
+<h2 id="setvaluenormalised"><b>setValueNormalised</b>
+</h2>
+<p class="comment">Sends the normalised value to all targets.</p>
+<pre><code class="language-javascript line-numbers">GlobalCable.setValueNormalised(double normalisedInput)</code></pre>
+<p><br><br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/globalroutingmanager/index.html">GlobalRoutingManager</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>11.09.2022<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

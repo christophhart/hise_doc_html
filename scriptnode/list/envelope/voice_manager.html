@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="voice_manager"><b>voice_manager</b>
+</h1>
+<p class="comment"><code>envelope.voice_manager</code>
+</p>
+<img src="images/sn_screen_voice_manager.png"></img>
+<p>A node that sends a voice reset message when the <code>Value</code>
+ parameter is less than 0.5.</p>
+<h2 id="parameters"><b>Parameters</b>
+</h2>
+<table><thead><td><b>ID </b>
+</td>
+<td><b>Range </b>
+</td>
+<td><b>Default </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>Kill Voice </td>
+<td>0.00 - 1.00 </td>
+<td>1.00 </td>
+<td>Triggers a voice reset when the value is less than 0.5. </td>
+</tr>
+</table>
+<p>The <code>voice_manager</code>
+ node is designed to manage and reset voices of a HISE sound generator. It sends a voice reset message to a <a href="hise-modules/modulators/envelopes/list/scriptnodevoicekiller.html">Scriptnode Voice Killer</a>
+ when the <code>Value</code>
+ parameter is less than 0.5. </p>
+<p>For optimal usage, it is recommended to control the <code>Kill Voice</code>
+ parameter using the gate output of an envelope node. This ensures that voice resets are synchronized with the envelope's gate state, providing efficient voice management in a musical context.</p>
+<h3 id="alternative"><b>Alternative</b>
+</h3>
+<p>The other node that provides the ability of sending voice reset messages is the <a href="scriptnode/list/envelope/silent_killer.html">silent_killer</a>
+ node. That node simply watches the signal and assumes that the voice is done when it falls below a certain threshold. Since this is not mathematically exact and a rather brute force way of handling the voice management, it's recommended to start using <code>voice_manager</code>
+ node and only resort to the <code>silent_killer</code>
+ node if needed.</p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scriptnode/list/routing/index.html">routing</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>30.05.2024<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

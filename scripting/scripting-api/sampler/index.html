@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="sampler"><b>Sampler</b>
+</h1>
+<p>This object can be used to access sampler-specific properties, like loading samplemaps, changing sample properties, setting the current RR index, etc.</p>
+<p class="comment">If you have a generic reference obtained by calling <code>Synth.getChildSynth()</code>
+, you can turn it into a Sampler reference with <a href="scripting/scripting-api/childsynth/index.html#assampler">ChildSynth.asSampler()</a>
+:</p>
+<pre><code class="language-javascript line-numbers">const var genericReference = Synth.getChildSynth("MySampler");
+
+genericReference.asSampler().loadSampleMap("My SampleMap");</code></pre>
+<p>Be aware that most of the functions that change samples will be executed asynchronously - if you want to keep your UI updated, take a look at <a href="scripting/scripting-api/scriptpanel/index.html#setloadingcallback">ScriptPanel.setLoadingCallback()</a>
+<br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="clearsamplemap"><b>clearSampleMap</b>
+</h2>
+<p class="comment">Clears the current samplemap.</p>
+<pre><code class="language-javascript line-numbers">Sampler.clearSampleMap()</code></pre>
+<p><br><br></p>
+<h2 id="createlistfromguiselection"><b>createListFromGUISelection</b>
+</h2>
+<p class="comment">Returns a list of the sounds selected in the samplemap.</p>
+<pre><code class="language-javascript line-numbers">Sampler.createListFromGUISelection()</code></pre>
+<p><br><br></p>
+<h2 id="createlistfromscriptselection"><b>createListFromScriptSelection</b>
+</h2>
+<p class="comment">Returns a list of the sounds selected by the selectSounds() method.</p>
+<pre><code class="language-javascript line-numbers">Sampler.createListFromScriptSelection()</code></pre>
+<p><br><br></p>
+<h2 id="createselection"><b>createSelection</b>
+</h2>
+<p class="comment">Returns an array with all samples that match this regex.</p>
+<pre><code class="language-javascript line-numbers">Sampler.createSelection(String regex)</code></pre>
+<p><br><br></p>
+<h2 id="createselectionfromindexes"><b>createSelectionFromIndexes</b>
+</h2>
+<p class="comment">Returns an array with all samples from the index data (can be either int or array of int, -1 selects all.).</p>
+<pre><code class="language-javascript line-numbers">Sampler.createSelectionFromIndexes(var indexData)</code></pre>
+<p><br><br></p>
+<h2 id="createselectionwithfilter"><b>createSelectionWithFilter</b>
+</h2>
+<p class="comment">Returns an array with all samples that match the filter function.</p>
+<pre><code class="language-javascript line-numbers">Sampler.createSelectionWithFilter(var filterFunction)</code></pre>
+<p><br><br></p>
+<h2 id="enableroundrobin"><b>enableRoundRobin</b>
+</h2>
+<p class="comment">Enables / Disables the automatic round robin group start logic (works only on samplers).</p>
+<pre><code class="language-javascript line-numbers">Sampler.enableRoundRobin(bool shouldUseRoundRobin)</code></pre>
+<p><br><br></p>
+<h2 id="getactiverrgroup"><b>getActiveRRGroup</b>
+</h2>
+<p class="comment">Returns the currently (single) active RR group.</p>
+<pre><code class="language-javascript line-numbers">Sampler.getActiveRRGroup()</code></pre>
+<p><br>If you have set the active group using the API call <a href="scripting/scripting-api/sampler/index.html#setactivegroupforeventid">Sampler.setActiveGroupForEventId()</a>
+, then you need to use the function <a href="scripting/scripting-api/sampler/index.html#getactiverrgroupforeventid">Sampler.getActiveGroupForEventId()</a>
+ to query the specific group for the given event ID.<br></p>
+<h2 id="getactiverrgroupforeventid"><b>getActiveRRGroupForEventId</b>
+</h2>
+<p class="comment">Returns the RR group that is associated with the event ID.</p>
+<pre><code class="language-javascript line-numbers">Sampler.getActiveRRGroupForEventId(int eventId)</code></pre>
+<p><br>This returns the group index for the given event ID. Be aware that the lifetime of this information is very short (only between calling the function <code>setActiveGroupForEventId()</code>
+ and the next audio render callback). If you call this function with a "dangling" event ID (an event ID that was already processed or discarded after the audio render callback), it will simply return the active RR group (so basically the same as <code>getActiveRRGroup()</code>
+).<br></p>
+<h2 id="getattribute"><b>getAttribute</b>
+</h2>
+<p class="comment">Gets the attribute with the given index (use the constants for clearer code).</p>
+<pre><code class="language-javascript line-numbers">Sampler.getAttribute(int index)</code></pre>
+<p><br><br></p>
+<h2 id="getattributeid"><b>getAttributeId</b>
+</h2>
+<p class="comment">Returns the ID of the attribute with the given index.</p>
+<pre><code class="language-javascript line-numbers">Sampler.getAttributeId(int index)</code></pre>
+<p><br><br></p>
+<h2 id="getattributeindex"><b>getAttributeIndex</b>
+</h2>
+<p class="comment">Returns the index of the attribute with the given ID.</p>
+<pre><code class="language-javascript line-numbers">Sampler.getAttributeIndex(String id)</code></pre>
+<p><br><br></p>
+<h2 id="getaudiowaveformcontentasbase64"><b>getAudioWaveformContentAsBase64</b>
+</h2>
+<p class="comment">Converts the user preset data of a audio waveform to a base 64 samplemap.</p>
+<pre><code class="language-javascript line-numbers">Sampler.getAudioWaveformContentAsBase64(var presetObj)</code></pre>
+<p><br><br></p>
+<h2 id="getcurrentsamplemapid"><b>getCurrentSampleMapId</b>
+</h2>
+<p class="comment">Returns the currently loaded sample map.</p>
+<pre><code class="language-javascript line-numbers">Sampler.getCurrentSampleMapId()</code></pre>
+<p><br><br></p>
+<h2 id="getmicpositionname"><b>getMicPositionName</b>
+</h2>
+<p class="comment">Returns the name of the channel with the given index (Multimic samples only.</p>
+<pre><code class="language-javascript line-numbers">Sampler.getMicPositionName(int channelIndex)</code></pre>
+<p><br><br></p>
+<h2 id="getnumactivegroups"><b>getNumActiveGroups</b>
+</h2>
+<p class="comment">Returns the number of currently active groups.</p>
+<pre><code class="language-javascript line-numbers">Sampler.getNumActiveGroups()</code></pre>
+<p><br><br></p>
+<h2 id="getnumattributes"><b>getNumAttributes</b>
+</h2>
+<p class="comment">Returns the number of attributes.</p>
+<pre><code class="language-javascript line-numbers">Sampler.getNumAttributes()</code></pre>
+<p><br><br></p>
+<h2 id="getnummicpositions"><b>getNumMicPositions</b>
+</h2>
+<p class="comment">Returns the number of mic positions.</p>
+<pre><code class="language-javascript line-numbers">Sampler.getNumMicPositions()</code></pre>
+<p><br><br></p>
+<h2 id="getnumselectedsounds"><b>getNumSelectedSounds</b>
+</h2>
+<p class="comment">Returns the amount of selected samples.</p>
+<pre><code class="language-javascript line-numbers">Sampler.getNumSelectedSounds()</code></pre>
+<p><br><br></p>
+<h2 id="getrrgroupsformessage"><b>getRRGroupsForMessage</b>
+</h2>
+<p class="comment">Returns the amount of actual RR groups for the notenumber and velocity</p>
+<pre><code class="language-javascript line-numbers">Sampler.getRRGroupsForMessage(int noteNumber, int velocity)</code></pre>
+<p><br><br></p>
+<h2 id="getsamplemapasbase64"><b>getSampleMapAsBase64</b>
+</h2>
+<p class="comment">Returns a base64 compressed string containing the entire samplemap.</p>
+<pre><code class="language-javascript line-numbers">Sampler.getSampleMapAsBase64()</code></pre>
+<p><br><br></p>
+<h2 id="getsamplemaplist"><b>getSampleMapList</b>
+</h2>
+<p class="comment">Returns an array with all available sample maps.</p>
+<pre><code class="language-javascript line-numbers">Sampler.getSampleMapList()</code></pre>
+<p><br><br></p>
+<h2 id="getsoundproperty"><b>getSoundProperty</b>
+</h2>
+<p class="comment">Returns the property of the sound with the specified index.</p>
+<pre><code class="language-javascript line-numbers">Sampler.getSoundProperty(int propertyIndex, int soundIndex)</code></pre>
+<p><br><br></p>
+<h2 id="gettimestretchoptions"><b>getTimestretchOptions</b>
+</h2>
+<p class="comment">Returns the current timestretching options as JSON object.</p>
+<pre><code class="language-javascript line-numbers">Sampler.getTimestretchOptions()</code></pre>
+<p><br><br></p>
+<h2 id="importsamples"><b>importSamples</b>
+</h2>
+<p class="comment">Loads a few samples in the current samplemap and returns a list of references to these samples.</p>
+<pre><code class="language-javascript line-numbers">Sampler.importSamples(var fileNameList, bool skipExistingSamples)</code></pre>
+<p><br><br></p>
+<h2 id="ismicpositionpurged"><b>isMicPositionPurged</b>
+</h2>
+<p class="comment">Checks if the mic position is purged.</p>
+<pre><code class="language-javascript line-numbers">Sampler.isMicPositionPurged(int micIndex)</code></pre>
+<p><br><br></p>
+<h2 id="isnotenumbermapped"><b>isNoteNumberMapped</b>
+</h2>
+<p class="comment">Checks whether the note number is mapped to any samples.</p>
+<pre><code class="language-javascript line-numbers">Sampler.isNoteNumberMapped(int noteNumber)</code></pre>
+<p><br><br></p>
+<h2 id="loadsampleforanalysis"><b>loadSampleForAnalysis</b>
+</h2>
+<p class="comment">Loads the content of the given sample into an array of VariantBuffers that can be used for analysis.</p>
+<pre><code class="language-javascript line-numbers">Sampler.loadSampleForAnalysis(int indexInSelection)</code></pre>
+<p><br><br></p>
+<h2 id="loadsamplemap"><b>loadSampleMap</b>
+</h2>
+<p class="comment">Loads a new samplemap into this sampler.</p>
+<pre><code class="language-javascript line-numbers">Sampler.loadSampleMap( String fileName)</code></pre>
+<p><br>This method will return immediately and load a new samplemap on a background thread.</p>
+<p>If you want to be notified when the sample loading has finished, you will need to create a Panel and add a PreloadingCallback using <a href="scripting/scripting-api/scriptpanel/index.html#setloadingcallback">setLoadingCallback()</a>
+<br></p>
+<h2 id="loadsamplemapfrombase64"><b>loadSampleMapFromBase64</b>
+</h2>
+<p class="comment">Loads a base64 compressed string with the samplemap.</p>
+<pre><code class="language-javascript line-numbers">Sampler.loadSampleMapFromBase64( String b64)</code></pre>
+<p><br>This will load a samplemap that was previously exported with <code>getSampleMapAsBase64()</code>
+ and is particularly useful if you want to store a custom samplemap in a user preset.<br></p>
+<h2 id="loadsamplemapfromjson"><b>loadSampleMapFromJSON</b>
+</h2>
+<p class="comment">Loads a samplemap from a list of JSON objects.</p>
+<pre><code class="language-javascript line-numbers">Sampler.loadSampleMapFromJSON(var jsonSampleMap)</code></pre>
+<p><br>This function will take an array of JSON objects describing a sample and load it as samplemap. So the days of dragging around a AudioLoop Player just for the user sample import are finally over.The data you need to pass in must have the following format:</p>
+<pre><code class="language-javascript line-numbers">[
+{
+	"FileName": "C:\\MyFileName.wav",
+	"Root": 64
+},
+{
+	"FileName": "C:\\AnotherSample.wav",
+	"SampleStart": 64
+}];</code></pre>
+<p>You can use every property ID that is used in a standard XML samplemap (take a look at one of your samplemaps for inspiration).</p>
+<p class="comment">If you want to leverage the relative file format using the <code>{PROJECT_FOLDER}</code>
+ wildcard when you are trying to load a sample that is in the actual sample folder of your plugin take a look at <a href="scripting/scripting-api/file/index.html#toreferencestring">File.getReferenceString()</a>
+</p>
+<p>Be aware that you are responsible to store and restore this data in a user preset. The most practical way to do this is to use <a href="scripting/scripting-api/sampler/index.html#getsamplemapasbase64">Sampler.getSampleMapAsBase64()</a>
+ as this will also take into account if you drag the sample range in an audiowaveform - you could also just save and restore that JSON array that you pass in, but then you will lose all changes you might to to the samplemapping afterwards.<br></p>
+<h2 id="loadsfzfile"><b>loadSfzFile</b>
+</h2>
+<p class="comment">Loads an SFZ file into the sampler.</p>
+<pre><code class="language-javascript line-numbers">Sampler.loadSfzFile(var sfzFile)</code></pre>
+<p><br>This function expects either a String with a full path to the SFZ file or a <a href="scripting/scripting-api/file/index.html">File</a>
+ object and will try to parse it and load the multisample set into the Sampler. This finally enables you to offer multisample import on your compiled plugin! Be aware that if you load a SFZ file, the sampler will not store this information automatically, so you need to add a UI component that stores that information and calls this function in its control callback. A suitable candidate for this would be a ScriptPanel with file-drop support using <a href="scripting/scripting-api/scriptpanel/index.html#setfiledropcallback">this API function</a>
+</p>
+<p class="comment">The SFZ importer is not fully standard compliant (at this point it's just the old HISE SFZ import that has been cleaned up a little bit). However the goal is to offer enough standard compliance so that all mapping information of a SFZ is being imported correctly and without crashing the plugin (obviously stuff like the envelope attack time will never be parsed). If you encounter an issue with a SFZ file, please post it in the forum, then I'll take a look.<br></p>
+<h2 id="parsesamplefile"><b>parseSampleFile</b>
+</h2>
+<p class="comment">Creates a JSON object from the sample file that can be used with loadSampleMapFromJSON.</p>
+<pre><code class="language-javascript line-numbers">Sampler.parseSampleFile(var sampleFile)</code></pre>
+<p><br><br></p>
+<h2 id="purgemicposition"><b>purgeMicPosition</b>
+</h2>
+<p class="comment">Purges all samples of the given mic (Multimic samples only).</p>
+<pre><code class="language-javascript line-numbers">Sampler.purgeMicPosition(String micName, bool shouldBePurged)</code></pre>
+<p><br><br></p>
+<h2 id="purgesampleselection"><b>purgeSampleSelection</b>
+</h2>
+<p class="comment">Purges the array of sampler sounds (and unpurges the rest).</p>
+<pre><code class="language-javascript line-numbers">Sampler.purgeSampleSelection(var selection)</code></pre>
+<p><br><br></p>
+<h2 id="refreshinterface"><b>refreshInterface</b>
+</h2>
+<p class="comment">Refreshes the interface. Call this after you changed the properties.</p>
+<pre><code class="language-javascript line-numbers">Sampler.refreshInterface()</code></pre>
+<p><br><br></p>
+<h2 id="refreshrrmap"><b>refreshRRMap</b>
+</h2>
+<p class="comment">Recalculates the RR Map. Call this at compile time if you want to use 'getRRGroupForMessage()'.</p>
+<pre><code class="language-javascript line-numbers">Sampler.refreshRRMap()</code></pre>
+<p><br><br></p>
+<h2 id="savecurrentsamplemap"><b>saveCurrentSampleMap</b>
+</h2>
+<p class="comment">Saves (and loads) the current samplemap to the given path (which should be the same string as the ID).</p>
+<pre><code class="language-javascript line-numbers">Sampler.saveCurrentSampleMap(String relativePathWithoutXml)</code></pre>
+<p><br><br></p>
+<h2 id="selectsounds"><b>selectSounds</b>
+</h2>
+<p class="comment">Selects samples using the regex string as wildcard and the selectMode ("SELECT", "ADD", "SUBTRACT")</p>
+<pre><code class="language-javascript line-numbers">Sampler.selectSounds(String regex)</code></pre>
+<p><br><br></p>
+<h2 id="setactivegroup"><b>setActiveGroup</b>
+</h2>
+<p class="comment">Enables the group with the given index (one-based). Works only with samplers and <code>enableRoundRobin(false)</code>
+.</p>
+<pre><code class="language-javascript line-numbers">Sampler.setActiveGroup(int activeGroupIndex)</code></pre>
+<p><br></p>
+<p class="comment">Note: if you need to rely on this function to set the event ID for a given note with 100% accuracy, you need to use <a href="scripting/scripting-api/sampler/index.html#setmultigroupindexforeventid">this method instead</a>
+.</p>
+<p><br></p>
+<h2 id="setactivegroupforeventid"><b>setActiveGroupForEventId</b>
+</h2>
+<p class="comment">Enables the group with the given index (one-based) for the given event ID. Works only with samplers and <code>enableRoundRobin(false)</code>
+.</p>
+<pre><code class="language-javascript line-numbers">Sampler.setActiveGroupForEventId(int eventId, int activeGroupIndex)</code></pre>
+<p><br>Usually the <a href="scripting/scripting-api/sampler/index.html#setactivegroup">Sampler.setActiveGroup</a>
+ function is all you need in order to programmatically set the round robin group. However there are a few edge cases where this function leads to inaccurate behaviour: if you play multiple notes pretty fast (we're talking about a few milliseconds between events), the MIDI event queue contains more than one note on message per audio buffer. In this case the internal processing order will override the active group index of the last API call before the voices get started. This might result in voices <b>being started with a different group index than it was set during the MIDI callback execution</b>
+.<br>Usually this isn't problematic because the result is just that it will pick another RR group as desired and if you use this for actual round robin repetitions there is almost no perceivable change in the sound (because chances are great that notes that are being played this fast will be different notes which masks the machine gun effect we're trying to prevent here). </p>
+<p>However there are a few <a href="https://forum.hise.audio//post/72501">use cases</a>
+ where this becomes a problem so in order to ensure that the group index that you've set during the MIDI callback is guaranteed to be the one that is picked up by the voice allocation logic a few CPU cycles down the line, you will have to use this method instead which takes in the event ID of the message that is about to start the next voice and store it in a internal queue until the voice allocator will use it to set it to the exact group index you've specified here.</p>
+<p class="comment">This queue has a very limited lifetime and will get automatically cleared after each audio render callback of the sampler. This ensures that it won't stack up "unused" notes, but this also means that this procedure does not work with events that are not processed immediately (eg. because you've delayed them using <code>Message.delayEvent()</code>
+ after calling this method).</p>
+<p>The method also works with artificial notes and the internal event queue can store up to 64 note on messages (there's a tradeoff between object size and functionality here but with 64 messages within a single audio callback you should have enough headroom for even the most craziest applications).<br></p>
+<h2 id="setattribute"><b>setAttribute</b>
+</h2>
+<p class="comment">Sets a attribute to the given value.</p>
+<pre><code class="language-javascript line-numbers">Sampler.setAttribute(int index, var newValue)</code></pre>
+<p><br><br></p>
+<h2 id="setguiselection"><b>setGUISelection</b>
+</h2>
+<p class="comment">Sets the currently selected samples on the interface to the given list.</p>
+<pre><code class="language-javascript line-numbers">Sampler.setGUISelection(var sampleList, bool addToSelection)</code></pre>
+<p><br><br></p>
+<h2 id="setmultigroupindex"><b>setMultiGroupIndex</b>
+</h2>
+<p class="comment">Enables the group with the given index (one-based). Allows multiple groups to be active.</p>
+<pre><code class="language-javascript line-numbers">Sampler.setMultiGroupIndex(var groupIndex, bool enabled)</code></pre>
+<p><br>This function can be used to enabled multiple groups at once. By default, only one RR group is active at the same time - as long as the Group XF property is disabled, then it will play all groups.</p>
+<p>You can define a custom RR behaviour using <a href="scripting/scripting-api/sampler/index.html#setactivegroup">Sampler.setActiveGroup()</a>
+, but this function still gives you one exclusively active group.</p>
+<p>However there are a few legitimate edge cases where you need multiple, but not all groups enabled - the most common one might be if you want to implement round robin behaviour in combination with Group XF samples.</p>
+<p>In order to do so, you can use this function to tell the sampler to allow multiple groups at the same time - you also need to call <a href="scripting/scripting-api/sampler/index.html#enableroundrobin">Sampler.enableRoundRobin(false)</a>
+ before using this function. The function accepts different types as <code>groupIndex</code>
+ argument:</p>
+<ul><li>an integer (be aware that it's one based to match the other RR functions).</li>
+<li>an array with integers (also one-based). This can be used to predefine static ranges at initialisation and then just pass those arrays in the function to avoid writing loops in HiseScript</li>
+<li>a <a href="scripting/scripting-api/midilist/index.html">MidiList</a>
+. In that case, the <code>enabled</code>
+ argument will be discarded and it will enable all groups where the MidiList has a valid entry (<code>!= -1</code>
+).</li>
+</ul>
+<p class="comment">Be aware that as soon as you activate this feature by calling this method, the table index used for defining the crossfade gain will be capped to the number of active groups (<code>groupIndex %= numActiveGroups</code>
+). The rationale behind this is that if you have 4 dynamic layers and 3 round robin repetitions, you still want only 4 tables to be active (instead of 12). However this means that as soon as you use this feature <b>the amount of dynamic layers must be consistent across RR repetitions</b>
+.</p>
+<pre><code class="language-javascript line-numbers">// A simple example for 2 dynamic layers with 2 RR repetitions.
+Sampler.enableRoundRobin(false);
+
+const var g1 = [1, 2, 3];
+const var g2 = [4, 5, 6];
+
+reg on = false;
+
+function onNoteOn()
+{
+    // Calling this function tells the sample to just use
+    // the first 3 tables for crossfading
+    Sampler.setMultiGroupIndex(g1, on);
+	Sampler.setMultiGroupIndex(g2, !on);
+	
+    on = !on;
+}</code></pre>
+<p class="comment">Note: if you're using this function in the <code>onNoteOn</code>
+ callback and must ensure that the correct group index state is applied to the current note on message, you will need to use the <a href="scripting/scripting-api/sampler/index.html#setmultigroupindexforeventid">Sampler.setMultiGroupIndexForEventId()</a>
+ method which takes in the event ID of the current note. More information about this issue can be found <a href="scripting/scripting-api/sampler/index.html#setactivegroup">here</a>
+.<br></p>
+<h2 id="setmultigroupindexforeventid"><b>setMultiGroupIndexForEventId</b>
+</h2>
+<p class="comment">Enables the group with the given index (one-based) for the given event id. Allows multiple groups to be active.</p>
+<pre><code class="language-javascript line-numbers">Sampler.setMultiGroupIndexForEventId(int eventId, var groupIndex, bool enabled)</code></pre>
+<p><br>This function is the event-ID agnostic variant of <code>setMultiGroupIndex()</code>
+. In order to find out which function to use, take a look at <a href="scripting/scripting-api/sampler/index.html#setactivegroup">this function</a>
+ for a description of the problem.<br></p>
+<h2 id="setrrgroupvolume"><b>setRRGroupVolume</b>
+</h2>
+<p class="comment">Sets the volume of a particular group (use -1 for active group). Only works with disabled crossfade tables.</p>
+<pre><code class="language-javascript line-numbers">Sampler.setRRGroupVolume(int groupIndex, int gainInDecibels)</code></pre>
+<p><br><br></p>
+<h2 id="setsortbyrrgroup"><b>setSortByRRGroup</b>
+</h2>
+<p class="comment">Enables a presorting of the sounds into RR groups. This might improve the performance at voice start if you have a lot of samples (> 20.000) in many RR groups.</p>
+<pre><code class="language-javascript line-numbers">Sampler.setSortByRRGroup(bool shouldSort)</code></pre>
+<p><br><br></p>
+<h2 id="setsoundproperty"><b>setSoundProperty</b>
+</h2>
+<p class="comment">Sets the property for the index within the selection.</p>
+<pre><code class="language-javascript line-numbers">Sampler.setSoundProperty(int soundIndex, int propertyIndex, var newValue)</code></pre>
+<p><br><br></p>
+<h2 id="setsoundpropertyforallsamples"><b>setSoundPropertyForAllSamples</b>
+</h2>
+<p class="comment">Sets the property for all samples of the sampler.</p>
+<pre><code class="language-javascript line-numbers">Sampler.setSoundPropertyForAllSamples(int propertyIndex, var newValue)</code></pre>
+<p><br><br></p>
+<h2 id="setsoundpropertyforselection"><b>setSoundPropertyForSelection</b>
+</h2>
+<p class="comment">Sets the property of the sampler sound for the selection.</p>
+<pre><code class="language-javascript line-numbers">Sampler.setSoundPropertyForSelection(int propertyIndex, var newValue)</code></pre>
+<p><br><br></p>
+<h2 id="settimestretchoptions"><b>setTimestretchOptions</b>
+</h2>
+<p class="comment">Sets the timestretching options from a JSON object.</p>
+<pre><code class="language-javascript line-numbers">Sampler.setTimestretchOptions(var newOptions)</code></pre>
+<p><br>This will set the <a href="hise-modules/sound-generators/list/streamingsampler.html#timestretching">timestretching</a>
+ options for the sampler using a JSON object. Usually you would get that object with <a href="scripting/scripting-api/sampler/index.html#gettimestretchoptions">Sampler.getTimestretchOptions()</a>
+, apply your changes and then call this function with the modified object.</p>
+<p><br></p>
+<h2 id="settimestretchratio"><b>setTimestretchRatio</b>
+</h2>
+<p class="comment">Sets the timestretch ratio for the sampler depending on its timestretch mode.</p>
+<pre><code class="language-javascript line-numbers">Sampler.setTimestretchRatio(double newRatio)</code></pre>
+<p><br>This will change the time ratio of the sampler playback when timestretching is enabled.</p>
+<p>Depending on the timestretch mode, this value will be applied to new voices or all currently active voices. For an explanation of the different modes, take a look at the <a href="hise-modules/sound-generators/list/streamingsampler.html#timestretching">Sampler Module Documentation</a>
+</p>
+<p class="comment">Currently the time ratio is limited to 50% - 200% of the original time, but that limitation might be lifted at some point.<br></p>
+<h2 id="setusestaticmatrix"><b>setUseStaticMatrix</b>
+</h2>
+<p class="comment">Disables dynamic resizing when a sample map is loaded.</p>
+<pre><code class="language-javascript line-numbers">Sampler.setUseStaticMatrix(bool shouldUseStaticMatrix)</code></pre>
+<p><br><br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/scriptaudiowaveform/index.html">ScriptAudioWaveform</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="hise-command-line-tool"><b>HISE Command Line Tool</b>
+</h1>
+<p>Did you know that you can access <b>HISE</b>
+ in a command line? </p>
+<p>Open a terminal and type <code>%hise_path% --help</code>
+ for all available commands:(<code>%hise_path%</code>
+ stands for the path to your <b>HISE</b>
+ executable(standalone).)</p>
+<pre><code class="language-javascript line-numbers">HISE Command Line Tool
+----------------------
+
+Usage: 
+
+HISE COMMAND [FILE] [OPTIONS]
+
+Commands: 
+
+export: builds the project using the default settings
+
+export_ci: builds the project using customized behaviour for automated builds
+ - always use VisualStudio 2017 on Windows
+ - don't copy the plugins to the plugin folders
+ - use a relative path for the project file
+Arguments: 
+FILE      The path to the project file (either .xml or .hip you want to export).
+          In CI mode, this will be the relative path from the current project folder
+          In standard mode, it must be an absolute path
+-h:{TEXT} sets the HISE path. Use this if you don't have compiler settings set.
+-ipp      enables Intel Performance Primitives for fast convolution.
+-t:{TEXT} sets the project type ('standalone' | 'instrument' | 'effect')
+-p:{TEXT} sets the plugin type ('VST' | 'AU' | 'VST_AU' | 'AAX' | 'ALL')
+          (Leave empty for standalone export)
+-a:{TEXT} sets the architecture ('x86', 'x64', 'x86x64').
+          (Leave empty on OSX for Universal binary.)
+--test [PLUGIN_FILE]
+Tests the given plugin
+
+set_project_folder -p:PATH
+Changes the current project folder.
+
+set_hise_folder -p:PATH
+Sets the location for the HISE source code folder.
+
+get_project_folder
+Returns the current project folder.
+
+set_version -v:NEW_VERSION_STRING
+Sets the project version number to the given string
+
+clean [-p:PATH] [-all]
+Cleans the Binaries folder of the given project.
+-p:PATH - the path to the project folder.
+
+create-win-installer
+Creates a template install script for Inno Setup for the project</code></pre>
+<h3 id="installer-(win)"><b>Installer (Win)</b>
+</h3>
+<p>The windows install script for <a href="http://www.jrsoftware.org/isinfo.php">InnoSetup</a>
+ can be created using the HISE command line tool:</p>
+<pre><code class="language-javascript line-numbers">%hise_path% set_project_folder "PROJECT_PATH"
+
+%hise_path% create-win-installer -noaax</code></pre>
+<h3 id="installer-(macos)"><b>Installer (macOS)</b>
+</h3>
+<p>For macOS you can use <a href="http://s.sudre.free.fr/Software/Packages/about.html">Whitebox Packages</a>
+. @d-healey's Sofia Woodwinds has an <a href="https://github.com/davidhealey/librewave_woodwinds/tree/master/Installer/OSX">installer script</a>
+ for macOS that you might be able to reuse.</p>
+<h3 id="installer-(linux)"><b>Installer (Linux)</b>
+</h3>
+<p>Check out: <a href="https://makeself.io/">https://makeself.io/</a>
+</p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="glossary/copy-protection.html">HISE Copy Protection</a>
+</span>
+
+<p class="content-footer-metadata"><br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

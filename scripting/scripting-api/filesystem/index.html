@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="filesystem"><b>FileSystem</b>
+</h1>
+<p>This API class can be used for File I/O and create <a href="scripting/scripting-api/file/index.html">File</a>
+ objects that can be used to access files.</p>
+<h3 id="special-locations"><b>Special Locations</b>
+</h3>
+<p>In order to access files, you will need to use the constants of the <code>FileSystem</code>
+ object in order to go to special locations.</p>
+<table><thead><td><b>Location </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>AudioFiles </td>
+<td>The audio file folder. In HISE it will be in the repo folder, but in the compiled project it will be a sub folder in the appdata folder. </td>
+</tr>
+<tr><td>Expansions </td>
+<td>The expansion folder file folder. In HISE it will be in the repo folder, but in the compiled project it will be a sub folder in the appdata folder. </td>
+</tr>
+<tr><td>Samples </td>
+<td>The sample folder as specified in the settings (or the subfolder of the HISE project during development). </td>
+</tr>
+<tr><td>AppData </td>
+<td>The app data directory. This is the main directory for your project which will house the configuration files and user presets. </td>
+</tr>
+<tr><td>UserHome </td>
+<td>The user home folder. </td>
+<td>Documents </td>
+<td>The user's Document folder. </td>
+</tr>
+<tr><td>Desktop </td>
+<td>The user's desktop folder. </td>
+</tr>
+<tr><td>Downloads </td>
+<td>The user's download folder. </td>
+</tr>
+</table>
+<p class="comment">Please be aware that using any of the user's folder without a good reason is bad taste and should be avoided if possible.<br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="browse"><b>browse</b>
+</h2>
+<p class="comment">Opens a file browser to choose a file.</p>
+<pre><code class="language-javascript line-numbers">FileSystem.browse(var startFolder, bool forSaving, String wildcard, var callback)</code></pre>
+<p><br>This will create a file browser from the OS that let's the user choose a file for loading or saving (in case of saving it will confirm a overwrite).</p>
+<ul><li>the <code>startFolder</code>
+ parameter can be either a <code>File</code>
+ object or one of the <a href="scripting/scripting-api/filesystem/index.html#special-locations">special location</a>
+ constants of the <code>FileSystem</code>
+ API object. If you pass <code>undefined</code>
+ it will choose a sensible default (most likely the most recent location).</li>
+<li>the <code>forSaving</code>
+ parameter decides whether the file is supposed to be overwritten or just read from.</li>
+<li>the <code>wildcard</code>
+ parameter is a file wildcard (like eg. <code>*.txt</code>
+ for all text files) and can be used to filter the files being displayed. If the wildcard is an empty string, it will show all files.</li>
+<li>the <code>callback</code>
+ parameter is a function with one parameter that will be executed when a file has been chosen.</li>
+</ul>
+<p>If you call this function it will return immediately and open the file browser asynchronously (otherwise the script execution would time out during the selection).<br>Therefore you will need to pass in a function that will be executed as soon as the user has selected a file. It expects a function with a single parameter that will hold a <a href="scripting/scripting-api/file/index.html">File</a>
+ object with the selected file:</p>
+<pre><code class="language-javascript line-numbers">FileSystem.browse(undefined, false, "*.txt", function(result)
+{
+    // the parameter is a File object, so we just show it
+    // in the OS' file browser.
+    result.show();
+});</code></pre>
+<p><br></p>
+<h2 id="browsefordirectory"><b>browseForDirectory</b>
+</h2>
+<p class="comment">Opens a file browser to choose a directory.</p>
+<pre><code class="language-javascript line-numbers">FileSystem.browseForDirectory(var startFolder, var callback)</code></pre>
+<p><br><br></p>
+<h2 id="decryptwithrsa"><b>decryptWithRSA</b>
+</h2>
+<p class="comment">Decrypts the given string using a RSA public key.</p>
+<pre><code class="language-javascript line-numbers">FileSystem.decryptWithRSA( String dataToDecrypt,  String publicKey)</code></pre>
+<p><br><br></p>
+<h2 id="descriptionofsizeinbytes"><b>descriptionOfSizeInBytes</b>
+</h2>
+<p class="comment">Convert a file size in bytes to a neat string description.</p>
+<pre><code class="language-javascript line-numbers">FileSystem.descriptionOfSizeInBytes(int64 bytes)</code></pre>
+<p><br><br></p>
+<h2 id="encryptwithrsa"><b>encryptWithRSA</b>
+</h2>
+<p class="comment">Encrypts the given string using a RSA private key.</p>
+<pre><code class="language-javascript line-numbers">FileSystem.encryptWithRSA( String dataToEncrypt,  String privateKey)</code></pre>
+<p><br><br></p>
+<h2 id="findfiles"><b>findFiles</b>
+</h2>
+<p class="comment">Returns a list of all child files of a directory that match the wildcard.</p>
+<pre><code class="language-javascript line-numbers">FileSystem.findFiles(var directory, String wildcard, bool recursive)</code></pre>
+<p><br>This will search a given directory and return an <a href="scripting/scripting-api/array/index.html">Array</a>
+ that contains one <a href="scripting/scripting-api/file/index.html">File</a>
+ object per child file.<br>You can use it to build up a file browser.</p>
+<ul><li>the <code>directory</code>
+ parameter will be the root folder that is going to be searched</li>
+<li>the <code>wildcard</code>
+ parameter will filter out the files</li>
+<li>the <code>recursive</code>
+ parameter will check whether it should search every sub-folder or just the direct children of this folder.<br></li>
+</ul>
+<h2 id="findfilesystemroots"><b>findFileSystemRoots</b>
+</h2>
+<p class="comment">Returns a list of all root drives of the current computer.</p>
+<pre><code class="language-javascript line-numbers">FileSystem.findFileSystemRoots()</code></pre>
+<p><br><br></p>
+<h2 id="fromabsolutepath"><b>fromAbsolutePath</b>
+</h2>
+<p class="comment">Returns a file object from an absolute path (eg. C:/Windows/MyProgram.exe).</p>
+<pre><code class="language-javascript line-numbers">FileSystem.fromAbsolutePath(String path)</code></pre>
+<p><br><br></p>
+<h2 id="fromreferencestring"><b>fromReferenceString</b>
+</h2>
+<p class="comment">Returns a file object for the given location type and the reference string which can either contain a wildcard like <code>{PROJECT_FOLDER}</code>
+ or a full file path.</p>
+<pre><code class="language-javascript line-numbers">FileSystem.fromReferenceString(String referenceStringOrFullPath, var locationType)</code></pre>
+<p><br><br></p>
+<h2 id="getbytesfreeonvolume"><b>getBytesFreeOnVolume</b>
+</h2>
+<p class="comment">Returns the number of free bytes on the volume of a given folder.</p>
+<pre><code class="language-javascript line-numbers">FileSystem.getBytesFreeOnVolume(var folder)</code></pre>
+<p><br><br></p>
+<h2 id="getfolder"><b>getFolder</b>
+</h2>
+<p class="comment">Returns the current sample folder as File object.</p>
+<pre><code class="language-javascript line-numbers">FileSystem.getFolder(var locationType)</code></pre>
+<p><br>You can use this method to access files from one of the given locations (take a look at the <a href="scripting/scripting-api/filesystem/index.html#special-locations">Special Locations</a>
+ above for a list of available folders).</p>
+<p>You can navigate from that folder to the file you want with the <a href="scripting/scripting-api/file/index.html#getchildfile">File.getChildFile()</a>
+ method.<br></p>
+<h2 id="getsystemid"><b>getSystemId</b>
+</h2>
+<p class="comment">Returns a unique machine ID that can be used to identify the computer.</p>
+<pre><code class="language-javascript line-numbers">FileSystem.getSystemId()</code></pre>
+<p><br><br></p>
+<h2 id="loadexampleassets"><b>loadExampleAssets</b>
+</h2>
+<p class="comment">Loads a bunch of dummy assets (audio files, MIDI files, filmstrips) for use in snippets & examples.</p>
+<pre><code class="language-javascript line-numbers">FileSystem.loadExampleAssets()</code></pre>
+<p><br><br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/fixobjectarray/index.html">FixObjectArray</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>17.07.2020<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

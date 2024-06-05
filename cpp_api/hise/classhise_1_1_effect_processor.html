@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="effectprocessor"><b>EffectProcessor</b>
+</h1>
+<p>Base class for all Processors that applies a audio effect on the audio data.<br>You won't ever subclass from this class directly, but use either MasterEffectProcessor or VoiceEffectProcessor, depending on the type of your effect.<br> </p>
+<h2 id="class-hierarchy"><b>Class Hierarchy</b>
+</h2>
+<h3 id="base-classes"><b>Base Classes</b>
+</h3>
+<ul><li><a href="cpp_api/hise/classhise_1_1_processor.html">hise::Processor</a>
+<br></li>
+</ul>
+<h3 id="derived-classes"><b>Derived Classes</b>
+</h3>
+<ul><li><code>hise::MasterEffectProcessor</code>
+<br></li>
+<li><code>hise::MonophonicEffectProcessor</code>
+<br></li>
+<li><code>hise::VoiceEffectProcessor</code>
+<br></li>
+</ul>
+<h2 id="class-methods"><b>Class methods</b>
+</h2>
+<h3 id="renderallchains"><b>renderAllChains</b>
+</h3>
+<pre><code class="language-clike line-numbers">void renderAllChains(int startSample, int numSamples)</code></pre>
+<p>Renders all chains (envelopes & voicestart are rendered monophonically.<br> </p>
+<h3 id="preparetoplay"><b>prepareToPlay</b>
+</h3>
+<pre><code class="language-clike line-numbers">void prepareToPlay(double sampleRate, int samplesPerBlock) override</code></pre>
+<p>You have to override this method, since almost every effect needs the samplerate anyway.<br> </p>
+<h3 id="getcolour"><b>getColour</b>
+</h3>
+<pre><code class="language-clike line-numbers">Colour getColour() const override</code></pre>
+<p>Overwrite this method if you want a special colour.<br>This colour will be used in the debug console and in the editor.<br> </p>
+<h3 id="hastail"><b>hasTail</b>
+</h3>
+<pre><code class="language-clike line-numbers">bool hasTail() const =0</code></pre>
+<p>Overwrite this method if the effect has a tail (produces sound if no input is active<br> </p>
+<h3 id="istailingoff"><b>isTailingOff</b>
+</h3>
+<pre><code class="language-clike line-numbers">bool isTailingOff() const</code></pre>
+<p>Checks if the effect is tailing off. This simply returns the calculated value, but the EffectChain overwrites this.<br> </p>
+<h3 id="rendernextblock"><b>renderNextBlock</b>
+</h3>
+<pre><code class="language-clike line-numbers">void renderNextBlock(AudioSampleBuffer &buffer, int startSample, int numSamples)=0</code></pre>
+<p>Renders the next block and applies the effect to the buffer.<br> </p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="cpp_api/hise/classhise_1_1_event_id_handler.html">EventIdHandler</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

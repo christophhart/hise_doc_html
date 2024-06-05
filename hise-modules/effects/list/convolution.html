@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="convolution-reverb"><b>Convolution Reverb</b>
+</h1>
+<p>Type ID: <code>Convolution</code>
+<br>Interface classes: <a href="scripting/scripting-api/audiosampleprocessor/index.html">AudioSampleProcessor</a>
+ <a href="scripting/scripting-api/routingmatrix/index.html">RoutingMatrix</a>
+<br></p>
+<p class="comment"><b>A fast convolution reverb</b>
+<br></p>
+<img src="images/module_screenshot_convolution.png"></img>
+<p><br></p>
+<p>This is a fast convolution reverb based on the excellent <a href="https://github.com/HiFi-LoFi/FFTConvolver">FFTConvolver</a>
+ library. You can load a pooled audio file into this module and it will use it as impulse response for the convolution algorithm.</p>
+<p class="comment">This module can also be used for cabinet simulation when a cabinet IR is used.</p>
+<h3 id="load-audiofiles-per-script"><b>Load AudioFiles per script</b>
+</h3>
+<pre><code class="language-javascript line-numbers">// Create a typed Audio Sample Script Reference with right click on the Convolution Module
+const var ConvolutionReverb1 = Synth.getAudioSampleProcessor("Convolution Reverb1");
+
+// load all Audio Files from the AudioFiles Folder into the Pool
+Engine.loadAudioFilesIntoPool();
+
+// set a new file 
+ConvolutionReverb1.setFile("{PROJECT_FOLDER}impulse.wav");</code></pre>
+<h2 id="parameters-"><b>Parameters </b>
+</h2>
+<table><thead><td><b>#</b>
+<b> </b>
+</td>
+<td><b>ID </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>0 </td>
+<td><code>DryGain</code>
+ </td>
+<td>the gain value for the unprocessed signal (in dB). </td>
+</tr>
+<tr><td>1 </td>
+<td><code>WetGain</code>
+ </td>
+<td>the gain value for the convoluted signal (in dB). </td>
+</tr>
+<tr><td>2 </td>
+<td><code>Latency</code>
+ </td>
+<td>the latency between input and output. </td>
+</tr>
+<tr><td>3 </td>
+<td><code>ImpulseLength</code>
+ </td>
+<td>(deprecated, use the sample range instead). </td>
+</tr>
+<tr><td>4 </td>
+<td><code>ProcessInput</code>
+ </td>
+<td>mutes if <code>false</code>
+, the input for the reverb with a small fade to prevent clicks. </td>
+</tr>
+<tr><td>5 </td>
+<td><code>UseBackgroundThread</code>
+ </td>
+<td>if <code>true</code>
+, then the convolution will be executed on a background thread. </td>
+</tr>
+<tr><td>6 </td>
+<td><code>Predelay</code>
+ </td>
+<td>The predelay in milliseconds </td>
+</tr>
+<tr><td>7 </td>
+<td><code>HiCut</code>
+ </td>
+<td>Applies a high cut filter on the impulse response. This recalculates the IR so you can't use it during rendering. </td>
+</tr>
+<tr><td>8 </td>
+<td><code>Damping</code>
+ </td>
+<td>Applies a decaying envelope on the impulse response. This recalculates the IR so you can't use it during rendering. </td>
+</tr>
+<tr><td>9 </td>
+<td><code>FFTType</code>
+ </td>
+<td>- </td>
+</tr>
+</table>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="hise-modules/effects/list/curveeq.html">Curve EQ</a>
+</span>
+
+<p class="content-footer-metadata"><br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="project-settings"><b>Project Settings</b>
+</h1>
+<h2 id="project"><b>Project</b>
+</h2>
+<h3 id="name"><b>Name</b>
+</h3>
+<p>The name of the project. This will be also the name of the plugin binaries</p>
+<h3 id="version"><b>Version</b>
+</h3>
+<p>The version number of the project. Try using semantic versioning (<code>1.0.0</code>
+) for this.<br>The version number will be used to handle the user preset backward compatibility.</p>
+<p class="comment">Be aware that some hosts (eg. Logic) are very picky when they detect different plugin binaries with the same version.</p>
+<h3 id="description"><b>Description</b>
+</h3>
+<p>A markdown formatted text that will be written into the metadata of the full instrument expansion</p>
+<h3 id="bundle-identifier"><b>Bundle Identifier</b>
+</h3>
+<p>This is a unique identifier used by Apple OS to identify the app. It must be formatted as reverse domain like this:</p>
+<p class="comment"><code>com.your-company.product</code>
+</p>
+<h3 id="plugin-code"><b>Plugin Code</b>
+</h3>
+<p>The code used to identify the plugins. This has to be four characters with the first one being uppercase like this:</p>
+<p class="comment"><code>Abcd</code>
+</p>
+<h3 id="embed-audio-files"><b>Embed Audio Files</b>
+</h3>
+<p>If this is <b>enabled</b>
+, it will embed all audio files (impulse responses & loops) <b>as well as images</b>
+ into the plugin.This will not affect samples - they will always be streamed.<br>If it's <b>disabled</b>
+, it will use the resource files found in the app data directory and you need to make sure that your installercopies them to the right location:</p>
+<p class="comment"><b>Windows:</b>
+ <code>%APPDATA%\Company\Product\</code>
+</p>
+<p class="comment"><b>macOS:</b>
+ <code>~/Library/Application Support/Company/Product/</code>
+</p>
+<p>Normally you would try to embed them into the binary, however if you have a lot of audio files (> 50MB)the compiler will crash with an <b>out of heap space</b>
+ error, so in this case you're better off not embedding them.</p>
+<h3 id="embed-image-files"><b>Embed Image Files</b>
+</h3>
+<p>If this is <b>enabled</b>
+, it will embed all audio files (impulse responses & loops) into the plugin.If it's <b>disabled</b>
+, it will use the resource files found in the app data directory and you need to make sure that your installercopies them to the right location:</p>
+<p class="comment"><b>Windows:</b>
+ <code>%APPDATA%\Company\Product\</code>
+</p>
+<p class="comment"><b>macOS:</b>
+ <code>~/Library/Application Support/Company/Product/</code>
+</p>
+<p>Normally you would try to embed them into the binary, however if you have a lot of images (> 50MB)the compiler will crash with an <b>out of heap space</b>
+ error, so in this case you're better off not embedding them.</p>
+<h3 id="support-full-dynamics-hlac"><b>Support Full Dynamics HLAC</b>
+</h3>
+<p>If enabled, the user can extract the sample monolith files to support the full dynamic range of 24 bit.The HLAC codec is 16bit only, but with this feature enabled, it normalises the audio data in chunks of 1024 samples in order to recreate higher bit depths. This results in a lower compression ratio, but removes the quantisation noise that can occur under certain circumstances:For normal sample libraries without heavy dynamics processing this feature is not required, but for projects that heavily process the dynamic range (eg. drum libraries that squash the samples with a compressor) the quantisation noise floor of -96dB might get attenuated into the audible range. So: If you start to hear quantisation noise, enable this, otherwise enjoy the low disk usage and performance of 16bit samples.</p>
+<p class="comment">The end user can still choose whether he wants to use the samples in the full dynamics range. However in order to make this work, create the sample archive with the <b>Support Full Dynamics</b>
+ option set to true.</p>
+<h3 id="additional-dsp-libraries"><b>Additional Dsp Libraries</b>
+</h3>
+<p>If you have written custom DSP objects that you want to embed statically, you have to supply the class names of each DspModule class here</p>
+<h3 id="osxstatic-libs"><b>OSXStatic Libs</b>
+</h3>
+<p>If you need to link a static library on macOS, supply the path to the .a library file here.</p>
+<p class="comment">This can also be used to set additional linker flags for additional frameworks (eg. iLok).</p>
+<h3 id="windows-static-lib-folder"><b>Windows Static Lib Folder</b>
+</h3>
+<p>If you need to link a static library on Windows, supply the absolute path to the folder here. Unfortunately, relative paths do not work well with the VS Linker</p>
+<h3 id="extra-definitions-windows"><b>Extra Definitions Windows</b>
+</h3>
+<p>This field can be used to add preprocessor definitions for Windows builds. Use it to tailor the compile options for HISE for the project.</p>
+<h4 id="examples"><b>Examples</b>
+</h4>
+<pre><code class="language-javascript line-numbers">ENABLE_ALL_PEAK_METERS=0
+NUM_POLYPHONIC_VOICES=100</code></pre>
+<h3 id="extra-definitions-osx"><b>Extra Definitions OSX</b>
+</h3>
+<p>This field can be used to add preprocessor definitions for macOS builds. Use it to tailor the compile options for HISE for the project.</p>
+<h4 id="examples"><b>Examples</b>
+</h4>
+<pre><code class="language-javascript line-numbers">ENABLE_ALL_PEAK_METERS=0
+NUM_POLYPHONIC_VOICES=100</code></pre>
+<h3 id="extra-definitions-ios"><b>Extra Definitions IOS</b>
+</h3>
+<p>This field can be used to add preprocessor definitions for iOS builds. Use it to tailor the compile options for HISE for the project.</p>
+<h4 id="examples"><b>Examples</b>
+</h4>
+<pre><code class="language-javascript line-numbers">ENABLE_ALL_PEAK_METERS=0
+NUM_POLYPHONIC_VOICES=100</code></pre>
+<h3 id="extra-definitions-linux"><b>Extra Definitions Linux</b>
+</h3>
+<p>This field can be used to add preprocessor definitions<br>for Linux builds. Use it to tailor the compile options for HISE for the project.</p>
+<h4 id="examples"><b>Examples</b>
+</h4>
+<pre><code class="language-javascript line-numbers">ENABLE_ALL_PEAK_METERS=0
+NUM_POLYPHONIC_VOICES=100</code></pre>
+<h3 id="app-group-id"><b>App Group ID</b>
+</h3>
+<p>If you're compiling an iOS app, you need to add an App Group to your Apple ID for this project and supply the name here.App Group IDs must have reverse-domain format and start with group, like:</p>
+<p class="comment"><code>group.company.product</code>
+</p>
+<h3 id="redirect-sample-folder"><b>Redirect Sample Folder</b>
+</h3>
+<p>You can use another location for your sample files. This is useful if you have limited space on your hard drive and need to separate the samples.</p>
+<p class="comment">HISE will create a file called <code>LinkWindows</code>
+ / <code>LinkOSX</code>
+ in the samples folder that contains the link to the real folder.</p>
+<h3 id="aaxcategory-fx"><b>AAXCategory FX</b>
+</h3>
+<p>If you export an effect plugin, you can specify the category it will show up in ProTools here</p>
+<table><thead><td><b>ID </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>AAX_ePlugInCategory_EQ </td>
+<td>Equalization </td>
+</tr>
+<tr><td>AAX_ePlugInCategory_Dynamics </td>
+<td>Compressor, expander, limiter, etc. </td>
+</tr>
+<tr><td>AAX_ePlugInCategory_PitchShift </td>
+<td>Pitch processing </td>
+</tr>
+<tr><td>AAX_ePlugInCategory_Reverb </td>
+<td>Reverberation and room/space simulation </td>
+</tr>
+<tr><td>AAX_ePlugInCategory_Delay </td>
+<td>Delay and echo </td>
+</tr>
+<tr><td>AAX_ePlugInCategory_Modulation </td>
+<td>Phasing, flanging, chorus, etc. </td>
+</tr>
+<tr><td>AAX_ePlugInCategory_Harmonic </td>
+<td>Distortion, saturation, and harmonic enhancement </td>
+</tr>
+<tr><td>AAX_ePlugInCategory_NoiseReduction </td>
+<td>Noise reduction </td>
+</tr>
+<tr><td>AAX_ePlugInCategory_Dither </td>
+<td>Dither, noise shaping, etc. </td>
+</tr>
+<tr><td>AAX_ePlugInCategory_SoundField </td>
+<td>Pan, auto-pan, upmix and downmix, and surround handling </td>
+</tr>
+<tr><td>AAX_EPlugInCategory_Effect </td>
+<td>Special effects </td>
+</tr>
+</table>
+<p class="comment">This setting will have no effect for virtual instruments.</p>
+<h3 id="vst3-category"><b>VST3 Category</b>
+</h3>
+<p>The category the VST3 plugin will appear in</p>
+<h3 id="support-mono-fx"><b>Support Mono FX</b>
+</h3>
+<p>If enabled, the effect plugin will also be compatible to mono channel tracks.</p>
+<p class="comment">This setting will have no effect for virtual instruments.</p>
+<h3 id="enable-midi-input-fx"><b>Enable Midi Input FX</b>
+</h3>
+<p>If enabled, the effect plugin will process incoming MIDI messages (if the host supports FX plugins with MIDI input</p>
+<h3 id="enable-midi-out"><b>Enable Midi Out</b>
+</h3>
+<p>If enabled, the instrument plugin can send out MIDI messages that you forward using <code>Message.sendToMidiOut()</code>
+</p>
+<h3 id="enable-sound-generators-fx"><b>Enable Sound Generators FX</b>
+</h3>
+<p>If enabled, the effect plugin will also process child sound generators (eg. Global modulation containers and Macro modulation sources</p>
+<p class="comment">Be aware that the sound output of the child sound generators will not be used, so this is only useful with "quiet" sound generators</p>
+<h3 id="vst3-support"><b>VST3 Support</b>
+</h3>
+<p>If enabled, the exported plugins will use the VST3 SDK standard instead of the VST 2.x SDK. Until further notice, this is a experimental feature so proceed with caution.</p>
+<p class="comment">Be aware that Steinberg stopped support for the VST 2.4 SDK in October 2018 so if you don't have a valid VST2 license agreement in place, you must use the VST3 SDK.</p>
+<h3 id="use-raw-frontend"><b>Use Raw Frontend</b>
+</h3>
+<p>If enabled, the project will not use the preset structure and scripted user interface and lets you use HISE as C++ framework.You will have to implement a custom C++ class in the <code>AdditionalSourceCode</code>
+ subfolder.</p>
+<h3 id="expansion-type"><b>Expansion Type</b>
+</h3>
+<p>Sets the expansion type you want to use for this project. You can choose between:<br></p>
+<ul><li>Disabled / no expansions (default)</li>
+<li>Unencrypted file-based expansions (just creates a mini-project-folder inside the expansion)</li>
+<li>Script-encrypted expansions</li>
+<li>Full expansions that contain the entire instrument</li>
+<li>Custom expansions that uses a custom C++ class</li>
+</ul>
+<p class="comment">If you use a custom expansion, you will need to implement <code>ExpansionHandler::createCustomExpansion()</code>
+ in your project's C++ code</p>
+<h3 id="encryption-key"><b>Encryption Key</b>
+</h3>
+<p>Sets the BlowFish encryption key (up to 72 characters) that will be used to encrypt the intermediate expansions.</p>
+<p class="comment">If you're using the <b>Full</b>
+ expansion type you will need to set the key here, otherwise, you can call <code>ExpansionHandler.setEncryptionKey()</code>
+ for the same effect.</p>
+<p>Make sure you restart HISE after changing this setting in order to apply the change.</p>
+<h3 id="link-expansions-to-project"><b>Link Expansions To Project</b>
+</h3>
+<p>Redirects the expansion folder in the app data directory of the compiled plugin back to your project folder's expansion folder.<br>A compiled plugin will look in its app data folder for the expansions, so during development, you might want it to link back to the subfolder of the project directory so that you can see the expansions that you have created.<br>If you do not enable this, the expansion list in a compiled project will be empty unless you manually copy the Expansion folder from the project folder to the app data folder.</p>
+<p class="comment">Be aware that this will only work on the development machine and has nothing to do with proper distribution of the expansions to the end user</p>
+<p>Be aware that this is a system-specific setting so if you load a project from another machine, make sure to tick / untick this box in order to create the expansion folder on this machine</p>
+<h3 id="read-only-factory-presets"><b>Read Only Factory Presets</b>
+</h3>
+<p>If enabled, the user presets that are part of the compiled plugin (and expansions) can not be overriden by the end user.</p>
+<p class="comment">It will grey out the save button for all factory presets</p>
+<h3 id="force-stereo-output"><b>Force Stereo Output</b>
+</h3>
+<p>If you export a plugin with HISE it will create as much channels as the routing matrix of the master container requires. If you don't want this behaviour, you can enable this option to force the plugin to just use a stereo channel configuration</p>
+<h3 id="admin-permissions"><b>Admin Permissions</b>
+</h3>
+<p>If enabled, standalone builds on Windows will prompt the user for administrator privileges. This is neccessary for tasks that access restricted locations such as the user's VST3 directory.</p>
+<h3 id="embed-user-presets"><b>Embed User Presets</b>
+</h3>
+<p>If disabled, the user presets will not be part of the binary and are not extracted automatically on first plugin launch</p>
+<p class="comment">This is useful if you're running your own preset management or the user preset collection gets too big to be embedded in the plugin</p>
+<h3 id="overwrite-old-user-presets"><b>Overwrite Old User Presets</b>
+</h3>
+<p>If true, then the plugin will silently overwrite user presets with the same name but an older version number.<br>This will also overwrite user-modified factory presets but will not modify or delete user-created user presets (with the exception of a name collision).</p>
+<h3 id="enable-global-preprocessor"><b>Enable Global Preprocessor</b>
+</h3>
+<p>If this flag is enabled, it will use the C-Preprocessor to process all HiseScript files on compilationIf you disable this method, you can still enable preprocessing for individual files if they start with the directive <code>#on</code>
+</p>
+<p class="comment">This setting will not have an effect on compiled plugins as the preprocessor will already be evaluated on export</p>
+<h3 id="use-global-app-data-folder-windows"><b>Use Global App Data Folder Windows</b>
+</h3>
+<p>If enabled, this will use the global app data folder (C:/ProgramData/Common Files) for the app data</p>
+<p class="comment">This setting will write the <code>HISE_USE_SYSTEM_APP_DATA_FOLDER</code>
+ flag when exporting the plugin</p>
+<h3 id="use-global-app-data-folder-mac-os"><b>Use Global App Data Folder Mac OS</b>
+</h3>
+<p>If enabled, this will use the global app data folder on macOS (/Library/Application Support)</p>
+<p class="comment">This setting will write the <code>HISE_USE_SYSTEM_APP_DATA_FOLDER</code>
+ flag when exporting the plugin</p>
+<h3 id="default-user-preset"><b>Default User Preset</b>
+</h3>
+<p>The relative path to the user preset that is supposed to be the initialisation state. If non-empty, this will be used in order to initialise the plugin as well as set the default states and select it in the preset browser</p>
+<h3 id="compile-with-perfetto"><b>Compile With Perfetto</b>
+</h3>
+<p>If enabled, the project will be compiled with the Perfetto Tracing SDK.</p>
+<p class="comment">This allows you to profile & track down issues and performance hotspots, during development or troubleshooting.</p>
+<h3 id="compile-with-debug-symbols"><b>Compile With Debug Symbols</b>
+</h3>
+<p>If enabled, the project will be compiled with the debug symbols for better trouble shooting.</p>
+<p class="comment">With this setting, the crash reports will contain valid source code locations which might be helpful for debugging crashes, but you obviously have to turn this off for a production release!.</p>
+<h3 id="include-loris-in-frontend"><b>Include Loris In Frontend</b>
+</h3>
+<p>If enabled, this will include the Loris library in the compiled plugin.</p>
+<p class="comment">Be aware that the Loris library is licensed under the GPL license, so you must not enable this flag in a proprietary project!</p>
+<h2 id="user"><b>User</b>
+</h2>
+<h3 id="company"><b>Company</b>
+</h3>
+<p>Your company name. This will be used for the path to the app data directory so make sure you don't use weird characters here</p>
+<h3 id="company-code"><b>Company Code</b>
+</h3>
+<p>The unique code to identify your company. This must be 4 characters with the first one being uppercase like this:</p>
+<p class="comment"><code>Abcd</code>
+</p>
+<h3 id="team-development-id"><b>Team Development ID</b>
+</h3>
+<p>If you have a Apple Developer Account, enter the Developer ID here in order to code sign your app / plugin after compilation</p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="working-with-hise/settings/development.html">Development</a>
+</span>
+
+<p class="content-footer-metadata"><br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

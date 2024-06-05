@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="scriptaudiowaveform"><b>ScriptAudioWaveform</b>
+</h1>
+<p><br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="addtomacrocontrol"><b>addToMacroControl</b>
+</h2>
+<p class="comment">Adds the knob / button to a macro controller (from 0 to 7).</p>
+<pre><code class="language-javascript line-numbers">ScriptAudioWaveform.addToMacroControl(int macroIndex)</code></pre>
+<p><br><br></p>
+<h2 id="changed"><b>changed</b>
+</h2>
+<p class="comment">Call this to indicate that the value has changed (the onControl callback will be executed.</p>
+<pre><code class="language-javascript line-numbers">ScriptAudioWaveform.changed()</code></pre>
+<p><br><br></p>
+<h2 id="createlocallookandfeel"><b>createLocalLookAndFeel</b>
+</h2>
+<p class="comment">Returns a local look and feel if it was registered before.</p>
+<pre><code class="language-javascript line-numbers">ScriptAudioWaveform.createLocalLookAndFeel()</code></pre>
+<p><br><br></p>
+<h2 id="fadecomponent"><b>fadeComponent</b>
+</h2>
+<p class="comment">Toggles the visibility and fades a component using the global animator.</p>
+<pre><code class="language-javascript line-numbers">ScriptAudioWaveform.fadeComponent(bool shouldBeVisible, int milliseconds)</code></pre>
+<p><br><br></p>
+<h2 id="get"><b>get</b>
+</h2>
+<p class="comment">returns the value of the property.</p>
+<pre><code class="language-javascript line-numbers">ScriptAudioWaveform.get(String propertyName)</code></pre>
+<p><br><br></p>
+<h2 id="getallproperties"><b>getAllProperties</b>
+</h2>
+<p class="comment">Returns a list of all property IDs as array.</p>
+<pre><code class="language-javascript line-numbers">ScriptAudioWaveform.getAllProperties()</code></pre>
+<p><br><br></p>
+<h2 id="getchildcomponents"><b>getChildComponents</b>
+</h2>
+<p class="comment">Returns list of component's children</p>
+<pre><code class="language-javascript line-numbers">ScriptAudioWaveform.getChildComponents()</code></pre>
+<p><br><br></p>
+<h2 id="getglobalpositionx"><b>getGlobalPositionX</b>
+</h2>
+<p class="comment">Returns the absolute x-position relative to the interface.</p>
+<pre><code class="language-javascript line-numbers">ScriptAudioWaveform.getGlobalPositionX()</code></pre>
+<p><br><br></p>
+<h2 id="getglobalpositiony"><b>getGlobalPositionY</b>
+</h2>
+<p class="comment">Returns the absolute y-position relative to the interface.</p>
+<pre><code class="language-javascript line-numbers">ScriptAudioWaveform.getGlobalPositionY()</code></pre>
+<p><br><br></p>
+<h2 id="getheight"><b>getHeight</b>
+</h2>
+<p class="comment">Returns the height of the component.</p>
+<pre><code class="language-javascript line-numbers">ScriptAudioWaveform.getHeight()</code></pre>
+<p><br><br></p>
+<h2 id="getid"><b>getId</b>
+</h2>
+<p class="comment">Returns the ID of the component.</p>
+<pre><code class="language-javascript line-numbers">ScriptAudioWaveform.getId()</code></pre>
+<p><br><br></p>
+<h2 id="getlocalbounds"><b>getLocalBounds</b>
+</h2>
+<p class="comment">Returns a [x, y, w, h] array that was reduced by the given amount.</p>
+<pre><code class="language-javascript line-numbers">ScriptAudioWaveform.getLocalBounds(float reduceAmount)</code></pre>
+<p><br><br></p>
+<h2 id="getrangeend"><b>getRangeEnd</b>
+</h2>
+<p class="comment">Returns the current range end.</p>
+<pre><code class="language-javascript line-numbers">ScriptAudioWaveform.getRangeEnd()</code></pre>
+<p><br><br></p>
+<h2 id="getrangestart"><b>getRangeStart</b>
+</h2>
+<p class="comment">Returns the current range start.</p>
+<pre><code class="language-javascript line-numbers">ScriptAudioWaveform.getRangeStart()</code></pre>
+<p><br><br></p>
+<h2 id="getvalue"><b>getValue</b>
+</h2>
+<p class="comment">Returns the current value.</p>
+<pre><code class="language-javascript line-numbers">ScriptAudioWaveform.getValue()</code></pre>
+<p><br><br></p>
+<h2 id="getvaluenormalized"><b>getValueNormalized</b>
+</h2>
+<p class="comment">Returns the normalized value.</p>
+<pre><code class="language-javascript line-numbers">ScriptAudioWaveform.getValueNormalized()</code></pre>
+<p><br><br></p>
+<h2 id="getwidth"><b>getWidth</b>
+</h2>
+<p class="comment">Returns the width of the component.</p>
+<pre><code class="language-javascript line-numbers">ScriptAudioWaveform.getWidth()</code></pre>
+<p><br><br></p>
+<h2 id="grabfocus"><b>grabFocus</b>
+</h2>
+<p class="comment">Call this method in order to grab the keyboard focus for this component.</p>
+<pre><code class="language-javascript line-numbers">ScriptAudioWaveform.grabFocus()</code></pre>
+<p><br><br></p>
+<h2 id="losefocus"><b>loseFocus</b>
+</h2>
+<p class="comment">Call this method in order to give away the focus for this component.</p>
+<pre><code class="language-javascript line-numbers">ScriptAudioWaveform.loseFocus()</code></pre>
+<p><br><br></p>
+<h2 id="refertodata"><b>referToData</b>
+</h2>
+<p class="comment">Connects this AudioFile to an existing ScriptAudioFile object. -1 sets it back to its internal data object.</p>
+<pre><code class="language-javascript line-numbers">ScriptAudioWaveform.referToData(var audioData)</code></pre>
+<p><br><br></p>
+<h2 id="registeratparent"><b>registerAtParent</b>
+</h2>
+<p class="comment">Registers this waveform to the script processor to be acessible from the outside.</p>
+<pre><code class="language-javascript line-numbers">ScriptAudioWaveform.registerAtParent(int pIndex)</code></pre>
+<p><br><br></p>
+<h2 id="sendrepaintmessage"><b>sendRepaintMessage</b>
+</h2>
+<p class="comment">Manually sends a repaint message for the component.</p>
+<pre><code class="language-javascript line-numbers">ScriptAudioWaveform.sendRepaintMessage()</code></pre>
+<p><br><br></p>
+<h2 id="set"><b>set</b>
+</h2>
+<p class="comment">Sets the property.</p>
+<pre><code class="language-javascript line-numbers">ScriptAudioWaveform.set(String propertyName, var value)</code></pre>
+<p><br><br></p>
+<h2 id="setcolour"><b>setColour</b>
+</h2>
+<p class="comment">sets the colour of the component (BG, IT1, IT2, TXT).</p>
+<pre><code class="language-javascript line-numbers">ScriptAudioWaveform.setColour(int colourId, int colourAs32bitHex)</code></pre>
+<p><br><br></p>
+<h2 id="setconsumedkeypresses"><b>setConsumedKeyPresses</b>
+</h2>
+<p class="comment">Registers a selection of key presses to be consumed by this component.</p>
+<pre><code class="language-javascript line-numbers">ScriptAudioWaveform.setConsumedKeyPresses(var listOfKeys)</code></pre>
+<p><br><br></p>
+<h2 id="setcontrolcallback"><b>setControlCallback</b>
+</h2>
+<p class="comment">Pass a inline function for a custom callback event.</p>
+<pre><code class="language-javascript line-numbers">ScriptAudioWaveform.setControlCallback(var controlFunction)</code></pre>
+<p><br><br></p>
+<h2 id="setdefaultfolder"><b>setDefaultFolder</b>
+</h2>
+<p class="comment">Set the folder to be used when opening the file browser.</p>
+<pre><code class="language-javascript line-numbers">ScriptAudioWaveform.setDefaultFolder(var newDefaultFolder)</code></pre>
+<p><br><br></p>
+<h2 id="setkeypresscallback"><b>setKeyPressCallback</b>
+</h2>
+<p class="comment">Adds a callback to react on key presses (when this component is focused).</p>
+<pre><code class="language-javascript line-numbers">ScriptAudioWaveform.setKeyPressCallback(var keyboardFunction)</code></pre>
+<p><br><br></p>
+<h2 id="setlocallookandfeel"><b>setLocalLookAndFeel</b>
+</h2>
+<p class="comment">Attaches the local look and feel to this component.</p>
+<pre><code class="language-javascript line-numbers">ScriptAudioWaveform.setLocalLookAndFeel(var lafObject)</code></pre>
+<p><br><br></p>
+<h2 id="setplaybackposition"><b>setPlaybackPosition</b>
+</h2>
+<p class="comment">Sets the playback position.</p>
+<pre><code class="language-javascript line-numbers">ScriptAudioWaveform.setPlaybackPosition(double normalisedPosition)</code></pre>
+<p><br><br></p>
+<h2 id="setposition"><b>setPosition</b>
+</h2>
+<p class="comment">Sets the position of the component.</p>
+<pre><code class="language-javascript line-numbers">ScriptAudioWaveform.setPosition(int x, int y, int w, int h)</code></pre>
+<p><br><br></p>
+<h2 id="setpropertiesfromjson"><b>setPropertiesFromJSON</b>
+</h2>
+<p class="comment">Restores all properties from a JSON object.</p>
+<pre><code class="language-javascript line-numbers">ScriptAudioWaveform.setPropertiesFromJSON( var jsonData)</code></pre>
+<p><br><br></p>
+<h2 id="settooltip"><b>setTooltip</b>
+</h2>
+<p class="comment">Shows a informative text on mouse hover.</p>
+<pre><code class="language-javascript line-numbers">ScriptAudioWaveform.setTooltip( String tooltip)</code></pre>
+<p><br><br></p>
+<h2 id="setvalue"><b>setValue</b>
+</h2>
+<p class="comment">Sets the current value</p>
+<pre><code class="language-javascript line-numbers">ScriptAudioWaveform.setValue(var newValue)</code></pre>
+<p><br><br></p>
+<h2 id="setvaluenormalized"><b>setValueNormalized</b>
+</h2>
+<p class="comment">Sets the current value from a range 0.0 ... 1.0.</p>
+<pre><code class="language-javascript line-numbers">ScriptAudioWaveform.setValueNormalized(double normalizedValue)</code></pre>
+<p><br><br></p>
+<h2 id="setvaluewithundo"><b>setValueWithUndo</b>
+</h2>
+<p class="comment">Sets the current value and adds it to the undo list. Don't call this from onControl!</p>
+<pre><code class="language-javascript line-numbers">ScriptAudioWaveform.setValueWithUndo(var newValue)</code></pre>
+<p><br><br></p>
+<h2 id="setzlevel"><b>setZLevel</b>
+</h2>
+<p class="comment">Changes the depth hierarchy (z-axis) of sibling components (Back, Default, Front or AlwaysOnTop).</p>
+<pre><code class="language-javascript line-numbers">ScriptAudioWaveform.setZLevel(String zLevel)</code></pre>
+<p><br><br></p>
+<h2 id="showcontrol"><b>showControl</b>
+</h2>
+<p class="comment">Hides / Shows the control.</p>
+<pre><code class="language-javascript line-numbers">ScriptAudioWaveform.showControl(bool shouldBeVisible)</code></pre>
+<p><br><br></p>
+<h2 id="updatecontentpropertyinternal"><b>updateContentPropertyInternal</b>
+</h2>
+<p class="comment">This updates the internal content data object from the script processor.</p>
+<pre><code class="language-javascript line-numbers">ScriptAudioWaveform.updateContentPropertyInternal(int propertyId,  var newValue)</code></pre>
+<p><br><br></p>
+<h2 id="updatevaluefromprocessorconnection"><b>updateValueFromProcessorConnection</b>
+</h2>
+<p class="comment">Updates the value from the processor connection. Call this method whenever the module state has changed and you want to refresh the knob value to show the current state.</p>
+<pre><code class="language-javascript line-numbers">ScriptAudioWaveform.updateValueFromProcessorConnection()</code></pre>
+<p><br><br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/scriptbutton/index.html">ScriptButton</a>
+</span>
+
+<p class="content-footer-metadata"><br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

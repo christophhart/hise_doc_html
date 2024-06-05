@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="routingmatrix"><b>RoutingMatrix</b>
+</h1>
+<p><br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="addconnection"><b>addConnection</b>
+</h2>
+<p class="comment">adds a connection to the given channels.</p>
+<pre><code class="language-javascript line-numbers">RoutingMatrix.addConnection(int sourceIndex, int destinationIndex)</code></pre>
+<p><br><br></p>
+<h2 id="addsendconnection"><b>addSendConnection</b>
+</h2>
+<p class="comment">adds a send connection to the given channels.</p>
+<pre><code class="language-javascript line-numbers">RoutingMatrix.addSendConnection(int sourceIndex, int destinationIndex)</code></pre>
+<p><br><br></p>
+<h2 id="clear"><b>clear</b>
+</h2>
+<p class="comment">Removes all connections.</p>
+<pre><code class="language-javascript line-numbers">RoutingMatrix.clear()</code></pre>
+<p><br><br></p>
+<h2 id="getdestinationchannelforsource"><b>getDestinationChannelForSource</b>
+</h2>
+<p class="comment">Returns the output channel that is mapped to the given input channel (or -1).</p>
+<pre><code class="language-javascript line-numbers">RoutingMatrix.getDestinationChannelForSource(var sourceIndex)</code></pre>
+<p><br><br></p>
+<h2 id="getsourcechannelsfordestination"><b>getSourceChannelsForDestination</b>
+</h2>
+<p class="comment">Returns one or multiple input channels that is mapped to the given output channel (or -1).</p>
+<pre><code class="language-javascript line-numbers">RoutingMatrix.getSourceChannelsForDestination(var destinationIndex)</code></pre>
+<p><br><br></p>
+<h2 id="getsourcegainvalue"><b>getSourceGainValue</b>
+</h2>
+<p class="comment">Gets the current peak value of the given channelIndex.</p>
+<pre><code class="language-javascript line-numbers">RoutingMatrix.getSourceGainValue(int channelIndex)</code></pre>
+<p><br><br></p>
+<h2 id="removeconnection"><b>removeConnection</b>
+</h2>
+<p class="comment">Removes the connection from the given channels.</p>
+<pre><code class="language-javascript line-numbers">RoutingMatrix.removeConnection(int sourceIndex, int destinationIndex)</code></pre>
+<p><br><br></p>
+<h2 id="removesendconnection"><b>removeSendConnection</b>
+</h2>
+<p class="comment">removes the send connection.</p>
+<pre><code class="language-javascript line-numbers">RoutingMatrix.removeSendConnection(int sourceIndex, int destinationIndex)</code></pre>
+<p><br><br></p>
+<h2 id="setnumchannels"><b>setNumChannels</b>
+</h2>
+<p class="comment">Sets the amount of channels (if the matrix is resizeable).</p>
+<pre><code class="language-javascript line-numbers">RoutingMatrix.setNumChannels(int numSourceChannels)</code></pre>
+<p><br><br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/sample/index.html">Sample</a>
+</span>
+
+<p class="content-footer-metadata"><br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="backgroundtask"><b>BackgroundTask</b>
+</h1>
+<p><br>Every callback that you define in HiseScript is being serialised and called on a single thread in order to avoid synchronisation issues and race conditions (a situation where two threads try to access the same resource). There is a priority system in place which makes sure that certain tasks cannot block other tasks (so eg. a control callback will be executed before a paint routine and if you recompile a script it will discard all pending callbacks for this script processor).</p>
+<p class="comment">A notable exception is of course the realtime callbacks which are executed directly in the audio thread but since you should not allocate anything in there anyways, any possible race conditions between the scripting thread and the audio thread are not super critical.</p>
+<p>However there are a few occasions where this model creates unwanted side effects: a really complex task that will take a lot of time might clog this system and prevent user interaction. In order to solve this, you can use this object to offload a heavyweight function to a separate thread while the scripting thread remains idle and responsive.</p>
+<p class="comment">Be aware that at this point it is a highly experimental function and I would not advise using this without extensive testing of your use case as there might be many subtle issues that come from the multithreading of the function executions.</p>
+<p>The prime use case for this object is when you are working with samples to create custom workflow tools.</p>
+<p>In order to use it, create an object with <a href="scripting/scripting-api/engine/index.html#createbackgroundtask">Engine.createBackgroundTask()</a>
+, and then give it a function to execute with <code>callOnBackgroundThread()</code>
+. </p>
+<p><br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="callonbackgroundthread"><b>callOnBackgroundThread</b>
+</h2>
+<p class="comment">Call a function on the background thread.</p>
+<pre><code class="language-javascript line-numbers">BackgroundTask.callOnBackgroundThread(var backgroundTaskFunction)</code></pre>
+<p><br>This will start a new thread and call the function that you've passed in. The function must have a single parameter which will contain a reference to this object that you can use for status reporting / thread control.</p>
+<p><br></p>
+<h2 id="getprogress"><b>getProgress</b>
+</h2>
+<p class="comment">Get the progress for this task.</p>
+<pre><code class="language-javascript line-numbers">BackgroundTask.getProgress()</code></pre>
+<p><br><br></p>
+<h2 id="getproperty"><b>getProperty</b>
+</h2>
+<p class="comment">Retrieve a property through a thread safe container.</p>
+<pre><code class="language-javascript line-numbers">BackgroundTask.getProperty(String id)</code></pre>
+<p><br><br></p>
+<h2 id="getstatusmessage"><b>getStatusMessage</b>
+</h2>
+<p class="comment">Returns the current status message.</p>
+<pre><code class="language-javascript line-numbers">BackgroundTask.getStatusMessage()</code></pre>
+<p><br><br></p>
+<h2 id="killvoicesandcall"><b>killVoicesAndCall</b>
+</h2>
+<p class="comment">Kills all voices and calls the given function on the sample loading thread.</p>
+<pre><code class="language-javascript line-numbers">BackgroundTask.killVoicesAndCall(var loadingFunction)</code></pre>
+<p><br><br></p>
+<h2 id="runprocess"><b>runProcess</b>
+</h2>
+<p class="comment">Spawns a OS process and executes it with the given command line arguments.</p>
+<pre><code class="language-javascript line-numbers">BackgroundTask.runProcess(var command, var args, var logFunction)</code></pre>
+<p><br>This function will use a child process to run any command line application on this background thread. Just pass in the command you want to execute, the command line arguments (either as an array of strings or as a single string which will be split up at unquoted whitespace characters) and a logger function that will periodically read the programs output and called whenever a new line was printed to the standard output. The function needs to have three arguments which will contain:</p>
+<ol><li>A reference to the background task object (so you can set the progress)</li>
+<li>a <code>bool</code>
+ value that is true when the program has finished</li>
+<li>An integer containing the exit code (if the program has finished and the second argument is <code>true</code>
+) or a string for each line from the program output.</li>
+</ol>
+<p class="comment">Be aware that in order to allow a graceful exit, you have to set the timeout of this background task to be higher than the longest interval between the output of your program, otherwise the thread might be killed with undefined behaviour.</p>
+<p>This example here uses CURL to download a 100MB test file and put it on the Desktop. It should work on both macOS and Windows (10).</p>
+<pre><code class="language-javascript line-numbers">// Create a background task and give it a name that's descriptive
+const var b = Engine.createBackgroundTask("DownloadTest");
+
+// Let's forward the status and progress to the official HISE progress system
+// (this will show the status in the main top bar in HISE and you can hook up
+//  Panels to a preload callback on your UI)
+b.setForwardStatusToLoadingThread(true);
+
+// CURL will spit out a new line roughly every second, so setting the timeout to 2 seconds will ensure 
+// that it can be cancelled gracefully.
+b.setTimeOut(2000);
+
+// We can use the finish callback to show / hide some elements
+b.setFinishCallback(function(isFinished, wasCancelled)
+{
+	b.setProgress(0.0);
+
+	Console.print("Finished: " + isFinished);
+	Console.print("Cancelled: " + wasCancelled);
+});
+
+function downloadLogger(thread, isFinished, data)
+{
+	if(isFinished)
+		return;
+
+	// Now let's hack around and format the CURL output to something
+	// that we can show in HISE
+	
+	// Begin of nasty hacking procedure...
+	var v = data.split(" ");
+	for (i = 0; i < v.length; i++) 
+	{
+	    if (v[i].length == 0)
+	        v.removeElement(i--);
+	}
+	
+	var progress = parseInt(v[0]) / 100.0;
+	var m = "Downloading " + v[3] + "B of " + v[1] + "B";
+	
+	if (progress < 0.01) 
+		m = "Start Downloading...";
+	// ...End of nasty hacking procedure
+	
+	thread.setProgress(progress);	
+	thread.setStatusMessage(m);
+}
+
+// This button will just start and cancel the download
+const var button = Content.addButton("Run", 0, 0);
+button.set("saveInPreset", false);
+
+inline function onButton(component, value)
+{
+	if(value)
+	{
+		local f = FileSystem.getFolder(FileSystem.Desktop).getChildFile("testfile.dat");
+		
+		// Use CURL to download a test file of 100MB
+		b.runProcess("curl", ["https://speed.hetzner.de/100MB.bin",
+							  "--output", 
+							  f.toString(0)], 
+							  downloadLogger);
+	}
+	else
+	{
+		// This should gracefully cancel the download
+		b.sendAbortSignal(false);
+	}
+};
+
+Content.getComponent("Run").setControlCallback(onButton);</code></pre>
+<p><br></p>
+<h2 id="sendabortsignal"><b>sendAbortSignal</b>
+</h2>
+<p class="comment">Signal that this thread should exit.</p>
+<pre><code class="language-javascript line-numbers">BackgroundTask.sendAbortSignal(bool blockUntilStopped)</code></pre>
+<p><br>If the task is running, this will send a abort signal so that the next time you call <a href="scripting/scripting-api/backgroundtask/index.html#shouldabort">shouldAbort()</a>
+ it will return false and gives you the option to cancel the task gracefully.</p>
+<p>This can be called from any thread (but the most useful application is a control callback obviously). if <code>blockUntilStopped</code>
+ is true, the function will wait until the thread has been stopped (in case you require that the thread has been terminated before proceeding).<br></p>
+<h2 id="setfinishcallback"><b>setFinishCallback</b>
+</h2>
+<p class="comment">Set a function that will be called when the task has started / stopped.</p>
+<pre><code class="language-javascript line-numbers">BackgroundTask.setFinishCallback(var newFinishCallback)</code></pre>
+<p><br>You can pass a function with two parameters here that will be executed when the thread starts and when it stops. This might be useful for notifying your UI that the task is in progress. Be aware that this function will be called on the scripting thread and might be executed at the same time as the actual task!<br></p>
+<h2 id="setforwardstatustoloadingthread"><b>setForwardStatusToLoadingThread</b>
+</h2>
+<p class="comment">Forward the state of this thread to the sample loading thread notification system.</p>
+<pre><code class="language-javascript line-numbers">BackgroundTask.setForwardStatusToLoadingThread(bool shouldForward)</code></pre>
+<p><br>There is another background thread in HISE that is used for preset / sample loading as well as for other heavyweight tasks. This offers a convenient notification system that you might already use in your project. In this case you can call this method with <code>true</code>
+ and it will forward any status changes of this task. This includes:</p>
+<ul><li><a href="scripting/scripting-api/scriptpanel/index.html#setloadingcallback">ScriptPanel.setLoadingCallback()</a>
+: will be called when the task starts / stops</li>
+<li><a href="scripting/scripting-api/engine/index.html#getpreloadmessage">Engine.getPreloadMessage()</a>
+: will return the message passed in with <code>setStatusMessage()</code>
+</li>
+<li><a href="scripting/scripting-api/engine/index.html#getpreloadprogress">Engine.getPreloadProgress()</a>
+: will return the task's progress</li>
+</ul>
+<p class="comment">Be aware that this only captures the notification system for the time the task is active but does not lock the real loading thread so if you spawn a task on the main loading thread (eg. loading a samplemap) while your custom task is active, it might create glitches and inconsistent notifications.<br></p>
+<h2 id="setprogress"><b>setProgress</b>
+</h2>
+<p class="comment">Set a progress for this task.</p>
+<pre><code class="language-javascript line-numbers">BackgroundTask.setProgress(double p)</code></pre>
+<p><br><br></p>
+<h2 id="setproperty"><b>setProperty</b>
+</h2>
+<p class="comment">Set a property to a thread safe container.</p>
+<pre><code class="language-javascript line-numbers">BackgroundTask.setProperty(String id, var value)</code></pre>
+<p><br><br></p>
+<h2 id="setstatusmessage"><b>setStatusMessage</b>
+</h2>
+<p class="comment">Sets a status message.</p>
+<pre><code class="language-javascript line-numbers">BackgroundTask.setStatusMessage(String m)</code></pre>
+<p><br><br></p>
+<h2 id="settimeout"><b>setTimeOut</b>
+</h2>
+<p class="comment">Set timeout.</p>
+<pre><code class="language-javascript line-numbers">BackgroundTask.setTimeOut(int ms)</code></pre>
+<p><br>You can set a custom timeout period that the thread will wait until it will force-kill the task (which might leave things in a bad place). The default time is 500 milliseconds, but you can change this value if you need. The best way to get an estimate for how long you need the timeout is the period between calls to <code>shouldAbort()</code>
+. So if you have a task like this:</p>
+<pre><code class="language-javascript line-numbers">function myTask(thread)
+{
+	for(i = 0; i < 1000000; i++)
+	{
+		if(thread.shouldAbort())
+			break;
+			
+		subFunctionThatTakes900MillisecondsPerRun();
+	}
+}</code></pre>
+<p>you should set the timeout to something like 1000ish milliseconds - including some headroom for computers that are slower obviously and I would rather suggest to break down the function in the loop into multiple parts and call <code>shouldAbort()</code>
+ more often to avoid any freezing.<br> </p>
+<h2 id="shouldabort"><b>shouldAbort</b>
+</h2>
+<p class="comment">Checks whether the task should be aborted (either because of recompilation or when you called abort().</p>
+<pre><code class="language-javascript line-numbers">BackgroundTask.shouldAbort()</code></pre>
+<p><br>This function should be called as often as possible to figure out whether the thread needs to be cancelled, which might happen because of two reasons:</p>
+<ol><li>You have called <code>sendAbortSignal()</code>
+</li>
+<li>This object is being deleted (either because your app is terminated or the script is recompiled inside HISE)</li>
+</ol>
+<p>If you're doing things in a loop it's highly advised to call it once per loop and the time between two calls to <code>shouldAbort()</code>
+ must never exceed the thread timeout (in fact the execution will time out if you fail to do so which is a safe check that should prevent you from forgetting to call this).<br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/beatportmanager/index.html">BeatportManager</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>03.11.2021<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

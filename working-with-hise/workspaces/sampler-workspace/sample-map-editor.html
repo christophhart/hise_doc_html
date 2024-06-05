@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="map-editor"><img src="images/icon_samplemapeditor.png"></img>
+<b>Map Editor</b>
+</h1>
+<img src="images/custom/sampler-map.png"></img>
+<p> </p>
+<p>With the <b>Map Editor</b>
+ you can map your samples and save them as a <a href="hise-modules/sound-generators/list/streamingsampler.html#sample-maps">SampleMaps</a>
+. </p>
+<p>Drag & Drop your samples into the map to select from one of three different mapping functions: </p>
+<ul><li><a href="working-with-hise/workspaces/sampler-workspace/sample-map-editor.html#drop-point">Drop Point</a>
+, </li>
+<li><a href="working-with-hise/workspaces/sampler-workspace/sample-map-editor.html#pitch-detection">Pitch Detection</a>
+</li>
+<li>and the mighty <a href="working-with-hise/workspaces/sampler-workspace/sample-map-editor.html#filename-token-parser">Filename Token Parser</a>
+.</li>
+</ul>
+<p>After you added your samples to the SampleMap it's possible to drag them around in the Map Editor and adjust their map properties with the <a href="working-with-hise/workspaces/sampler-workspace/sample-map-editor.html#samplemap-value-setters">SampleMap Value Setters</a>
+ and their audio-related properties in the adjacent <a href="working-with-hise/workspaces/sampler-workspace/sample-editor.html">Sample Editor</a>
+. </p>
+<p>In the Sample Map Editor you can use some of the usual suspected Action Keys while dragging:</p>
+<ul><li><b>Ctrl</b>
+ - to move the samples in octaves.</li>
+<li><b>Shift</b>
+ - to restrict the movement from the samples current position to the x and y axis.</li>
+<li><b>Alt</b>
+ - to duplicate samples.</li>
+<li><b>Ctrl + Arrow Keys</b>
+ - To move the samples with the keyboard arrows.</li>
+</ul>
+<p>After you're finished with editing you can save the SampleMap (Ctrl+s). It will be saved into the <a href="working-with-hise/project-management/projects-folders/sample-maps.html">SampleMaps Folder</a>
+ of your project and from this moment on be available in the SampleMap Selector in the toolbar and accessible with the scripting capabilities of HISE. <a href="tutorials/recipes/ui/general.html#switch-samplemaps-with-a-combobox">Recipe: Switch Samplemaps with a ComboBox</a>
+</p>
+<p>The next step would be to compress the SampleMaps samples into a single big monolith-file (HLAC) for improved loading-time and reduced file-size. Learn more about this here: <a href="hise-modules/sound-generators/list/streamingsampler.html#compress-and-export">Compress and Export</a>
+</p>
+<h2 id="toolbar"><b>Toolbar</b>
+</h2>
+<table><thead><td><b>Icon </b>
+</td>
+<td><b>Shortcut </b>
+</td>
+<td><b>Name </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><img src="images/icon_new-samplemap.png"></img>
+</td>
+<td><code>ctrl + N</code>
+ </td>
+<td>New Samplemap </td>
+<td>Create a new SampleMap </td>
+</tr>
+<tr><td><img src="images/icon_import-sfz-file-format.png"></img>
+</td>
+<td><code> </code>
+ </td>
+<td>Import Sfz File Format </td>
+<td>Import SFZ file format </td>
+</tr>
+<tr><td><img src="images/icon_warning.png"></img>
+</td>
+<td><code> </code>
+ </td>
+<td>Warning </td>
+<td>Shows up, when you haven't saved your SampleMap </td>
+</tr>
+<tr><td><img src="images/icon_save-samplemap.png"></img>
+</td>
+<td><code>ctrl + S</code>
+ </td>
+<td>Save Samplemap </td>
+<td>Save the current SampleMap </td>
+</tr>
+<tr><td><img src="images/icon_convert-to-monolith.png"></img>
+</td>
+<td><code> </code>
+ </td>
+<td>Convert To Monolith </td>
+<td>Convert the current samplemap to HLAC monolith format </td>
+</tr>
+<tr><td><img src="images/icon_zoom-in.png"></img>
+</td>
+<td><code>ctrl + +</code>
+ </td>
+<td>Zoom In </td>
+<td>Zoom in the sample map </td>
+</tr>
+<tr><td><img src="images/icon_zoom-out.png"></img>
+</td>
+<td><code>ctrl + -</code>
+ </td>
+<td>Zoom Out </td>
+<td>Zoom out the sample map </td>
+</tr>
+<tr><td><img src="images/icon_undo.png"></img>
+</td>
+<td><code>ctrl + Z</code>
+ </td>
+<td>Undo </td>
+<td>Undo the last operation </td>
+</tr>
+<tr><td><img src="images/icon_redo.png"></img>
+</td>
+<td><code>ctrl + Y</code>
+ </td>
+<td>Redo </td>
+<td>Redo the last operation </td>
+</tr>
+<tr><td><img src="images/icon_enable-autopreview.png"></img>
+</td>
+<td><code> </code>
+ </td>
+<td>Enable Autopreview </td>
+<td>description </td>
+</tr>
+<tr><td><img src="images/icon_select-all-samples.png"></img>
+</td>
+<td><code>ctrl + A</code>
+ </td>
+<td>Select All Samples </td>
+<td>Select all Samples </td>
+</tr>
+<tr><td><img src="images/icon_deselect-all-samples.png"></img>
+</td>
+<td><code>escape</code>
+ </td>
+<td>Deselect All Samples </td>
+<td>Deselect all Samples </td>
+</tr>
+<tr><td><img src="images/icon_cut.png"></img>
+</td>
+<td><code>ctrl + X</code>
+ </td>
+<td>Cut </td>
+<td>Cut selected samples </td>
+</tr>
+<tr><td><img src="images/icon_copy.png"></img>
+</td>
+<td><code>ctrl + C</code>
+ </td>
+<td>Copy </td>
+<td>Copy samples to clipboard </td>
+</tr>
+<tr><td><img src="images/icon_paste.png"></img>
+</td>
+<td><code>ctrl + V</code>
+ </td>
+<td>Paste </td>
+<td>Paste samples from clipboard </td>
+</tr>
+<tr><td><img src="images/icon_duplicate.png"></img>
+</td>
+<td><code>ctrl + D</code>
+ </td>
+<td>Duplicate </td>
+<td>Duplicate all selected samples </td>
+</tr>
+<tr><td><img src="images/icon_delete.png"></img>
+</td>
+<td><code>delete</code>
+ </td>
+<td>Delete </td>
+<td>Delete all selected samples </td>
+</tr>
+<tr><td><img src="images/icon_fill-note-gaps.png"></img>
+</td>
+<td><code> </code>
+ </td>
+<td>Fill Note Gaps </td>
+<td>Fill note gaps in SampleMap </td>
+</tr>
+<tr><td><img src="images/icon_fill-velocity-gaps.png"></img>
+</td>
+<td><code> </code>
+ </td>
+<td>Fill Velocity Gaps </td>
+<td>Fill velocity gaps in SampleMap </td>
+</tr>
+<tr><td><img src="images/icon_load-samplemap.png"></img>
+</td>
+<td><code>ctrl + L</code>
+ </td>
+<td>Load Samplemap </td>
+<td>Load a SampleMap from the pool. </td>
+</tr>
+<tr><td><img src="images/icon_refresh-velocity-crossfades..png"></img>
+</td>
+<td><code> </code>
+ </td>
+<td>Refresh Velocity Crossfades. </td>
+<td>Switches to crossfade mode. LoKey and HighKey switch to LowerVelocityXFade and UpperVelocityXFade. </td>
+</tr>
+<tr><td><img src="images/icon_trim-sample-start.png"></img>
+</td>
+<td><code> </code>
+ </td>
+<td>Trim Sample Start </td>
+<td>description </td>
+</tr>
+<tr><td><img src="images/icon_rebuild.png"></img>
+</td>
+<td><code> </code>
+ </td>
+<td>Rebuild </td>
+<td>description </td>
+</tr>
+</table>
+<h2 id="sfz-importer"><b>SFZ Importer</b>
+</h2>
+<p>SFZ is a free file exchange format for samplers. However, <b>HISE</b>
+ is not designed to be a SFZ sample player. The SFZ parser makes it more easy to transfer other sample formats to <b>HISE</b>
+. Although there are opcodes for almost any property of a sampler, only these opcodes are supported:</p>
+<p class="comment"><code>sample, lokey, hikey, lovel, hivel, offset, end, loop_mode, loopstart, loopend, tune, pitch_keycenter, volume, group_volume, pan, groupName, key</code>
+</p>
+<p>These are pretty much all opcodes thich relate to a <b>HISE</b>
+ sampler property. If you want to convert NI KONTAKT libraries, check out the Chicken Translator SFZ edition, as this is the preferred way of migrating KONTAKT libraries</p>
+<p>Loading SFZ files is remarkably easy, just use the SFZ button, or drop a .sfz file on the sampler. If there are multiple groups in the SFZ file, you will see a dialog window where you can consolidate the sfz groups to RR Groups or ignore dedicated sfz groups (and drop the same sfz on another sampler with a inverted selection to split the sfz file to two independant samplers")</p>
+<h3 id="samplemap-value-setters"><b>SampleMap Value Setters</b>
+</h3>
+<table><thead><td><b>Name </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><b>RR Group</b>
+ </td>
+<td>the group index for round robin / random group start behaviour. Although it's called RRGroup, it can be used for any other purpose (like dynamic X-Fade or legato sample triggering). Think of this as an additional z-axis in the note/velocity coordinate system. </td>
+</tr>
+<tr><td><b>RootNote</b>
+ </td>
+<td>the root note. This is the reference pitch note. </td>
+</tr>
+<tr><td><b>HiKey</b>
+ </td>
+<td>the highest mapped key. </td>
+</tr>
+<tr><td><b>LoKey</b>
+ </td>
+<td>the lowest mapped key. </td>
+</tr>
+<tr><td><b>LoVel</b>
+ </td>
+<td>the lowest mapped velocity. </td>
+</tr>
+<tr><td><b>HiVel</b>
+ </td>
+<td>the highest mapped velocity. </td>
+</tr>
+<tr><td><b>LowerVelocityXFade</b>
+ </td>
+<td>Change the lower Velocity X-Fade<br></td>
+</tr>
+<tr><td><b>UpperVelocityXFade</b>
+ </td>
+<td>Change the upprt Velocity X-Fade </td>
+</tr>
+</table>
+<p class="comment"><b>Right click</b>
+ on the property to open a big slider that allows finer adjustment</p>
+<h2 id="drop-point"><b>Drop Point</b>
+</h2>
+<p>Drag & drop your samples to a specific location in the Map Editor.</p>
+<h2 id="pitch-detection"><b>Pitch Detection</b>
+</h2>
+<p>A pitch detection algorithm that maps the samples according to their pitch. (not always 100% reliable) </p>
+<h2 id="filename-token-parser"><b>Filename Token Parser</b>
+</h2>
+<img src="images/custom/sampler-filenametokenparser.png"></img>
+<p> </p>
+<p>The <b>Filename Token Parser</b>
+ maps samples according to their filename. It can divide the filenames into <code>tokens</code>
+ and automap them to specific properties of the SampleMap.</p>
+<p>With this we can take these two sample filenames:</p>
+<ul><li><b>1</b>
+ - <code>Cello_stacc_RR1_D#2_p.wav</code>
+<br></li>
+<li><b>2</b>
+ - <code>Cello_stacc_RR2_C3_f.wav</code>
+</li>
+</ul>
+<p>and automap them to these properties:</p>
+<ul><li><b>1</b>
+ - First RR Group, Root Note D#2, Velocity Range 0-63<br></li>
+<li><b>2</b>
+ - Second RR Group, Root Note C3, Velocity Range 64-127</li>
+</ul>
+<p>Load your samples into the Map Editor and choose <b>Filename Token Parser</b>
+. </p>
+<p>First you have to specify the filename <b>Separator</b>
+. The parser needs this character to divide the filenames into tokens (the default separator is <code>_</code>
+). Each token will now appear in a separate row in the popup. Step through each token and tell the parser what to do:</p>
+<h3 id="the-rows"><b>The Rows</b>
+</h3>
+<p><b>String</b>
+</p>
+<p>The separated tokens of the first filename (it will iterate over all files, but only display the first filename tokens so that you can see what the parser is doing)</p>
+<p><b>Property</b>
+</p>
+<p>The Property column decides to which SampleMap property the token is assigned to.</p>
+<table><thead><td><b>Option </b>
+</td>
+<td><b>Property </b>
+</td>
+<td><b>Datatype </b>
+</td>
+</thead>
+<tr><td>Ignore </td>
+<td>- </td>
+<td>do nothing with this token. ignore the token information. (default) </td>
+</tr>
+<tr><td>Single Key </td>
+<td><code>LoKey</code>
+, <code>HiKey</code>
+ & <code>Root</code>
+ </td>
+<td>sets the MIDI NoteNumber. Use a single "Number" (0-127) or a "Note name" in the format D#3 (middle octave = 3)<br></td>
+</tr>
+<tr><td>RR Group </td>
+<td><code>RRGroup</code>
+ </td>
+<td>moves the sample into the specified RRGroup (starting with Group 1), Use "Number" or a "Custom" data type for this. </td>
+</tr>
+<tr><td>Velocity Spread </td>
+<td><code>LoVel</code>
+ & <code>HiVel</code>
+ </td>
+<td>spreads the velocity across the whole range divided by the amount of found "Custom" items (pp,mp,ff). </td>
+</tr>
+<tr><td>Velocity Range </td>
+<td><code>LoVel</code>
+ & <code>HiVel</code>
+ </td>
+<td>spreads the velocity across a range (_1-63_). You must use the data type "Number with Range" or "Custom" for this mode. </td>
+</tr>
+<tr><td>Low Velocity </td>
+<td><code>LoVel</code>
+ </td>
+<td>sets the lower velocity value, independently. use it together with <b>High Velocity</b>
+. "Number" only </td>
+</tr>
+<tr><td>High Velocity </td>
+<td><code>HiVel</code>
+ </td>
+<td>set the high velocity value. "Number" only </td>
+</tr>
+<tr><td>Velocity Value </td>
+<td><code>LoVel</code>
+ & <code>HiVel</code>
+ </td>
+<td>maps each samples velocity to a single value ( LoVel: <number>, HiVel: <number>+1 ) </td>
+</tr>
+</table>
+<p>		</p>
+<p><b>Data Type</b>
+</p>
+<p>The Data Type column defines as which data type the token should be interpreted. The result is always a number, or a space separated number list (Values).</p>
+<table><thead><td><b>Data Type </b>
+</td>
+<td><b>Description </b>
+</td>
+<td><b>Items </b>
+</td>
+<td><b>Values </b>
+</td>
+</thead>
+<tr><td>Number </td>
+<td>Uses the number received from the token </td>
+<td>- </td>
+<td>- </td>
+</tr>
+<tr><td>Number with Range </td>
+<td>Uses two numbers. base and a upper limit (0-56) to define a range. (for <code>Velocity Range</code>
+, exclusively) </td>
+<td>the upper limit as number </td>
+<td>- </td>
+</tr>
+<tr><td>Note Name </td>
+<td>If the token is a Note Name (format: "D#3"), use this data type to convert it to the right midi note number (middle octave is 3). </td>
+<td>- </td>
+<td>- </td>
+</tr>
+<tr><td>Custom<br></td>
+<td>Maps any string in the item list to a number in the value list. <b>Example:</b>
+ <code>RR1 RR2</code>
+ and <code>1 2</code>
+ will map <code>RR1</code>
+ to RRGroup 1 and <code>RR2</code>
+ to RRGroup 2. </td>
+<td>the string token list (separated by space)<br></td>
+<td>the number list (separated by space) </td>
+</tr>
+<tr><td>Fixed Value </td>
+<td>Sets a fixed value that can be entered in the Items&Values columns </td>
+<td>number </td>
+<td>number </td>
+</tr>
+<tr><td>Ignored </td>
+<td>Ignores the token. You should not have to use this directly, as it's the datatype for ignored tokens. </td>
+<td>- </td>
+<td>- </td>
+</tr>
+</table>
+<p>In case that you want to store the parser settings for further use: You can Copy&Paste or Save&Load the Filename Token Parsers settings in the top of the Popup.</p>
+<p class="comment">There is a handy tool called "Close Gaps" which can be useful after importing the files with this method.</p>
+<p>The Solution to the example:</p>
+<p><code>Cello_stacc_RR1_D#2_p.wav</code>
+ <code>Cello_stacc_RR2_C3_f.wav</code>
+</p>
+<table><thead><td><b>Token </b>
+</td>
+<td><b>Property </b>
+</td>
+<td><b>Data Type </b>
+</td>
+</thead>
+<tr><td><code>Cello</code>
+ </td>
+<td>Ignore </td>
+<td>Ignored </td>
+</tr>
+<tr><td><code>stacc</code>
+ </td>
+<td>Ignore </td>
+<td>Ignored </td>
+</tr>
+<tr><td><code>RR1</code>
+ </td>
+<td>RRGroup </td>
+<td>Custom </td>
+</tr>
+<tr><td><code>D#2</code>
+ </td>
+<td>Single Key </td>
+<td>Note name </td>
+</tr>
+<tr><td><code>p</code>
+ </td>
+<td>Velocity Spread </td>
+<td>Custom </td>
+</tr>
+</table>
+<h3 id="scripting"><b>Scripting</b>
+</h3>
+<p>If you want to access attributes of SampleMaps or change SampleMap aspects with scripting, use a typed Sampler script reference. (Shortcut: Right click on the top bar of the Sampler)</p>
+<pre><code class="language-javascript line-numbers">const var Sampler2 = Synth.getSampler("Sampler1");</code></pre>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="working-with-hise/workspaces/sampler-workspace/sample-settings.html">Sampler Settings</a>
+</span>
+
+<p class="content-footer-metadata"><br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

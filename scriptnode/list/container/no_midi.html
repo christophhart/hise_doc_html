@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="no_midi"><b>no_midi</b>
+</h1>
+<p class="comment"><code>container.no_midi</code>
+</p>
+<img src="images/sn_screen_no_midi.png"></img>
+<p>prevents child nodes from processing MIDI messages<br>There are a few nodes that will automatically process MIDI message to change their parameters:</p>
+<ul><li>the <a href="scriptnode/list/core/oscillator.html">Oscillator</a>
+ node will change the root frequency to match the MIDI note</li>
+<li>envelope nodes will set their gate parameter to on / off to match the key press state</li>
+</ul>
+<p>If you want to process MIDI messages, you usually need to put these nodes into a <a href="scriptnode/list/container/midichain.html">container.midichain</a>
+ node which will split up the incoming audio buffer for each midi message and do a sample accurate processing of the MIDI input. However in some contexts (eg. a polyphonic synthesiser), the MIDI processing is enabled <b>by default</b>
+ so the only chance to disable the MIDI processing in these setups is to put the nodes into this container. </p>
+<p class="comment">One of the most important use cases of this is to prevent an oscillator that you want to use as LFO to be set to the audio frequency whenever a note is played.</p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scriptnode/list/container/sidechain.html">sidechain</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>18.07.2023<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

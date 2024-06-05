@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="preparespecs"><b>PrepareSpecs</b>
+</h1>
+<p>A data structure containing the processing details for the context.<br>This is being passed into the prepare() method of each node and can be used to setup the internals.<br> </p>
+<h2 id="class-members"><b>Class members</b>
+</h2>
+<h4 id="samplerate"><b>sampleRate</b>
+</h4>
+<pre><code class="language-clike line-numbers">double sampleRate = 0.0</code></pre>
+<p>the sample rate. This value might be modified if the node is being used in an oversampled context.<br> </p>
+<h4 id="blocksize"><b>blockSize</b>
+</h4>
+<pre><code class="language-clike line-numbers">int blockSize = 0</code></pre>
+<p>The maximum samples that one block will contain. It is not guaranteed that the number will always be that amount, but you can assume that it never exceeds this number.<br> </p>
+<h4 id="numchannels"><b>numChannels</b>
+</h4>
+<pre><code class="language-clike line-numbers">int numChannels = 0</code></pre>
+<p>The number of channels for the signal.<br> </p>
+<h4 id="voiceindex"><b>voiceIndex</b>
+</h4>
+<pre><code class="language-clike line-numbers">PolyHandler* voiceIndex = nullptr</code></pre>
+<p>A pointer to the voice index (see <a href="scriptnode/snex_api/containers/polydata.html">PolyData</a>
+ template).<br> </p>
+<h2 id="class-methods"><b>Class methods</b>
+</h2>
+<h3 id="operator-bool"><b>operator bool</b>
+</h3>
+<pre><code class="language-clike line-numbers">operator bool() const</code></pre>
+<p>The bool operator is overwritten so you can use it inside a if condition. It will return true if the specification is valid.<br> </p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scriptnode/snex_api/data_structures/processdata.html">ProcessData<int C></a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

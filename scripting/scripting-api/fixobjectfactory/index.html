@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="fixobjectfactory"><b>FixObjectFactory</b>
+</h1>
+<p>This class allows you to create a custom data structure that can be used to build different containers with a very dense data layout. This can be very useful in a MIDI processing context where you need to define a custom data model to fit your algorithm: In most scenarios that require a custom MIDI processing script, you will need to create a data container that stores varying kind of data. With this class you can tailor the memory layout to your exact requirement and then use one of the available data containers for a convenient implementation.</p>
+<p>The data layout will be defined by a JSON prototype object that you need to pass into <a href="scripting/scripting-api/engine/index.html#createfixobjectfactory">Engine.createFixObjectFactory()</a>
+. This will return a factory object that can be used to instantiate containers or single objects.</p>
+<p class="comment">A notable feature of this class is that you can supply a custom comparison function that will be used by the data containers for the <code>indexOf()</code>
+, <code>contains()</code>
+ methods.</p>
+<h2 id="advantages"><b>Advantages</b>
+</h2>
+<p>On the first look this doesn't look particularly interesting, as anything here can also be implemented <i>somehow</i>
+ using the stock data structures of HiseScript. Howewer there are a few advantages that make this a bit (or a lot) more convenient:</p>
+<ul><li>you don't need to care about proper initialisation of default values, this will be done automatically by copying the values from the prototype JSON object. Also all the "clearing" functions will reset the object to this default state, if this is non-trivial (every = zero) this becomes be very convenient.</li>
+<li>you don't need to care about allocation & realtime safety: it's always preallocated.</li>
+<li>the ability of using the unordered stack data container can drastically simplify a lot of scripts.</li>
+<li>the data layout will be picked up by the IDE tools (scriptwatch table & autocomplete). There's also a handy StackViewer that shows the full data rangee in a table layout (Right-click on the entry of the stack in the ScriptWatchTable and choose <b>View in Popup</b>
+)</li>
+<li>the performance might be faster depending on your algorithm (because searching & indexing can be done on C++ level). The expected speedup is not always ground-breaking, but since the use case of this class is in the MIDI processing callback, every saved CPU cycle is a good CPU cycle.</li>
+<li>you can pass a fix object as a data structure to an eventnode network which will treat it as one item across the signal graph (spoiler alert 2024...)</li>
+<li>going forward there will be more and more applications with other scriping API calls that benefit from the fixed layout to improve the performance (eg. <a href="scripting/scripting-api/math/index.html#from0to1">Math.from0to10()</a>
+).</li>
+</ul>
+<h2 id="the-prototype"><b>The Prototype</b>
+</h2>
+<p>The prototype JSON object will define the object data layout. Every property (key) you define here will create a "data member" of the fix object with the key as member identifier and the value as initial default value. However there are a few limitations for the layout and data:</p>
+<ul><li>the only allowed data types are numbers. No strings, no nested JSON, no object references</li>
+<li>the only exception is that you can define arrays, but the array have to be one-dimensional and only contain numbers.</li>
+</ul>
+<p>The fix object is typed, that means that if you pass in an integer value, it will create an integer member. If you pass in an array, it will use the first element to figure out what type to use.</p>
+<p>The values of the property will be used as "default" values and every object will be initialised with these.</p>
+<p>Here are a few (real world) examples of JSON objects that can be used as prototype:</p>
+<pre><code class="language-javascript line-numbers">// Use this to store the event IDs of a chord that is created
+// from a single note
+const var f1 = Engine.createFixObjectFactory({
+	eventId: 0,
+	chordIds: [0, 0, 0] // this assumes that the chord is a triad
+});
+
+// Use this to store the time and pitch factor of a note
+const var f1 = Engine.createFixObjectFactory({
+	eventId: 0,
+	pitchFactor: 1.0,
+	startUptime: 0.0
+});
+
+// Use this to store whether the note was played while a keyswitch
+// was held down
+const var f1 = Engine.createFixObjectFactory({
+	eventId: 0,
+	triggeredWithC1: false,
+	triggeredWithD1: false
+});</code></pre>
+<p>After you've created a factory, you can either create single instance objects or a data container with additional functionality.</p>
+<p><br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="create"><b>create</b>
+</h2>
+<p class="comment">Creates a single object from the prototype layout.</p>
+<pre><code class="language-javascript line-numbers">FixObjectFactory.create()</code></pre>
+<p><br>Calling this method will create a single object with the supplied data layout. The returned object is <b>NOT</b>
+ a JSON object, but a custom object type with these properties:</p>
+<ul><li>predefined, typed and preallocated properties based on the JSON prototype of the factory</li>
+<li>no methods, just data</li>
+</ul>
+<p>However from a workflow perspective, it behaves just like a JSON object:</p>
+<ul><li>you can access (read & write) properties using the dot operator: <code>obj.key = value</code>
+ and <code>value = obj.key</code>
+</li>
+<li>you can even call <code>trace()</code>
+ to create a string representation that looks like it's JSON equivalent (useful for debugging)</li>
+</ul>
+<p>You can of course put these objects into a JS array or JSON object, however it's highly recommended to use one of the special data containers instead. If you do so, you will most likely need to create a single object alongside the data container and then use this as "interface object" for shuffling data in and out of the container:</p>
+<pre><code class="language-javascript line-numbers">const var f1 = Engine.createFixObjectFactory({
+	"myValue": 17,
+	"someOtherValue": 42.0
+});
+
+// Creates a preallocated array with the given size
+const var list = f1.createArray(64);
+
+// Creates an object for interacting with the array above
+const var obj = f1.create();
+
+Console.print(trace(obj));
+
+// Now we want to push an object with both values zero
+// into the list. 
+obj.myValue = 0;
+obj.someOtherValue = 0.0;
+
+// This will not insert a reference into the array but copy the 
+// data values from the current state of obj
+list.push(obj);
+
+// You can also call trace with a FixObjectArray and it will dump it like a JSON
+Console.print(trace(list));
+
+// this function will perform a bitwise comparison of the data
+const var idx = list.indexOf(obj);
+Console.print(idx); // => 0
+
+obj.myValue = 90;
+
+// Now it won't find the element because we changed it.
+// Note that that's different from the default JS behaviour
+// because we are not storing a reference to the object in the 
+// array but a copy!
+const var idx2 = list.indexOf(obj);
+
+Console.print(idx2); // => -1</code></pre>
+<p><br></p>
+<h2 id="createarray"><b>createArray</b>
+</h2>
+<p class="comment">Creates a fixed size array with the given number of elements.</p>
+<pre><code class="language-javascript line-numbers">FixObjectFactory.createArray(int numElements)</code></pre>
+<p><br>This function will create and return a preallocated array using the prototype data layout. The returned object is a <a href="scripting/scripting-api/fixobjectarray/index.html">FixObjectArray</a>
+ and shares a lot of methods with its default JS counterpart.<br></p>
+<h2 id="createstack"><b>createStack</b>
+</h2>
+<p class="comment">Creates an unordered stack.</p>
+<pre><code class="language-javascript line-numbers">FixObjectFactory.createStack(int numElements)</code></pre>
+<p><br>This function will create and return a unordered stack container with the maximum length specified by the parameter. The returned object is a <a href="scripting/scripting-api/fixobjectstack/index.html">FixObjectStack</a>
+ and offers a few advantages over the default array.<br></p>
+<h2 id="gettypehash"><b>getTypeHash</b>
+</h2>
+<p class="comment">Returns the hash code for the memory layout which factors in member IDs, order and type.</p>
+<pre><code class="language-javascript line-numbers">FixObjectFactory.getTypeHash()</code></pre>
+<p><br><br></p>
+<h2 id="setcomparefunction"><b>setCompareFunction</b>
+</h2>
+<p class="comment">Registers a function that will be used for comparison. If you pass in a string it will only compare the given property.</p>
+<pre><code class="language-javascript line-numbers">FixObjectFactory.setCompareFunction(var newCompareFunction)</code></pre>
+<p><br>A lot of operations and methods of the data containers will require some kind of comparison operation: indexing, sorting, etc. all need to decide whether an element is supposed to be equal (or greater or less). The default comparison compares every single property of the object, but this might not what you need in your logic. </p>
+<p>This is where this function comes in handy as it allows you to define different comparison functions. There are three options available:</p>
+<ol><li>Compare a single property. This can be achieved by passing in the ID of the property as a string into the function. It will then ignore all other properties and just factor in this property for sorting, indexing, etc.</li>
+<li>Compare multiple properties. This can be achieved by passing up to 4 IDs separated by a comma. It will then compare all those the properties</li>
+<li>Define a custom JS function by passing in a callable object into the method. The function you pass in needs to have two parameters and must return either <code>-1</code>
+, <code>1</code>
+ or <code>0</code>
+ depending on the relation between the two objects (this is similar to <code>Engine.sortWithFunction()</code>
+)</li>
+</ol>
+<pre><code class="language-javascript line-numbers">const var f1 = Engine.createFixObjectFactory({
+	"eventId": 0,
+	"noteNumber": 0
+});
+
+// This will make all indexing functions only look for the eventID
+f1.setCompareFunction("eventId");</code></pre>
+<p class="comment">Be aware that using the third option has a noticeable performance impact so only use this as last resort.<br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/fixobjectstack/index.html">FixObjectStack</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>18.12.2023<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

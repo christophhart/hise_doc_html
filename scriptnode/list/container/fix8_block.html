@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="fix8_block"><b>fix8_block</b>
+</h1>
+<p class="comment"><code>container.fix8_block</code>
+</p>
+<img src="images/sn_screen_fix8_block.png"></img>
+<p>Divides the block into chunks of 8 samples.<br>The <code>container.fixX_block</code>
+ nodes will divide the incoming signal into chunks of fixed length and process their child nodes with the given block size. Be aware that this doesn't mean that the block size is always this amount, it just guarantees that it will never exceed the amount of samples.</p>
+<p>This is particularly useful if you are modulating a parameter: unless the node resides in a <code>frameX_block</code>
+, the modulation value will be send once per audio buffer.This might result in a very infrequent update (eg. 20ms for 1024 samples), so if you need to make sure that the modulation is fairly precise, wrap your processing into one of these nodes.</p>
+<p>If you need true <b>per-sample-processing</b>
+, consider using the <a href="scriptnode/list/container/framex_block.html">core.framex_block</a>
+ node, but in most use-cases this node will yield the best compromise between audio quality and performance.</p>
+<p class="comment">If you bypass this node, it will still process its children, but with the default functionality of a <a href="scriptnode/list/container/chain.html">chain</a>
+ container. This allows you to quickly A/B the effect of the block division.</p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scriptnode/list/container/fix32_block.html">fix32_block</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>01.09.2019<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

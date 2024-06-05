@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="slotfx"><b>SlotFX</b>
+</h1>
+<p><br><br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="clear"><b>clear</b>
+</h2>
+<p class="comment">Clears the slot (loads a unity gain module).</p>
+<pre><code class="language-javascript line-numbers">SlotFX.clear()</code></pre>
+<p><br><br></p>
+<h2 id="exists"><b>exists</b>
+</h2>
+<p class="comment">Checks if the Object exists and prints a error message on the console if not.</p>
+<pre><code class="language-javascript line-numbers">SlotFX.exists()</code></pre>
+<p><br><br></p>
+<h2 id="getcurrenteffect"><b>getCurrentEffect</b>
+</h2>
+<p class="comment">Returns a reference to the currently loaded effect.</p>
+<pre><code class="language-javascript line-numbers">SlotFX.getCurrentEffect()</code></pre>
+<p><br><br></p>
+<h2 id="getcurrenteffectid"><b>getCurrentEffectId</b>
+</h2>
+<p class="comment">Returns the ID of the effect that is currently loaded.</p>
+<pre><code class="language-javascript line-numbers">SlotFX.getCurrentEffectId()</code></pre>
+<p><br><br></p>
+<h2 id="getmodulelist"><b>getModuleList</b>
+</h2>
+<p class="comment">Returns the list of all available modules that you can load into the slot (might be empty if there is no compiled dll present).</p>
+<pre><code class="language-javascript line-numbers">SlotFX.getModuleList()</code></pre>
+<p><br><br></p>
+<h2 id="getparameterproperties"><b>getParameterProperties</b>
+</h2>
+<p class="comment">Returns a JSON object containing all parameters with their range properties.</p>
+<pre><code class="language-javascript line-numbers">SlotFX.getParameterProperties()</code></pre>
+<p><br><br></p>
+<h2 id="setbypassed"><b>setBypassed</b>
+</h2>
+<p class="comment">Bypasses the effect. This uses the soft bypass feature of the SlotFX module.</p>
+<pre><code class="language-javascript line-numbers">SlotFX.setBypassed(bool shouldBeBypassed)</code></pre>
+<p><br><br></p>
+<h2 id="seteffect"><b>setEffect</b>
+</h2>
+<p class="comment">Loads the effect with the given name and returns a reference to it.</p>
+<pre><code class="language-javascript line-numbers">SlotFX.setEffect(String effectName)</code></pre>
+<p><br><br></p>
+<h2 id="swap"><b>swap</b>
+</h2>
+<p class="comment">Swaps the effect with the other slot.</p>
+<pre><code class="language-javascript line-numbers">SlotFX.swap(var otherSlot)</code></pre>
+<p><br><br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/string/index.html">String</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>29.05.2019<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

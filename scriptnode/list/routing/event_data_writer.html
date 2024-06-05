@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="event_data_writer"><b>event_data_writer</b>
+</h1>
+<p class="comment"><code>routing.event_data_writer</code>
+</p>
+<img src="images/sn_screen_event_data_writer.png"></img>
+<p>Please enter a brief description.</p>
+<h2 id="parameters"><b>Parameters</b>
+</h2>
+<table><thead><td><b>ID </b>
+</td>
+<td><b>Range </b>
+</td>
+<td><b>Default </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>SlotIndex </td>
+<td>0.00 - 16.00 </td>
+<td>0.00 </td>
+<td>the data slot (from 0 to 16) where you want to write the value </td>
+</tr>
+<tr><td>Value </td>
+<td>0.00 - 1.00 </td>
+<td>0.00 </td>
+<td>the value to write </td>
+</tr>
+</table>
+<p><br>This node can be used to write additional data to any event - so basically the scriptnode version of the API method <a href="scripting/scripting-api/globalroutingmanager/index.html#seteventdata">GlobalRoutingManager.setEventData()</a>
+.</p>
+<p>Just connect the <b>Value</b>
+ knob to any source (either another macro parameter or a modulation signal) and it will store that value into the given slot for the last event that was processed by the node. </p>
+<p class="comment">In order for this to work, this node needs to be put in a MIDI processing context and the global routing manager has to be initialised externally.</p>
+<p>The node remembers the last event that was processed and will subsequently write new values to the respective data slot for the given event. This can be a dynamic modulation signal and depending on what target you are using, you can implement a messaging system for polyphonic, event based value changes. It respects a polyphonic context, so that it will write the data to the event that started the voice.</p>
+<p>Be aware that the value is written once per buffer. If you need a high-resolution update rate for this across different sound generators, you might want to set a minimum fix buffer size for the entire module graph with <a href="scripting/scripting-api/engine/index.html#setmaximumblocksize">Engine.setMaximumBlockSize()</a>
+</p>
+<p class="comment">Take a look at the series of examples in the snippet browser called <code>Custom Event Data ...</code>
+ for an introduction use case of this concept.</p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scriptnode/list/analyse/fft.html">fft</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>21.05.2024<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

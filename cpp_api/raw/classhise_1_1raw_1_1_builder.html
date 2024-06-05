@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="raw::builder"><b>raw::Builder</b>
+</h1>
+<p>The builder is a low overhead helper class that provides functions to add modules.<br>Create one of those, supply the <a href="cpp_api/hise/classhise_1_1_main_controller.html">MainController</a>
+ instance and call its methods to build up the architecture of your plugin.<br></p>
+<pre><code class="language-clike line-numbers">// The main controller of this project
+auto mc = getMainController();
+
+// The root container of this project
+auto masterContainer = mc->getMainSynthChain();
+
+Builder b(mc);
+
+// Adds a sine wave generator
+auto sine = b.create<hise::SineSynth>(masterContainer, IDs::Chains::Direct);
+sine->setAttribute(hise::SineSynth::OctaveTranspose, 5.0f, sendNotification);
+
+// Adds a reverb to the sine wave generator
+auto reverb = b.create<hise::SimpleReverbEffect>(sine, IDs::Chains::FX);
+reverb->setAttribute(hise::SimpleReverbEffect::WetLevel, 0.5f, sendNotification);</code></pre>
+<p><br>Important: This class can only be used from the IDs::Threads::Loading thread in a suspended state. If you want to use this class from another thread, wrap it into a lambda and give it to the <a href="cpp_api/raw/classhise_1_1raw_1_1_task_after_suspension.html">TaskAfterSuspension</a>
+ class.<br> </p>
+<h2 id="class-methods"><b>Class methods</b>
+</h2>
+<h3 id="find"><b>find</b>
+</h3>
+<pre><code class="language-clike line-numbers">Reference< T > find(const String &name)</code></pre>
+<p>Finds and creates a reference object to the module with the given ID.<br> </p>
+<h3 id="add"><b>add</b>
+</h3>
+<pre><code class="language-clike line-numbers">T * add(T *processor, Processor *parent, int chainIndex=IDs::Chains::Direct)</code></pre>
+<p>Adds the given module to the parent processor. Specify the chainIndex for modulators / effects.<br> </p>
+<h3 id="create"><b>create</b>
+</h3>
+<pre><code class="language-clike line-numbers">T * create(Processor *parent, int chainIndex=IDs::Chains::Direct)</code></pre>
+<p>Creates a module of the given class and adds it to the parent with the specified chainIndex. See ChainIndexes.<br>This only works with HISE modules that are registered at one of the factories, so if you want to add a custom module, use the <a href="cpp_api/raw/classhise_1_1raw_1_1_builder.html#add">add()</a>
+ function instead.<br> </p>
+<h3 id="remove"><b>remove</b>
+</h3>
+<pre><code class="language-clike line-numbers">bool remove(Processor *p)</code></pre>
+<p>Removes a processor and all its child processors from the signal path.<br> </p>
+<h3 id="createfrombase64state"><b>createFromBase64State</b>
+</h3>
+<pre><code class="language-clike line-numbers">Processor * createFromBase64State(const String &base64EncodedString, Processor *parent, int chainIndex=IDs::Chains::Direct)</code></pre>
+<p>Creates a module from the given Base64 encoded String and adds it to the parent module with the suppliedChainIndex.<br> </p>
+<h3 id="setattributes"><b>setAttributes</b>
+</h3>
+<pre><code class="language-clike line-numbers">void setAttributes(Processor *p, const AttributeCollection &collection)</code></pre>
+<p>Sets all the attributes from the given collection.<br>You can use std::initialiser_lists for a clean syntax:<br></p>
+<pre><code class="language-clike line-numbers">AttributeCollection c =
+{
+    { SimpleEnvelope::Attack, 10.0f },
+    { SimpleEnvelope::Release, 248.0f }
+};
+
+for(auto* envelope: myEnvelopes)
+    builder.setAttributes(envelope, c);</code></pre>
+<p><br></p>
+<h3 id="setidwithindex"><b>setIdWithIndex</b>
+</h3>
+<pre><code class="language-clike line-numbers">void setIdWithIndex(Processor *p, const Identifier &prefix, int index, bool renameChildProcessors=false)</code></pre>
+<p>Sets the ID of the given processor using the supplied index. It will convert zero-based indexes to one-based index so calling setIdWithIndex(p, "MyProcessor", 0) will result in the ID "MyProcessor1".<br>If renameChildProcessors is true, then it will recursively change the IDs of all children, appending their parent IDs.<br></p>
+<pre><code class="language-clike line-numbers">sine is a sine wave generator with a filter that is modulated by the velocity
+builder.setIdWithIndex(sine, "mySine", 4);
+
+// the velocity modulator will be named
+// "mySine5_Filter_Velocity</code></pre>
+<p><br></p>
+<h3 id="getmoduletreestring"><b>getModuleTreeString</b>
+</h3>
+<pre><code class="language-clike line-numbers">String getModuleTreeString(Processor *p=nullptr) const</code></pre>
+<p>returns a string that can be used for debugging purposes.<br> </p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="cpp_api/raw/structhise_1_1raw_1_1_data.html">raw::Data</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

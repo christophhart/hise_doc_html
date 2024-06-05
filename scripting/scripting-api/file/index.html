@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="file"><b>File</b>
+</h1>
+<p>The File object represents a file or directory on disk and can be used to navigate / access the file system from HISEScript.</p>
+<p>In order to use it, call the <a href="scripting/scripting-api/filesystem/index.html">Filesystem</a>
+ API class to get a folder from where you navigate to the file you want to modify / load.</p>
+<p class="comment">Be aware that there is no possibility of writing / loading files using absolute paths (eg. <code>C:\MyFolder</code>
+) because it is not portable across operating systems (and even computers).</p>
+<p><br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="copy"><b>copy</b>
+</h2>
+<p class="comment">Copies the file.</p>
+<pre><code class="language-javascript line-numbers">File.copy(var target)</code></pre>
+<p><br><br></p>
+<h2 id="createdirectory"><b>createDirectory</b>
+</h2>
+<p class="comment">Returns the new directory created at the file location, if directory doesn't already exist</p>
+<pre><code class="language-javascript line-numbers">File.createDirectory(String directoryName)</code></pre>
+<p><br><br></p>
+<h2 id="deletefileordirectory"><b>deleteFileOrDirectory</b>
+</h2>
+<p class="comment">Deletes the file or directory WITHOUT confirmation.</p>
+<pre><code class="language-javascript line-numbers">File.deleteFileOrDirectory()</code></pre>
+<p><br><br></p>
+<h2 id="extractzipfile"><b>extractZipFile</b>
+</h2>
+<p class="comment">Extracts the ZIP archive if this file is a .zip file.</p>
+<pre><code class="language-javascript line-numbers">File.extractZipFile(var targetDirectory, bool overwriteFiles, var callback)</code></pre>
+<p><br>This method will extract a standard ZIP file (without password protection) to the given target directory (which can be either a file path String or a <a href="scripting/scripting-api/file/index.html">File</a>
+ object).</p>
+<p>In order to extract to privileged locations on Windows, for example the user's VST3 folder, it is neccessary to add an extra linker flag <code>/MANIFESTUAC:level='requireAdministrator'</code>
+ to your project's .jucer file.</p>
+<p>The extraction process will be executed on the sample loading thread and you can assign a callback that is executed to track the extraction progress.</p>
+<p>The callback expects a single parameter that will contain a JSON object with the following properties:</p>
+<table><thead><td><b>Property </b>
+</td>
+<td><b>Type </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><code>Cancel</code>
+ </td>
+<td>bool </td>
+<td>Set to <code>false</code>
+. If you want to abort the extraction process, just set this flag to true. </td>
+</tr>
+<tr><td><code>Target</code>
+ </td>
+<td>String </td>
+<td>The target directory as file path. </td>
+</tr>
+<tr><td><code>Error</code>
+ </td>
+<td>String </td>
+<td>A error message if something went wrong during extracting. </td>
+</tr>
+<tr><td><code>Progress</code>
+ </td>
+<td>double </td>
+<td>the progress from 0.0 to 1.0. Be aware that this tracks only the number of files extracted vs. the total number of files, so if you have one big file inside the archive, it will not work. </td>
+</tr>
+<tr><td><code>NumBytesWritten</code>
+ </td>
+<td>int </td>
+<td>the number of bytes that have been extracted. </td>
+</tr>
+<tr><td><code>CurrentFile</code>
+ </td>
+<td>String </td>
+<td>the relative path of the file that is currently being extracted. </td>
+</tr>
+<tr><td><code>Status</code>
+ </td>
+<td>int </td>
+<td>a status flag indicating the state of the extraction: <code>0</code>
+ at the beginning, <code>1</code>
+ while extracting and <code>2</code>
+ at the end. </td>
+</tr>
+</table>
+<p>The callback will be executed at the beginning of the extraction (with the Status flag <code>0</code>
+) and at the end (with the Status flag <code>2</code>
+) as well as when an error occurs.</p>
+<p>If you extract a small archive (less than ~400 files), the callback will also be executed for each file (this limit prevents the scripting queue to be clogged with huge archives).<br></p>
+<h2 id="getbytesfreeonvolume"><b>getBytesFreeOnVolume</b>
+</h2>
+<p class="comment">Returns the number of bytes free on the drive that this file lives on.</p>
+<pre><code class="language-javascript line-numbers">File.getBytesFreeOnVolume()</code></pre>
+<p><br><br></p>
+<h2 id="getchildfile"><b>getChildFile</b>
+</h2>
+<p class="comment">Returns a child file if this is a directory.</p>
+<pre><code class="language-javascript line-numbers">File.getChildFile(String childFileName)</code></pre>
+<p><br><br></p>
+<h2 id="gethash"><b>getHash</b>
+</h2>
+<p class="comment">Reads a file and generates the hash of its contents.</p>
+<pre><code class="language-javascript line-numbers">File.getHash()</code></pre>
+<p><br><br></p>
+<h2 id="getnonexistentsibling"><b>getNonExistentSibling</b>
+</h2>
+<p class="comment">Returns a sibling file that doesn't exist.</p>
+<pre><code class="language-javascript line-numbers">File.getNonExistentSibling()</code></pre>
+<p><br><br></p>
+<h2 id="getnumzippeditems"><b>getNumZippedItems</b>
+</h2>
+<p class="comment">Returns the number of items in the zip file.</p>
+<pre><code class="language-javascript line-numbers">File.getNumZippedItems()</code></pre>
+<p><br><br></p>
+<h2 id="getparentdirectory"><b>getParentDirectory</b>
+</h2>
+<p class="comment">Returns the parent directory as File.</p>
+<pre><code class="language-javascript line-numbers">File.getParentDirectory()</code></pre>
+<p><br><br></p>
+<h2 id="getredirectedfolder"><b>getRedirectedFolder</b>
+</h2>
+<p class="comment">If this file is a folder that contains a HISE redirection file (LinkWindows / LinkOSX file), then it will return the redirection target, otherwise it will return itself.</p>
+<pre><code class="language-javascript line-numbers">File.getRedirectedFolder()</code></pre>
+<p><br><br></p>
+<h2 id="getrelativepathfrom"><b>getRelativePathFrom</b>
+</h2>
+<p class="comment">Returns a relative path from the given other file.</p>
+<pre><code class="language-javascript line-numbers">File.getRelativePathFrom(var otherFile)</code></pre>
+<p><br><br></p>
+<h2 id="getsize"><b>getSize</b>
+</h2>
+<p class="comment">Returns the size of the file in bytes.</p>
+<pre><code class="language-javascript line-numbers">File.getSize()</code></pre>
+<p><br><br></p>
+<h2 id="haswriteaccess"><b>hasWriteAccess</b>
+</h2>
+<p class="comment">true if it's possible to create and write to this file. If the file doesn't already exist, this will check its parent directory to see if writing is allowed.</p>
+<pre><code class="language-javascript line-numbers">File.hasWriteAccess()</code></pre>
+<p><br><br></p>
+<h2 id="ischildof"><b>isChildOf</b>
+</h2>
+<p class="comment">Checks if this file is a child file of the other file.</p>
+<pre><code class="language-javascript line-numbers">File.isChildOf(var otherFile, bool checkSubdirectories)</code></pre>
+<p><br><br></p>
+<h2 id="isdirectory"><b>isDirectory</b>
+</h2>
+<p class="comment">Checks if this file exists and is a directory.</p>
+<pre><code class="language-javascript line-numbers">File.isDirectory()</code></pre>
+<p><br><br></p>
+<h2 id="isfile"><b>isFile</b>
+</h2>
+<p class="comment">Checks if this file exists and is a file.</p>
+<pre><code class="language-javascript line-numbers">File.isFile()</code></pre>
+<p><br><br></p>
+<h2 id="issamefileas"><b>isSameFileAs</b>
+</h2>
+<p class="comment">Checks if the file matches the other file (the object comparison might not work reliably).</p>
+<pre><code class="language-javascript line-numbers">File.isSameFileAs(var otherFile)</code></pre>
+<p><br><br></p>
+<h2 id="loadasaudiofile"><b>loadAsAudioFile</b>
+</h2>
+<p class="comment">Loads the given file as audio file.</p>
+<pre><code class="language-javascript line-numbers">File.loadAsAudioFile()</code></pre>
+<p><br><br></p>
+<h2 id="loadasmidifile"><b>loadAsMidiFile</b>
+</h2>
+<p class="comment">Loads the track (zero-based) of the MIDI file. If successful, it returns an object containing the time signature and a list of all events.</p>
+<pre><code class="language-javascript line-numbers">File.loadAsMidiFile(int trackIndex)</code></pre>
+<p><br><br></p>
+<h2 id="loadasobject"><b>loadAsObject</b>
+</h2>
+<p class="comment">Loads the given file as object.</p>
+<pre><code class="language-javascript line-numbers">File.loadAsObject()</code></pre>
+<p><br>This tries to parse the given file as JSON object and return it. If you are storing complex data, this will be the most convenient option.</p>
+<p><br></p>
+<h2 id="loadasstring"><b>loadAsString</b>
+</h2>
+<p class="comment">Loads the given file as text.</p>
+<pre><code class="language-javascript line-numbers">File.loadAsString()</code></pre>
+<p><br><br></p>
+<h2 id="loadaudiometadata"><b>loadAudioMetadata</b>
+</h2>
+<p class="comment">Tries to parse the metadata from the audio file (channel amount, length, samplerate, etc) and returns a JSON object if sucessful.</p>
+<pre><code class="language-javascript line-numbers">File.loadAudioMetadata()</code></pre>
+<p><br><br></p>
+<h2 id="loadencryptedobject"><b>loadEncryptedObject</b>
+</h2>
+<p class="comment">Loads the encrypted object using the supplied RSA key pair.</p>
+<pre><code class="language-javascript line-numbers">File.loadEncryptedObject(String key)</code></pre>
+<p><br>This function will load a JSON object from a file that has been written with <a href="scripting/scripting-api/file/index.html#writeencryptedobject">File.writeEncryptedObject()</a>
+</p>
+<p class="comment">The encryption uses Blowfish encryption, so it should be able to encrypt / decrypt pretty fast.</p>
+<p>You can use these functions to create an authentification scheme that stores the license key in a file in order to bypass online activation.<br></p>
+<h2 id="loadfromxmlfile"><b>loadFromXmlFile</b>
+</h2>
+<p class="comment">Loads the XML file and tries to parse it as JSON object.</p>
+<pre><code class="language-javascript line-numbers">File.loadFromXmlFile()</code></pre>
+<p><br><br></p>
+<h2 id="loadmidimetadata"><b>loadMidiMetadata</b>
+</h2>
+<p class="comment">Tries to parse the metadata of the MIDI file and returns a JSON object if successful.</p>
+<pre><code class="language-javascript line-numbers">File.loadMidiMetadata()</code></pre>
+<p><br><br></p>
+<h2 id="move"><b>move</b>
+</h2>
+<p class="comment">Moves the file.</p>
+<pre><code class="language-javascript line-numbers">File.move(var target)</code></pre>
+<p><br><br></p>
+<h2 id="rename"><b>rename</b>
+</h2>
+<p class="comment">Renames the file.</p>
+<pre><code class="language-javascript line-numbers">File.rename(String newName)</code></pre>
+<p><br><br></p>
+<h2 id="setexecutepermission"><b>setExecutePermission</b>
+</h2>
+<p class="comment">Changes the execute-permissions of a file.</p>
+<pre><code class="language-javascript line-numbers">File.setExecutePermission(bool shouldBeExecutable)</code></pre>
+<p><br><br></p>
+<h2 id="setreadonly"><b>setReadOnly</b>
+</h2>
+<p class="comment">Changes the read/write permission for the given file.</p>
+<pre><code class="language-javascript line-numbers">File.setReadOnly(bool shouldBeReadOnly, bool applyRecursively)</code></pre>
+<p><br><br></p>
+<h2 id="show"><b>show</b>
+</h2>
+<p class="comment">Opens a Explorer / Finder window that points to the file.</p>
+<pre><code class="language-javascript line-numbers">File.show()</code></pre>
+<p><br>This opens a OS specific file browser that will reveal the file to the user.<br></p>
+<h2 id="startasprocess"><b>startAsProcess</b>
+</h2>
+<p class="comment">Launches the file as a process.</p>
+<pre><code class="language-javascript line-numbers">File.startAsProcess(String parameters)</code></pre>
+<p><br><br></p>
+<h2 id="toreferencestring"><b>toReferenceString</b>
+</h2>
+<p class="comment">Returns a reference string with a wildcard.</p>
+<pre><code class="language-javascript line-numbers">File.toReferenceString(String folderType)</code></pre>
+<p><br>This function tries to parse this file as relative path string depending on the folder type. If you want to import a custom sample into a samplemap and want to make sure that it is as portable as possible you can use this:</p>
+<pre><code class="language-javascript line-numbers">inline function dropCallback(f)
+{
+	local samplePath = f.getReferenceString("Samples");
+	
+	Sampler.loadSampleMapFromJSON([
+	{
+		"FileName": samplePath
+	}]);
+};</code></pre>
+<p>If the file that was dropped was in the sample folder of the plugin, <code>samplePath</code>
+ will be <code>{PROJECT_FOLDER}MySample.wav</code>
+ (otherwise it will just be the absolute path). Having it as project reference will allow the user to port the data across systems which might be a bit more convenient.<br></p>
+<h2 id="tostring"><b>toString</b>
+</h2>
+<p class="comment">Returns a String representation of that file.</p>
+<pre><code class="language-javascript line-numbers">File.toString(int formatType)</code></pre>
+<p><br>You can use this to display the filename on your UI.</p>
+<p>The <code>formatType</code>
+ argument is expected to be one of the constants supplied in the <code>File</code>
+ object:</p>
+<p>The following table will show the formatting for the file <code>C:\MyFolder\Textfile.txt</code>
+</p>
+<table><thead><td><b>Name </b>
+</td>
+<td><b>Example </b>
+</td>
+</thead>
+<tr><td><code>FullPath</code>
+ </td>
+<td><code>C:\MyFolder\Textfile.txt</code>
+ </td>
+</tr>
+<tr><td><code>NoExtension</code>
+ </td>
+<td><code>Textfile</code>
+ </td>
+</tr>
+<tr><td><code>OnlyExtension</code>
+ </td>
+<td><code>.txt</code>
+ </td>
+</tr>
+<tr><td><code>Filename</code>
+ </td>
+<td><code>Textfile.txt</code>
+ </td>
+</tr>
+</table>
+<p><br></p>
+<h2 id="writeasxmlfile"><b>writeAsXmlFile</b>
+</h2>
+<p class="comment">Replaces the XML file with the JSON content (needs to be convertible).</p>
+<pre><code class="language-javascript line-numbers">File.writeAsXmlFile(var jsonDataToBeXmled, String tagName)</code></pre>
+<p><br><br></p>
+<h2 id="writeaudiofile"><b>writeAudioFile</b>
+</h2>
+<p class="comment">Writes the given data (either a Buffer or Array of Buffers) to a audio file.</p>
+<pre><code class="language-javascript line-numbers">File.writeAudioFile(var audioData, double sampleRate, int bitDepth)</code></pre>
+<p><br><br></p>
+<h2 id="writeencryptedobject"><b>writeEncryptedObject</b>
+</h2>
+<p class="comment">Encrypts an JSON object using the supplied key.</p>
+<pre><code class="language-javascript line-numbers">File.writeEncryptedObject(var jsonData, String key)</code></pre>
+<p><br>This function will encrypt the JSON object with the given key and write it to the specified file. The key can be up to 72 characters long.<br></p>
+<p>In order to read the encrypted file, use <a href="scripting/scripting-api/file/index.html#loadencryptedobject">File.loadEncryptedObject()</a>
+ with the same key.<br></p>
+<h2 id="writemidifile"><b>writeMidiFile</b>
+</h2>
+<p class="comment">Writes the array of MessageHolders as MIDI file using the metadataObject to determine time signature, tempo, etc.</p>
+<pre><code class="language-javascript line-numbers">File.writeMidiFile(var eventList, var metadataObject)</code></pre>
+<p><br><br></p>
+<h2 id="writeobject"><b>writeObject</b>
+</h2>
+<p class="comment">Replaces the file content with the JSON data.</p>
+<pre><code class="language-javascript line-numbers">File.writeObject(var jsonData)</code></pre>
+<p><br><br></p>
+<h2 id="writestring"><b>writeString</b>
+</h2>
+<p class="comment">Replaces the file content with the given text.</p>
+<pre><code class="language-javascript line-numbers">File.writeString(String text)</code></pre>
+<p><br>It will return <code>true</code>
+ if the file operation was completed successfully or <code>false</code>
+ if there was an error during the operation.<br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/filesystem/index.html">FileSystem</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>17.07.2020<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

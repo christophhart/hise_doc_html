@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="chain"><img src="images/icon_chain.png"></img>
+<b>chain</b>
+</h1>
+<p class="comment"><code>container.chain</code>
+</p>
+<img src="images/sn_screen_chain.png"></img>
+<p>A node that processes its children serially.</p>
+<p>The chain is the most simple container - it serially processes all its children starting at the top.</p>
+<p>If the chain is bypassed, the children will not be processed (this sounds obvious, but be aware that the bypass state of the other containers might vary).</p>
+<h3 id="ui-layout"><b>UI Layout</b>
+</h3>
+<p>The default layout of a chain is from top to bottom (this indicates serial processing). However if you have a big DSP network, it might make sense to swap the layout and arrange the child nodes horizontally. Let's take a look at this patch:</p>
+<img src="images/custom/scriptnode/chain1.png"></img>
+<p>As you can see, it takes up a big chunk of screen estate with lots of whitespace. If you want to increase the visual density of the network, you can flip the layout of the first (orange chain) by clicking on the vertical flip button in the menu bar:</p>
+<img src="images/custom/scriptnode/vertical_flip.png"></img>
+<p>If you do so, the network will look like this:</p>
+<img src="images/custom/scriptnode/chain2.png"></img>
+<p>This will not affect the actual processing at all, but now the elements are much more closer together so that it fits all on the screen without having to scroll around.</p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scriptnode/list/container/multi.html">multi</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>24.06.2019<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="hiseevent"><b>HiseEvent</b>
+</h1>
+<p>The event type of HISE.<br>This is an enhancement of the MIDI Standard and is used for all internal events in the audio path of HISE.<br>The MIDI standard (and its implementation of JUCE) have a few limitations and misses some convenient data. Therefore, a new event type was introduced, with the following additions:<br></p>
+<ul><li>fixed size. The MIDI message has to have a dynamic size for handling SysEx messages, which is not used in 99,9999% of all cases. The HiseEvent simply ignores SysEx (there are better ways to communicate bigger chunks of data anyways) and uses a fixed size of 128bit per message. This makes copying / clearing the <a href="cpp_api/hise/classhise_1_1_hise_event_buffer.html">HiseEventBuffer</a>
+ trivially fast (just a memset / memcpy)<br></li>
+<li>note-on / note-off messages will be associated with a unique index (the EventID), which can be used to alter all voices that are started by the event.<br></li>
+<li>more types for internal actions like timer events, pitch / volume fades<br></li>
+<li>a timestamp that is baked into the message.<br></li>
+<li>128 channels instead of 16 MIDI channels. 16 is a pretty low number and if you use the channel information to route the signals to certain Processors, you might hit this limitation pretty easily.<br></li>
+<li>a transpose amount that will be added on top of the actual note number. This heavily simplifies any MIDI processing that changes the note number because the note off event does not need to be transposed to match the note on in order to prevent stuck notes<br></li>
+<li>a few flags that describe the state and origin of the note (whether the message should be processed at all or if it was created internally).<br></li>
+</ul>
+<p><br>Most of its methods aim to be fully compatible to the juce::MidiMessage class, so if you're used to this class, you will find your way around this class pretty quickly.<br> </p>
+<h2 id="public-types"><b>Public types</b>
+</h2>
+<h3 id="enum-type"><b>enum Type</b>
+</h3>
+<table><thead><td><b>Name </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><code>Empty</code>
+ </td>
+<td>an empty event (as created by the default constructor) </td>
+</tr>
+<tr><td><code>NoteOn</code>
+ </td>
+<td>a note on event (which will get a unique EventID upon creation). </td>
+</tr>
+<tr><td><code>NoteOff</code>
+ </td>
+<td>a note-off event (with the same EventID as its corresponding note-on) </td>
+</tr>
+<tr><td><code>Controller</code>
+ </td>
+<td>a MIDI CC message </td>
+</tr>
+<tr><td><code>PitchBend</code>
+ </td>
+<td>a 14-bit pitch-bend message </td>
+</tr>
+<tr><td><code>Aftertouch</code>
+ </td>
+<td>an aftertouch message (both channel aftertouch and polyphonic aftertouch) </td>
+</tr>
+<tr><td><code>AllNotesOff</code>
+ </td>
+<td>an all notes off message. </td>
+</tr>
+<tr><td><code>SongPosition</code>
+ </td>
+<td>the position of the DAW transport </td>
+</tr>
+<tr><td><code>MidiStart</code>
+ </td>
+<td>indicated the start of the playback in the DAW </td>
+</tr>
+<tr><td><code>MidiStop</code>
+ </td>
+<td>indicates the stop of the DAW playback </td>
+</tr>
+<tr><td><code>VolumeFade</code>
+ </td>
+<td>a volume fade that is applied to all voices started with the given EventID </td>
+</tr>
+<tr><td><code>PitchFade</code>
+ </td>
+<td>a pitch fade that is applied to all voices started with the given EventID </td>
+</tr>
+<tr><td><code>TimerEvent</code>
+ </td>
+<td>this event will fire the onTimer callback of MIDI Processors. </td>
+</tr>
+<tr><td><code>ProgramChange</code>
+ </td>
+<td>the MIDI ProgramChange message. </td>
+</tr>
+</table>
+<h2 id="class-methods"><b>Class methods</b>
+</h2>
+<h3 id="hiseevent"><b>HiseEvent</b>
+</h3>
+<pre><code class="language-clike line-numbers">HiseEvent()</code></pre>
+<p>Creates an empty HiseEvent.<br> </p>
+<h3 id="hiseevent"><b>HiseEvent</b>
+</h3>
+<pre><code class="language-clike line-numbers">HiseEvent(const MidiMessage &message)</code></pre>
+<p>Creates a HiseEvent from a MIDI message.<br> </p>
+<h3 id="hiseevent"><b>HiseEvent</b>
+</h3>
+<pre><code class="language-clike line-numbers">HiseEvent(Type type_, uint8 number_, uint8 value_, uint8 channel_=1)</code></pre>
+<p>Creates a HiseEvent with the given data.<br> </p>
+<h3 id="hiseevent"><b>HiseEvent</b>
+</h3>
+<pre><code class="language-clike line-numbers">HiseEvent(const HiseEvent &other) noexcept</code></pre>
+<p>Creates a bit-wise copy of another event.<br> </p>
+<h3 id="tomidimesage"><b>toMidiMesage</b>
+</h3>
+<pre><code class="language-clike line-numbers">MidiMessage toMidiMesage() const</code></pre>
+<p>Converts the HiseEvent back to a MidiMessage. This isn't lossless obviously.<br> </p>
+<h3 id="operator-bool"><b>operator bool</b>
+</h3>
+<pre><code class="language-clike line-numbers">operator bool() const noexcept</code></pre>
+<p>Allows using the empty check in a scoped if-condition.<br> </p>
+<h3 id="operator=="><b>operator==</b>
+</h3>
+<pre><code class="language-clike line-numbers">bool operator==(const HiseEvent &other) const</code></pre>
+<p>checks whether the event is equal to another. This checks for bit-equality.<br> </p>
+<h3 id="swapwith"><b>swapWith</b>
+</h3>
+<pre><code class="language-clike line-numbers">void swapWith(HiseEvent &other)</code></pre>
+<p>Swaps the event with another.<br> </p>
+<h3 id="gettype"><b>getType</b>
+</h3>
+<pre><code class="language-clike line-numbers">Type getType() const noexcept</code></pre>
+<p>Returns the Type of the HiseEvent.<br> </p>
+<h3 id="gettypeasstring"><b>getTypeAsString</b>
+</h3>
+<pre><code class="language-clike line-numbers">String getTypeAsString() const noexcept</code></pre>
+<p>Returns a String representation of the type.<br> </p>
+<h3 id="settype"><b>setType</b>
+</h3>
+<pre><code class="language-clike line-numbers">void setType(Type t) noexcept</code></pre>
+<p>Changes the type. Don't use this unless you know why.<br> </p>
+<h3 id="isignored"><b>isIgnored</b>
+</h3>
+<pre><code class="language-clike line-numbers">bool isIgnored() const noexcept</code></pre>
+<p>Checks if the message was marked as ignored (by a script).<br> </p>
+<h3 id="ignoreevent"><b>ignoreEvent</b>
+</h3>
+<pre><code class="language-clike line-numbers">void ignoreEvent(bool shouldBeIgnored) noexcept</code></pre>
+<p>Ignores the event. Ignored events will not be processed, but remain in the buffer (they are not cleared).<br> </p>
+<h3 id="geteventid"><b>getEventId</b>
+</h3>
+<pre><code class="language-clike line-numbers">uint16 getEventId() const noexcept</code></pre>
+<p>Returns the event ID of the message. The event IDs will be automatically created by HISE when it is processing the incoming MIDI messages and associates sequentially increasing IDS for each note-on and its corresponding note-off event.<br>Be aware the the event ID is stored as unsigned 16 bit integer, so it will wrap around- It's highly unlikely that you will hit any collisions, but you can't expect that older notes have a higher event ID.<br> <br></p>
+<h3 id="seteventid"><b>setEventId</b>
+</h3>
+<pre><code class="language-clike line-numbers">void setEventId(uint16 newEventId) noexcept</code></pre>
+<p>Sets the event ID of the HiseEvent. Normally you don't need to do this because HISE will automatically assign this to note-on / note-off messages, but for all the types that alter an existing event (like volume-fades), this can be used for setting the target event.<br> </p>
+<h3 id="setartificial"><b>setArtificial</b>
+</h3>
+<pre><code class="language-clike line-numbers">void setArtificial() noexcept</code></pre>
+<p>If the event was created artificially by a MIDI <a href="cpp_api/hise/classhise_1_1_processor.html">Processor</a>
+, it will call this method. You don't need to use this yourself.<br> </p>
+<h3 id="isartificial"><b>isArtificial</b>
+</h3>
+<pre><code class="language-clike line-numbers">bool isArtificial() const noexcept</code></pre>
+<p>Returns true if this method was created artificially.<br>Events that come in as MIDI message (no matter if their origin is in an actual key press or if there was a previous MIDI processor (like an arpeggiator) that created it, will be flagged as "non-artificial". Events that are created within HISE are flagged as "artificial".<br>This information can be useful sometimes in order to prevent endless recursive loops. Also, the HiseEventBuffer::Iterator class can be told to skip artificial events.<br> </p>
+<h3 id="settransposeamount"><b>setTransposeAmount</b>
+</h3>
+<pre><code class="language-clike line-numbers">void setTransposeAmount(int newTransposeValue) noexcept</code></pre>
+<p>Sets the transpose amount of the given event ID.<br>Unlike changing the note-number directly, this method will keep the original note number so that you don't have to process the note-off number to match the note-on.<br>This is the recommended way of handling all note-number processing in HISE.<br> </p>
+<h3 id="gettransposeamount"><b>getTransposeAmount</b>
+</h3>
+<pre><code class="language-clike line-numbers">int getTransposeAmount() const noexcept</code></pre>
+<p>Returns the transpose amount. Be aware that you need to take this into account when you need the actual note-number of an HiseEvent.<br> </p>
+<h3 id="setcoarsedetune"><b>setCoarseDetune</b>
+</h3>
+<pre><code class="language-clike line-numbers">void setCoarseDetune(int semiToneDetune) noexcept</code></pre>
+<p>Sets the coarse detune amount in semitones.<br> </p>
+<h3 id="getcoarsedetune"><b>getCoarseDetune</b>
+</h3>
+<pre><code class="language-clike line-numbers">int getCoarseDetune() const noexcept</code></pre>
+<p>Returns the coarse detune amount in semitones.<br> </p>
+<h3 id="setfinedetune"><b>setFineDetune</b>
+</h3>
+<pre><code class="language-clike line-numbers">void setFineDetune(int newCents) noexcept</code></pre>
+<p>Sets the fine detune amount in cents.<br> </p>
+<h3 id="getfinedetune"><b>getFineDetune</b>
+</h3>
+<pre><code class="language-clike line-numbers">int getFineDetune() const noexcept</code></pre>
+<p>Returns the fine detune amount int cents.<br> </p>
+<h3 id="getpitchfactorforevent"><b>getPitchFactorForEvent</b>
+</h3>
+<pre><code class="language-clike line-numbers">double getPitchFactorForEvent() const</code></pre>
+<p>Returns a ready to use pitch factor (from 0.5 ... 2.0)<br> </p>
+<h3 id="getfrequency"><b>getFrequency</b>
+</h3>
+<pre><code class="language-clike line-numbers">double getFrequency() const</code></pre>
+<p>Returns the frequency in hertz. Uses all event properties.<br> </p>
+<h3 id="setgain"><b>setGain</b>
+</h3>
+<pre><code class="language-clike line-numbers">void setGain(int decibels) noexcept</code></pre>
+<p>Sets the gain in decibels for this note.<br> </p>
+<h3 id="getgain"><b>getGain</b>
+</h3>
+<pre><code class="language-clike line-numbers">int getGain() const noexcept</code></pre>
+<p>returns the gain in decibels.<br> </p>
+<h3 id="getgainfactor"><b>getGainFactor</b>
+</h3>
+<pre><code class="language-clike line-numbers">float getGainFactor() const noexcept</code></pre>
+<p>Returns the gain factor (from 0...1) for the given event.<br> </p>
+<h3 id="isvolumefade"><b>isVolumeFade</b>
+</h3>
+<pre><code class="language-clike line-numbers">bool isVolumeFade() const noexcept</code></pre>
+<p>Returns true if the event is a volume fade.<br> </p>
+<h3 id="ispitchfade"><b>isPitchFade</b>
+</h3>
+<pre><code class="language-clike line-numbers">bool isPitchFade() const noexcept</code></pre>
+<p>Returns true if the event is a pitch fade.<br> </p>
+<h3 id="getfadetime"><b>getFadeTime</b>
+</h3>
+<pre><code class="language-clike line-numbers">int getFadeTime() const noexcept</code></pre>
+<p>Returns the fade time for both pitch and volume fades.<br> </p>
+<h3 id="istimerevent"><b>isTimerEvent</b>
+</h3>
+<pre><code class="language-clike line-numbers">bool isTimerEvent() const noexcept</code></pre>
+<p>Returns true if the event is a timer event.<br> </p>
+<h3 id="gettimerindex"><b>getTimerIndex</b>
+</h3>
+<pre><code class="language-clike line-numbers">int getTimerIndex() const noexcept</code></pre>
+<p>Returns the index of the timer slot.<br> </p>
+<h3 id="gettimestamp"><b>getTimeStamp</b>
+</h3>
+<pre><code class="language-clike line-numbers">int getTimeStamp() const noexcept</code></pre>
+<p>Returns the timestamp of the message. The timestamp is the offset from the current buffer start. If the timestamp is bigger than the current buffer size, the message will be delayed until the buffer range contains the time stamp.<br> </p>
+<h3 id="settimestamp"><b>setTimeStamp</b>
+</h3>
+<pre><code class="language-clike line-numbers">void setTimeStamp(int newTimestamp) noexcept</code></pre>
+<p>Sets the timestamp to a sample offset in the future.<br> </p>
+<h3 id="addtotimestamp"><b>addToTimeStamp</b>
+</h3>
+<pre><code class="language-clike line-numbers">void addToTimeStamp(int delta) noexcept</code></pre>
+<p>Adds the delta value to the timestamp.<br> </p>
+<h3 id="getchannel"><b>getChannel</b>
+</h3>
+<pre><code class="language-clike line-numbers">int getChannel() const noexcept</code></pre>
+<p>Returns the MIDI channel.<br> </p>
+<h3 id="setchannel"><b>setChannel</b>
+</h3>
+<pre><code class="language-clike line-numbers">void setChannel(int newChannelNumber) noexcept</code></pre>
+<p>Sets the MIDI channel. Note that in HISE you have 256 MIDI channels.<br> </p>
+<h3 id="isnoteon"><b>isNoteOn</b>
+</h3>
+<pre><code class="language-clike line-numbers">bool isNoteOn(bool returnTrueForVelocity0=false) const noexcept</code></pre>
+<p>Copied from MidiMessage.<br> </p>
+<h3 id="isnoteoff"><b>isNoteOff</b>
+</h3>
+<pre><code class="language-clike line-numbers">bool isNoteOff() const noexcept</code></pre>
+<p>Copied from MidiMessage.<br> </p>
+<h3 id="isnoteonoroff"><b>isNoteOnOrOff</b>
+</h3>
+<pre><code class="language-clike line-numbers">bool isNoteOnOrOff() const noexcept</code></pre>
+<p>Copied from MidiMessage.<br> </p>
+<h3 id="getnotenumber"><b>getNoteNumber</b>
+</h3>
+<pre><code class="language-clike line-numbers">int getNoteNumber() const noexcept</code></pre>
+<p>Copied from MidiMessage.<br> </p>
+<h3 id="setnotenumber"><b>setNoteNumber</b>
+</h3>
+<pre><code class="language-clike line-numbers">void setNoteNumber(int newNoteNumber) noexcept</code></pre>
+<p>Copied from MidiMessage.<br> </p>
+<h3 id="getvelocity"><b>getVelocity</b>
+</h3>
+<pre><code class="language-clike line-numbers">uint8 getVelocity() const noexcept</code></pre>
+<p>Copied from MidiMessage.<br> </p>
+<h3 id="getfloatvelocity"><b>getFloatVelocity</b>
+</h3>
+<pre><code class="language-clike line-numbers">float getFloatVelocity() const noexcept</code></pre>
+<p>Copied from MidiMessage.<br> </p>
+<h3 id="setvelocity"><b>setVelocity</b>
+</h3>
+<pre><code class="language-clike line-numbers">void setVelocity(uint8 newVelocity) noexcept</code></pre>
+<p>Copied from MidiMessage.<br> </p>
+<h3 id="ispitchwheel"><b>isPitchWheel</b>
+</h3>
+<pre><code class="language-clike line-numbers">bool isPitchWheel() const noexcept</code></pre>
+<p>Copied from MidiMessage.<br> </p>
+<h3 id="getpitchwheelvalue"><b>getPitchWheelValue</b>
+</h3>
+<pre><code class="language-clike line-numbers">int getPitchWheelValue() const noexcept</code></pre>
+<p>Copied from MidiMessage.<br> </p>
+<h3 id="setpitchwheelvalue"><b>setPitchWheelValue</b>
+</h3>
+<pre><code class="language-clike line-numbers">void setPitchWheelValue(int position) noexcept</code></pre>
+<p>Copied from MidiMessage.<br> </p>
+<h3 id="setfadetime"><b>setFadeTime</b>
+</h3>
+<pre><code class="language-clike line-numbers">void setFadeTime(int fadeTime) noexcept</code></pre>
+<p>Sets the fade time for the event type. Only valid for VolumeFade and PitchFade types.<br> </p>
+<h3 id="setstartoffset"><b>setStartOffset</b>
+</h3>
+<pre><code class="language-clike line-numbers">void setStartOffset(uint16 startOffset) noexcept</code></pre>
+<p>Adds a offset to the event. Unlike the timestamp, this will not delay the event to the future, but tell the sound generator to skip the given amount when the voice starts. This can be used for eg. skipping the attack phase of samples.<br> </p>
+<h3 id="getstartoffset"><b>getStartOffset</b>
+</h3>
+<pre><code class="language-clike line-numbers">uint16 getStartOffset() const noexcept</code></pre>
+<p>Returns the start offset of the event.<br> </p>
+<h3 id="ischannelpressure"><b>isChannelPressure</b>
+</h3>
+<pre><code class="language-clike line-numbers">bool isChannelPressure() const noexcept</code></pre>
+<p>Copied from MidiMessage.<br> </p>
+<h3 id="getchannelpressurevalue"><b>getChannelPressureValue</b>
+</h3>
+<pre><code class="language-clike line-numbers">int getChannelPressureValue() const noexcept</code></pre>
+<p>Copied from MidiMessage.<br> </p>
+<h3 id="setchannelpressurevalue"><b>setChannelPressureValue</b>
+</h3>
+<pre><code class="language-clike line-numbers">void setChannelPressureValue(int pressure) noexcept</code></pre>
+<p>Copied from MidiMessage.<br> </p>
+<h3 id="isaftertouch"><b>isAftertouch</b>
+</h3>
+<pre><code class="language-clike line-numbers">bool isAftertouch() const noexcept</code></pre>
+<p>Copied from MidiMessage.<br> </p>
+<h3 id="getaftertouchvalue"><b>getAfterTouchValue</b>
+</h3>
+<pre><code class="language-clike line-numbers">int getAfterTouchValue() const noexcept</code></pre>
+<p>Copied from MidiMessage.<br> </p>
+<h3 id="setaftertouchvalue"><b>setAfterTouchValue</b>
+</h3>
+<pre><code class="language-clike line-numbers">void setAfterTouchValue(int noteNumber, int aftertouchAmount) noexcept</code></pre>
+<p>Copied from MidiMessage.<br> </p>
+<h3 id="iscontroller"><b>isController</b>
+</h3>
+<pre><code class="language-clike line-numbers">bool isController() const noexcept</code></pre>
+<p>Copied from MidiMessage.<br> </p>
+<h3 id="iscontrolleroftype"><b>isControllerOfType</b>
+</h3>
+<pre><code class="language-clike line-numbers">bool isControllerOfType(int controllerType) const noexcept</code></pre>
+<p>Copied from MidiMessage.<br> </p>
+<h3 id="getcontrollernumber"><b>getControllerNumber</b>
+</h3>
+<pre><code class="language-clike line-numbers">int getControllerNumber() const noexcept</code></pre>
+<p>Copied from MidiMessage.<br> </p>
+<h3 id="getcontrollervalue"><b>getControllerValue</b>
+</h3>
+<pre><code class="language-clike line-numbers">int getControllerValue() const noexcept</code></pre>
+<p>Copied from MidiMessage.<br> </p>
+<h3 id="setcontrollernumber"><b>setControllerNumber</b>
+</h3>
+<pre><code class="language-clike line-numbers">void setControllerNumber(int controllerNumber) noexcept</code></pre>
+<p>Copied from MidiMessage.<br> </p>
+<h3 id="setcontrollervalue"><b>setControllerValue</b>
+</h3>
+<pre><code class="language-clike line-numbers">void setControllerValue(int controllerValue) noexcept</code></pre>
+<p>Copied from MidiMessage.<br> </p>
+<h3 id="isprogramchange"><b>isProgramChange</b>
+</h3>
+<pre><code class="language-clike line-numbers">bool isProgramChange() const noexcept</code></pre>
+<p>Copied from MidiMessage.<br> </p>
+<h3 id="getprogramchangenumber"><b>getProgramChangeNumber</b>
+</h3>
+<pre><code class="language-clike line-numbers">int getProgramChangeNumber() const noexcept</code></pre>
+<p>Copied from MidiMessage.<br> </p>
+<h3 id="isempty"><b>isEmpty</b>
+</h3>
+<pre><code class="language-clike line-numbers">bool isEmpty() const noexcept</code></pre>
+<p>Returns true if the HiseEvent is empty.<br> </p>
+<h3 id="isallnotesoff"><b>isAllNotesOff</b>
+</h3>
+<pre><code class="language-clike line-numbers">bool isAllNotesOff() const noexcept</code></pre>
+<p>Copied from MidiMessage.<br> </p>
+<h3 id="ismidistart"><b>isMidiStart</b>
+</h3>
+<pre><code class="language-clike line-numbers">bool isMidiStart() const noexcept</code></pre>
+<p>Copied from MidiMessage.<br> </p>
+<h3 id="ismidistop"><b>isMidiStop</b>
+</h3>
+<pre><code class="language-clike line-numbers">bool isMidiStop() const noexcept</code></pre>
+<p>Copied from MidiMessage.<br> </p>
+<h3 id="issongpositionpointer"><b>isSongPositionPointer</b>
+</h3>
+<pre><code class="language-clike line-numbers">bool isSongPositionPointer() const noexcept</code></pre>
+<p>Copied from MidiMessage.<br> </p>
+<h3 id="getsongpositionpointermidibeat"><b>getSongPositionPointerMidiBeat</b>
+</h3>
+<pre><code class="language-clike line-numbers">int getSongPositionPointerMidiBeat() const noexcept</code></pre>
+<p>Copied from MidiMessage.<br> </p>
+<h3 id="setsongpositionvalue"><b>setSongPositionValue</b>
+</h3>
+<pre><code class="language-clike line-numbers">void setSongPositionValue(int positionInMidiBeats)</code></pre>
+<p>Copied from MidiMessage.<br> </p>
+<h3 id="todebugstring"><b>toDebugString</b>
+</h3>
+<pre><code class="language-clike line-numbers">String toDebugString() const</code></pre>
+<p>Returns a string for debugging purposes.<br> </p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="cpp_api/hise/classhise_1_1_hise_event_buffer.html">HiseEventBuffer</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

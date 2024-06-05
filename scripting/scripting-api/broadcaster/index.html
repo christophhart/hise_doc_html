@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="broadcaster"><b>Broadcaster</b>
+</h1>
+<p><br>The <a href="https://en.wikipedia.org/wiki/Observer_pattern">Observer Pattern</a>
+ is a very common software pattern and is used throughout most of the codebase in JUCE and HISE. It allows you to register objects that will be notified when anything changes and is super helpful for organising bigger projects.</p>
+<h3 id="definition"><b>Definition</b>
+</h3>
+<p>In HiseScript you can implement the pattern manually by having an array that stores functions like this:</p>
+<pre><code class="language-javascript line-numbers">// Internal: 
+var registeredFunctions = [];
+var currentValue = 0;
+
+// register a function with a single argument
+function addListener(lf)
+{
+	registeredFunctions.push(lf);
+	
+	// We call it once at registration, so it's up to date...
+	lf(currentValue);
+}
+
+function sendMessage(value)
+{
+	// We only call the listener if the value has actually changed
+	if(value != currentValue)
+	{
+		currentValue = value;
+
+		for(f in registeredFunctions)
+			f(value);
+	}
+}
+
+// Usage:
+addListener(function(newValue)
+{
+	Console.print(newValue);
+});
+
+sendMessage(90);</code></pre>
+<h2 id="use-cases-of-the-observer-pattern"><b>Use cases of the Observer pattern</b>
+</h2>
+<p>This pattern is mostly useful in GUI logic coding, eg. page-handling or displaying any information at multiple places (eg. which user preset is loaded). The advantage of this is that you can implement localised tasks at very narrow scope which are then automatically executed when the global state changes. Let's take a look at the previously mentioned example: page handling. Without the observer pattern, you would normally do it like this:</p>
+<pre><code class="language-javascript line-numbers">const var buttons = [Content.getComponent("Page1Button"),
+                     Content.getComponent("Page2Button"),
+                     Content.getComponent("Page3Button")];
+
+const var pages =   [Content.getComponent("Page1"),
+                     Content.getComponent("Page2"),
+                     Content.getComponent("Page3")];
+
+inline function onPageButton(button, value)
+{
+	local idx = buttons.indexOf(button);
+	
+	for(p in pages)
+		p.set("visible", pages.indexOf(p) == idx);
+}
+
+for(b in buttons)
+	b.setControlCallback(onPageButton);</code></pre>
+<p>which is super slick and concise in this minimal example, but it quickly gets messy in real world projects, where you want additional tasks being performed when the page changes, eg:</p>
+<ul><li>changing colours of other elements</li>
+<li>updating some UI elements</li>
+<li>hiding popup panels from that page that would otherwise leak into the other page</li>
+</ul>
+<p>All these functionality has to be tucked into the poor little button callback which now gets super convoluted. With the observer pattern, the example looks like this:</p>
+<pre><code class="language-javascript line-numbers">// here is the observer code from the definition above...
+var registeredFunctions = [];
+var currentValue = [];
+function addListener(f) { ... }
+function sendMessage(value) { ... };
+
+const var buttons = [Content.getComponent("Page1Button"),
+                     Content.getComponent("Page2Button"),
+                     Content.getComponent("Page3Button")];
+
+const var pages =   [Content.getComponent("Page1"),
+                     Content.getComponent("Page2"),
+                     Content.getComponent("Page3")];
+
+inline function onPageButton(button, value)
+{
+	local idx = buttons.indexOf(button);
+	sendMessage(idx);
+}
+
+for(b in buttons)
+	b.setControlCallback(onPageButton);         
+	
+addListener(function(idx)
+{
+	for(p in pages)
+		p.set("visible", pages.indexOf(p) == idx);
+});</code></pre>
+<p>On first sight it looks more verbose than the previous example (and if it's as simple as that then it's a good example of overengineering), but this solution scales much better in real world projects, because now you can attach new listeners whenever you implement something at the very location you want:</p>
+<pre><code class="language-javascript line-numbers">// ... deep in some other namespace
+
+// Now if you want to perform more tasks, you can leave the button callback alone and
+// add it at the very scope you're working on.
+addListener(function(idx)
+{
+	local colours = [Colours.red, Colours.blue, Colours.green];
+	doSomethingWithColours(colours[idx]);
+})</code></pre>
+<p>However, with the stock HiseScript solutions there are a few disadvantages:</p>
+<ul><li>too much boilerplate. You have to write these logic functions (addListener, sendMessage) for every observer you need and keep the function array and the currentValue variable around</li>
+<li>hard to debug, easy to lose track of what calls what and what reacts to it.</li>
+<li>no support for async callback handling (would be possible to implement using a timer, but then it will be even more boilerplate)</li>
+<li>easy to mess up the argument amount of the registered functions</li>
+</ul>
+<p>The Broadcaster object tries to address these issues by giving you (basically) the same functionality as shown in the script above, but with a clean interface, async callback support.</p>
+<p>In order to use it, call <a href="scripting/scripting-api/engine/index.html#createbroadcaster">Engine.createBroadcaster</a>
+ with the default values and then use one of its methods to implement the observer pattern:</p>
+<pre><code class="language-javascript line-numbers">// If you pass in a JSON object into the constructor, you can
+// access the properties later using the standard dot operator.
+const var bc = Engine.createBroadcaster({"myProperty": 12});
+
+bc.addListener("testFunction", function(index)
+{
+	Console.print(index);
+});
+
+// Access the property as if the broadcaster would be a generic JSON object:
+Console.print(bc.myProperty);
+
+
+// Setting the property sends a (synchronous) message to the listeners
+bc.myProperty = 90;
+
+// This line does the same as the one above...
+bc.sendMessage([90], false);</code></pre>
+<p>However, calling <code>sendMessage()</code>
+ or assigning properties manually from your code is just one of the ways that this class can be used: you can also register it to any callback or even attach it to internal event sources that weren't accessible before.</p>
+<h3 id="compatibility-with-callback-slots"><b>Compatibility with callback slots</b>
+</h3>
+<p>In HiseScript, there are many callback slots that can be registered with a function (or inline function), eg:</p>
+<ul><li><a href="scripting/scripting-api/errorhandler/index.html#seterrorcallback">ErrorHandler.setErrorCallback()</a>
+</li>
+<li><a href="scripting/scripting-api/midiplayer/index.html#setplaybackcallback">MIDIPlayer.setPlaybackCallback()</a>
+</li>
+<li><a href="scripting/scripting-api/scriptpanel/index.html#setfiledropcallback">ScriptPanel.setFileDropCallback()</a>
+</li>
+</ul>
+<p>However instead of a reference to a function, you can also pass in a <code>Broadcaster</code>
+ object, and it will then call its listeners (asynchronously) everytime the callback happens.</p>
+<p class="comment">Be aware that in this case the parameter amount defined by the argument in <code>Engine.createBroadcaster()</code>
+ must match the expected argument amount.</p>
+<h3 id="attachable-event-sources-"><b>Attachable Event Sources </b>
+</h3>
+<p>Another feature that vastly increases the usefulness of this object is the ability to register it to internal event types that were not accessible in HISE before:</p>
+<h4 id="value-changes-"><b>Value changes </b>
+</h4>
+<p>On the first look this doesn't sound particularly interesting because the value callback was already accessible through <code>setControlCallback()</code>
+, however if you're using <code>processorId</code>
+ / <code>parameterId</code>
+ properties it will not fire so this gives you the chance to add additional, "non-exclusive" callbacks for UI things</p>
+<p>See: <a href="scripting/scripting-api/broadcaster/index.html#attachtocomponentvalue">attachToComponentValue()</a>
+</p>
+<h4 id="property-changes-"><b>Property changes </b>
+</h4>
+<p>This is super helpful if you want to react on changing properties (eg. the <code>visible</code>
+ flag) of certain components.</p>
+<p>See: <a href="scripting/scripting-api/broadcaster/index.html#attachtocomponentproperties">attachToComponentProperties()</a>
+</p>
+<h4 id="mouse-events"><b>Mouse events</b>
+</h4>
+<p>This gives you the ability to attach custom mouse callbacks to <b>ANY</b>
+ component using the same interface as <a href="scripting/scripting-in-hise/scriptpanel.html#the-mouseevent-callback">ScriptPanel.setMouseCallback()</a>
+ This will not override the default mouse behaviour but rather give you the option to customize the user interface and eg. show certain things while a slider is being dragged.</p>
+<p>See: <a href="scripting/scripting-api/broadcaster/index.html#attachtocomponentmouseevents">attachToComponentMouseEvents()</a>
+</p>
+<h2 id="metadata"><b>Metadata</b>
+</h2>
+<p>There is another concept of the broadcaster system which is tightly coupled with the visualisation of the broadcaster connections and this is the <b>Metadata</b>
+. Almost all methods which will generate an item on the BroadcasterMap (so the broadcaster itself but also all listeners and event sources) have a metadata parameter in their function signature that needs to be populated with a description of what this item is doing. This enforces self-documenting code on the coding level, which is fine but also heavily increases the usability of the broadcaster map which will help tremendously at keeping the overview over large projects.</p>
+<p>A metadata object can be a simple string that only contains a description of the item, but for more information you can use a JSON object containing these properties:</p>
+<table><thead><td><b>Property </b>
+</td>
+<td><b>Type </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><code>id</code>
+ </td>
+<td>String </td>
+<td>a (unique) String that is used as name for the item. This doesn't need to be a variable name so you can use any human-readable title here. If you don't supply a JSON object but a simple string, this string will be used as <code>id</code>
+ (making this the only non-optional property in this list). </td>
+</tr>
+<tr><td><code>comment</code>
+ </td>
+<td>String </td>
+<td>A markdown formatted string which will be shown on the broadcaster map. There is one little magic trick applied here and that is that if you comment the function call or object definition with a <code>/**</code>
+ comment (instead of the default <code>/*</code>
+ one), it will parse the comment from the code and write it into the metadata as <code>comment</code>
+ property. </td>
+</tr>
+<tr><td><code>colour</code>
+ </td>
+<td>int </td>
+<td>A colour value that is used for the item drawing. You can supply a colour value using the <code>0xAARRGGBB</code>
+ notation, or just enter <code>-1</code>
+, then it will create a random colour from the ID hash, which is a quick way to colour an item. </td>
+</tr>
+<tr><td><code>tags</code>
+ </td>
+<td>Array of strings </td>
+<td>You can attach tags to any item and then filter the broadcaster map to only display the items you want. This helps navigating around big projects. </td>
+</tr>
+<tr><td><code>priority</code>
+ </td>
+<td>int </td>
+<td>This property is only valid when used with a listener item and defines the order of how the listeners are called. By default they are called by the order of the <code>addListener</code>
+ call, but if that is not what you want, you can shuffle around the listeners by supplying a priority (higher priority values means that the items are moved up the list and the default value is <code>0</code>
+). </td>
+</tr>
+<tr><td><code>args</code>
+ </td>
+<td>Array of strings </td>
+<td>This is only valid for <a href="scripting/scripting-api/engine/index.html#createbroadcaster">broadcaster definitions</a>
+ and contains a list of strings describing the arguments of this broadcaster. </td>
+</tr>
+</table>
+<p>For an example usage take a look at the various API calls.<br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="addcomponentpropertylistener"><b>addComponentPropertyListener</b>
+</h2>
+<p class="comment">Adds a listener that sets the properties of the given components when the broadcaster receives a message.</p>
+<pre><code class="language-javascript line-numbers">Broadcaster.addComponentPropertyListener(var object, var propertyList, var metadata, var optionalFunction)</code></pre>
+<p><br></p>
+<p>This function will change component properties (like <code>visible</code>
+, <code>enabled</code>
+, <code>itemColour2</code>
+ etc.) when the broadcaster sends a message. It basically is the same as adding a function call with <code>addListener()</code>
+ and changing the properties inside this call, however there are a few advantages over this approach:</p>
+<ul><li>the broadcaster map will display the actual property in a meaningful way (eg. colours are rendered as colours and not as <code>124A438990</code>
+).</li>
+<li>the amount of code you need to write is much less and if you only want to forward a property to other components you don't need to write any function at all</li>
+<li>the ability of customizing the value you'll send through a custom function allows a very concise function definition.</li>
+</ul>
+<pre><code class="language-javascript line-numbers">Content.addKnob("Knob1", 0, 0);
+Content.addKnob("Knob2", 0, 50);
+Content.addKnob("Knob3", 0, 100);
+Content.addKnob("Knob4", 0, 150);
+
+/** Create a broadcaster. We need 3 arguments to attach it to component properties. */
+const var pb = Engine.createBroadcaster({
+	"id": "Property Syncer",
+	"colour": -1,
+	"args": ["component", "property", "value"]
+});
+
+/** Attach it to react on changes of the `x` property of `Knob1`. */
+pb.attachToComponentProperties("Knob1", "x", "X-Position Watcher");
+
+/** This function just syncs the `x` property by returning the value but you could calculate any custom value if you need to. */
+inline function updateFunction(indexInList, component, property, value)
+{
+	Console.print(trace({
+		"indexInList": indexInList,
+		"component": component.get("id"),
+		"property": property,
+		"value": value
+	}));
+	
+	// something to play around with...
+	//return value * (indexInList + 2);
+	
+	return value ;
+};
+
+
+/** You could also just pass in this instead of the updateFunction, then it will use the "default" behaviour. */
+const var defaultUpdateFunction = 0;
+
+/* Add a listener that changes properties when the broadcaster sends out a message. */
+pb.addComponentPropertyListener(["Knob2", "Knob3", "Knob4"], // The array of knobs that should be synced
+                                "x",                         // the properties that you want to sync
+                                "update X position", updateFunction);
+
+
+/* this will do the same thing but not as elegant. */
+pb.addListener([Content.getComponent("Knob2"),
+				Content.getComponent("Knob3"),
+				Content.getComponent("Knob4")],
+				"update X position manually",
+function(component, property, value)
+{
+	//for(c in this)
+	//	c.set(property, value);
+});</code></pre>
+<p>This is the visualisation of the code above. You can see that the context awareness of the first listener item yields much more information to be displayed which gives you a quick way to ensure the correct functionality:</p>
+<img src="images/custom/broadcaster/addcomponentpropertylistener.png"></img>
+<p>This will add a target to the broadcaster that will change component properties when the broadcaster receives a message. It can be used for synchronising properties, changing multiple properties of a list of components with all the benefits of the broadcaster system. The function expects these arguments:</p>
+<table><thead><td><b>Argument </b>
+</td>
+<td><b>Type </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>object </td>
+<td>Single value or list of strings (component IDs) or script references </td>
+<td>the target components which properties are supposed to be changed. </td>
+</tr>
+<tr><td>propertyList </td>
+<td>Single value or list of property IDs </td>
+<td>the target properties that are supposed to be changed. </td>
+</tr>
+<tr><td>metadata </td>
+<td>String or JSON object </td>
+<td>a metadata object that contains some information for the broadcaster map. </td>
+</tr>
+<tr><td>optionalFunction </td>
+<td>Callable object </td>
+<td>An optional function that determines the value that should be sent to each component property (see below). If this argument is not a function, the broadcaster needs to have three properties (component, property, value) and will just send out the incoming value to the targets (which is an easy way of synchronizing properties. </td>
+</tr>
+</table>
+<h3 id="the-optional-function"><b>The optional function</b>
+</h3>
+<p>If you supply a function as last argument, it will be called for every target component and property to figure out which value to send. The function signature needs to have all parameters of the broadcaster and a integer index at the first position that will contain the index of the component in the list that was passed in.</p>
+<pre><code class="language-javascript line-numbers">const var bc = Engine.createBroadcaster({
+	"id": "MyBroadcaster",
+	"args": { "firstArg": undefined, "secondArg": undefined, "thirdArg": undefined }
+});
+
+// This function needs to have an index parameter and then as much parameters as
+// the broadcaster is using (in our case three).
+// It will then be called for each property and component with the knobIndex argument
+// containing the index of the component to change. The function's return value will 
+// be sent as property.
+inline function setKnobColours(knobIndex, a1, a2, a3)
+{
+	if(knobIndex == 0)
+	{
+		return calculateTheColourForTheFirstKnob();
+	}
+	if(knobIndex == 1)
+	{
+		return calculateTheColourForTheSecondKnob();
+	}
+	// ...
+}
+
+bc.addComponentPropertyListener(["Knob1", "Knob2", "Knob3"],      // targets
+								["itemColour", "itemColour2"],    // properties
+								{ "id": "set both itemColours"}), // metadata
+								setKnobColours);				  // optionalFunction</code></pre>
+<p class="comment">Be aware that the value returned by the function will be sent to all properties but if you want to send different values to different properties, you can call this function again with another function for each property.</p>
+<p><br></p>
+<h2 id="addcomponentrefreshlistener"><b>addComponentRefreshListener</b>
+</h2>
+<p class="comment">Adds a listener that will cause a refresh message (eg. repaint(), changed()) to be send out to the given components.</p>
+<pre><code class="language-javascript line-numbers">Broadcaster.addComponentRefreshListener(var componentIds, String refreshType, var metadata)</code></pre>
+<p><br>This function adds a listener to the broadcaster that will send a refresh message of the given type to all components defined by <code>componentId</code>
+ parameter. The <code>refreshType</code>
+ parameter defines the type and must be one of the following strings:</p>
+<ul><li><code>repaint</code>
+: sends a repaint message and will also cause any ScriptPanel to run its paint routine</li>
+<li><code>changed</code>
+: causes the control callback to fire with the last value again</li>
+<li><code>updateValueFromProcessorConnection</code>
+: if the control is connected to a processor attribute using <code>processorId</code>
+ and <code>parameterId</code>
+, it will update the value of the control to reflect the module's parameter state</li>
+<li><code>loseFocus</code>
+: if the component is currently focused, it will make it lose its focus</li>
+<li><code>resetToDefault</code>
+: will cause the control to be resetted to its <code>defaultValue</code>
+ (just like double clicking on it)</li>
+</ul>
+<p>This function is more or less equivalent to something like</p>
+<pre><code class="language-javascript line-numbers">bc.addListener(componentList, "repaint components", function(index)
+{
+	for(c in this)
+		c.sendRepaintMessage();
+});</code></pre>
+<p>but is less to type, a bit faster (because it doesn't have to evaluate the script function) and more versatile. And you get a nice visualisation in the Broadcaster map that blinks everytime the refresh messages are sent.</p>
+<h3 id="example"><b>Example</b>
+</h3>
+<p>This example will send a message when you click a button and causes a list of Panels to repaint themselves.</p>
+<img src="images/custom/broadcaster/refreshlistener.png"></img>
+<pre><code class="language-javascript line-numbers">const var button = Content.addButton("Button1", 0, 0);
+
+const var PanelArray = [Content.addPanel("Panel4", 0, 50),
+                        Content.addPanel("Panel3", 100, 50),
+                        Content.addPanel("Panel2", 200, 50),
+                        Content.addPanel("Panel1", 300, 50)];
+
+for(p in PanelArray)
+{
+	p.setPaintRoutine(function(g)
+	{
+		g.setColour(Colours.withAlpha(Colours.white, Math.random()));
+		g.fillRect(this.getLocalBounds(0));
+		
+	});
+}
+
+const var bc = Engine.createBroadcaster({
+	"id": "RepaintBroadcaster",
+	"colour": -1,
+	"args": ["index"]
+});
+
+
+bc.addComponentRefreshListener(PanelArray, "repaint", "Repaint Panels");
+
+inline function onButton(component, value)
+{
+	// just send out any value to trigger the broadcaster
+	bc.index = Math.random(); 
+}
+
+button.setControlCallback(onButton);</code></pre>
+<p><br></p>
+<h2 id="addcomponentvaluelistener"><b>addComponentValueListener</b>
+</h2>
+<p class="comment">Adds a listener that sets the value of the given components when the broadcaster receives a message.</p>
+<pre><code class="language-javascript line-numbers">Broadcaster.addComponentValueListener(var object, var metadata, var optionalFunction)</code></pre>
+<p><br>This call sets the value (and causes <code>changed()</code>
+ to be called) whenever a broadcaster message is sent. The syntax is pretty similiar to the <code>addComponentPropertyListener</code>
+ function (without the <code>property</code>
+ argument, which isn't required obviously).</p>
+<p><br></p>
+<h2 id="adddelayedlistener"><b>addDelayedListener</b>
+</h2>
+<p class="comment">Adds a listener that will be executed with a delay.</p>
+<pre><code class="language-javascript line-numbers">Broadcaster.addDelayedListener(int delayInMilliSeconds, var obj, var metadata, var function)</code></pre>
+<p><br>This function is very similar to the normal addListener function, but you can supply a millisecond value that will be used to delay the function.</p>
+<p class="comment">Be aware that the execution of this function is not queued, so whenever you send a new message in the interval, it will just reset the timer and discard the pending function call.<br></p>
+<h2 id="addlistener"><b>addListener</b>
+</h2>
+<p class="comment">Adds a listener that is notified when a message is send. The object can be either a JSON object, a script object or a simple string.</p>
+<pre><code class="language-javascript line-numbers">Broadcaster.addListener(var object, var metadata, var function)</code></pre>
+<p><br>This registers a listener to the broadcaster which will be notified whenever the broadcaster's state changes.</p>
+<p>The function expects three parameters. The second parameter needs to be either a function (or inline function) with the exact same amount of parameters as the broadcaster's default value amount (defined by the constructor).</p>
+<p>The first parameter can be one of three things:</p>
+<ul><li>a string (for simple identification)</li>
+<li>an JSON object</li>
+<li>a script object</li>
+</ul>
+<p>the second parameter is a metadata parameter that is used to display the target and set other properties (eg. priority)</p>
+<p>This will be used in order to identifiy the listener (so if you want to remove it, you need to use the same value). </p>
+<p class="comment">As an additional feature, it will be also accessible using <code>this</code>
+ in the function callback:</p>
+<pre><code class="language-javascript line-numbers">const var b = Engine.createBroadcaster({
+	"id": "My Broadcaster",
+	"args": ["index", "isTrue"]
+});
+
+b.addListener({"id": "MY_ID"}, "some description about the target",
+function(index, isTrue)
+{
+	Console.print(this.id); // "MY_ID"
+});
+
+b.addListener("funky_time", "some other target",
+function(index, isTrue)
+{
+	Console.print(this); // "funky_time";
+});
+
+
+const var Knob = Content.addKnob("Knob1", 0, 0);
+
+/** Here we are using a JSON object instead of a metadata string
+	to set the priority. Note how the listener is at the top of the list
+	despite being added as last target. 
+*/
+b.addListener(
+Knob, 
+{
+  "id": "Print the knob value", 
+  "colour": 0xFF3388AA, 
+  "priority": 10 
+},
+function(index, isTrue)
+{
+	Console.print(this.getValue());
+});</code></pre>
+<img src="images/custom/broadcaster/addlistener.png"></img>
+<p>Note that the function will be called (synchronously) when you register it so that the listener is updated to the current value.<br></p>
+<h2 id="addmoduleparametersyncer"><b>addModuleParameterSyncer</b>
+</h2>
+<p class="comment">Adds a listener that will sync module parameters from the attached module parameter source.</p>
+<pre><code class="language-javascript line-numbers">Broadcaster.addModuleParameterSyncer(String moduleId, int parameterIndex, var metadata)</code></pre>
+<p><br><br></p>
+<h2 id="attachtocomplexdata"><b>attachToComplexData</b>
+</h2>
+<p class="comment">Registers this broadcaster to be notified when a complex data object changes.</p>
+<pre><code class="language-javascript line-numbers">Broadcaster.attachToComplexData(String dataTypeAndEvent, var moduleIds, var dataIndexes, var optionalMetadata)</code></pre>
+<p><br>If you want the broadcaster to be notified whenever an event occurs with a complex data type (SliderPacks, Tables or AudioFiles), you can use this method to attach the broadcaster to one or more data objects.</p>
+<p class="comment">In order to attach a broadcaster to a complex data object using this method, it needs to have exactly 3 arguments defined in its <code>args</code>
+ metadata property.</p>
+<p>The first arguments <code>dataTypeAndEvent</code>
+ is a String that describes the event type and datatype you want to listen to. The syntax for the string is <code>DataType.EventType</code>
+ with the following options for the <code>DataType</code>
+ part:</p>
+<ul><li><code>SliderPack</code>
+</li>
+<li><code>Table</code>
+</li>
+<li><code>AudioFile</code>
+</li>
+</ul>
+<p>and the following options for the <code>EventType</code>
+ part:</p>
+<ul><li><code>Display</code>
+: changes to the "displayed index": the ruler in the table / playback position in the audio file / the last active slider in the slider pack</li>
+<li><code>Content</code>
+: changes to the content: adding / removing table points, editing slider values, loading new audio files / changing the playback range</li>
+</ul>
+<p>The <code>moduleIds</code>
+ argument is either a String or an Array of Strings with the processor IDs that are holding the data types.<br>The <code>dataIndexes</code>
+ argument is either an integer index (zero based) or an array of zero based integers for each data type.</p>
+<p class="comment">This means that the amount of data types that you attach the broadcaster to is defined by<br> <code>NumberOfModules * NumberOfIndexes</code>
+.</p>
+<p><code>optionalMetadata</code>
+ is a metadata object used by the broadcaster map.</p>
+<pre><code class="language-javascript line-numbers">// You need three arguments 
+const var bc = Engine.createBroadcaster({
+	"id": "Complex Data Listener",
+	"colour": -1,
+	"args": ["processorId", "dataIndex", "value"]
+});
+
+bc.attachToComplexData("Table.Display", 
+					   ["LFO Modulator1", "LFO Modulator2"], 
+					   0, 
+					   "Connect to 2 LFO table rulers");
+
+bc.attachToComplexData("SliderPack.Content",
+					   "Arpeggiator1",
+					   [0, 1, 2],
+					   "Connect to changes for every slider pack of an arp");
+	   
+bc.attachToComplexData("Table.Content",
+					   ["Table Envelope1", "Table Envelope2"],
+					   [0, 1],
+					   "Connect to table edits for every table 
+					   (attack & release) for two table envelopes");</code></pre>
+<p>Once you've attached a broadcaster to a complex data object, it will call the registered listeners once the event happens. The three arguments will contain these values:</p>
+<ul><li><code>processor</code>
+: the processor ID as a string that holds the complex data object that caused the event</li>
+<li><code>index</code>
+: the index within the processor (!= the registered index!) of the object that caused the event</li>
+<li><code>value</code>
+: depending on the event type, either the display value as normalised double number (0...1) or a string representation of the data (eg. Base64 representation of the table data).<br></li>
+</ul>
+<h2 id="attachtocomponentmouseevents"><b>attachToComponentMouseEvents</b>
+</h2>
+<p class="comment">Registers this broadcaster to be notified for mouse events for the given components.</p>
+<pre><code class="language-javascript line-numbers">Broadcaster.attachToComponentMouseEvents(var componentIds, var callbackLevel, var optionalMetadata)</code></pre>
+<p><br>This registers the broadcaster to a list of components that will send out a message whenever the mouse callback is being triggered.</p>
+<ul><li><code>componentList</code>
+ can be either a single string (component name), reference to the component (<code>Content.getComponent(name)</code>
+ or an array of those values.</li>
+<li><code>callbackLevel</code>
+ must be one of the strings known from the <code>ScriptPanel</code>
+ property <code>allowCallbacks</code>
+.</li>
+</ul>
+<p>After you've defined this method, all functions must have the prototype</p>
+<pre><code class="language-javascript line-numbers">function mouseCallback(component, event)
+{
+	
+}</code></pre>
+<p>where <code>component</code>
+ is a reference to the actual script component object that triggered the mouse callback and <code>event</code>
+ is a JSON object that is identical to the one you know and love from <code>ScriptPanel.setMouseCallback()</code>
+.</p>
+<p><br></p>
+<h2 id="attachtocomponentproperties"><b>attachToComponentProperties</b>
+</h2>
+<p class="comment">Registers this broadcaster to be called when one of the properties of the given components change.</p>
+<pre><code class="language-javascript line-numbers">Broadcaster.attachToComponentProperties(var componentIds, var propertyIds, var optionalMetadata)</code></pre>
+<p><br>Calling this function will attach the broadcaster to a list of components and properties and will notify its listeners everytime that one of the properties change.</p>
+<ul><li><code>componentList</code>
+ can be either a single string (component name), reference to the component (<code>Content.getComponent(name)</code>
+ or an array of those values.</li>
+<li><code>propertyIds</code>
+ must be a list of property ids (or a single string if you only want to listen to a single property). Be aware that every component you pass into the first argument needs to have this property, which prevents you from registering eg. a ScriptPanel to a <code>viewPositionX</code>
+ property).</li>
+</ul>
+<p>After you've defined this method, all functions must have the prototype</p>
+<pre><code class="language-javascript line-numbers">function propertyCallback(component, id, value)
+{
+	
+}</code></pre>
+<p>where <code>component</code>
+ is a reference to the actual script component object that triggered the mouse callback, <code>id</code>
+ is the property string and <code>value</code>
+ the updated value.<br></p>
+<h2 id="attachtocomponentvalue"><b>attachToComponentValue</b>
+</h2>
+<p class="comment">Registers this broadcaster to be called when the value of the given components change.</p>
+<pre><code class="language-javascript line-numbers">Broadcaster.attachToComponentValue(var componentIds, var optionalMetadata)</code></pre>
+<p><br>Calling this function will attach the broadcaster to a list of components and properties and will notify its listeners everytime that one of the properties change.</p>
+<ul><li><code>componentList</code>
+ can be either a single string (component name), reference to the component (<code>Content.getComponent(name)</code>
+ or an array of those values.</li>
+</ul>
+<p>After you've defined this method, all functions must have the prototype</p>
+<pre><code class="language-javascript line-numbers">function valueCallback(component, value)
+{
+	
+}</code></pre>
+<p>where <code>component</code>
+ is a reference to the actual script component object that triggered the mouse callback, and <code>value</code>
+ the updated value.</p>
+<p class="comment">Note how the function signature is identical to the function parameters you can pass into <code>setControlCallback()</code>
+ which makes it super easy to migrate from a normal control callback to a broadcaster based system.<br></p>
+<h2 id="attachtocomponentvisibility"><b>attachToComponentVisibility</b>
+</h2>
+<p class="comment">Registers this broadcaster to be called when the visibility of one of the components (or one of its parent component) changes.</p>
+<pre><code class="language-javascript line-numbers">Broadcaster.attachToComponentVisibility(var componentIds, var optionalMetadata)</code></pre>
+<p><br>This function is similar to <code>attachToComponentProperties</code>
+ used with the <code>visible</code>
+ property, but with the additional feature that it also takes the parent's visibility into account. So if you want to react on something being <b>actually shown</b>
+ on the interface it might be a more stable solution if you have a deep component hierarchy.</p>
+<p><br></p>
+<h2 id="attachtocontextmenu"><b>attachToContextMenu</b>
+</h2>
+<p class="comment">Registers this broadcaster to be notified when a context menu item from the given components was selected.</p>
+<pre><code class="language-javascript line-numbers">Broadcaster.attachToContextMenu(var componentIds, var stateFunction, var itemList, var optionalMetadata, var useLeftClick)</code></pre>
+<p><br>This function can be used to attach the broadcaster to any component and show a context menu when the user clicks on it with the right button (or double-tap on the trackpad / Ctrl+Click on macOS). It expects these 4 parameters:</p>
+<ol><li>a single component or list of components (either a String with the component ID or existing script references)</li>
+<li>An array with Strings containing the popup menu items with a pseudo markdown syntax and the <code>{DYNAMIC}</code>
+ wildcard to create dynamic item texts</li>
+<li>A state function that expects two arguments (<code>type</code>
+, <code>index</code>
+) and allows changing the active state / disable items or use dynamic text values. The first argument is always one of three strings (<code>text</code>
+, <code>enabled</code>
+ or <code>active</code>
+ and indicates which state it wants to know). Be aware that this function is called synchronously on the UI thread for every item so keep it simple.</li>
+<li>Optional metadata (either JSON or String).</li>
+</ol>
+<p class="comment">This function does not override any existing behaviour for right clicks, so you might want to eg. disable MIDI learn for components that you attach to this broadcaster.</p>
+<p>After you've attached the broadcaster to the context menu of a component, right clicking will create a popup menu (using the component's <a href="glossary/custom_lookandfeel.html#popup-menu">LookAndFeel Customization</a>
+) and then send a message to its registered listeners with the clicked component as argument and the selected index (zero based).</p>
+<h3 id="example"><b>Example</b>
+</h3>
+<p>This example snippet registers a context menu to a button and allows setting the value and toggling the width of the button using two popup menu items.</p>
+<pre><code class="language-javascript line-numbers">// We'll attach the context menu to this button
+const var Button1 = Content.addButton("Button1", 0, 0);
+Button1.set("enableMidiLearn", false); // we don't want this to popup too...
+
+/** Let's define a broadcaster with two arguments. */
+const var bc = Engine.createBroadcaster({
+	"id": "ContextMenu Broadcaster",
+	"args": ["component", "selectedIndex"]
+});
+
+/** This defines a few items using a markdown-like syntax. */
+const var POPUP_MENU_ITEMS = [
+  "**Set Value / Properties**", // A header
+  "Value is active",			// the first item
+  "Set to {DYNAMIC}",			// the second item with a dynamic text
+  "___",						// a horizontal separator
+  "~~This is always off~~"		// an item that is always disabled
+];
+
+
+inline function popupStateFunction(type, index)
+{
+	// The this object of this function will always
+	// point to the component that was clicked (in our
+	// case it's always Button1).
+	Console.assertEqual(this, Button1);
+
+	local getEnableState = type == "enabled";
+	local getTextValue = type == "text";
+	local getActiveState = type == "active";
+	
+	if(getEnableState) // We don't want to disable any item
+		return true; // so let's return true...
+		
+	if(getTextValue)
+	{
+		// This function is only called with items
+		// that specify the `{DYNAMIC}` wildcard
+		// in this case the second item with the index 1
+		Console.assertEqual(value, 1);
+		
+		// Now we can return whatever text we want to show
+		// and this is evaluated each time before the popup
+		// is shown
+		return this.get("width") > 150 ? "small" : "wide";
+	}
+	
+	if(getActiveState)
+	{
+		// Now we can decide whether the popup menu item
+		// should be displayed as active or not
+
+		// the first item checks whether the button is active
+		if(index == 0)
+			return this.getValue();
+			
+		// the second item checks whether its wide or not
+		if(index == 1)
+			return this.get("width") > 150;
+	}
+};
+
+/** Now we can use the item list and the state function to attach the broadcaster
+   to the context menu of the button (you can attach it to multiple components by
+   passing in a list. */
+bc.attachToContextMenu("Button1", popupStateFunction, POPUP_MENU_ITEMS, "Context Menu");
+
+
+/** This callback will be executed whenever a popup menu item was selected. */
+bc.addListener(Button1, "Menu callback", function(component, index)
+{
+	// the this object will point to the component
+	Console.assertEqual(component, this);
+
+	if(index == 0)
+	{
+		this.setValue(!component.getValue());
+		this.changed();
+	}
+	if(index == 1)
+	{
+		this.set("width", component.get("width") > 150 ? 100 : 200);
+	}
+});</code></pre>
+<p><br></p>
+<h2 id="attachtoeqevents"><b>attachToEqEvents</b>
+</h2>
+<p class="comment">Registers this broadcaster to be notified about changes to the EQ (adding / removing / selecting filter bands).</p>
+<pre><code class="language-javascript line-numbers">Broadcaster.attachToEqEvents(var moduleIds, var eventTypes, var optionalMetadata)</code></pre>
+<p><br><br></p>
+<h2 id="attachtomoduleparameter"><b>attachToModuleParameter</b>
+</h2>
+<p class="comment">Registers this broadcaster to be notified when a module parameter changes.</p>
+<pre><code class="language-javascript line-numbers">Broadcaster.attachToModuleParameter(var moduleIds, var parameterIds, var optionalMetadata)</code></pre>
+<p><br><br></p>
+<h2 id="attachtootherbroadcaster"><b>attachToOtherBroadcaster</b>
+</h2>
+<p class="comment">Attaches this broadcaster to another broadcaster(s) to forward the messages.</p>
+<pre><code class="language-javascript line-numbers">Broadcaster.attachToOtherBroadcaster(var otherBroadcaster, var argTransformFunction, bool async, var optionalMetadata)</code></pre>
+<p><br><br></p>
+<h2 id="attachtoprocessingspecs"><b>attachToProcessingSpecs</b>
+</h2>
+<p class="comment">Attaches this broadcaster to changes of the audio processing specs (samplerate / buffer size).</p>
+<pre><code class="language-javascript line-numbers">Broadcaster.attachToProcessingSpecs(var optionalMetadata)</code></pre>
+<p><br><br></p>
+<h2 id="attachtoradiogroup"><b>attachToRadioGroup</b>
+</h2>
+<p class="comment">Registers this broadcaster to be notified when a button of a radio group is clicked.</p>
+<pre><code class="language-javascript line-numbers">Broadcaster.attachToRadioGroup(int radioGroupIndex, var optionalMetadata)</code></pre>
+<p><br>If you want the broadcaster to listen to a list of buttons that are grouped into a exclusive radio group, you can use this method. The <code>radioGroupIndex</code>
+ must be the integer value that you've assigned as <code>radioGroup</code>
+ property to the buttons.</p>
+<p>It will automatically scan all components and find the ones that are using this group index and then send out a message to all listeners when one of the buttons is clicked.</p>
+<p>In order for this to work, the Broadcaster needs to have a single argument defined as <code>args</code>
+ property which will contain the index of the clicked button. </p>
+<pre><code class="language-javascript line-numbers">const var bc = Engine.createBroadcaster({
+	"id": "My Radio Watcher",
+	"colour": -1,
+	"args": ["buttonIndex"]
+});</code></pre>
+<p>Be aware that this index is using the same order as the component list shows.</p>
+<p class="comment">Also this attached mode is the only mode that is using a "bidirectional" communication. This means that if you send a broadcaster message using <code>sendMessage()</code>
+ or the assignment operator, it will also change the currently active button in the radio group.</p>
+<h3 id="example:-page-handling"><b>Example: Page Handling</b>
+</h3>
+<p>One of the most practical use cases for this function is the page handling logic which will show and hide panels when you click on the corresponding buttons</p>
+<img src="images/custom/broadcaster/attachtoradiogroup.png"></img>
+<p>Please note how the entire logic and functionality is represented in the broadcaster map from the state of the buttons to the <code>visible</code>
+ property of the panels.</p>
+<pre><code class="language-javascript line-numbers">const var bc = Engine.createBroadcaster({
+	"id": "My Page Handler",
+	"colour": -1,
+	"comment": "This broadcaster will handle the page logic",
+	"args": ["pageIndex"]
+});
+
+// Just a dummy function that 
+inline function addRadioButton(i)
+{
+	local b = Content.addButton("RadioButton " + (i+1), 0, i * 30);
+	b.set("radioGroup", 90);
+	b.set("saveInPreset", false);
+	
+	local p = Content.addPanel("Page" + (i+1), 150 + i* 100, 0);
+	p.set("visible", false);
+	return p;
+}
+
+// This array will hold 4 panels
+const var Pages = [];
+
+// Create 4 radio buttons and 4 panels
+for(i = 0; i < 4; i++)
+	Pages.push(addRadioButton(i));
+
+bc.attachToRadioGroup(90, "Button Group");
+
+const var PageList = []; //
+
+bc.addComponentPropertyListener(Pages, "visible", "Show Panels", function(indexInList, buttonIndex)
+{
+	return indexInList == buttonIndex;
+});
+
+// Show the first page
+bc.pageIndex = 0;</code></pre>
+<p><br></p>
+<h2 id="attachtoroutingmatrix"><b>attachToRoutingMatrix</b>
+</h2>
+<p class="comment">Attaches this broadcaster to a routing matrix and listens for changes.</p>
+<pre><code class="language-javascript line-numbers">Broadcaster.attachToRoutingMatrix(var moduleIds, var optionalMetadata)</code></pre>
+<p><br>This function attaches the broadcaster to a routing matrix of one or more processors to be notified whenever the routing changes (so either the channel configuration or the amount of channels). In order to use this function, the broadcaster must have two arguments, the first will be the processor ID and the second one a <a href="scripting/scripting-api/routingmatrix/index.html">Routingmatrix</a>
+ object that you can query in your callback.</p>
+<p class="comment">Be aware that you must not call any functions in a listener callback that itself causes the routing matrix to change or you will end up with an infinite loop!</p>
+<pre><code class="language-javascript line-numbers">const var bc = Engine.createBroadcaster({
+	"id": "router",
+	"args": ["id", "matrix"]
+});
+
+bc.attachToRoutingMatrix("Sine Wave Generator1", "script matrix");
+
+bc.addListener("", "dudel", function(id, matrix)
+{
+	// this just prints out where the sine wave generator is mapped
+	Console.print(trace(matrix.getDestinationChannelForSource([0, 1])));
+});</code></pre>
+<p><br></p>
+<h2 id="callwithdelay"><b>callWithDelay</b>
+</h2>
+<p class="comment">Calls a function after a short period of time. This is exclusive, so if you pass in a new function while another is pending, the first will be replaced.</p>
+<pre><code class="language-javascript line-numbers">Broadcaster.callWithDelay(int delayInMilliseconds, var argArray, var function)</code></pre>
+<p><br><br></p>
+<h2 id="isbypassed"><b>isBypassed</b>
+</h2>
+<p class="comment">Checks if the broadcaster is bypassed.</p>
+<pre><code class="language-javascript line-numbers">Broadcaster.isBypassed()</code></pre>
+<p><br><br></p>
+<h2 id="refreshcontextmenustate"><b>refreshContextMenuState</b>
+</h2>
+<p class="comment">If this broadcaster is attached to a context menu, calling this method will update the states for the menu items.</p>
+<pre><code class="language-javascript line-numbers">Broadcaster.refreshContextMenuState()</code></pre>
+<p><br><br></p>
+<h2 id="removealllisteners"><b>removeAllListeners</b>
+</h2>
+<p class="comment">Removes all listeners.</p>
+<pre><code class="language-javascript line-numbers">Broadcaster.removeAllListeners()</code></pre>
+<p><br><br></p>
+<h2 id="removeallsources"><b>removeAllSources</b>
+</h2>
+<p class="comment">Removes all sources.</p>
+<pre><code class="language-javascript line-numbers">Broadcaster.removeAllSources()</code></pre>
+<p><br><br></p>
+<h2 id="removelistener"><b>removeListener</b>
+</h2>
+<p class="comment">Removes the listener that was assigned with the given object.</p>
+<pre><code class="language-javascript line-numbers">Broadcaster.removeListener(var idFromMetadata)</code></pre>
+<p><br>This removes the listener from the list so that it will not be notified anymore. The parameter must be the exact same thing you've used in the addListener() function, so if you're using a JSON object, you need to use the exact same object (and not a clone with the same properties).</p>
+<p class="comment">If you just want to temporarily deactivate a listener, you can do so by pressing the bypass button in the Broadcaster Controller. This is helpful for debugging<br></p>
+<h2 id="removesource"><b>removeSource</b>
+</h2>
+<p class="comment">Removes the source with the given metadata.</p>
+<pre><code class="language-javascript line-numbers">Broadcaster.removeSource(var metadata)</code></pre>
+<p><br><br></p>
+<h2 id="resendlastmessage"><b>resendLastMessage</b>
+</h2>
+<p class="comment">Resends the current state.</p>
+<pre><code class="language-javascript line-numbers">Broadcaster.resendLastMessage(var isSync)</code></pre>
+<p><br><br></p>
+<h2 id="reset"><b>reset</b>
+</h2>
+<p class="comment">Resets the state.</p>
+<pre><code class="language-javascript line-numbers">Broadcaster.reset()</code></pre>
+<p><br>This resets the value to the default values passed into the constructor and sends a message to all listeners.<br></p>
+<h2 id="sendasyncmessage"><b>sendAsyncMessage</b>
+</h2>
+<p class="comment">Sends an asynchronous message to all listeners. the length of args must match the default value list.</p>
+<pre><code class="language-javascript line-numbers">Broadcaster.sendAsyncMessage(var args)</code></pre>
+<p><br><br></p>
+<h2 id="sendmessage"><b>sendMessage</b>
+</h2>
+<p class="comment">deprecated function (use sendSyncMessage / sendAsyncMessage instead).</p>
+<pre><code class="language-javascript line-numbers">Broadcaster.sendMessage(var args, bool isSync)</code></pre>
+<p><br>This sends a message to all registered (and enabled) listeners. The first argument must be either</p>
+<ol><li>An array, if the listener functions have multiple parameters. Then it will distribute the array elements to the function parameters.</li>
+<li>A single value if the registered functions and the default values have only one parameter. </li>
+</ol>
+<p>The second parameter will control whether the message is being sent out synchronously or if it should be deferred and called a little bit later. This might be helpful if you want to coallascate calls to sendMessage so that it doesn't hammer the queue.</p>
+<p>Be aware that it only sends the message to the listeners if any of the values is different than before.</p>
+<p class="comment">Note: this function is deprecated and replaced by two other functions, <code>sendAsyncMessage()</code>
+ and <code>sendSyncMessage()</code>
+. The rationale behind this is that the boolean parameter wasn't clear enough to indicate whether a message is being sent out synchronously or not (<code>true</code>
+ means sync or async?). So using this message will write an error message to the console but the functionality keeps working so you can migrate it more easily.</p>
+<p><br></p>
+<h2 id="sendmessagewithdelay"><b>sendMessageWithDelay</b>
+</h2>
+<p class="comment">Sends a message to all listeners with a delay.</p>
+<pre><code class="language-javascript line-numbers">Broadcaster.sendMessageWithDelay(var args, int delayInMilliseconds)</code></pre>
+<p><br>This will send out a message after a certain delay so it might come in handy in scenarios where you previously had to drag a timer around.</p>
+<p>Be aware that if you call this method while a callback is pending, it will override the value to be send out and restart the timer, so the first message might get lost.<br></p>
+<h2 id="sendsyncmessage"><b>sendSyncMessage</b>
+</h2>
+<p class="comment">Sends a synchronous message to all listeners (same as the dot assignment operator). the length of args must match the default value list.</p>
+<pre><code class="language-javascript line-numbers">Broadcaster.sendSyncMessage(var args)</code></pre>
+<p><br><br></p>
+<h2 id="setbypassed"><b>setBypassed</b>
+</h2>
+<p class="comment">Deactivates the broadcaster so that it will not send messages. If sendMessageIfEnabled is true, it will send the last value when unbypassed.</p>
+<pre><code class="language-javascript line-numbers">Broadcaster.setBypassed(bool shouldBeBypassed, bool sendMessageIfEnabled, bool async)</code></pre>
+<p><br><br></p>
+<h2 id="setenablequeue"><b>setEnableQueue</b>
+</h2>
+<p class="comment">If this is enabled, the broadcaster will keep an internal queue of all messages and will guarantee to send them all.</p>
+<pre><code class="language-javascript line-numbers">Broadcaster.setEnableQueue(bool shouldUseQueue)</code></pre>
+<p><br>When the broadcaster is used asynchronously, it will always just send a message for the latest state, so</p>
+<pre><code class="language-javascript line-numbers">bc.sendMessage(0, false);
+bc.sendMessage(1, false);</code></pre>
+<p>in this example the message with the value <code>0</code>
+ will never reach its listeners. This is the default value in order to avoid unnecessary calls to the listeners, however there are a few occasions where you need to guarantee that <b>every</b>
+ message gets sent to the listeners. By enabling the queue, it will keep a list of all pending messages and sends out every value to its listeners.</p>
+<p class="comment">If you attach certain event sources to a broadcaster, they will automatically switch to queue mode (eg. complex data events).</p>
+<p>You can check the state of this value by the icon on the broadcaster map. If this icon appears:</p>
+<img src="images/custom/broadcaster/setenablequeue.png"></img>
+<p>the broadcaster is running in queued mode.<br></p>
+<h2 id="setforcesynchronousexecution"><b>setForceSynchronousExecution</b>
+</h2>
+<p class="comment">Forces every message to be sent synchronously.</p>
+<pre><code class="language-javascript line-numbers">Broadcaster.setForceSynchronousExecution(bool shouldExecuteSynchronously)</code></pre>
+<p><br>This function will enforce synchronous execution of its callback independently of which function is called.<br></p>
+<h2 id="setrealtimemode"><b>setRealtimeMode</b>
+</h2>
+<p class="comment">Guarantees that the synchronous execution of the listener callbacks can be called from the audio thread.</p>
+<pre><code class="language-javascript line-numbers">Broadcaster.setRealtimeMode(bool enableRealTimeMode)</code></pre>
+<p><br><br></p>
+<h2 id="setreplacethisreference"><b>setReplaceThisReference</b>
+</h2>
+<p class="comment">This will control whether the <code>this</code>
+ reference for the listener function will be replaced with the object passed into <code>addListener</code>
+.</p>
+<pre><code class="language-javascript line-numbers">Broadcaster.setReplaceThisReference(bool shouldReplaceThisReference)</code></pre>
+<p><br><br></p>
+<h2 id="setsendmessageforundefinedargs"><b>setSendMessageForUndefinedArgs</b>
+</h2>
+<p class="comment">Forces the broadcaster to also send a message when a parameter is undefined.</p>
+<pre><code class="language-javascript line-numbers">Broadcaster.setSendMessageForUndefinedArgs(bool shouldSendWhenUndefined)</code></pre>
+<p><br>By default, the broadcaster will not send a message when one or more arguments are undefined. This prevents wrong initialisation calls and script errors when the arguments are passed into function calls.</p>
+<p>If you want to disable that function and also send messages for undefined arguments, call this function to change that behaviour (but in that case make sure to check <code>isDefined()</code>
+ before passing the parameters into function calls to avoid script errors).</p>
+<p class="comment">If you create a broadcaster, all the arguments will have an <code>undefined</code>
+ state until you send the first message.<br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/buffer/index.html">Buffer</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>24.07.2022<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

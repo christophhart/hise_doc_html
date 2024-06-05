@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="userpresethandler"><b>UserPresetHandler</b>
+</h1>
+<p>The UserPresetHandler class can be used to customize the data handling of your project. You can attach callbacks to certain events (eg. loading user presets), define a custom data object that will replace the default XML structure of a user preset and add custom automation parameters. In order to use it, create it with <code>Engine.createUserPresetHandler()</code>
+ and then use one of its methods.</p>
+<p class="comment">It's considered best practice to only have one of these objects around.<br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="attachautomationcallback"><b>attachAutomationCallback</b>
+</h2>
+<p class="comment">Attaches a callback to automation changes. Pass a non-function as updateCallback to remove the callback for the given automation ID.</p>
+<pre><code class="language-javascript line-numbers">UserPresetHandler.attachAutomationCallback(String automationId, var updateCallback, var isSynchronous)</code></pre>
+<p><br>This attaches a script callback to an automation parameter that was previously registered using<br><a href="scripting/scripting-api/userpresethandler/index.html#setcustomautomation">Userpresethandler.setCustomAutomation()</a>
+.</p>
+<p>The <code>automationId</code>
+ argument must match the <code>ID</code>
+ property of one of the existing automation parameters. The function you pass in as <code>updateFunction</code>
+ must have a single parameter that will contain the parameter value when the parameter is changed. You can decide whether the execution of the parameter should be done synchronously (in the audio thread) or deferred on the UI thread depenending on your use case.</p>
+<p class="comment">Unlike the <code>setControlCallback()</code>
+ function, registering an additional callback will <b>not</b>
+ override the connections defined with the <code>connections</code>
+ property so it can be used to perform additional tasks.</p>
+<p>Use <code>clearAttachedCallbacks()</code>
+ in order to remove previously registered functions.<br></p>
+<h2 id="clearattachedcallbacks"><b>clearAttachedCallbacks</b>
+</h2>
+<p class="comment">Clears all attached callbacks.</p>
+<pre><code class="language-javascript line-numbers">UserPresetHandler.clearAttachedCallbacks()</code></pre>
+<p><br><br></p>
+<h2 id="createobjectforautomationvalues"><b>createObjectForAutomationValues</b>
+</h2>
+<p class="comment">Creates an object containing the values for every automation ID.</p>
+<pre><code class="language-javascript line-numbers">UserPresetHandler.createObjectForAutomationValues()</code></pre>
+<p><br><br></p>
+<h2 id="createobjectforsaveinpresetcomponents"><b>createObjectForSaveInPresetComponents</b>
+</h2>
+<p class="comment">Creates an object containing all values of components with the <code>saveInPreset</code>
+ flag.</p>
+<pre><code class="language-javascript line-numbers">UserPresetHandler.createObjectForSaveInPresetComponents()</code></pre>
+<p><br><br></p>
+<h2 id="getautomationindex"><b>getAutomationIndex</b>
+</h2>
+<p class="comment">Returns the automation index.</p>
+<pre><code class="language-javascript line-numbers">UserPresetHandler.getAutomationIndex(String automationID)</code></pre>
+<p><br><br></p>
+<h2 id="getsecondssincelastpresetload"><b>getSecondsSinceLastPresetLoad</b>
+</h2>
+<p class="comment">Returns the amount of seconds since the last preset has been loaded.</p>
+<pre><code class="language-javascript line-numbers">UserPresetHandler.getSecondsSinceLastPresetLoad()</code></pre>
+<p><br><br></p>
+<h2 id="iscurrentlyloadingpreset"><b>isCurrentlyLoadingPreset</b>
+</h2>
+<p class="comment">Returns true if this is called somewhere inside a preset load. This takes the thread ID into account to avoid false positives when calling this on another thread.</p>
+<pre><code class="language-javascript line-numbers">UserPresetHandler.isCurrentlyLoadingPreset()</code></pre>
+<p><br><br></p>
+<h2 id="isinternalpresetload"><b>isInternalPresetLoad</b>
+</h2>
+<p class="comment">Returns true if the user preset that is about to be loaded is a DAW state (or initial state). This function is only useful during the pre / post load callbacks.</p>
+<pre><code class="language-javascript line-numbers">UserPresetHandler.isInternalPresetLoad()</code></pre>
+<p><br><br></p>
+<h2 id="isoldversion"><b>isOldVersion</b>
+</h2>
+<p class="comment">Checks if the given version string is a older version than the current project version number.</p>
+<pre><code class="language-javascript line-numbers">UserPresetHandler.isOldVersion( String version)</code></pre>
+<p><br><br></p>
+<h2 id="resettodefaultuserpreset"><b>resetToDefaultUserPreset</b>
+</h2>
+<p class="comment">Loads the default user preset (if it's defined in the project).</p>
+<pre><code class="language-javascript line-numbers">UserPresetHandler.resetToDefaultUserPreset()</code></pre>
+<p><br><br></p>
+<h2 id="runtest"><b>runTest</b>
+</h2>
+<p class="comment">Runs a few tests that catches data persistency issues.</p>
+<pre><code class="language-javascript line-numbers">UserPresetHandler.runTest()</code></pre>
+<p><br><br></p>
+<h2 id="setautomationvalue"><b>setAutomationValue</b>
+</h2>
+<p class="comment">Sends an automation value change for the given index.</p>
+<pre><code class="language-javascript line-numbers">UserPresetHandler.setAutomationValue(int automationIndex, float newValue)</code></pre>
+<p><br><br></p>
+<h2 id="setcustomautomation"><b>setCustomAutomation</b>
+</h2>
+<p class="comment">Enables host / MIDI automation with the custom user preset model.</p>
+<pre><code class="language-javascript line-numbers">UserPresetHandler.setCustomAutomation(var automationData)</code></pre>
+<p><br>This method allows to define automation parameters that can be attached / detached to UI elements dynamically. If you use this mode, all MIDI CC automation and macro assignments will operate on the automation data model instead of the actual UI element (so assigning a MIDI CC to a UI element via drop down or learn mode will connect the automation data with the source).</p>
+<p>This is useful when you're using an UI element that can be assigned to multiple targets dynamically. In order to use it, just call this method with a JSON object that describes all automatable parameters. Then use the <code>automationID</code>
+ property of a UI element to assign the control to one of the automation targets. This can be done dynamically.</p>
+<p class="comment">Be aware that this function only works in combination with a custom user preset model, so you need to call <code>UserPresetHandler.setUseCustomDataModel()</code>
+ before using this method.</p>
+<p>The JSON object you need to pass in here must be an array of objects where each array element describes one automation parameter. The automation object can / must have these properties:</p>
+<table><thead><td><b>Property </b>
+</td>
+<td><b>Type </b>
+</td>
+<td><b>Default </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><code>ID</code>
+ </td>
+<td>String </td>
+<td>- </td>
+<td>a unique identifier for the automation parameter </td>
+</tr>
+<tr><td><code>min</code>
+ </td>
+<td>double </td>
+<td>0.0 </td>
+<td>he minimum value </td>
+</tr>
+<tr><td><code>max</code>
+ </td>
+<td>double </td>
+<td>1.0 </td>
+<td>the maximum value </td>
+</tr>
+<tr><td><code>middlePosition</code>
+ </td>
+<td>double </td>
+<td>mid </td>
+<td>the middle position </td>
+</tr>
+<tr><td><code>stepSize</code>
+ </td>
+<td>double </td>
+<td>0.0 </td>
+<td>the step size </td>
+</tr>
+<tr><td><code>allowMidiAutomation</code>
+ </td>
+<td>bool </td>
+<td><code>true</code>
+ </td>
+<td>whether this parameter can be automated using MIDI CC messages </td>
+</tr>
+<tr><td><code>allowHostAutomation</code>
+ </td>
+<td>bool </td>
+<td><code>true</code>
+ </td>
+<td>whether this parameter can be automated using host automation (plugin parameters) </td>
+</tr>
+<tr><td><code>connections</code>
+ </td>
+<td>Array </td>
+<td><code>[]</code>
+ </td>
+<td>A list of parameter targets that are changed when the parameter is changed. Each element of this array must be a object with a <code>processorId</code>
+ and <code>parameterId</code>
+ property (just like the default UI element connections). </td>
+</tr>
+</table>
+<p>Example object:</p>
+<pre><code class="language-javascript line-numbers">const var automationObject = 
+[
+{
+	"ID": "First Parameter",
+	"min": 0.5, 
+	"max": 2.0,
+	"middlePosition": 1.0,
+	"stepSize": 0.0,
+	"allowMidiAutomation": true,
+	"allowHostAutomation": false,
+	"connections": [
+	  {
+	  	"processorId": "SimpleGain1",
+	  	"parameterId": "Gain"
+	  },
+	  {
+	  	"processorId": "SimpleGain2",
+	  	"parameterId": "Gain"
+	  },
+	]
+}
+]</code></pre>
+<p>The <code>connections</code>
+ property is not the only way to add logic to a automation parameter, you can alse use <a href="scripting/scripting-api/userpresethandler/index.html#attachautomationcallback">Userpresethandler.attachAutomationCallback()</a>
+ in order to add a scripted callback (this is equivalent to <code>ScriptComponent.setControlCallback()</code>
+ vs. using the <code>processorId</code>
+ / <code>parameterId</code>
+ connections).<br></p>
+<h2 id="setenableuserpresetpreprocessing"><b>setEnableUserPresetPreprocessing</b>
+</h2>
+<p class="comment">Enables a preprocessing of every user preset that is being loaded.</p>
+<pre><code class="language-javascript line-numbers">UserPresetHandler.setEnableUserPresetPreprocessing(bool processBeforeLoading, bool shouldUnpackComplexData)</code></pre>
+<p><br><br></p>
+<h2 id="setpostcallback"><b>setPostCallback</b>
+</h2>
+<p class="comment">Sets a callback that will be executed after the preset has been loaded.</p>
+<pre><code class="language-javascript line-numbers">UserPresetHandler.setPostCallback(var presetPostCallback)</code></pre>
+<p><br><br></p>
+<h2 id="setpostsavecallback"><b>setPostSaveCallback</b>
+</h2>
+<p class="comment">Sets a callback that will be executed after a preset has been saved.</p>
+<pre><code class="language-javascript line-numbers">UserPresetHandler.setPostSaveCallback(var presetPostSaveCallback)</code></pre>
+<p><br><br></p>
+<h2 id="setprecallback"><b>setPreCallback</b>
+</h2>
+<p class="comment">Sets a callback that will be executed synchronously before the preset was loaded</p>
+<pre><code class="language-javascript line-numbers">UserPresetHandler.setPreCallback(var presetPreCallback)</code></pre>
+<p><br><br></p>
+<h2 id="setusecustomuserpresetmodel"><b>setUseCustomUserPresetModel</b>
+</h2>
+<p class="comment">Disables the default user preset data model and allows a manual data handling.</p>
+<pre><code class="language-javascript line-numbers">UserPresetHandler.setUseCustomUserPresetModel(var loadCallback, var saveCallback, bool usePersistentObject)</code></pre>
+<p><br>This function can be used to bypass the default HISE data model (one value per UI element) and roll your own data model with dedicated callbacks for loading and saving the state of your projects (eg. in user presets, DAW save files, init state, etc).</p>
+<p>In order to use this function, you need to supply two methods for loading and saving with these signatures:</p>
+<pre><code class="language-javascript line-numbers">const var uph = Engine.createUserPresetHandler();
+
+
+
+inline function onPresetLoad(var obj)
+{
+	// do something with `obj`
+}
+
+inline function onPresetSave()
+{
+	return { "MyObject": someContent };
+}
+
+uph.setUseCustomUserPresetModel(onPresetLoad, onPresetSave, false);</code></pre>
+<p>The load function contains a single parameter with a JSON object describing your plugin state. What the content of this object is is defined by your save function, which expects you to return a object that fully describes your plugin state.</p>
+<p class="comment">Usually this means that you have one big JSON object that you return in your save function and restore in your load function.</p>
+<p>During development, the <code>usePersistentObject</code>
+ flag might be helpful - if this is true, it will call the save function before recompiling and call the load function with the previous object after compiling, so that the values of your data object to not reset each time you compile. However this might overwrite the object you define, so at the beginning, you must use this function at least once without this flag. In the compiled project it won't make much of a difference as the recompilation does not happen after the plugin was instantiated.</p>
+<p>Also be aware that if you want to use the custom automation model, you will need to enable this mode too.<br></p>
+<h2 id="setuseundoforpresetloading"><b>setUseUndoForPresetLoading</b>
+</h2>
+<p class="comment">Enables Engine.undo() to restore the previous user preset (default is disabled).</p>
+<pre><code class="language-javascript line-numbers">UserPresetHandler.setUseUndoForPresetLoading(bool shouldUseUndoManager)</code></pre>
+<p><br><br></p>
+<h2 id="updateautomationvalues"><b>updateAutomationValues</b>
+</h2>
+<p class="comment">Updates the given automation values and optionally sends out a message.</p>
+<pre><code class="language-javascript line-numbers">UserPresetHandler.updateAutomationValues(var data, var sendMessage, bool useUndoManager)</code></pre>
+<p><br><br></p>
+<h2 id="updateconnectedcomponentsfrommodulestate"><b>updateConnectedComponentsFromModuleState</b>
+</h2>
+<p class="comment">Restores the values for all UI elements that are connected to a processor with the <code>processorID</code>
+ / <code>parameterId</code>
+ properties.</p>
+<pre><code class="language-javascript line-numbers">UserPresetHandler.updateConnectedComponentsFromModuleState()</code></pre>
+<p><br><br></p>
+<h2 id="updatesaveinpresetcomponents"><b>updateSaveInPresetComponents</b>
+</h2>
+<p class="comment">Restores all values of components with the <code>saveInPreset</code>
+ flag.</p>
+<pre><code class="language-javascript line-numbers">UserPresetHandler.updateSaveInPresetComponents(var obj)</code></pre>
+<p><br><br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scriptnode/index.html">ScriptNode</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>01.06.2021<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="project-documentation"><b>Project Documentation</b>
+</h1>
+<p><br>You can use the inbuilt HISE documentation system to write a documentation that can be embedded into your project.</p>
+<p>This offers some neat advantages over the "traditional" way of shipping a PDF manual along with your plugin:</p>
+<ul><li>write documentation using the most popular markup language (Markdown)</li>
+<li>handy navigation controls including search function & TOC</li>
+<li>open context-based help for dedicated UI components using the <code>docLink</code>
+ property (t.b.a).</li>
+<li>connect different topics via links</li>
+<li>auto-update it from a server URL</li>
+<li>create a static HTML website that mirrors the embedded documentation.</li>
+<li>add icons from SVG, links to external websites and even embedded GIFs.</li>
+</ul>
+<p>In order to use the project documentation feature, you will need to:</p>
+<ol><li>Add markdown files in the <b>Documentation</b>
+ folder of your project. If you want to add images, put them in the <code>images/</code>
+ subfolder of the <b>Documentation</b>
+ folder.</li>
+<li>Add a MarkdownPanel floating tile on your interface.</li>
+<li>"Compile" the documentation.</li>
+<li>Ship the compiled content files to the end user.</li>
+</ol>
+<p>Let's take a look at each of these steps in detail.</p>
+<h2 id="write-the-documentation"><b>Write the documentation</b>
+</h2>
+<p>You are of course free to use any text editor or specialised Markdown Editor to write your docs, but HISE also has some editing capabilities that might come in handy. Check out the documentation of the <a href="ui-components/floating-tiles/hise/markdown-editor.html">MarkdownEditor</a>
+ for a full feature set. The best way of working with markdown files is to open the editor in a tab of the left side of the scripting workspace, and use the interface designer on the right as preview:</p>
+<ul><li>open the scripting workspace</li>
+<li>click on the <code>+</code>
+ button in the tab to create a new tab.</li>
+<li>right click on the new tab and select Markdown Editor.</li>
+</ul>
+<p class="comment">At this point it's probably best to read the <a href="working-with-hise/project-management/documentation/markdown.html">Markdown</a>
+ specification to learn how to write the documentation</p>
+<p>You need to have at least one file called <code>readme.md</code>
+ in the <b>Documentation</b>
+ subfolder as this will be the one that's being shown on your interface.</p>
+<h2 id="add-the-documentation-to-your-interface"><b>Add the documentation to your interface</b>
+</h2>
+<p>In order to show the documentation in your project, you will need to add a FloatingTile with a <a href="ui-components/floating-tiles/plugin/markdownpanel.html">MarkdownPanel</a>
+ content type. This will automatically point to the <code>readme.md</code>
+ file in the documentation root directory. There are numerous ways to customize the appearance, check the properties of the floating tile.</p>
+<h2 id="compile-the-documentation"><b>Compile the documentation</b>
+</h2>
+<p>If you're done with the documentation, you will need to "compile" it into two files as described <a href="ui-components/floating-tiles/plugin/markdownpanel.html#-updating-the-documentation">here</a>
+. Right click on the MarkdownPanel and select <b>Export</b>
+, then run the "Update local cache file" function in the popup window.</p>
+<h2 id="distribute-the-docs-to-the-end-user"><b>Distribute the docs to the end user</b>
+</h2>
+<p>The documentation is not supposed to be part of the plugin, but needs to be installed separately. This allows you to update the documentation without recompiling the plugins. Just make sure that the two cache files that you've created in the last process end up in the user's app data directory.</p>
+<p>In the future there will be a automatic update feature so that you just have to supply a URL where the files are and they will be checked for modifications and automatically updated.</p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="working-with-hise/project-management/documentation/contributing.html">Contribute to the HISE Docs</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>18.09.2019<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

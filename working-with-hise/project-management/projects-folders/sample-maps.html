@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="samplemaps"><b>SampleMaps</b>
+</h1>
+<p>A SampleMap is a collection of audio samples with mapping information that is the standard data format for the <a href="hise-modules/sound-generators/list/streamingsampler.html">Sampler</a>
+ module. For a detailed specification of this format please read the dedicated SampleMap reference, but here we will just focus on the handling of those files. All we need to know for this is that they are XML files and every SampleMap is loaded into the pool on startup. The reason for this is that you have a list of all samplemaps available through the API call <a href="scripting/scripting-api/sampler/index.html#getsamplemaplist">Sampler.getSampleMapList()</a>
+, which you can use to implement the sample loading UI (otherwise calling this method would result in scanning the directory everytime which comes with a huge performance overhead). Also the sampler module just needs to store the ID of the samplemap which makes the XML files less verbose.</p>
+<p>SampleMaps are identified using a unique ID, which is highly recommended to match with their filename (and there is a <a href="working-with-hise/menu-reference/tools/index.html#update-samplemap-ids-based-on-file-names">tool</a>
+ that checks and corrects this). You can also use a folder hierarchy to categorize your samplemaps. Let's take a look at a example and see how the file location translates into the ID. Let's assume we have four sample maps. We start with the absolute paths:</p>
+<pre><code class="language-javascript line-numbers">C:\My Funky Project\SampleMaps\Bass\Sustain.xml
+C:\My Funky Project\SampleMaps\Bass\Release.xml
+C:\My Funky Project\SampleMaps\Cello\Sustain.xml
+C:\My Funky Project\SampleMaps\Cello\Release.xml</code></pre>
+<p>Now we use the folder wildcard instead (and again, change the naughty <code>\</code>
+ with <code>/</code>
+:</p>
+<pre><code class="language-javascript line-numbers">{PROJECT_FOLDER}Bass/Sustain.xml
+{PROJECT_FOLDER}Bass/Release.xml
+{PROJECT_FOLDER}Cello/Sustain.xml
+{PROJECT_FOLDER}Cello/Release.xml</code></pre>
+<p>As you can see there are two things that are consistent in each name: the <code>{PROJECT_FOLDER}</code>
+ wildcard and the <code>.xml</code>
+ extension. Both things are redundant to write: You cannot load SampleMaps outside the project folder, and there are no other legit file extensions other than <code>.xml</code>
+ (which isn't true for images and audio files obviously). Therefore, we can safely remove those and end up with the final ID:</p>
+<pre><code class="language-javascript line-numbers">Bass/Sustain
+Bass/Release
+Cello/Sustain
+Cello/Release</code></pre>
+<p>These are the exact Strings that you will get from the <code>Sampler.getSampleMapList()</code>
+ function and are supposed to be used as arguments for Sampler.loadSampleMap().</p>
+<p>Another important aspect of the SampleMap ID is that if you are using the <b>HLAC</b>
+ monolith format, the ID translates to the monolith filename(s). </p>
+<p class="comment">You can change this and tell the samplemap exactly which monolith it should load, but unless you explicitely use this feature, this will be the default behaviour. </p>
+<p>Monolith files are not supposed to use a folder hierarchy (because the end user can get this wrong too easily), so the path delimiter will simply be transformed into a <code>_</code>
+ in the filename. Our four samplemaps (which happen to be multimic samplemaps with 2 mic positions) will look for to these monoliths:</p>
+<pre><code class="language-javascript line-numbers">Bass_Sustain.ch1
+Bass_Sustain.ch2
+Bass_Release.ch1
+Bass_Release.ch2
+Cello_Sustain.ch1
+Cello_Sustain.ch2
+Cello_Release.ch1
+Cello_Release.ch2</code></pre>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="working-with-hise/project-management/projects-folders/scripts.html">Scripts</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

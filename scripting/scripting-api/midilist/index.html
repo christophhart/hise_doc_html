@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="midilist"><b>MidiList</b>
+</h1>
+<p><br>A MidiList is a array with 128 numbers that is particularly useful for MIDI processing.</p>
+<p>It offers a slight performance advantage as well as some handy methods which makes it thepreferred data type when you need to store a list of numbers:</p>
+<pre><code class="language-javascript line-numbers">/** MidiList Benchmark
+
+    Performs a set of operations to show the performance
+    benefit of using a MidiList over a standard array.
+
+    On my system it's 733ms vs. 4ms. Be aware that this is a 
+    highly artificial benchmark, real world use cases will not
+    show this kind of performance gain!
+*/
+
+// Set this to true to use the MidiList, then run the code again and watch
+// the benchmark result.
+const var MEASURE_FAST = false;
+
+// Create a (fast) MidiList and a (slow) Javascript array.
+const var fast = Engine.createMidiList();
+const var slow = [];
+
+// preallocate so that the array has at least a tiny chance (JK, doesn't).
+slow.reserve(128);
+
+// Initialise the array and the MidiList with the same values.
+for(i = 0; i < 128; i++)
+{
+    var v = Math.random() * 12;
+    fast.setValue(i, v);
+    slow[i] = v;
+}
+
+// Normal Array
+if(!MEASURE_FAST) Console.start();
+for(i = 0; i < 10000; i++)
+{
+    // find a item
+    slow.indexOf(8);
+
+    // search number of occurences
+    var slowCounter = 0;
+    for(j = 0; j < 128; j++)
+    {
+        if(slow[j] == 5)
+            slowCounter++;
+    }
+
+    // fill with constant
+    for(j = 0; j < 128; j++)
+        slow[j] = 12; 
+}
+if(!MEASURE_FAST) Console.stop();
+
+// MidiList
+if(MEASURE_FAST) Console.start();
+for(i = 0; i < 10000; i++)
+{
+    // find an item
+    fast.getIndex(8);
+
+    // fill with constant
+    fast.fill(12); 
+
+    // search number of occurences
+    var fastCounter = fast.getValueAmount(5);
+}
+if(MEASURE_FAST) Console.stop();</code></pre>
+<p><br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="clear"><b>clear</b>
+</h2>
+<p class="comment">Clears the MidiList to -1.</p>
+<pre><code class="language-javascript line-numbers">MidiList.clear()</code></pre>
+<p><br><br></p>
+<h2 id="fill"><b>fill</b>
+</h2>
+<p class="comment">Fills the MidiList with a number specified with valueToFill.</p>
+<pre><code class="language-javascript line-numbers">MidiList.fill(int valueToFill)</code></pre>
+<p><br><br></p>
+<h2 id="getbase64string"><b>getBase64String</b>
+</h2>
+<p class="comment">Encodes all values into a base64 encoded string for storage.</p>
+<pre><code class="language-javascript line-numbers">MidiList.getBase64String()</code></pre>
+<p><br><br></p>
+<h2 id="getindex"><b>getIndex</b>
+</h2>
+<p class="comment">Returns the first index that contains this value.</p>
+<pre><code class="language-javascript line-numbers">MidiList.getIndex(int value)</code></pre>
+<p><br><br></p>
+<h2 id="getnumsetvalues"><b>getNumSetValues</b>
+</h2>
+<p class="comment">Returns the number of values that are not -1.</p>
+<pre><code class="language-javascript line-numbers">MidiList.getNumSetValues()</code></pre>
+<p><br><br></p>
+<h2 id="getvalue"><b>getValue</b>
+</h2>
+<p class="comment">Returns the value at the given number.</p>
+<pre><code class="language-javascript line-numbers">MidiList.getValue(int index)</code></pre>
+<p><br><br></p>
+<h2 id="getvalueamount"><b>getValueAmount</b>
+</h2>
+<p class="comment">Returns the number of occurences of 'valueToCheck'</p>
+<pre><code class="language-javascript line-numbers">MidiList.getValueAmount(int valueToCheck)</code></pre>
+<p><br><br></p>
+<h2 id="isempty"><b>isEmpty</b>
+</h2>
+<p class="comment">Checks if the list contains any data.</p>
+<pre><code class="language-javascript line-numbers">MidiList.isEmpty()</code></pre>
+<p><br><br></p>
+<h2 id="restorefrombase64string"><b>restoreFromBase64String</b>
+</h2>
+<p class="comment">Restore the values from a String that was created with getBase64String().</p>
+<pre><code class="language-javascript line-numbers">MidiList.restoreFromBase64String(String base64encodedValues)</code></pre>
+<p><br><br></p>
+<h2 id="setrange"><b>setRange</b>
+</h2>
+<p class="comment">Sets a range of items to the same value.</p>
+<pre><code class="language-javascript line-numbers">MidiList.setRange(int startIndex, int numToFill, int value)</code></pre>
+<p><br><br></p>
+<h2 id="setvalue"><b>setValue</b>
+</h2>
+<p class="comment">Sets the number to something between -127 and 128.</p>
+<pre><code class="language-javascript line-numbers">MidiList.setValue(int index, int value)</code></pre>
+<p><br><br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/midiplayer/index.html">MidiPlayer</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>21.06.2019<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

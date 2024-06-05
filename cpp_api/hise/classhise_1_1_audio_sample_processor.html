@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="audiosampleprocessor"><b>AudioSampleProcessor</b>
+</h1>
+<p>A <a href="cpp_api/hise/classhise_1_1_processor.html">Processor</a>
+ that uses an audio sample.<br>If you want to use a audio sample from the pool, subclass your <a href="cpp_api/hise/classhise_1_1_processor.html">Processor</a>
+ from this and you will get some nice tools:<br></p>
+<ul><li>automatic memory management (samples are reference counted and released on destruction)<br></li>
+<li>import / export sample properties in the RestorableObject methods<br></li>
+<li>handle the thumbnail cache<br></li>
+<li>designed to work with an AudioSampleBufferComponent<br></li>
+</ul>
+<p><br>In order to use this class with a AudioSampleBufferComponent, just follow these steps:<br></p>
+<ul><li>Create a AudioSampleBufferComponent and use the method getCache() in the constructor.<br></li>
+<li>Set the reference to the AudioSampleBuffer with AudioSampleBufferComponent::setAudioSampleBuffer();<br></li>
+<li>Add the AudioSampleBuffer as ChangeListener (and remove it in the destructor!)<br></li>
+<li>Add an AreaListener to the AudioSampleBufferComponent and call <a href="cpp_api/hise/classhise_1_1_audio_sample_processor.html#setrange">setRange()</a>
+ and setLoadedFile in the rangeChanged() callback<br> </li>
+</ul>
+<p><br></p>
+<h2 id="class-hierarchy"><b>Class Hierarchy</b>
+</h2>
+<h3 id="base-classes"><b>Base Classes</b>
+</h3>
+<ul><li><code>hise::PoolBase::Listener</code>
+<br></li>
+</ul>
+<h2 id="class-methods"><b>Class methods</b>
+</h2>
+<h3 id="~audiosampleprocessor"><b>~AudioSampleProcessor</b>
+</h3>
+<pre><code class="language-clike line-numbers">~AudioSampleProcessor()</code></pre>
+<p>Automatically releases the sample in the pool.<br> </p>
+<h3 id="savetovaluetree"><b>saveToValueTree</b>
+</h3>
+<pre><code class="language-clike line-numbers">void saveToValueTree(ValueTree &v) const</code></pre>
+<p>Call this method within your exportAsValueTree method to store the sample settings.<br> </p>
+<h3 id="restorefromvaluetree"><b>restoreFromValueTree</b>
+</h3>
+<pre><code class="language-clike line-numbers">void restoreFromValueTree(const ValueTree &v)</code></pre>
+<p>Call this method within your <a href="cpp_api/hise/classhise_1_1_audio_sample_processor.html#restorefromvaluetree">restoreFromValueTree()</a>
+ method to load the sample settings.<br> </p>
+<h3 id="setloadedfile"><b>setLoadedFile</b>
+</h3>
+<pre><code class="language-clike line-numbers">void setLoadedFile(const String &fileName, bool loadThisFile=false, bool forceReload=false)</code></pre>
+<p>This loads the file from disk (or from the pool, if existing and loadThisFile is false.<br> </p>
+<h3 id="setrange"><b>setRange</b>
+</h3>
+<pre><code class="language-clike line-numbers">void setRange(Range< int > newSampleRange)</code></pre>
+<p>Sets the sample range that should be used in the plugin.<br>This is called automatically if a AudioSampleBufferComponent is set up correctly.<br> </p>
+<h3 id="getrange"><b>getRange</b>
+</h3>
+<pre><code class="language-clike line-numbers">Range< int > getRange() const</code></pre>
+<p>Returns the range of the sample.<br> </p>
+<h3 id="getbuffer"><b>getBuffer</b>
+</h3>
+<pre><code class="language-clike line-numbers">const AudioSampleBuffer * getBuffer()</code></pre>
+<p>Returns a const pointer to the audio sample buffer.<br>The pointer references a object from a AudioSamplePool and should be valid as long as the pool is not cleared.<br> </p>
+<h3 id="getfilename"><b>getFileName</b>
+</h3>
+<pre><code class="language-clike line-numbers">String getFileName() const</code></pre>
+<p>Returns the filename that was loaded.<br>It is possible that the file does not exist on your system: If you restore a pool completely from a ValueTree, it still uses the absolute filename as identification.<br> </p>
+<h3 id="rangeupdated"><b>rangeUpdated</b>
+</h3>
+<pre><code class="language-clike line-numbers">void rangeUpdated()</code></pre>
+<p>Overwrite this method and do whatever needs to be done when the selected range changes.<br> </p>
+<h3 id="newfileloaded"><b>newFileLoaded</b>
+</h3>
+<pre><code class="language-clike line-numbers">void newFileLoaded()</code></pre>
+<p>Overwrite this method and do whatever needs to be done when a new file is loaded.<br>You don't need to call <a href="cpp_api/hise/classhise_1_1_audio_sample_processor.html#setloadedfile">setLoadedFile()</a>
+, but if you got some internal stuff going on, this is the place.<br> </p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="cpp_api/hise/classhise_1_1_chain.html">Chain</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="unlocker"><b>Unlocker</b>
+</h1>
+<p><br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="canexpire"><b>canExpire</b>
+</h2>
+<p class="comment">Checks if the unlocker's license system has an expiration date.</p>
+<pre><code class="language-javascript line-numbers">Unlocker.canExpire()</code></pre>
+<p><br><br></p>
+<h2 id="checkexpirationdata"><b>checkExpirationData</b>
+</h2>
+<p class="comment">If the unlocker has an expiration date, it will check it against the RSA encoded time string from the server.</p>
+<pre><code class="language-javascript line-numbers">Unlocker.checkExpirationData( String encodedTimeString)</code></pre>
+<p><br><br></p>
+<h2 id="getlicensekeyfile"><b>getLicenseKeyFile</b>
+</h2>
+<p class="comment">Returns the license key file as File object.</p>
+<pre><code class="language-javascript line-numbers">Unlocker.getLicenseKeyFile()</code></pre>
+<p><br><br></p>
+<h2 id="getregisteredmachineid"><b>getRegisteredMachineId</b>
+</h2>
+<p class="comment">Returns the machine ID that is encoded into the license file. This does not look in the encrypted blob, but just parses the header string.</p>
+<pre><code class="language-javascript line-numbers">Unlocker.getRegisteredMachineId()</code></pre>
+<p><br><br></p>
+<h2 id="getuseremail"><b>getUserEmail</b>
+</h2>
+<p class="comment">Returns the user email that was used for the registration.</p>
+<pre><code class="language-javascript line-numbers">Unlocker.getUserEmail()</code></pre>
+<p><br><br></p>
+<h2 id="isunlocked"><b>isUnlocked</b>
+</h2>
+<p class="comment">Checks if the registration went OK.</p>
+<pre><code class="language-javascript line-numbers">Unlocker.isUnlocked()</code></pre>
+<p><br><br></p>
+<h2 id="isvalidkeyfile"><b>isValidKeyFile</b>
+</h2>
+<p class="comment">Checks if the possibleKeyData might contain a key file.</p>
+<pre><code class="language-javascript line-numbers">Unlocker.isValidKeyFile(var possibleKeyData)</code></pre>
+<p><br><br></p>
+<h2 id="keyfileexists"><b>keyFileExists</b>
+</h2>
+<p class="comment">Checks whether the key file exists.</p>
+<pre><code class="language-javascript line-numbers">Unlocker.keyFileExists()</code></pre>
+<p><br><br></p>
+<h2 id="loadkeyfile"><b>loadKeyFile</b>
+</h2>
+<p class="comment">This checks if there is a key file and applies it.</p>
+<pre><code class="language-javascript line-numbers">Unlocker.loadKeyFile()</code></pre>
+<p><br><br></p>
+<h2 id="setproductcheckfunction"><b>setProductCheckFunction</b>
+</h2>
+<p class="comment">Sets a function that performs a product name check and expects to return true or false for a match.</p>
+<pre><code class="language-javascript line-numbers">Unlocker.setProductCheckFunction(var f)</code></pre>
+<p><br><br></p>
+<h2 id="writekeyfile"><b>writeKeyFile</b>
+</h2>
+<p class="comment">Writes the key data to the location.</p>
+<pre><code class="language-javascript line-numbers">Unlocker.writeKeyFile( String keyData)</code></pre>
+<p><br><br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/unorderedstack/index.html">UnorderedStack</a>
+</span>
+
+<p class="content-footer-metadata"><br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

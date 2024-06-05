@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="scriptshader"><b>ScriptShader</b>
+</h1>
+<p><br>A shader is a small program that will run natively on the GPU and allows very complex animation / textures. There is a whole universe of different shaders available.</p>
+<p>In order to use it, create a shader object using <a href="scripting/scripting-api/content/index.html#createshader">Content.createShader(fileName)</a>
+ and then render the shader on any ScriptPanel using <a href="scripting/scripting-api/graphics/index.html#applyshader">Graphics.applyShader()</a>
+.</p>
+<p>There are a few limitations to the shader support in HISE:</p>
+<ul><li>no texture input</li>
+<li>only fragment shader support</li>
+</ul>
+<p>and obviously the support of different shaders depend on the hardware on the end user system.</p>
+<h3 id="how-to-use-existing-shaders-in-hise"><b>How to use existing shaders in HISE</b>
+</h3>
+<p>Check out <a href="https://www.shadertoy.com">shadertoy.com</a>
+ for a vast gallery of shaders. Unfortunately there is not a 100% clean API so you will need to adjust the shader code a bit in order to run inside HISE (I tried to make it as compatible as possible so the amount of tweaking is the absolute minimum).<br>Below you can see the <b>Hello world</b>
+ of shaders on shadertoy.com:</p>
+<pre><code class="language-clike line-numbers">void mainImage( out vec4 fragColor, in vec2 fragCoord )
+{
+    // Normalized pixel coordinates (from 0 to 1)
+    vec2 uv = fragCoord/iResolution.xy;
+
+    // Time varying pixel color
+    vec3 col = 0.5 + 0.5*cos(iTime+uv.xyx+vec3(0,2,4));
+
+    // Output to screen
+    fragColor = vec4(col,1.0);
+}</code></pre>
+<p>In order to use this shader in HISE you will have to do two steps:</p>
+<ol><li>modify the main function signature</li>
+<li>multiply the output colour with <code>pixelAlpha</code>
+</li>
+</ol>
+<p>If you do these two steps, you will end up with this code:</p>
+<pre><code class="language-clike line-numbers">void main() // must be named `main()` without parameters
+{
+    // Normalized pixel coordinates (from 0 to 1)
+    vec2 uv = fragCoord/iResolution.xy;
+
+    // Time varying pixel color
+    vec3 col = 0.5 + 0.5*cos(iTime+uv.xyx+vec3(0,2,4));
+
+    // Output to screen
+    fragColor = pixelAlpha * vec4(col,1.0);
+}</code></pre>
+<p class="comment">As soon as there is an image or something in the <code>iChannel</code>
+ boxes on the shadertoy website, the shader will not work, so make sure that you only use shaders without external textures.</p>
+<h3 id="how-to-declare-constants"><b>How to declare constants</b>
+</h3>
+<p>You can define constants or declare them above the main function like so:</p>
+<pre><code class="language-clike line-numbers">#define PI 3.14159265359
+
+const float myFloat = 2.35468;
+
+const vec2 myVector = vec2(0.6546, 0.9512);</code></pre>
+<p class="comment">Arrays cannot be declared as constants as it is not supported by this version of GLSL.</p>
+<p>So this won't work:</p>
+<pre><code class="language-clike line-numbers">// this doesn't work
+const vec2 myArray1[2] = vec2[2] (vec2( 0.4657,  0.2149), vec2( 0.5536,  0.1345));</code></pre>
+<p>But instead, you can declare arrays inside the main function like so:</p>
+<pre><code class="language-clike line-numbers">void main()
+{
+	vec2 myArray1[2]; 
+    myArray1[0] = vec2( 0.4657,  0.2149);
+    myArray1[1] = vec2( 0.5536,  0.1345);
+    
+    vec2 myArray2[64];
+    for (int i=0; i < 64; i++) // myArray2.length() isn't supported by the current GLSL version
+    {
+	    myArray2[i] = vec2(0.);
+    }
+    
+    // Note that this won't work either:
+    //vec2 myArray1[2] = vec2[3] (vec2( 0.4657,  0.2149), vec2( 0.5536,  0.1345));
+}</code></pre>
+<h3 id="learn-to-write-shaders"><b>Learn to write shaders</b>
+</h3>
+<p>If you want to do more than pasting shaders from shadertoy.com and look at it in awe, you will need to learn how to write shaders. OpenGL shaders use a specific language called <code>GLSL</code>
+ which is similar to C / C++. There are lots of useful resources on the web, </p>
+<p class="comment">I can recommend <a href="https://www.youtube.com/watch?v=u5HAYVHsasc">this</a>
+ Youtube channel. Start with the basic introduction and watch the time pass by as you click the next video over and over again.<br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="frombase64"><b>fromBase64</b>
+</h2>
+<p class="comment">Compiles the code from the given base64 string.</p>
+<pre><code class="language-javascript line-numbers">ScriptShader.fromBase64(String b64)</code></pre>
+<p><br>During development it's highly recommended to use human readable GLSL text files in the script repository, however there are a few use cases where you need to dynamically load new shaders:</p>
+<ol><li>If you ship new shaders with expansions</li>
+<li>If you want a monolithic patch (for pasting the HiseSnippet to the forum).</li>
+</ol>
+<p>This method can be used to give the shader a base64 encoded string that was created with the <a href="scripting/scripting-api/scriptshader/index.html#tobase64">ScriptShader.toBase64()</a>
+ method.<br></p>
+<h2 id="getopenglstatistics"><b>getOpenGLStatistics</b>
+</h2>
+<p class="comment">Returns a JSON object with the current OpenGL statistics.</p>
+<pre><code class="language-javascript line-numbers">ScriptShader.getOpenGLStatistics()</code></pre>
+<p><br><br></p>
+<h2 id="setblendfunc"><b>setBlendFunc</b>
+</h2>
+<p class="comment">Sets the blend mode for the shader.</p>
+<pre><code class="language-javascript line-numbers">ScriptShader.setBlendFunc(bool enabled, int sFactor, int dFactor)</code></pre>
+<p><br>This sets the blending mode for the shader. The first parameter enables / disables blending all together and the other two parameters need to be OpenGL constants (which are defined as constants of the shader object).</p>
+<p>There are plenty of options available in order to define the blending. Take a look at eg. <a href="https://learnopengl.com/Advanced-OpenGL/Blending">this</a>
+ website for a detailed explanation.</p>
+<p>This is a small cheat sheet for the most useful combinations:</p>
+<pre><code class="language-javascript line-numbers">const var shader = Content.createShader("myShader");
+
+// No blending
+shader.setBlendFunc(false, shader.GL_ZERO , shader.GL_ZERO);
+
+// Additive blending with alpha
+shader.setBlendFunc(true, shader.GL_SRC_ALPHA , shader.GL_ONE);
+
+// Default blending based on alpha value:
+shader.setBlendFunc(true, shader.GL_SRC_ALPHA, shader.GL_ONE_MINUS_SRC_ALPHA);
+
+// Additive blending without alpha
+shader.setBlendFunc(true, shader.GL_ONE, shader.GL_ONE);
+
+// Additive blending with alpha
+shader.setBlendFunc(true, shader.GL_SRC_ALPHA , shader.GL_ONE);</code></pre>
+<p><br></p>
+<h2 id="setenablecachedbuffer"><b>setEnableCachedBuffer</b>
+</h2>
+<p class="comment">If this is enabled, the shader will create a buffered image of the last rendering result.</p>
+<pre><code class="language-javascript line-numbers">ScriptShader.setEnableCachedBuffer(bool shouldEnableBuffer)</code></pre>
+<p><br><br></p>
+<h2 id="setfragmentshader"><b>setFragmentShader</b>
+</h2>
+<p class="comment">Loads a .glsl file from the script folder.</p>
+<pre><code class="language-javascript line-numbers">ScriptShader.setFragmentShader(String shaderFile)</code></pre>
+<p><br>Normally you don't need to use this method because the shader input will be defined when you create this object, but you can opt to use the same shader object but with a different input file if that suits your workflow.</p>
+<p>The input parameter is the shader file name (without the <code>.glsl</code>
+ extension and the file must be inside the Scripts folder of your project (it will be embedded like any other script file when you export the project).</p>
+<p>As soon as you added a shader, you can select the file in the drop down menu to get the code editor that you can use to modify the shader.<br></p>
+<h2 id="setpreprocessor"><b>setPreprocessor</b>
+</h2>
+<p class="comment">Adds a preprocessor definition before the code and recompiles the shader (Empty string removes all preprocessors).</p>
+<pre><code class="language-javascript line-numbers">ScriptShader.setPreprocessor(String preprocessorString, var value)</code></pre>
+<p><br><br></p>
+<h2 id="setuniformdata"><b>setUniformData</b>
+</h2>
+<p class="comment">Sets an uniform variable to be used in the shader code.</p>
+<pre><code class="language-javascript line-numbers">ScriptShader.setUniformData( String id, var data)</code></pre>
+<p><br>This function can be used to pass around data from the HiseScript world to GLSL. It just needs two steps:</p>
+<ol><li>Define the variable in your GLSL code (with the uniform keyword).</li>
+<li>Call this method.</li>
+</ol>
+<p>So this is the example code for the GLSL part:</p>
+<pre><code class="language-clike line-numbers">// GLSL side
+
+uniform float myValue;
+uniform vec3 myColour;
+uniform float myBuffer[128];
+
+void main()
+{
+    fragColor = pixelAlpha * vec4(myColour, myValue);
+}</code></pre>
+<p>From the script you need to call this:</p>
+<pre><code class="language-javascript line-numbers">// Javascript side:
+
+const var shader = Content.createShader("MyShader");
+
+// a single number will be parsed as float
+shader.setUniformData("myValue", 0.8);
+
+// an array with three elements will be interpreted as vec3 type.
+shader.setUniformData("myColour", [0.0, 1.0, 0.0]);
+
+const var buffer = Buffer.create(128);
+
+// A Buffer object (a float array) will be passed on to the GPU as read only
+shader.setUniformData("myBuffer", buffer);</code></pre>
+<p>Make sure that the types match (or the behaviour will be undefined). Also be aware that you will need to pass in the buffer data when it changes (the GPU doesn't reference the actual buffer data but takes a copy when you call this method).<br></p>
+<h2 id="tobase64"><b>toBase64</b>
+</h2>
+<p class="comment">Compresses the GLSL code and returns a encoded string snippet.</p>
+<pre><code class="language-javascript line-numbers">ScriptShader.toBase64()</code></pre>
+<p><br>If you want to use dynamic shaders, you can call this method to get a compressed version of the current shader code which you then can pass into <a href="scripting/scripting-api/scriptshader/index.html#frombase64">ScriptShader.fromBase64()</a>
+</p>
+<p class="comment">The most efficient workflow is to use <code>Console.print()</code>
+ with this method, then copy & paste the output as string literal.</p>
+<p>Note that this string will include all files that are imported in the main shader using <code>#include</code>
+ so it's guaranteed to work without relying on any dependency.<br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/scriptslider/index.html">ScriptSlider</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>31.05.2021<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

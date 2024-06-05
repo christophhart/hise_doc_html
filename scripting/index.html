@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="scripting"><b>Scripting</b>
+</h1>
+<img style="max-width:700px;" src="images/custom/scripting-ui.png"></img>
+<p><b>Scripting</b>
+ provides the glue with which you can access each Module and UIComponent in a <a href="hise-modules/midi-processors/list/scriptprocessor.html">Script Processor</a>
+ and mold together more advanced interactions with your instrument.</p>
+<ul><li>The <a href="scripting/scripting-in-hise/index.html">Scripting in HISE</a>
+ chapter introduces you to the basics, and explains the design decisions that led to some <a href="scripting/scripting-in-hise/additions-in-hise.html">Additions</a>
+ to HISEs JavaScript implementation. </li>
+</ul>
+<ul><li>If you need a refresher in basic JavaScript take a look at the <a href="scripting/scripting-in-hise/javascript.html">HISE JavaScript Tutorial</a>
+ which is adapted to the scope of scripting in <b>HISE</b>
+.</li>
+</ul>
+<ul><li>The <a href="scripting/scripting-api/index.html">Scripting API</a>
+ is the backbone of <b>HISE</b>
+s powerful scripting capabilities. You can access and modify almost every aspect of your virtual instrument with its 200+ inbuilt functions. </li>
+</ul>
+<p class="comment">If you are interested in the dirty details; please consider watching Christophs talk: <a href="https://www.youtube.com/watch?v=fV9hOZrNO_g">Javascript for DSP prototyping</a>
+ to learn more about the technical implementation.</p>
+<p>Here are some of the most useful purposes of scripting in HISE:</p>
+<ul><li>Access Module parameters/attributes and change their values (eg. the frequency of the pitch LFO) with script logic.</li>
+<li>Use the MIDI Callbacks (<code>onNoteOn</code>
+, <code>onNoteOff</code>
+, <code>onController</code>
+) to customize the behaviour of your instrument regarding incoming MIDI Messages.</li>
+<li>Access the UIComponents and change/trigger their properties to create a dynamic interface experience.</li>
+<li>Implement custom GUI interactions for your instrument (Page handling, Film Strips, ScriptPanels) that react to User Input.</li>
+</ul>
+<p>Please have a look at the <a href="tutorials/recipes/index.html">Recipes</a>
+ to access some handy scripting examples.</p>
+<h3 id="performance"><b>Performance</b>
+</h3>
+<p>Compared to compiled C++ code, a Javascript engine is rather slow. But for occasional event handling like incoming MIDI data or a timer every 50 milliseconds the JS-engine is absolutely fit for the purpose. This is completely sufficent for the most use cases of audio plugins and virtual instruments. If you don't want to relinquish the performance gains of a native C++ implementation please consider taking a look at <a href="cpp_api/index.html">C++ API</a>
+.</p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-in-hise/index.html">Scripting in HISE</a>
+</span>
+
+<p class="content-footer-metadata"><br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

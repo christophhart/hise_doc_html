@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="lorismanager"><b>LorisManager</b>
+</h1>
+<p><br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="analyse"><b>analyse</b>
+</h2>
+<p class="comment">Analyse a file.</p>
+<pre><code class="language-javascript line-numbers">LorisManager.analyse(var file, double estimatedRootFrequency)</code></pre>
+<p><br><br></p>
+<h2 id="createenvelopepaths"><b>createEnvelopePaths</b>
+</h2>
+<p class="comment">Creates a list of path of every channel from the envelope of the given parameter and harmonic index.</p>
+<pre><code class="language-javascript line-numbers">LorisManager.createEnvelopePaths(var file, String parameter, int harmonicIndex)</code></pre>
+<p><br><br></p>
+<h2 id="createenvelopes"><b>createEnvelopes</b>
+</h2>
+<p class="comment">Creates an audio rate envelope from the given parameter and harmonic index.</p>
+<pre><code class="language-javascript line-numbers">LorisManager.createEnvelopes(var file, String parameter, int harmonicIndex)</code></pre>
+<p><br><br></p>
+<h2 id="createsnapshot"><b>createSnapshot</b>
+</h2>
+<p class="comment">Creates a parameter value list for each harmonic at the given time.</p>
+<pre><code class="language-javascript line-numbers">LorisManager.createSnapshot(var file, String parameter, double time)</code></pre>
+<p><br><br></p>
+<h2 id="get"><b>get</b>
+</h2>
+<p class="comment">Returns the setting value for the Loris algorithm.</p>
+<pre><code class="language-javascript line-numbers">LorisManager.get(String optionId)</code></pre>
+<p><br><br></p>
+<h2 id="process"><b>process</b>
+</h2>
+<p class="comment">Processes the partial list using predefined commands.</p>
+<pre><code class="language-javascript line-numbers">LorisManager.process(var file, String command, var data)</code></pre>
+<p><br><br></p>
+<h2 id="processcustom"><b>processCustom</b>
+</h2>
+<p class="comment">Processes the partial list using the given function.</p>
+<pre><code class="language-javascript line-numbers">LorisManager.processCustom(var file, var processCallback)</code></pre>
+<p><br><br></p>
+<h2 id="set"><b>set</b>
+</h2>
+<p class="comment">set a option for the Loris algorithm.</p>
+<pre><code class="language-javascript line-numbers">LorisManager.set(String optionId, var newValue)</code></pre>
+<p><br><br></p>
+<h2 id="synthesise"><b>synthesise</b>
+</h2>
+<p class="comment">Resynthesise the file from the partial lists. Returns an array of variant buffers.</p>
+<pre><code class="language-javascript line-numbers">LorisManager.synthesise(var file)</code></pre>
+<p><br><br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/macrohandler/index.html">MacroHandler</a>
+</span>
+
+<p class="content-footer-metadata"><br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

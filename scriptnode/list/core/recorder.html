@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="recorder"><b>recorder</b>
+</h1>
+<p class="comment"><code>core.recorder</code>
+</p>
+<img src="images/sn_screen_recorder.png"></img>
+<p>A node that records the signal input into an audio file slot.</p>
+<h2 id="parameters"><b>Parameters</b>
+</h2>
+<table><thead><td><b>ID </b>
+</td>
+<td><b>Range </b>
+</td>
+<td><b>Default </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>State </td>
+<td>0.00 - 1.00 </td>
+<td>0.00 </td>
+<td>Sets the recording state. When set to "On" (1.0), the node begins recording. When set to "Off" (0.0), the node stops recording. The recording will automatically stop if the buffer is full. </td>
+</tr>
+<tr><td>RecordingLength </td>
+<td>0.00 - 2000.00 </td>
+<td>0.00 </td>
+<td>Sets the length of the recording buffer in milliseconds. Range: 0.0 to 2000.0 ms. </td>
+</tr>
+</table>
+<p>The <code>recorder</code>
+ node captures audio signals and records them into an audio buffer. It supports configurable recording length and state management, ensuring precise control over the recording process.</p>
+<p>The node writes the incoming audio signals into an internal buffer. which is allocated and managed based on the specified recording length. It ensures the buffer is resized appropriately when the recording length changes.</p>
+<p>It will then write the buffer into an audio file slot which can be picked up by other nodes using the same slot or shown on the UI / used in HiseScript using the <a href="scripting/scripting-api/displaybuffersource/index.html">DisplayBufferSource</a>
+ API class.</p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scriptnode/list/core/smoother.html">smoother</a>
+</span>
+
+<p class="content-footer-metadata">[Your Name]<br>30.05.2024<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

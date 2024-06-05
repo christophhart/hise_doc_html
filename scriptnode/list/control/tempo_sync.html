@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="tempo_sync"><b>tempo_sync</b>
+</h1>
+<p class="comment"><code>control.tempo_sync</code>
+</p>
+<img src="images/sn_screen_tempo_sync.png"></img>
+<p>send out a tempo-synced time value</p>
+<h2 id="parameters"><b>Parameters</b>
+</h2>
+<table><thead><td><b>ID </b>
+</td>
+<td><b>Range </b>
+</td>
+<td><b>Default </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>Tempo </td>
+<td>0.00 - 18.00 </td>
+<td>0.00 </td>
+<td>an integer from 0 to 18 that is using the default HISE tempo indexes </td>
+</tr>
+<tr><td>Multiplier </td>
+<td>1.00 - 16.00 </td>
+<td>1.00 </td>
+<td>multiplies the tempo index and allows odd tempo rates like 3/16 </td>
+</tr>
+<tr><td>Enabled </td>
+<td>0.00 - 1.00 </td>
+<td>0.00 </td>
+<td>switches between tempo synced time and unsynced time </td>
+</tr>
+<tr><td>UnsyncedTime </td>
+<td>0.00 - 1000.00 </td>
+<td>200.00 </td>
+<td>if tempo syncing is disabled, this can be used to determine the unsynched time </td>
+</tr>
+</table>
+<p>A lot of time based effects need to be synched to an external clock and this is where this node comes in handy. A new value is send out:</p>
+<ul><li>whenever the tempo changes (and the sync is enabled)</li>
+<li>whenever one of the parameters that will change the synched time changes</li>
+</ul>
+<p>The value that is send out is calculated as milliseconds, but if you need it in another domain (eg. Hz), you might want to use the <a href="scriptnode/list/control/converter.html">converter</a>
+ with the <b>Ms2Freq</b>
+ converter.<br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scriptnode/list/control/ppq.html">ppq</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>04.07.2022<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

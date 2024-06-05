@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="waveform-generator"><b>Waveform Generator</b>
+</h1>
+<p>Type ID: <code>WaveSynth</code>
+<br>Interface classes: <a href="scripting/scripting-api/routingmatrix/index.html">RoutingMatrix</a>
+<br></p>
+<p class="comment"><b>A waveform generator based on BLIP synthesis of common synthesiser waveforms.</b>
+<br></p>
+<img src="images/module_screenshot_wavesynth.png"></img>
+<p><br></p>
+<p>The waveform generator is a virtual analog synthesiser with two oscillators that can be detuned and modulated. It uses a BLIP syntesis algorithm to reduce the aliasing artifacts.</p>
+<h2 id="oscillator-types"><b>Oscillator types</b>
+</h2>
+<table><thead><td><b>Index </b>
+</td>
+<td><b>Name </b>
+</td>
+<td><b>Waveform </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>1 </td>
+<td>Sine </td>
+<td><img src="images/icon_sine.png"></img>
+</td>
+<td>a sinusoidal curve </td>
+</tr>
+<tr><td>2 </td>
+<td>Triangle </td>
+<td><img src="images/icon_triangle.png"></img>
+</td>
+<td>a triangular waveform </td>
+</tr>
+<tr><td>3 </td>
+<td>Saw </td>
+<td><img src="images/icon_saw.png"></img>
+</td>
+<td>a sawtooth waveform (only odd harmonics). </td>
+</tr>
+<tr><td>4 </td>
+<td>Square </td>
+<td><img src="images/icon_square.png"></img>
+</td>
+<td>a square waveform. You can adjust the pulse with with the <code>PulseWidthX</code>
+ attributes </td>
+</tr>
+<tr><td>5 </td>
+<td>Noise </td>
+<td><img src="images/icon_noise.png"></img>
+</td>
+<td>white noise </td>
+</tr>
+<tr><td>6 </td>
+<td>Triangle 2 </td>
+<td><img src="images/icon_triangle.png"></img>
+</td>
+<td>a variation of the triangle waveform </td>
+</tr>
+<tr><td>7 </td>
+<td>Square 2 </td>
+<td><img src="images/icon_square.png"></img>
+</td>
+<td>a variation of the square waveform </td>
+</tr>
+<tr><td>8 </td>
+<td>Trapezoid 1 </td>
+<td><img src="images/icon_saw.png"></img>
+</td>
+<td>a variation of the saw waveform </td>
+</tr>
+<tr><td>9 </td>
+<td>Trapezoid 2 </td>
+<td><img src="images/icon_saw.png"></img>
+</td>
+<td>a variation of the saw waveform </td>
+</tr>
+</table>
+<h2 id="example-snippet"><b>Example snippet</b>
+</h2>
+<p>This snippet contains a Waveform generator with a LFO modulating the mix between the two oscillators making it change from sine to saw wave.</p>
+<pre><code class="language-javascript line-numbers">HiseSnippet 914.3oc6W0saaaCElzNbnAacnaMCXW5K5tJnEQooYqWE23XWDT6Zgnf1ErKJ3jN1lqTjZRTYy6p8rsmf8HzGgdytd8PIaKpTOO6g0eP2jALz4OxOd9kxOUGBYY5TBc6yml.D5mvBlpLS5LgKTjSOgP+T1.dlARaUx53oI7rLHhPoMenkAc6sHEOu7ni4RtJDpXQHOQKBg9hXgohqe6GIjxd7H3bQri1Gz9zPspiVpyQ7zjsGIgG9b9X3wbqZMXD5G0MRXzoAFtAxHzsNVGMMXh9mTk5+DQl36kfkviDfKTI6dZYjEw12IclHjQ9yO2YDBk4W4EZV5E1gMPDIVvuxabiBAsprv0eParJ344Bu8VJ77VB7HNnaqRzgfPGkK4l5HyFNlIPnqGoNUY.UlvL0Mb8NEteFyWXBmrb71XI3ECTuow6rf+0YcGMBBMUfcKVuu8sajdmRn7wrmxuDJpHK.xWTPORmF25gfBRs9TuUTS96qaMYxZWSNLzfP37TtJKQmAdtq7UjsuqrS.Stpt5krpok830COddtIpyY5n40Z6yU0VLjt1JMP7yUju3ntJNFPB.7zDMLKDOrVem6t3mKyfmJhLS7bMrh89troMW6L.2VQ0qQcz++6K8W1Wp45A2k3Ao9u17savBDwIRnq5RPpQNVL94rSfQ7boYN250TCzJcxDsRD5lfcFXREiGC0RhV5A5AFCNHqhyNsOCj.OyoN6Vs6KT.OE8Sv+Peg256KVU75KYkvsksQPqOLlmz7+7ySVcEJ1q7MUjdCtGlaF50KwKi0u2vYfDeq0Bz682CxdovOlCpv4L+0e6OdwQ1Ibmpt5DG6.0xMrZ9ReXLtQtK34PbhFmEWqKPPrValHTiqO2bm1805jxgNQtKRm7LiNd9lRneEa+CtS8mKGh+MZW6q2uSAMIv.ImvMbB86XGVn+ncUWHu3dS6i+FNXZ+f6+K3qGHjWH0V6uytEzAn3evJeZg7Csq2cux5Oml7uWylFqYp2MKhpKBe136648YJQ7hbq2kH9LctAS7Fvw4P3ccXONON.ulVHfnUo.ItQLZCh0zB58rzE4rfJpf3OwmYB8rzzYB8lK7sxdDyCS0OCuXlIUKsYOWqfCdtUEe3213Wfhzs7HWxk4y7Rw30cdVXnsW5sQuyxsX+M1h6twVbvFaw81XKNbis3q2XK9lUXg8tkOHG6aUNe.Y32srcDcQKNZSxq.9pz7.</code></pre>
+<h2 id="parameters-"><b>Parameters </b>
+</h2>
+<table><thead><td><b>#</b>
+<b> </b>
+</td>
+<td><b>ID </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>4 </td>
+<td><code>OctaveTranspose1</code>
+ </td>
+<td>The octave shift for the first oscillator </td>
+</tr>
+<tr><td>5 </td>
+<td><code>WaveForm1</code>
+ </td>
+<td>the waveform of the first oscillator </td>
+</tr>
+<tr><td>6 </td>
+<td><code>Detune1</code>
+ </td>
+<td>Detunes the first oscillator </td>
+</tr>
+<tr><td>7 </td>
+<td><code>Pan1</code>
+ </td>
+<td>Pans the first oscillator </td>
+</tr>
+<tr><td>8 </td>
+<td><code>OctaveTranspose2</code>
+ </td>
+<td>The octave shift for the second oscillator </td>
+</tr>
+<tr><td>9 </td>
+<td><code>WaveForm2</code>
+ </td>
+<td>the waveform of the second oscillator </td>
+</tr>
+<tr><td>10 </td>
+<td><code>Detune2</code>
+ </td>
+<td>Detunes the second oscillator </td>
+</tr>
+<tr><td>11 </td>
+<td><code>Pan2</code>
+ </td>
+<td>Pans the second oscillator </td>
+</tr>
+<tr><td>12 </td>
+<td><code>Mix</code>
+ </td>
+<td>The balance between osc1 and osc2 </td>
+</tr>
+<tr><td>13 </td>
+<td><code>EnableSecondOscillator</code>
+ </td>
+<td>Turn the second OSC on and off </td>
+</tr>
+<tr><td>14 </td>
+<td><code>PulseWidth1</code>
+ </td>
+<td>Changes the pulse of the OSC1 Square and Trapezoid oscillator </td>
+</tr>
+<tr><td>15 </td>
+<td><code>PulseWidth2</code>
+ </td>
+<td>Changes the pulse of the OSC12 Square and Trapezoid oscillator </td>
+</tr>
+<tr><td>16 </td>
+<td><code>HardSync</code>
+ </td>
+<td>- </td>
+</tr>
+</table>
+<h2 id="chains-"><b>Chains </b>
+</h2>
+<table><thead><td><b>#</b>
+<b> </b>
+</td>
+<td><b>ID </b>
+</td>
+<td><b>Restriction </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>4 </td>
+<td>Mix Modulation </td>
+<td>All types </td>
+<td>the balance between the first and the second oscillator. This can be modulated polyphonically. </td>
+</tr>
+</table>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="hise-modules/sound-generators/list/wavetablesynth.html">Wavetable Synthesiser</a>
+</span>
+
+<p class="content-footer-metadata"><br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

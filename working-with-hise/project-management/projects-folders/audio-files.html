@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="audiofiles"><b>AudioFiles</b>
+</h1>
+<p>This folder contains audio file that are supposed to be embedded: impulse responses or custom loops that are loaded into the <a href="hise-modules/sound-generators/list/audiolooper.html">Audio Loop Player</a>
+. Audio files that are streamed from disk using the <a href="hise-modules/sound-generators/list/streamingsampler.html">Sampler</a>
+ have their own directory since they are handled in a completely different fashion.</p>
+<p>Since these files can grow to any arbitrary amount, they are loaded as soon as you need them. By default they are embedded into the plugin on export, but you can change this behaviour using the <a href="working-with-hise/settings/project.html#embed-audio-files">'EmbedAudioFiles'</a>
+ property in the <a href="working-with-hise/settings/project.html">Project Settings</a>
+.</p>
+<p class="comment">If you export a project, it will embed all audio files that have been loaded in the pool. Depending on which files you have loaded in your current session this will have different results and you might end up with audio files missing in the compiled project. There are two solutions to the problem. The first is to manually load every audio file before exporting and hope that you never forget this step. A less painful and thus preferable option is using a <a href="scripting/scripting-api/engine/index.html#loadaudiofilesintopool">Engine.loadAudioFilesIntoPool()</a>
+ script function that automatically loads the entire folder into the pool.</p>
+<p>This filetype is also one of the rare ocassions where absolute paths are not completely off the table: If you use a AudioWaveform on your UI, the end user can drag n' drop any audio file from his computer on it and it will also be loaded into the pool. In this case it will store the absolute path. </p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="working-with-hise/project-management/projects-folders/documentation.html">Documentation</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

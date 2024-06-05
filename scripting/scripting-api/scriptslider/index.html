@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="scriptslider"><b>ScriptSlider</b>
+</h1>
+<p><br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="addtomacrocontrol"><b>addToMacroControl</b>
+</h2>
+<p class="comment">Adds the knob / button to a macro controller (from 0 to 7).</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.addToMacroControl(int macroIndex)</code></pre>
+<p><br><br></p>
+<h2 id="changed"><b>changed</b>
+</h2>
+<p class="comment">Call this to indicate that the value has changed (the onControl callback will be executed.</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.changed()</code></pre>
+<p><br><br></p>
+<h2 id="contains"><b>contains</b>
+</h2>
+<p class="comment">Checks if the given value is within the range.</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.contains(double value)</code></pre>
+<p><br><br></p>
+<h2 id="createlocallookandfeel"><b>createLocalLookAndFeel</b>
+</h2>
+<p class="comment">Returns a local look and feel if it was registered before.</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.createLocalLookAndFeel()</code></pre>
+<p><br><br></p>
+<h2 id="createmodifiers"><b>createModifiers</b>
+</h2>
+<p class="comment">Creates a object with constants for setModifiers().</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.createModifiers()</code></pre>
+<p><br>This creates an object holding constants to be used in <a href="scripting/scripting-api/scriptslider/index.html#setmodifiers">setModifier()</a>
+. There are two types of constants in there: action IDs and modifier key magic numbers.</p>
+<h3 id="actions"><b>Actions</b>
+</h3>
+<p>There are multiple actions that are performed when interacting with a slider based on different modifier keys.</p>
+<table><thead><td><b>ID </b>
+</td>
+<td><b>Default </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>TextInput </td>
+<td>shift key </td>
+<td>Opens the text input </td>
+</tr>
+<tr><td>ResetToDefault </td>
+<td>double click </td>
+<td>sets the slider to the default value </td>
+</tr>
+<tr><td>ContextMenu </td>
+<td>right click </td>
+<td>opens the context menu that lets you assign CCs etc </td>
+</tr>
+<tr><td>FineTune </td>
+<td>command, ctrl or alt </td>
+<td>changes the dragging sensitivity to a finer resolution </td>
+</tr>
+</table>
+<p>The constants for the Action IDs just hold the same string as value, so it's not 100% required to use them (however it let's you use the autocomplete entries instead of looking up the available actions).</p>
+<h3 id="modifiers"><b>Modifiers</b>
+</h3>
+<p>The other constants in this object are modifier keys and are basically identical to the properties of the event JSON object that is passed into the mouse callback of the panel:</p>
+<pre><code class="language-javascript line-numbers">const var mods = Knob1.createModifiers();
+
+// keyboard modifiers
+mods.shiftDown
+mods.altDown
+mods.ctrlDown
+mods.cmdDown
+
+// mouse button modifiers
+mods.rightClick
+mods.doubleClick
+
+// special modifiers
+mods.disabled
+mods.noKeyModifier</code></pre>
+<p class="comment">Be aware that these constants do not hold string values like the action IDs, but integer flags that use bitwise operators for combining multiple modifiers.</p>
+<p>The special modifiers can be used to either disable an action altogether or make sure that the action is only performed if no modifier key is pressed (you will need that if you set two actions to the same mouse click type).</p>
+<p><br></p>
+<h2 id="fadecomponent"><b>fadeComponent</b>
+</h2>
+<p class="comment">Toggles the visibility and fades a component using the global animator.</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.fadeComponent(bool shouldBeVisible, int milliseconds)</code></pre>
+<p><br><br></p>
+<h2 id="get"><b>get</b>
+</h2>
+<p class="comment">returns the value of the property.</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.get(String propertyName)</code></pre>
+<p><br><br></p>
+<h2 id="getallproperties"><b>getAllProperties</b>
+</h2>
+<p class="comment">Returns a list of all property IDs as array.</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.getAllProperties()</code></pre>
+<p><br><br></p>
+<h2 id="getchildcomponents"><b>getChildComponents</b>
+</h2>
+<p class="comment">Returns list of component's children</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.getChildComponents()</code></pre>
+<p><br><br></p>
+<h2 id="getglobalpositionx"><b>getGlobalPositionX</b>
+</h2>
+<p class="comment">Returns the absolute x-position relative to the interface.</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.getGlobalPositionX()</code></pre>
+<p><br><br></p>
+<h2 id="getglobalpositiony"><b>getGlobalPositionY</b>
+</h2>
+<p class="comment">Returns the absolute y-position relative to the interface.</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.getGlobalPositionY()</code></pre>
+<p><br><br></p>
+<h2 id="getheight"><b>getHeight</b>
+</h2>
+<p class="comment">Returns the height of the component.</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.getHeight()</code></pre>
+<p><br><br></p>
+<h2 id="getid"><b>getId</b>
+</h2>
+<p class="comment">Returns the ID of the component.</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.getId()</code></pre>
+<p><br><br></p>
+<h2 id="getlocalbounds"><b>getLocalBounds</b>
+</h2>
+<p class="comment">Returns a [x, y, w, h] array that was reduced by the given amount.</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.getLocalBounds(float reduceAmount)</code></pre>
+<p><br><br></p>
+<h2 id="getmaxvalue"><b>getMaxValue</b>
+</h2>
+<p class="comment">Returns the upper range end.</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.getMaxValue()</code></pre>
+<p><br><br></p>
+<h2 id="getminvalue"><b>getMinValue</b>
+</h2>
+<p class="comment">Returns the lower range end.</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.getMinValue()</code></pre>
+<p><br><br></p>
+<h2 id="getvalue"><b>getValue</b>
+</h2>
+<p class="comment">Returns the current value.</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.getValue()</code></pre>
+<p><br><br></p>
+<h2 id="getvaluenormalized"><b>getValueNormalized</b>
+</h2>
+<p class="comment">Returns the normalized value.</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.getValueNormalized()  override</code></pre>
+<p><br><br></p>
+<h2 id="getwidth"><b>getWidth</b>
+</h2>
+<p class="comment">Returns the width of the component.</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.getWidth()</code></pre>
+<p><br><br></p>
+<h2 id="grabfocus"><b>grabFocus</b>
+</h2>
+<p class="comment">Call this method in order to grab the keyboard focus for this component.</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.grabFocus()</code></pre>
+<p><br><br></p>
+<h2 id="losefocus"><b>loseFocus</b>
+</h2>
+<p class="comment">Call this method in order to give away the focus for this component.</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.loseFocus()</code></pre>
+<p><br><br></p>
+<h2 id="sendrepaintmessage"><b>sendRepaintMessage</b>
+</h2>
+<p class="comment">Manually sends a repaint message for the component.</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.sendRepaintMessage()</code></pre>
+<p><br><br></p>
+<h2 id="set"><b>set</b>
+</h2>
+<p class="comment">Sets the property.</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.set(String propertyName, var value)</code></pre>
+<p><br><br></p>
+<h2 id="setcolour"><b>setColour</b>
+</h2>
+<p class="comment">sets the colour of the component (BG, IT1, IT2, TXT).</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.setColour(int colourId, int colourAs32bitHex)</code></pre>
+<p><br><br></p>
+<h2 id="setconsumedkeypresses"><b>setConsumedKeyPresses</b>
+</h2>
+<p class="comment">Registers a selection of key presses to be consumed by this component.</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.setConsumedKeyPresses(var listOfKeys)</code></pre>
+<p><br><br></p>
+<h2 id="setcontrolcallback"><b>setControlCallback</b>
+</h2>
+<p class="comment">Pass a inline function for a custom callback event.</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.setControlCallback(var controlFunction)</code></pre>
+<p><br><br></p>
+<h2 id="setkeypresscallback"><b>setKeyPressCallback</b>
+</h2>
+<p class="comment">Adds a callback to react on key presses (when this component is focused).</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.setKeyPressCallback(var keyboardFunction)</code></pre>
+<p><br><br></p>
+<h2 id="setlocallookandfeel"><b>setLocalLookAndFeel</b>
+</h2>
+<p class="comment">Attaches the local look and feel to this component.</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.setLocalLookAndFeel(var lafObject)</code></pre>
+<p><br><br></p>
+<h2 id="setmaxvalue"><b>setMaxValue</b>
+</h2>
+<p class="comment">Sets the upper range end to the given value.</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.setMaxValue(double max)</code></pre>
+<p><br><br></p>
+<h2 id="setmidpoint"><b>setMidPoint</b>
+</h2>
+<p class="comment">Sets the value that is shown in the middle position.</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.setMidPoint(double valueForMidPoint)</code></pre>
+<p><br><br></p>
+<h2 id="setminvalue"><b>setMinValue</b>
+</h2>
+<p class="comment">Sets the lower range end to the given value.</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.setMinValue(double min)</code></pre>
+<p><br><br></p>
+<h2 id="setmode"><b>setMode</b>
+</h2>
+<p class="comment">Sets the knob to the specified mode.</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.setMode(String mode)</code></pre>
+<p><br><br></p>
+<h2 id="setmodifiers"><b>setModifiers</b>
+</h2>
+<p class="comment">Sets the modifiers for different actions using a JSON object.</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.setModifiers(String action, var modifiers)</code></pre>
+<p><br>This allows you to override the default modifiers for various actions related to the slider. It expects an ID for the action you want to change and a combination of modifier keys that will be assigned to the action. For both parameters it's highly recommended to use the properties from the Modifier object returned by <a href="scripting/scripting-api/scriptslider/index.html#createmodifiers">createModifiers()</a>
+ as it provides all available IDs and magic numbers as pretty named properties.</p>
+<p class="comment">Be aware that this function is supposed to be called once at initialisation. Also it will keep the assignments from previous compilations, so if you want to reset it to the default you need to rebuild the UI from the interface designer.</p>
+<h4 id="combining-modifier-keys"><b>Combining modifier keys</b>
+</h4>
+<p>You can use both logical operators AND / OR in order to combine modifier keys, however the syntax differs a bit:</p>
+<ol><li>The OR operator can be implemented using the bitwise-or syntax</li>
+<li>The AND operator must be implemented by passing an array of modifiers (up to three modifiers are supported)</li>
+</ol>
+<pre><code class="language-javascript line-numbers">const var mods = Knob1.createModifiers();
+
+const var doubleClickAndShift = [ mods.doubleClick, mods.shiftDown];
+const var rightClickOrAlt = mods.rightClick | mods.altDown;
+const var commandOrShift = mods.shiftDown | mods.cmdDown;
+const var doubleClickWithoutModifiers = [ mods.doubleClick, mods.noKeyModifiers ];</code></pre>
+<p>You can just overwrite the function you want to reassign, however you need to make sure that the assignment doesn't create any collision with the default mapping, otherwise the action that will be performed might not be the one you have reassigned (it will just pick the first match that is stored in a arbitrary order internally).</p>
+<pre><code class="language-javascript line-numbers">const var Knob1 = Content.getComponent("Knob1");
+const var mods = Knob1.createModifiers();
+
+// We want to reassign the reset double click to shift + double click
+Knob1.setModifiers(mods.ResetToDefault, [ mods.doubleClick, mods.shiftDown ]);
+
+// and the text input to a double click without modifiers.
+Knob1.setModifiers(mods.TextInput, [mods.doubleClick, mods.noKeyModifier]);</code></pre>
+<p><br></p>
+<h2 id="setposition"><b>setPosition</b>
+</h2>
+<p class="comment">Sets the position of the component.</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.setPosition(int x, int y, int w, int h)</code></pre>
+<p><br><br></p>
+<h2 id="setpropertiesfromjson"><b>setPropertiesFromJSON</b>
+</h2>
+<p class="comment">Restores all properties from a JSON object.</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.setPropertiesFromJSON( var jsonData)</code></pre>
+<p><br><br></p>
+<h2 id="setrange"><b>setRange</b>
+</h2>
+<p class="comment">Sets the range and the step size of the knob.</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.setRange(double min, double max, double stepSize)</code></pre>
+<p><br><br></p>
+<h2 id="setstyle"><b>setStyle</b>
+</h2>
+<p class="comment">Sets the style Knob, Horizontal, Vertical.</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.setStyle(String style)</code></pre>
+<p><br><br></p>
+<h2 id="settooltip"><b>setTooltip</b>
+</h2>
+<p class="comment">Shows a informative text on mouse hover.</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.setTooltip( String tooltip)</code></pre>
+<p><br><br></p>
+<h2 id="setvalue"><b>setValue</b>
+</h2>
+<p class="comment">Sets the current value</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.setValue(var newValue)</code></pre>
+<p><br><br></p>
+<h2 id="setvaluenormalized"><b>setValueNormalized</b>
+</h2>
+<p class="comment">Set the value from a 0.0 to 1.0 range</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.setValueNormalized(double normalizedValue) override</code></pre>
+<p><br><br></p>
+<h2 id="setvaluepopupfunction"><b>setValuePopupFunction</b>
+</h2>
+<p class="comment">Pass a function that takes a double and returns a String in order to override the popup display text.</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.setValuePopupFunction(var newFunction)</code></pre>
+<p><br><br></p>
+<h2 id="setvaluewithundo"><b>setValueWithUndo</b>
+</h2>
+<p class="comment">Sets the current value and adds it to the undo list. Don't call this from onControl!</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.setValueWithUndo(var newValue)</code></pre>
+<p><br><br></p>
+<h2 id="setzlevel"><b>setZLevel</b>
+</h2>
+<p class="comment">Changes the depth hierarchy (z-axis) of sibling components (Back, Default, Front or AlwaysOnTop).</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.setZLevel(String zLevel)</code></pre>
+<p><br><br></p>
+<h2 id="showcontrol"><b>showControl</b>
+</h2>
+<p class="comment">Hides / Shows the control.</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.showControl(bool shouldBeVisible)</code></pre>
+<p><br><br></p>
+<h2 id="updatecontentpropertyinternal"><b>updateContentPropertyInternal</b>
+</h2>
+<p class="comment">This updates the internal content data object from the script processor.</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.updateContentPropertyInternal(int propertyId,  var newValue)</code></pre>
+<p><br><br></p>
+<h2 id="updatevaluefromprocessorconnection"><b>updateValueFromProcessorConnection</b>
+</h2>
+<p class="comment">Updates the value from the processor connection. Call this method whenever the module state has changed and you want to refresh the knob value to show the current state.</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.updateValueFromProcessorConnection()</code></pre>
+<p><br><br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/scriptsliderpack/index.html">ScriptSliderPack</a>
+</span>
+
+<p class="content-footer-metadata"><br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="globalroutingmanager,-osc"><b>GlobalRoutingManager, OSC</b>
+</h1>
+<p><br>There are many concepts in HISE that allow you to control parameters and send values between different HISE modules:</p>
+<ol><li>the plain ol' parameter system using Attribute IDs (eg. SimpleEnvelope.Attack)</li>
+<li>the macro control system that allows 8 controllers to control different modules with customizable ranges</li>
+<li>grabbing references to scriptnode parameters and call <code>setValue()</code>
+ using the scriptnode API</li>
+<li>Using the <code>global</code>
+ variable keyword (not the most recommended way to do things, but that's a comprehensive list right here...)</li>
+</ol>
+<p>Depending on your project architecture and development preferences, one of the 4 ways usually get the job done. However there is another system that allows a rather enjoyable workflow with a unique feature set: The Global Routing system. It offers the following features:</p>
+<ul><li>using named pipes that are unique for each HISE project and can send / receive values from / to scriptnode or other sources.</li>
+<li>tools for converting between ranges</li>
+<li>integrated IDE helpers (all global cables show up in the module tree with the possibility of navigating to each connection in the drop down menu).</li>
+<li>send audio signals between nodes (this is rather experimental and quickly leads to issues so use it carefully).</li>
+<li>OSC support</li>
+</ul>
+<p>In order to use the global routing system, just use one of the global routing nodes (eg. <code>routing.global_cable</code>
+) and / or call <code>Engine.getGlobalRoutingManager()</code>
+ to register scripted functions as callback when a value is sent through the cable.</p>
+<p>The nodes can be either used as source by setting their <code>Value</code>
+ parameter, or can be used as target by connecting their modulation output to any other parameter in scriptnode.</p>
+<p>The communication is supposed to work through normalised (double precision) float numbers (so 0...1), but the scripting API has builtin features to automatically scale, skew or step the incoming value (just like you can edit a parameter range in scriptnode).</p>
+<p>As an additional feature, the Global Routing system can also be used to send and receive OSC messages using the <code>connectToOSC()</code>
+ method.<br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="addosccallback"><b>addOSCCallback</b>
+</h2>
+<p class="comment">Register a scripting callback to be executed when a OSC message that matches the subAddress is received.</p>
+<pre><code class="language-javascript line-numbers">GlobalRoutingManager.addOSCCallback(String oscSubAddress, var callback)</code></pre>
+<p><br>In addition to OSC messages being piped into global cables, you can also register script callbacks that will react on incoming OSC messages. The first parameter should contain the subdomain of your OSC address and can contain OSC pattern wildcards to catch multiple OSC messages. The callback must be a callable object with 2 parameters, the first will contain the subdomain of the OSC address and the second one the value.</p>
+<pre><code class="language-javascript line-numbers">rm.connectToOSC({"Domain": "/myDomain"});
+
+// React on /myDomain/fader1
+rm.addOSCCallback("/fader1", function(id, value) {});
+
+// Catch all - react on every OSC message that starts with /myDomain/
+rm.addOSCCallback("/*", function(id, value) {});</code></pre>
+<p>Unlike global cables which are limited to single numbers, this system allows you to react on almost every OSC message type:</p>
+<ul><li>floats</li>
+<li>integer values</li>
+<li>Strings</li>
+<li>multiple values (<code>value</code>
+ will be an array of one of the types above).</li>
+</ul>
+<p class="comment">However the parameter range that is defined in the <code>connectToOSC</code>
+ call is not applied to the incoming / outgoing values, so you will get the raw data.<br></p>
+<h2 id="connecttoosc"><b>connectToOSC</b>
+</h2>
+<p class="comment">Allows the global routing manager to send and receive OSC messages through the cables.</p>
+<pre><code class="language-javascript line-numbers">GlobalRoutingManager.connectToOSC(var connectionData, var errorFunction)</code></pre>
+<p><br>The Global Routing Manager can also be set to send and receive OSC messages by calling this method. It expects two arguments, the first one is a JSON object containing the connection data. The second argument is a function with a single argument that will handle any OSC error messages.</p>
+<p>The OSC support of this system is not fully standard compliant to OSC, but is limited to the scope of the Global Routing system:</p>
+<ul><li>only single value OSC messages are allowed (anything else will throw a custom error)</li>
+<li>only bool, integer and float messages are allowed (the integer types are converted automatically)</li>
+</ul>
+<p>However if you want to use more complex data types in OSC messages, you can send and receive them using scripting callbacks, which give you almost the full feature set of OSC (minus binary data blobs and colours).</p>
+<h3 id="the-connection-data"><b>The connection data</b>
+</h3>
+<p>The JSON object that comes in as first argument describes the URLs and ports for receiving / sending OSC messages. There are sensible default values so you don't need to fill in all properties.</p>
+<table><thead><td><b>Property </b>
+</td>
+<td><b>Description </b>
+</td>
+<td><b>Default </b>
+</td>
+</thead>
+<tr><td><code>Domain</code>
+ </td>
+<td>The "root" URL for your application. Must start with a <code>/</code>
+ and must not end with a <code>/</code>
+ </td>
+<td><code>"/hise_osc_receiver"</code>
+ </td>
+</tr>
+<tr><td><code>SourceURL</code>
+ </td>
+<td>The IP address for the source URL. Can be left empty to use the local host. </td>
+<td>"127.0.0.1" </td>
+</tr>
+<tr><td><code>SourcePort</code>
+ </td>
+<td>The port number for listening to incoming OSC messages </td>
+<td>9000 </td>
+</tr>
+<tr><td><code>TargetURL</code>
+ </td>
+<td>The IP address for the target URL. Can be left empty to use the local host. </td>
+<td>"127.0.0.1" </td>
+</tr>
+<tr><td><code>TargetPort</code>
+ </td>
+<td>The port number for outgoing OSC messages. If you omit this or set it to -1, it will deactivate OSC output. </td>
+<td>-1 </td>
+</tr>
+<tr><td><code>Parameters</code>
+ </td>
+<td>By default, HISE expects all incoming OSC messages to be within the 0...1 range. However if you can't control the output of your OSC source / target, you can provide a list of parameter ranges as a JSON object with the OSC subdomain as key and a JSON object with the scriptnode range properties as value. It will then transform incoming and outgoing values using the range (see the example below).<br></td>
+<td><code>{}</code>
+ </td>
+</tr>
+</table>
+<p class="comment">There is a new FloatingTile (the OSCLogger) which logs all incoming messages with filtering and cable based colour coding so make sure you use it during development / prototyping</p>
+<h3 id="example"><b>Example</b>
+</h3>
+<pre><code class="language-javascript line-numbers">const var rm = Engine.getGlobalRoutingManager();
+
+inline function printError(message)
+{
+	Console.print(error);
+};
+
+rm.connectToOSC({
+	"Domain": "/myDomain",
+	"SourcePort": 6666,
+	"TargetPort": 6667,
+	"Parameters":
+	{
+		"/fader1":
+		{
+			"MinValue": -1.0,
+			"MaxValue": 1.0,
+			"SkewFactor": 0.25
+		}
+	}
+}, printError);
+
+// Create a cable with a OSC subdomain
+const var testCable = rm.getCable("/fader1");
+
+// register an async callback that just prints the value
+testCable.registerCallback(function(newValue)
+{
+	Console.print(newValue);
+}, false);
+
+// Now you can start sending OSC messages with the domain "/myDomain/fader1" to the port 6666 and
+// it should show up in the HISE console...
+
+// Let's add a knob and send its value through the cable
+const var Knob1 = Content.addKnob("Knob1", 0, 0);
+
+inline function onKnob1Control(component, value)
+{
+	// Changing the knob should now update your source OSC app
+	// (if the port is set to 6667)
+	testCable.setValue(value);
+};
+
+Knob1.setControlCallback(onKnob1Control);</code></pre>
+<p><br></p>
+<h2 id="getcable"><b>getCable</b>
+</h2>
+<p class="comment">Returns a scripted reference to the global cable (and creates a cable with this ID if it can't be found.</p>
+<pre><code class="language-javascript line-numbers">GlobalRoutingManager.getCable(String cableId)</code></pre>
+<p><br>This method will create a new <a href="scripting/scripting-api/globalcable/index.html">Global Cable</a>
+ or return a reference to an existing cable with the given ID.<br></p>
+<h2 id="geteventdata"><b>getEventData</b>
+</h2>
+<p class="comment">Returns the double value that is written to the data slot using setEventData. If the event ID wasn't written, it will return undefined.</p>
+<pre><code class="language-javascript line-numbers">GlobalRoutingManager.getEventData(int eventId, int dataSlot)</code></pre>
+<p><br><br></p>
+<h2 id="sendoscmessage"><b>sendOSCMessage</b>
+</h2>
+<p class="comment">Send an OSC message to the output port.</p>
+<pre><code class="language-javascript line-numbers">GlobalRoutingManager.sendOSCMessage(String oscSubAddress, var data)</code></pre>
+<p><br>This function lets you send out an OSC message if there is an <code>TargetPort</code>
+ specified in the <code>connectTOOSC()</code>
+ call. The first parameter must be the subdomain, which will be merged with the root domain to the full address and the second parameter must be a value that is convertible to a OSC message:</p>
+<ul><li>float</li>
+<li>int</li>
+<li>String</li>
+<li>Array of the three types above</li>
+</ul>
+<p class="comment">However the parameter range that is defined in the <code>connectToOSC</code>
+ call is not applied to the incoming / outgoing values, so you will get the raw data.</p>
+<pre><code class="language-javascript line-numbers">// Send a message to a fader
+rm.sendOSCMessage("/fader1", 0.4);
+
+// Send a message to a 2D XY Pad
+rm.sendOSCMessage("xy1", [0.2, 0.3]);
+
+
+// Send a message to an external display
+rm.sendOSCMessage("/label", "Hello World");</code></pre>
+<p><br></p>
+<h2 id="seteventdata"><b>setEventData</b>
+</h2>
+<p class="comment">Writes a value into the given slot that can be retrieved using the event ID.</p>
+<pre><code class="language-javascript line-numbers">GlobalRoutingManager.setEventData(int eventId, int dataSlot, double value)</code></pre>
+<p><br>Using this method, you can attach more data to any event and fetch it later down the processing line. It doesn't directly attach the data to the event (as the size of the event is optimized down to the last bit without any overhead) but use a separate data model that allows the storage of up to 16 double precision numbers for each event.</p>
+<p>Once you've written the data it can be retrieved by one of the following targets:</p>
+<ul><li>the API call <a href="scripting/scripting-api/globalroutingmanager/index.html#geteventdata">getEventData()</a>
+</li>
+<li>the <a href="hise-modules/modulators/voice-start-modulators/list/eventdatamodulator.html">EventData Modulator </a>
+ </li>
+<li>the <a href="scriptnode/list/routing/event_data_reader.html">routing.event_data_reader</a>
+ node</li>
+</ul>
+<p class="comment">Take a look at the series of examples in the snippet browser called <code>Custom Event Data ...</code>
+ for an introduction use case of this concept.<br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/graphics/index.html">Graphics</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>11.09.2022<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

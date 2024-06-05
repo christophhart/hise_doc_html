@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="introduction"><b>Introduction</b>
+</h1>
+<img style="max-width:700px;" src="images/custom/hise_frontend.png"></img>
+<h3 id="what-is-hise?"><b>What is HISE?</b>
+</h3>
+<p><b>HISE</b>
+ is an open source toolkit for building virtual instruments and audio effects.</p>
+<h2 id="key-features"><b>Key Features</b>
+</h2>
+<ul><li>A highly performant <b>Disk-Streaming Engine</b>
+ that allows you to stream hundreds of samples in parallel. Powerful <code>.xml</code>
+ sample-mapping and HLAC-compression-algorithm included. See: <a href="hise-modules/sound-generators/list/streamingsampler.html">Sampler</a>
+</li>
+</ul>
+<ul><li>A flexible <b>Module system</b>
+ that lets you combine Sound Generators, Modulators and Effects in a tree-like architecture for maximum efficiency. See: <a href="hise-modules/index.html">Audio Modules</a>
+</li>
+</ul>
+<ul><li>An <b>Interface Designer</b>
+ that makes it easy to hook up an interface with customizable <a href="ui-components/plugin-components/index.html">UI Components</a>
+ and convenient <a href="ui-components/floating-tiles/plugin/index.html">Floating Tiles</a>
+.</li>
+</ul>
+<ul><li>Connect & control the interactions with your virtual instrument via the powerful <b>HISE Scripting Language</b>
+ (based upon javascript) in an IDE-like environment. See: <a href="scripting/index.html">Scripting</a>
+ </li>
+</ul>
+<ul><li>A node-based graph editor for building DSP-networks. See <a href="scriptnode/index.html">ScriptNode</a>
+.<br></li>
+</ul>
+<ul><li>Build upon the <b>HISE</b>
+ architecture, include external libraries and get the most out of the Engine with <a href="cpp_api/index.html">C++ API</a>
+.</li>
+</ul>
+<ul><li><a href="working-with-hise/menu-reference/export/index.html">Export and Compile</a>
+ your <b>HISE</b>
+ instruments and plugins as VSTi, AU and Standalone for all major OS platforms and DAWs. </li>
+</ul>
+<h2 id="licensing"><b>Licensing</b>
+</h2>
+<ul><li><b>HISE</b>
+ is published under the <a href="http://www.gnu.org/licenses/gpl-3.0">GPLv3</a>
+ open source licence. That means, that every compiled (&derived) plugin or VSTi that was built with <b>HISE</b>
+ has to be published and open-sourced under the GPLv3 License, too.</li>
+</ul>
+<ul><li>In case that you want to release a closed source product you have to aquire a <a href="https://hise.dev/#license">Commercial HISE License</a>
+.</li>
+</ul>
+<p><br></p>
+<ul><li>Attention: <b>HISE</b>
+ is based on the <a href="http://www.juce.com">JUCE</a>
+ library which has to be licensed separately for commercial applications: <a href="https://juce.com/get-juce/">https://shop.juce.com/get-juce</a>
+. </li>
+</ul>
+<p><br></p>
+<ul><li>In the case that you publish an instrument/plugin built with <b>HISE</b>
+ you're welcome (not obligatory, but would be cool) to attribute the <b>HISE</b>
+ Engine somewhere in your plugin.</li>
+</ul>
+<h2 id="contribute-to-hise"><b>Contribute to HISE</b>
+</h2>
+<p>HISE is open source software and you are encouraged to join the development and contribute to the codebase. Before you do so, you will need to sign the Contributors License Agreement before we can accept the pull requests. You will retain the copyright on your submission but grant us a perpetual right to sublicense these modifications along with the rest of the HISE codebase under any license (including the commercial license).</p>
+<p>Please download <a href="http://hise.audio/download/HISE_CLA.pdf">this PDF</a>
+ and send a signed version of it to <code>info (at) hise.audio</code>
+. We'll return a signed version and from then on start accepting pull requests. Be aware that we obviously don't guarantee to accept every pull request and might refactor it beyond recognition to match the rest of the coding style in HISE.</p>
+<p class="comment">If you have any questions, want to learn something new, found a bug or want to help in the development of HISE, please join our community at the <a href="https://forum.hise.audio/">HISE Forum</a>
+. You'll meet a bunch of lovely developers there who can surely help you out. See you!</p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="introduction/installation.html">Installation</a>
+</span>
+
+<p class="content-footer-metadata"><br>25.03.2024<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

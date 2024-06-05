@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="file-menu"><b>File Menu</b>
+</h1>
+<h3 id="create-new-project"><b>Create new Project</b>
+</h3>
+<p>Creates a new HISE project. You can choose to create an empty project, to import an project from an .hxi file, or to create project with associated Rhapsody template.</p>
+<h3 id="load-project"><b>Load Project</b>
+</h3>
+<p>Load another project. Opens a OS Folder Browser.</p>
+<h3 id="show-project-folder-in-explorer"><b>Show Project folder in Explorer</b>
+</h3>
+<p>Open a OS Filebrowser in your current projects parent directory.</p>
+<h3 id="show-snippet-browser"><b>Show snippet browser</b>
+</h3>
+<h3 id="new"><b>New</b>
+</h3>
+<p><b>Shortcut:</b>
+ <code>ctrl + N</code>
+<br>Creates a new HISE preset. You can save it in two different ways: </p>
+<ul><li>As a compressed (.hip) <a href="working-with-hise/menu-reference/file/index.html#save-archive">Archive</a>
+, which will show up in the HISE projects <a href="working-with-hise/project-management/projects-folders/presets.html">Presets Folder</a>
+.</li>
+<li>As a human readable <a href="working-with-hise/menu-reference/file/index.html#save-as-xml">XML File</a>
+ which will be saved in the <a href="working-with-hise/project-management/projects-folders/xml-preset-backups.html">XmlPresetBackups Folder</a>
+. (good for version control)</li>
+</ul>
+<h3 id="open-xml"><b>Open XML</b>
+</h3>
+<p><b>Shortcut:</b>
+ <code>ctrl + O</code>
+<br>Open a .xml preset file in <b>XmlPresetBackups</b>
+<b>.</b>
+</p>
+<h3 id="save-xml"><b>Save XML</b>
+</h3>
+<p><b>Shortcut:</b>
+ <code>ctrl + shift + S</code>
+<br></p>
+<h3 id="save-as-xml"><b>Save as XML</b>
+</h3>
+<p>Saves the current HISE presets module structure as a <code>.xml</code>
+ file in the <a href="working-with-hise/project-management/projects-folders/xml-preset-backups.html">XmlPresetBackups Folder</a>
+. </p>
+<p>Another Interface <code>.xml</code>
+ is automatically generated in respectively named <b>UIData</b>
+ subfolder.</p>
+<p>When you save a HISE Preset with this method, the scripts of your ScriptProcessors will also be saved. They will show up in the <a href="working-with-hise/project-management/projects-folders/scripts.html">Scripts</a>
+ <b>> ScriptProcessors > (your PresetName) ></b>
+ Folder and combine all the ScriptProcessors Callbacks into one file.<br><br></p>
+<p>This comes in handy if you want to save your project in a version control system and track your changes. </p>
+<h3 id="open-archive"><b>Open Archive</b>
+</h3>
+<p>Open a .hip file in the <a href="working-with-hise/project-management/projects-folders/presets.html">Presets Folder</a>
+.</p>
+<h3 id="save-archive"><b>Save Archive</b>
+</h3>
+<p><b>Shortcut:</b>
+ <code>ctrl + S</code>
+<br>Directly saves the current Preset.</p>
+<h3 id="save-as-archive"><b>Save As Archive</b>
+</h3>
+<p>Opens a <b>Save As</b>
+ dialog to save the current HISE preset file as .hip.</p>
+<h3 id="import-hise-snippet"><b>Import HISE Snippet</b>
+</h3>
+<p><b>Shortcut:</b>
+ <code>ctrl + shift + V</code>
+<br>Replaces the current instrument with a snippet previously exported using <a href="working-with-hise/menu-reference/export/index.html">Export as HISE Snippet</a>
+</p>
+<p class="comment">Make sure you don't have unsaved changes before calling this method.</p>
+<h3 id="copy-snippet-script-files-to-current-project"><b>Copy snippet script files to current project</b>
+</h3>
+<h3 id="create-recovery-xml-from-archive"><b>Create recovery XML from Archive</b>
+</h3>
+<h3 id="close-this-window"><b>Close this window</b>
+</h3>
+<h3 id="settings"><b>Settings</b>
+</h3>
+<p>Opens the HISE Settings window.</p>
+<h3 id="edit-shortcuts"><b>Edit Shortcuts</b>
+</h3>
+<h3 id="quit"><b>Quit</b>
+</h3>
+<p>Close HISE.</p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="working-with-hise/menu-reference/edit/index.html">Edit</a>
+</span>
+
+<p class="content-footer-metadata"><br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

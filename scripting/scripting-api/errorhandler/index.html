@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="errorhandler"><b>ErrorHandler</b>
+</h1>
+<p><br>There are a few error messages in HISE that will usually show up a dark overlay with a (questionably worded) message and some buttons to react on it. Unfortunately, the amount of customizability is pretty low so this acts as a good way to detect whether a plugin was made with HISE or not.</p>
+<p>Now you can completely deactivate the overlay using the preprocessor <code>HISE_DEACTIVATE_OVERLAY</code>
+ when compiling your plugin, but this is just shooting the messenger and will leave your user completely in the dark why there is no audio coming out of the plugin or which sample was not found.</p>
+<p>This object offers a better solution with a customizable error callback that will be executed whenever the overlay would appear, so you can react on it in a way that is more consistent with your UI.</p>
+<p>In order to use it, just call <a href="scripting/scripting-api/engine/index.html#createerrorhandler">Engine.createErrorHandler()</a>
+ and then use its methods to customize the way you want to react to HISE error events.</p>
+<p class="comment">Be aware that as soon as you create this object, it will deactivate the standard overlay automatically (so it's basically the same as compiling with <code>HISE_DEACTIVATE_OVERLAY</code>
+).<br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="clearallerrors"><b>clearAllErrors</b>
+</h2>
+<p class="comment">Clear all states.</p>
+<pre><code class="language-javascript line-numbers">ErrorHandler.clearAllErrors()</code></pre>
+<p><br>This will remove all error states (including the ones that are masked by the current error).<br></p>
+<h2 id="clearerrorlevel"><b>clearErrorLevel</b>
+</h2>
+<p class="comment">Clears a state. If there is another error, it will send it again.</p>
+<pre><code class="language-javascript line-numbers">ErrorHandler.clearErrorLevel(int stateToClear)</code></pre>
+<p><br>Call this function if the user has resolved the error. It will then check for other errors and call the error callback again if there is another error pending.</p>
+<p class="comment">The errors are prioritized automatically, so eg. an invalid license error will always supercede a missing samples error or a audio driver initialisation issue<br></p>
+<h2 id="getcurrenterrorlevel"><b>getCurrentErrorLevel</b>
+</h2>
+<p class="comment">Returns the current error level (and -1 if there is no error).</p>
+<pre><code class="language-javascript line-numbers">ErrorHandler.getCurrentErrorLevel()</code></pre>
+<p><br>Returns the current error level that the user should care about. This might not be the only error (and you can query the amount of pending issues with <code>getNumActiveErrors()</code>
+). It will return an integer that you can compare against one of the constants of this class (all error states are available as constant, eg. <code>eh.LicenseNotFound</code>
+).<br></p>
+<h2 id="geterrormessage"><b>getErrorMessage</b>
+</h2>
+<p class="comment">Returns the current error message.</p>
+<pre><code class="language-javascript line-numbers">ErrorHandler.getErrorMessage()</code></pre>
+<p><br>This will return the message that should be displayed to the user. It is either a custom string from you calling <code>Engine.showErrorMessage()</code>
+ or one of the predefined error messages from HISE.<br> </p>
+<h2 id="getnumactiveerrors"><b>getNumActiveErrors</b>
+</h2>
+<p class="comment">Returns the number of currently active errors.</p>
+<pre><code class="language-javascript line-numbers">ErrorHandler.getNumActiveErrors()</code></pre>
+<p><br><br></p>
+<h2 id="setcustommessagetoshow"><b>setCustomMessageToShow</b>
+</h2>
+<p class="comment">Overrides the default HISE error messages with custom text.</p>
+<pre><code class="language-javascript line-numbers">ErrorHandler.setCustomMessageToShow(int state, String messageToShow)</code></pre>
+<p><br>If you don't like the wording of these messages, the days of messing around with the source code are finally over because you can use this method to override the default error messages for all error events.<br></p>
+<h2 id="seterrorcallback"><b>setErrorCallback</b>
+</h2>
+<p class="comment">Sets a function with two arguments (int state, String message) that will be notified at error events.</p>
+<pre><code class="language-javascript line-numbers">ErrorHandler.setErrorCallback(var errorCallback)</code></pre>
+<p><br>This method will register a callback that will be notified whenever an error event occurs. You can use this as starting point to setup your custom error handling that fits into your UI.</p>
+<p>Be aware that this function is called only with the most important error and if you clear the error while an error with a lower priority is in the queue, it will fire that callback again.<br></p>
+<h2 id="simulateerrorevent"><b>simulateErrorEvent</b>
+</h2>
+<p class="comment">Causes an error event to be sent through the system (for development purposes only).</p>
+<pre><code class="language-javascript line-numbers">ErrorHandler.simulateErrorEvent(int state)</code></pre>
+<p><br>If you're creating your custom error handling, the chances are great that you want to check how it behaves in a controlled environment so this method allows you to create artificial error events that you can then catch and handle gracefully. (In the compiled plugin this method will not do anything).<br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/expansion/index.html">Expansion</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>12.07.2022<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

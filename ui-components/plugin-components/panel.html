@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="panel"><b>Panel</b>
+</h1>
+<p class="comment">A generic Panel component that can subgroup other components and be customized with Mouse-, Paint- and Timer-Callbacks.</p>
+<img src="images/ui-controls/panel.png"></img>
+<h2 id="special-properties"><b>Special Properties</b>
+</h2>
+<table><thead><td><b>Property ID </b>
+</td>
+<td><b>Default Value </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><code>borderSize</code>
+ </td>
+<td>2.0 </td>
+<td>o description. </td>
+</tr>
+<tr><td><code>borderRadius</code>
+ </td>
+<td>6.0 </td>
+<td>o description. </td>
+</tr>
+<tr><td><code>opaque</code>
+ </td>
+<td><code>false</code>
+ </td>
+<td>o description. </td>
+</tr>
+<tr><td><code>allowDragging</code>
+ </td>
+<td>0 </td>
+<td>o description. </td>
+</tr>
+<tr><td><code>allowCallbacks</code>
+ </td>
+<td>No Callbacks </td>
+<td>o description. </td>
+</tr>
+<tr><td><code>popupMenuItems</code>
+ </td>
+<td><code>""</code>
+ </td>
+<td>o description. </td>
+</tr>
+<tr><td><code>popupOnRightClick</code>
+ </td>
+<td><code>true</code>
+ </td>
+<td>o description. </td>
+</tr>
+<tr><td><code>popupMenuAlign</code>
+ </td>
+<td><code>false</code>
+ </td>
+<td>o description. </td>
+</tr>
+<tr><td><code>selectedPopupIndex</code>
+ </td>
+<td>-1 </td>
+<td>o description. </td>
+</tr>
+<tr><td><code>stepSize</code>
+ </td>
+<td>0.0 </td>
+<td>o description. </td>
+</tr>
+<tr><td><code>enableMidiLearn</code>
+ </td>
+<td><code>false</code>
+ </td>
+<td>o description. </td>
+</tr>
+<tr><td><code>holdIsRightClick</code>
+ </td>
+<td><code>true</code>
+ </td>
+<td>o description. </td>
+</tr>
+<tr><td><code>isPopupPanel</code>
+ </td>
+<td><code>false</code>
+ </td>
+<td>o description. </td>
+</tr>
+<tr><td><code>bufferToImage</code>
+ </td>
+<td><code>false</code>
+ </td>
+<td>o description. </td>
+</tr>
+</table>
+<p>The ScriptPanel is the most powerful UI component because you can customize it and turn it into almost anything you want. A detailed descriptioncan be found here:</p>
+<p><a href="scripting/scripting-in-hise/scriptpanel.html">ScriptPanel reference guide</a>
+</p>
+<h2 id="scripting-api"><b>Scripting API</b>
+</h2>
+<p><a href="scripting/scripting-api/scriptpanel/index.html">ScriptPanel</a>
+</p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="ui-components/plugin-components/table.html">Table</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

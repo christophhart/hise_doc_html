@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="colours"><b>Colours</b>
+</h1>
+<p>The <code>Colours</code>
+ keyword gives you access to one function (<code>withAlpha</code>
+) and a list of named Colours that can be used in a Panels <a href="scripting/scripting-api/graphics/index.html">g</a>
+ context.<br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="fromvec4"><b>fromVec4</b>
+</h2>
+<p class="comment">Converts a colour from a [r, g, b, a] float array to a uint32 value.</p>
+<pre><code class="language-javascript line-numbers">Colours.fromVec4(var vec4)</code></pre>
+<p><br><br></p>
+<h2 id="mix"><b>mix</b>
+</h2>
+<p class="comment">Linear interpolation between two colours.</p>
+<pre><code class="language-javascript line-numbers">Colours.mix(var colour1, var colour2, float alpha)</code></pre>
+<p><br><br></p>
+<h2 id="tovec4"><b>toVec4</b>
+</h2>
+<p class="comment">Converts a colour to a [r, g, b, a] array that can be passed to GLSL as vec4.</p>
+<pre><code class="language-javascript line-numbers">Colours.toVec4(var colour)</code></pre>
+<p><br><br></p>
+<h2 id="withalpha"><b>withAlpha</b>
+</h2>
+<p class="comment">Returns a colour value with the specified alpha value.</p>
+<pre><code class="language-javascript line-numbers">Colours.withAlpha(var colour, float alpha)</code></pre>
+<p><br><br></p>
+<h2 id="withbrightness"><b>withBrightness</b>
+</h2>
+<p class="comment">Returns a colour with the specified brightness.</p>
+<pre><code class="language-javascript line-numbers">Colours.withBrightness(var colour, float brightness)</code></pre>
+<p><br><br></p>
+<h2 id="withhue"><b>withHue</b>
+</h2>
+<p class="comment">Returns a colour with the specified hue.</p>
+<pre><code class="language-javascript line-numbers">Colours.withHue(var colour, float hue)</code></pre>
+<p><br><br></p>
+<h2 id="withmultipliedalpha"><b>withMultipliedAlpha</b>
+</h2>
+<p class="comment">Returns a colour with a multiplied alpha value.</p>
+<pre><code class="language-javascript line-numbers">Colours.withMultipliedAlpha(var colour, float factor)</code></pre>
+<p><br><br></p>
+<h2 id="withmultipliedbrightness"><b>withMultipliedBrightness</b>
+</h2>
+<p class="comment">Returns a colour with a multiplied brightness value.</p>
+<pre><code class="language-javascript line-numbers">Colours.withMultipliedBrightness(var colour, float factor)</code></pre>
+<p><br><br></p>
+<h2 id="withmultipliedsaturation"><b>withMultipliedSaturation</b>
+</h2>
+<p class="comment">Returns a colour with a multiplied saturation value.</p>
+<pre><code class="language-javascript line-numbers">Colours.withMultipliedSaturation(var colour, float factor)</code></pre>
+<p><br><br></p>
+<h2 id="withsaturation"><b>withSaturation</b>
+</h2>
+<p class="comment">Returns a colour with the specified saturation.</p>
+<pre><code class="language-javascript line-numbers">Colours.withSaturation(var colour, float saturation)</code></pre>
+<p><br><br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/connection/index.html">Connection</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>04.06.2019<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="hise-additions"><b>HISE Additions</b>
+</h1>
+<p>The scripting language of <b>HISE</b>
+ is in fact not Javascript. It has its origin in the non-standard implementation of JUCEs codebase and was extended and customized to fit the requirements of scripting in <b>HISE</b>
+.</p>
+<p>This may lead to a few irritations for people who already know Javascript and expect to directly apply their knowledge, acquired from writing .js for the web, to HISE.</p>
+<p>You might get some head start compared to novices for sure; but there are a few things that you need to know - and more annoying: <b>many things you need to forget</b>
+.</p>
+<p>This chapter provides an overview over every single customisation added to the scripting engine in <b>HISE</b>
+. From now on, the scripting language in <b>HISE</b>
+ will be referred to as <b>HiseScript</b>
+ as opposed to standard <b>Javascript</b>
+. We will take a look at the concepts that have been stripped from Javascript first and then go through the additions.</p>
+<h2 id="object-oriented-programming"><b>Object-oriented programming</b>
+</h2>
+<p><b>Javascript</b>
+ acquired its popularity in the web development ecosystem because it allows powerful data processing using a lean syntax. Yet it was never designed to be a real object-oriented language - it happened to grow and people were doing more and more complex applications so the language reacted and<br>object-oriented things were added over the time. </p>
+<p>If you have used a proper object oriented language like Java or C++ before, everything related to object-oriented programming in Javascript looks a bit quirky.</p>
+<p>The desire for object-oriented language features grows with the complexity of the app because it reduces the complexity and redundance. Proper encapsulation ensures the maintainability of the code. </p>
+<p>This is only partly true for <b>HiseScript</b>
+, though: the tree structure of <b>HISE</b>
+ already breaks down the complexity into <b>one script for each task</b>
+ and the UI data model tries to keep the code free from declarative boilerplate code as much as possible. More importantly, there are almost no scenarios in <b>HISE</b>
+ where dynamically creating objects is desired:</p>
+<ul><li>UI elements and references to HISE modules have to be created upfront at initialisation.</li>
+<li>You can't allocate in realtime callbacks. Creating objects is out of the question here.</li>
+</ul>
+<p>Therefore, most of the language concepts associated with object orientated programming have been removed and replaced with paradigms that suit the two restrictions mentioned above.</p>
+<h2 id="no-new-operator"><b>No </b>
+<b>new</b>
+<b> operator</b>
+</h2>
+<p>The <code>new</code>
+ operator, which clones an object using the prototype has been removed. This code:</p>
+<pre><code class="language-javascript line-numbers">function Car(make, model, year) 
+{
+  this.make = make;
+  this.model = model;
+  this.year = year;
+}
+
+var car1 = new Car('Eagle', 'Talon TSi', 1993);
+
+Console.print(car1.make);
+// expected output: "Eagle"</code></pre>
+<p>will not compile in HISE. Instead, you'll need to create an object wrapped in a function, do something with it and return it:</p>
+<pre><code class="language-javascript line-numbers">function Car(make, model, year) 
+{
+  var obj = {};        // Create an object
+  obj.make = make;     // Set the object properties
+  obj.model = model;
+  obj.year = year;  
+  
+  return obj;          // return the object.
+}
+
+var car1 = Car('Eagle', 'Talon TSi', 1993);
+
+Console.print(car1.make);
+// expected output: "Eagle"</code></pre>
+<p>This concept is known as <b>Object Factory</b>
+. In this example, the code looks more verbose, but it has a big advantage: <b>You can use existing objects and turn them into the thing you want</b>
+. If you take a look at the <a href="ui-components/plugin-components/panel.html">ScriptPanel documentation</a>
+, you'll notice that every single code example uses this form:</p>
+<pre><code class="language-javascript line-numbers">function createFunkyPanel(name, x, y)
+{
+    var p = Content.getComponent(name);   // grab a reference to the panel
+    p.set("something", 5.0);              // do something with it
+    return p;
+}
+
+var myPanel = createFunkyPanel("MyPanel", 0, 0);</code></pre>
+<h2 id="no-anonymous-variable-definitions"><b>No anonymous variable definitions</b>
+</h2>
+<p>This code is valid Javascript:</p>
+<pre><code class="language-javascript line-numbers">var MyDatabaseEntry = "Hello";
+
+// 500.000 lines later
+
+MyDataBaseEntry = "Hello again";
+
+// Another 500.000 lines later
+
+if(MyDatabaseEntry == "Hello again")
+{
+    somethingReallyImportant();
+}</code></pre>
+<p>but <code>somethingReallyImportant()</code>
+ will not be executed despite its self-explanatory name. The reason was the typo that defined a new variable <code>MyDataBaseEntry</code>
+ (with a capital <code>B</code>
+) thus leaving the original variable in its previous state. </p>
+<p>Debugging this kind of error is one of the most frustrating experiences, so this code will not compile in <b>HiseScript</b>
+, but throw an error at the line where you want to define <code>MyDataBaseEntry</code>
+. The solution is simple: If you want to create a new variable, use <code>var</code>
+ - or even better, one of the custom variable types like <code>reg</code>
+, <code>local</code>
+ or <code>const var</code>
+, which will be explained later.</p>
+<p>There is only one exception to this rule: if you use a <code>for</code>
+ loop, you may declare the counter variable without the <code>var</code>
+ keyword:</p>
+<pre><code class="language-javascript line-numbers">for(i = 0; i < length; i++)
+    doSomething(i);</code></pre>
+<p>This is just for convenience and if you're using <code>i</code>
+ as global variable for anything meaningful, you most certainly will have other things to bother about.</p>
+<h2 id="additions"><b>Additions</b>
+</h2>
+<p>Reading this page until now might have been a little bit frustrating, but it will get better from now on, because now we will take a look at all the additions that have been added to <b>HiseScript</b>
+. If you have some experience in <i>C++</i>
+, you might recognize some of them, as I have taken a few concepts that I like and transferred it to <b>HiseScript</b>
+.</p>
+<p>Most of them are implemented deeply inside the Javascript Parser (or compiler) and offer performance improvements because they can be resolved at compile time.</p>
+<h2 id="custom-variable-types-/-function-calls"><b>Custom variable types / function calls</b>
+</h2>
+<p>The default <code>var</code>
+ variable will allocate a new variable in the current scope and is therefore not recommended to use in a realtime environment. However in UI code (or data processing) where you don't have these hard realtime requirements, it is a useful tool and things like recursive function calls or the above mentioned factory function would not be possible otherwise.</p>
+<p>Another problem is the standard function call in Javascript which creates a new scope that can be filled with variables. If you read carefully until now, you should know by now that this is a deal-breaker in the audio thread.</p>
+<p>In order to make <b>HiseScript</b>
+ realtime-safe, a few new variable types and a new function type were added. If you are going to write code that will end up running in the audio thread, you definitely need to be aware of these concepts and use them over the standard <b>Javascript</b>
+ options:</p>
+<p class="comment">If you read this inside the HISE documentation window, the following code examples can be executed to show the performance gains. In this case, just comment out the other function and run the script again.</p>
+<h2 id="inline-functions"><b>inline functions</b>
+</h2>
+<p>Since the <code>function</code>
+ in Javascript isn't realtime safe but we need the flexibility of it in other areas, a new function type has been introduced: the <b>inline function</b>
+. There are some limitations for the usage of inline functions:</p>
+<ul><li>no constructor (if your function definition is a prototype)</li>
+<li>no recursion </li>
+<li>no more than 5 parameters</li>
+</ul>
+<p>If this is the case (which should actually be with 99% of all functions you write in scripts, prepend the function definition with <code>inline</code>
+ and it will be faster (and more predictable):</p>
+<pre><code class="language-javascript line-numbers">var a = 0;
+var b = 1;
+
+function slowFunction(param1, param2)
+{
+	var sum = param1 + param2;
+	return sum;
+}
+
+inline function fastFunction(param1, param2)
+{
+	local sum = param1 + param2;
+	return sum;
+}
+
+Console.start();
+while(a < 200000) a = slowFunction(a, b); // 140 ms
+//while(a < 200000) a = fastFunction(a, b); // 45 ms
+Console.stop();</code></pre>
+<p>Inline functions can't be members of Objects, so it might clutter your global scope if you overdo it. You can use them inside namespaces though.</p>
+<p>If you read the code example above, you might stumble over the <code>local</code>
+ keyword. This indicates a local variable definition (which can be used in inline functions as well as callbacks). Since it preallocates the storage, it will not affect realtime performance - however this is obviously only true as long as you use primitive types.</p>
+<h2 id="explicit-capturing-of-locally-scoped-variables"><b>Explicit capturing of locally scoped variables</b>
+</h2>
+<p>There are many occasions where you will assign callbacks to certain events in HiseScript and in some cases this will happen inside a function. However if you want to use either a parameter from the outside function or a locally defined variable, the inner function will fail to resolve that variable:</p>
+<pre><code class="language-javascript line-numbers">inline function someFunction(input)
+{
+	Engine.showYesNoWindow("Title", "Message", function(ok)
+	{
+		Console.print(input);
+	});
+};
+
+someFunction(90);</code></pre>
+<p class="comment">It doesn't matter whether you're using an inline function or a normal function here - the inline function will throw a compile error though so that's a bit clearier than the <code>undefined</code>
+ value that will be used in the standard JS function call...</p>
+<p>The solution is again borrowed from C++ (and namely from C++11 lambdas that allow capturing of local variables). The syntax is pretty simple: just put every variable or parameter reference that you want to access in the inner function in a bracket list between the <code>function</code>
+ keyword and the parameter list:</p>
+<pre><code class="language-javascript line-numbers">inline function someFunction(input)
+{
+	//                                 This right here: <----->
+	Engine.showYesNoWindow("Title", "Message", function [input](ok)
+	{
+		Console.print(input);
+	});
+};
+
+someFunction(90);</code></pre>
+<h2 id="const-variables"><b>const</b>
+<b> variables</b>
+</h2>
+<p>Prepending <code>const</code>
+ to a variable declaration tells the interpreter that this variable will not be changed and will throw a compile error if you try to do so:</p>
+<pre><code class="language-javascript line-numbers">const var v = 2; // declare a constant integer value
+v = 7;           // ERROR: will not compile</code></pre>
+<p>It differs from the <code>const</code>
+ keyword in C++ in the way that it doesn't make the variable immutable, but just the reference so you can't reassign it to something else. However this means you can still change properties of objects and pass it to functions that change something:</p>
+<pre><code class="language-javascript line-numbers">const var a = []; // Declares a const reference
+a[0] = 12;        // Stores something in the array</code></pre>
+<p>Beside the advantages regarding maintainability (you don't have to watch out to not accidently overwrite these variables), using <code>const</code>
+ in conjunction with API calls yields a huge performance boost. This is because it can resolve the function call on compile time:</p>
+<pre><code class="language-javascript line-numbers">const var Knob = Content.addKnob("Knob", 0, 0);
+var slowKnob = Knob;
+var i = 0;
+
+Console.start();
+while(++i < 200000)
+{
+	// Knob.getValue();
+	slowKnob.getValue();
+}
+Console.stop();</code></pre>
+<p> </p>
+<p>So to sum it up: there is absolutely no reason to not declare UI widgets, references to modules (via <code>Synth.getModulator()</code>
+ etc.) not as <code>const</code>
+, so I strongly recommend you make this your habit.</p>
+<p>And if you use magic numbers in your code, declare them as const variables at the beginning, it has literally no performance overhead compared to using literal values:</p>
+<pre><code class="language-javascript line-numbers">const var MY_MAGIC_NUMBER = 42;
+
+
+if(MY_MAGIC_NUMBER == 42)
+{
+    // ...
+}</code></pre>
+<h2 id="reg-variables"><b>reg</b>
+<b> variables</b>
+</h2>
+<p>If you use globally allocated <code>var</code>
+ variables inside a realtime function, you won't get any problems regarding runtime predictability. However the interpreter has to resolve the variable at runtime, which comes with a little performance overhead. The solution is to use <code>reg</code>
+ instead of <code>var</code>
+ when declaring temporary variables which are accessed in the MIDI (or audio) callbacks. It tells the interpreter to store this in a fixed size container with faster access times:</p>
+<pre><code class="language-javascript line-numbers">var f1 = 120000;
+var i1 = 0;
+
+reg f2 = 120000;
+reg i2 = 0;
+
+Console.start();
+while(i1 < f1) i1 = i1 + 1;
+//while(i2 < f2) i2 = i2 + 1;
+Console.stop();</code></pre>
+<p>If you have a script with lots of variables, the interpreter must search the entire array for every variable access (so the <code>23 - 40 ms</code>
+ are depending on how many other variables are defined in the script while the access time to <code>reg</code>
+ slots stay the same).</p>
+<p class="comment">You only have <b>32</b>
+ reg storage slots in the global namespace, but it should be enough for most tasks. If you need more, you get additional 32 slots inside each namespace you declare.</p>
+<h2 id="globals.x-variables"><b>Globals.x</b>
+<b> variables</b>
+</h2>
+<p>The Globals object does not contain any methods but acts as preset wide value container for cross-script communication.</p>
+<pre><code class="language-javascript line-numbers">// In Script Processor 1
+Globals.x = 5.72; // Define this in one script
+
+// In Script Processor 2
+Console.print(Globals.x) // 5.72</code></pre>
+<p class="comment">This does exactly the same as using the <code>global</code>
+ keyword for variable definition, so you can use whatever syntax you prefer.</p>
+<h2 id="namespaces"><b>Namespaces</b>
+</h2>
+<p>In a ideal world, scripts are little code snippets that fulfill a single purpose and the design of HISE tries to enforce this paradigm as much as possible. However this isn't always the case, especially interface scripts tend to grow pretty quickly and reach a size where you have to think about organizing the structure of your code. A solution for this task in C++ are namespaces which can be used to avoid naming conflicts and to group things that belong together.</p>
+<p>In Javascript there is nothing like a namespace concept. Instead you need to create a Object and fill its properties:</p>
+<pre><code class="language-javascript line-numbers">var MyStuff = {};
+
+MyStuff.property1 =  2;
+MyStuff.function1 = function(){ return 2;};
+
+Console.print(MyStuff.property1); // 2
+Console.print(MyStuff.function1()); // 2</code></pre>
+<p>However this has some performance implications (every access needs to resolve the Object name first) as well as some limitations: almost every custom enhancement I added to the scripting engine of HISE like inline functions or <code>const</code>
+ variables can't be members of objects and must be cranked into the global namespace.</p>
+<p>In my spirit of taking things from C++ that I like and port it to Javascript, I decided to add the namespace concept to the scripting engine. It is a valuable addition because you get a way of grouping functions and variables without any performance penalty like you do when using objects for it (the parser resolves the namespaces at compile time):</p>
+<pre><code class="language-javascript line-numbers">const var property1 = 5;
+
+namespace MyStuff
+{
+    const var property1 = 2;
+    
+    inline function function1()
+    {
+        return property1; //within namespaces you can either use the prefix or not)
+    };
+}
+
+namespace Other
+{
+	const var property1 = Mystuff.function1(); // works between namespaces
+}
+
+MyStuff.function1(); // 2</code></pre>
+<p>You can see how not having to resolve the object property at runtime affects the performance:</p>
+<pre><code class="language-javascript line-numbers">namespace MyNamespace
+{
+    reg x = 5;
+}
+
+var MyObject =
+{
+    "x" : 5
+};
+
+reg a = 0;
+
+Console.start();
+while(a++ < 200000)
+{
+    //MyNamespace.x = 2;
+    MyObject.a = 2;
+}
+Console.stop();</code></pre>
+<p>So far so good. However there are a few things to consider which might seem a bit unintuitive if you're familiar with C++ namespaces.</p>
+<h4 id="leaking-of-global-namespace"><b>Leaking of global namespace</b>
+</h4>
+<p>Every namespace is a superset of the global namespace. That means that you can access global variables through the namespace prefix even if it is not defined within the global namespace:</p>
+<pre><code class="language-javascript line-numbers">reg property1 = 5;
+
+namespace Empty
+{
+
+}
+
+Console.print(Empty.property1); // 5</code></pre>
+<p>This is a side effect of allowing the access to the variable within its namespace with the namespace prefix as well as without (the autocomplete will always spit out the full namespace so it would be pretty stupid to autocomplete faulty stuff).</p>
+<h4 id="no-nesting-of-namespaces"><b>No nesting of namespaces</b>
+</h4>
+<p>You can't nest namespaces (define namespaces within other namespaces). One level of grouping should be enough even for complex scripts.</p>
+<h4 id="no-standard-var-definitions-within-namespace"><b>No standard </b>
+<b>var</b>
+<b> definitions within namespace</b>
+</h4>
+<p>Namespaces currently work only for <code>const var</code>
+ and <code>reg</code>
+ variables (you'll get another 32 <code>reg</code>
+ slots with every namespace) as well as <code>inline</code>
+ functions. The standard <code>var</code>
+ type implementation doesn't allow the namespace concept so for compatibility reasons it was removed from the namespace parser:</p>
+<pre><code class="language-javascript line-numbers">namespace Problem
+{
+    var property1 = 5;
+}
+
+Console.print(Problem.property1); // 5 (is actual a side effect of the leaking described above)
+Console.print(property1); // 5 (should be undefined)</code></pre>
+<h4 id="no-namespace-wrapping-of-include()"><b>No namespace wrapping of </b>
+<b>include()</b>
+</h4>
+<p>A common (but not really recommended) practice in C++ is to wrap <code>#include</code>
+ statements into a namespace definition (this way you don't need to define the namespace in every header file). However this isn't supported in HISE so this won't work:</p>
+<pre><code class="language-javascript line-numbers">// External File (externalFile.js)
+const var property1 = 2;
+
+// Script
+namespace External
+{
+    include("externalFile.js");
+}
+
+Console.print(External.property1); // undefined</code></pre>
+<p>Of course you can use namespaces in external files (it would pretty much defeat the purpose of the whole thing if this wasn't possible).</p>
+<h4 id="no-extension-of-namespace"><b>No extension of namespace</b>
+</h4>
+<p>Every namespace must be defined once. In C++ you can take up existing namespaces and add your variables to it, but this isn't supported in <b>HISE</b>
+.</p>
+<h2 id="scoped-statements"><b>Scoped Statements</b>
+</h2>
+<p>One of the most powerful concepts of C++ is <a href="https://en.wikipedia.org/wiki/Resource_acquisition_is_initialization">RAII</a>
+ which means that you have precise control over a lifetime of an object. This is used in various situations to ensure that state changes are always being reverted, even if you forget a branch or the execution throws an error. Let's take a look at this code and how the utilisation of the scoped statement concept will increase both the safety as well as clarity of the code:</p>
+<pre><code class="language-javascript line-numbers">reg someWorkIsBeingDone = false;
+
+inline function doSomeWork()
+{
+    someWorkIsBeingDone = true;
+	
+	if(Engine.getDate().isMonday())
+		return;
+	
+	if(Engine.getDate().isThursday())
+		Console.print(undefined);
+	
+	someWorkIsBeingDone = false;
+}
+
+inline function someOtherFunction()
+{
+	while(someWorkIsBeingDone)
+		; // do nothing, busywait
+}</code></pre>
+<p>We have a function <code>doSomeWork()</code>
+ and another function <code>someOtherFunction()</code>
+ which is executed on a different thread and must ensure that it's never being executed while <code>doSomeWork</code>
+ is running. Now there are two severe problems with <code>doSomeWork()</code>
+:</p>
+<ol><li>If you call that function on a Monday, it will return early and forget to set that variable back to <code>false</code>
+ so that <code>someOtherFunction</code>
+ can resume its task.</li>
+<li>If you call that function on a Thursday, it will throw a script error leaving the variable <code>someWorkIsBeingDone</code>
+ in the <code>true</code>
+ state.</li>
+</ol>
+<p>Now solving problem 1 can just be solved by not being sloppy and forget to clean up the variable at each branch, however with more complex functions this might be very easy to overlook and also increase the amount of useless boilerplate code because we have to sprinkle that <code>someWorkIsBeingDone = false;</code>
+ line before every return or break statement. Problem 2 is even harder to solve as you somehow have to guarantee that everything always works perfectly and will never cause an issue, which is a bold claim to make.</p>
+<p>This is precisely where the scoped statements come in handy as they guarantee a "cleanup" operation whenever the scope (aka <code>{}</code>
+ brackets) is finished. The cause of the cleanup doesn't matter, so a compile error will still perform the cleanup as well as any kind of <code>return</code>
+ or <code>break</code>
+ / <code>continue</code>
+ statement - and even a compile error in the cleanup stage will resume the cleanup of other statements giving you the absolute guarantee that you'll never leave anything in a intermediate state which is essential for any kind of thread synchronization (and thread synchronization is the main driver behind why I've implemented this concept at all).</p>
+<h3 id="general-syntax"><b>General Syntax</b>
+</h3>
+<p>This is a non-standard language addition, so I came up with these syntax rules for a scoped statement. First of all let's define scope as a list of statements that are executed serially. In HiseScript they are easy to spot: whenever you see brackets, you see a scope with the sole exception of brackets defining a JSON object:</p>
+<pre><code class="language-javascript line-numbers">inline function dudel()
+{ // SCOPE!
+	if(x == 0)
+	{ // SCOPE!
+		for(i = 0; i < 1290; i++)
+		{ // SCOPE!
+		}
+	}
+	
+	if(x == 90)
+		Console.print(x); // NOT A SCOPE, no brackets!
+	
+	{// SCOPE! 
+		{ // SCOPE!
+		}
+	}
+}
+
+namespace dudel
+{ // SCOPE!
+}
+
+{ // SCOPE!
+	const var obj =
+	{ // NOT A SCOPE !!!!
+		"myValue": 12
+	};
+}</code></pre>
+<p>Now we can define the syntax of a scoped statement</p>
+<ol><li>Scoped statements must be the first statements of a scope. If you add a scoped statement after you've added a normal statement (anything else except for comments and preprocessor conditions), it will throw an error.</li>
+<li>A scoped statement is preceded by a dot followed by the statement name and its arguments: <code>.statement(args...)</code>
+. The statement name must be one of the inbuilt statement types which are listed below.</li>
+<li>Scoped statements can be chained together to combine multiple scoped statements in one scope: <code>.statement1(args).statement2(args)</code>
+ Important: the cleanup phase will be executed in reverse, so the last scoped statement will be cleaned up first</li>
+<li>A semicolon must be put at the end of a scoped statement chain (or even a single statement) to tell the parser to stop parsing scoped statements : <code>.statement1(args).statement2(args);</code>
+</li>
+<li>A scoped statement can be excecuted conditionally by using the <code>if(condition):statement(args)</code>
+ syntax. The condition is a usual HiseScript expression and the operation as well as the cleanup phase will only be executed if the expression is true.</li>
+</ol>
+<p>Here are a few example use cases of these rules:</p>
+<pre><code class="language-javascript line-numbers">// Hello world:
+{
+	.print("hello";
+	Console.print("world");
+}
+// => Output: enter hello, world, exit hello
+
+// Inverse order at cleanup:
+{
+	.print("hello")
+	.print("world";
+}
+// => Output: enter hello, enter world, exit world, exit hello
+
+// Conditional execution
+{
+	.if(Math.random() > 0.5):print("50% chance that this happens");
+}
+// => Output (maybe): enter 50% chance that this happens exit 50% chance that this happens
+
+/* Illegal syntax:
+{
+	.print("wrong")
+	Console.print("forgot a semicolon");
+}
+
+{
+	Console.print("wrong order");
+	.print("must come before the other statement"
+}
+*/</code></pre>
+<p>Now before we take a look at all the available statements, let's go back to that example from the start. What we want to achieve is to make sure that the <code>isWorkBeingDone</code>
+ variable is guaranteed to be set back to false, no matter how we leave that function. For this we use the <code>set</code>
+ statement, which takes two arguments, a variable and a value which will be set temporarily. When the scope is finished, it will be set back to whatever value was before (this allows you to chain different set statements and make sure that at the end it will be in the original state:</p>
+<pre><code class="language-javascript line-numbers">inline function doSomeWork()
+{
+	.set(someWorkIsBeingDone, true);
+	
+	if(Engine.getDate().isMonday())
+		return;
+	
+	if(Engine.getDate().isThursday())
+		Console.print(undefined);
+}
+
+inline function someOtherFunction()
+{
+	while(someWorkIsBeingDone)
+		; // do nothing, busywait
+}</code></pre>
+<p>As you can see, the function code is both clearer (because we can omit the last line) and 100% more safe, which is a double win for the scoped statements. I've also went the extra mile of indicating any scope with scoped statements in the code editor fold display (so the foldable ranges of a scoped statement will be coloured as well as the background of a scoped statement) which you will see if you paste these example into the HISE code editor.</p>
+<h3 id="list-of-scoped-statements"><b>List of scoped statements</b>
+</h3>
+<p>Now that we've defined the general syntax and purpose, let's take a look at the list of all available scoped statements. In general there are two different types of statements: debug statements and logic statements. Debug statements will perform a task that is usually used during development: measuring the time, logging something or dumping a value of some variables. These statements will be <b>removed</b>
+ in the exported plugin (same as with all <code>Console.xxx()</code>
+ calls). Logic statements will have a real impact on the program logic and thus will be executed in both cases.</p>
+<h4 id="debug-statements"><b>Debug statements</b>
+</h4>
+<table><thead><td><b>Statement </b>
+</td>
+<td><b>Arguments </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><code>print</code>
+ </td>
+<td><code>(expression)</code>
+ </td>
+<td>Prints <code>enter expression</code>
+ and <code>exit expression</code>
+ when entering and leaving the scope. </td>
+</tr>
+<tr><td><code>profile</code>
+ </td>
+<td><code>(ID)</code>
+ </td>
+<td>Prints the duration of the scope with the literal string as label. </td>
+</tr>
+<tr><td><code>trace</code>
+ </td>
+<td><code>(ID)</code>
+ </td>
+<td>Creates a label for the Perfetto tracer so you can find it by searching for the ID </td>
+</tr>
+<tr><td><code>dump</code>
+ </td>
+<td><code>(e1, e2, ...)</code>
+ </td>
+<td>Dumps whatever variables you put in there at the beginning and the end of the scope. </td>
+</tr>
+<tr><td><code>count</code>
+ </td>
+<td><code>(ID)</code>
+ </td>
+<td>Counts the number of times that this scope is executed (reset at compilation). </td>
+</tr>
+<tr><td><code>before</code>
+ </td>
+<td><code>(actual, expected)</code>
+ </td>
+<td>Checks the equality of the two expressions <b>at the beginning of the scope</b>
+ and throws a compile error if they don't match. </td>
+</tr>
+<tr><td><code>after</code>
+ </td>
+<td><code>(actual, expected)</code>
+ </td>
+<td>Checks the equality of the two expressions <b>at the end of the scope</b>
+ and throws a compile error if they don't match. </td>
+</tr>
+</table>
+<p>In general, all these statements do not bring something revolutionary new to the table (with the exception of <code>.trace()</code>
+, which is a unique feature that only makes sense with a scoped statement), but can rather be considered as quality of live improvements over their <code>Console.xxx()</code>
+ counterparts that makes coding in HISE a little bit more pleasant. Some remarks:</p>
+<ul><li>most of the statements produce a console output that includes a gibberish string containing an encoded location, so you can double click on it and it will take you directly to the statement that caused the console output. The days of searching leftover Console.print() statements which clog up the console are finally over...</li>
+<li>the <code>dump</code>
+ method manages to resolve the variable names (without the namespace) if you put in an expression that resolves to a single variable, which is nice so you don't have to do weird string concatenations to get a meaningful console output. Also it dumps every argument on a single line which looks a bit nicer than the <code>trace()</code>
+ function.</li>
+<li>the <code>before</code>
+ and <code>after</code>
+ statements can be used to make fixed assumptions of what the function is supposed to do and can act as both documentation and error check at once.</li>
+</ul>
+<pre><code class="language-javascript line-numbers">//! DUMP EXAMPLE ============================================
+
+var x = 125;
+var obj = { "id": 12 };
+
+{
+	.dump(x, obj);
+	x = 900;
+	obj.id = "funky";
+	
+	// this would be the equivalent which is much more annoying to type
+	Console.print("obj: " + trace(obj) + "x: " + trace(x));
+}
+
+/* Console Output:
+
+// 			       double click here to get to the code
+// 									|
+//									V
+Interface: dump before: {SW50ZXJmYWNlfHw5M3wxNXw3} 
+> x = 125
+> obj = {"id": 12}
+
+Interface: dump after: {SW50ZXJmYWNlfHw5M3wxNXw3}
+> x = 900
+> obj = {"id": "funky"}
+*/
+
+//! BEFORE / AFTER EXAMPLE ==================================
+
+// If this condition isn't true, the function will 
+// throw an error
+reg someCondition = true;
+reg someOtherCondition = false;
+
+inline function getDoubleValue(x)
+{
+	// these statements at the top tell us exactly
+	.before(someCondition, true) // what the function is expecting and
+	.after(someOtherCondition, true); // what the function is supposed to do
+	
+	// If you fail to set the other condition in the 
+	// function (which you can simulate by commenting
+	// out that line, it will throw an error).
+	someOtherCondition = true;
+	
+	return x * 2;
+}</code></pre>
+<h4 id="logic-statements"><b>Logic statements</b>
+</h4>
+<p>Now we get to the real juicy stuff. The guaranteed cleanup operation gives us the ability to add some powerful functions to HiseScript which I was a bit hesitant to offer before because the consequences of forgetting the cleanup would be too severe including dead locks and UI freezes. The functionality basically boils down to two reasons:</p>
+<ol><li>Controlling the event notification system</li>
+<li>Synchronizing the data access between threads</li>
+</ol>
+<table><thead><td><b>Statement </b>
+</td>
+<td><b>Arguments </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><code>set</code>
+ </td>
+<td><code>(variable, tempValue)</code>
+ </td>
+<td>temporarily sets the given variable to the temp value and resets it after the scope. </td>
+</tr>
+<tr><td><code>lock</code>
+ </td>
+<td><code>(Threads.XXX)</code>
+ </td>
+<td>Locks the given thread for the duration of the scope. This performs additional safe checks to avoid common mistakes that lead to deadlocks. </td>
+</tr>
+<tr><td><code>defer</code>
+ </td>
+<td><code>("path")</code>
+ </td>
+<td>This suspends all notifications for the given path until the scope is done. </td>
+</tr>
+</table>
+<p>We already know our little buddy <code>set</code>
+ in our example, however in a real world project we wouldn't roll our own solution for multithreaded synchronisation but rather rely on its powerful friend, the <code>lock</code>
+ statement. Since this is a language guide, describing the concepts behind <code>lock</code>
+ and <code>defer</code>
+ is out of the scope of this document (hihihi), so if you want to know more about that, keep reading here:</p>
+<ul><li>Read up on the <a href="scripting/scripting-api/threads/index.html">Threads</a>
+ API class for a detailed explanation of the threading model in HISE and how to apply it.</li>
+<li>Read up on the <code>Event Notification</code>
+ chapter of the HISE documentation (tbd) for a detailed description of the <code>defer</code>
+ statement.</li>
+</ul>
+<h2 id="type-safety"><b>Type safety</b>
+</h2>
+<p>Javascript (and therefore HiseScript) is a so-called dynamic language. This means that variables can change their type during the lifetime of the program:</p>
+<pre><code class="language-javascript line-numbers">var x = "I'm a string";
+x = ["Now", "I'm", "a", "Array"];
+x = { "Did": "somebody", "say": "JSON????" };
+x = 42;</code></pre>
+<p>This flexibility makes it extremely easy to write programs because you even don't need to know what types are in order to create the logic you're after. It also removes a lot of boilerplate code of converting the types to match the expected type. </p>
+<p>However there are also a few examples of how the automatic type conversion produces glitches and issues (eg. seen <a href="https://forum.hise.audio/topic/8270/confusing-issue-with-scripting-simple-knob-for-ahdsr-envelope-knob?_=1695985708890">here</a>
+)</p>
+<p>I'm not onto a revolutionary new approach to programming here - there is actually a typesafe variant of Javascript around called TypeScript - but I thought a bit about how to add some optional type-safety to HiseScript. So I've made a few additions to the HiseScript language which are completely optional and backwards compatible.</p>
+<p class="comment">In fact there is one breaking change, but this is because I realized that under certain circumstances (calling a API call on an object that is stored in a list) the check for undefined parameters for the function call was bypassed, so if you're scripts stop compiling or throw an error during runtime, you'll most likely had a undetected undefined parameter in a function call.</p>
+<p>The type-safety is applied to these concepts:</p>
+<ul><li>API calls so you can't call <code>Message.setNoteNumber()</code>
+ with a String or a JSON object (implenting this for the full HISE API will be a longer process because it requires to change all wrapper code definitions so I'll add the type safety over time)</li>
+<li><code>reg</code>
+ variables.</li>
+<li><code>const var</code>
+ variables do not need to be type-safe as they are already typesafe because they are initialised with a fixed type.</li>
+<li><code>inline functions</code>
+ can have a return type and a well-defined type for each parameter. These types will be then evaluated during runtime (only in HISE, there is not a single CPU cycle overhead in your compiled project)</li>
+</ul>
+<p>For the syntax of defining types, I've tried to stick as much as possible to the type script syntax (with the exception of defining return types of inline functions).</p>
+<pre><code class="language-javascript line-numbers">// a reg variable that must always be an integer
+reg:int myVariable = 90; 
+h
+myVariable = 125; // OK
+myVariable = "Didn't get the memo"; // Will not compile
+myVariable = undefined; // this will compile as special case
+						// to allow resetting values
+
+// making a function parameter typesafe by prepending a type token
+// You can only declare selected parameters as typesafe
+inline function doSomething(x: int, unsafe)
+{
+	Console.print(typeof(unsafe)); // this can be anything
+}
+
+doSomething(90, 1); // OK
+doSomething(90, [1, 2, 3]); // Still OK
+//doSomething("Didn't get the memo", [1, 2, 3]); // Will not compile
+
+// Define a static return type by adding a type token before the function name
+inline function: int getSomeInteger()
+{
+	return 124; // OK
+	//return "Didn't get the memo"; // Will not compile
+}</code></pre>
+<p>Below is a list of all available type identifiers you can use. There are two types of type IDs: elementary types and composite types which define a combination of elementary types so that you can allow multiple types to be passed into the function.</p>
+<table><thead><td><b>ID </b>
+</td>
+<td><b>Type </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><code>int</code>
+ </td>
+<td>elementary </td>
+<td>an integer number </td>
+</tr>
+<tr><td><code>double</code>
+ </td>
+<td>elementary </td>
+<td>a floating point number </td>
+</tr>
+<tr><td><code>string</code>
+ </td>
+<td>elementary </td>
+<td>a string variable </td>
+</tr>
+<tr><td><code>Array</code>
+ </td>
+<td>elementary </td>
+<td>the Javascript array </td>
+</tr>
+<tr><td><code>Buffer</code>
+ </td>
+<td>elementary </td>
+<td>The inbuilt float array type in HISE to represent audio signals </td>
+</tr>
+<tr><td><code>ObjectWithLength</code>
+ </td>
+<td>composite</td>
+<td>Anything that has the <code>length</code>
+ property (So a string, an array or a buffer) </td>
+</tr>
+<tr><td><code>JSON</code>
+ </td>
+<td>elementary </td>
+<td>a JSON object </td>
+</tr>
+<tr><td><code>ScriptObject</code>
+ </td>
+<td>elementary </td>
+<td>a object that was created with the API to interact with HISE (eg. the TransportHandler or a File object) </td>
+</tr>
+<tr><td><code>Function</code>
+ </td>
+<td>elementary </td>
+<td>A callable object (either a function or a broadcaster) </td>
+</tr>
+<tr><td><code>number</code>
+ </td>
+<td>composite </td>
+<td>either a int or a double number. Note: it's highly advised to use this over the elementary types because of the very loose type</td>
+<td><code>object</code>
+ </td>
+<td>composite </td>
+<td>either a JSON object or a ScriptObject </td>
+</tr>
+<tr><td><code>Colour</code>
+ </td>
+<td>composite </td>
+<td>either a string ("0xFFRRRGGBB") oder a integer number (0xFFRRGGBB). It's called Colour because the most likely use case for this will be colour variables but you can use it whenever you need either a number or a string. </td>
+</tr>
+<tr><td><code>ComplexType</code>
+ </td>
+<td>composite </td>
+<td>Anything that is not a number </td>
+</tr>
+<tr><td><code>NotUndefined</code>
+ </td>
+<td>composite </td>
+<td>Anything but not undefined </td>
+</tr>
+</table>
+<p class="comment">If the mixing of uppercase and CamelCase triggers your OCD, rest assured that this is not a case of me being sloppy but trying to use the existing type IDs from Java/Typescript (eg <code>number</code>
+) but for the complex types like <code>Array</code>
+ and <code>Buffer</code>
+ I have to stick to the existing HiseScript identifiers.</p>
+<h2 id="c-preprocessor"><b>C Preprocessor</b>
+</h2>
+<p>All C-based languages have a preprocessor that will process the code files before they are send to the compiler. They are usually performing simple replace operations and conditional compilation of files.</p>
+<p>Adding this concept to HiseScript gives a few advantages:</p>
+<ul><li>you can "physically" exclude scripting code from being included in the plugin (eg. if you have a plugin with some kind of demo functionality and want to avoid unlocking the demo by changing a simple flag in the embedded scripting code)</li>
+<li>you can define global constants which will be replaced in every script</li>
+<li>you can query the extra definitions that are passed to the C++ compiler on export and modify your scripts</li>
+<li>you can quickly deactivate parts of the code without resorting to commenting out the code</li>
+<li>the code editor in HISE will grey out code that will not be compiled which is pretty helpful</li>
+</ul>
+<p>The preprocessor implementation in HISE is not fully standard compliant and these directives are not supported:</p>
+<pre><code class="language-javascript line-numbers">#ifdef
+#undef
+#pragma
+#include</code></pre>
+<p>so that leaves these directives that are implemented:</p>
+<pre><code class="language-javascript line-numbers">#if
+#elif
+#else
+#endif
+#define
+#error</code></pre>
+<p>There is plenty of documentation available on how to use preprocessors, but a good overview is available here:</p>
+<p><a href="https://www.tutorialspoint.com/cprogramming/c_preprocessors.htm">https://www.tutorialspoint.com/cprogramming/c_preprocessors.htm</a>
+</p>
+<h2 id="using-the-preprocessor"><b>Using the preprocessor</b>
+</h2>
+<p>By default the preprocessor is disabled. This is because there is a slight overhead in compilation time so unless you really want to use it there's no need to add this overhead. In order to activate the preprocessor, you have two options:</p>
+<ol><li>Set the <b>EnableGlobalPreprocessor</b>
+ flag in the Project Settings. This will enable the preprocessor for all scripts in the project</li>
+<li>Add the custom directive <code>#on</code>
+ at the beginning of each file that you want to process.</li>
+</ol>
+<p class="comment">If you haven't activated the preprocessor, you're most likely will get an error message like <code>Found '#' when expecting a statement</code>
+.</p>
+<h2 id="how-the-preprocessor-is-used-in-hise"><b>How the preprocessor is used in HISE</b>
+</h2>
+<p>It's important to know when and how the preprocessor in HISE is used in order to take full advantage over the system. There are two important rules here:</p>
+<ol><li>Just like SNEX and FAUST, the preprocessor will never have to work in the exported plugin. During development it will be evaluated each time you recompile the script, but if you export the plugin, the preprocessor will process the script code that is about to be embedded in the binary <b>so that the processed code is embedded</b>
+ with the current preprocessor definitions.</li>
+</ol>
+<ol><li>The preprocessor is global so any <code>#define</code>
+ directive will be available in all other scripts. You can also use all preprocessor directives that you've added to the <b>ExtraDefinition</b>
+ field (and also all compiler flags you pass in as command line argument <code>-D:NAME=VALUE</code>
+ when you export a plugin from the command-line</li>
+</ol>
+<p> </p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-in-hise/javascript.html">HISE Javascript Tutorial</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

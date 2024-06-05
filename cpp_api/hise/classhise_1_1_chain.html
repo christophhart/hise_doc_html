@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="chain"><b>Chain</b>
+</h1>
+<p>A <a href="cpp_api/hise/classhise_1_1_processor.html">Processor</a>
+ that has a dynamic size of child processors.<br>If your <a href="cpp_api/hise/classhise_1_1_processor.html">Processor</a>
+ has more than a fixed amount of internal child processors, derive it from this class, write a Chain::Handler subclass with all needed operations and you can add / delete Processors on runtime.<br>You might want to overwrite the Processors functions getNumChildProcessors() and getChildProcessor() with the handlers methods (handle internal chains manually) This allows the restoreState function to only clear the dynamic list of processors.<br> </p>
+<h2 id="class-hierarchy"><b>Class Hierarchy</b>
+</h2>
+<h3 id="derived-classes"><b>Derived Classes</b>
+</h3>
+<ul><li><code>hise::EffectProcessorChain</code>
+<br></li>
+<li><code>hise::MidiProcessorChain</code>
+<br></li>
+<li><a href="cpp_api/hise/classhise_1_1_modulator_chain.html">hise::ModulatorChain</a>
+<br></li>
+<li><code>hise::ModulatorSynthChain</code>
+<br></li>
+<li><code>hise::ModulatorSynthGroup</code>
+<br></li>
+</ul>
+<h2 id="class-methods"><b>Class methods</b>
+</h2>
+<h3 id="restorechain"><b>restoreChain</b>
+</h3>
+<pre><code class="language-clike line-numbers">bool restoreChain(const ValueTree &v)</code></pre>
+<p>Restores a Chain from a ValueTree. It creates all processors and restores their values. It returns false, if anything went wrong.<br> </p>
+<h3 id="getparentprocessor"><b>getParentProcessor</b>
+</h3>
+<pre><code class="language-clike line-numbers">Processor * getParentProcessor()=0</code></pre>
+<p>Overwrite this and return the processor that owns this chain if it exists.<br> </p>
+<h3 id="getparentprocessor"><b>getParentProcessor</b>
+</h3>
+<pre><code class="language-clike line-numbers">const Processor * getParentProcessor() const =0</code></pre>
+<p>Overwrite this and return the processor that owns this chain if it exists.<br> </p>
+<h3 id="gethandler"><b>getHandler</b>
+</h3>
+<pre><code class="language-clike line-numbers">Handler * getHandler()=0</code></pre>
+<p>return your subclassed Handler.<br> </p>
+<h3 id="gethandler"><b>getHandler</b>
+</h3>
+<pre><code class="language-clike line-numbers">const Handler * getHandler() const =0</code></pre>
+<p>read only access to the Handler.<br> </p>
+<h3 id="setfactorytype"><b>setFactoryType</b>
+</h3>
+<pre><code class="language-clike line-numbers">void setFactoryType(FactoryType *newType)=0</code></pre>
+<p>Sets the FactoryType that will be used.<br> </p>
+<h3 id="getfactorytype"><b>getFactoryType</b>
+</h3>
+<pre><code class="language-clike line-numbers">FactoryType * getFactoryType() const =0</code></pre>
+<p>Returns the Factory type this processor is using.<br> </p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="cpp_api/hise/classhise_1_1_controlled_object.html">ControlledObject</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

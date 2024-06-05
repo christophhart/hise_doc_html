@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="script-voice-start-modulator"><img src="images/icon_script.png"></img>
+<b>Script Voice Start Modulator</b>
+</h1>
+<p>Type ID: <code>ScriptVoiceStartModulator</code>
+<br></p>
+<p class="comment"><b>Creates a scriptable modulation value at the start of the voice.</b>
+<br></p>
+<img src="images/module_screenshot_scriptvoicestartmodulator.png"></img>
+<p><br></p>
+<p>This module can be used to create a fully customizable <b>constant modulation value</b>
+, if the inbuild Voice start modulators do not offer the desired functionality.</p>
+<h2 id="callbacks"><b>Callbacks</b>
+</h2>
+<p>There are 5 callbacks for this processor, you probably recognize the <a href="hise-modules/midi-processors/list/scriptprocessor.html#the-oninit-callback">onInit</a>
+, <code>onController</code>
+ and <code>onControl</code>
+ callbacks from the MIDI script processor - they do exactly the same. However there are two special callbacks that make this module useful:</p>
+<h2 id="onvoicestart"><b>onVoiceStart</b>
+</h2>
+<p>This callback will be executed whenever a voice is about to be started. You need to return a value between <code>0.0</code>
+ and <code>1.0</code>
+ and it will use this as modulation signal.</p>
+<pre><code class="language-javascript line-numbers">function onVoiceStart(voiceIndex)
+{
+    // the same functionality as the stock velocity modulator
+    return Message.getVelocity() / 127.0;
+}</code></pre>
+<p>The parameter <code>voiceIndex</code>
+ can be used to get the index of the voice, which is guaranteed to be between <code>0</code>
+ and the number of voices available. However you can't rely on it being chronologically.</p>
+<h2 id="onvoicestop"><b>onVoiceStop</b>
+</h2>
+<p>This callback will be called when a voice is stopped, that means when the note was released and its gain envelopes have completely tailed off.</p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="hise-modules/modulators/voice-start-modulators/list/velocity.html">Velocity</a>
+</span>
+
+<p class="content-footer-metadata"><br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

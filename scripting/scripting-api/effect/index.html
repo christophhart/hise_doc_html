@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="effect"><b>Effect</b>
+</h1>
+<p><br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="addglobalmodulator"><b>addGlobalModulator</b>
+</h2>
+<p class="comment">Adds a and connects a receiver modulator for the given global modulator.</p>
+<pre><code class="language-javascript line-numbers">Effect.addGlobalModulator(var chainIndex, var globalMod, String modName)</code></pre>
+<p><br><br></p>
+<h2 id="addmodulator"><b>addModulator</b>
+</h2>
+<p class="comment">Adds a modulator to the given chain and returns a reference.</p>
+<pre><code class="language-javascript line-numbers">Effect.addModulator(var chainIndex, var typeName, var modName)</code></pre>
+<p><br><br></p>
+<h2 id="addstaticglobalmodulator"><b>addStaticGlobalModulator</b>
+</h2>
+<p class="comment">Adds and connects a receiving static time variant modulator for the given global modulator.</p>
+<pre><code class="language-javascript line-numbers">Effect.addStaticGlobalModulator(var chainIndex, var timeVariantMod, String modName)</code></pre>
+<p><br><br></p>
+<h2 id="exists"><b>exists</b>
+</h2>
+<p class="comment">Checks if the Object exists and prints a error message on the console if not.</p>
+<pre><code class="language-javascript line-numbers">Effect.exists()</code></pre>
+<p><br><br></p>
+<h2 id="exportscriptcontrols"><b>exportScriptControls</b>
+</h2>
+<p class="comment">Export the control values (without the script).</p>
+<pre><code class="language-javascript line-numbers">Effect.exportScriptControls()</code></pre>
+<p><br><br></p>
+<h2 id="exportstate"><b>exportState</b>
+</h2>
+<p class="comment">Exports the state as base64 string.</p>
+<pre><code class="language-javascript line-numbers">Effect.exportState()</code></pre>
+<p><br><br></p>
+<h2 id="getattribute"><b>getAttribute</b>
+</h2>
+<p class="comment">Returns the attribute with the given index.</p>
+<pre><code class="language-javascript line-numbers">Effect.getAttribute(int index)</code></pre>
+<p><br><br></p>
+<h2 id="getattributeid"><b>getAttributeId</b>
+</h2>
+<p class="comment">Returns the ID of the attribute with the given index.</p>
+<pre><code class="language-javascript line-numbers">Effect.getAttributeId(int index)</code></pre>
+<p><br><br></p>
+<h2 id="getattributeindex"><b>getAttributeIndex</b>
+</h2>
+<p class="comment">Returns the index of the attribute with the given ID.</p>
+<pre><code class="language-javascript line-numbers">Effect.getAttributeIndex(String id)</code></pre>
+<p><br><br></p>
+<h2 id="getcurrentlevel"><b>getCurrentLevel</b>
+</h2>
+<p class="comment">Returns the current peak level for the given channel.</p>
+<pre><code class="language-javascript line-numbers">Effect.getCurrentLevel(bool leftChannel)</code></pre>
+<p><br><br></p>
+<h2 id="getid"><b>getId</b>
+</h2>
+<p class="comment">Returns the ID of the effect.</p>
+<pre><code class="language-javascript line-numbers">Effect.getId()</code></pre>
+<p><br><br></p>
+<h2 id="getmodulatorchain"><b>getModulatorChain</b>
+</h2>
+<p class="comment">Returns the Modulator chain with the given index.</p>
+<pre><code class="language-javascript line-numbers">Effect.getModulatorChain(var chainIndex)</code></pre>
+<p><br><br></p>
+<h2 id="getnumattributes"><b>getNumAttributes</b>
+</h2>
+<p class="comment">Returns the number of attributes.</p>
+<pre><code class="language-javascript line-numbers">Effect.getNumAttributes()</code></pre>
+<p><br><br></p>
+<h2 id="isbypassed"><b>isBypassed</b>
+</h2>
+<p class="comment">Checks if the effect is bypassed.</p>
+<pre><code class="language-javascript line-numbers">Effect.isBypassed()</code></pre>
+<p><br><br></p>
+<h2 id="issuspended"><b>isSuspended</b>
+</h2>
+<p class="comment">Checks if the effect is currently suspended (= no audio running through it and suspension enabled).</p>
+<pre><code class="language-javascript line-numbers">Effect.isSuspended()</code></pre>
+<p><br><br></p>
+<h2 id="restorescriptcontrols"><b>restoreScriptControls</b>
+</h2>
+<p class="comment">Restores the control values for scripts (without recompiling).</p>
+<pre><code class="language-javascript line-numbers">Effect.restoreScriptControls(String base64Controls)</code></pre>
+<p><br><br></p>
+<h2 id="restorestate"><b>restoreState</b>
+</h2>
+<p class="comment">Restores the state from a base64 string.</p>
+<pre><code class="language-javascript line-numbers">Effect.restoreState(String base64State)</code></pre>
+<p><br><br></p>
+<h2 id="setattribute"><b>setAttribute</b>
+</h2>
+<p class="comment">Changes one of the Parameter. Look in the manual for the index numbers of each effect.</p>
+<pre><code class="language-javascript line-numbers">Effect.setAttribute(int parameterIndex, float newValue)</code></pre>
+<p><br><br></p>
+<h2 id="setbypassed"><b>setBypassed</b>
+</h2>
+<p class="comment">Bypasses the effect.</p>
+<pre><code class="language-javascript line-numbers">Effect.setBypassed(bool shouldBeBypassed)</code></pre>
+<p><br><br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/engine/index.html">Engine</a>
+</span>
+
+<p class="content-footer-metadata"><br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

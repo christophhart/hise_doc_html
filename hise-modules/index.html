@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="audio-modules"><b>Audio Modules</b>
+</h1>
+<img style="max-width:700px;" src="images/custom/hise-modules.png"></img>
+<p>An <b>Audio Module</b>
+ is a basic building block of HISE. You can stitch them together to create your instrument/plugin. They come in four different base types:</p>
+<ul><li><a href="hise-modules/sound-generators/index.html">Sound Generators</a>
+ </li>
+</ul>
+<ul><li><a href="hise-modules/midi-processors/index.html">Midi Processors</a>
+ </li>
+</ul>
+<ul><li><a href="hise-modules/modulators/index.html">Modulators</a>
+</li>
+</ul>
+<ul><li><a href="hise-modules/effects/index.html">Effects</a>
+ </li>
+</ul>
+<p>Every module has a topbar with at least four controls:<br></p>
+<p><b>Fold/Collapse > Processor ID > Bypass Button > and an X to delete it.</b>
+ </p>
+<img src="images/custom/transposer-topbar.png"></img>
+<p>Behind the scenes (in the module <code>.xml</code>
+-tree) every <b>HISE Module</b>
+ is called Processor. Each modules has its specific "Type=" attribute, that declares what it "is" and a unique <b>Processor ID</b>
+ that identifies the individual module. A <a href="scripting/scripting-in-hise/index.html#module-references">script reference</a>
+ to a module needs a consistent <b>Processor ID</b>
+ to point to, so be careful to change the <b>Processor ID</b>
+ later on, because it will probably break your references.<br></p>
+<p>A <b>right click</b>
+ on the topbar of a module opens a dialog in which you can copy the modules <code>.xml</code>
+ to the clipboard. You can paste it into a ParentProcessor to create a duplicate of it.</p>
+<p>In the dialog you'll also find an option to <a href="scripting/scripting-in-hise/index.html#module-references">"create a script reference"</a>
+ to the module. Paste it into a ScriptProcessors <code>onInit</code>
+ callback to access the modules attributes with scripting. </p>
+<h3 id="hise-module-reference-types"><b>HISE module reference types</b>
+</h3>
+<p>The HISE module architecture is based on a strong hierarchy of inheritance with a few interface types. This means that every HISE module has exactly one base class but can have multiple interface classes that add additional functionality.<br></p>
+<p>For example the <a href="hise-modules/modulators/voice-start-modulators/list/velocity.html">Velocity Modulator</a>
+ has the base class <a href="scripting/scripting-api/modulator/index.html">Modulator</a>
+, because it creates a signal that can be used to control parameters of other modules.<br></p>
+<p>However, it can also be connected to a <a href="ui-components/plugin-components/table.html">Table</a>
+ that is used to change the velocity curve. Therefore, it has an additional interface type: <a href="scripting/scripting-api/tableprocessor/index.html">TableProcessor</a>
+.</p>
+<p class="comment">Depending on what functionality you want, you need to create a <b>generic</b>
+ or <b>typed reference</b>
+ to the desired base class type or interface.</p>
+<pre><code class="language-javascript line-numbers">const var v = Synth.getModulator("VeloMod"); // create a base class reference
+v.setAttribute(v.UseTable, 1);               // enable the table
+v.setIntensity(0.5);                         // change the intensity to 50%
+
+
+const var v_t = Synth.getTableProcessor();   // create a interface class reference
+v_t.addTablePoint(0, 0.5, 0.25);             // create a table point in the centre.</code></pre>
+<pre><code class="language-javascript line-numbers">// short cut - create a temporary interface reference
+v.asTableProcessor().addTablePoint(0, 0.5, 0.25);</code></pre>
+<h3 id="list-of-base-class-references:"><b>List of base class references:</b>
+</h3>
+<ul><li><a href="scripting/scripting-api/audiosampleprocessor/index.html">AudioSampleProcessor</a>
+<br></li>
+<li><a href="scripting/scripting-api/tableprocessor/index.html">TableProcessor</a>
+<br></li>
+<li><a href="scripting/scripting-api/slotfx/index.html">SlotFX</a>
+</li>
+<li><a href="scripting/scripting-api/routingmatrix/index.html">RoutingMatrix</a>
+</li>
+<li><a href="scripting/scripting-api/sampler/index.html">Sampler</a>
+ </li>
+<li><a href="scripting/scripting-api/midiplayer/index.html">MidiPlayer</a>
+</li>
+</ul>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="hise-modules/sound-generators/index.html">Signal Path</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>18.03.2019<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="builder"><b>Builder</b>
+</h1>
+<p><br>This class is a helper tool that lets you create the module tree programatically. This is useful if you have a rather complex signal architecture with lots of repetition and want to minimize the user error (eg. typos or inconsistent hierarchies).</p>
+<p>Example: You have a project with 5 samplers, each having a custom sript processor, an AHDSR as gain modulator, and a simple gain module. Usually you would create all modules by hand (and if you're smart and know what you want at the beginning you would create one sampler module with its child modules and then duplicate it). However if you later decide that you need an LFO in the pitch modulation chain, you would have to do this step manually 5 times. This doesn't sound like too much work, but it scales with the project size up to a point where simple additions / modifications take a lot of time and concentration to avoid making mistakes.</p>
+<p>The Builder addresses the problem by allowing you to create all modules with API calls. Upon compilation, the entire module tree can be deleted (with the exception of the interface script that contains this Builder obviously) and then recreated. Every method that creates a module will return an integer index that can be used to reference the module later.</p>
+<p>Let's take a look at the previous example and how to achieve it using the Builder:</p>
+<pre><code class="language-javascript line-numbers">const var builder = Synth.createBuilder();
+
+// Remove all modules except for the interface to get
+// a clean slate for the builder (if you omit this call, it
+// will create 5 new samplers each time you compile)
+builder.clear();
+
+for(i = 0; i < 5; i++)
+{
+	// Create a sampler
+	var sampler = builder.create(
+	                builder.SoundGenerators.StreamingSampler, // the module type
+	                "Sampler " + (i+1),                       // the ID
+	                0,                                        // the parent (root)
+	                builder.ChainIndexes.Direct);             // the slot type
+	
+	// Remove the simple envelope that is inserted by default
+	builder.clearChildren(sampler, builder.ChainIndexes.Gain);
+	
+	// Add the AHDSR
+	builder.create(builder.Modulators.AHDSR,    // the module type
+	               "GainAHDSR " + (i+1),        // the ID 
+	               sampler,                     // the parent module
+	               builder.ChainIndexes.Gain);  // the slot type
+	
+	// Add the simple gain module
+	builder.create(builder.Effects.SimpleGain,
+	               "Mixer " + (i+1), 
+	               sampler, 
+	               builder.ChainIndexes.FX);
+	
+}
+
+// We need to call this so it sends an update message to the HISE UI
+builder.flush();</code></pre>
+<p>Once you've created a script that creates your module tree from scratch everytime you compile, modifying or enhancing it is very straight forward: if we want to add a pitch modulation LFO, all we need to do is to add this single line:</p>
+<pre><code class="language-javascript line-numbers">builder.create(builder.Modulators.LFO, 
+               "Pitch LFO " + (i+1), 
+               sampler, 
+               builder.ChainIndexes.Pitch);</code></pre>
+<p>in the loop and it will create the 5 LFOs automatically.</p>
+<h2 id="workflow-tipps"><b>Workflow Tipps</b>
+</h2>
+<p>Here are a few practical considerations when using the Builder class:</p>
+<h3 id="make-it-conditional"><b>Make it conditional</b>
+</h3>
+<p>Make the module creation code conditional with a simple way of deactivating it. Usually you just want to run this code when you actually need to change the module structure. So either put everything into a function and only uncomment the function call when needed, or (which might be even better) write all the builder code into a separate external file<br>and comment / uncomment the include statement</p>
+<p>If you don't do this, then it will rebuild the entire module tree each time you compile which has a huge performance impact (and possible stability implications)</p>
+<h3 id="don't-expect-it-not-to-crash"><b>Don't expect it not to crash</b>
+</h3>
+<p>"HISE never crashes" is not something that I would put money down on a bet, but some operations of the builder class (especially those who clear and delete modules) are particularly prone to bringing your system down. This means that you should only run the builder methods </p>
+<ol><li>when necessary and</li>
+<li>when you wouldn't loose any work if the compilation would cause a crash</li>
+</ol>
+<p>So instead of complaining when it crashes (ocassionally), just be happy for the times it didn't crash. If it keeps crashing at a particular function call that you need it to go through, let me know.</p>
+<h3 id="never-use-this-in-a-compiled-plugin"><b>Never use this in a compiled plugin</b>
+</h3>
+<p>This is connected to the former point: never ever use calls to the Builder in a compiled plugin (in fact, they are deactivated in the compiled plugin so don't expect them to work). The Builder is a helper tool for development, not something that allows you to dynamically change the module tree and make this a core feature of your product.</p>
+<p><br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="clear"><b>clear</b>
+</h2>
+<p class="comment">WARNING: Clears all child sound generators, effects and MIDI processor (except for this one obviously).</p>
+<pre><code class="language-javascript line-numbers">Builder.clear()</code></pre>
+<p><br>This removes the entire module structure (with the exception of the interface) so that you can build upon a clean slate.</p>
+<p>Obviously that means that you cannot use this class in any other script processor than the main interface one, but I don't see any reason to do so.<br></p>
+<h2 id="clearchildren"><b>clearChildren</b>
+</h2>
+<p class="comment">Clears all child processors of the chain in the module with the given build index</p>
+<pre><code class="language-javascript line-numbers">Builder.clearChildren(int buildIndex, int chainIndex)</code></pre>
+<p><br><br></p>
+<h2 id="connecttoscript"><b>connectToScript</b>
+</h2>
+<p class="comment">Connects the script processor to an external script.</p>
+<pre><code class="language-javascript line-numbers">Builder.connectToScript(int buildIndex, String relativePath)</code></pre>
+<p><br>If you add a script processor using the builder, you most likely give it some code to compile. The most straight forward solution to this is to use an external script for this:</p>
+<ol><li>Write a script in any Script processor</li>
+<li>When you are done, right click in the script editor and choose "Save script to File". This will coallescate all callbacks and save it into one file.</li>
+<li>In the builder, create a script processor, save it's index and then pass this index together with the file reference of the file you just saved into this method. The syntax for the reference string is exactly like what you put into include statements.</li>
+</ol>
+<p>This will load the script content from the file into the given script processor and recompile it giving you the ability of using one script for multiple processors (which you might want to do anyway since you're using the Builder).</p>
+<p>If you need to modify the script, just do so - the script processor should detect that it's connected to an external file and then update it accordingly if you make changes. Just be aware that in order to apply those changes to all script processors that might use the script, you have to recompile them (using the Recompile all scripts) function<br></p>
+<h2 id="create"><b>create</b>
+</h2>
+<p class="comment">Creates a module and returns the build index (0=master container).</p>
+<pre><code class="language-javascript line-numbers">Builder.create(var type, var id, int rootBuildIndex, int chainIndex)</code></pre>
+<p><br><br></p>
+<h2 id="flush"><b>flush</b>
+</h2>
+<p class="comment">Sends a rebuild message. Call this after you've created all the processors to make sure that the patch browser is updated accordingly.</p>
+<pre><code class="language-javascript line-numbers">Builder.flush()</code></pre>
+<p><br>Once you're done with the builder, call this method so it will send out an UI update message to the HISE UI. You can omit this step, but then the Patch Browser will not show the new layout (and it might cause some issues with dangling UI elements), so there's no real reason to not call it.<br></p>
+<h2 id="get"><b>get</b>
+</h2>
+<p class="comment">Returns a typed reference for the module with the given build index.</p>
+<pre><code class="language-javascript line-numbers">Builder.get(int buildIndex, String interfaceType)</code></pre>
+<p><br>Sometimes you want to perform additional operations on the modules you created and for this you can use this method to get a script reference of a certain type that you can use. So if you have created a sampler that you then want to load a samplemap into, you can do it like this:</p>
+<pre><code class="language-javascript line-numbers">// create a typed reference from the build integer index
+var asSampler = builder.get(sampler, builder.InterfaceTypes.Sampler)
+
+asSampler.loadSampleMap("MySampleMap");</code></pre>
+<p>As you can see, we're using the contants found in the <code>InterfaceTypes</code>
+ object - it contains all available types (eg. MidiPlayer, TableProcessor, RoutingMatrix, etc).<br> </p>
+<h2 id="getexisting"><b>getExisting</b>
+</h2>
+<p class="comment">Adds the existing module to the internal list and returns the index for refering to it.</p>
+<pre><code class="language-javascript line-numbers">Builder.getExisting(String processorId)</code></pre>
+<p><br><br></p>
+<h2 id="setattributes"><b>setAttributes</b>
+</h2>
+<p class="comment">Set multiple attributes for the given module at once using a JSON object.</p>
+<pre><code class="language-javascript line-numbers">Builder.setAttributes(int buildIndex, var attributeValues)</code></pre>
+<p><br>This function can be used to set module attributes using a JSON object that contains the attribute IDs as key and the float number as value.</p>
+<pre><code class="language-javascript line-numbers">// Add the AHDSR (we need to save the return value for the next call)
+var ahdsr = builder.create(builder.Modulators.AHDSR,    // the module type
+	               "GainAHDSR " + (i+1),        // the ID 
+	               sampler,                     // the parent module
+	               builder.ChainIndexes.Gain);  // the slot type
+	
+	
+builder.setAttributes(ahdsr, {
+  "Attack": 8000,
+  "Release": 100.0
+});</code></pre>
+<p>You don't need to specify all parameters, just the ones that you want to be non-default.<br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/childsynth/index.html">ChildSynth</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>19.03.2023<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

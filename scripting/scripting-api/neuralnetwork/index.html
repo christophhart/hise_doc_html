@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="neuralnetwork"><b>NeuralNetwork</b>
+</h1>
+<p><br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="build"><b>build</b>
+</h2>
+<p class="comment">Create a network using the given JSON for the layer setup.</p>
+<pre><code class="language-javascript line-numbers">NeuralNetwork.build( var modelJSON)</code></pre>
+<p><br><br></p>
+<h2 id="clearmodel"><b>clearModel</b>
+</h2>
+<p class="comment">Destroys the model and allows rebuilding using a different layout JSON.</p>
+<pre><code class="language-javascript line-numbers">NeuralNetwork.clearModel()</code></pre>
+<p><br><br></p>
+<h2 id="connecttoglobalcables"><b>connectToGlobalCables</b>
+</h2>
+<p class="comment">Connects the network to a input and output global cable.</p>
+<pre><code class="language-javascript line-numbers">NeuralNetwork.connectToGlobalCables(String inputId, String outputId)</code></pre>
+<p><br><br></p>
+<h2 id="createmodeljsonfromtextfile"><b>createModelJSONFromTextFile</b>
+</h2>
+<p class="comment">Helper function to create a JSON model definition from the Pytorch print(model) output.</p>
+<pre><code class="language-javascript line-numbers">NeuralNetwork.createModelJSONFromTextFile(var fileObject)</code></pre>
+<p><br><br></p>
+<h2 id="getmodeljson"><b>getModelJSON</b>
+</h2>
+<p class="comment">Returns the model JSON.</p>
+<pre><code class="language-javascript line-numbers">NeuralNetwork.getModelJSON()</code></pre>
+<p><br><br></p>
+<h2 id="loadpytorchmodel"><b>loadPytorchModel</b>
+</h2>
+<p class="comment">Loads the model layout and weights from a Pytorch model JSON.</p>
+<pre><code class="language-javascript line-numbers">NeuralNetwork.loadPytorchModel( var modelJSON)</code></pre>
+<p><br><br></p>
+<h2 id="loadtensorflowmodel"><b>loadTensorFlowModel</b>
+</h2>
+<p class="comment">Loads the model layout and weights from a tensorflow model JSON.</p>
+<pre><code class="language-javascript line-numbers">NeuralNetwork.loadTensorFlowModel( var modelJSON)</code></pre>
+<p><br><br></p>
+<h2 id="loadweights"><b>loadWeights</b>
+</h2>
+<p class="comment">Loads the weights from the JSON object.</p>
+<pre><code class="language-javascript line-numbers">NeuralNetwork.loadWeights( var weightData)</code></pre>
+<p><br><br></p>
+<h2 id="process"><b>process</b>
+</h2>
+<p class="comment">Runs inference on the given input and returns either a single float or a reference to the output buffer.</p>
+<pre><code class="language-javascript line-numbers">NeuralNetwork.process(var input)</code></pre>
+<p><br><br></p>
+<h2 id="reset"><b>reset</b>
+</h2>
+<p class="comment">Resets the network pipeline.</p>
+<pre><code class="language-javascript line-numbers">NeuralNetwork.reset()</code></pre>
+<p><br><br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/node/index.html">Node</a>
+</span>
+
+<p class="content-footer-metadata"><br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

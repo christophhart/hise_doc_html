@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="dspmodule"><b>DspModule</b>
+</h1>
+<p><br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="dspinstance"><b>DspInstance</b>
+</h2>
+<p class="comment">Creates a new instance from the given Factory with the supplied name.</p>
+<pre><code class="language-javascript line-numbers">DspModule.DspInstance( DspFactory *f,  String moduleName_)</code></pre>
+<p><br><br></p>
+<h2 id="getconstant"><b>getConstant</b>
+</h2>
+<p class="comment">Returns the constant at the given index.</p>
+<pre><code class="language-javascript line-numbers">DspModule.getConstant(int index)</code></pre>
+<p><br><br></p>
+<h2 id="getconstantid"><b>getConstantId</b>
+</h2>
+<p class="comment">Returns the name of the constant.</p>
+<pre><code class="language-javascript line-numbers">DspModule.getConstantId(int index)</code></pre>
+<p><br><br></p>
+<h2 id="getinfo"><b>getInfo</b>
+</h2>
+<p class="comment">Returns an informative String.</p>
+<pre><code class="language-javascript line-numbers">DspModule.getInfo()</code></pre>
+<p><br><br></p>
+<h2 id="getnumconstants"><b>getNumConstants</b>
+</h2>
+<p class="comment">Returns the number of constants.</p>
+<pre><code class="language-javascript line-numbers">DspModule.getNumConstants()</code></pre>
+<p><br><br></p>
+<h2 id="getnumparameters"><b>getNumParameters</b>
+</h2>
+<p class="comment">Returns the number of parameters.</p>
+<pre><code class="language-javascript line-numbers">DspModule.getNumParameters()</code></pre>
+<p><br><br></p>
+<h2 id="getparameter"><b>getParameter</b>
+</h2>
+<p class="comment">Returns the parameter with the given index.</p>
+<pre><code class="language-javascript line-numbers">DspModule.getParameter(int index)</code></pre>
+<p><br><br></p>
+<h2 id="getstringparameter"><b>getStringParameter</b>
+</h2>
+<p class="comment">Gets the string value.</p>
+<pre><code class="language-javascript line-numbers">DspModule.getStringParameter(int index)</code></pre>
+<p><br><br></p>
+<h2 id="isbypassed"><b>isBypassed</b>
+</h2>
+<p class="comment">Checks if the processing is enabled.</p>
+<pre><code class="language-javascript line-numbers">DspModule.isBypassed()</code></pre>
+<p><br><br></p>
+<h2 id="operator->>"><b>operator >></b>
+</h2>
+<p class="comment">Applies the module on the data.</p>
+<pre><code class="language-javascript line-numbers">DspModule.operator >>( var data)</code></pre>
+<p><br><br></p>
+<h2 id="operator<<"><b>operator<<</b>
+</h2>
+<p class="comment">Applies the module on the data.</p>
+<pre><code class="language-javascript line-numbers">DspModule.operator<<( var data)</code></pre>
+<p><br><br></p>
+<h2 id="preparetoplay"><b>prepareToPlay</b>
+</h2>
+<p class="comment">Calls the setup method of the external module.</p>
+<pre><code class="language-javascript line-numbers">DspModule.prepareToPlay(double sampleRate, int samplesPerBlock)</code></pre>
+<p><br><br></p>
+<h2 id="processblock"><b>processBlock</b>
+</h2>
+<p class="comment">Calls the processMethod of the external module.</p>
+<pre><code class="language-javascript line-numbers">DspModule.processBlock( var data)</code></pre>
+<p><br><br></p>
+<h2 id="setbypassed"><b>setBypassed</b>
+</h2>
+<p class="comment">Enables / Disables the processing.</p>
+<pre><code class="language-javascript line-numbers">DspModule.setBypassed(bool shouldBeBypassed)</code></pre>
+<p><br><br></p>
+<h2 id="setparameter"><b>setParameter</b>
+</h2>
+<p class="comment">Sets the float parameter with the given index.</p>
+<pre><code class="language-javascript line-numbers">DspModule.setParameter(int index, float newValue)</code></pre>
+<p><br><br></p>
+<h2 id="setstringparameter"><b>setStringParameter</b>
+</h2>
+<p class="comment">Sets a String value.</p>
+<pre><code class="language-javascript line-numbers">DspModule.setStringParameter(int index, String value)</code></pre>
+<p><br><br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/dspnetwork/index.html">DspNetwork</a>
+</span>
+
+<p class="content-footer-metadata"><br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="hiseeventbuffer"><b>HiseEventBuffer</b>
+</h1>
+<p>The buffer type for the <a href="cpp_api/hise/classhise_1_1_hise_event.html">HiseEvent</a>
+.<br> </p>
+<h2 id="class-methods"><b>Class methods</b>
+</h2>
+<h3 id="clear"><b>clear</b>
+</h3>
+<pre><code class="language-clike line-numbers">void clear()</code></pre>
+<p>Clears the buffer.<br> </p>
+<h3 id="isempty"><b>isEmpty</b>
+</h3>
+<pre><code class="language-clike line-numbers">bool isEmpty() const noexcept</code></pre>
+<p>checks if the buffer is empty.<br> </p>
+<h3 id="getnumused"><b>getNumUsed</b>
+</h3>
+<pre><code class="language-clike line-numbers">int getNumUsed() const</code></pre>
+<p>Returns the number of events in this buffer.<br> </p>
+<h3 id="begin"><b>begin</b>
+</h3>
+<pre><code class="language-clike line-numbers">HiseEvent * begin() const noexcept</code></pre>
+<p>compatibility for standard C++ type iterators.<br> </p>
+<h3 id="end"><b>end</b>
+</h3>
+<pre><code class="language-clike line-numbers">HiseEvent * end() const noexcept</code></pre>
+<p>compatibility for standard C++ type iterators.<br> </p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="cpp_api/hise/classhise_1_1_lockfree_queue.html">LockfreeQueue</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

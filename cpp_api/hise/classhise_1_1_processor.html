@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="processor"><b>Processor</b>
+</h1>
+<p>The base class for all HISE modules in the signal path.<br>Every object within HISE that processes audio or MIDI is derived from this base class to share the following features:<br></p>
+<ul><li>handling of child processors (and special treatment for child processors which are Chains)<br></li>
+<li>bypassing & parameter management (using the 'float' type for compatibility with audio processing & plugin parameters): <a href="cpp_api/hise/classhise_1_1_processor.html#setattribute">setAttribute()</a>
+ / <a href="cpp_api/hise/classhise_1_1_processor.html#getattribute">getAttribute()</a>
+<br></li>
+<li>set input / output values for metering and visualization (<a href="cpp_api/hise/classhise_1_1_processor.html#setinputvalue">setInputValue()</a>
+, <a href="cpp_api/hise/classhise_1_1_processor.html#setoutputvalue">setOutputValue()</a>
+)<br></li>
+<li>access to the global <a href="cpp_api/hise/classhise_1_1_main_controller.html">MainController</a>
+ object (see <a href="cpp_api/hise/classhise_1_1_controlled_object.html">ControlledObject</a>
+)<br></li>
+<li>import / export via ValueTree (see RestorableObject)<br></li>
+<li>methods for identification (<a href="cpp_api/hise/classhise_1_1_processor.html#getid">getId()</a>
+, <a href="cpp_api/hise/classhise_1_1_processor.html#gettype">getType()</a>
+, <a href="cpp_api/hise/classhise_1_1_processor.html#getname">getName()</a>
+, <a href="cpp_api/hise/classhise_1_1_processor.html#getsymbol">getSymbol()</a>
+, <a href="cpp_api/hise/classhise_1_1_processor.html#getcolour">getColour()</a>
+)<br></li>
+<li>access to the console<br></li>
+</ul>
+<p><br>The general architecture of a HISE patch is a tree of Processor objects, all residing in a main container of the type ModulatorSynthChain (which can be obtained using <a href="cpp_api/hise/classhise_1_1_controlled_object.html#getmaincontroller">getMainController()</a>
+->getMainSynthChain()). There is a small helper class ProcessorHelpers, which contains some static methods for searching & checking the type of the Processor.<br>Normally, you would not derive from this class directly, but use some of its less generic subclasses (<a href="cpp_api/hise/classhise_1_1_midi_processor.html">MidiProcessor</a>
+, <a href="cpp_api/hise/classhise_1_1_modulator.html">Modulator</a>
+, <a href="cpp_api/hise/classhise_1_1_effect_processor.html">EffectProcessor</a>
+ or <a href="cpp_api/hise/classhise_1_1_modulator_synth.html">ModulatorSynth</a>
+). There are also some additional interface classes to extend the Processor class with specific features: Processor Interface Classes<br></p>
+<h2 id="class-hierarchy"><b>Class Hierarchy</b>
+</h2>
+<h3 id="base-classes"><b>Base Classes</b>
+</h3>
+<ul><li><code>hise::SafeChangeBroadcaster</code>
+<br></li>
+<li><code>hise::RestorableObject</code>
+<br></li>
+<li><a href="cpp_api/hise/classhise_1_1_controlled_object.html">hise::ControlledObject</a>
+<br></li>
+<li><code>hise::Dispatchable</code>
+<br></li>
+</ul>
+<h3 id="derived-classes"><b>Derived Classes</b>
+</h3>
+<ul><li><a href="cpp_api/hise/classhise_1_1_effect_processor.html">hise::EffectProcessor</a>
+<br></li>
+<li><code>hise::EffectProcessorChain</code>
+<br></li>
+<li><a href="cpp_api/hise/classhise_1_1_midi_processor.html">hise::MidiProcessor</a>
+<br></li>
+<li><a href="cpp_api/hise/classhise_1_1_modulator.html">hise::Modulator</a>
+<br></li>
+<li><a href="cpp_api/hise/classhise_1_1_modulator_synth.html">hise::ModulatorSynth</a>
+<br></li>
+</ul>
+<h2 id="class-methods"><b>Class methods</b>
+</h2>
+<h3 id="processor"><b>Processor</b>
+</h3>
+<pre><code class="language-clike line-numbers">Processor(MainController *m, const String &id_, int numVoices)</code></pre>
+<p>Creates a new Processor with the given Identifier.<br> </p>
+<h3 id="~processor"><b>~Processor</b>
+</h3>
+<pre><code class="language-clike line-numbers">~Processor()</code></pre>
+<p>Overwrite this if you need custom destruction behaviour.<br> </p>
+<h3 id="createeditor"><b>createEditor</b>
+</h3>
+<pre><code class="language-clike line-numbers">ProcessorEditorBody * createEditor(ProcessorEditor *parentEditor)=0</code></pre>
+<p>Creates a ProcessorEditor for this Processor and returns the pointer.<br>If you subclass this, just allocate a ProcessorEditor of the desired type on the heap and return it. Remember to pass the Processor as parameter to allow asynchronous GUI notification. The concept between Processor and ProcessorEditor is the same as AudioProcessor and AudioProcessorEditor.<br> </p>
+<h3 id="exportasvaluetree"><b>exportAsValueTree</b>
+</h3>
+<pre><code class="language-clike line-numbers">ValueTree exportAsValueTree() const override</code></pre>
+<p>This saves the Processor.<br>It saves the ID, the bypassed state and the fold state. It also saves all child processors. You can overwrite this function and add more properties and their child processors but make sure you call the base class method.<br>For primitive values, you can use the macro saveAttribute(name, nameAsString):<br>You don't need to save the editor states, as the first 32 bits of EditorState is saved.<br></p>
+<pre><code class="language-clike line-numbers">ValueTree exportAsValueTree() const override
+{
+    // must be named 'v' for the macros
+    ValueTree v = BaseClass::exportAsValueTree(); 
+
+    saveAttribute(attributeName, "AttributeName");
+
+    // ...
+
+    if(useTable) saveTable(tableVariableName, "TableVariableNameData");
+
+    return v;
+};</code></pre>
+<p><br><a href="cpp_api/hise/classhise_1_1_processor.html#restorefromvaluetree">restoreFromValueTree()</a>
+<br><br></p>
+<h3 id="restorefromvaluetree"><b>restoreFromValueTree</b>
+</h3>
+<pre><code class="language-clike line-numbers">void restoreFromValueTree(const ValueTree &previouslyExportedProcessorState) override</code></pre>
+<p>Restores a previously saved ValueTree.<br>The value tree must be created with exportAsValueTree or it will be unpredictable. The child processors are created automatically (both for chains and processors with fixed internal chains, but you should overwrite this method if your Processor uses parameters.<br>There is a handy macro saveAttribute(name, nameAsString) for this purpose.<br></p>
+<pre><code class="language-clike line-numbers">restoreFromValueTree(const ValueTree &v) override // parameter must be named 'v' for the macros
+{
+    // replace BaseClass with the class name of the immediate base class
+    BaseClass::restoreFromValueTree(v); 
+    
+    loadAttribute(attributeName, "AttributeName");
+    // ...
+    
+    // If your Processor uses tables: 
+    if(useTable) loadTable(tableVariableName, "TableVariableData");
+}</code></pre>
+<p><br><a href="cpp_api/hise/classhise_1_1_processor.html#exportasvaluetree">exportAsValueTree()</a>
+<br><br></p>
+<h3 id="gettype"><b>getType</b>
+</h3>
+<pre><code class="language-clike line-numbers">const Identifier getType() const =0</code></pre>
+<p>Overwrite this method to specify the name.<br>Use non-whitespace Strings (best practice is CamelCase). In most cases, this will be enough: <code>cppconst String getType() const { return "ProcessorName";}; </code>
+</p>
+<p><br></p>
+<h3 id="getsymbol"><b>getSymbol</b>
+</h3>
+<pre><code class="language-clike line-numbers">const Path getSymbol() const</code></pre>
+<p>Returns the symbol of the Processor.<br>It either checks if a special symbol is set for this particular Processor, or returns the default one defined in <a href="cpp_api/hise/classhise_1_1_processor.html#getspecialsymbol">getSpecialSymbol()</a>
+<br></p>
+<h3 id="setsymbol"><b>setSymbol</b>
+</h3>
+<pre><code class="language-clike line-numbers">void setSymbol(Path newSymbol)</code></pre>
+<p>Sets a special symbol for the Processor.<br>If this method is used, the <a href="cpp_api/hise/classhise_1_1_processor.html#getsymbol">getSymbol()</a>
+ method will return this Path instead of the default one defined in <a href="cpp_api/hise/classhise_1_1_processor.html#getspecialsymbol">getSpecialSymbol()</a>
+;<br> </p>
+<h3 id="setattribute"><b>setAttribute</b>
+</h3>
+<pre><code class="language-clike line-numbers">void setAttribute(int parameterIndex, float newValue, juce::NotificationType notifyEditor)</code></pre>
+<p>Changes a Processor parameter.<br>This can be used in the audio thread eg. by other Processors. Overwrite the method <a href="cpp_api/hise/classhise_1_1_processor.html#setinternalattribute">setInternalAttribute()</a>
+ to store the parameters in private member variables. If the Processor is polyphonic, the attributes must stay the same for different voices. In this case store a multiplicator for the attribute in a ProcessorState.<br>parameterIndexthe parameter index (use a enum from the derived class)<br> newValuethe new value between 0.0 and 1.0<br> notifyEditorif sendNotification, then a asynchronous message is sent.<br> <br></p>
+<h3 id="getattribute"><b>getAttribute</b>
+</h3>
+<pre><code class="language-clike line-numbers">float getAttribute(int parameterIndex) const =0</code></pre>
+<p>returns the attribute with the specified index (use a enum in the derived class).<br> </p>
+<h3 id="getdefaultvalue"><b>getDefaultValue</b>
+</h3>
+<pre><code class="language-clike line-numbers">float getDefaultValue(int) const</code></pre>
+<p>Overwrite this and return the default value.<br> </p>
+<h3 id="getchildprocessor"><b>getChildProcessor</b>
+</h3>
+<pre><code class="language-clike line-numbers">Processor * getChildProcessor(int processorIndex)=0</code></pre>
+<p>This must be overriden by every Processor and return the <a href="cpp_api/hise/classhise_1_1_chain.html">Chain</a>
+ with the <a href="cpp_api/hise/classhise_1_1_chain.html">Chain</a>
+ index.<br>You can either:- return nullptr, if the Processor uses no internal chains<br></p>
+<ul><li>one of the internal chains (it's recommended to use the InternalChains enum for this case)<br></li>
+<li>return the Processor at the index if the Processor is a <a href="cpp_api/hise/classhise_1_1_chain.html">Chain</a>
+. You can use it's handler's getProcessor() method.<br> </li>
+</ul>
+<p><br></p>
+<h3 id="getnumchildprocessors"><b>getNumChildProcessors</b>
+</h3>
+<pre><code class="language-clike line-numbers">int getNumChildProcessors() const =0</code></pre>
+<p>This must return the number of Child processors.<br>If this Processor is a <a href="cpp_api/hise/classhise_1_1_chain.html">Chain</a>
+, you can use it's getHandler()->getNumProcessor() method.<br> </p>
+<h3 id="getdescription"><b>getDescription</b>
+</h3>
+<pre><code class="language-clike line-numbers">String getDescription() const =0</code></pre>
+<p>Return a one-line description of the processor.<br> </p>
+<h3 id="getnuminternalchains"><b>getNumInternalChains</b>
+</h3>
+<pre><code class="language-clike line-numbers">int getNumInternalChains() const</code></pre>
+<p>If your processor uses internal chains, you can return the number here.<br>This is used by the ProcessorEditor to make the chain button bar.<br> </p>
+<h3 id="enableconsoleoutput"><b>enableConsoleOutput</b>
+</h3>
+<pre><code class="language-clike line-numbers">void enableConsoleOutput(bool shouldBeEnabled)</code></pre>
+<p>Enables the Processor to output messages to the Console.<br>This method itself does nothing, but you can use this to make a button or something else.<br> </p>
+<h3 id="getcolour"><b>getColour</b>
+</h3>
+<pre><code class="language-clike line-numbers">Colour getColour() const</code></pre>
+<p>Overwrite this method if you want a special colour.<br>This colour will be used in the debug console and in the editor.<br> </p>
+<h3 id="getvoiceamount"><b>getVoiceAmount</b>
+</h3>
+<pre><code class="language-clike line-numbers">int getVoiceAmount() const noexcept</code></pre>
+<p>getNumVoices() is occupied by the Synthesiser class, d'oh!<br> </p>
+<h3 id="getid"><b>getId</b>
+</h3>
+<pre><code class="language-clike line-numbers">const String & getId() const</code></pre>
+<p>Returns the unique id of the Processor instance (!= the Processor name).<br>It must be a valid Identifier (so no whitespace and weird characters).<br> </p>
+<h3 id="getname"><b>getName</b>
+</h3>
+<pre><code class="language-clike line-numbers">const String getName() const</code></pre>
+<p>Overwrite this and return a pretty name. If you don't overwrite it, the <a href="cpp_api/hise/classhise_1_1_processor.html#gettype">getType()</a>
+ method is used.<br> </p>
+<h3 id="setbypassed"><b>setBypassed</b>
+</h3>
+<pre><code class="language-clike line-numbers">void setBypassed(bool shouldBeBypassed, NotificationType notifyChangeHandler=dontSendNotification) noexcept</code></pre>
+<p>This bypasses the processor. You don't have to check in the processors logic itself, normally the chain should do that for you.<br> </p>
+<h3 id="isbypassed"><b>isBypassed</b>
+</h3>
+<pre><code class="language-clike line-numbers">bool isBypassed() const noexcept</code></pre>
+<p>Returns true if the processor is bypassed. For checking the bypass state of ModulatorSynths, better use isSoftBypassed().<br> </p>
+<h3 id="preparetoplay"><b>prepareToPlay</b>
+</h3>
+<pre><code class="language-clike line-numbers">void prepareToPlay(double sampleRate_, int samplesPerBlock_)</code></pre>
+<p>Sets the sample rate and the block size.<br> </p>
+<h3 id="getsamplerate"><b>getSampleRate</b>
+</h3>
+<pre><code class="language-clike line-numbers">double getSampleRate() const</code></pre>
+<p>Returns the sample rate.<br> </p>
+<h3 id="getlargestblocksize"><b>getLargestBlockSize</b>
+</h3>
+<pre><code class="language-clike line-numbers">int getLargestBlockSize() const</code></pre>
+<p>Returns the block size.<br> </p>
+<h3 id="getoutputvalue"><b>getOutputValue</b>
+</h3>
+<pre><code class="language-clike line-numbers">float getOutputValue() const</code></pre>
+<p>This can be used to display the Processors output value.<br> </p>
+<h3 id="getinputvalue"><b>getInputValue</b>
+</h3>
+<pre><code class="language-clike line-numbers">float getInputValue() const</code></pre>
+<p>This can be used to display the Processors input value.<br> </p>
+<h3 id="seteditorstate"><b>setEditorState</b>
+</h3>
+<pre><code class="language-clike line-numbers">void setEditorState(int state, bool isOn, NotificationType notifyView=sendNotification)</code></pre>
+<p>Saves the state of the Processor's editor. It must be saved within the Processor, because the Editor can be deleted.<br>You can add more states in your subclass (they should be expressable as bool). Best use a enum: <code>cppenum EditorState{<br><br>newState = Processor::numEditorStates,};</code>
+</p>
+<p><br></p>
+<h3 id="geteditorstate"><b>getEditorState</b>
+</h3>
+<pre><code class="language-clike line-numbers">bool getEditorState(int state) const</code></pre>
+<p>Restores the state of the Processor's editor. It must be saved within the Processor, because the Editor can be deleted.<br> </p>
+<h3 id="restorecompleteeditorstate"><b>restoreCompleteEditorState</b>
+</h3>
+<pre><code class="language-clike line-numbers">void restoreCompleteEditorState(const XmlElement *storedState)</code></pre>
+<p>Restores the EditorState from a BigInteger that was retrieved using getCompleteEditorState.<br> </p>
+<h3 id="getidentifierforparameterindex"><b>getIdentifierForParameterIndex</b>
+</h3>
+<pre><code class="language-clike line-numbers">Identifier getIdentifierForParameterIndex(int parameterIndex) const</code></pre>
+<p>This returns a Identifier with the name of the parameter.<br>If you want to use this feature (this lets you access Parameters with the script, you should add the parameter name for each parameter in your subtype constructor.<br> </p>
+<h3 id="getnumparameters"><b>getNumParameters</b>
+</h3>
+<pre><code class="language-clike line-numbers">int getNumParameters() const</code></pre>
+<p>This returns the number of (named) parameters.<br> </p>
+<h3 id="setisonair"><b>setIsOnAir</b>
+</h3>
+<pre><code class="language-clike line-numbers">void setIsOnAir(bool isBeingProcessedInAudioThread)</code></pre>
+<p>Call this method after inserting the processor in the signal chain.<br>If you call prepareToPlay before calling this method, it won't lock which makes inserting new processors nicer.<br> </p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="cpp_api/hise/classhise_1_1_project_handler.html">ProjectHandler</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

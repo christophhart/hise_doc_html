@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="midi-player"><b>MIDI Player</b>
+</h1>
+<p>A MidiPlayer reference can be used to control the playback of a MIDI Player module as well as processing the currently loaded MIDI sequency. It also acts as event controller for building customised UI elements that display the MIDI content.<br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="asmidiprocessor"><b>asMidiProcessor</b>
+</h2>
+<p class="comment">Returns a typed MIDI processor reference (for setting attributes etc).</p>
+<pre><code class="language-javascript line-numbers">MidiPlayer.asMidiProcessor()</code></pre>
+<p><br><br></p>
+<h2 id="clearallsequences"><b>clearAllSequences</b>
+</h2>
+<p class="comment">Removes all sequences and tracks.</p>
+<pre><code class="language-javascript line-numbers">MidiPlayer.clearAllSequences()</code></pre>
+<p><br><br></p>
+<h2 id="connecttometronome"><b>connectToMetronome</b>
+</h2>
+<p class="comment">Connects this MIDI player to the given metronome.</p>
+<pre><code class="language-javascript line-numbers">MidiPlayer.connectToMetronome(var metronome)</code></pre>
+<p><br><br></p>
+<h2 id="connecttopanel"><b>connectToPanel</b>
+</h2>
+<p class="comment">Connect this to the panel and it will be automatically updated when something changes.</p>
+<pre><code class="language-javascript line-numbers">MidiPlayer.connectToPanel(var panel)</code></pre>
+<p><br>This function is particularly helpful when you want to build a custom UI for the MIDI Player's content. </p>
+<p>Once this is called and a ScriptPanel is connected to this reference, It will automatically cause a repaint of the <a href="scripting/scripting-api/scriptpanel/index.html">ScriptPanel</a>
+ on these events:</p>
+<ul><li>new MIDI content being loaded</li>
+<li>track / sequence being changed </li>
+<li>MIDI sequence being cleared</li>
+<li>flushing of a MIDI processing</li>
+<li>if <a href="scripting/scripting-api/midiplayer/index.html#setrepaintonpositionchange">setRepaintOnPositionChange()</a>
+ was enabled, whenever the playback position changes.</li>
+</ul>
+<p>You can then use the functions <a href="scripting/scripting-api/midiplayer/index.html#getnoterectanglelist">getNoteRectangleList</a>
+ and <a href="scripting/scripting-api/midiplayer/index.html#getplaybackposition">getPlaybackPosition()</a>
+ to fetch the data and write the UI logic you want.<br></p>
+<h2 id="converteventlisttonoterectangles"><b>convertEventListToNoteRectangles</b>
+</h2>
+<p class="comment">Converts a given array of Message holders to a rectangle list.</p>
+<pre><code class="language-javascript line-numbers">MidiPlayer.convertEventListToNoteRectangles(var eventList, var targetBounds)</code></pre>
+<p><br><br></p>
+<h2 id="create"><b>create</b>
+</h2>
+<p class="comment">Creates an empty sequence with the given length.</p>
+<pre><code class="language-javascript line-numbers">MidiPlayer.create(int nominator, int denominator, int barLength)</code></pre>
+<p><br>The nominator and denominator will define the time signature, so for a <code>3/4</code>
+ time signature and 7 bars, use <code>MidiPlayer.create(3, 4, 7)</code>
+</p>
+<p>Be aware that this adds a new sequence to the player add the end of the list, so you probably want to check <code>isEmpty()</code>
+ if you just want to write a <a href="tutorials/recipes/event-processing/create-midi-sequence.html">bunch of notes</a>
+<br></p>
+<h2 id="flushmessagelist"><b>flushMessageList</b>
+</h2>
+<p class="comment">Writes the given array of MessageHolder objects into the current sequence. This is undoable.</p>
+<pre><code class="language-javascript line-numbers">MidiPlayer.flushMessageList(var messageList)</code></pre>
+<p><br><br></p>
+<h2 id="flushmessagelisttosequence"><b>flushMessageListToSequence</b>
+</h2>
+<p class="comment">Writes the given array of MessageHolder objects into the sequence with the given (one-based!) index. This is undoable.</p>
+<pre><code class="language-javascript line-numbers">MidiPlayer.flushMessageListToSequence(var messageList, int sequenceIndexOneBased)</code></pre>
+<p><br><br></p>
+<h2 id="geteventlist"><b>getEventList</b>
+</h2>
+<p class="comment">Creates an array containing all MIDI messages wrapped into MessageHolders for processing.</p>
+<pre><code class="language-javascript line-numbers">MidiPlayer.getEventList()</code></pre>
+<p><br>This is the first step of three when you want to process the content of a MIDI Player.<br>It creates an array of <a href="scripting/scripting-api/messageholder/index.html">MessageHolder</a>
+ objects which can be used to transform the MIDI data.</p>
+<p>The event ID of the events will be created consecutively and the events are sorted chronologically. You can find the matching note-off event to a note-on event using something like this:</p>
+<pre><code class="language-javascript line-numbers">inline function getNoteOff(list, noteOn)
+{
+    for(e in list)
+    {
+        if(e.isNoteOff() && e.getEventId() == noteOn.getEventId())
+            return e;
+    }
+}</code></pre>
+<p>The timestamp will be using the current samplerate and host BPM tempo to convert the relative MIDI timing to absolute sample positions. Be careful to never change the order of a note-on / note-off pair, otherwise the results will be very weird.</p>
+<p class="comment">There are a few new helper functions in the <code>Engine</code>
+ class to help you converting between the domains (search for <code>QuarterBeats</code>
+)</p>
+<p>Also make sure to call <a href="scripting/scripting-api/midiplayer/index.html#flushmessagelist">flushMessageList()</a>
+ after finishing the processing to apply the changes.<br></p>
+<h2 id="geteventlistfromsequence"><b>getEventListFromSequence</b>
+</h2>
+<p class="comment">Creates an array containing all MIDI messages from the sequence with the given (one-based!) index into Message Holders.</p>
+<pre><code class="language-javascript line-numbers">MidiPlayer.getEventListFromSequence(int sequenceIndexOneBased)</code></pre>
+<p><br><br></p>
+<h2 id="getlastplayednoteposition"><b>getLastPlayedNotePosition</b>
+</h2>
+<p class="comment">Returns the position of the last played note.</p>
+<pre><code class="language-javascript line-numbers">MidiPlayer.getLastPlayedNotePosition()</code></pre>
+<p><br><br></p>
+<h2 id="getmidifilelist"><b>getMidiFileList</b>
+</h2>
+<p class="comment">Returns a list of all MIDI files that are embedded in the plugin.</p>
+<pre><code class="language-javascript line-numbers">MidiPlayer.getMidiFileList()</code></pre>
+<p><br><br></p>
+<h2 id="getnoterectanglelist"><b>getNoteRectangleList</b>
+</h2>
+<p class="comment">Returns an array containing all notes converted to the space supplied with the target bounds [x, y, w, h].</p>
+<pre><code class="language-javascript line-numbers">MidiPlayer.getNoteRectangleList(var targetBounds)</code></pre>
+<p><br>This converts the MIDI data in the current sequence to a list of rectangles for each note scaled to fill the rectangle supplied as argument.</p>
+<p>A rectangle in <b>HISEScript</b>
+ is always an array of 4 integers:<br><code>[x, y, width, height]</code>
+.</p>
+<p>The most simple application of this is to draw a piano-roll content into a Panel.</p>
+<pre><code class="language-javascript line-numbers">// Fetch a Panel
+const var Panel = Content.getComponent("Panel1");
+
+// Fetch a MIDI Player
+const var Player = Synth.getMidiPlayer("MIDI Player1");
+
+// Connect the player to the panel to make it update automatically
+Player.connectToPanel(Panel);
+
+Panel.setPaintRoutine(function(g)
+{
+    // create a list of note rectangles.
+    // the argument is the boundaries of this panel so it will scale
+    // them to the dimensions of the entire panel.
+    var entireArea = [0, 0, this.getWidth(), this.getHeight()];
+    var list = Player.getNoteRectangleList(entireArea);
+    
+    g.setColour(Colours.white);
+
+    // Now we can simply iterate over them and paint them
+    for(note in list)
+    {
+        // `note` is a array with 4 numbers and can be passed
+        // into all Graphic API functions pretty conveniently.
+        g.fillRect(note);
+    }
+});</code></pre>
+<p><br></p>
+<h2 id="getnumsequences"><b>getNumSequences</b>
+</h2>
+<p class="comment">Returns the number of loaded sequences.</p>
+<pre><code class="language-javascript line-numbers">MidiPlayer.getNumSequences()</code></pre>
+<p><br><br></p>
+<h2 id="getnumtracks"><b>getNumTracks</b>
+</h2>
+<p class="comment">Returns the number of tracks in the current sequence.</p>
+<pre><code class="language-javascript line-numbers">MidiPlayer.getNumTracks()</code></pre>
+<p><br><br></p>
+<h2 id="getplaybackposition"><b>getPlaybackPosition</b>
+</h2>
+<p class="comment">Returns the playback position in the current loop between 0.0 and 1.0.</p>
+<pre><code class="language-javascript line-numbers">MidiPlayer.getPlaybackPosition()</code></pre>
+<p><br><br></p>
+<h2 id="getplaystate"><b>getPlayState</b>
+</h2>
+<p class="comment">Returns the play state (0 = stop, 1 = play, 2 = recording.</p>
+<pre><code class="language-javascript line-numbers">MidiPlayer.getPlayState()</code></pre>
+<p><br><br></p>
+<h2 id="getticksperquarter"><b>getTicksPerQuarter</b>
+</h2>
+<p class="comment">Returns the tick resolution for a quarter note.</p>
+<pre><code class="language-javascript line-numbers">MidiPlayer.getTicksPerQuarter()</code></pre>
+<p><br><br></p>
+<h2 id="gettimesignature"><b>getTimeSignature</b>
+</h2>
+<p class="comment">Returns an object with properties about the length of the current sequence.</p>
+<pre><code class="language-javascript line-numbers">MidiPlayer.getTimeSignature()</code></pre>
+<p><br><br></p>
+<h2 id="gettimesignaturefromsequence"><b>getTimeSignatureFromSequence</b>
+</h2>
+<p class="comment">Returns an object with properties about the length of the sequence with the given index.</p>
+<pre><code class="language-javascript line-numbers">MidiPlayer.getTimeSignatureFromSequence(int index)</code></pre>
+<p><br><br></p>
+<h2 id="isempty"><b>isEmpty</b>
+</h2>
+<p class="comment">Checks if the MIDI player contains a sequence to read / write.</p>
+<pre><code class="language-javascript line-numbers">MidiPlayer.isEmpty()</code></pre>
+<p><br>This doesn't check whether the current sequence contains any notes, but checks whether there is any sequence loaded at all: If you load up the MIDI Player, it will not have a sequence loaded until you either load a MIDI file, or call <a href="scripting/scripting-api/midiplayer/index.html#create">Midiplayer.create</a>
+.</p>
+<p>If you want to check whether the sequence is empty, you can use this:</p>
+<pre><code class="language-javascript line-numbers">// Do not call this in the audio thread obviously...
+inline function sequenceHasNoEvents(player)
+{
+    return player.getEventList().length == 0;
+}</code></pre>
+<p><br></p>
+<h2 id="issequenceempty"><b>isSequenceEmpty</b>
+</h2>
+<p class="comment">Returns true if the sequence with the given (one-based!) index doesn't contain any midi data.</p>
+<pre><code class="language-javascript line-numbers">MidiPlayer.isSequenceEmpty(int indexOneBased)</code></pre>
+<p><br><br></p>
+<h2 id="play"><b>play</b>
+</h2>
+<p class="comment">Starts playing. Use the timestamp to delay the event or use the currents event timestamp for sample accurate playback.</p>
+<pre><code class="language-javascript line-numbers">MidiPlayer.play(int timestamp)</code></pre>
+<p><br><br></p>
+<h2 id="record"><b>record</b>
+</h2>
+<p class="comment">Starts recording (not yet implemented). Use the timestamp to delay the event or use the currents event timestamp for sample accurate playback.</p>
+<pre><code class="language-javascript line-numbers">MidiPlayer.record(int timestamp)</code></pre>
+<p><br><br></p>
+<h2 id="redo"><b>redo</b>
+</h2>
+<p class="comment">Redo the last edit.</p>
+<pre><code class="language-javascript line-numbers">MidiPlayer.redo()</code></pre>
+<p><br>Just like <a href="scripting/scripting-api/midiplayer/index.html#undo">undo()</a>
+, this will not use the global undo manager, but a dedicated undo manager for each MIDI player (otherwise the actions interfere with changing UI values, which would be very annoying).<br></p>
+<h2 id="reset"><b>reset</b>
+</h2>
+<p class="comment">Resets the current sequence to the last loaded file.</p>
+<pre><code class="language-javascript line-numbers">MidiPlayer.reset()</code></pre>
+<p><br><br></p>
+<h2 id="saveasmidifile"><b>saveAsMidiFile</b>
+</h2>
+<p class="comment">Saves the current sequence into the given file at the track position.</p>
+<pre><code class="language-javascript line-numbers">MidiPlayer.saveAsMidiFile(var file, int trackIndex)</code></pre>
+<p><br>This overwrites the track (starting with one) in the given file.</p>
+<p class="comment">This is not undoable and the original content will be swept into digital nirvana (except if you have a backup of the original file, obviously), so <b>NEVER</b>
+ use this method unless you know exactly what to do .<br></p>
+<h2 id="setautomationhandlerconsumescontrollerevents"><b>setAutomationHandlerConsumesControllerEvents</b>
+</h2>
+<p class="comment">This will send any CC messages from the MIDI file to the global MIDI handler.</p>
+<pre><code class="language-javascript line-numbers">MidiPlayer.setAutomationHandlerConsumesControllerEvents(bool shouldBeEnabled)</code></pre>
+<p><br><br></p>
+<h2 id="setfile"><b>setFile</b>
+</h2>
+<p class="comment">Loads a MIDI file and switches to this sequence if specified.</p>
+<pre><code class="language-javascript line-numbers">MidiPlayer.setFile(var fileName, bool clearExistingSequences, bool selectNewSequence)</code></pre>
+<p><br><br></p>
+<h2 id="setglobalplaybackratio"><b>setGlobalPlaybackRatio</b>
+</h2>
+<p class="comment">Sets a global playback ratio (for all MIDI players).</p>
+<pre><code class="language-javascript line-numbers">MidiPlayer.setGlobalPlaybackRatio(double globalRatio)</code></pre>
+<p><br><br></p>
+<h2 id="setplaybackcallback"><b>setPlaybackCallback</b>
+</h2>
+<p class="comment">Attaches a callback with two arguments (timestamp, playState) that gets executed when the play state changes.</p>
+<pre><code class="language-javascript line-numbers">MidiPlayer.setPlaybackCallback(var playbackCallback, var synchronous)</code></pre>
+<p><br><br></p>
+<h2 id="setplaybackposition"><b>setPlaybackPosition</b>
+</h2>
+<p class="comment">Sets the playback position in the current loop. Input must be between 0.0 and 1.0.</p>
+<pre><code class="language-javascript line-numbers">MidiPlayer.setPlaybackPosition(var newPosition)</code></pre>
+<p><br>Similar to <a href="scripting/scripting-api/audiosampleprocessor/index.html#setfile">AudioSampleProcessor.setFile()</a>
+, this will load a file into the MIDI player.</p>
+<p>It uses the standard HISE syntax for <a href="working-with-hise/project-management/index.html#project-folder-wildcard">file references</a>
+. The other arguments let you choose</p>
+<ul><li>whether you want to clear the existing sequences or add this to the end of the list of "loaded" sequences. You can switch between multiple sequences on the fly (even during playback), so if you want to use this feature, you need to add multiple sequences by setting this flag to <code>true</code>
+.</li>
+<li>whether you want to set the newly loaded sequence to be played back or keep the current sequence in the playback slot.</li>
+</ul>
+<p><br></p>
+<h2 id="setrecordeventcallback"><b>setRecordEventCallback</b>
+</h2>
+<p class="comment">Sets a inline function that will process every note that is about to be recorded.</p>
+<pre><code class="language-javascript line-numbers">MidiPlayer.setRecordEventCallback(var recordEventCallback)</code></pre>
+<p><br><br></p>
+<h2 id="setrepaintonpositionchange"><b>setRepaintOnPositionChange</b>
+</h2>
+<p class="comment">If true, the panel will get a repaint() call whenever the playback position changes.</p>
+<pre><code class="language-javascript line-numbers">MidiPlayer.setRepaintOnPositionChange(var shouldRepaintPanel)</code></pre>
+<p><br>By default this is off, but if you need your <a href="scripting/scripting-api/midiplayer/index.html#connecttopanel">connected Panel</a>
+ to repaint during playback (eg. to display a ruler that indicates the position), set this to true and it repaint() will be called periodically during playback.<br></p>
+<h2 id="setsequence"><b>setSequence</b>
+</h2>
+<p class="comment">Enables the (previously loaded) sequence with the given (one-based!) index.</p>
+<pre><code class="language-javascript line-numbers">MidiPlayer.setSequence(int sequenceIndex)</code></pre>
+<p><br><br></p>
+<h2 id="setsequencecallback"><b>setSequenceCallback</b>
+</h2>
+<p class="comment">Attaches a callback that gets executed whenever the sequence was changed.</p>
+<pre><code class="language-javascript line-numbers">MidiPlayer.setSequenceCallback(var updateFunction)</code></pre>
+<p><br><br></p>
+<h2 id="setsynctomasterclock"><b>setSyncToMasterClock</b>
+</h2>
+<p class="comment">Syncs the playback of this MIDI player to the master clock (external or internal).</p>
+<pre><code class="language-javascript line-numbers">MidiPlayer.setSyncToMasterClock(bool shouldSyncToMasterClock)</code></pre>
+<p><br><br></p>
+<h2 id="settimesignature"><b>setTimeSignature</b>
+</h2>
+<p class="comment">Sets the timing information of the current sequence using the given object.</p>
+<pre><code class="language-javascript line-numbers">MidiPlayer.setTimeSignature(var timeSignatureObject)</code></pre>
+<p><br><br></p>
+<h2 id="settimesignaturetosequence"><b>setTimeSignatureToSequence</b>
+</h2>
+<p class="comment">Sets the timing information of the sequence with the given index using the given object.</p>
+<pre><code class="language-javascript line-numbers">MidiPlayer.setTimeSignatureToSequence(int index, var timeSignatureObject)</code></pre>
+<p><br><br></p>
+<h2 id="settrack"><b>setTrack</b>
+</h2>
+<p class="comment">Sets the track index (starting with one).</p>
+<pre><code class="language-javascript line-numbers">MidiPlayer.setTrack(int trackIndex)</code></pre>
+<p><br>This makes the MIDI Player choose the selected track (again, starting with <code>1</code>
+, not with zero). Be aware that changing tracks is not as "dynamic" as switching between different sequences.<br> </p>
+<h2 id="setuseglobalundomanager"><b>setUseGlobalUndoManager</b>
+</h2>
+<p class="comment">If enabled, it uses the global undo manager for all edits (So you can use Engine.undo()).</p>
+<pre><code class="language-javascript line-numbers">MidiPlayer.setUseGlobalUndoManager(bool shouldUseGlobalUndoManager)</code></pre>
+<p><br><br></p>
+<h2 id="setusetimestampinticks"><b>setUseTimestampInTicks</b>
+</h2>
+<p class="comment">Uses Ticks instead of samples when editing the MIDI data.</p>
+<pre><code class="language-javascript line-numbers">MidiPlayer.setUseTimestampInTicks(bool shouldUseTicksAsTimestamps)</code></pre>
+<p><br><br></p>
+<h2 id="stop"><b>stop</b>
+</h2>
+<p class="comment">Starts playing. Use the timestamp to delay the event or use the currents event timestamp for sample accurate playback.</p>
+<pre><code class="language-javascript line-numbers">MidiPlayer.stop(int timestamp)</code></pre>
+<p><br><br></p>
+<h2 id="undo"><b>undo</b>
+</h2>
+<p class="comment">Undo the last edit.</p>
+<pre><code class="language-javascript line-numbers">MidiPlayer.undo()</code></pre>
+<p><br><br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/midiprocessor/index.html">MidiProcessor</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

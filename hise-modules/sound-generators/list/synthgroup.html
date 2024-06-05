@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="syntesizer-group"><b>Syntesizer Group</b>
+</h1>
+<p>Type ID: <code>SynthGroup</code>
+<br>Interface classes: <a href="scripting/scripting-api/routingmatrix/index.html">RoutingMatrix</a>
+<br></p>
+<p class="comment"><b>A container for other Sound generators that allows FM and other additional synthesis types.</b>
+<br></p>
+<img src="images/module_screenshot_synthgroup.png"></img>
+<p><br></p>
+<p>The Synthesiser Group is one of two sound generators who can host other sound generators: the <a href="hise-modules/sound-generators/list/synthchain.html">Container</a>
+ just processes its sound generators one after another without knowing anything about their voices (each sound generator will have its own voice management).<br>However there are some use cases where you would like to group sound generators on voice level so that they can interact in some way. This is where this sound generator comes in. </p>
+<h2 id="additive-synthesis"><b>Additive Synthesis</b>
+</h2>
+<p>You can stack multiple generators together and run them through the same modulation which makes it a suitable workflow for additive synthesis. Be aware that the generators will be stacked up on the voice level instead of being rendered as a whole.</p>
+<h2 id="fm-synthesis"><b>FM Synthesis</b>
+</h2>
+<p>You can setup one sound generator to be the modulator for another sound generator to create a basic FM synthesiser. The sound generators do not have to be synthesised waveform generators, so you can also apply FM on your samples!</p>
+<h2 id="unisono-detune"><b>Unisono Detune</b>
+</h2>
+<p>The Synthesiser Group has a automatic unisono feature that duplicates the voices, detunes them and spreads them over the stereo field. You can have up to 16 voices that help you thicken up the sound. </p>
+<h2 id="parameters-"><b>Parameters </b>
+</h2>
+<table><thead><td><b>#</b>
+<b> </b>
+</td>
+<td><b>ID </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>4 </td>
+<td><code>EnableFM</code>
+ </td>
+<td>Enables FM synthesis for this group. </td>
+</tr>
+<tr><td>5 </td>
+<td><code>CarrierIndex</code>
+ </td>
+<td>the index for the FM carrier. </td>
+</tr>
+<tr><td>6 </td>
+<td><code>ModulatorIndex</code>
+ </td>
+<td>the index for the FM Modulator </td>
+</tr>
+<tr><td>7 </td>
+<td><code>UnisonoVoiceAmount</code>
+ </td>
+<td>the number of unisono voices </td>
+</tr>
+<tr><td>8 </td>
+<td><code>UnisonoDetune</code>
+ </td>
+<td>The detune amount for the unisono voices </td>
+</tr>
+<tr><td>9 </td>
+<td><code>UnisonoSpread</code>
+ </td>
+<td>the spread amount for the unisono voices </td>
+</tr>
+<tr><td>10 </td>
+<td><code>ForceMono</code>
+ </td>
+<td>if enabled, the voices will be rendered as mono voice </td>
+</tr>
+<tr><td>11 </td>
+<td><code>KillSecondVoices</code>
+ </td>
+<td>kills the second voices </td>
+</tr>
+</table>
+<h2 id="chains-"><b>Chains </b>
+</h2>
+<table><thead><td><b>#</b>
+<b> </b>
+</td>
+<td><b>ID </b>
+</td>
+<td><b>Restriction </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>4 </td>
+<td>Detune Mod </td>
+<td>Modulates the unisono detune amount. </td>
+</tr>
+<tr><td>5 </td>
+<td>Spread mod </td>
+<td>Modulates the unisono stereo spread amount. </td>
+</tr>
+<tr><td>4 </td>
+<td>Detune Mod </td>
+<td>All types </td>
+<td>- </td>
+</tr>
+</table>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="hise-modules/sound-generators/list/wavesynth.html">Waveform Generator</a>
+</span>
+
+<p class="content-footer-metadata"><br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

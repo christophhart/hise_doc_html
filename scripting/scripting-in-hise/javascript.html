@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="hise-javascript-tutorial"><b>HISE Javascript Tutorial</b>
+</h1>
+<p>To make <b>HISE Scripting</b>
+ perform well in a Audio-DSP context, a few major adaptations had to be made to it's JavaScript-Engine Implementation. It does'nt include the latest [ES6] specifications and had also to be stripped of a few known JS paradigms and is therefore not fully standard compliant. Take a look at <a href="scripting/scripting-in-hise/additions-in-hise.html">HISE Additions</a>
+ for the main differences between a standard JavaScript and the HiseScript implementation.</p>
+<p>This Tutorial builds upon the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript">A re-introduction to JavaScript</a>
+ Tutorial, reduced to the scope of Scripting in <b>HISE</b>
+.</p>
+<h3 id="overview"><b>Overview</b>
+</h3>
+<p>JavaScript is an object oriented dynamic language with types and operators, standard built-in objects, and methods. Its syntax is derived from the Java and C languages so many structures from those languages apply to JavaScript as well.</p>
+<p>One of the key differences is that JavaScript does not have classes. Instead, the class functionality is accomplished by object prototypes. The other main difference is that functions are objects, giving functions the capacity to hold executable code and be passed around like any other object.</p>
+<h2 id="data-types"><b>Data Types</b>
+</h2>
+<p>Let's start off by looking at the building block of any language: the types. JavaScript programs manipulate values, and those values all belong to a type. JavaScript's types are:</p>
+<ul><li><code>Number</code>
+</li>
+<li><code>String</code>
+</li>
+<li><code>Boolean</code>
+</li>
+<li><code>Object</code>
+</li>
+<li><code>Array</code>
+</li>
+<li><code>Function</code>
+</li>
+</ul>
+<p>Arrays and Functions are special kinds of Objects. ... oh, and <code>undefined</code>
+ and <code>null</code>
+, which are... slightly odd.</p>
+<h3 id="numbers"><b>Numbers</b>
+</h3>
+<p>Numbers in JavaScript are "double-precision 64-bit format IEEE 754 values", according to the spec. This has some interesting consequences. There's no such thing as an integer in JavaScript, so you have to be a little careful with your arithmetic if you're used to math in C or Java. Watch out for stuff like:</p>
+<pre><code class="language-javascript line-numbers">0.1 + 0.2 == 0.30000000000000004</code></pre>
+<p>In practice, integer values are treated as 32-bit ints (and are stored that way in some browser implementations), which can be important for bit-wise operations.</p>
+<p>The standard arithmetic operators are supported, including addition, subtraction, modulus (or remainder) arithmetic and so forth. There's also a built-in object that I forgot to mention earlier called <a href="scripting/scripting-api/math/index.html">Math</a>
+ if you want to perform more advanced mathematical functions and constants:</p>
+<pre><code class="language-javascript line-numbers">var r = Math.sin(3.5);
+var circumference = Math.PI * (r + r);</code></pre>
+<p>You can convert a string to an integer using the built-in parseInt() function. This takes the base for the conversion as an optional second argument, which you should always provide:</p>
+<pre><code class="language-javascript line-numbers">parseInt("123", 10); // 123
+parseInt("010", 10); // 10</code></pre>
+<p>If you don't provide the base, you can get surprising results:</p>
+<pre><code class="language-javascript line-numbers">parseInt("010"); // 8</code></pre>
+<p>That happened because the parseInt() function decided to treat the string as octal due to the leading 0.</p>
+<p>JavaScript has the special values Infinity and -Infinity:</p>
+<pre><code class="language-javascript line-numbers">1 / 0; //  Infinity
+-1 / 0; // -Infinity</code></pre>
+<p class="comment">The parseInt() and parseFloat() functions parse a string until they reach a character that isn't valid for the specified number format, then return the number parsed up to that point. However the "+" operator simply converts the string to NaN if there is any invalid character in it. Just try parsing the string "10.2abc" with each method by yourself in the console and you'll understand the differences better.</p>
+<h3 id="strings"><b>Strings</b>
+</h3>
+<p>Strings in JavaScript are sequences of characters. More accurately, they are sequences of Unicode characters, with each character represented by a 16-bit number. </p>
+<pre><code class="language-javascript line-numbers">"hello"</code></pre>
+<p>To find the length of a string, access its length property:</p>
+<pre><code class="language-javascript line-numbers">"hello".length; // 5</code></pre>
+<p>There's our first brush with JavaScript objects! Did I mention that you can use strings like objects too? They have methods as well that allow you to manipulate the string and access information about the string:</p>
+<pre><code class="language-javascript line-numbers">"hello".charAt(0); // "h"
+"hello, world".replace("hello", "goodbye"); // "goodbye, world"
+"hello".toUpperCase(); // "HELLO"</code></pre>
+<p><a href="scripting/scripting-api/string/index.html">String API</a>
+</p>
+<h3 id="boolean"><b>Boolean</b>
+</h3>
+<p>JavaScript has a boolean type, with two possible values <code>true</code>
+ and <code>false</code>
+ (both of which are keywords). Any value can be converted to a boolean according to the following rules:</p>
+<ol><li><code>false</code>
+, <code>0</code>
+, the empty string <code>("")</code>
+, <code>NaN</code>
+, <code>null</code>
+, and undefined all become <code>false</code>
+.</li>
+<li>all other values become <code>true</code>
+.</li>
+</ol>
+<p>However, conversion is rarely necessary, as JavaScript will silently perform this conversion when it expects a boolean, such as in an <a href="scripting/scripting-in-hise/javascript.html#if-/-else">if statement</a>
+ For this reason, we sometimes speak simply of "true values" and "false values," meaning values that become true and false, respectively, when converted to booleans. Alternatively, such values can be called "truthy" and "falsy".</p>
+<p><a href="scripting/scripting-in-hise/javascript.html#and-/-or-operators">Boolean operations</a>
+ such as <code>&&</code>
+ (logical and), <code>||</code>
+ (logical or), and <code>!</code>
+ (logical not) are supported.</p>
+<h3 id="null-/-undefined"><b>null / undefined</b>
+</h3>
+<p>JavaScript distinguishes between <code>null</code>
+, which is a value that indicates a deliberate non-value (and is only accessible through the null keyword), and <code>undefined</code>
+, which is a value of type <code>undefined</code>
+ that indicates an uninitialized value — that is, a value hasn't even been assigned yet. In JavaScript it is possible to declare a variable without assigning a value to it. If you do this, the variable's type is undefined. <code>undefined</code>
+ is actually a constant.</p>
+<h2 id="variables"><b>Variables</b>
+</h2>
+<p>New variables in JavaScript are declared using the var keyword:</p>
+<pre><code class="language-javascript line-numbers">var a;
+var name = "simon";</code></pre>
+<p class="comment"><b>HISE Advice:</b>
+ Because of the real-time-safe requirements of <b>HISE</b>
+ the declaring of <code>var</code>
+ variables is discouraged in all audio related callbacks since it will result in unpredictable performance with drop outs & stuff. Best practice is to declare all variables in the <code>onInit()</code>
+ callback and assign values to the variable in the other callbacks.</p>
+<p>HiseScript also features four other ways of declaring variables:</p>
+<ul><li><a href="scripting/scripting-in-hise/additions-in-hise.html#const-variables">const variables</a>
+</li>
+<li><a href="scripting/scripting-in-hise/additions-in-hise.html#reg-variables">reg variables</a>
+</li>
+<li><a href="scripting/scripting-in-hise/additions-in-hise.html#globals.x-variables">global variables</a>
+</li>
+<li><a href="scripting/scripting-in-hise/additions-in-hise.html#inline-functions">local variables</a>
+</li>
+</ul>
+<p class="comment">Please have a look at the <a href="scripting/scripting-in-hise/additions-in-hise.html#custom-variable-types-/-function-calls">HISE Additions Chapter</a>
+ to learn more about custom variables and scopes in <b>HISE</b>
+.</p>
+<p>An important difference from other languages like Java is that in JavaScript, blocks do not have scope; only functions have scope. So if a variable is defined using <code>var</code>
+ in a compound statement (for example inside an if control structure), it will be visible to the entire function. </p>
+<h2 id="operators"><b>Operators</b>
+</h2>
+<p>JavaScript's numeric operators are <code>+</code>
+, <code>-</code>
+, <code>*</code>
+, <code>/</code>
+ and <code>%</code>
+ - which is the remainder operator. Values are assigned using <code> = </code>
+, and there are also compound assignment statements such as <code>+=</code>
+ and <code>-=</code>
+. These extend out to <code>x = x <operator> y</code>
+.</p>
+<pre><code class="language-javascript line-numbers">x += 5
+x = x + 5</code></pre>
+<p>You can use <code>++</code>
+ and <code>--</code>
+ to increment and decrement respectively. These can be used as prefix or postfix operators.</p>
+<p>The <code>+</code>
+ operator also does string concatenation:</p>
+<pre><code class="language-javascript line-numbers">"hello" + " world"; // "hello world"</code></pre>
+<p>If you add a string to a number (or other value) everything is converted in to a string first. This might catch you up:</p>
+<pre><code class="language-javascript line-numbers">"3" + 4 + 5;  // "345"
+ 3 + 4 + "5"; // "75"</code></pre>
+<p>Adding an empty string to something is a useful way of converting it.</p>
+<p>Comparisons in JavaScript can be made using <code><</code>
+, <code>></code>
+, <code><=</code>
+ and <code>>=</code>
+. These work for both strings and numbers. Equality is a little less straightforward. The double-equals operator performs type coercion if you give it different types, with sometimes interesting results:</p>
+<pre><code class="language-javascript line-numbers">"dog" == "dog"; // true
+1 == true; // true</code></pre>
+<p>To avoid type coercion, use the triple-equals operator:</p>
+<pre><code class="language-javascript line-numbers">1 === true;    // false
+true === true; // true</code></pre>
+<p>There are also <code>!=</code>
+ and <code>!==</code>
+ operators.</p>
+<p>JavaScript also has bitwise operations. If you want to use them, they're there.</p>
+<h2 id="control-structures"><b>Control structures</b>
+</h2>
+<p>JavaScript has a similar set of control structures to other languages in the C family. Conditional statements are supported by <b>if</b>
+ and <b>else</b>
+; you can chain them together if you like:</p>
+<h3 id="if-/-else"><b>If / else</b>
+</h3>
+<pre><code class="language-javascript line-numbers">var name = "kittens";
+if (name == "puppies") {
+  name += "!";
+} else if (name == "kittens") {
+  name += "!!";
+} else {
+  name = "!" + name;
+}
+name == "kittens!!"</code></pre>
+<h3 id="for-loop"><b>For loop</b>
+</h3>
+<p>JavaScript's <b>for loop</b>
+ is the same as that in C and Java: it lets you provide the control information for your loop in a single line.</p>
+<pre><code class="language-javascript line-numbers">for (var i = 0; i < 5; i++) 
+{
+  // Will execute 5 times
+}</code></pre>
+<p>This variant with a pre-defined <code>reg</code>
+ variable is a bit faster though.</p>
+<pre><code class="language-javascript line-numbers">reg i = 0;
+for (i; i < 5; i++) 
+{
+  // Will execute 5 times
+}</code></pre>
+<p>You can loop through an array with the <code>for (i in array)</code>
+ syntax.</p>
+<pre><code class="language-javascript line-numbers">const var array = [1,2,3,4]
+for (i in array) 
+{
+  Console.print(i);
+}</code></pre>
+<p class="comment"><b>IMPORTANT:</b>
+ Go easy on the loops in the MIDI callbacks.</p>
+<h3 id="while-loops"><b>While loops</b>
+</h3>
+<p>JavaScript has <b>while loops</b>
+ and <b>do-while loops</b>
+. The first is good for basic looping; the second for loops where you wish to ensure that the body of the loop is executed at least once:</p>
+<pre><code class="language-javascript line-numbers">while (true) {
+  // an infinite loop!
+}
+
+var input;
+do {
+  input = get_input();
+} while (inputIsNotValid(input))</code></pre>
+<h3 id="and-/-or-operators"><b>AND / OR operators</b>
+</h3>
+<p>The <code>&&</code>
+ (AND) and <code>||</code>
+ (OR) operators use short-circuit logic, which means whether they will execute their second operand is dependent on the first. This is useful for checking for null objects before accessing their attributes:</p>
+<pre><code class="language-javascript line-numbers">var name = o && o.getName();</code></pre>
+<p>Or for setting default values:</p>
+<pre><code class="language-javascript line-numbers">var name = otherName || "default";</code></pre>
+<h3 id="ternary-operator"><b>Ternary operator</b>
+</h3>
+<p>JavaScript has a <b>ternary operator</b>
+ for conditional expressions:</p>
+<pre><code class="language-javascript line-numbers">var allowed = (age > 18) ? "yes" : "no"; 
+// if (condition == true) ?(become) "yes" :(else) "no";</code></pre>
+<h3 id="switch-statement"><b>Switch statement</b>
+</h3>
+<p>The <b>switch statement</b>
+ can be used for multiple branches based on a number or string:</p>
+<pre><code class="language-javascript line-numbers">switch(action) {
+  case 'draw':
+    drawIt();
+    break;
+  case 'eat':
+    eatIt();
+    break;
+  default:
+    doNothing();
+}</code></pre>
+<p>If you don't add a break statement, execution will "fall through" to the next level. This is very rarely what you want — in fact it's worth specifically labeling deliberate fallthrough with a comment if you really meant it to aid debugging:</p>
+<pre><code class="language-javascript line-numbers">switch(a) {
+  case 1: // fallthrough
+  case 2:
+    eatIt();
+    break;
+  default:
+    doNothing();
+}</code></pre>
+<h2 id="objects"><b>Objects</b>
+</h2>
+<p>JavaScript objects can be thought of as simple collections of "name-value pairs". As such, they are similar to:</p>
+<ul><li>Dictionaries in Python</li>
+<li>Hash tables in C and C++</li>
+<li>HashMaps in Java</li>
+<li>Associative arrays in PHP</li>
+</ul>
+<p>The fact that this data structure is so widely used is a testament to its versatility. Since everything (bar core types) in JavaScript is an object, any JavaScript program naturally involves a great deal of hash table lookups. It's a good thing they're so fast!</p>
+<p>The "name" part is a JavaScript string, while the value can be any JavaScript value — including more objects. This allows you to build data structures of arbitrary complexity.</p>
+<p>There is only one way to create an a plain object. (The <a href="scripting/scripting-in-hise/additions-in-hise.html#no-new-operator">new operator</a>
+ is not supported in <b>HISE</b>
+)</p>
+<pre><code class="language-javascript line-numbers">var obj = {};</code></pre>
+<p>This is called the _object literal syntax_, and is more convenient. This syntax is also the core of the <code>JSON</code>
+ format and should be preferred at all times.</p>
+<p>Object literal syntax can be used to initialize an object in its entirety:</p>
+<pre><code class="language-javascript line-numbers">var obj = {
+  name: "Carrot",
+  "for": "Max",
+  details: {
+    color: "orange",
+    size: 12
+  }
+};</code></pre>
+<p>Attribute access can be chained together:</p>
+<pre><code class="language-javascript line-numbers">obj.details.color; // orange
+obj["details"]["size"]; // 12</code></pre>
+<h2 id="arrays"><b>Arrays</b>
+</h2>
+<p>Arrays in JavaScript are actually a special type of object. They work very much like regular objects (numerical properties can naturally be accessed using [] syntax) but they have one magic property called 'length'. This is always one more than the highest index in the array.</p>
+<p>One way of creating arrays is as follows:</p>
+<pre><code class="language-javascript line-numbers">var a = [];
+a[0] = "dog";
+a[1] = "cat";
+a[2] = "hen";
+a.length; // 3</code></pre>
+<p class="comment"><b>HISE</b>
+ does not support the <code>var a = new Array()</code>
+ definition style.</p>
+<p>A more convenient notation is to use an array literal:</p>
+<pre><code class="language-javascript line-numbers">var a = ["dog", "cat", "hen"];
+a.length; // 3</code></pre>
+<p>Note that array.length isn't necessarily the number of items in the array. Consider the following:</p>
+<pre><code class="language-javascript line-numbers">var a = ["dog", "cat", "hen"];
+a[100] = "fox";
+a.length; // 101</code></pre>
+<p>Remember — an array index starts with <code>0</code>
+. The length of the array is therefore one more than its highest index.</p>
+<p>If you query a non-existent array index, you get <code>undefined</code>
+:</p>
+<pre><code class="language-javascript line-numbers">typeof a[90]; // undefined</code></pre>
+<p>If you take the above into account, you can iterate over an array using the following:</p>
+<pre><code class="language-javascript line-numbers">for (var i = 0; i < a.length; i++) {
+  // Do something with a[i]
+}</code></pre>
+<p>This is slightly inefficient as you are looking up the length property once every loop. An improvement is to declare the array-length variable up-front</p>
+<pre><code class="language-javascript line-numbers">const var len = a.length;
+for (var i = 0, i < len; i++) {
+  // Do something with a[i]
+}</code></pre>
+<p>You can iterate over an array using a for...in loop. </p>
+<pre><code class="language-javascript line-numbers">for (value in a) {
+  Console.print(value);
+}</code></pre>
+<p>If you want to append an item to an array simply do it like this:</p>
+<pre><code class="language-javascript line-numbers">a.push(item);</code></pre>
+<p>Arrays come with a number of methods. See the full API documentation for <a href="scripting/scripting-api/array/index.html">Array</a>
+ methods.</p>
+<p><a href="scripting/scripting-api/array/index.html">Array API</a>
+</p>
+<h2 id="functions"><b>Functions</b>
+</h2>
+<p>Along with objects, functions are the core component in understanding JavaScript. The most basic function couldn't be much simpler:</p>
+<pre><code class="language-javascript line-numbers">function add(x, y) {
+  var total = x + y;
+  return total;
+}
+Console.print(add(2,3));</code></pre>
+<p>This demonstrates a basic function. A JavaScript function can take 0 or more named parameters. The function body can contain as many statements as you like, and can declare its own variables which are local to that function. The return statement can be used to return a value at any time, terminating the function. If no return statement is used (or an empty return with no value), JavaScript returns undefined.</p>
+<p>The named parameters turn out to be more like guidelines than anything else. You can call a function without passing the parameters it expects, in which case they will be set to undefined.</p>
+<pre><code class="language-javascript line-numbers">add(); // NaN 
+// You can't perform addition on undefined</code></pre>
+<p>You can also pass in more arguments than the function is expecting:</p>
+<pre><code class="language-javascript line-numbers">add(2, 3, 4); // 5 
+// added the first two; 4 was ignored</code></pre>
+<p>Note that JavaScript functions are themselves objects and you can add or change properties on them just like on objects we've seen in the Objects section.</p>
+<p>Take a look at <a href="scripting/scripting-in-hise/additions-in-hise.html#inline-functions">inline functions</a>
+ for function with scope.</p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-in-hise/hise-script-coding-standards.html">HiseScript Coding Standards</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

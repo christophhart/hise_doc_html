@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="content"><b>Content</b>
+</h1>
+<p><br>The <code>Content</code>
+ object contains all methods related to interface design.</p>
+<pre><code class="language-javascript line-numbers">Content.makeFrontInterface(600, 500); // creates the user interface
+
+const var Knob1 = Content.getComponent("Knob1"); // Knob reference
+
+Content.addButton("ButtonName", 0, 0) // Adds a button programmatically</code></pre>
+<p><br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="addaudiowaveform"><b>addAudioWaveform</b>
+</h2>
+<p class="comment">Adds a audio waveform display.</p>
+<pre><code class="language-javascript line-numbers">Content.addAudioWaveform(String audioWaveformName, int x, int y)</code></pre>
+<p><br><br></p>
+<h2 id="addbutton"><b>addButton</b>
+</h2>
+<p class="comment">Adds a toggle button to the Content and returns the component index.</p>
+<pre><code class="language-javascript line-numbers">Content.addButton(String buttonName, int x, int y)</code></pre>
+<p><br><br></p>
+<h2 id="addcombobox"><b>addComboBox</b>
+</h2>
+<p class="comment">Adds a comboBox to the Content and returns the component index.</p>
+<pre><code class="language-javascript line-numbers">Content.addComboBox(String boxName, int x, int y)</code></pre>
+<p><br><br></p>
+<h2 id="addfloatingtile"><b>addFloatingTile</b>
+</h2>
+<p class="comment">Adds a floating layout component.</p>
+<pre><code class="language-javascript line-numbers">Content.addFloatingTile(String floatingTileName, int x, int y)</code></pre>
+<p><br><br></p>
+<h2 id="addimage"><b>addImage</b>
+</h2>
+<p class="comment">Adds a image to the script interface.</p>
+<pre><code class="language-javascript line-numbers">Content.addImage(String imageName, int x, int y)</code></pre>
+<p><br><br></p>
+<h2 id="addknob"><b>addKnob</b>
+</h2>
+<p class="comment">Adds a knob to the Content and returns the component index.</p>
+<pre><code class="language-javascript line-numbers">Content.addKnob(String knobName, int x, int y)</code></pre>
+<p><br><br></p>
+<h2 id="addlabel"><b>addLabel</b>
+</h2>
+<p class="comment">Adds a text input label.</p>
+<pre><code class="language-javascript line-numbers">Content.addLabel(String label, int x, int y)</code></pre>
+<p><br><br></p>
+<h2 id="addpanel"><b>addPanel</b>
+</h2>
+<p class="comment">Adds a panel (rectangle with border and gradient).</p>
+<pre><code class="language-javascript line-numbers">Content.addPanel(String panelName, int x, int y)</code></pre>
+<p><br><br></p>
+<h2 id="addsliderpack"><b>addSliderPack</b>
+</h2>
+<p class="comment">Adds a slider pack.</p>
+<pre><code class="language-javascript line-numbers">Content.addSliderPack(String sliderPackName, int x, int y)</code></pre>
+<p><br><br></p>
+<h2 id="addtable"><b>addTable</b>
+</h2>
+<p class="comment">Adds a table editor to the Content and returns the component index.</p>
+<pre><code class="language-javascript line-numbers">Content.addTable(String tableName, int x, int y)</code></pre>
+<p><br><br></p>
+<h2 id="addviewport"><b>addViewport</b>
+</h2>
+<p class="comment">Adds a viewport.</p>
+<pre><code class="language-javascript line-numbers">Content.addViewport(String viewportName, int x, int y)</code></pre>
+<p><br><br></p>
+<h2 id="addvisualguide"><b>addVisualGuide</b>
+</h2>
+<p class="comment">Creates either a line or rectangle with the given colour.</p>
+<pre><code class="language-javascript line-numbers">Content.addVisualGuide(var guideData, var colour)</code></pre>
+<p><br>This function creates visual guide lines or rectangles that appear on the interface (not in the compiled plugin). They are useful for debugging or layout alignments.</p>
+<p>It expects two arguments, the first must be an array with either two or four elements and the second must be a colour (it's recommended to use the <code>Colours</code>
+ constants for this).</p>
+<p>If the array has two elements, it will add a horizontal or vertical line, depending on which element is non-zero. If the array has four elements it will be a rectangle (with the same format that you pass into eg. <code>Graphics.fillRect()</code>
+). </p>
+<p class="comment">Anything else will cause the visual guides to be cleared, so if you want to delete all lines, just pass in <code>0</code>
+.</p>
+<pre><code class="language-javascript line-numbers">Content.addVisualGuide([0, 200], Colours.white);       // adds a horizontal line at 200px
+Content.addVisualGuide([100, 0], Colours.red);         // adds a vertical line at 100px
+Content.addVisualGuide([10, 10, 100, 50], 0xFF00FF00); // adds a rectangle
+
+Content.addVisualGuide(0, 0);                          // clears all visual guides</code></pre>
+<p>The lines will always be rendered on top of all UI elements so that they are always visible.<br> </p>
+<h2 id="addwebview"><b>addWebView</b>
+</h2>
+<p class="comment">Adds a web view.</p>
+<pre><code class="language-javascript line-numbers">Content.addWebView(String webviewName, int x, int y)</code></pre>
+<p><br><br></p>
+<h2 id="callafterdelay"><b>callAfterDelay</b>
+</h2>
+<p class="comment">Calls a function after a delay. This is not accurate and only useful for UI purposes!.</p>
+<pre><code class="language-javascript line-numbers">Content.callAfterDelay(int milliSeconds, var function, var thisObject)</code></pre>
+<p><br><br></p>
+<h2 id="createlocallookandfeel"><b>createLocalLookAndFeel</b>
+</h2>
+<p class="comment">Creates a look and feel that you can attach manually to certain components.</p>
+<pre><code class="language-javascript line-numbers">Content.createLocalLookAndFeel()</code></pre>
+<p><br><br></p>
+<h2 id="createmarkdownrenderer"><b>createMarkdownRenderer</b>
+</h2>
+<p class="comment">Creates a MarkdownRenderer.</p>
+<pre><code class="language-javascript line-numbers">Content.createMarkdownRenderer()</code></pre>
+<p><br><br></p>
+<h2 id="createpath"><b>createPath</b>
+</h2>
+<p class="comment">Creates a Path that can be drawn to a ScriptPanel.</p>
+<pre><code class="language-javascript line-numbers">Content.createPath()</code></pre>
+<p><br><br></p>
+<h2 id="createscreenshot"><b>createScreenshot</b>
+</h2>
+<p class="comment">Creates a screenshot of the area relative to the content's origin.</p>
+<pre><code class="language-javascript line-numbers">Content.createScreenshot(var area, var directory, String name)</code></pre>
+<p><br>This function can be used to create an image from a section of your interface and save it as PNG file. Just pass an array with 4 elements (<code>[x, y, w, h]</code>
+), a <a href="scripting/scripting-api/file/index.html">File</a>
+ object that points to a directory and a relative filename (without the file extension) and it will render the specified area into a PNG image.</p>
+<pre><code class="language-javascript line-numbers">// Save the image to C:\Users\UserName\Documents\myimage.png;
+Content.createScreenShot([0, 0, 1024 768], 
+                         FileSystem.getFolder(FileSystem.Documents), 
+                         "myimage");</code></pre>
+<p>Be aware that this takes the current zoom factor into account, so if you have a UI Zoom Factor of 200%, the resulting image will be twice the size of the "default" interface dimensions. It will also hide any visual guides that you might have added so they don't clutter your exported image.</p>
+<p class="comment">Also be aware that if you use OpenGL shaders, they will not be rendered to the image (because they are rendered directly to the screen). However there is a <a href="scripting/scripting-api/scriptshader/index.html#setenablecachedbuffer">helper function</a>
+ available to enable shaders to be rendered to a screenshot.<br></p>
+<h2 id="createshader"><b>createShader</b>
+</h2>
+<p class="comment">Creates an OpenGL framgent shader.</p>
+<pre><code class="language-javascript line-numbers">Content.createShader( String fileName)</code></pre>
+<p><br>If you want to create a <a href="scripting/scripting-api/scriptshader/index.html">ScriptShader</a>
+, use this method and supply the filename as parameter (see <a href="scripting/scripting-api/scriptshader/index.html#setfragmentshader">ScriptShader.setFragmentShader()</a>
+ for more information about including shaders).<br></p>
+<h2 id="createsvg"><b>createSVG</b>
+</h2>
+<p class="comment">Creates an SVG object from the converted Base64 String.</p>
+<pre><code class="language-javascript line-numbers">Content.createSVG( String base64String)</code></pre>
+<p><br><br></p>
+<h2 id="getallcomponents"><b>getAllComponents</b>
+</h2>
+<p class="comment">Returns an array of all components that match the given regex.</p>
+<pre><code class="language-javascript line-numbers">Content.getAllComponents(String regex)</code></pre>
+<p><br><br></p>
+<h2 id="getcomponent"><b>getComponent</b>
+</h2>
+<p class="comment">Returns the reference to the given component.</p>
+<pre><code class="language-javascript line-numbers">Content.getComponent(var name)</code></pre>
+<p><br><br></p>
+<h2 id="getcomponentunderdrag"><b>getComponentUnderDrag</b>
+</h2>
+<p class="comment">Returns the ID of the component under the mouse.</p>
+<pre><code class="language-javascript line-numbers">Content.getComponentUnderDrag()</code></pre>
+<p><br><br></p>
+<h2 id="getcomponentundermouse"><b>getComponentUnderMouse</b>
+</h2>
+<p class="comment">Returns the name of the component that is currently hovered.</p>
+<pre><code class="language-javascript line-numbers">Content.getComponentUnderMouse()</code></pre>
+<p><br><br></p>
+<h2 id="getcurrenttooltip"><b>getCurrentTooltip</b>
+</h2>
+<p class="comment">Returns the current tooltip.</p>
+<pre><code class="language-javascript line-numbers">Content.getCurrentTooltip()</code></pre>
+<p><br>This can be used to create a custom tooltip implementation if the TooltipPanel does not suit your needs.</p>
+<p>This will return the "raw" tooltip (as in the tooltip from the UI element where the mouse is hovering over). For most applications you might want to introduce a custom delay, so that if you move the mouse away from the element, it will "stick" a little bit longer.</p>
+<p>This example will display the current tooltip on a label with a delay of a second.</p>
+<pre><code class="language-javascript line-numbers">const var t = Engine.createTimerObject();
+const var Label1 = Content.getComponent("Label1");
+reg isPending = false;
+
+t.setTimerCallback(function()
+{
+	var tooltip = Content.getCurrentTooltip();
+	
+	if(tooltip == "")
+	{
+		// Now the mouse is over a component without a tooltip
+	
+		if(Label1.get("text") != "" && !isPending)
+		{
+			// The tooltip label was not empty so we set the isPending flag
+			// and reset the internal counter of the timer object
+			isPending = true;
+			this.resetCounter(); // [1]
+		}
+		else if (this.getMilliSecondsSinceCounterReset() > 1000)
+		{
+			// Now a second has passed since [1] without a new tooltip being
+			// set, so we clear the label and reset the isPending flag
+			isPending = false;
+			Label1.set("text", "");
+		}
+	}
+	else
+	{
+		// We update the label with the new tooltip and
+		// clear the isPending flag
+		isPending = false;
+		Label1.set("text", tooltip);
+	}
+});
+
+// We don't need it to be super fast, so 100ms should be fine
+t.startTimer(100);</code></pre>
+<p><br></p>
+<h2 id="getscreenbounds"><b>getScreenBounds</b>
+</h2>
+<p class="comment">Returns the total bounds of the main display.</p>
+<pre><code class="language-javascript line-numbers">Content.getScreenBounds(bool getTotalArea)</code></pre>
+<p><br><br></p>
+<h2 id="isctrldown"><b>isCtrlDown</b>
+</h2>
+<p class="comment">Checks whether the CTRL key's flag is set.</p>
+<pre><code class="language-javascript line-numbers">Content.isCtrlDown()</code></pre>
+<p><br><br></p>
+<h2 id="ismousedown"><b>isMouseDown</b>
+</h2>
+<p class="comment">Returns 1 if the left mouse button is clicked somewhere on the interface and 2 if the right button is clicked.</p>
+<pre><code class="language-javascript line-numbers">Content.isMouseDown()</code></pre>
+<p><br><br></p>
+<h2 id="makefrontinterface"><b>makeFrontInterface</b>
+</h2>
+<p class="comment">Sets this script as main interface with the given size.</p>
+<pre><code class="language-javascript line-numbers">Content.makeFrontInterface(int width, int height)</code></pre>
+<p><br><br></p>
+<h2 id="makefullscreeninterface"><b>makeFullScreenInterface</b>
+</h2>
+<p class="comment">Sets this script as main interface with the given device resolution (only works with mobile devices).</p>
+<pre><code class="language-javascript line-numbers">Content.makeFullScreenInterface()</code></pre>
+<p><br><br></p>
+<h2 id="refreshdragimage"><b>refreshDragImage</b>
+</h2>
+<p class="comment">Calls the paint function of the drag operation again to refresh the image.</p>
+<pre><code class="language-javascript line-numbers">Content.refreshDragImage()</code></pre>
+<p><br><br></p>
+<h2 id="restoreallcontrolsfrompreset"><b>restoreAllControlsFromPreset</b>
+</h2>
+<p class="comment">Restores all controls from a previously saved XML data file.</p>
+<pre><code class="language-javascript line-numbers">Content.restoreAllControlsFromPreset( String fileName)</code></pre>
+<p><br><br></p>
+<h2 id="setcolour"><b>setColour</b>
+</h2>
+<p class="comment">Sets the colour for the panel.</p>
+<pre><code class="language-javascript line-numbers">Content.setColour(int red, int green, int blue)</code></pre>
+<p><br><br></p>
+<h2 id="setcontenttooltip"><b>setContentTooltip</b>
+</h2>
+<p class="comment">sets the Tooltip that will be shown if the mouse hovers over the script's tab button.</p>
+<pre><code class="language-javascript line-numbers">Content.setContentTooltip( String tooltipToShow)</code></pre>
+<p><br><br></p>
+<h2 id="setheight"><b>setHeight</b>
+</h2>
+<p class="comment">Sets the height of the content.</p>
+<pre><code class="language-javascript line-numbers">Content.setHeight(int newHeight)</code></pre>
+<p><br><br></p>
+<h2 id="setkeypresscallback"><b>setKeyPressCallback</b>
+</h2>
+<p class="comment">Adds a callback that will be performed asynchronously when the key is pressed.</p>
+<pre><code class="language-javascript line-numbers">Content.setKeyPressCallback( var keyPress, var keyPressCallback)</code></pre>
+<p><br><br></p>
+<h2 id="setname"><b>setName</b>
+</h2>
+<p class="comment">Sets the name that will be displayed in big fat Impact.</p>
+<pre><code class="language-javascript line-numbers">Content.setName( String newName)</code></pre>
+<p><br><br></p>
+<h2 id="setpropertiesfromjson"><b>setPropertiesFromJSON</b>
+</h2>
+<p class="comment">Restore the Component from a JSON object.</p>
+<pre><code class="language-javascript line-numbers">Content.setPropertiesFromJSON( String name,  var jsonData)</code></pre>
+<p><br><br></p>
+<h2 id="setsuspendtimercallback"><b>setSuspendTimerCallback</b>
+</h2>
+<p class="comment">Sets a callback that will be notified whenever the UI timers are suspended.</p>
+<pre><code class="language-javascript line-numbers">Content.setSuspendTimerCallback(var suspendFunction)</code></pre>
+<p><br>HISE automatically detects when there is no interface of your plugin open and automatically suspends all Panel timer callbacks (as well as the deferred MIDI callbacks) in order to save CPU resources. However the timers created with <a href="scripting/scripting-api/engine/index.html#createtimerobject">Engine.createTimerObject()</a>
+ will keep running. The rationale behind this difference is that in an usual project you have many panels with timer callbacks but just a few selected dedicated timer objects so the overhead is neglible, but if that is not the case for your project, you can use this method to attach a callback to the suspension event and then start and stop the timers yourself (along with other things that might be required).</p>
+<p>The callback you pass in requires a single parameter, which will be <b>true</b>
+ if the plugin is supposed to be suspended (and <b>false</b>
+ if there is at least one plugin interface visible).</p>
+<p class="comment">During development you cannot close and open plugin interfaces, so there is a new tool function in the interface designer which simulates the suspension process (the moon icon).</p>
+<p>Check out the documentation of the <a href="scripting/scripting-api/timer/index.html">Timer</a>
+ class for an example of how to use this method. For complex projects it's highly recommended to attach a broadcaster to this callback slot and then attach all timer objects as listeners at their definition.<br></p>
+<h2 id="settoolbarproperties"><b>setToolbarProperties</b>
+</h2>
+<p class="comment">Sets the main toolbar properties from a JSON object.</p>
+<pre><code class="language-javascript line-numbers">Content.setToolbarProperties( var toolbarProperties)</code></pre>
+<p><br><br></p>
+<h2 id="setusehighresolutionforpanels"><b>setUseHighResolutionForPanels</b>
+</h2>
+<p class="comment">Set this to true to render all script panels with double resolution for retina or rescaling.</p>
+<pre><code class="language-javascript line-numbers">Content.setUseHighResolutionForPanels(bool shouldUseDoubleResolution)</code></pre>
+<p><br><br></p>
+<h2 id="setvaluepopupdata"><b>setValuePopupData</b>
+</h2>
+<p class="comment">sets the data for the value popups.</p>
+<pre><code class="language-javascript line-numbers">Content.setValuePopupData(var jsonData)</code></pre>
+<p><br>Examples:</p>
+<pre><code class="language-javascript line-numbers">Content.setValuePopupData({
+    "itemColour":   Colours.forestgreen,    // BG colour TOP
+    "itemColour2":  Colours.firebrick, // BG colour BOTTOM
+    "bgColour":     Colours.gainsboro,      // In fact the Border colour...
+    "borderSize":   6.66,
+    "textColour":   Colours.navajowhite,
+    "fontSize":     66.6,
+    "fontName":     "Comic Sans MS"
+});</code></pre>
+<pre><code class="language-javascript line-numbers">Content.setValuePopupData({
+    "fontName":"Comic Sans MS",
+    "fontSize": 14,
+    "borderSize": 1,
+    "borderRadius": 1,
+    "margin":0,
+    "bgColour": 0xFF636363,
+    "itemColour": 0xFF000000,
+    "itemColour2": 0xFF000000,
+     "textColour": 0xFF636363 
+});</code></pre>
+<p><br></p>
+<h2 id="setwidth"><b>setWidth</b>
+</h2>
+<p class="comment">Sets the height of the content.</p>
+<pre><code class="language-javascript line-numbers">Content.setWidth(int newWidth)</code></pre>
+<p><br><br></p>
+<h2 id="showmodaltextinput"><b>showModalTextInput</b>
+</h2>
+<p class="comment">Opens a text input box with the given properties and executes the callback when finished.</p>
+<pre><code class="language-javascript line-numbers">Content.showModalTextInput(var properties, var callback)</code></pre>
+<p><br><br></p>
+<h2 id="storeallcontrolsaspreset"><b>storeAllControlsAsPreset</b>
+</h2>
+<p class="comment">Saves all controls that should be saved into a XML data file.</p>
+<pre><code class="language-javascript line-numbers">Content.storeAllControlsAsPreset( String fileName,  ValueTree automationData)</code></pre>
+<p><br><br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/date/index.html">Date</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>04.06.2019<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

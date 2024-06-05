@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="namespace-raw"><b>namespace raw</b>
+</h1>
+<p>This namespace acts as entry point to the HISE code base and provides helper classes and convenient functions to tuck away the complexity of the full code base. The goal of this namespace is to provide access to the HISE code base for the majority of use cases that are required by people using HISE for their projects. The full API class list of all HISE classes can be overwhelming, so this is supposed to be a starting point for people diving into the C++ side of HISE.<br>Also, all classes in this API are guaranteed to meet stricter API standards regarding documentation and backwards compatibility. Important: until further notice, this is a very WIP namespace so you can expect it to change radically until the dust has settled.<br>In this namespace you get:<br></p>
+<ul><li>a convenient place to look for magic numbers: the IDs namespace<br></li>
+<li>a class that helps building / changing the module architecture of HISE: the <a href="cpp_api/raw/classhise_1_1raw_1_1_builder.html">Builder</a>
+<br></li>
+<li>a wrapper around a module that gets notified when a parameter changes: the <a href="cpp_api/raw/classhise_1_1raw_1_1_reference.html">Reference</a>
+<br></li>
+<li>a class that loads embedded data: the <a href="cpp_api/raw/classhise_1_1raw_1_1_pool.html">Pool</a>
+<br></li>
+<li>a class that handles the (asynchronous) and lockfree execution of larger tasks: the <a href="cpp_api/raw/classhise_1_1raw_1_1_task_after_suspension.html">TaskAfterSuspension</a>
+.<br> </li>
+</ul>
+<p><br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="cpp_api/raw/classhise_1_1raw_1_1_builder.html">Class methods</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>
