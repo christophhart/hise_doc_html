@@ -43,7 +43,7 @@
 <p class="comment"><code>container.branch</code>
 </p>
 <img src="images/sn_screen_branch.png"></img>
-<p>Please enter a brief description.</p>
+<p>A container that allows selective processing of its child nodes</p>
 <h2 id="parameters"><b>Parameters</b>
 </h2>
 <table><thead><td><b>ID </b>
@@ -58,10 +58,21 @@
 <tr><td>Index </td>
 <td>0.00 - 10.00 </td>
 <td>0.00 </td>
-<td>no description. </td>
+<td>The zero based index of the child node that should be processed. </td>
 </tr>
 </table>
-<p><br></p>
+<p><br>Usually the signal flow in a scriptnode network is unconditional and flows through all nodes. However there are a few applications where you might want to branch the processing.</p>
+<p>Example: If you have multiple sound generator chains and want to swap between them (like in the screenshot above), it would be possible to generate all of them and then select the one you want to hear using a <a href="scriptnode/list/routing/selector.html">selector</a>
+ node. However this is highly inefficient, as the CPU has to generate the sound of all sound generators and throw away all but one. What we need is a simple branch, that will conditionally execute exactly one voice.</p>
+<p>In a programming language, you would simply use a series of <code>if</code>
+ statements:</p>
+<pre><code class="language-javascript line-numbers">if(Index == 0)
+   processChildNode(0);
+else if (Index == 1)
+   processChildNode(1);
+// ...</code></pre>
+<p>This node will replicate exactly this function: whatever value is set as Index parameter will cause the childnode at the respective position to be processed while leaving the other child nodes unprocessed.</p>
+<p class="comment">The wires below the node will indicate which node is active (like the third one in the example above).</p>
 <div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
 </span>
 

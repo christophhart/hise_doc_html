@@ -46,7 +46,7 @@
 </p>
 <p>When you first start up your desktop version of HISE<b> you will get asked to create a new project. Have a look at </b>
 <a href="working-with-hise/project-management/index.html">Project Management</a>
- to learn more about its<br>folders and the general architecture of a HISE<b> project. </b>
+ to learn more about its folders and the general architecture of a HISE<b> project.</b>
 </p>
 <p class="comment">You can save your project in two different ways. Either with File > Save as Archive<b> as a compressed archive (</b>
 <b>.hip</b>
@@ -67,28 +67,19 @@ File > Save as XML<b> (which is recommended for using version control).</b>
  paradigm and allows to build instruments with an efficent signal flow, optimized for handling a lot of voices in parallel.</p>
 <h3 id="add-a-sound-generator"><b>Add a Sound Generator</b>
 </h3>
-<img src="images/custom/masterchain.png"></img>
 <p>In the <b>Module Tree</b>
- you can click the _Pen Icon_ to activate the adding functionality. </p>
+ you can click the "pen-icon" to activate the adding functionality. </p>
 <p>When you click the plus icon next to the <b>Master Chain</b>
  you can create a new <a href="hise-modules/sound-generators/index.html">Sound Generator</a>
-. Pick something simple like the Sine Wave Generator or the Waveform Generator and click on the newly created module.You will notice that the Sine Wave Generator features nearly the same top-bar as the Master Chain with its mostly self-explanatory controls:</p>
-<p><b>Minimize</b>
- <b>Colorpicker</b>
- <b>processor ID</b>
- <b>Mute</b>
- <b>Meter</b>
- <b>Routing Matrix</b>
- <b>Gain</b>
- <b>Pan</b>
- and <b>Delete</b>
- </p>
-<img src="images/custom/gen-sinewave.png"></img>
+. Pick something simple like the Sine Wave Generator or the Waveform Generator and click on the newly created module.</p>
+<img src="hise-modules/sound-generators/index.html"></img>
+<p>On the header of the module you can change it's name (ID), pick a color, mute the generator, set the Gain/Intensity or pan its audio signal. When you <b>right-click</b>
+ on the header you can copy&paste its xml data, or create script references with which you can access more internal functions of the module by script. </p>
 <h3 id="modulation-chains"><b>Modulation Chains</b>
 </h3>
+<img src="images/custom/tabs.png"></img>
 <p>Beneath the top-bar you can find the <b>Tab-Section</b>
  with the Processor & Modulation chains of the Sound-Generator. Each one of them reveales a chain for adding additional processors & modulators to a specific aspect of the generated sound. </p>
-<img src="images/custom/tabs.png"></img>
 <p><b>MIDI</b>
 </p>
 <p>The MidiProcessor Chain processes MIDI input and scripts before the actual sound is generated. This includes incoming MIDI Messages, CC Inputs as well as executed scripts. Here you can add a couple of useful <a href="hise-modules/midi-processors/index.html">Midi Processors</a>
@@ -109,16 +100,16 @@ File > Save as XML<b> (which is recommended for using version control).</b>
  to spice up your sounds.</p>
 <h3 id="modulators-"><b>Modulators </b>
 </h3>
-<p>The <b>Gain</b>
- and <b>Pitch</b>
--Modulators deserve a deeper look. They represent a generic type of modulator that has the task to generate a sample accurate (real-time) control signals to modulate their respective sources. </p>
-<p>When you look at the header of a Gain-Modulator you can see that the "Gain bar" (<b>dB</b>
-) of a Sound-Generator is replaced by an Intensity bar that shows the values from 0 to 1, and in the Pitch-Modulators a range from -12 to +12 semitones (<b>st</b>
-). The Intensity sets how intense the modulation should be applied.</p>
-<p>You can visualise their signal with clicking on the little indicator next the modulators name.</p>
 <img src="images/custom/quick_tour/lfo_modulator.png"></img>
-<p>Hit the <b>plus</b>
- icon of a Modulation-Chain to add Modulators from the following categories: </p>
+<p>The modulators for the Gain<b> and </b>
+Pitch<b>-chains deserve a deeper look. They represent a generic type of modulator with the task to generate a sample accurate (real-time) control signals to modulate their respective sources. </b>
+</p>
+<p>When you look at the header of a Gain-Modulator you can see that the "Gain bar" (dB<b>) of a Sound-Generator is replaced by an Intensity bar that shows the values from 0 to 1, and in the Pitch-Modulators a range from -12 to +12 semitones (</b>
+st<b>). The Intensity sets how intense the modulation should be applied.</b>
+</p>
+<p>You can visualise their signal with clicking on the little indicator next the modulators name.</p>
+<p>Hit the plus<b> icon of a Modulation-Chain to add modulators from the following categories: </b>
+</p>
 <p><a href="hise-modules/modulators/voice-start-modulators/index.html">Voice Start Modulators</a>
  (polyphonic):</p>
 <ul><li>which set a value directly when a key is pressed and a voice is started. (see: <a href="hise-modules/modulators/voice-start-modulators/list/velocity.html">Velocity Modulator</a>
@@ -135,14 +126,14 @@ File > Save as XML<b> (which is recommended for using version control).</b>
 )</li>
 </ul>
 <p>In a few of the TimeVariant and Envelope-Modulators you'll even find slots for modulating the Modulations, which creates the possibility for some quite complex modulation arrangements.</p>
-<p>The best way to explore all the features of the Modules and Modulators in <b>HISE</b>
- is probably to dig in right away and start to add, combine and delete some modules and play around with them. <a href="hise-modules/index.html">Audio-Modules</a>
-.</p>
+<p>The best way to explore all the features of the Modules and Modulators in HISE<b> is probably to dig in right away and start to add, combine and delete some modules and play around with them.</b>
+</p>
 <p class="comment">Behind the scenes, the architecture of modules that is built within the Main/Preset Workspace is reflected in the <code>.xml</code>
- file that is saved in the <b>XmlPresetBackups</b>
- folder. After you have saved your preset as an <code>.xml</code>
--file <b>File > Save as XML</b>
- you can open it with an external code editor to take a look at its raw architecture. This can be quite insightful, especially if you want to understand how to access and manipulate the modules and their attributes via <a href="scripting/index.html">scripting</a>
+ file that is saved in the XmlPresetBackups<b> folder. After you have saved your preset as an </b>
+<b>.xml</b>
+<b>-file </b>
+File > Save as XML<b> you can open it with an external code editor to take a look at its raw architecture. This can be quite insightful, especially if you want to understand how to access and manipulate the modules and their attributes via </b>
+<a href="scripting/index.html">scripting</a>
 .</p>
 <h2 id="the-code-editor"><b>The Code Editor</b>
 </h2>
@@ -160,7 +151,7 @@ File > Save as XML<b> (which is recommended for using version control).</b>
 .</p>
 <pre><code class="language-javascript line-numbers">Content.makeFrontInterface(600, 500);</code></pre>
 <p class="comment">You can click the little "open icon" next to the ScriptProcessor "Interface" to open the script and the Interface Designer.</p>
-<p>Let us say hello to the console. Type:</p>
+<p>Let us test the scripting. Type:</p>
 <pre><code class="language-javascript line-numbers">Console.print("Hello World");</code></pre>
 <p>in the onInit Tab, and hit [F5] to compile. This evaluates the script, redraws the interface and prints the message to the <a href="working-with-hise/workspaces/scripting-workspace/code-editor.html#console">Console</a>
  beneath the editor.</p>
@@ -170,8 +161,8 @@ File > Save as XML<b> (which is recommended for using version control).</b>
 <h2 id="interface-designer"><b>Interface Designer</b>
 </h2>
 <img src="images/custom/quick_tour/interface_designer.png"></img>
-<p>Let's take a look at the <a href="working-with-hise/workspaces/scripting-workspace/canvas.html">Interface Designer</a>
-, now. This is the place where you create the interface for your instrument/plugin. In the top-left corner of the Canvas you can find a little pen icon [F4]. With it you can toggle between the <b>edit</b>
+<p>Now we'll take a look at the<br><a href="working-with-hise/workspaces/scripting-workspace/canvas.html">Interface Designer</a>
+. This is the place where you create the interface for your instrument/plugin. In the top-left corner of the Canvas you can find a little pen icon [F4]. With it you can toggle between the <b>edit</b>
  and the <b>presentation mode</b>
  of the Interface Designer. </p>
 <p>While in <b>edit mode</b>

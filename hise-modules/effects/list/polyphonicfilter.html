@@ -38,14 +38,33 @@
 
 		</nav>
 
-		<div class="content"><h1 id="polyphonic-filter"><b>Polyphonic Filter</b>
+		<div class="content"><h1 id="filter"><b>Filter</b>
 </h1>
 <p>Type ID: <code>PolyphonicFilter</code>
 <br></p>
-<p class="comment"><b>An generic Audio Filter module with 16 different filter algorithms</b>
+<p class="comment"><b>An audio Filter module with 16 different filter algorithms</b>
 <br></p>
 <img src="images/module_screenshot_polyphonicfilter.png"></img>
-<p><br><br></p>
+<p><br></p>
+<h2 id="list-of-filter-algorithms"><b>List of Filter Algorithms</b>
+</h2>
+<ul><li>1 Pole LP</li>
+<li>1 Pole HP</li>
+<li>SVF LP</li>
+<li>SVF HP</li>
+<li>SVF Notch</li>
+<li>SVF BP</li>
+<li>Allpass</li>
+<li>Moog LP</li>
+<li>Biquad LP</li>
+<li>Biquad HP</li>
+<li>Low Shelf EQ</li>
+<li>High Shelf EQ</li>
+<li>Peak EQ</li>
+<li>Ladder 4Pole LP</li>
+<li>Ring Mod</li>
+</ul>
+<p><br></p>
 <h2 id="parameters-"><b>Parameters </b>
 </h2>
 <table><thead><td><b>#</b>
@@ -59,17 +78,17 @@
 <tr><td>0 </td>
 <td><code>Gain</code>
  </td>
-<td>- </td>
+<td>Set the filter gain. </td>
 </tr>
 <tr><td>1 </td>
 <td><code>Frequency</code>
  </td>
-<td>- </td>
+<td>Set the filter frequency </td>
 </tr>
 <tr><td>2 </td>
 <td><code>Q</code>
  </td>
-<td>- </td>
+<td>Set the bandwidth of the filter curve. </td>
 </tr>
 <tr><td>3 </td>
 <td><code>Mode</code>
@@ -84,7 +103,7 @@
 <tr><td>5 </td>
 <td><code>BipolarIntensity</code>
  </td>
-<td>- </td>
+<td>Set the intensity if the filter supports bipolar frequency. </td>
 </tr>
 </table>
 <h2 id="chains-"><b>Chains </b>
@@ -108,7 +127,7 @@
 <div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
 </span>
 
-<span class="content-footer-right">Next: <a href="hise-modules/effects/list/polyscriptfx.html">PolyScriptFX</a>
+<span class="content-footer-right">Next: <a href="hise-modules/effects/list/hardcoded-master-fx.html">Hardcoded Master FX</a>
 </span>
 
 <p class="content-footer-metadata">Christoph Hart<br>18.03.2019<br></p>

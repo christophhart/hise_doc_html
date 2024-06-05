@@ -528,14 +528,8 @@
     "color": "#DEB887"
   },
   {
-    "key": "Scriptnode Editor: The Node Property Editor",
-    "url": "working-with-hise/workspaces/scripting-workspace/scriptnode.html#the-node-property-editor",
-    "weight": 50,
-    "color": "#DEB887"
-  },
-  {
-    "key": "Scriptnode Editor: Popup Windows",
-    "url": "working-with-hise/workspaces/scripting-workspace/scriptnode.html#popup-windows",
+    "key": "Scriptnode Editor: Node Properties",
+    "url": "working-with-hise/workspaces/scripting-workspace/scriptnode.html#node-properties",
     "weight": 50,
     "color": "#DEB887"
   },
@@ -1746,7 +1740,7 @@
     "color": "#414141"
   },
   {
-    "key": "List of Sound Generators: SendContainer",
+    "key": "List of Sound Generators: Send Container",
     "url": "hise-modules/sound-generators/list/sendcontainer.html",
     "weight": 60,
     "color": "#414141"
@@ -1764,7 +1758,7 @@
     "color": "#414141"
   },
   {
-    "key": "List of Sound Generators: Syntesizer Group",
+    "key": "List of Sound Generators: Syntesiser Group",
     "url": "hise-modules/sound-generators/list/synthgroup.html",
     "weight": 60,
     "color": "#414141"
@@ -1848,7 +1842,7 @@
     "color": "#414141"
   },
   {
-    "key": "SendContainer: Parameters",
+    "key": "Send Container: Parameters",
     "url": "hise-modules/sound-generators/list/sendcontainer.html#parameters",
     "weight": 50,
     "color": "#414141"
@@ -1866,25 +1860,25 @@
     "color": "#414141"
   },
   {
-    "key": "Syntesizer Group: Additive Synthesis",
+    "key": "Syntesiser Group: Additive Synthesis",
     "url": "hise-modules/sound-generators/list/synthgroup.html#additive-synthesis",
     "weight": 50,
     "color": "#414141"
   },
   {
-    "key": "Syntesizer Group: FM Synthesis",
+    "key": "Syntesiser Group: FM Synthesis",
     "url": "hise-modules/sound-generators/list/synthgroup.html#fm-synthesis",
     "weight": 50,
     "color": "#414141"
   },
   {
-    "key": "Syntesizer Group: Unisono Detune",
+    "key": "Syntesiser Group: Unisono Detune",
     "url": "hise-modules/sound-generators/list/synthgroup.html#unisono-detune",
     "weight": 50,
     "color": "#414141"
   },
   {
-    "key": "Syntesizer Group: Parameters",
+    "key": "Syntesiser Group: Parameters",
     "url": "hise-modules/sound-generators/list/synthgroup.html#parameters",
     "weight": 50,
     "color": "#414141"
@@ -2280,13 +2274,13 @@
     "color": "#1088CC"
   },
   {
-    "key": "List of Time Variant Modulators: LFO",
+    "key": "List of Time Variant Modulators: LFO Modulator",
     "url": "hise-modules/modulators/time-variant-modulators/list/lfo.html",
     "weight": 50,
     "color": "#1088CC"
   },
   {
-    "key": "List of Time Variant Modulators: GlobalTimeVariantModulator",
+    "key": "List of Time Variant Modulators: GlobalTimeVariant Modulator",
     "url": "hise-modules/modulators/time-variant-modulators/list/globaltimevariantmodulator.html",
     "weight": 50,
     "color": "#1088CC"
@@ -2310,7 +2304,7 @@
     "color": "#1088CC"
   },
   {
-    "key": "List of Time Variant Modulators: Pitchwheel",
+    "key": "List of Time Variant Modulators: Pitchwheel Modulator",
     "url": "hise-modules/modulators/time-variant-modulators/list/pitchwheel.html",
     "weight": 50,
     "color": "#1088CC"
@@ -2322,13 +2316,13 @@
     "color": "#1088CC"
   },
   {
-    "key": "LFO: Parameters",
+    "key": "LFO Modulator: Parameters",
     "url": "hise-modules/modulators/time-variant-modulators/list/lfo.html#parameters",
     "weight": 40,
     "color": "#1088CC"
   },
   {
-    "key": "GlobalTimeVariantModulator: Parameters",
+    "key": "GlobalTimeVariant Modulator: Parameters",
     "url": "hise-modules/modulators/time-variant-modulators/list/globaltimevariantmodulator.html#parameters",
     "weight": 40,
     "color": "#1088CC"
@@ -2352,7 +2346,7 @@
     "color": "#1088CC"
   },
   {
-    "key": "Pitchwheel: Parameters",
+    "key": "Pitchwheel Modulator: Parameters",
     "url": "hise-modules/modulators/time-variant-modulators/list/pitchwheel.html#parameters",
     "weight": 40,
     "color": "#1088CC"
@@ -2370,19 +2364,19 @@
     "color": "#1088CC"
   },
   {
-    "key": "List of Envelopes: AHDSR",
+    "key": "List of Envelopes: AHDSR Envelope",
     "url": "hise-modules/modulators/envelopes/list/ahdsr.html",
     "weight": 50,
     "color": "#1088CC"
   },
   {
-    "key": "List of Envelopes: EventDataEnvelope",
+    "key": "List of Envelopes: EventData Envelope",
     "url": "hise-modules/modulators/envelopes/list/eventdataenvelope.html",
     "weight": 50,
     "color": "#1088CC"
   },
   {
-    "key": "List of Envelopes: GlobalEnvelopeModulator",
+    "key": "List of Envelopes: Global Envelope Modulator",
     "url": "hise-modules/modulators/envelopes/list/globalenvelopemodulator.html",
     "weight": 50,
     "color": "#1088CC"
@@ -2418,19 +2412,19 @@
     "color": "#1088CC"
   },
   {
-    "key": "AHDSR: Parameters",
+    "key": "AHDSR Envelope: Parameters",
     "url": "hise-modules/modulators/envelopes/list/ahdsr.html#parameters",
     "weight": 40,
     "color": "#1088CC"
   },
   {
-    "key": "EventDataEnvelope: Parameters",
+    "key": "EventData Envelope: Parameters",
     "url": "hise-modules/modulators/envelopes/list/eventdataenvelope.html#parameters",
     "weight": 40,
     "color": "#1088CC"
   },
   {
-    "key": "GlobalEnvelopeModulator: Parameters",
+    "key": "Global Envelope Modulator: Parameters",
     "url": "hise-modules/modulators/envelopes/list/globalenvelopemodulator.html#parameters",
     "weight": 40,
     "color": "#1088CC"
@@ -2526,6 +2520,12 @@
     "color": "#3A6666"
   },
   {
+    "key": "List of Effects: Filter",
+    "url": "hise-modules/effects/list/polyphonicfilter.html",
+    "weight": 60,
+    "color": "#3A6666"
+  },
+  {
     "key": "List of Effects: Hardcoded Master FX",
     "url": "hise-modules/effects/list/hardcoded-master-fx.html",
     "weight": 60,
@@ -2562,20 +2562,20 @@
     "color": "#3A6666"
   },
   {
-    "key": "List of Effects: Polyphonic Filter",
-    "url": "hise-modules/effects/list/polyphonicfilter.html",
-    "weight": 60,
-    "color": "#3A6666"
-  },
-  {
-    "key": "List of Effects: PolyScriptFX",
+    "key": "List of Effects: Polyphonic Script FX",
     "url": "hise-modules/effects/list/polyscriptfx.html",
     "weight": 60,
     "color": "#3A6666"
   },
   {
-    "key": "List of Effects: Route FX",
+    "key": "List of Effects: Routing Matrix FX",
     "url": "hise-modules/effects/list/routefx.html",
+    "weight": 60,
+    "color": "#3A6666"
+  },
+  {
+    "key": "List of Effects: Saturator",
+    "url": "hise-modules/effects/list/saturator.html",
     "weight": 60,
     "color": "#3A6666"
   },
@@ -2586,7 +2586,7 @@
     "color": "#3A6666"
   },
   {
-    "key": "List of Effects: SendFX",
+    "key": "List of Effects: Send Effect",
     "url": "hise-modules/effects/list/sendfx.html",
     "weight": 60,
     "color": "#3A6666"
@@ -2688,6 +2688,18 @@
     "color": "#3A6666"
   },
   {
+    "key": "Filter: List of Filter Algorithms",
+    "url": "hise-modules/effects/list/polyphonicfilter.html#list-of-filter-algorithms",
+    "weight": 50,
+    "color": "#3A6666"
+  },
+  {
+    "key": "Filter: Parameters",
+    "url": "hise-modules/effects/list/polyphonicfilter.html#parameters",
+    "weight": 50,
+    "color": "#3A6666"
+  },
+  {
     "key": "Hardcoded Master FX: Parameters",
     "url": "hise-modules/effects/list/hardcoded-master-fx.html#parameters",
     "weight": 50,
@@ -2724,20 +2736,20 @@
     "color": "#3A6666"
   },
   {
-    "key": "Polyphonic Filter: Parameters",
-    "url": "hise-modules/effects/list/polyphonicfilter.html#parameters",
-    "weight": 50,
-    "color": "#3A6666"
-  },
-  {
-    "key": "PolyScriptFX: Parameters",
+    "key": "Polyphonic Script FX: Parameters",
     "url": "hise-modules/effects/list/polyscriptfx.html#parameters",
     "weight": 50,
     "color": "#3A6666"
   },
   {
-    "key": "Route FX: Parameters",
+    "key": "Routing Matrix FX: Parameters",
     "url": "hise-modules/effects/list/routefx.html#parameters",
+    "weight": 50,
+    "color": "#3A6666"
+  },
+  {
+    "key": "Saturator: Parameters",
+    "url": "hise-modules/effects/list/saturator.html#parameters",
     "weight": 50,
     "color": "#3A6666"
   },
@@ -2748,7 +2760,7 @@
     "color": "#3A6666"
   },
   {
-    "key": "SendFX: Parameters",
+    "key": "Send Effect: Parameters",
     "url": "hise-modules/effects/list/sendfx.html#parameters",
     "weight": 50,
     "color": "#3A6666"

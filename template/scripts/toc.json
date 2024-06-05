@@ -755,31 +755,37 @@ var rootDb = {
                       "Children": []
                     },
                     {
-                      "URL": "working-with-hise/workspaces/scripting-workspace/scriptnode.html#the-node-property-editor",
-                      "Title": "The Node Property Editor",
+                      "URL": "working-with-hise/workspaces/scripting-workspace/scriptnode.html#toolbar",
+                      "Title": "",
                       "Colour": "#DEB887",
                       "Children": []
                     },
                     {
-                      "URL": "working-with-hise/workspaces/scripting-workspace/scriptnode.html#popup-windows",
-                      "Title": "Popup Windows",
+                      "URL": "working-with-hise/workspaces/scripting-workspace/scriptnode.html#node-properties",
+                      "Title": "Node Properties",
                       "Colour": "#DEB887",
                       "Children": []
                     },
                     {
-                      "URL": "working-with-hise/workspaces/scripting-workspace/scriptnode.html#the-parameter-editor",
+                      "URL": "working-with-hise/workspaces/scripting-workspace/scriptnode.html#the-parameter-editor-",
+                      "Title": "",
+                      "Colour": "#DEB887",
+                      "Children": []
+                    },
+                    {
+                      "URL": "working-with-hise/workspaces/scripting-workspace/scriptnode.html#parameter-popup",
+                      "Title": "",
+                      "Colour": "#DEB887",
+                      "Children": []
+                    },
+                    {
+                      "URL": "working-with-hise/workspaces/scripting-workspace/scriptnode.html#the-range-editor",
                       "Title": "",
                       "Colour": "#DEB887",
                       "Children": []
                     },
                     {
                       "URL": "working-with-hise/workspaces/scripting-workspace/scriptnode.html#the-node-property-popup",
-                      "Title": "",
-                      "Colour": "#DEB887",
-                      "Children": []
-                    },
-                    {
-                      "URL": "working-with-hise/workspaces/scripting-workspace/scriptnode.html#the-snex-playground",
                       "Title": "",
                       "Colour": "#DEB887",
                       "Children": []
@@ -2187,7 +2193,7 @@ var rootDb = {
                 },
                 {
                   "URL": "hise-modules/sound-generators/list/sendcontainer.html",
-                  "Title": "SendContainer",
+                  "Title": "Send Container",
                   "Colour": "#414141",
                   "Children": [
                     {
@@ -2226,7 +2232,7 @@ var rootDb = {
                 },
                 {
                   "URL": "hise-modules/sound-generators/list/synthgroup.html",
-                  "Title": "Syntesizer Group",
+                  "Title": "Syntesiser Group",
                   "Colour": "#414141",
                   "Children": [
                     {
@@ -2728,7 +2734,7 @@ var rootDb = {
                   "Children": [
                     {
                       "URL": "hise-modules/modulators/time-variant-modulators/list/lfo.html",
-                      "Title": "LFO",
+                      "Title": "LFO Modulator",
                       "Colour": "#1088CC",
                       "Children": [
                         {
@@ -2741,7 +2747,7 @@ var rootDb = {
                     },
                     {
                       "URL": "hise-modules/modulators/time-variant-modulators/list/globaltimevariantmodulator.html",
-                      "Title": "GlobalTimeVariantModulator",
+                      "Title": "GlobalTimeVariant Modulator",
                       "Colour": "#1088CC",
                       "Children": [
                         {
@@ -2793,7 +2799,7 @@ var rootDb = {
                     },
                     {
                       "URL": "hise-modules/modulators/time-variant-modulators/list/pitchwheel.html",
-                      "Title": "Pitchwheel",
+                      "Title": "Pitchwheel Modulator",
                       "Colour": "#1088CC",
                       "Children": [
                         {
@@ -2833,7 +2839,7 @@ var rootDb = {
                   "Children": [
                     {
                       "URL": "hise-modules/modulators/envelopes/list/ahdsr.html",
-                      "Title": "AHDSR",
+                      "Title": "AHDSR Envelope",
                       "Colour": "#1088CC",
                       "Children": [
                         {
@@ -2846,7 +2852,7 @@ var rootDb = {
                     },
                     {
                       "URL": "hise-modules/modulators/envelopes/list/eventdataenvelope.html",
-                      "Title": "EventDataEnvelope",
+                      "Title": "EventData Envelope",
                       "Colour": "#1088CC",
                       "Children": [
                         {
@@ -2859,7 +2865,7 @@ var rootDb = {
                     },
                     {
                       "URL": "hise-modules/modulators/envelopes/list/globalenvelopemodulator.html",
-                      "Title": "GlobalEnvelopeModulator",
+                      "Title": "Global Envelope Modulator",
                       "Colour": "#1088CC",
                       "Children": [
                         {
@@ -3105,6 +3111,25 @@ var rootDb = {
                   ]
                 },
                 {
+                  "URL": "hise-modules/effects/list/polyphonicfilter.html",
+                  "Title": "Filter",
+                  "Colour": "#3A6666",
+                  "Children": [
+                    {
+                      "URL": "hise-modules/effects/list/polyphonicfilter.html#list-of-filter-algorithms",
+                      "Title": "List of Filter Algorithms",
+                      "Colour": "#3A6666",
+                      "Children": []
+                    },
+                    {
+                      "URL": "hise-modules/effects/list/polyphonicfilter.html#parameters",
+                      "Title": "Parameters",
+                      "Colour": "#3A6666",
+                      "Children": []
+                    }
+                  ]
+                },
+                {
                   "URL": "hise-modules/effects/list/hardcoded-master-fx.html",
                   "Title": "Hardcoded Master FX",
                   "Colour": "#3A6666",
@@ -3183,21 +3208,8 @@ var rootDb = {
                   ]
                 },
                 {
-                  "URL": "hise-modules/effects/list/polyphonicfilter.html",
-                  "Title": "Polyphonic Filter",
-                  "Colour": "#3A6666",
-                  "Children": [
-                    {
-                      "URL": "hise-modules/effects/list/polyphonicfilter.html#parameters",
-                      "Title": "Parameters",
-                      "Colour": "#3A6666",
-                      "Children": []
-                    }
-                  ]
-                },
-                {
                   "URL": "hise-modules/effects/list/polyscriptfx.html",
-                  "Title": "PolyScriptFX",
+                  "Title": "Polyphonic Script FX",
                   "Colour": "#3A6666",
                   "Children": [
                     {
@@ -3210,11 +3222,24 @@ var rootDb = {
                 },
                 {
                   "URL": "hise-modules/effects/list/routefx.html",
-                  "Title": "Route FX",
+                  "Title": "Routing Matrix FX",
                   "Colour": "#3A6666",
                   "Children": [
                     {
                       "URL": "hise-modules/effects/list/routefx.html#parameters",
+                      "Title": "Parameters",
+                      "Colour": "#3A6666",
+                      "Children": []
+                    }
+                  ]
+                },
+                {
+                  "URL": "hise-modules/effects/list/saturator.html",
+                  "Title": "Saturator",
+                  "Colour": "#3A6666",
+                  "Children": [
+                    {
+                      "URL": "hise-modules/effects/list/saturator.html#parameters",
                       "Title": "Parameters",
                       "Colour": "#3A6666",
                       "Children": []
@@ -3236,7 +3261,7 @@ var rootDb = {
                 },
                 {
                   "URL": "hise-modules/effects/list/sendfx.html",
-                  "Title": "SendFX",
+                  "Title": "Send Effect",
                   "Colour": "#3A6666",
                   "Children": [
                     {

@@ -43,7 +43,6 @@
 <p class="comment"><code>jdsp.jchorus</code>
 </p>
 <img src="images/sn_screen_jchorus.png"></img>
-<p>Please enter a brief description.</p>
 <h2 id="parameters"><b>Parameters</b>
 </h2>
 <table><thead><td><b>ID </b>
@@ -58,30 +57,32 @@
 <tr><td>CentreDelay </td>
 <td>0.00 - 100.00 </td>
 <td>7.00 </td>
-<td>no description. </td>
+<td>Controls the center delay time of the chorus effect (0.0 to 100.0 ms, default 7.0 ms). </td>
 </tr>
 <tr><td>Depth </td>
 <td>0.00 - 1.00 </td>
 <td>0.25 </td>
-<td>no description. </td>
+<td>Adjusts the depth of the modulation (0.0 to 1.0, default 0.25). </td>
 </tr>
 <tr><td>Feedback </td>
 <td>-1.00 - 1.00 </td>
 <td>0.00 </td>
-<td>no description. </td>
+<td>Sets the feedback amount of the chorus effect (-1.0 to 1.0, default 0.0). </td>
 </tr>
 <tr><td>Rate </td>
 <td>0.00 - 100.00 </td>
 <td>1.00 </td>
-<td>no description. </td>
+<td>Controls the rate of the modulation in Hertz (0.0 to 100.0 Hz, default 1.0 Hz). </td>
 </tr>
 <tr><td>Mix </td>
 <td>0.00 - 1.00 </td>
 <td>0.50 </td>
-<td>no description. </td>
+<td>Sets the mix between the dry and wet signals (0.0 to 1.0, default 0.5). </td>
 </tr>
 </table>
-<p><br></p>
+<p><br>The jchorus node implements a chorus effect using the JUCE <a href="https://docs.juce.com/master/classdsp_1_1Chorus.html#a56d8f76c57f63f465a0ef48d2ac66e1f">dsp::Chorus</a>
+ class. It provides control over several parameters that shape the chorus effect, allowing for a wide range of modulation and depth settings.</p>
+<p>The chorus effect works by mixing the original audio signal with one or more delayed copies of itself. These delayed signals are modulated with low-frequency oscillation (LFO) to create slight variations in pitch. This combination of delayed and modulated signals creates a thicker, more complex sound, often described as shimmering or widening. The parameters available in the jchorus node allow precise control over the delay, modulation depth, feedback, modulation rate, and the mix of dry and wet signals.</p>
 <div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
 </span>
 
