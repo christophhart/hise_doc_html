@@ -86,12 +86,55 @@ Console.print(b[0]); // the first element of b will also be 10</code></pre>
 </h2>
 <p class="comment">Clears the array.</p>
 <pre><code class="language-javascript line-numbers">Array.clear()</code></pre>
-<p><br>This is a quick operation (the allocated storage space will not be freed), so you can use it in a realtime callback.<br></p>
+<p><br>This is a quick operation (the allocated storage space will not be freed), so you can use it in a realtime callback.</p>
+<pre><code class="language-javascript line-numbers">const var arr = []; // Declare an array
+
+// preallocate 10 elements, do this if you
+// know how many elements you are about to insert
+arr.reserve(10); 
+
+for(i = 0; i < 10; i++)
+{
+	// Add an element to the end of the array
+	arr.push(Math.randInt(0, 1000);
+}
+
+Console.print(trace(arr)); // [ 523, 5, 76, 345, 765, 45, 977, 223, 44, 54]
+
+arr.clear();
+
+Console.print(trace(arr)); // []</code></pre>
+<p><br></p>
 <h2 id="concat"><b>concat</b>
 </h2>
 <p class="comment">Concatenates (joins) two or more arrays</p>
 <pre><code class="language-javascript line-numbers">Array.concat(var argumentList)</code></pre>
-<p><br><br></p>
+<p><br>This method combines two or more arrays. You can pass in any number of arrays which will be put at the end of the array. It ignores non-array argument elements.</p>
+<pre><code class="language-javascript line-numbers">const var arr1 = [0, 1, [2, 3, 4]];
+
+// note how the array in the array is counted as a single element
+Console.print(arr1.length); // 3    
+
+const var arr2 = [5, 6, 7];
+const var arr3 = [8, 9, 10];
+
+arr1.concat(arr2);
+Console.print(trace(arr1)); // [0, 1, [2, 3, 4], 5, 6, 7]
+
+arr1.concat(arr3);
+
+// the arr1 already contains arr2 
+// error: arr4 is not of type array
+Console.print(trace(arr1)); // [0, 1, [2, 3, 4], 5, 6, 7, 8, 9, 10]     
+
+
+// set type to array
+const var arr4 = []; 
+arr4.concat(arr2, arr3, 8726, [11, 12, 13]);
+
+// non-array arguments get ignored // arguments can be arrays themselves
+Console.print(trace(arr4)); // [5, 6, 7, 8, 9, 10, 11, 12, 13]</code></pre>
+<p><br></p>
 <h2 id="contains"><b>contains</b>
 </h2>
 <p class="comment">Searches for the element in the array.</p>
@@ -101,7 +144,31 @@ Console.print(b[0]); // the first element of b will also be 10</code></pre>
 </h2>
 <p class="comment">Returns the value of the first element that passes the function test.</p>
 <pre><code class="language-javascript line-numbers">Array.find(var testFunction, var optionalThisObject)</code></pre>
-<p><br><br></p>
+<p><br>The test function you pass in can have up to 3 parameters:</p>
+<ul><li>the first parameter will be the element you need to perform the check on</li>
+<li>the second parameter will be the index</li>
+<li>the third parameter will be the array itself</li>
+</ul>
+<pre><code class="language-javascript line-numbers">const var list = [ "Hello", "world", "HISE", "rules" ];
+
+Console.print(list.find(function(element){ return element.contains("H");})); // Hello
+Console.print(list.find(function(element){ return element.contains("HI");})); // HISE</code></pre>
+<p>Using this function can vastly decrease the amount of code you need to write. This is the same logic of the first call with a loop and a custom function to achieve the same thing.</p>
+<pre><code class="language-javascript line-numbers">const var list = [ "Hello", "world", "HISE", "rules" ];
+
+function findH()
+{
+	for(element in list)
+	{
+		if(element.contains("H"))
+			return element;
+	}
+	
+	return undefined;
+}
+
+Console.print(findH()); // Hello</code></pre>
+<p><br></p>
 <h2 id="indexof"><b>indexOf</b>
 </h2>
 <p class="comment">Searches the array and returns the first index.</p>
