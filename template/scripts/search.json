@@ -14808,14 +14808,14 @@
     "color": "#F15761"
   },
   {
-    "key": "Scriptnode Glossary: Signal",
-    "url": "scriptnode/manual/glossary.html#signal",
+    "key": "Scriptnode Glossary: Node",
+    "url": "scriptnode/manual/glossary.html#node",
     "weight": 60,
     "color": "#F15761"
   },
   {
-    "key": "Scriptnode Glossary: Node",
-    "url": "scriptnode/manual/glossary.html#node",
+    "key": "Scriptnode Glossary: Signal",
+    "url": "scriptnode/manual/glossary.html#signal",
     "weight": 60,
     "color": "#F15761"
   },

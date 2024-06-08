@@ -15937,14 +15937,14 @@ var rootDb = {
                   "Children": []
                 },
                 {
-                  "URL": "scriptnode/manual/glossary.html#signal",
-                  "Title": "Signal",
+                  "URL": "scriptnode/manual/glossary.html#node",
+                  "Title": "Node",
                   "Colour": "#F15761",
                   "Children": []
                 },
                 {
-                  "URL": "scriptnode/manual/glossary.html#node",
-                  "Title": "Node",
+                  "URL": "scriptnode/manual/glossary.html#signal",
+                  "Title": "Signal",
                   "Colour": "#F15761",
                   "Children": []
                 },

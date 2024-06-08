@@ -107,8 +107,12 @@
 </h2>
 <p class="comment">Registers a function that will be executed whenever a value is sent through the cable.</p>
 <pre><code class="language-javascript line-numbers">GlobalCable.registerCallback(var callbackFunction, var synchronous)</code></pre>
-<p><br>This function will register a callable object (either a inline function, a function or a broadcaster) to the cable. It expects a single argument that will contain the value of the cable. You can either register it as synchronous callback or as asynchronous callback. The latter will filter out repetitions and will be called on the UI thread.</p>
-<p>Be aware that if you've set a range then the value that will be passed into the callback will be converted from the normalised 0...1 range to whatever range you need.<br></p>
+<p><br>This function will register a callable object (either a inline function, a function or a broadcaster) to the cable. It expects a single argument that will contain the value of the cable. You can either register it as synchronous callback or as asynchronous callback (by using either the <code>SyncNotification</code>
+ or <code>AsyncNotification</code>
+ constants). The latter will filter out repetitions and will be called on the UI thread at the next timer interval:</p>
+<img src="images/custom/cablecallback.svg"></img>
+<p>Be aware that if you've set a range then the value that will be passed into the callback will be converted from the normalised 0...1 range to whatever range you need.</p>
+<p>If you're using a synchronous callback then the function you pass in must be an inline function as this might be executed on the audio thread and normal functions are not realtime safe.<br></p>
 <h2 id="setrange"><b>setRange</b>
 </h2>
 <p class="comment">Set the input range using a min and max value (no steps / no skew factor).</p>
