@@ -38,7 +38,7 @@
 
 		</nav>
 
-		<div class="content"><h1 id="raw::builder"><b>raw::Builder</b>
+		<div class="content"><h1 id="builder"><b>Builder</b>
 </h1>
 <p>The builder is a low overhead helper class that provides functions to add modules.<br>Create one of those, supply the <a href="cpp_api/hise/classhise_1_1_main_controller.html">MainController</a>
  instance and call its methods to build up the architecture of your plugin.<br></p>
@@ -63,20 +63,24 @@ reverb->setAttribute(hise::SimpleReverbEffect::WetLevel, 0.5f, sendNotification)
 </h2>
 <h3 id="find"><b>find</b>
 </h3>
-<pre><code class="language-clike line-numbers">Reference< T > find(const String &name)</code></pre>
+<pre><code class="language-clike line-numbers">template <class T> Reference< T > find(const String &name)</code></pre>
 <p>Finds and creates a reference object to the module with the given ID.<br> </p>
 <h3 id="add"><b>add</b>
 </h3>
-<pre><code class="language-clike line-numbers">T * add(T *processor, Processor *parent, int chainIndex=IDs::Chains::Direct)</code></pre>
+<pre><code class="language-clike line-numbers">template <class T> T * add(T *processor, Processor *parent, int chainIndex=IDs::Chains::Direct)</code></pre>
 <p>Adds the given module to the parent processor. Specify the chainIndex for modulators / effects.<br> </p>
 <h3 id="create"><b>create</b>
 </h3>
-<pre><code class="language-clike line-numbers">T * create(Processor *parent, int chainIndex=IDs::Chains::Direct)</code></pre>
+<pre><code class="language-clike line-numbers">template <class T> T * create(Processor *parent, int chainIndex=IDs::Chains::Direct)</code></pre>
 <p>Creates a module of the given class and adds it to the parent with the specified chainIndex. See ChainIndexes.<br>This only works with HISE modules that are registered at one of the factories, so if you want to add a custom module, use the <a href="cpp_api/raw/classhise_1_1raw_1_1_builder.html#add">add()</a>
  function instead.<br> </p>
+<h3 id="create"><b>create</b>
+</h3>
+<pre><code class="language-clike line-numbers">Processor * create(Processor *parent, const Identifier &processorType, int chainIndex)</code></pre>
+<p>Creates a module with the given type name. If you're in C++ world, better use the templated method (this method was just added to add this functionality on the scripting layer).<br> </p>
 <h3 id="remove"><b>remove</b>
 </h3>
-<pre><code class="language-clike line-numbers">bool remove(Processor *p)</code></pre>
+<pre><code class="language-clike line-numbers">template <class T> bool remove(Processor *p)</code></pre>
 <p>Removes a processor and all its child processors from the signal path.<br> </p>
 <h3 id="createfrombase64state"><b>createFromBase64State</b>
 </h3>
@@ -112,7 +116,7 @@ builder.setIdWithIndex(sine, "mySine", 4);
 <div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
 </span>
 
-<span class="content-footer-right">Next: <a href="cpp_api/raw/structhise_1_1raw_1_1_data.html">raw::Data</a>
+<span class="content-footer-right">Next: <a href="cpp_api/raw/structhise_1_1raw_1_1_data.html">Data<typename DataType></a>
 </span>
 
 <p class="content-footer-metadata">Christoph Hart<br><br></p>

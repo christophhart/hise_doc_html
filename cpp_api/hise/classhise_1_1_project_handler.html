@@ -62,6 +62,17 @@
 </h3>
 <pre><code class="language-clike line-numbers">void createRSAKey() const</code></pre>
 <p>Fills the given array with the contents of the specified directory. If 'sortByTime' is true, the most recent files will be the first items in the list.<br> </p>
+<h2 id="static-functions"><b>Static functions</b>
+</h2>
+<h3 id="getappdatadirectory"><b>getAppDataDirectory</b>
+</h3>
+<pre><code class="language-clike line-numbers">File getAppDataDirectory(MainController *mc)</code></pre>
+<p>This function will return the directory where the app data is stored. It uses getAppDataRoot in order to figure out the folder from where it has to go. If you pass in nullptr, it will always default to the local app data folder, otherwise it might use the global app data folder as root (see <a href="cpp_api/hise/classhise_1_1_project_handler.html#getappdataroot">getAppDataRoot()</a>
+).<br> </p>
+<h3 id="getappdataroot"><b>getAppDataRoot</b>
+</h3>
+<pre><code class="language-clike line-numbers">File getAppDataRoot(MainController *mc)</code></pre>
+<p>This will return the app data folder to be used for HISE and all compiled plugins.<br>In HISE it will use the platform-dependent setting property (UseGlobalAppDataFolderWindows / MacOS) and in the compiled plugin it will use the preprocessor macro that has been set accordingly during compilation.<br> </p>
 <div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
 </span>
 

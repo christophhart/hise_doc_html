@@ -38,7 +38,7 @@
 
 		</nav>
 
-		<div class="content"><h1 id="raw::taskaftersuspension"><b>raw::TaskAfterSuspension</b>
+		<div class="content"><h1 id="taskaftersuspension"><b>TaskAfterSuspension</b>
 </h1>
 <p>A wrapper around a task that is supposed to take a while and is not allowed to be executed simultaneously to the audio rendering.<br>Some tasks that interfere with the audio rendering (eg. adding / removing modules, swapping samples) have to make sure that the audio thread is not running in parallel. Therefore HISE has a "suspended task" system which kills all voices, waits until the voices have gracefully faded out (including FX tails for reverb effects), then suspends the audio rendering until the task has been completed on a background thread with a minimal amount of locking.<br>In HISE, this system is used for each one of these events:<br></p>
 <ul><li>Compilation of scripts<br></li>
@@ -83,10 +83,21 @@ TaskAfterSuspension::call(mc, f);</code></pre>
 <td>If the audio needs to be suspended and / or the method was called from another thread than the target thread, this will be returned in order to indicate that the function was not yet executed. </td>
 </tr>
 </table>
+<h2 id="static-functions"><b>Static functions</b>
+</h2>
+<h3 id="call"><b>call</b>
+</h3>
+<pre><code class="language-clike line-numbers">ReturnType call(MainController *mc, const ProcessorFunction &f, int TargetThread=IDs::Threads::Loading)</code></pre>
+<p>Executes the function passed as lambda and returns the ReturnType depending on the execution state of the function. If you want to specify the processor being used, use the other <a href="cpp_api/raw/classhise_1_1raw_1_1_task_after_suspension.html#call">call()</a>
+ method.<br> </p>
+<h3 id="call"><b>call</b>
+</h3>
+<pre><code class="language-clike line-numbers">ReturnType call(Processor *p, const ProcessorFunction &f, int TargetThread=IDs::Threads::Loading)</code></pre>
+<p>Executes the function passed as lambda for the given processor and returns the ReturnType depending on the execution state of the function.<br> </p>
 <div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
 </span>
 
-<span class="content-footer-right">Next: <a href="cpp_api/raw/classhise_1_1raw_1_1_u_i_connection.html">raw::UIConnection</a>
+<span class="content-footer-right">Next: <a href="cpp_api/raw/classhise_1_1raw_1_1_u_i_connection.html">UIConnection</a>
 </span>
 
 <p class="content-footer-metadata">Christoph Hart<br><br></p>

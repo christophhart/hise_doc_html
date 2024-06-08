@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="the-global-routing-system"><b>The Global Routing System</b>
+</h1>
+<p>HISE uses an encapsulated module system to keep things as local as possible. However there are a few use cases where you need to break the standard tree signal flow, which is why there are a few methods of communicating and / or sending signals between different modules:</p>
+<ol><li>Parameter System: most stable option for static connections.</li>
+<li>Global Modulators: allows a sample-accurate modulation signal when applicable</li>
+<li>Send effects: implement a AUX effect section when you want to send various sources through an optional effect chain.</li>
+<li>Macro controls: allows a flexible (yet imprecise) modulation system for every parameter</li>
+</ol>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scriptnode/manual/snex_index.html"></a>
+</span>
+
+<p class="content-footer-metadata"><br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

@@ -949,8 +949,8 @@ var rootDb = {
                   "Children": []
                 },
                 {
-                  "URL": "working-with-hise/menu-reference/file/index.html#show-project-folder-in-explorer",
-                  "Title": "Show Project folder in Explorer",
+                  "URL": "working-with-hise/menu-reference/file/index.html#show-project-folder-in-finder",
+                  "Title": "Show Project folder in Finder",
                   "Colour": "#DEB887",
                   "Children": []
                 },
@@ -3651,6 +3651,12 @@ var rootDb = {
                 {
                   "URL": "ui-components/floating-tiles/hise/note.html",
                   "Title": "Note",
+                  "Colour": "#9064FF",
+                  "Children": []
+                },
+                {
+                  "URL": "ui-components/floating-tiles/hise/rlottiedevpanel.html",
+                  "Title": "RLottieDevPanel",
                   "Colour": "#9064FF",
                   "Children": []
                 },
@@ -8598,55 +8604,55 @@ var rootDb = {
               "Colour": "#D557D9",
               "Children": [
                 {
-                  "URL": "scripting/scripting-api/lorismanager/index.html#analyse",
+                  "URL": "scripting/scripting-api/lorismanager.html#analyse",
                   "Title": "analyse",
                   "Colour": "#D557D9",
                   "Children": []
                 },
                 {
-                  "URL": "scripting/scripting-api/lorismanager/index.html#createenvelopepaths",
+                  "URL": "scripting/scripting-api/lorismanager.html#createenvelopepaths",
                   "Title": "createEnvelopePaths",
                   "Colour": "#D557D9",
                   "Children": []
                 },
                 {
-                  "URL": "scripting/scripting-api/lorismanager/index.html#createenvelopes",
+                  "URL": "scripting/scripting-api/lorismanager.html#createenvelopes",
                   "Title": "createEnvelopes",
                   "Colour": "#D557D9",
                   "Children": []
                 },
                 {
-                  "URL": "scripting/scripting-api/lorismanager/index.html#createsnapshot",
+                  "URL": "scripting/scripting-api/lorismanager.html#createsnapshot",
                   "Title": "createSnapshot",
                   "Colour": "#D557D9",
                   "Children": []
                 },
                 {
-                  "URL": "scripting/scripting-api/lorismanager/index.html#get",
+                  "URL": "scripting/scripting-api/lorismanager.html#get",
                   "Title": "get",
                   "Colour": "#D557D9",
                   "Children": []
                 },
                 {
-                  "URL": "scripting/scripting-api/lorismanager/index.html#process",
+                  "URL": "scripting/scripting-api/lorismanager.html#process",
                   "Title": "process",
                   "Colour": "#D557D9",
                   "Children": []
                 },
                 {
-                  "URL": "scripting/scripting-api/lorismanager/index.html#processcustom",
+                  "URL": "scripting/scripting-api/lorismanager.html#processcustom",
                   "Title": "processCustom",
                   "Colour": "#D557D9",
                   "Children": []
                 },
                 {
-                  "URL": "scripting/scripting-api/lorismanager/index.html#set",
+                  "URL": "scripting/scripting-api/lorismanager.html#set",
                   "Title": "set",
                   "Colour": "#D557D9",
                   "Children": []
                 },
                 {
-                  "URL": "scripting/scripting-api/lorismanager/index.html#synthesise",
+                  "URL": "scripting/scripting-api/lorismanager.html#synthesise",
                   "Title": "synthesise",
                   "Colour": "#D557D9",
                   "Children": []
@@ -15791,6 +15797,19 @@ var rootDb = {
           "Colour": "#F15761",
           "Children": [
             {
+              "URL": "scriptnode/manual/global_routing_system.html",
+              "Title": "",
+              "Colour": "#F15761",
+              "Children": [
+                {
+                  "URL": "scriptnode/manual/global_routing_system.html#the-global-routing-system",
+                  "Title": "The Global Routing System",
+                  "Colour": "#F15761",
+                  "Children": []
+                }
+              ]
+            },
+            {
               "URL": "scriptnode/manual/snex_index.html",
               "Title": "",
               "Colour": "#F15761",
@@ -19009,6 +19028,60 @@ var rootDb = {
       "Colour": "#C5AC43",
       "Children": [
         {
+          "URL": "tutorials/index.html#the-snippet-browser",
+          "Title": "The Snippet Browser",
+          "Colour": "#C5AC43",
+          "Children": []
+        },
+        {
+          "URL": "tutorials/index.html#contributing-to-the-snippet-database",
+          "Title": "",
+          "Colour": "#C5AC43",
+          "Children": []
+        },
+        {
+          "URL": "tutorials/index.html#guidelines-for-snippets",
+          "Title": "Guidelines for snippets",
+          "Colour": "#C5AC43",
+          "Children": []
+        },
+        {
+          "URL": "tutorials/index.html#name",
+          "Title": "",
+          "Colour": "#C5AC43",
+          "Children": []
+        },
+        {
+          "URL": "tutorials/index.html#category",
+          "Title": "",
+          "Colour": "#C5AC43",
+          "Children": []
+        },
+        {
+          "URL": "tutorials/index.html#tags",
+          "Title": "",
+          "Colour": "#C5AC43",
+          "Children": []
+        },
+        {
+          "URL": "tutorials/index.html#priority",
+          "Title": "",
+          "Colour": "#C5AC43",
+          "Children": []
+        },
+        {
+          "URL": "tutorials/index.html#description",
+          "Title": "",
+          "Colour": "#C5AC43",
+          "Children": []
+        },
+        {
+          "URL": "tutorials/index.html#snippet-design",
+          "Title": "",
+          "Colour": "#C5AC43",
+          "Children": []
+        },
+        {
           "URL": "tutorials/all/index.html",
           "Title": "All Snippets",
           "Colour": "#C5AC43",
@@ -19361,6 +19434,12 @@ var rootDb = {
               "Children": []
             }
           ]
+        },
+        {
+          "URL": "tutorials/scripdnode-examples/index.html",
+          "Title": "",
+          "Colour": "#C5AC43",
+          "Children": []
         }
       ]
     },
@@ -19488,37 +19567,13 @@ var rootDb = {
                   "Children": []
                 },
                 {
-                  "URL": "cpp_api/hise/classhise_1_1_audio_sample_processor.html#setrange",
-                  "Title": "",
-                  "Colour": "#CCCCCC",
-                  "Children": []
-                },
-                {
-                  "URL": "cpp_api/hise/classhise_1_1_audio_sample_processor.html#getrange",
-                  "Title": "",
-                  "Colour": "#CCCCCC",
-                  "Children": []
-                },
-                {
-                  "URL": "cpp_api/hise/classhise_1_1_audio_sample_processor.html#getbuffer",
+                  "URL": "cpp_api/hise/classhise_1_1_audio_sample_processor.html#poolentryreloaded",
                   "Title": "",
                   "Colour": "#CCCCCC",
                   "Children": []
                 },
                 {
                   "URL": "cpp_api/hise/classhise_1_1_audio_sample_processor.html#getfilename",
-                  "Title": "",
-                  "Colour": "#CCCCCC",
-                  "Children": []
-                },
-                {
-                  "URL": "cpp_api/hise/classhise_1_1_audio_sample_processor.html#rangeupdated",
-                  "Title": "",
-                  "Colour": "#CCCCCC",
-                  "Children": []
-                },
-                {
-                  "URL": "cpp_api/hise/classhise_1_1_audio_sample_processor.html#newfileloaded",
                   "Title": "",
                   "Colour": "#CCCCCC",
                   "Children": []
@@ -19632,6 +19687,18 @@ var rootDb = {
                   "Title": "",
                   "Colour": "#CCCCCC",
                   "Children": []
+                },
+                {
+                  "URL": "cpp_api/hise/classhise_1_1_controlled_object.html#static-functions",
+                  "Title": "Static functions",
+                  "Colour": "#CCCCCC",
+                  "Children": []
+                },
+                {
+                  "URL": "cpp_api/hise/classhise_1_1_controlled_object.html#getmaincontrollerfromparent",
+                  "Title": "",
+                  "Colour": "#CCCCCC",
+                  "Children": []
                 }
               ]
             },
@@ -19689,6 +19756,18 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "cpp_api/hise/classhise_1_1_effect_processor.html#issuspendedonsilence",
+                  "Title": "",
+                  "Colour": "#CCCCCC",
+                  "Children": []
+                },
+                {
+                  "URL": "cpp_api/hise/classhise_1_1_effect_processor.html#iscurrentlysuspended",
+                  "Title": "",
+                  "Colour": "#CCCCCC",
+                  "Children": []
+                },
+                {
                   "URL": "cpp_api/hise/classhise_1_1_effect_processor.html#istailingoff",
                   "Title": "",
                   "Colour": "#CCCCCC",
@@ -19736,6 +19815,18 @@ var rootDb = {
                   "Title": "",
                   "Colour": "#CCCCCC",
                   "Children": []
+                },
+                {
+                  "URL": "cpp_api/hise/classhise_1_1_event_id_handler.html#isartificialeventid",
+                  "Title": "",
+                  "Colour": "#CCCCCC",
+                  "Children": []
+                },
+                {
+                  "URL": "cpp_api/hise/classhise_1_1_event_id_handler.html#sendchokemessage",
+                  "Title": "",
+                  "Colour": "#CCCCCC",
+                  "Children": []
                 }
               ]
             },
@@ -19776,6 +19867,12 @@ var rootDb = {
                 },
                 {
                   "URL": "cpp_api/hise/classhise_1_1_hise_event.html#operator==",
+                  "Title": "",
+                  "Colour": "#CCCCCC",
+                  "Children": []
+                },
+                {
+                  "URL": "cpp_api/hise/classhise_1_1_hise_event.html#clear",
                   "Title": "",
                   "Colour": "#CCCCCC",
                   "Children": []
@@ -19907,6 +20004,12 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "cpp_api/hise/classhise_1_1_hise_event.html#matchesmididata",
+                  "Title": "",
+                  "Colour": "#CCCCCC",
+                  "Children": []
+                },
+                {
                   "URL": "cpp_api/hise/classhise_1_1_hise_event.html#isvolumefade",
                   "Title": "",
                   "Colour": "#CCCCCC",
@@ -19986,6 +20089,12 @@ var rootDb = {
                 },
                 {
                   "URL": "cpp_api/hise/classhise_1_1_hise_event.html#getnotenumber",
+                  "Title": "",
+                  "Colour": "#CCCCCC",
+                  "Children": []
+                },
+                {
+                  "URL": "cpp_api/hise/classhise_1_1_hise_event.html#getnotenumberincludingtransposeamount",
                   "Title": "",
                   "Colour": "#CCCCCC",
                   "Children": []
@@ -20181,6 +20290,36 @@ var rootDb = {
                   "Title": "",
                   "Colour": "#CCCCCC",
                   "Children": []
+                },
+                {
+                  "URL": "cpp_api/hise/classhise_1_1_hise_event.html#static-functions",
+                  "Title": "Static functions",
+                  "Colour": "#CCCCCC",
+                  "Children": []
+                },
+                {
+                  "URL": "cpp_api/hise/classhise_1_1_hise_event.html#gettypestring",
+                  "Title": "",
+                  "Colour": "#CCCCCC",
+                  "Children": []
+                },
+                {
+                  "URL": "cpp_api/hise/classhise_1_1_hise_event.html#createvolumefade",
+                  "Title": "",
+                  "Colour": "#CCCCCC",
+                  "Children": []
+                },
+                {
+                  "URL": "cpp_api/hise/classhise_1_1_hise_event.html#createpitchfade",
+                  "Title": "",
+                  "Colour": "#CCCCCC",
+                  "Children": []
+                },
+                {
+                  "URL": "cpp_api/hise/classhise_1_1_hise_event.html#createtimerevent",
+                  "Title": "",
+                  "Colour": "#CCCCCC",
+                  "Children": []
                 }
               ]
             },
@@ -20229,7 +20368,7 @@ var rootDb = {
             },
             {
               "URL": "cpp_api/hise/classhise_1_1_lockfree_queue.html",
-              "Title": "LockfreeQueue",
+              "Title": "LockfreeQueue<class ElementType>",
               "Colour": "#CCCCCC",
               "Children": [
                 {
@@ -20277,6 +20416,18 @@ var rootDb = {
                 },
                 {
                   "URL": "cpp_api/hise/classhise_1_1_main_controller.html#base-classes",
+                  "Title": "",
+                  "Colour": "#CCCCCC",
+                  "Children": []
+                },
+                {
+                  "URL": "cpp_api/hise/classhise_1_1_main_controller.html#static-functions",
+                  "Title": "Static functions",
+                  "Colour": "#CCCCCC",
+                  "Children": []
+                },
+                {
+                  "URL": "cpp_api/hise/classhise_1_1_main_controller.html#createprocessor",
                   "Title": "",
                   "Colour": "#CCCCCC",
                   "Children": []
@@ -20349,6 +20500,12 @@ var rootDb = {
                 },
                 {
                   "URL": "cpp_api/hise/classhise_1_1_main_controller.html#getmainsynthchain",
+                  "Title": "",
+                  "Colour": "#CCCCCC",
+                  "Children": []
+                },
+                {
+                  "URL": "cpp_api/hise/classhise_1_1_main_controller.html#getmaximumblocksize",
                   "Title": "",
                   "Colour": "#CCCCCC",
                   "Children": []
@@ -20428,6 +20585,18 @@ var rootDb = {
                 },
                 {
                   "URL": "cpp_api/hise/classhise_1_1_midi_player.html#tempochanged",
+                  "Title": "",
+                  "Colour": "#CCCCCC",
+                  "Children": []
+                },
+                {
+                  "URL": "cpp_api/hise/classhise_1_1_midi_player.html#ongridchange",
+                  "Title": "",
+                  "Colour": "#CCCCCC",
+                  "Children": []
+                },
+                {
+                  "URL": "cpp_api/hise/classhise_1_1_midi_player.html#ontransportchange",
                   "Title": "",
                   "Colour": "#CCCCCC",
                   "Children": []
@@ -20541,6 +20710,18 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "cpp_api/hise/classhise_1_1_midi_player.html#getplaypackpositioninloop",
+                  "Title": "",
+                  "Colour": "#CCCCCC",
+                  "Children": []
+                },
+                {
+                  "URL": "cpp_api/hise/classhise_1_1_midi_player.html#setmidicontrolautomationhandlerconsumescontrollerevents",
+                  "Title": "",
+                  "Colour": "#CCCCCC",
+                  "Children": []
+                },
+                {
                   "URL": "cpp_api/hise/classhise_1_1_midi_player.html#flushedit",
                   "Title": "",
                   "Colour": "#CCCCCC",
@@ -20560,6 +20741,12 @@ var rootDb = {
                 },
                 {
                   "URL": "cpp_api/hise/classhise_1_1_midi_player.html#setflushrecordingonstop",
+                  "Title": "",
+                  "Colour": "#CCCCCC",
+                  "Children": []
+                },
+                {
+                  "URL": "cpp_api/hise/classhise_1_1_midi_player.html#onresync",
                   "Title": "",
                   "Colour": "#CCCCCC",
                   "Children": []
@@ -20646,6 +20833,12 @@ var rootDb = {
                 {
                   "URL": "cpp_api/hise/classhise_1_1_midi_processor.html#class-methods",
                   "Title": "Class methods",
+                  "Colour": "#CCCCCC",
+                  "Children": []
+                },
+                {
+                  "URL": "cpp_api/hise/classhise_1_1_midi_processor.html#setartificialtimestamp",
+                  "Title": "",
                   "Colour": "#CCCCCC",
                   "Children": []
                 },
@@ -21228,12 +21421,6 @@ var rootDb = {
                   "Title": "",
                   "Colour": "#CCCCCC",
                   "Children": []
-                },
-                {
-                  "URL": "cpp_api/hise/classhise_1_1_pool_base.html#class-methods",
-                  "Title": "Class methods",
-                  "Colour": "#CCCCCC",
-                  "Children": []
                 }
               ]
             },
@@ -21251,12 +21438,6 @@ var rootDb = {
                 {
                   "URL": "cpp_api/hise/classhise_1_1_pooled_u_i_updater.html#base-classes",
                   "Title": "",
-                  "Colour": "#CCCCCC",
-                  "Children": []
-                },
-                {
-                  "URL": "cpp_api/hise/classhise_1_1_pooled_u_i_updater.html#class-methods",
-                  "Title": "Class methods",
                   "Colour": "#CCCCCC",
                   "Children": []
                 }
@@ -21525,6 +21706,24 @@ var rootDb = {
                   "Title": "",
                   "Colour": "#CCCCCC",
                   "Children": []
+                },
+                {
+                  "URL": "cpp_api/hise/classhise_1_1_project_handler.html#static-functions",
+                  "Title": "Static functions",
+                  "Colour": "#CCCCCC",
+                  "Children": []
+                },
+                {
+                  "URL": "cpp_api/hise/classhise_1_1_project_handler.html#getappdatadirectory",
+                  "Title": "",
+                  "Colour": "#CCCCCC",
+                  "Children": []
+                },
+                {
+                  "URL": "cpp_api/hise/classhise_1_1_project_handler.html#getappdataroot",
+                  "Title": "",
+                  "Colour": "#CCCCCC",
+                  "Children": []
                 }
               ]
             },
@@ -21542,12 +21741,6 @@ var rootDb = {
                 {
                   "URL": "cpp_api/hise/structhise_1_1_safe_function_call.html#enum-status",
                   "Title": "",
-                  "Colour": "#CCCCCC",
-                  "Children": []
-                },
-                {
-                  "URL": "cpp_api/hise/structhise_1_1_safe_function_call.html#class-methods",
-                  "Title": "Class methods",
                   "Colour": "#CCCCCC",
                   "Children": []
                 }
@@ -21684,6 +21877,36 @@ var rootDb = {
                   "Title": "",
                   "Colour": "#CCCCCC",
                   "Children": []
+                },
+                {
+                  "URL": "cpp_api/hise/classhise_1_1_tempo_listener.html#ontransportchange",
+                  "Title": "",
+                  "Colour": "#CCCCCC",
+                  "Children": []
+                },
+                {
+                  "URL": "cpp_api/hise/classhise_1_1_tempo_listener.html#onresync",
+                  "Title": "",
+                  "Colour": "#CCCCCC",
+                  "Children": []
+                },
+                {
+                  "URL": "cpp_api/hise/classhise_1_1_tempo_listener.html#onbeatchange",
+                  "Title": "",
+                  "Colour": "#CCCCCC",
+                  "Children": []
+                },
+                {
+                  "URL": "cpp_api/hise/classhise_1_1_tempo_listener.html#ongridchange",
+                  "Title": "",
+                  "Colour": "#CCCCCC",
+                  "Children": []
+                },
+                {
+                  "URL": "cpp_api/hise/classhise_1_1_tempo_listener.html#onsignaturechange",
+                  "Title": "",
+                  "Colour": "#CCCCCC",
+                  "Children": []
                 }
               ]
             }
@@ -21696,7 +21919,7 @@ var rootDb = {
           "Children": [
             {
               "URL": "cpp_api/raw/classhise_1_1raw_1_1_builder.html",
-              "Title": "raw::Builder",
+              "Title": "Builder",
               "Colour": "#CCCCCC",
               "Children": [
                 {
@@ -21713,6 +21936,12 @@ var rootDb = {
                 },
                 {
                   "URL": "cpp_api/raw/classhise_1_1raw_1_1_builder.html#add",
+                  "Title": "",
+                  "Colour": "#CCCCCC",
+                  "Children": []
+                },
+                {
+                  "URL": "cpp_api/raw/classhise_1_1raw_1_1_builder.html#create",
                   "Title": "",
                   "Colour": "#CCCCCC",
                   "Children": []
@@ -21757,12 +21986,18 @@ var rootDb = {
             },
             {
               "URL": "cpp_api/raw/structhise_1_1raw_1_1_data.html",
-              "Title": "raw::Data",
+              "Title": "Data<typename DataType>",
               "Colour": "#CCCCCC",
               "Children": [
                 {
-                  "URL": "cpp_api/raw/structhise_1_1raw_1_1_data.html#class-methods",
-                  "Title": "Class methods",
+                  "URL": "cpp_api/raw/structhise_1_1raw_1_1_data.html#class-hierarchy",
+                  "Title": "Class Hierarchy",
+                  "Colour": "#CCCCCC",
+                  "Children": []
+                },
+                {
+                  "URL": "cpp_api/raw/structhise_1_1raw_1_1_data.html#derived-classes",
+                  "Title": "",
                   "Colour": "#CCCCCC",
                   "Children": []
                 }
@@ -21770,7 +22005,7 @@ var rootDb = {
             },
             {
               "URL": "cpp_api/raw/classhise_1_1raw_1_1_data_holder.html",
-              "Title": "raw::DataHolder",
+              "Title": "DataHolder<class MainProcessorClass, class EditorClass>",
               "Colour": "#CCCCCC",
               "Children": [
                 {
@@ -21813,7 +22048,7 @@ var rootDb = {
             },
             {
               "URL": "cpp_api/raw/classhise_1_1raw_1_1_data_holder_base.html",
-              "Title": "raw::DataHolderBase",
+              "Title": "DataHolderBase",
               "Colour": "#CCCCCC",
               "Children": [
                 {
@@ -21850,7 +22085,7 @@ var rootDb = {
             },
             {
               "URL": "cpp_api/raw/classhise_1_1raw_1_1_generic_storage.html",
-              "Title": "raw::GenericStorage",
+              "Title": "GenericStorage",
               "Colour": "#CCCCCC",
               "Children": [
                 {
@@ -21893,7 +22128,7 @@ var rootDb = {
             },
             {
               "URL": "cpp_api/raw/classhise_1_1raw_1_1_main_processor.html",
-              "Title": "raw::MainProcessor",
+              "Title": "MainProcessor",
               "Colour": "#CCCCCC",
               "Children": [
                 {
@@ -22008,7 +22243,7 @@ var rootDb = {
             },
             {
               "URL": "cpp_api/raw/classhise_1_1raw_1_1_plugin_parameter.html",
-              "Title": "raw::PluginParameter",
+              "Title": "PluginParameter<class FunctionType>",
               "Colour": "#CCCCCC",
               "Children": [
                 {
@@ -22022,18 +22257,12 @@ var rootDb = {
                   "Title": "",
                   "Colour": "#CCCCCC",
                   "Children": []
-                },
-                {
-                  "URL": "cpp_api/raw/classhise_1_1raw_1_1_plugin_parameter.html#class-methods",
-                  "Title": "Class methods",
-                  "Colour": "#CCCCCC",
-                  "Children": []
                 }
               ]
             },
             {
               "URL": "cpp_api/raw/classhise_1_1raw_1_1_pool.html",
-              "Title": "raw::Pool",
+              "Title": "Pool",
               "Colour": "#CCCCCC",
               "Children": [
                 {
@@ -22082,24 +22311,12 @@ var rootDb = {
             },
             {
               "URL": "cpp_api/raw/classhise_1_1raw_1_1_positioner.html",
-              "Title": "raw::Positioner",
+              "Title": "Positioner",
               "Colour": "#CCCCCC",
               "Children": [
                 {
                   "URL": "cpp_api/raw/classhise_1_1raw_1_1_positioner.html#class-methods",
                   "Title": "Class methods",
-                  "Colour": "#CCCCCC",
-                  "Children": []
-                },
-                {
-                  "URL": "cpp_api/raw/classhise_1_1raw_1_1_positioner.html#positioner",
-                  "Title": "",
-                  "Colour": "#CCCCCC",
-                  "Children": []
-                },
-                {
-                  "URL": "cpp_api/raw/classhise_1_1raw_1_1_positioner.html#positioner",
-                  "Title": "",
                   "Colour": "#CCCCCC",
                   "Children": []
                 },
@@ -22131,7 +22348,7 @@ var rootDb = {
             },
             {
               "URL": "cpp_api/raw/classhise_1_1raw_1_1_reference.html",
-              "Title": "raw::Reference",
+              "Title": "Reference<class ProcessorType>",
               "Colour": "#CCCCCC",
               "Children": [
                 {
@@ -22174,7 +22391,7 @@ var rootDb = {
             },
             {
               "URL": "cpp_api/raw/classhise_1_1raw_1_1_storage.html",
-              "Title": "raw::Storage",
+              "Title": "Storage<class FunctionClass>",
               "Colour": "#CCCCCC",
               "Children": [
                 {
@@ -22188,18 +22405,12 @@ var rootDb = {
                   "Title": "",
                   "Colour": "#CCCCCC",
                   "Children": []
-                },
-                {
-                  "URL": "cpp_api/raw/classhise_1_1raw_1_1_storage.html#class-methods",
-                  "Title": "Class methods",
-                  "Colour": "#CCCCCC",
-                  "Children": []
                 }
               ]
             },
             {
               "URL": "cpp_api/raw/classhise_1_1raw_1_1_task_after_suspension.html",
-              "Title": "raw::TaskAfterSuspension",
+              "Title": "TaskAfterSuspension",
               "Colour": "#CCCCCC",
               "Children": [
                 {
@@ -22213,12 +22424,30 @@ var rootDb = {
                   "Title": "",
                   "Colour": "#CCCCCC",
                   "Children": []
+                },
+                {
+                  "URL": "cpp_api/raw/classhise_1_1raw_1_1_task_after_suspension.html#static-functions",
+                  "Title": "Static functions",
+                  "Colour": "#CCCCCC",
+                  "Children": []
+                },
+                {
+                  "URL": "cpp_api/raw/classhise_1_1raw_1_1_task_after_suspension.html#call",
+                  "Title": "",
+                  "Colour": "#CCCCCC",
+                  "Children": []
+                },
+                {
+                  "URL": "cpp_api/raw/classhise_1_1raw_1_1_task_after_suspension.html#call",
+                  "Title": "",
+                  "Colour": "#CCCCCC",
+                  "Children": []
                 }
               ]
             },
             {
               "URL": "cpp_api/raw/classhise_1_1raw_1_1_u_i_connection.html",
-              "Title": "raw::UIConnection",
+              "Title": "UIConnection",
               "Colour": "#CCCCCC",
               "Children": []
             }

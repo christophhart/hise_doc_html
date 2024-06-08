@@ -38,7 +38,7 @@
 
 		</nav>
 
-		<div class="content"><h1 id="raw::data"><b>raw::Data</b>
+		<div class="content"><h1 id="data<typename-datatype>"><b>Data<typename DataType></b>
 </h1>
 <p>The base class for all data connections used in the raw namespace.<br>This is a powerful and generic class which is the glue between the data of a <a href="cpp_api/hise/classhise_1_1_processor.html">Processor</a>
  and your raw project.<br></p>
@@ -49,13 +49,22 @@
 <p><br>In order to use it, pass one of the subclasses as template argument to one of the more high-level classes (<a href="cpp_api/raw/classhise_1_1raw_1_1_u_i_connection.html">UIConnection</a>
  and <a href="cpp_api/raw/classhise_1_1raw_1_1_storage.html">Storage</a>
 ) and they will synchronize with the actual data in your <a href="cpp_api/hise/classhise_1_1_processor.html">Processor</a>
- tree.<br>You can also write your own handler classes - just make sure it has two functions that match the SaveFunction and LoadFunction prototype<br> typenameDataTypeDataType</p>
-<h2 id="class-methods"><b>Class methods</b>
+ tree.<br>You can also write your own handler classes - just make sure it has two functions that match the SaveFunction and LoadFunction prototype<br> </p>
+<h2 id="class-hierarchy"><b>Class Hierarchy</b>
 </h2>
+<h3 id="derived-classes"><b>Derived Classes</b>
+</h3>
+<ul><li><code>hise::raw::UIConnection::Base< juce::Button, bool ></code>
+<br></li>
+<li><code>hise::raw::UIConnection::Base< juce::ComboBox, var ></code>
+<br></li>
+<li><code>hise::raw::UIConnection::Base< juce::Slider, float ></code>
+<br></li>
+</ul>
 <div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
 </span>
 
-<span class="content-footer-right">Next: <a href="cpp_api/raw/classhise_1_1raw_1_1_data_holder.html">raw::DataHolder</a>
+<span class="content-footer-right">Next: <a href="cpp_api/raw/classhise_1_1raw_1_1_data_holder.html">DataHolder<class MainProcessorClass, class EditorClass></a>
 </span>
 
 <p class="content-footer-metadata">Christoph Hart<br><br></p>

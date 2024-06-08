@@ -59,6 +59,14 @@
 </h3>
 <pre><code class="language-clike line-numbers">HiseEvent popNoteOnFromEventId(uint16 eventId)</code></pre>
 <p>Searches all active note on events and returns the one with the given event id.<br> </p>
+<h3 id="isartificialeventid"><b>isArtificialEventId</b>
+</h3>
+<pre><code class="language-clike line-numbers">bool isArtificialEventId(uint16 eventId) const</code></pre>
+<p>Checks whether the event ID points to an active artificial event.<br> </p>
+<h3 id="sendchokemessage"><b>sendChokeMessage</b>
+</h3>
+<pre><code class="language-clike line-numbers">void sendChokeMessage(ChokeListener *source, const HiseEvent &e)</code></pre>
+<p>Sends a choke message to all registered listeners for the given event.<br> </p>
 <div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
 </span>
 

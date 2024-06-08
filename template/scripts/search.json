@@ -672,8 +672,8 @@
     "color": "#DEB887"
   },
   {
-    "key": "File: Show Project folder in Explorer",
-    "url": "working-with-hise/menu-reference/file/index.html#show-project-folder-in-explorer",
+    "key": "File: Show Project folder in Finder",
+    "url": "working-with-hise/menu-reference/file/index.html#show-project-folder-in-finder",
     "weight": 60,
     "color": "#DEB887"
   },
@@ -3098,6 +3098,12 @@
   {
     "key": "HISE Floating tiles: Note",
     "url": "ui-components/floating-tiles/hise/note.html",
+    "weight": 60,
+    "color": "#9064FF"
+  },
+  {
+    "key": "HISE Floating tiles: RLottieDevPanel",
+    "url": "ui-components/floating-tiles/hise/rlottiedevpanel.html",
     "weight": 60,
     "color": "#9064FF"
   },
@@ -7903,55 +7909,55 @@
   },
   {
     "key": "LorisManager.analyse()",
-    "url": "scripting/scripting-api/lorismanager/index.html#analyse",
+    "url": "scripting/scripting-api/lorismanager.html#analyse",
     "weight": 60,
     "color": "#D557D9"
   },
   {
     "key": "LorisManager.createEnvelopePaths()",
-    "url": "scripting/scripting-api/lorismanager/index.html#createenvelopepaths",
+    "url": "scripting/scripting-api/lorismanager.html#createenvelopepaths",
     "weight": 60,
     "color": "#D557D9"
   },
   {
     "key": "LorisManager.createEnvelopes()",
-    "url": "scripting/scripting-api/lorismanager/index.html#createenvelopes",
+    "url": "scripting/scripting-api/lorismanager.html#createenvelopes",
     "weight": 60,
     "color": "#D557D9"
   },
   {
     "key": "LorisManager.createSnapshot()",
-    "url": "scripting/scripting-api/lorismanager/index.html#createsnapshot",
+    "url": "scripting/scripting-api/lorismanager.html#createsnapshot",
     "weight": 60,
     "color": "#D557D9"
   },
   {
     "key": "LorisManager.get()",
-    "url": "scripting/scripting-api/lorismanager/index.html#get",
+    "url": "scripting/scripting-api/lorismanager.html#get",
     "weight": 60,
     "color": "#D557D9"
   },
   {
     "key": "LorisManager.process()",
-    "url": "scripting/scripting-api/lorismanager/index.html#process",
+    "url": "scripting/scripting-api/lorismanager.html#process",
     "weight": 60,
     "color": "#D557D9"
   },
   {
     "key": "LorisManager.processCustom()",
-    "url": "scripting/scripting-api/lorismanager/index.html#processcustom",
+    "url": "scripting/scripting-api/lorismanager.html#processcustom",
     "weight": 60,
     "color": "#D557D9"
   },
   {
     "key": "LorisManager.set()",
-    "url": "scripting/scripting-api/lorismanager/index.html#set",
+    "url": "scripting/scripting-api/lorismanager.html#set",
     "weight": 60,
     "color": "#D557D9"
   },
   {
     "key": "LorisManager.synthesise()",
-    "url": "scripting/scripting-api/lorismanager/index.html#synthesise",
+    "url": "scripting/scripting-api/lorismanager.html#synthesise",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -16614,6 +16620,18 @@
     "color": "#BD6F50"
   },
   {
+    "key": "Examples: The Snippet Browser",
+    "url": "tutorials/index.html#the-snippet-browser",
+    "weight": 80,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "Examples: Guidelines for snippets",
+    "url": "tutorials/index.html#guidelines-for-snippets",
+    "weight": 80,
+    "color": "#C5AC43"
+  },
+  {
     "key": "Examples: All Snippets",
     "url": "tutorials/all/index.html",
     "weight": 80,
@@ -17052,7 +17070,7 @@
     "color": "#CCCCCC"
   },
   {
-    "key": "namespace hise: LockfreeQueue",
+    "key": "namespace hise: LockfreeQueue<class ElementType>",
     "url": "cpp_api/hise/classhise_1_1_lockfree_queue.html",
     "weight": 70,
     "color": "#CCCCCC"
@@ -17172,6 +17190,12 @@
     "color": "#CCCCCC"
   },
   {
+    "key": "ControlledObject: Static functions",
+    "url": "cpp_api/hise/classhise_1_1_controlled_object.html#static-functions",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
     "key": "EffectProcessor: Class Hierarchy",
     "url": "cpp_api/hise/classhise_1_1_effect_processor.html#class-hierarchy",
     "weight": 60,
@@ -17202,13 +17226,19 @@
     "color": "#CCCCCC"
   },
   {
+    "key": "HiseEvent: Static functions",
+    "url": "cpp_api/hise/classhise_1_1_hise_event.html#static-functions",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
     "key": "HiseEventBuffer: Class methods",
     "url": "cpp_api/hise/classhise_1_1_hise_event_buffer.html#class-methods",
     "weight": 60,
     "color": "#CCCCCC"
   },
   {
-    "key": "LockfreeQueue: Class methods",
+    "key": "LockfreeQueue<class ElementType>: Class methods",
     "url": "cpp_api/hise/classhise_1_1_lockfree_queue.html#class-methods",
     "weight": 60,
     "color": "#CCCCCC"
@@ -17216,6 +17246,12 @@
   {
     "key": "MainController: Class Hierarchy",
     "url": "cpp_api/hise/classhise_1_1_main_controller.html#class-hierarchy",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "MainController: Static functions",
+    "url": "cpp_api/hise/classhise_1_1_main_controller.html#static-functions",
     "weight": 60,
     "color": "#CCCCCC"
   },
@@ -17304,20 +17340,8 @@
     "color": "#CCCCCC"
   },
   {
-    "key": "PoolBase: Class methods",
-    "url": "cpp_api/hise/classhise_1_1_pool_base.html#class-methods",
-    "weight": 60,
-    "color": "#CCCCCC"
-  },
-  {
     "key": "PooledUIUpdater: Class Hierarchy",
     "url": "cpp_api/hise/classhise_1_1_pooled_u_i_updater.html#class-hierarchy",
-    "weight": 60,
-    "color": "#CCCCCC"
-  },
-  {
-    "key": "PooledUIUpdater: Class methods",
-    "url": "cpp_api/hise/classhise_1_1_pooled_u_i_updater.html#class-methods",
     "weight": 60,
     "color": "#CCCCCC"
   },
@@ -17346,14 +17370,14 @@
     "color": "#CCCCCC"
   },
   {
-    "key": "SafeFunctionCall: Public types",
-    "url": "cpp_api/hise/structhise_1_1_safe_function_call.html#public-types",
+    "key": "ProjectHandler: Static functions",
+    "url": "cpp_api/hise/classhise_1_1_project_handler.html#static-functions",
     "weight": 60,
     "color": "#CCCCCC"
   },
   {
-    "key": "SafeFunctionCall: Class methods",
-    "url": "cpp_api/hise/structhise_1_1_safe_function_call.html#class-methods",
+    "key": "SafeFunctionCall: Public types",
+    "url": "cpp_api/hise/structhise_1_1_safe_function_call.html#public-types",
     "weight": 60,
     "color": "#CCCCCC"
   },
@@ -17388,212 +17412,206 @@
     "color": "#CCCCCC"
   },
   {
-    "key": "namespace raw: raw::Builder",
+    "key": "namespace raw: Builder",
     "url": "cpp_api/raw/classhise_1_1raw_1_1_builder.html",
     "weight": 70,
     "color": "#CCCCCC"
   },
   {
-    "key": "namespace raw: raw::Data",
+    "key": "namespace raw: Data<typename DataType>",
     "url": "cpp_api/raw/structhise_1_1raw_1_1_data.html",
     "weight": 70,
     "color": "#CCCCCC"
   },
   {
-    "key": "namespace raw: raw::DataHolder",
+    "key": "namespace raw: DataHolder<class MainProcessorClass, class EditorClass>",
     "url": "cpp_api/raw/classhise_1_1raw_1_1_data_holder.html",
     "weight": 70,
     "color": "#CCCCCC"
   },
   {
-    "key": "namespace raw: raw::DataHolderBase",
+    "key": "namespace raw: DataHolderBase",
     "url": "cpp_api/raw/classhise_1_1raw_1_1_data_holder_base.html",
     "weight": 70,
     "color": "#CCCCCC"
   },
   {
-    "key": "namespace raw: raw::GenericStorage",
+    "key": "namespace raw: GenericStorage",
     "url": "cpp_api/raw/classhise_1_1raw_1_1_generic_storage.html",
     "weight": 70,
     "color": "#CCCCCC"
   },
   {
-    "key": "namespace raw: raw::MainProcessor",
+    "key": "namespace raw: MainProcessor",
     "url": "cpp_api/raw/classhise_1_1raw_1_1_main_processor.html",
     "weight": 70,
     "color": "#CCCCCC"
   },
   {
-    "key": "namespace raw: raw::PluginParameter",
+    "key": "namespace raw: PluginParameter<class FunctionType>",
     "url": "cpp_api/raw/classhise_1_1raw_1_1_plugin_parameter.html",
     "weight": 70,
     "color": "#CCCCCC"
   },
   {
-    "key": "namespace raw: raw::Pool",
+    "key": "namespace raw: Pool",
     "url": "cpp_api/raw/classhise_1_1raw_1_1_pool.html",
     "weight": 70,
     "color": "#CCCCCC"
   },
   {
-    "key": "namespace raw: raw::Positioner",
+    "key": "namespace raw: Positioner",
     "url": "cpp_api/raw/classhise_1_1raw_1_1_positioner.html",
     "weight": 70,
     "color": "#CCCCCC"
   },
   {
-    "key": "namespace raw: raw::Reference",
+    "key": "namespace raw: Reference<class ProcessorType>",
     "url": "cpp_api/raw/classhise_1_1raw_1_1_reference.html",
     "weight": 70,
     "color": "#CCCCCC"
   },
   {
-    "key": "namespace raw: raw::Storage",
+    "key": "namespace raw: Storage<class FunctionClass>",
     "url": "cpp_api/raw/classhise_1_1raw_1_1_storage.html",
     "weight": 70,
     "color": "#CCCCCC"
   },
   {
-    "key": "namespace raw: raw::TaskAfterSuspension",
+    "key": "namespace raw: TaskAfterSuspension",
     "url": "cpp_api/raw/classhise_1_1raw_1_1_task_after_suspension.html",
     "weight": 70,
     "color": "#CCCCCC"
   },
   {
-    "key": "namespace raw: raw::UIConnection",
+    "key": "namespace raw: UIConnection",
     "url": "cpp_api/raw/classhise_1_1raw_1_1_u_i_connection.html",
     "weight": 70,
     "color": "#CCCCCC"
   },
   {
-    "key": "raw::Builder: Class methods",
+    "key": "Builder: Class methods",
     "url": "cpp_api/raw/classhise_1_1raw_1_1_builder.html#class-methods",
     "weight": 60,
     "color": "#CCCCCC"
   },
   {
-    "key": "raw::Data: Class methods",
-    "url": "cpp_api/raw/structhise_1_1raw_1_1_data.html#class-methods",
+    "key": "Data<typename DataType>: Class Hierarchy",
+    "url": "cpp_api/raw/structhise_1_1raw_1_1_data.html#class-hierarchy",
     "weight": 60,
     "color": "#CCCCCC"
   },
   {
-    "key": "raw::DataHolder: Class Hierarchy",
+    "key": "DataHolder<class MainProcessorClass, class EditorClass>: Class Hierarchy",
     "url": "cpp_api/raw/classhise_1_1raw_1_1_data_holder.html#class-hierarchy",
     "weight": 60,
     "color": "#CCCCCC"
   },
   {
-    "key": "raw::DataHolder: Class methods",
+    "key": "DataHolder<class MainProcessorClass, class EditorClass>: Class methods",
     "url": "cpp_api/raw/classhise_1_1raw_1_1_data_holder.html#class-methods",
     "weight": 60,
     "color": "#CCCCCC"
   },
   {
-    "key": "raw::DataHolderBase: Class Hierarchy",
+    "key": "DataHolderBase: Class Hierarchy",
     "url": "cpp_api/raw/classhise_1_1raw_1_1_data_holder_base.html#class-hierarchy",
     "weight": 60,
     "color": "#CCCCCC"
   },
   {
-    "key": "raw::DataHolderBase: Class methods",
+    "key": "DataHolderBase: Class methods",
     "url": "cpp_api/raw/classhise_1_1raw_1_1_data_holder_base.html#class-methods",
     "weight": 60,
     "color": "#CCCCCC"
   },
   {
-    "key": "raw::GenericStorage: Class Hierarchy",
+    "key": "GenericStorage: Class Hierarchy",
     "url": "cpp_api/raw/classhise_1_1raw_1_1_generic_storage.html#class-hierarchy",
     "weight": 60,
     "color": "#CCCCCC"
   },
   {
-    "key": "raw::GenericStorage: Class methods",
+    "key": "GenericStorage: Class methods",
     "url": "cpp_api/raw/classhise_1_1raw_1_1_generic_storage.html#class-methods",
     "weight": 60,
     "color": "#CCCCCC"
   },
   {
-    "key": "raw::MainProcessor: Initialisation",
+    "key": "MainProcessor: Initialisation",
     "url": "cpp_api/raw/classhise_1_1raw_1_1_main_processor.html#initialisation",
     "weight": 60,
     "color": "#CCCCCC"
   },
   {
-    "key": "raw::MainProcessor: Class Hierarchy",
+    "key": "MainProcessor: Class Hierarchy",
     "url": "cpp_api/raw/classhise_1_1raw_1_1_main_processor.html#class-hierarchy",
     "weight": 60,
     "color": "#CCCCCC"
   },
   {
-    "key": "raw::MainProcessor: Public types",
+    "key": "MainProcessor: Public types",
     "url": "cpp_api/raw/classhise_1_1raw_1_1_main_processor.html#public-types",
     "weight": 60,
     "color": "#CCCCCC"
   },
   {
-    "key": "raw::MainProcessor: Class methods",
+    "key": "MainProcessor: Class methods",
     "url": "cpp_api/raw/classhise_1_1raw_1_1_main_processor.html#class-methods",
     "weight": 60,
     "color": "#CCCCCC"
   },
   {
-    "key": "raw::PluginParameter: Class Hierarchy",
+    "key": "PluginParameter<class FunctionType>: Class Hierarchy",
     "url": "cpp_api/raw/classhise_1_1raw_1_1_plugin_parameter.html#class-hierarchy",
     "weight": 60,
     "color": "#CCCCCC"
   },
   {
-    "key": "raw::PluginParameter: Class methods",
-    "url": "cpp_api/raw/classhise_1_1raw_1_1_plugin_parameter.html#class-methods",
-    "weight": 60,
-    "color": "#CCCCCC"
-  },
-  {
-    "key": "raw::Pool: Class Hierarchy",
+    "key": "Pool: Class Hierarchy",
     "url": "cpp_api/raw/classhise_1_1raw_1_1_pool.html#class-hierarchy",
     "weight": 60,
     "color": "#CCCCCC"
   },
   {
-    "key": "raw::Pool: Class methods",
+    "key": "Pool: Class methods",
     "url": "cpp_api/raw/classhise_1_1raw_1_1_pool.html#class-methods",
     "weight": 60,
     "color": "#CCCCCC"
   },
   {
-    "key": "raw::Positioner: Class methods",
+    "key": "Positioner: Class methods",
     "url": "cpp_api/raw/classhise_1_1raw_1_1_positioner.html#class-methods",
     "weight": 60,
     "color": "#CCCCCC"
   },
   {
-    "key": "raw::Reference: Class Hierarchy",
+    "key": "Reference<class ProcessorType>: Class Hierarchy",
     "url": "cpp_api/raw/classhise_1_1raw_1_1_reference.html#class-hierarchy",
     "weight": 60,
     "color": "#CCCCCC"
   },
   {
-    "key": "raw::Reference: Class methods",
+    "key": "Reference<class ProcessorType>: Class methods",
     "url": "cpp_api/raw/classhise_1_1raw_1_1_reference.html#class-methods",
     "weight": 60,
     "color": "#CCCCCC"
   },
   {
-    "key": "raw::Storage: Class Hierarchy",
+    "key": "Storage<class FunctionClass>: Class Hierarchy",
     "url": "cpp_api/raw/classhise_1_1raw_1_1_storage.html#class-hierarchy",
     "weight": 60,
     "color": "#CCCCCC"
   },
   {
-    "key": "raw::Storage: Class methods",
-    "url": "cpp_api/raw/classhise_1_1raw_1_1_storage.html#class-methods",
+    "key": "TaskAfterSuspension: Public types",
+    "url": "cpp_api/raw/classhise_1_1raw_1_1_task_after_suspension.html#public-types",
     "weight": 60,
     "color": "#CCCCCC"
   },
   {
-    "key": "raw::TaskAfterSuspension: Public types",
-    "url": "cpp_api/raw/classhise_1_1raw_1_1_task_after_suspension.html#public-types",
+    "key": "TaskAfterSuspension: Static functions",
+    "url": "cpp_api/raw/classhise_1_1raw_1_1_task_after_suspension.html#static-functions",
     "weight": 60,
     "color": "#CCCCCC"
   }

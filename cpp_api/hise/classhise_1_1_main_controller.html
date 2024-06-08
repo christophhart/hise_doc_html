@@ -60,6 +60,14 @@
 <li><code>Timer</code>
 <br></li>
 </ul>
+<h2 id="static-functions"><b>Static functions</b>
+</h2>
+<h3 id="createprocessor"><b>createProcessor</b>
+</h3>
+<pre><code class="language-clike line-numbers">Processor * createProcessor(FactoryType *FactoryTypeToUse, const Identifier &typeName, const String &id)</code></pre>
+<p>Create a new processor and returns it. You have to supply a <a href="cpp_api/hise/classhise_1_1_chain.html">Chain</a>
+ that the <a href="cpp_api/hise/classhise_1_1_processor.html">Processor</a>
+ will be added to.<br>The function is static (it will get the MainController() instance from the FactoryType).<br>FactoryTypethis is used to create the processor and connect it to the MainController.<br> typeNamethe identifier string of the processor that should be created.<br> idthe name of the processor to be created.<br>a new processor. You have to manage the ownership yourself.<br> <br></p>
 <h2 id="class-methods"><b>Class methods</b>
 </h2>
 <h3 id="compileallscripts"><b>compileAllScripts</b>
@@ -108,6 +116,10 @@
 </h3>
 <pre><code class="language-clike line-numbers">ModulatorSynthChain * getMainSynthChain()=0</code></pre>
 <p>this must be overwritten by the derived class and return the master synth chain.<br> </p>
+<h3 id="getmaximumblocksize"><b>getMaximumBlockSize</b>
+</h3>
+<pre><code class="language-clike line-numbers">int getMaximumBlockSize() const</code></pre>
+<p>Returns the maximum block size that HISE will use for its process callback.<br>It defaults to HISE_MAX_PROCESSING_BLOCKSIZE (which is 512) but it can be set with Engine.setMaximumBlockSize()<br> </p>
 <h3 id="getcpuusage"><b>getCpuUsage</b>
 </h3>
 <pre><code class="language-clike line-numbers">float getCpuUsage() const</code></pre>

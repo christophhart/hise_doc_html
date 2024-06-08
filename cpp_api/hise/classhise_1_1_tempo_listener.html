@@ -47,13 +47,35 @@
 </h3>
 <ul><li><a href="cpp_api/hise/classhise_1_1_midi_player.html">hise::MidiPlayer</a>
 <br></li>
+<li><code>hise::ScriptingApi::TransportHandler</code>
+<br></li>
 </ul>
 <h2 id="class-methods"><b>Class methods</b>
 </h2>
 <h3 id="tempochanged"><b>tempoChanged</b>
 </h3>
-<pre><code class="language-clike line-numbers">void tempoChanged(double newTempo)=0</code></pre>
+<pre><code class="language-clike line-numbers">void tempoChanged(double newTempo)</code></pre>
 <p>The callback function that will be called if the tempo was changed.<br>This is called synchronously in the audio callback before the processing, so make sure you don't make something stupid here.<br>It will be called once per block, so you can't do sample synchronous tempo stuff, but that should be enough.<br> </p>
+<h3 id="ontransportchange"><b>onTransportChange</b>
+</h3>
+<pre><code class="language-clike line-numbers">void onTransportChange(bool isPlaying, double ppqPosition)</code></pre>
+<p>The callback function that will be called when the transport state changes (=the user presses play on the DAW).<br> </p>
+<h3 id="onresync"><b>onResync</b>
+</h3>
+<pre><code class="language-clike line-numbers">void onResync(double ppqPosition)</code></pre>
+<p>This callback will be called whenever the transport position needs to be resynced (eg. when the playback position was changed in the DAW or the playback position was wrapped around the loop range.<br> </p>
+<h3 id="onbeatchange"><b>onBeatChange</b>
+</h3>
+<pre><code class="language-clike line-numbers">void onBeatChange(int beatIndex, bool isNewBar)</code></pre>
+<p>The callback function that will be called for each musical pulse.<br>It takes the denominator from the time signature into account so if the host time signature is set to 6/8, it will be called twice as often as with 3/4.<br>By default, this function is disabled, so you need to call addPulseListener() to activate this feature.<br> </p>
+<h3 id="ongridchange"><b>onGridChange</b>
+</h3>
+<pre><code class="language-clike line-numbers">void onGridChange(int gridIndex, uint16 timestamp, bool firstGridEventInPlayback)</code></pre>
+<p>The callback function that is called on every grid change. This can be used to implement sample accurate sequencers.<br>By default this is disabled so you need to call addPulseListener() to activate this feature.<br> </p>
+<h3 id="onsignaturechange"><b>onSignatureChange</b>
+</h3>
+<pre><code class="language-clike line-numbers">void onSignatureChange(int newNominator, int numDenominator)</code></pre>
+<p>Called whenever a time signature change occurs.<br> </p>
 <div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
 </span>
 
