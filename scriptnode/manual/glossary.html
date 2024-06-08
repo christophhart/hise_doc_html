@@ -45,20 +45,21 @@
 <p>There are a few concepts in scriptnode which will be used throughout the interface and this documentation which are important to understand.</p>
 <h2 id="dsp-network"><b>DSP Network</b>
 </h2>
-<p>A DSP Network is the main object that will bypass the scripting callbacks of a script module and use it's signal graph instead. It is the entry point to the world of scriptnode and can be activated by the magic spell <code>const var myNetwork = Engine.createDspNetwork("someName");</code>
-. There's a powerful API of function calls that you can use with <code>myNetwork</code>
- to buildup the signal path via scripting.</p>
-<p>The lifetime of a DspNetwork object will exceed the compilation (just like a UI component), so if you recompile the script it will look for the one with the given name and just return a reference to it.</p>
-<h2 id="signal"><b>Signal</b>
-</h2>
-<p>An important abstraction that scriptnode does for you is to combine multiple audiochannels into one "signal" that flows through the DSP network: the rationale behind this is that for most of the use cases you don't care about the channel amount (or even make it compatible with different channel configurations). Plus having to duplicate the signal graph for stereo processing is pretty annoying. So Unless specified otherwise, a node will process all channels of the signal that it receives. The gain module doesn't care whether it has to process 16 channels or one channel, it just operates on how many channels it has to do.Another aspect of the signal is the samplerate and buffer size. As you may know, any processing of an audiosignal is usually done in chunks of multiple samples (buffer size) at once with a given samplerate. Now while HISE has a "static" samplerate and buffersize which is defined by the user (or the host that it's operating in), nodes in scriptnode can be processed in different settings: the <code>container.oversample</code>
- nodes will multiply both the samplerate and the buffer size with the oversampling factor, and the <code>container.framex_block</code>
- nodes will bring down the buffer size to exactly <code>1</code>
- which gives you the possiblity for sample-accurate modulation of parameters.</p>
-<p>The good thing is that you don't have to care about all this: as soon as you drop a node somewhere, it will be initialised with the required specifications for this location and starts processing the incoming audio samples.</p>
+<p>A DSP Network is the main container that will process a scriptnode patch. You can either use embedded networks, which are saved within the project XML tree<br>or save them as individual files. The latter has the advantage that you can also compile the DSP networks to a C++ class that you then can load with a Hardcoded FX module.</p>
 <h2 id="node"><b>Node</b>
 </h2>
 <p>A node is an object within the graph that processes the signal and the most simple building block of any graph you'll create in scriptnode. It's visual representation contains a header, a (optional) body and a list of sliders for its parameters.</p>
+<h2 id="signal"><b>Signal</b>
+</h2>
+<p>An important abstraction that scriptnode does for you is to combine multiple audiochannels (and MIDI events) into one "signal" that flows through the DSP network: the rationale behind this is that for most of the use cases you don't care about the channel amount (or even make it compatible with different channel configurations). Plus having to duplicate the signal graph for stereo processing is pretty annoying. So Unless specified otherwise, a node will process all channels of the signal that it receives. The gain module doesn't care whether it has to process 16 channels or one channel, it just operates on how many channels it has to do.</p>
+<p>Another aspect of the signal is the samplerate and buffer size. As you may know, any processing of an audiosignal is usually done in chunks of multiple samples (buffer size) at once with a given samplerate. Now while HISE has a "static" samplerate and buffersize which is defined by the user (or the host that it's operating in), nodes in scriptnode can be processed in different settings: the <code>container.oversample</code>
+ nodes will multiply both the samplerate and the buffer size with the oversampling factor, and the <code>container.framex_block</code>
+ nodes will bring down the buffer size to exactly <code>1</code>
+ which gives you the possiblity for sample-accurate modulation of parameters.</p>
+<p>A good way to grasp the concept of signal is using the <a href="scriptnode/list/analyse/specs.html">analyse.specs</a>
+ node which will tell you exactly the specifications of the signal flowing through the respective location:</p>
+<img src="scriptnode/list/analyse/specs.html"></img>
+<p>The good thing is that you don't have to care about all this: as soon as you drop a node somewhere, it will be initialised with the required specifications for this location and starts processing the incoming audio samples.</p>
 <h2 id="factory"><b>Factory</b>
 </h2>
 <p>A factory is a collection of nodes that belong together and is used to create nodes using their path (<code>factory.node</code>
@@ -69,10 +70,9 @@
 </h2>
 <p>A container is a node that contains a list of other nodes. There are many different containers which differ in the way they process their children. Containers can be nested to create complex signal path arrangements. The root node is a <code>container.chain</code>
  node, which processes its children serially.</p>
-<p>Containers can exported to Cpp modules, which turns them into dedicated nodes.</p>
 <h2 id="parameter"><b>Parameter</b>
 </h2>
-<p>A parameter is a number that will change the behaviour of a node. Unlike the signal graph which still follows the tree paradigm, Parameters can be connected to basically anything (the only limitation is that container parameters can only connect to their children or it breaks the rules of encapsulation). Nodes have a fixed amount of parameters, but Containers can have a dynamic amount of parameters that connect to parameters of their child nodes to build up "macro" parameters.</p>
+<p>A parameter is a double precision floating point value that will change the behaviour of a node. Unlike the signal graph which still follows the tree paradigm, Parameters can be connected to basically anything (the only limitation is that container parameters can only connect to their children or it breaks the rules of encapsulation). Nodes have a fixed amount of parameters, but Containers can have a dynamic amount of parameters that connect to parameters of their child nodes to build up "macro" parameters.</p>
 <h3 id="range"><b>Range</b>
 </h3>
 <p>Unlike parameters in HISE, scriptnode parameters do not have a fixed range (but rather a default range that you can change to whatever you need). A range does not only define a min and max value, but also three other properties:</p>
@@ -85,41 +85,9 @@
 <li><b>Inverted</b>
 : swaps the min and max value for inverting the curve</li>
 </ul>
-<p>You can change the ranges anytime, either by right-clicking on the knob and change its properties in the popup editor, or by using the range editor which gives you a more intuitive approach. If you hover over the parameter and click on the two-faced arrow left to the knob, it will show the range editor (which you can close by double clicking on it or right click and unselect "Make sticky").</p>
-<p class="comment">You can also temporarily show the range editor by hovering over a knob while holding down the alt key. This gives you the ability of quickly changing multiple parameters.</p>
-<p>With the range editor you can:</p>
-<ul><li>change the range limits by dragging either the left or right edge (shift click to enter a value)</li>
-<li>change the skew by dragging up or down the middle (shift click to enter a value)</li>
-<li>use the context menu for more options:</li>
-</ul>
-<table><thead><td><b>Item </b>
-</td>
-<td><b>Description </b>
-</td>
-</thead>
-<tr><td>Make sticky </td>
-<td>Closes the range editor </td>
-</tr>
-<tr><td>Load Range Preset </td>
-<td>Quickly set the range to a predefined list of range presets. </td>
-</tr>
-<tr><td>Save Range Preset </td>
-<td>Save the current range to be used later on. This information will be stored in the <code>RangePresets.xml</code>
- file of the HISE app data folder. </td>
-</tr>
-<tr><td>Reset Range </td>
-<td>Resets the range to the exact state when you opened the range editor. </td>
-</tr>
-<tr><td>Reset skew </td>
-<td>Removes the skewing of the range making it a perfectly flat line. </td>
-</tr>
-<tr><td>Invert range </td>
-<td>swaps the min and max values so that the value is inverted. This will not affect the UI interaction of dragging the knob because we're not in crazy-town, but if you modulate that parameter, the modulation will be inverted. </td>
-</tr>
-<tr><td>Copy range to source </td>
-<td>If the parameter is connected to another parameter as target, you can sync the ranges between the source and target parameter by copying the target range to the source range (in many cases you just want them to have the same range, especially if you only link a single parameter) </td>
-</tr>
-</table>
+<p>You can change the ranges anytime, either by right-clicking on the knob and change its properties in the popup editor, or by using the range editor which gives you a more intuitive approach.</p>
+<p>A description of this user interface can be found <a href="working-with-hise/workspaces/scripting-workspace/scriptnode.html#node-properties">here</a>
+</p>
 <h3 id="scaled-vs.-unscaled-parameters"><b>Scaled vs. unscaled parameters</b>
 </h3>
 <p>There are two types of parameters in scriptnode: scaled (aka normalized) parameters and unscaled parameters. A <i>scaled parameter</i>
@@ -138,17 +106,17 @@
 <h2 id="modulation-source"><b>Modulation Source</b>
 </h2>
 <p>A modulation source will analyse the signal and use its value to control a parameter of another node. Depending on the parent container type, it will update the target once per sample, once per block or once per defined interval. This can be used to create dynamic EQs, modulating effects, etc.</p>
+<p class="comment">Enable the CPU profiling mode in order to see the update rate of modulation connections for each cable. This lets you quickly find issues with wrong modulation frequencies which result in zipper noises.</p>
 <h2 id="connection"><b>Connection</b>
 </h2>
-<p>A Connection (represented by a cable) will control its target by the source, which can be either a Parameter of a container or a modulation source. A connection has a min and max value, interval and skew factor, which controls the range of how it will change the destination as well as some other properties (readymade converters or different math operation modes). There is also the possiblility of bypassing these properties altoghether and calculate the value send to the targets using a SNEX expression.</p>
+<p>A Connection (represented by a cable) will control its target by the source, which can be either a Parameter of a container or a modulation source.<br></p>
+<p>A connection has an input range and an output range and will perform a conversion between those. If the input range is equal to the output range (or the source or target parameter is unscaled), then the conversion is skipped and the raw value is being passed through the connection (even if it exceeds the range of the connection). </p>
+<p class="comment">Note that you can toggle the opacity of the cables. This helps you reduce the visual clutter during development.</p>
 <h2 id="property"><b>Property</b>
 </h2>
-<p>A property is a more "static" attribute of a node - it can't be controlled on audio rate and rather defines the behaviour of the node - eg. whether it should react on MIDI input or the name of the inline function to execute as callback. Properties can be edited by right-clicking on the header of a node.</p>
-<p>Every property has a <code>public</code>
- attribute, which controls whether the property should be modifiable when you export the module as Cpp node: an internal table that contains a special gain curve is supposed to be an internal property and not changeable from the outside, but a file reference to the impulse response of your complex convolution reverb should be changeable. In this case, the property will be renamed to use its ID (so the <code>File</code>
- property of the node <code>MyReverb</code>
- will be named <code>MyReverb.File</code>
- in the exported Cpp node).</p>
+<p>A property is a more "static" attribute of a node - it can't be controlled on audio rate and rather defines the behaviour of the node - eg. whether the <a href="scriptnode/list/control/smoothed_parameter.html">smoothed_parameter</a>
+ node should use a linear ramp or an exponential curve for the smoothing algorithm.</p>
+<p>These properties are usually selected using a drop down combobox selector. If you then compile the DSP network, it will hardcode this value into the C++ class which allows a bit more optimization.</p>
 <h2 id="polyphony"><b>Polyphony</b>
 </h2>
 <p>Scriptnode has a inbuilt concept of polyphony - nodes which have a "state" exist in two versions: a monophonic one and a polyphonic one with a "state" per voice. As soon as you create a DSP Network in a polyphonic script module, it will create the polyphonic version and use HISE's voice management system to handle the polyphonic states automatically. </p>
