@@ -40,8 +40,7 @@
 
 		<div class="content"><h1 id="array"><b>Array</b>
 </h1>
-<h1 id="array-class-reference"><b>Array Class Reference</b>
-</h1>
+<p>The array is the default container type in HiseScript for holding multiple elements that can be accessed by their index. There are a few other container types which are better suited for particular workflows (see the section about Alternatives below), but for general data processing this is one of the most important concepts to know about.</p>
 <h2 id="basic-usage"><b>Basic usage</b>
 </h2>
 <pre><code class="language-javascript line-numbers">const var a = [];         // Declare an array
@@ -78,6 +77,21 @@ const var b = a;
 
 a[0] = 10;           // set the first element of a
 Console.print(b[0]); // the first element of b will also be 10</code></pre>
+<h2 id="alternatives"><b>Alternatives</b>
+</h2>
+<p>The Array is a very dynamic container type and can be resized at any time to make room for more elements. For UI and data processing this is an incredibly useful feature. However this flexibility makes it a very poor choice for whenever you want to do some MIDI processing logic which usually runs in the audio callback where allocating new memory is a no go. </p>
+<p>In order to mitigate this problem, there are a bunch of other container types similar to the stock Array but with an emphasis on certain tasks within the realtime callback:</p>
+<ul><li><a href="scripting/scripting-api/buffer/index.html">Buffer</a>
+ is a densely packed, floating point array that represents audio signals</li>
+<li><a href="scripting/scripting-api/midilist/index.html">MidiList</a>
+ is a object that holds 128 integer numbers and is particularly useful for holding MIDI information (eg. note numbers)</li>
+<li><a href="scripting/scripting-api/fixobjectarray/index.html">FixObjectArray</a>
+ is a preallocated list of elements with a predefined memory structure and can be the most efficient solution for many tasks</li>
+<li><a href="scripting/scripting-api/unorderedstack/index.html">Unorderedstack</a>
+ is a stack that offers fast insertion / removal by ignoring the order of elements and is particularly useful for storing the information about currently played notes (where the order doesn't matter).</li>
+</ul>
+<p>If you don't want to use those containers, you can of course use the Array in the MIDI processing context as long as you don't resize the container (which is why the <a href="scripting/scripting-api/array/index.html#reserve">Array.reserve()</a>
+ function is so importanta).</p>
 <p><br></p>
 <h1 id="class-methods
 "><b>Class methods<br></b>
@@ -220,7 +234,17 @@ Console.print(trace(numbers));</code></pre>
 </h2>
 <p class="comment">Checks if the given variable is an array.</p>
 <pre><code class="language-javascript line-numbers">Array.isArray(var variableToTest)</code></pre>
-<p><br><br></p>
+<p><br>A simple bool check whether the argument variable is an Array. <b>Note that this function is not a method that you call on the object itself (because calling it on a non-array would not find the function).</b>
+ Instead you'll call it with the generic syntax <code>Array.isArray()</code>
+</p>
+<pre><code class="language-javascript line-numbers">const var trustMeIAmAnArray = 0;
+const var notAnArrayTooButNiceTryString = "[1, 2, 3, 4, 5]";
+const var list = [1, 2, 3, 4];
+
+Console.print(Array.isArray(notAnArrayTooButNiceTryString)); // false;
+Console.print(Array.isArray(trustMeIAmAnArray)); // false
+Console.print(Array.isArray(list)); // true (finally)</code></pre>
+<p><br></p>
 <h2 id="join"><b>join</b>
 </h2>
 <p class="comment">Joins the array into a string with the given separator.</p>
@@ -241,7 +265,28 @@ box.set("items", list.join("\n"));                // sets the list as items</cod
 </h2>
 <p class="comment">Removes and returns the last element.</p>
 <pre><code class="language-javascript line-numbers">Array.pop()</code></pre>
-<p><br><br></p>
+<p><br>This is useful for managing sequential input that you're keeping track of: history of played notes, velocities, custom undo history etc.</p>
+<p>You might want to use it in conjunction with <a href="scripting/scripting-api/array/index.html#push">Array.push()</a>
+ in order to implement a stack logic with the array.</p>
+<p class="comment">Note that there's a <a href="scripting/scripting-api/unorderedstack/index.html">special container type</a>
+ if you need a stack that doesn't care about the order of elements.</p>
+<pre><code class="language-javascript line-numbers">const arr1 = [1, 2, 3];
+arr1[4] = 5;
+
+Console.print(arr1.pop()); // 5
+
+// we didn't set the 4th element (index 3) so it'll be undefined
+Console.print(arr1.pop()); // error: API call with undefined parameter 
+
+arr1[3] = 22;
+Console.print(trace(arr1)); // [1, 2, 3, 22]
+
+// we can check ourselves for errors in our logic in this case
+if (isDefined(arr1.pop() 
+{
+    // do stuff
+}</code></pre>
+<p><br></p>
 <h2 id="push"><b>push</b>
 </h2>
 <p class="comment">Adds the given element at the end and returns the size.</p>

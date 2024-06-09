@@ -53,7 +53,23 @@
  - registers the content of a UI waveform display at the script processor and returns the reference to the content as AudioFile object</li>
 </ul>
 <p>You can also attach a broadcaster to a data slot to get notified about event changes. <a href="scripting/scripting-api/broadcaster/index.html#attachtocomplexdata">Broadcaster.attachToComplexData()</a>
-<br></p>
+</p>
+<p>All the examples in this documentation require a audio file slot that is loaded with an actual audio file to operate on. The easiest way of getting there is to just load the example assets of the snippet browser (once you have downloaded them):</p>
+<pre><code class="language-javascript line-numbers">// Load the example assets
+FileSystem.loadExampleAssets();
+
+// Grab whatever asset is first
+const var firstAsset = Engine.loadAudioFilesIntoPool()[0];
+Console.print(firstAsset); // {PROJECT_FOLDER}breakbeat_44k.wav
+
+// Create a audio file slot
+const var audioFile = Engine.createAndRegisterAudioFile(0);
+
+// load the first asset
+audioFile.loadFile(firstAsset);
+
+// paste in all other code examples now...</code></pre>
+<p><br></p>
 <h1 id="class-methods
 "><b>Class methods<br></b>
 </h1>
@@ -208,7 +224,8 @@ else
 </h2>
 <p class="comment">Returns the samplerate of the audio file.</p>
 <pre><code class="language-javascript line-numbers">AudioFile.getSampleRate()</code></pre>
-<p><br><br></p>
+<p><br></p>
+<p>Please let me know if there's anything else you need or if there are other methods you'd like documented!<br></p>
 <h2 id="linkto"><b>linkTo</b>
 </h2>
 <p class="comment">Links this audio file to the other</p>
@@ -223,22 +240,134 @@ else
 </h2>
 <p class="comment">Sets a callback that is being executed when a new file is loaded (or the sample range changed).</p>
 <pre><code class="language-javascript line-numbers">AudioFile.setContentCallback(var contentFunction)</code></pre>
-<p><br><br></p>
+<p><br>The <code>setContentCallback</code>
+ method sets a callback function that is executed whenever a new file is loaded or the sample range changes within the audio file. This callback can be used to perform custom actions or updates in response to these events. The method takes one parameter, <code>contentFunction</code>
+, which is the function to be called. The function should not take any parameters but will have its <code>this</code>
+ object pointed to the audio file that has changed.</p>
+<pre><code class="language-javascript line-numbers">// Assume 'audioFile' is a valid AudioFile object
+// Clear the file slot (so that the content callback fires
+// if you recompile after loading it the first time)
+audioFile.loadFile("");
+
+// Set the callback
+audioFile.setContentCallback(function()
+{
+	// print out some properties (the this object of the
+	// function will point to the audio file)...
+	Console.print(this.getCurrentlyLoadedFile()); // {PROJECT_FOLDER}breakbeat_44k.wav
+	Console.print(this.getSampleRate()); // 44100.0
+	Console.print(this.getNumSamples()); // 830117
+});
+
+// load the first asset
+audioFile.loadFile(firstAsset);</code></pre>
+<p><br></p>
 <h2 id="setdisplaycallback"><b>setDisplayCallback</b>
 </h2>
 <p class="comment">Sets a callback that is being executed when the playback position changes.</p>
 <pre><code class="language-javascript line-numbers">AudioFile.setDisplayCallback(var displayFunction)</code></pre>
-<p><br><br></p>
+<p><br>The <code>setDisplayCallback</code>
+ method sets a callback function that is executed whenever the playback position changes within the audio file. This can be useful for updating UI elements or performing other actions in response to changes in the playback position. The method takes one parameter, <code>displayFunction</code>
+, which is the function to be called. The function will have its <code>this</code>
+ object assigned to the audio file and needs to have a single parameter that will provide the playback position as sample index.</p>
+<p><b>Related Methods:</b>
+</p>
+<ul><li><a href="scripting/scripting-api/audiofile/index.html#getcurrentlydisplayedindex">AudioFile.getCurrentlyDisplayedIndex</a>
+: Retrieves the current sample position within the audio file.</li>
+<li><a href="scripting/scripting-api/audiofile/index.html#getnumsamples">AudioFile.getNumSamples</a>
+: Retrieves the total number of samples in the audio file.</li>
+</ul>
+<p><b>Example Usage:</b>
+</p>
+<pre><code class="language-javascript line-numbers">// Grab a reference to a looper that is loaded with a sound 
+// (we need it to actually play the sample for this example)
+const var AudioLoopPlayer1 = Synth.getAudioSampleProcessor("Audio Loop Player1");
+
+// Grab a reference to the loop audio file slot
+const var audioFile = AudioLoopPlayer1.getAudioFile(0);
+
+// register a function to be called whenever the playback position changes
+audioFile.setDisplayCallback(function(displayValue)
+{
+	// Print the normalised position using the sample length
+	Console.print(displayValue / this.getNumSamples());
+});</code></pre>
+<p><br></p>
 <h2 id="setrange"><b>setRange</b>
 </h2>
 <p class="comment">Sets a new sample range.</p>
 <pre><code class="language-javascript line-numbers">AudioFile.setRange(int min, int max)</code></pre>
-<p><br><br></p>
+<p><br>The <code>setRange</code>
+ method sets a new sample range for the audio file. This range is defined by the <code>min</code>
+ and <code>max</code>
+ sample positions, effectively selecting a subset of the audio data. This method provides a scripting option for changing the sample range, which can also be done interactively by dragging the sample area in the <a href="ui-components/plugin-components/audio-waveform.html">Audio Waveform</a>
+.</p>
+<p><b>Example Usage:</b>
+</p>
+<pre><code class="language-javascript line-numbers">// Paste in the code to load the asset from above...
+
+// clear the audio file (so that it loads the full file again
+// when you recompile)
+audioFile.loadFile("");
+
+// load the first asset (again)
+audioFile.loadFile(firstAsset);
+
+// Define the new sample range
+var minSample = 1000;
+var maxSample = 5000;
+
+// Grab the full sample data
+var fullSample = audioFile.getContent();
+
+Console.print(fullSample[0].length); // 830117
+
+// Set the new sample range using the setRange method
+audioFile.setRange(minSample, maxSample);
+
+// Now the getContent() method will only return the slice
+// from 1000 to 5000
+var slice = audioFile.getContent();
+
+Console.print(slice[0].length); // 4000</code></pre>
+<p><br></p>
 <h2 id="update"><b>update</b>
 </h2>
 <p class="comment">Sends an update message to all registered listeners.</p>
 <pre><code class="language-javascript line-numbers">AudioFile.update()</code></pre>
-<p><br><br></p>
+<p><br>There are a number of occasions where you want to manually cause a listener callback to be fired again.</p>
+<p>This function will send the content change message to all listeners (so if you have assigned a callback using <a href="scripting/scripting-api/audiofile/index.html#setcontentcallback">Audiofile</a>
+, this will call it again even if the content hasn't changed).</p>
+<pre><code class="language-javascript line-numbers">audioFile.loadFile("");
+
+var counter = 0;
+
+// Set the callback
+audioFile.setContentCallback(function()
+{
+	Console.print(++counter);
+});
+
+// load the first asset
+audioFile.loadFile(firstAsset);
+
+// The content callback is asynchronous
+// so the counter is still 0
+Console.print(counter); // 0
+
+// Send the listener again
+audioFile.update();
+
+// still zero
+Console.print(counter); // 0
+
+// The full console output will show that
+// the content callback has been executed twice:
+// Interface: 0
+// Interface: 0
+// Interface: 1
+// Interface: 2</code></pre>
+<p><br></p>
 <div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
 </span>
 
