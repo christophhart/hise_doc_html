@@ -224,8 +224,39 @@ else
 </h2>
 <p class="comment">Returns the samplerate of the audio file.</p>
 <pre><code class="language-javascript line-numbers">AudioFile.getSampleRate()</code></pre>
+<p><br>The <code>getSampleRate</code>
+ method returns the sample rate of the audio file. The sample rate is the number of samples per second and is typically measured in Hertz (Hz). This value is crucial for accurately interpreting the timing and pitch of the audio data.</p>
+<p><b>Difference between </b>
+<b>AudioFile.getSampleRate</b>
+<b> and </b>
+<b>Engine.getSampleRate</b>
+<b>:</b>
+</p>
+<ul><li><code>AudioFile.getSampleRate</code>
+ returns the sample rate of the specific audio file that is currently loaded. This sample rate is determined by how the audio file was recorded or converted and can vary between different audio files.</li>
+<li><a href="scripting/scripting-api/engine/index.html#getsamplerate">Engine.getSampleRate()</a>
+ returns the sample rate of the audio engine that is specified by the audio driver (or the DAW that the plugin is running in).</li>
+</ul>
+<p><b>Related Methods:</b>
+</p>
+<ul><li><a href="scripting/scripting-api/audiofile/index.html#getnumsamples">AudioFile.getNumSamples</a>
+: Retrieves the total number of samples in the audio file.</li>
+</ul>
+<pre><code class="language-javascript line-numbers">// Assume 'audioFile' is a valid AudioFile object
+
+// Retrieve the sample rate of the audio file
+var fileSampleRate = audioFile.getSampleRate();
+Console.print("Audio file sample rate: " + fileSampleRate + " Hz");
+
+// Retrieve the sample rate of the audio engine
+var engineSampleRate = Engine.getSampleRate();
+Console.print("Audio engine sample rate: " + engineSampleRate + " Hz");
+
+// This would be the playback speed that is required to play back
+// the file in the original speed (most things in HISE that play 
+// back samples will do this for you).
+var playbackRatio = fileSampleRate / engineSampleRate;</code></pre>
 <p><br></p>
-<p>Please let me know if there's anything else you need or if there are other methods you'd like documented!<br></p>
 <h2 id="linkto"><b>linkTo</b>
 </h2>
 <p class="comment">Links this audio file to the other</p>
