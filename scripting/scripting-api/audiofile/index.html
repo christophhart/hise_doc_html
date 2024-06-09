@@ -38,9 +38,22 @@
 
 		</nav>
 
-		<div class="content"><h1 id="audiofile"><b>AudioFile</b>
+		<div class="content"><h1 id="audiofile"><b>Audiofile</b>
 </h1>
-<p><br></p>
+<p><br>The Audiofile object is a data slot for loading sample files - not to be confused with the <a href="scripting/scripting-api/file/index.html">File</a>
+ object which represents an actual file on your disk.</p>
+<h3 id="creating-an-audiofile-object"><b>Creating an Audiofile object</b>
+</h3>
+<p>It is one of the 5 complex data types and can be created using </p>
+<ul><li><a href="scripting/scripting-api/engine/index.html#createandregisteraudiofile">Engine.createAndRegisterAudioFile()</a>
+ - creates a new slot that can hold an audio file</li>
+<li><a href="scripting/scripting-api/audiosampleprocessor/index.html#getaudiofile">AudioSampleProcessor.getAudioFile()</a>
+ - returns a reference to an audio file slot of another module</li>
+<li><a href="scripting/scripting-api/scriptaudiowaveform/index.html#registeratparent">ScriptAudioWaveform.registerAtParent()</a>
+ - registers the content of a UI waveform display at the script processor and returns the reference to the content as AudioFile object</li>
+</ul>
+<p>You can also attach a broadcaster to a data slot to get notified about event changes. <a href="scripting/scripting-api/broadcaster/index.html#attachtocomplexdata">Broadcaster.attachToComplexData()</a>
+<br></p>
 <h1 id="class-methods
 "><b>Class methods<br></b>
 </h1>
@@ -48,22 +61,149 @@
 </h2>
 <p class="comment">Returns the current audio data as array of channels.</p>
 <pre><code class="language-javascript line-numbers">AudioFile.getContent()</code></pre>
-<p><br><br></p>
+<p><br>The <code>getContent</code>
+ method retrieves the current audio data from the audio file and returns it as an array of channels. Each channel is represented as a <a href="scripting/scripting-api/buffer/index.html">Buffer</a>
+ object, which is a special float array type in HISE. This method is useful for accessing and manipulating the raw audio data for processing or analysis.</p>
+<pre><code class="language-javascript line-numbers">// Assume 'audioFile' is a valid AudioFile object
+
+// Retrieve the current audio content
+var audioContent = audioFile.getContent();
+
+// Print the number of channels in the audio file
+Console.print("Number of channels: " + audioContent.length);
+
+// Iterate over each channel
+for (var i = 0; i < audioContent.length; i++)
+{
+    var channel = audioContent[i];
+    
+    // Print the first 10 samples of each channel for inspection
+    Console.print("Channel " + (i + 1) + " first 10 samples:");
+    for (var j = 0; j < 10; j++)
+    {
+        Console.print(channel[j]);
+    }
+}
+
+// Example of processing: Normalize the first channel
+var firstChannel = audioContent[0];
+var numSamples = firstChannel.length;
+var maxSample = 0.0;
+
+// Find the maximum sample value
+for (var i = 0; i < numSamples; i++)
+{
+    if (Math.abs(firstChannel[i]) > maxSample)
+    {
+        maxSample = Math.abs(firstChannel[i]);
+    }
+}
+
+// Normalize the first channel
+if (maxSample > 0)
+{
+    for (var i = 0; i < numSamples; i++)
+    {
+        firstChannel[i] /= maxSample;
+    }
+    Console.print("First channel has been normalized.");
+}
+else
+{
+    Console.print("No need to normalize, max sample is zero.");
+}</code></pre>
+<p><br></p>
 <h2 id="getcurrentlydisplayedindex"><b>getCurrentlyDisplayedIndex</b>
 </h2>
 <p class="comment">Returns the current sample position (from 0 to numSamples).</p>
 <pre><code class="language-javascript line-numbers">AudioFile.getCurrentlyDisplayedIndex()</code></pre>
-<p><br><br></p>
+<p><br>The <code>getCurrentlyDisplayedIndex</code>
+ method retrieves the current sample position within the audio file. This position is represented as an integer ranging from 0 to the total number of samples in the file (<code>numSamples</code>
+). It is useful for tracking the playback or editing position within the audio file.</p>
+<p class="comment">Note that for a live update of the playback position it might be more efficient to register a broadcaster to the complex data event using the <code>AudioFile.DisplayIndex</code>
+ mode</p>
+<p><b>Related Methods:</b>
+</p>
+<ul><li><a href="scripting/scripting-api/audiofile/index.html#getnumsamples">AudioFile.getNumSamples</a>
+: Retrieves the total number of samples in the audio file.</li>
+</ul>
+<p><b>Example Usage:</b>
+</p>
+<pre><code class="language-javascript line-numbers">// Assume 'audioFile' is a valid AudioFile object
+
+// Retrieve the current sample position
+var currentPosition = audioFile.getCurrentlyDisplayedIndex();
+
+// Retrieve the total number of samples in the audio file
+var totalSamples = audioFile.getNumSamples();
+
+// Calculate the normalized position (between 0.0 and 1.0)
+var normalizedPosition = currentPosition / totalSamples;
+
+const var slider = Content.getComponent("Knob1");
+
+// Set the slider value based on the normalized position
+slider.setValue(normalizedPosition);
+
+// Print the current sample position and normalized slider value to the console
+Console.print("Current sample position: " + currentPosition);
+Console.print("Normalized slider value: " + normalizedPosition);</code></pre>
+<p><br></p>
 <h2 id="getcurrentlyloadedfile"><b>getCurrentlyLoadedFile</b>
 </h2>
 <p class="comment">Returns the reference string for the currently loaded file.</p>
 <pre><code class="language-javascript line-numbers">AudioFile.getCurrentlyLoadedFile()</code></pre>
-<p><br><br></p>
+<p><br>The <code>getCurrentlyLoadedFile</code>
+ method returns the reference string for the currently loaded audio file. This reference string indicates the file path or name of the audio file that is currently in use. If the file is located in the <b>AudioFiles</b>
+ folder of your project, the path up to the <b>AudioFiles</b>
+ folder will be represented by the <code>{$PROJECT_FOLDER}</code>
+ placeholder. Otherwise this will return the system-specific absolute path to the audio file that was loaded into the audio file slot.</p>
+<p>This is particularly useful for ensuring that file references remain consistent regardless of the actual location of the project on your file system.</p>
+<p>If you want to get the actual file object from the return value of this method, it's recommended to use the <a href="scripting/scripting-api/filesystem/index.html#fromreferencestring">FileSystem.fromReferenceString()</a>
+ method which takes in either an absolute path or a reference string and hence is the perfect match for the return value.</p>
+<pre><code class="language-javascript line-numbers">// Retrieve the reference string for the currently loaded file
+const var refString = audioFile.getCurrentlyLoadedFile();
+
+const var actualFile = FileSystem.fromReferenceString(refString, FileSystem.AudioFiles);</code></pre>
+<p><br></p>
 <h2 id="getnumsamples"><b>getNumSamples</b>
 </h2>
 <p class="comment">returns the amount of samples.</p>
 <pre><code class="language-javascript line-numbers">AudioFile.getNumSamples()</code></pre>
-<p><br><br></p>
+<p><br>The <code>getNumSamples</code>
+ method returns the total number of samples in the audio file. This is an integer value representing the length of the audio file in terms of the number of discrete audio samples it contains. It is useful for understanding the size of the audio data and for performing operations that depend on the total sample count.</p>
+<p><b>Related Methods:</b>
+</p>
+<ul><li><a href="scripting/scripting-api/audiofile/index.html#getsamplerate">AudioFile.getSampleRate</a>
+: Retrieves the sample rate of the audio file, which is the number of samples per second.</li>
+</ul>
+<pre><code class="language-javascript line-numbers">// Assume 'audioFile' is a valid AudioFile object
+
+// Retrieve the total number of samples in the audio file
+const var numSamples = audioFile.getNumSamples();
+
+// Retrieve the sample rate of the audio file
+const var sampleRate = audioFile.getSampleRate();
+
+// Calculate the duration of the audio file in seconds
+const var durationInSeconds = numSamples / sampleRate;
+
+// Print the total number of samples and the duration to the console
+Console.print("Total number of samples: " + numSamples);
+Console.print("Sample rate: " + sampleRate + " Hz");
+Console.print("Duration of the audio file: " + durationInSeconds + " seconds");
+
+// Further usage: Check if the audio file is longer than a specific duration
+const var thresholdDuration = 60; // 60 seconds
+if (durationInSeconds > thresholdDuration)
+{
+    Console.print("The audio file is longer than " + thresholdDuration + " seconds.");
+}
+else
+{
+    Console.print("The audio file is not longer than " + thresholdDuration + " seconds.");
+}</code></pre>
+<p><br></p>
 <h2 id="getsamplerate"><b>getSampleRate</b>
 </h2>
 <p class="comment">Returns the samplerate of the audio file.</p>
@@ -105,7 +245,7 @@
 <span class="content-footer-right">Next: <a href="scripting/scripting-api/audiosampleprocessor/index.html">AudioSampleProcessor</a>
 </span>
 
-<p class="content-footer-metadata"><br><br></p>
+<p class="content-footer-metadata">Christoph Hart<br>09.06.2024<br></p>
 </div>
 
 			<!-- content end -->

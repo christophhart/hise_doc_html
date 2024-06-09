@@ -5271,61 +5271,61 @@ var rootDb = {
               "Colour": "#D557D9",
               "Children": [
                 {
-                  "URL": "scripting/scripting-api/buffer/index.html#detectpitch",
+                  "URL": "scripting/scripting-api/buffer.html#detectpitch",
                   "Title": "detectPitch",
                   "Colour": "#D557D9",
                   "Children": []
                 },
                 {
-                  "URL": "scripting/scripting-api/buffer/index.html#frombase64",
+                  "URL": "scripting/scripting-api/buffer.html#frombase64",
                   "Title": "fromBase64",
                   "Colour": "#D557D9",
                   "Children": []
                 },
                 {
-                  "URL": "scripting/scripting-api/buffer/index.html#getmagnitude",
+                  "URL": "scripting/scripting-api/buffer.html#getmagnitude",
                   "Title": "getMagnitude",
                   "Colour": "#D557D9",
                   "Children": []
                 },
                 {
-                  "URL": "scripting/scripting-api/buffer/index.html#getpeakrange",
+                  "URL": "scripting/scripting-api/buffer.html#getpeakrange",
                   "Title": "getPeakRange",
                   "Colour": "#D557D9",
                   "Children": []
                 },
                 {
-                  "URL": "scripting/scripting-api/buffer/index.html#getrmslevel",
+                  "URL": "scripting/scripting-api/buffer.html#getrmslevel",
                   "Title": "getRMSLevel",
                   "Colour": "#D557D9",
                   "Children": []
                 },
                 {
-                  "URL": "scripting/scripting-api/buffer/index.html#indexofpeak",
+                  "URL": "scripting/scripting-api/buffer.html#indexofpeak",
                   "Title": "indexOfPeak",
                   "Colour": "#D557D9",
                   "Children": []
                 },
                 {
-                  "URL": "scripting/scripting-api/buffer/index.html#normalise",
+                  "URL": "scripting/scripting-api/buffer.html#normalise",
                   "Title": "normalise",
                   "Colour": "#D557D9",
                   "Children": []
                 },
                 {
-                  "URL": "scripting/scripting-api/buffer/index.html#tobase64",
+                  "URL": "scripting/scripting-api/buffer.html#tobase64",
                   "Title": "toBase64",
                   "Colour": "#D557D9",
                   "Children": []
                 },
                 {
-                  "URL": "scripting/scripting-api/buffer/index.html#tocharstring",
+                  "URL": "scripting/scripting-api/buffer.html#tocharstring",
                   "Title": "toCharString",
                   "Colour": "#D557D9",
                   "Children": []
                 },
                 {
-                  "URL": "scripting/scripting-api/buffer/index.html#trim",
+                  "URL": "scripting/scripting-api/buffer.html#trim",
                   "Title": "trim",
                   "Colour": "#D557D9",
                   "Children": []

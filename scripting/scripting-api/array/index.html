@@ -124,7 +124,6 @@ Console.print(trace(arr1)); // [0, 1, [2, 3, 4], 5, 6, 7]
 arr1.concat(arr3);
 
 // the arr1 already contains arr2 
-// error: arr4 is not of type array
 Console.print(trace(arr1)); // [0, 1, [2, 3, 4], 5, 6, 7, 8, 9, 10]     
 
 
@@ -139,7 +138,19 @@ Console.print(trace(arr4)); // [5, 6, 7, 8, 9, 10, 11, 12, 13]</code></pre>
 </h2>
 <p class="comment">Searches for the element in the array.</p>
 <pre><code class="language-javascript line-numbers">Array.contains(var elementToLookFor)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<p>The <code>Array.contains</code>
+ method checks if an array includes a certain element. If the array contains the specified element, it returns <code>true</code>
+,<br>otherwise it returns <code>false</code>
+.<br><code>elementToLookFor</code>
+ is the element to search for within the array.</p>
+<h4 id="example"><b>Example</b>
+</h4>
+<pre><code class="language-javascript line-numbers">const var fruits = ["apple", "banana", "mango", "orange"];
+
+Console.print(fruits.contains("banana")); // true
+Console.print(fruits.contains("grape"));  // false</code></pre>
+<p><br></p>
 <h2 id="find"><b>find</b>
 </h2>
 <p class="comment">Returns the value of the first element that passes the function test.</p>
@@ -183,7 +194,28 @@ a.indexOf("5"); // will also return 1, the search is not type-strict.</code></pr
 </h2>
 <p class="comment">Inserts the given arguments at the firstIndex.</p>
 <pre><code class="language-javascript line-numbers">Array.insert(int firstIndex, var argumentList)</code></pre>
-<p><br><br></p>
+<p><br>The <code>Array.insert</code>
+ method allows you to add an element at a specified <code>firstIndex</code>
+ in the array. It modifies the original array and shifts the elements after the specified index to the right allowing for greater control over the array's structure than using <a href="scripting/scripting-api/array/index.html#push">Array.push</a>
+ or setting the element using the <code>[]</code>
+-operator.</p>
+<p class="comment">Note that if you pass in an Array as new element, it will add the element as an array and not the individual elements, so you'll end up with an Array within an Array.</p>
+<h4 id="example"><b>Example</b>
+</h4>
+<pre><code class="language-javascript line-numbers">const var numbers = [1, 2, 3, 4, 5];
+
+numbers.insert(2, 10);
+Console.print(trace(numbers)); // [1, 2, 10, 3, 4, 5]
+
+numbers.insert(0, 20);
+Console.print(trace(numbers)); // [20, 1, 2, 10, 3, 4, 5]
+
+numbers.insert(numbers.length, 30);
+Console.print(trace(numbers)); // [20, 1, 2, 10, 3, 4, 5, 30]
+
+numbers.insert(3, [101, 102, 103]);
+Console.print(trace(numbers));</code></pre>
+<p><br></p>
 <h2 id="isarray"><b>isArray</b>
 </h2>
 <p class="comment">Checks if the given variable is an array.</p>

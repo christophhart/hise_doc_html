@@ -4765,61 +4765,61 @@
   },
   {
     "key": "Buffer.detectPitch()",
-    "url": "scripting/scripting-api/buffer/index.html#detectpitch",
+    "url": "scripting/scripting-api/buffer.html#detectpitch",
     "weight": 60,
     "color": "#D557D9"
   },
   {
     "key": "Buffer.fromBase64()",
-    "url": "scripting/scripting-api/buffer/index.html#frombase64",
+    "url": "scripting/scripting-api/buffer.html#frombase64",
     "weight": 60,
     "color": "#D557D9"
   },
   {
     "key": "Buffer.getMagnitude()",
-    "url": "scripting/scripting-api/buffer/index.html#getmagnitude",
+    "url": "scripting/scripting-api/buffer.html#getmagnitude",
     "weight": 60,
     "color": "#D557D9"
   },
   {
     "key": "Buffer.getPeakRange()",
-    "url": "scripting/scripting-api/buffer/index.html#getpeakrange",
+    "url": "scripting/scripting-api/buffer.html#getpeakrange",
     "weight": 60,
     "color": "#D557D9"
   },
   {
     "key": "Buffer.getRMSLevel()",
-    "url": "scripting/scripting-api/buffer/index.html#getrmslevel",
+    "url": "scripting/scripting-api/buffer.html#getrmslevel",
     "weight": 60,
     "color": "#D557D9"
   },
   {
     "key": "Buffer.indexOfPeak()",
-    "url": "scripting/scripting-api/buffer/index.html#indexofpeak",
+    "url": "scripting/scripting-api/buffer.html#indexofpeak",
     "weight": 60,
     "color": "#D557D9"
   },
   {
     "key": "Buffer.normalise()",
-    "url": "scripting/scripting-api/buffer/index.html#normalise",
+    "url": "scripting/scripting-api/buffer.html#normalise",
     "weight": 60,
     "color": "#D557D9"
   },
   {
     "key": "Buffer.toBase64()",
-    "url": "scripting/scripting-api/buffer/index.html#tobase64",
+    "url": "scripting/scripting-api/buffer.html#tobase64",
     "weight": 60,
     "color": "#D557D9"
   },
   {
     "key": "Buffer.toCharString()",
-    "url": "scripting/scripting-api/buffer/index.html#tocharstring",
+    "url": "scripting/scripting-api/buffer.html#tocharstring",
     "weight": 60,
     "color": "#D557D9"
   },
   {
     "key": "Buffer.trim()",
-    "url": "scripting/scripting-api/buffer/index.html#trim",
+    "url": "scripting/scripting-api/buffer.html#trim",
     "weight": 60,
     "color": "#D557D9"
   },
