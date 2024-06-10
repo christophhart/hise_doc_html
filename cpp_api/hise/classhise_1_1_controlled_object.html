@@ -47,43 +47,21 @@
 </h2>
 <h3 id="derived-classes"><b>Derived Classes</b>
 </h3>
-<ul><li><a href="cpp_api/raw/classhise_1_1raw_1_1_reference.html">hise::raw::Reference< hise::Processor ></a>
-<br></li>
-<li><code>hise::raw::UIConnection::Base< juce::Button, bool ></code>
+<ul><li><code>hise::raw::UIConnection::Base< juce::Button, bool ></code>
 <br></li>
 <li><code>hise::raw::UIConnection::Base< juce::ComboBox, var ></code>
 <br></li>
 <li><code>hise::raw::UIConnection::Base< juce::Slider, float ></code>
 <br></li>
-<li><code>hise::AudioRenderer</code>
-<br></li>
-<li><code>hise::EditorBottomBar</code>
-<br></li>
-<li><code>hise::ExpansionEncodingWindow</code>
-<br></li>
-<li><code>hise::ExpansionHandler</code>
-<br></li>
 <li><code>hise::FileHandlerBase</code>
-<br></li>
-<li><code>hise::FullInstrumentExpansion::DefaultHandler</code>
-<br></li>
-<li><code>hise::GlobalServer</code>
 <br></li>
 <li><code>hise::InteractiveEditor</code>
 <br></li>
 <li><code>hise::JavascriptThreadPool</code>
 <br></li>
-<li><code>hise::MacroCableTarget</code>
+<li><code>hise::MarkdownPreviewPanel::PooledImageProvider</code>
 <br></li>
-<li><code>hise::MainController::ScopedEmbedAllResources</code>
-<br></li>
-<li><code>hise::MainController::UserPresetHandler::CustomAutomationData</code>
-<br></li>
-<li><code>hise::MainController::UserPresetHandler::DefaultPresetManager</code>
-<br></li>
-<li><code>hise::MainController::UserPresetHandler::ScopedInternalPresetLoadSetter</code>
-<br></li>
-<li><code>hise::MainController::UserPresetHandler::UndoableUserPresetLoad</code>
+<li><code>hise::MarkdownPreviewPanel::ProjectLinkResolver</code>
 <br></li>
 <li><code>hise::MidiControllerAutomationHandler::MPEData</code>
 <br></li>
@@ -91,57 +69,7 @@
 <br></li>
 <li><code>hise::PoolCollection</code>
 <br></li>
-<li><code>hise::PooledAudioFileDataProvider</code>
-<br></li>
 <li><a href="cpp_api/hise/classhise_1_1_processor.html">hise::Processor</a>
-<br></li>
-<li><code>hise::ProcessorParameterTarget</code>
-<br></li>
-<li><code>hise::ProjectDocDatabaseHolder</code>
-<br></li>
-<li><code>hise::ReferenceFinder</code>
-<br></li>
-<li><code>hise::SampleDataExporter</code>
-<br></li>
-<li><code>hise::ScopedSoftBypassDisabler</code>
-<br></li>
-<li><code>hise::ScriptCreatedComponentWrapper::ValuePopup::Properties</code>
-<br></li>
-<li><code>hise::ScriptExpansionHandler</code>
-<br></li>
-<li><code>hise::ScriptLorisManager</code>
-<br></li>
-<li><code>hise::ScriptUnlocker</code>
-<br></li>
-<li><code>hise::ScriptUserPresetHandler</code>
-<br></li>
-<li><code>hise::ScriptingApi::Engine::PreviewHandler</code>
-<br></li>
-<li><code>hise::ScriptingApi::Engine::PreviewHandler::Job</code>
-<br></li>
-<li><code>hise::ScriptingApi::FileSystem</code>
-<br></li>
-<li><code>hise::ScriptingApi::TransportHandler</code>
-<br></li>
-<li><code>hise::ScriptingObjects::GlobalRoutingManagerReference</code>
-<br></li>
-<li><code>hise::ScriptingObjects::MarkdownObject::ScriptedImageProvider</code>
-<br></li>
-<li><code>hise::ScriptingObjects::MarkdownObject::ScriptedImageProvider::ImageEntry</code>
-<br></li>
-<li><code>hise::ScriptingObjects::ScriptBroadcasterMap</code>
-<br></li>
-<li><code>hise::ScriptingObjects::ScriptBroadcasterMapViewport::TagEditor</code>
-<br></li>
-<li><code>hise::ScriptingObjects::ScriptShader::FileParser</code>
-<br></li>
-<li><code>hise::ScriptingObjects::ScriptedLookAndFeel</code>
-<br></li>
-<li><code>hise::ScriptingObjects::ScriptedLookAndFeel::Laf</code>
-<br></li>
-<li><code>hise::ScriptingObjects::TimerObject</code>
-<br></li>
-<li><code>hise::ServerController</code>
 <br></li>
 <li><a href="cpp_api/raw/classhise_1_1raw_1_1_data_holder_base.html">hise::raw::DataHolderBase</a>
 <br></li>
@@ -155,11 +83,17 @@
 <br></li>
 <li><code>hise::raw::UIConnection::Base< ComponentType, ValueType ></code>
 <br></li>
-<li><code>scriptnode::DspNetwork</code>
+<li><code>hise::SampleDataExporter</code>
 <br></li>
-<li><code>scriptnode::HelpManager</code>
+<li><code>hise::ScopedSoftBypassDisabler</code>
 <br></li>
-<li><code>scriptnode::routing::GlobalRoutingManager::DebugComponent</code>
+<li><code>hise::ScriptCreatedComponentWrapper::ValuePopup::Properties</code>
+<br></li>
+<li><code>hise::ScriptingObjects::TimerObject</code>
+<br></li>
+<li><a href="cpp_api/raw/classhise_1_1raw_1_1_reference.html">hise::raw::Reference< hise::Processor ></a>
+<br></li>
+<li><code>scriptnode::NodeBase::HelpManager</code>
 <br></li>
 </ul>
 <h2 id="class-methods"><b>Class methods</b>
@@ -181,12 +115,6 @@
 </h3>
 <pre><code class="language-clike line-numbers">MainController * getMainController() noexcept</code></pre>
 <p>Provides write access to the main controller. Use this if you want to make changes.<br> </p>
-<h2 id="static-functions"><b>Static functions</b>
-</h2>
-<h3 id="getmaincontrollerfromparent"><b>getMainControllerFromParent</b>
-</h3>
-<pre><code class="language-clike line-numbers">MainController * getMainControllerFromParent(Component *c)</code></pre>
-<p>Traverses the component hierarchy and returns the main controller from one of its parents.<br> </p>
 <div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
 </span>
 

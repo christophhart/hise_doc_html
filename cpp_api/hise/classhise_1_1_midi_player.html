@@ -83,10 +83,6 @@
  </td>
 <td>end of the (loop) playback </td>
 </tr>
-<tr><td><code>PlaybackSpeed</code>
- </td>
-<td>the playback speed of the MidiPlayer </td>
-</tr>
 </table>
 <h2 id="class-methods"><b>Class methods</b>
 </h2>
@@ -94,14 +90,6 @@
 </h3>
 <pre><code class="language-clike line-numbers">void tempoChanged(double newTempo) override</code></pre>
 <p>@ internal<br> </p>
-<h3 id="ongridchange"><b>onGridChange</b>
-</h3>
-<pre><code class="language-clike line-numbers">void onGridChange(int gridIndex, uint16 timestamp, bool firstGridEventInPlayback) override</code></pre>
-<p>The callback function that is called on every grid change. This can be used to implement sample accurate sequencers.<br>By default this is disabled so you need to call addPulseListener() to activate this feature.<br> </p>
-<h3 id="ontransportchange"><b>onTransportChange</b>
-</h3>
-<pre><code class="language-clike line-numbers">void onTransportChange(bool isPlaying, double ppqPosition) override</code></pre>
-<p>The callback function that will be called when the transport state changes (=the user presses play on the DAW).<br> </p>
 <h3 id="clearsequences"><b>clearSequences</b>
 </h3>
 <pre><code class="language-clike line-numbers">void clearSequences(NotificationType notifyListeners=sendNotification)</code></pre>
@@ -129,7 +117,7 @@
 <h3 id="loadmidifile"><b>loadMidiFile</b>
 </h3>
 <pre><code class="language-clike line-numbers">void loadMidiFile(PoolReference reference)</code></pre>
-<p>Loads the given pooled MIDI file and adds it to the end of the list.<br>If trackIndexToKeep is not -1, it will discard all tracks other than the given track index (zero-based!) and set the current track index to 0.<br> </p>
+<p>Loads the given pooled MIDI file and adds it to the end of the list.<br> </p>
 <h3 id="isprocessingwholebuffer"><b>isProcessingWholeBuffer</b>
 </h3>
 <pre><code class="language-clike line-numbers">bool isProcessingWholeBuffer() const override</code></pre>
@@ -164,7 +152,7 @@
 <p>Returns the number of sequences loaded into this player.<br> </p>
 <h3 id="getcurrentsequence"><b>getCurrentSequence</b>
 </h3>
-<pre><code class="language-clike line-numbers">HiseMidiSequence::Ptr getCurrentSequence() const</code></pre>
+<pre><code class="language-clike line-numbers">HiseMidiSequence * getCurrentSequence() const</code></pre>
 <p>Returns the currently played sequence.<br> </p>
 <h3 id="getsequenceid"><b>getSequenceId</b>
 </h3>
@@ -174,17 +162,9 @@
 </h3>
 <pre><code class="language-clike line-numbers">double getPlaybackPosition() const</code></pre>
 <p>Returns the current playback position from 0...1.<br> </p>
-<h3 id="getplaypackpositioninloop"><b>getPlayPackPositionInLoop</b>
-</h3>
-<pre><code class="language-clike line-numbers">double getPlayPackPositionInLoop() const</code></pre>
-<p>Returns the normalised playback position inside the current loop. This will never be outside the bounds of the loop.<br> </p>
-<h3 id="setmidicontrolautomationhandlerconsumescontrollerevents"><b>setMidiControlAutomationHandlerConsumesControllerEvents</b>
-</h3>
-<pre><code class="language-clike line-numbers">void setMidiControlAutomationHandlerConsumesControllerEvents(bool shouldBeEnabled)</code></pre>
-<p>This will send any CC messages from the MIDI file to the global MIDI handler.<br> </p>
 <h3 id="flushedit"><b>flushEdit</b>
 </h3>
-<pre><code class="language-clike line-numbers">void flushEdit(const Array< HiseEvent > &newEvents, HiseMidiSequence::TimestampEditFormat formatToUse=HiseMidiSequence::TimestampEditFormat::numTimestampFormats)</code></pre>
+<pre><code class="language-clike line-numbers">void flushEdit(const Array< HiseEvent > &newEvents)</code></pre>
 <p>Applies the list of events to the currently loaded sequence. This operation is undo-able.<br>It locks the sequence just for a very short time so you should be able to use this from any thread without bothering about multi-threading.<br> </p>
 <h3 id="clearcurrentsequence"><b>clearCurrentSequence</b>
 </h3>
@@ -198,10 +178,6 @@
 </h3>
 <pre><code class="language-clike line-numbers">void setFlushRecordingOnStop(bool shouldFlushRecording)</code></pre>
 <p>If set to false, the recording will not be flushed and you can preprocess it.<br> </p>
-<h3 id="onresync"><b>onResync</b>
-</h3>
-<pre><code class="language-clike line-numbers">void onResync(double ppqPos)</code></pre>
-<p>This callback will be called whenever the transport position needs to be resynced (eg. when the playback position was changed in the DAW or the playback position was wrapped around the loop range.<br> </p>
 <h3 id="resetcurrentsequence"><b>resetCurrentSequence</b>
 </h3>
 <pre><code class="language-clike line-numbers">void resetCurrentSequence()</code></pre>

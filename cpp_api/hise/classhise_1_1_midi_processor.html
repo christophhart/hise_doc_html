@@ -55,9 +55,9 @@
 <br></li>
 <li><code>hise::MidiProcessorChain</code>
 <br></li>
-<li><code>hise::ScriptBaseMidiProcessor</code>
-<br></li>
 <li><a href="cpp_api/raw/classhise_1_1raw_1_1_main_processor.html">hise::raw::MainProcessor</a>
+<br></li>
+<li><code>hise::ScriptBaseMidiProcessor</code>
 <br></li>
 </ul>
 <h2 id="class-methods"><b>Class methods</b>
@@ -67,10 +67,6 @@
 <pre><code class="language-clike line-numbers">MidiProcessor(MainController *m, const String &id)</code></pre>
 <p>Creates a new MidiProcessor. You can supply a <a href="cpp_api/hise/classhise_1_1_modulator_synth.html">ModulatorSynth</a>
  which owns the MidiProcessor to allow the processor to change its properties.<br> </p>
-<h3 id="setartificialtimestamp"><b>setArtificialTimestamp</b>
-</h3>
-<pre><code class="language-clike line-numbers">bool setArtificialTimestamp(uint16 eventId, int newTimestamp)</code></pre>
-<p>Changes the timestamp of an artificial note.<br> </p>
 <h3 id="getcolour"><b>getColour</b>
 </h3>
 <pre><code class="language-clike line-numbers">Colour getColour() const</code></pre>

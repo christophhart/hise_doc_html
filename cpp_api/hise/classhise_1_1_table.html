@@ -45,12 +45,16 @@
 </h2>
 <h3 id="base-classes"><b>Base Classes</b>
 </h3>
-<ul><li><code>hise::ComplexDataUIBase</code>
+<ul><li><code>hise::SafeChangeBroadcaster</code>
 <br></li>
 </ul>
 <h3 id="derived-classes"><b>Derived Classes</b>
 </h3>
-<ul><li><code>hise::SampleLookupTable</code>
+<ul><li><code>hise::DiscreteTable</code>
+<br></li>
+<li><code>hise::MidiTable</code>
+<br></li>
+<li><code>hise::SampleLookupTable</code>
 <br></li>
 </ul>
 <h2 id="public-types"><b>Public types</b>
@@ -83,7 +87,7 @@
 <p>Overwrite this and return the table size.<br> </p>
 <h3 id="setgraphpoints"><b>setGraphPoints</b>
 </h3>
-<pre><code class="language-clike line-numbers">void setGraphPoints(const Array< GraphPoint > &newGraphPoints, int numPoints, bool refreshLookupTable)</code></pre>
+<pre><code class="language-clike line-numbers">void setGraphPoints(const Array< GraphPoint > &newGraphPoints, int numPoints)</code></pre>
 <p>Sets the GraphPoints. If you need to refresh the internal table, you also have to call <a href="cpp_api/hise/classhise_1_1_table.html#filllookuptable">fillLookUpTable()</a>
 .<br> </p>
 <h3 id="exportdata"><b>exportData</b>
@@ -106,7 +110,7 @@
 <p>Get a copy of the graph point at pointIndex.<br> </p>
 <h3 id="createpath"><b>createPath</b>
 </h3>
-<pre><code class="language-clike line-numbers">void createPath(Path &normalizedPath, bool fillPath, bool addStartEnd=true) const</code></pre>
+<pre><code class="language-clike line-numbers">void createPath(Path &normalizedPath) const</code></pre>
 <p>This generates a normalized path from the GraphPoint array.<br>This is called by the editor to draw the path under the DragPoints.<br> </p>
 <h3 id="filllookuptable"><b>fillLookUpTable</b>
 </h3>

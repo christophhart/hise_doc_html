@@ -147,11 +147,6 @@
 </h3>
 <pre><code class="language-clike line-numbers">bool operator==(const HiseEvent &other) const</code></pre>
 <p>checks whether the event is equal to another. This checks for bit-equality.<br> </p>
-<h3 id="clear"><b>clear</b>
-</h3>
-<pre><code class="language-clike line-numbers">void clear()</code></pre>
-<p>Clears the event (so that <a href="cpp_api/hise/classhise_1_1_hise_event.html#isempty">isEmpty()</a>
- returns true.<br> </p>
 <h3 id="swapwith"><b>swapWith</b>
 </h3>
 <pre><code class="language-clike line-numbers">void swapWith(HiseEvent &other)</code></pre>
@@ -237,10 +232,6 @@
 </h3>
 <pre><code class="language-clike line-numbers">float getGainFactor() const noexcept</code></pre>
 <p>Returns the gain factor (from 0...1) for the given event.<br> </p>
-<h3 id="matchesmididata"><b>matchesMidiData</b>
-</h3>
-<pre><code class="language-clike line-numbers">bool matchesMidiData(const HiseEvent &other) const</code></pre>
-<p>This is a less strict comparison that does not take the event ID and the timestamp into account.<br> </p>
 <h3 id="isvolumefade"><b>isVolumeFade</b>
 </h3>
 <pre><code class="language-clike line-numbers">bool isVolumeFade() const noexcept</code></pre>
@@ -297,10 +288,6 @@
 </h3>
 <pre><code class="language-clike line-numbers">int getNoteNumber() const noexcept</code></pre>
 <p>Copied from MidiMessage.<br> </p>
-<h3 id="getnotenumberincludingtransposeamount"><b>getNoteNumberIncludingTransposeAmount</b>
-</h3>
-<pre><code class="language-clike line-numbers">int getNoteNumberIncludingTransposeAmount() const noexcept</code></pre>
-<p>Returns the "actual" note number that might result from a transpose value.<br> </p>
 <h3 id="setnotenumber"><b>setNoteNumber</b>
 </h3>
 <pre><code class="language-clike line-numbers">void setNoteNumber(int newNoteNumber) noexcept</code></pre>
@@ -429,24 +416,6 @@
 </h3>
 <pre><code class="language-clike line-numbers">String toDebugString() const</code></pre>
 <p>Returns a string for debugging purposes.<br> </p>
-<h2 id="static-functions"><b>Static functions</b>
-</h2>
-<h3 id="gettypestring"><b>getTypeString</b>
-</h3>
-<pre><code class="language-clike line-numbers">String getTypeString(Type t)</code></pre>
-<p>Returns a String identifier for the given type.<br> </p>
-<h3 id="createvolumefade"><b>createVolumeFade</b>
-</h3>
-<pre><code class="language-clike line-numbers">HiseEvent createVolumeFade(uint16 eventId, int fadeTimeMilliseconds, int8 targetValue)</code></pre>
-<p>Creates a volume fade. eventIdthe event ID that this fade should be applied to.<br> fadeTimeMillisecondsthe fade time (it will be a linear fade). @targetValue the target gain in decibels.<br> <br></p>
-<h3 id="createpitchfade"><b>createPitchFade</b>
-</h3>
-<pre><code class="language-clike line-numbers">HiseEvent createPitchFade(uint16 eventId, int fadeTimeMilliseconds, int8 coarseTune, int8 fineTune)</code></pre>
-<p>Creates a pitch fade. eventIDthe ID of the event that will be changed.<br> fadeTimeMillisecondsthe length of the fade.<br> coarseTunethe target pitch in semitones<br> fineTunethe target pitch detune in cent.<br> <br></p>
-<h3 id="createtimerevent"><b>createTimerEvent</b>
-</h3>
-<pre><code class="language-clike line-numbers">HiseEvent createTimerEvent(uint8 timerIndex, int offset)</code></pre>
-<p>Creates a timer event. timerIndexThere are 4 timer slots per sound generator and this will contain the index (0-3).<br> offsetthe sample offset within the current buffer [0 - buffer size).   <br>  <br><br>### clear<br><br>cpp<br>void clear(HiseEvent *eventToClear, int numEvents=1)<br><br><br>This clears the events using the fast memset operation.   <br>]</p>
 <div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
 </span>
 

@@ -44,7 +44,7 @@
  that encapsulates modulation behaviour and returns a float value between 0.0 and 1.0.<br>A Modulator should be always inside a <a href="cpp_api/hise/classhise_1_1_modulator_chain.html">ModulatorChain</a>
 , which handles the processing according to the characteristics of each Modulator.<br>In order to create a modulator, subclass one of the two subclasses, VoiceStartModulator or TimeVariantModulator (never subclass this directly), and overwrite the following methods: <code>cppconst String getType () const;ModulatorEditor *createEditor();float calculateVoiceStartValue(const MidiMessage &messageThatStartedVoice);XmlElement *getDescription () const;float getAttribute (int parameter_index) const;void setAttribute (int parameter_index, float newValue);float getDisplayValue() const;</code>
 </p>
-<p> There are two handy features to debug a modulator: If plotThisModulator() is set to true, the Modulator will print its output on a popup plotter.<br><a href="cpp_api/hise/classhise_1_1_modulator_chain.html">ModulatorChain</a>
+<p><br>There are two handy features to debug a modulator: If plotThisModulator() is set to true, the Modulator will print its output on a popup plotter.<br><a href="cpp_api/hise/classhise_1_1_modulator_chain.html">ModulatorChain</a>
 , ModulatorEditor<br> <br></p>
 <h2 id="class-hierarchy"><b>Class Hierarchy</b>
 </h2>
