@@ -52,6 +52,13 @@
  node, but in most use-cases this node will yield the best compromise between audio quality and performance.</p>
 <p class="comment">If you bypass this node, it will still process its children, but with the default functionality of a <a href="scriptnode/list/container/chain.html">chain</a>
  container. This allows you to quickly A/B the effect of the block division.</p>
+<h3 id="related-nodes:"><b>Related nodes:</b>
+</h3>
+<ul><li>If you don't know which block size to choose for the child nodes (because you want to evaluate the artifacts vs processing speed ratio), take a look at the <a href="scriptnode/list/container/fix_blockx.html">fix_blockx</a>
+</li>
+<li>If you want to give the end user the ability to switch between different block sizes (down to sample accurate frame processing), use the <a href="scriptnode/list/container/dynamic_blocksize.html">dynamic_blocksize</a>
+ node</li>
+</ul>
 <div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
 </span>
 
