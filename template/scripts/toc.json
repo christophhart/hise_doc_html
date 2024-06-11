@@ -19222,6 +19222,12 @@ var rootDb = {
           "Colour": "#C5AC43",
           "Children": [
             {
+              "URL": "tutorials/scriptnode/index.html#snex-oneshot-player",
+              "Title": "SNEX Oneshot Player",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
               "URL": "tutorials/scriptnode/index.html#dynamic-voice-routing",
               "Title": "Dynamic voice routing",
               "Colour": "#C5AC43",
@@ -19276,8 +19282,8 @@ var rootDb = {
               "Children": []
             },
             {
-              "URL": "tutorials/scriptnode/index.html#snex-oneshot-player",
-              "Title": "SNEX Oneshot Player",
+              "URL": "tutorials/scriptnode/index.html#snex-one-pole-filter",
+              "Title": "SNEX One pole filter",
               "Colour": "#C5AC43",
               "Children": []
             },
