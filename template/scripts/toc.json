@@ -3072,19 +3072,6 @@ var rootDb = {
                   ]
                 },
                 {
-                  "URL": "hise-modules/effects/list/curveeq.html",
-                  "Title": "Curve EQ",
-                  "Colour": "#3A6666",
-                  "Children": [
-                    {
-                      "URL": "hise-modules/effects/list/curveeq.html#parameters",
-                      "Title": "Parameters",
-                      "Colour": "#3A6666",
-                      "Children": []
-                    }
-                  ]
-                },
-                {
                   "URL": "hise-modules/effects/list/delay.html",
                   "Title": "Delay",
                   "Colour": "#3A6666",
@@ -3188,6 +3175,19 @@ var rootDb = {
                   "Children": [
                     {
                       "URL": "hise-modules/effects/list/midimetronome.html#parameters",
+                      "Title": "Parameters",
+                      "Colour": "#3A6666",
+                      "Children": []
+                    }
+                  ]
+                },
+                {
+                  "URL": "hise-modules/effects/list/curveeq.html",
+                  "Title": "Parametric EQ",
+                  "Colour": "#3A6666",
+                  "Children": [
+                    {
+                      "URL": "hise-modules/effects/list/curveeq.html#parameters",
                       "Title": "Parameters",
                       "Colour": "#3A6666",
                       "Children": []

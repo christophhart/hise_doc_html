@@ -809,7 +809,11 @@ Console.print(trace(myList));</code></pre>
 </h2>
 <p class="comment">Enables the macro system to be used by the end user.</p>
 <pre><code class="language-javascript line-numbers">Engine.setFrontendMacros(var nameList)</code></pre>
-<p><br><br></p>
+<p><br>Pass it a list of names to name the macros<br> </p>
+<pre><code class="language-javascript line-numbers">const var macroNames = ["Volume", "FilterFreq", "FilterQ", "Reverb"];
+
+Engine.setFrontendMacros(macroNames);</code></pre>
+<p><br></p>
 <h2 id="setglobalfont"><b>setGlobalFont</b>
 </h2>
 <p class="comment">Sets the font that will be used as default font for various things.</p>

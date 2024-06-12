@@ -2502,12 +2502,6 @@
     "color": "#3A6666"
   },
   {
-    "key": "List of Effects: Curve EQ",
-    "url": "hise-modules/effects/list/curveeq.html",
-    "weight": 60,
-    "color": "#3A6666"
-  },
-  {
     "key": "List of Effects: Delay",
     "url": "hise-modules/effects/list/delay.html",
     "weight": 60,
@@ -2552,6 +2546,12 @@
   {
     "key": "List of Effects: MidiMetronome",
     "url": "hise-modules/effects/list/midimetronome.html",
+    "weight": 60,
+    "color": "#3A6666"
+  },
+  {
+    "key": "List of Effects: Parametric EQ",
+    "url": "hise-modules/effects/list/curveeq.html",
     "weight": 60,
     "color": "#3A6666"
   },
@@ -2670,12 +2670,6 @@
     "color": "#3A6666"
   },
   {
-    "key": "Curve EQ: Parameters",
-    "url": "hise-modules/effects/list/curveeq.html#parameters",
-    "weight": 50,
-    "color": "#3A6666"
-  },
-  {
     "key": "Delay: Parameters",
     "url": "hise-modules/effects/list/delay.html#parameters",
     "weight": 50,
@@ -2726,6 +2720,12 @@
   {
     "key": "MidiMetronome: Parameters",
     "url": "hise-modules/effects/list/midimetronome.html#parameters",
+    "weight": 50,
+    "color": "#3A6666"
+  },
+  {
+    "key": "Parametric EQ: Parameters",
+    "url": "hise-modules/effects/list/curveeq.html#parameters",
     "weight": 50,
     "color": "#3A6666"
   },
