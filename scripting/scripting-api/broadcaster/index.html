@@ -526,7 +526,7 @@ function(index, isTrue)
 <h2 id="addmoduleparametersyncer"><b>addModuleParameterSyncer</b>
 </h2>
 <p class="comment">Adds a listener that will sync module parameters from the attached module parameter source.</p>
-<pre><code class="language-javascript line-numbers">Broadcaster.addModuleParameterSyncer(String moduleId, int parameterIndex, var metadata)</code></pre>
+<pre><code class="language-javascript line-numbers">Broadcaster.addModuleParameterSyncer(String moduleId, var parameterIndex, var metadata)</code></pre>
 <p><br><br></p>
 <h2 id="attachtocomplexdata"><b>attachToComplexData</b>
 </h2>
@@ -871,6 +871,11 @@ bc.addListener("", "dudel", function(id, matrix)
 	Console.print(trace(matrix.getDestinationChannelForSource([0, 1])));
 });</code></pre>
 <p><br></p>
+<h2 id="attachtosamplemap"><b>attachToSampleMap</b>
+</h2>
+<p class="comment">Attaches the broadcaster to events of a samplemap (loading, changing, adding samples).</p>
+<pre><code class="language-javascript line-numbers">Broadcaster.attachToSampleMap(var samplerIds, var eventTypes, var optionalMetadata)</code></pre>
+<p><br><br></p>
 <h2 id="callwithdelay"><b>callWithDelay</b>
 </h2>
 <p class="comment">Calls a function after a short period of time. This is exclusive, so if you pass in a new function while another is pending, the first will be replaced.</p>

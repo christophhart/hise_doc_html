@@ -3655,12 +3655,6 @@ var rootDb = {
                   "Children": []
                 },
                 {
-                  "URL": "ui-components/floating-tiles/hise/rlottiedevpanel.html",
-                  "Title": "RLottieDevPanel",
-                  "Colour": "#9064FF",
-                  "Children": []
-                },
-                {
                   "URL": "ui-components/floating-tiles/hise/expansioneditbar.html",
                   "Title": "ExpansionEditBar",
                   "Colour": "#9064FF",
@@ -5146,6 +5140,12 @@ var rootDb = {
                 {
                   "URL": "scripting/scripting-api/broadcaster/index.html#attachtoroutingmatrix",
                   "Title": "attachToRoutingMatrix",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/broadcaster/index.html#attachtosamplemap",
+                  "Title": "attachToSampleMap",
                   "Colour": "#D557D9",
                   "Children": []
                 },
@@ -12554,6 +12554,18 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scripting/scripting-api/scriptlookandfeel/index.html#setinlinestylesheet",
+                  "Title": "setInlineStyleSheet",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptlookandfeel/index.html#setstylesheet",
+                  "Title": "setStyleSheet",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/scriptlookandfeel/index.html#unloadallimages",
                   "Title": "unloadAllImages",
                   "Colour": "#D557D9",
@@ -19093,6 +19105,12 @@ var rootDb = {
           "Colour": "#C5AC43",
           "Children": [
             {
+              "URL": "tutorials/modules/index.html#control-current-eq-band",
+              "Title": "Control current EQ band",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
               "URL": "tutorials/modules/index.html#global-modulator-container",
               "Title": "Global Modulator Container",
               "Colour": "#C5AC43",
@@ -19351,6 +19369,12 @@ var rootDb = {
             {
               "URL": "tutorials/ui/index.html#control-3-parameters-in-3-ranges-with-1-knob",
               "Title": "Control 3 parameters in 3 ranges with 1 Knob",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/ui/index.html#create-thumbnails-of-your-midi-files",
+              "Title": "Create thumbnails of your MIDI files",
               "Colour": "#C5AC43",
               "Children": []
             },

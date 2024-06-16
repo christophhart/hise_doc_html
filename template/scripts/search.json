@@ -3102,12 +3102,6 @@
     "color": "#9064FF"
   },
   {
-    "key": "HISE Floating tiles: RLottieDevPanel",
-    "url": "ui-components/floating-tiles/hise/rlottiedevpanel.html",
-    "weight": 60,
-    "color": "#9064FF"
-  },
-  {
     "key": "HISE Floating tiles: ExpansionEditBar",
     "url": "ui-components/floating-tiles/hise/expansioneditbar.html",
     "weight": 60,
@@ -4646,6 +4640,12 @@
   {
     "key": "Broadcaster.attachToRoutingMatrix()",
     "url": "scripting/scripting-api/broadcaster/index.html#attachtoroutingmatrix",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "Broadcaster.attachToSampleMap()",
+    "url": "scripting/scripting-api/broadcaster/index.html#attachtosamplemap",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -11670,6 +11670,18 @@
     "color": "#D557D9"
   },
   {
+    "key": "ScriptLookAndFeel.setInlineStyleSheet()",
+    "url": "scripting/scripting-api/scriptlookandfeel/index.html#setinlinestylesheet",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptLookAndFeel.setStyleSheet()",
+    "url": "scripting/scripting-api/scriptlookandfeel/index.html#setstylesheet",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "ScriptLookAndFeel.unloadAllImages()",
     "url": "scripting/scripting-api/scriptlookandfeel/index.html#unloadallimages",
     "weight": 60,
@@ -16680,6 +16692,12 @@
     "color": "#C5AC43"
   },
   {
+    "key": "Modules Snippets: Control current EQ band",
+    "url": "tutorials/modules/index.html#control-current-eq-band",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
     "key": "Modules Snippets: Global Modulator Container",
     "url": "tutorials/modules/index.html#global-modulator-container",
     "weight": 70,
@@ -16910,6 +16928,12 @@
   {
     "key": "UI Snippets: Control 3 parameters in 3 ranges with 1 Knob",
     "url": "tutorials/ui/index.html#control-3-parameters-in-3-ranges-with-1-knob",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "UI Snippets: Create thumbnails of your MIDI files",
+    "url": "tutorials/ui/index.html#create-thumbnails-of-your-midi-files",
     "weight": 70,
     "color": "#C5AC43"
   },
