@@ -3655,6 +3655,12 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "ui-components/floating-tiles/hise/rlottiedevpanel.html",
+                  "Title": "RLottieDevPanel",
+                  "Colour": "#9064FF",
+                  "Children": []
+                },
+                {
                   "URL": "ui-components/floating-tiles/hise/expansioneditbar.html",
                   "Title": "ExpansionEditBar",
                   "Colour": "#9064FF",

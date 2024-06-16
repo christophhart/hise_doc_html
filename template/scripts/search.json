@@ -3102,6 +3102,12 @@
     "color": "#9064FF"
   },
   {
+    "key": "HISE Floating tiles: RLottieDevPanel",
+    "url": "ui-components/floating-tiles/hise/rlottiedevpanel.html",
+    "weight": 60,
+    "color": "#9064FF"
+  },
+  {
     "key": "HISE Floating tiles: ExpansionEditBar",
     "url": "ui-components/floating-tiles/hise/expansioneditbar.html",
     "weight": 60,
