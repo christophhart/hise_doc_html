@@ -98,6 +98,119 @@
  or the <a href="hise-modules/effects/list/convolution.html">Convolution Reverb</a>
 . Connect it to on of these two with the property: "<code>processorID</code>
 "</p>
+<h3 id="css-styling"><b>CSS Styling</b>
+</h3>
+<p>You can use mulltiple selectors to style different parts of the audio waveform:</p>
+<ul><li>the generic background & the waveform path can be styled with the <code>.scriptaudiowaveform</code>
+ class selector (or a <code>#AudioWaveform1</code>
+ tag selector). In order to draw the actual waveform you need to reference the path with the <code>var(--waveformPath</code>
+ CSS variable.</li>
+<li>the inactive zones are rendered using the <code>:disabled</code>
+ pseudo state.</li>
+<li>the playback position can be styled with the <code>.playhead</code>
+ class selector, which makes it consistent with the <a href="ui-components/plugin-components/table.html">Table</a>
+ component.</li>
+<li>the draggable edges of the waveform range can be styled with the <code>.waveformedge</code>
+ class selector. In order to differentiate between left and right edge, you can use the additional <code>:first-child</code>
+ / <code>:last-child</code>
+ pseudo states. They support the usual pseudo states <code>:hover</code>
+ and <code>:active</code>
+ for mouse interaction.</li>
+<li>the textbox with the filename can be styled using the <code>label</code>
+ HTML tag selector.</li>
+</ul>
+<h3 id="stylesheet-example"><b>Stylesheet Example</b>
+</h3>
+<pre><code class="language-javascript line-numbers">const var AudioWaveform1 = Content.getComponent("AudioWaveform1");
+const var laf = Content.createLocalLookAndFeel();
+
+laf.setInlineStyleSheet("
+/** Draw the background of the audio waveform. */
+.scriptaudiowaveform
+{
+	background: #929;	
+	box-shadow: inset 0px 4px 3px rgba(0, 0, 0, 0.3);
+	border-radius: 5px;
+}
+
+/** Draw the inactive range of the audio waveform. */
+.scriptaudiowaveform:disabled
+{
+	background: yellow;
+}
+
+/** Draw the actual waveform. */
+.scriptaudiowaveform::before
+{
+	content: '';
+	background-image: var(--waveformPath);
+	background-color: red;
+	border: 1px solid white;
+	box-shadow: 0px 1px 2px black;
+}
+
+/** Draw the inactive part of the waveform. */
+.scriptaudiowaveform::before:disabled
+{
+	content: '';
+	background-image: var(--waveformPath);
+	background-color: orange;
+	border: 0px solid white;
+	box-shadow: none;
+}
+
+/** Draw the edges of the sample range. */
+.waveformedge
+{
+	border-color: rgba(255,255,255, 0.3);
+}
+
+.waveformedge:hover
+{
+	background: rgba(255, 255, 255, 0.5);
+	border-color: white;
+}
+
+/** Draw the left edge. */
+.waveformedge:first-child { border-left: 1px; }
+
+/** Draw the right edge. */
+.waveformedge:last-child { border-right: 1px; }
+
+
+/** Draw the text label with the filename. */
+label
+{
+	color: white;
+	background-color: color-mix(in rgb, orange 20%, black);
+	margin: 2px;
+	padding: 2px 5px;
+	font-size: 0.9em;
+	text-align: right;
+	vertical-align: top;
+	border-radius: 3px;
+}
+
+/** Draw the playhead pt. 1. */
+.playhead::before
+{
+	content: '';	
+	background: rgba(0, 0, 0, 0.5);
+	width: 10px;
+	left: calc(calc(100% * var(--playhead)) - 4px);
+}
+
+/** Draw the playhead pt. 2. */
+.playhead::after
+{
+	content: '';	
+	background: red;
+	width: 2px;
+	left: calc(100% * var(--playhead));
+}
+");
+
+AudioWaveform1.setLocalLookAndFeel(laf);</code></pre>
 <div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
 </span>
 

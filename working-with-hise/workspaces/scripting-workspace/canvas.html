@@ -178,6 +178,13 @@
 <td>Edit Json </td>
 <td>This will open a popup with the JSON properties of the currently selected elements. It allows you to manually change the properties and do batch processing. Note that this is a very risky operation so it's possible to mess up the entire component tree so proceed with caution! </td>
 </tr>
+<tr><td><img src="images/icon_debug-css.png"></img>
+</td>
+<td><code> </code>
+ </td>
+<td>Debug Css </td>
+<td>If enabled you can hover over an element that has a CSS stylesheet attached to inspect the CSS properties (and variables) that are applied to the component. </td>
+</tr>
 <tr><td><img src="images/icon_suspend.png"></img>
 </td>
 <td><code> </code>
@@ -186,7 +193,7 @@
 <td>This simulates the suspension of the UI timers just as if the user would close your plugin window. You can use this to check if any vital functionality is depending on the UI timers being active. </td>
 </tr>
 </table>
-<p class="comment">Behind the scenes, HISE uses a layer called ScriptComponent that wraps around the data model for each control. It stores a reference to the data and communicates between the actual GUI you see and the script / UI model in the backend. However, in some cases these connections may break and you'll wind up with a somewhat broken interface. This can easily be fixed by deleting all those wrappers and create them new from the UI model. You can do that with the <b>Rebuild Button</b>
+<p>Behind the scenes, HISE uses a layer called ScriptComponent that wraps around the data model for each control. It stores a reference to the data and communicates between the actual GUI you see and the script / UI model in the backend. However, in some cases these connections may break and you'll wind up with a somewhat broken interface. This can easily be fixed by deleting all those wrappers and create them new from the UI model. You can do that with the <b>Rebuild Button</b>
 . If you only rebuild the interface, your ScriptProcessor script will not automatically be recompiled, so in order to make a full reset, you need to rebuild the interface first, and then recompile your script.</p>
 <h3 id="select-and-position-ui-components"><b>Select and position UI Components</b>
 </h3>

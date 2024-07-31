@@ -40,8 +40,9 @@
 
 		<div class="content"><h1 id="scriptwebview"><b>ScriptWebView</b>
 </h1>
-<p><br>The WebView widget allows you to render parts of your UI with the native browser technology on your OS. The integration into HISE is pretty straightforward and it allows bidirectional communication and resource management.</p>
-<p>In order to use the webview, just create it, set its bounds and then give it a root directory and a initial file to render. </p>
+<p><br>The <code>WebView</code>
+ component allows you to render parts of your UI with the native browser technology on your OS. The integration into HISE is pretty straightforward and it allows bidirectional communication and resource management.</p>
+<p>In order to use the Webview, just create it, set its bounds and then give it a root directory and a initial file to render. </p>
 <h3 id="component-properties"><b>Component Properties</b>
 </h3>
 <p>There are a few special component properties that can be used to define the behaviour of the WebView</p>
@@ -141,7 +142,7 @@ window.someFunction = function(args)
 <h2 id="createlocallookandfeel"><b>createLocalLookAndFeel</b>
 </h2>
 <p class="comment">Returns a local look and feel if it was registered before.</p>
-<pre><code class="language-javascript line-numbers">ScriptWebView.createLocalLookAndFeel()</code></pre>
+<pre><code class="language-javascript line-numbers">ScriptWebView.createLocalLookAndFeel(ScriptContentComponent *contentComponent, Component *componentToRegister)</code></pre>
 <p><br><br></p>
 <h2 id="evaluate"><b>evaluate</b>
 </h2>
@@ -273,6 +274,21 @@ window.someFunction = function(args)
 </h2>
 <p class="comment">Restores all properties from a JSON object.</p>
 <pre><code class="language-javascript line-numbers">ScriptWebView.setPropertiesFromJSON( var jsonData)</code></pre>
+<p><br><br></p>
+<h2 id="setstylesheetclass"><b>setStyleSheetClass</b>
+</h2>
+<p class="comment">Sets the given class selectors for the component stylesheet.</p>
+<pre><code class="language-javascript line-numbers">ScriptWebView.setStyleSheetClass( String classIds)</code></pre>
+<p><br><br></p>
+<h2 id="setstylesheetproperty"><b>setStyleSheetProperty</b>
+</h2>
+<p class="comment">Sets a variable for this component that can be queried from a style sheet.</p>
+<pre><code class="language-javascript line-numbers">ScriptWebView.setStyleSheetProperty( String variableId,  var value,  String type)</code></pre>
+<p><br><br></p>
+<h2 id="setstylesheetpseudostate"><b>setStyleSheetPseudoState</b>
+</h2>
+<p class="comment">Programatically sets a pseudo state (:hover, :active, :checked, :focus, :disabled) that will be used by the CSS renderer.</p>
+<pre><code class="language-javascript line-numbers">ScriptWebView.setStyleSheetPseudoState( String pseudoState)</code></pre>
 <p><br><br></p>
 <h2 id="settooltip"><b>setTooltip</b>
 </h2>

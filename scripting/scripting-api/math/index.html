@@ -45,7 +45,9 @@
 .</p>
 <p>Unless specified otherwise, the value type of the function is <code>double</code>
 . Most of the functions are pretty self-explanatory if you managed to get through high school, but there are a few special function that deserve a more detailed explanation.</p>
-<p class="comment">If you're going to start out with SNEX or use the expression nodes in scriptnode, you might be happy to know that this class is also available there.<br></p>
+<p class="comment">If you're going to start out with SNEX or use the expression nodes in scriptnode, you might be happy to know that this class is also available there.</p>
+<p>In the editor the <code>Math</code>
+ keyword will also give you access to a few Math constants (PI, E).<br></p>
 <h1 id="class-methods
 "><b>Class methods<br></b>
 </h1>
@@ -53,67 +55,101 @@
 </h2>
 <p class="comment">Returns the absolute (unsigned) value.</p>
 <pre><code class="language-javascript line-numbers">Math.abs(var value)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<p>Useful for inverting negative values.</p>
+<img style="max-width:300px;" src="images/custom/math/abs.png"></img>
+<p><br></p>
 <h2 id="acos"><b>acos</b>
 </h2>
 <p class="comment">Calculates the acosine value (radian based).</p>
 <pre><code class="language-javascript line-numbers">Math.acos(var value)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<img style="max-width:300px;" src="images/custom/math/acos.png"></img>
+<p><a href="https://en.wikipedia.org/wiki/Inverse_trigonometric_functions">Wikipedia: Inverse Trigonmetric functions</a>
+<br></p>
 <h2 id="acosh"><b>acosh</b>
 </h2>
 <p class="comment">Calculates the acosh value (radian based).</p>
 <pre><code class="language-javascript line-numbers">Math.acosh(var value)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<img style="max-width:400px;" src="images/custom/math/acosh.png"></img>
+<p>The <a href="https://en.wikipedia.org/wiki/Hyperbolic_functions">hyperbolic version</a>
+ of acos.</p>
+<p><br></p>
 <h2 id="asin"><b>asin</b>
 </h2>
 <p class="comment">Calculates the asine value (radian based).</p>
 <pre><code class="language-javascript line-numbers">Math.asin(var value)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<img style="max-width:400px;" src="images/custom/math/asin.png"></img>
+<p><br></p>
 <h2 id="asinh"><b>asinh</b>
 </h2>
 <p class="comment">Calculates the asinh value (radian based).</p>
 <pre><code class="language-javascript line-numbers">Math.asinh(var value)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<img style="max-width:400px;" src="images/custom/math/asinh.png"></img>
+<p><br></p>
 <h2 id="atan"><b>atan</b>
 </h2>
 <p class="comment">Calculates the atan value (radian based).</p>
 <pre><code class="language-javascript line-numbers">Math.atan(var value)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<img style="max-width:400px;" src="images/custom/math/atan.png"></img>
+<p><br></p>
 <h2 id="atanh"><b>atanh</b>
 </h2>
 <p class="comment">Calculates the atanh value (radian based).</p>
 <pre><code class="language-javascript line-numbers">Math.atanh(var value)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<img style="max-width:400px;" src="images/custom/math/atanh.png"></img>
+<p><br></p>
 <h2 id="ceil"><b>ceil</b>
 </h2>
 <p class="comment">Rounds up the value.</p>
 <pre><code class="language-javascript line-numbers">Math.ceil(var value)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<img style="max-width:400px;" src="images/custom/math/ceil.png"></img>
+<p>Pushes the value up to the next full number.<br></p>
 <h2 id="cos"><b>cos</b>
 </h2>
 <p class="comment">Calculates the cosine value (radian based).</p>
 <pre><code class="language-javascript line-numbers">Math.cos(var value)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<img style="max-width:400px;" src="images/custom/math/cos.png"></img>
+<p>Basic <a href="https://en.wikipedia.org/wiki/Trigonometric_functions">Trigonometric Function</a>
+. Returns 1 at 0 and -1 at PI.<br> </p>
 <h2 id="cosh"><b>cosh</b>
 </h2>
 <p class="comment">Calculates the cosh value (radian based).</p>
 <pre><code class="language-javascript line-numbers">Math.cosh(var value)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<img style="max-width:400px;" src="images/custom/math/cosh.png"></img>
+<p><br></p>
 <h2 id="exp"><b>exp</b>
 </h2>
 <p class="comment">Calculates the exp value.</p>
 <pre><code class="language-javascript line-numbers">Math.exp(var value)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<img style="max-width:400px;" src="images/custom/math/exp.png"></img>
+<p><a href="https://en.wikipedia.org/wiki/Exponential_function">Wikipedia: Exponential function</a>
+<br></p>
 <h2 id="floor"><b>floor</b>
 </h2>
 <p class="comment">Rounds down the value.</p>
 <pre><code class="language-javascript line-numbers">Math.floor(var value)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<img style="max-width:400px;" src="images/custom/math/floor.png"></img>
+<p>Opposite of <a href="scripting/scripting-api/math/index.html#ceil">Math.ceil()</a>
+</p>
+<p><br></p>
 <h2 id="fmod"><b>fmod</b>
 </h2>
 <p class="comment">Returns the remainder when dividing value with limit.</p>
 <pre><code class="language-javascript line-numbers">Math.fmod(var value, var limit)</code></pre>
-<p><br>This is usually useful for two use cases:</p>
+<p><br></p>
+<img style="max-width:400px;" src="images/custom/math/fmod.png"></img>
+<p>This is usually useful for two use cases:</p>
 <ol><li>Get the fractional part: <code>Math.fmod(19.52, 1.0) == 0.52)</code>
 </li>
 <li>Loop around a range limit: <code>Math.fmod(13.2, 12.0) == 1.2</code>
@@ -205,27 +241,43 @@ Console.assertTrue(Math.abs(x - y) < 0.001);</code></pre>
 </h2>
 <p class="comment">Calculates the log value (with base E).</p>
 <pre><code class="language-javascript line-numbers">Math.log(var value)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<img style="max-width:400px;" src="images/custom/math/log.png"></img>
+<p><a href="https://en.wikipedia.org/wiki/Logarithm">inverse</a>
+ of <a href="scripting/scripting-api/math/index.html#exp">Math.exp()</a>
+.<br></p>
 <h2 id="log10"><b>log10</b>
 </h2>
 <p class="comment">Calculates the log value (with base 10).</p>
 <pre><code class="language-javascript line-numbers">Math.log10(var value)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<img style="max-width:400px;" src="images/custom/math/log10.png"></img>
+<p><br></p>
 <h2 id="max"><b>max</b>
 </h2>
 <p class="comment">Returns the bigger number.</p>
 <pre><code class="language-javascript line-numbers">Math.max(var first, var second)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<img style="max-width:400px;" src="images/custom/math/max.png"></img>
+<p class="comment"><code>Math.max(x,0);</code>
+<br></p>
 <h2 id="min"><b>min</b>
 </h2>
 <p class="comment">Returns the smaller number.</p>
 <pre><code class="language-javascript line-numbers">Math.min(var first, var second)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<img style="max-width:400px;" src="images/custom/math/min.png"></img>
+<p class="comment"><code>Math.min(x,0);</code>
+<br></p>
 <h2 id="pow"><b>pow</b>
 </h2>
 <p class="comment">Calculates the power of base and exponent.</p>
 <pre><code class="language-javascript line-numbers">Math.pow(var base, var exp)</code></pre>
-<p><br>Be aware that this is a rather costly operation, so if you just want to square the value, the plain ol' <code>x*x</code>
+<p><br></p>
+<img style="max-width:400px;" src="images/custom/math/pow.png"></img>
+<p class="comment"><code>Math.pow(x,3);</code>
+</p>
+<p>Be aware that this is a rather costly operation, so if you just want to square the value, the plain ol' <code>x*x</code>
  will get you there faster.<br></p>
 <h2 id="randint"><b>randInt</b>
 </h2>
@@ -241,27 +293,41 @@ Console.assertTrue(Math.abs(x - y) < 0.001);</code></pre>
 </h2>
 <p class="comment">Limits the value to the given range.</p>
 <pre><code class="language-javascript line-numbers">Math.range(var value, var lowerLimit, var upperLimit)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<img style="max-width:400px;" src="images/custom/math/range.png"></img>
+<p class="comment"><code>Math.range(x, -1, 1)</code>
+<br></p>
 <h2 id="round"><b>round</b>
 </h2>
 <p class="comment">Rounds the value to the next integer.</p>
 <pre><code class="language-javascript line-numbers">Math.round(var value)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<img style="max-width:400px;" src="images/custom/math/round.png"></img>
+<p>Rounds the value up or down at .5<br></p>
 <h2 id="sign"><b>sign</b>
 </h2>
 <p class="comment">Returns the sign of the value.</p>
 <pre><code class="language-javascript line-numbers">Math.sign(var value)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<img style="max-width:400px;" src="images/custom/math/sign.png"></img>
+<p><a href="https://en.wikipedia.org/wiki/Sign_function">Sign function</a>
+<br></p>
 <h2 id="sin"><b>sin</b>
 </h2>
 <p class="comment">Calculates the sine value (radian based).</p>
 <pre><code class="language-javascript line-numbers">Math.sin(var value)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<img style="max-width:400px;" src="images/custom/math/sin.png"></img>
+<p>Oh, holy. As in <a href="hise-modules/sound-generators/list/sinesynth.html">Sinewave Generator</a>
+.</p>
+<p><br></p>
 <h2 id="sinh"><b>sinh</b>
 </h2>
 <p class="comment">Calculates the sinh value (radian based).</p>
 <pre><code class="language-javascript line-numbers">Math.sinh(var value)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<img style="max-width:400px;" src="images/custom/math/sinh.png"></img>
+<p><br></p>
 <h2 id="skew"><b>skew</b>
 </h2>
 <p class="comment">Returns the skew factor for the given mid point.</p>
@@ -333,7 +399,11 @@ const var o2 = f2.create();
 </h2>
 <p class="comment">Calculates a smooth transition between the lower and the upper value.</p>
 <pre><code class="language-javascript line-numbers">Math.smoothstep(var input, var lower, var upper)</code></pre>
-<p><br>This function is very popular in graphics programming because it allows a seemless transition between two values, but there are certainly a few interesting use cases for DSP scripting / MIDI processing too. A good explanation of this function can be found <a href="https://thebookofshaders.com/glossary/?search=smoothstep">here</a>
+<p><br></p>
+<img style="max-width:400px;" src="images/custom/math/smoothstep.png"></img>
+<p class="comment"><code>Math.smoothstep(x,0,2);</code>
+</p>
+<p>This function is very popular in graphics programming because it allows a seemless transition between two values, but there are certainly a few interesting use cases for DSP scripting / MIDI processing too. A good explanation of this function can be found <a href="https://thebookofshaders.com/glossary/?search=smoothstep">here</a>
 .</p>
 <p><br></p>
 <h2 id="sqr"><b>sqr</b>
@@ -341,22 +411,31 @@ const var o2 = f2.create();
 <p class="comment">Calculates the square (x<i>x) of the value.</i>
 </p>
 <pre><code class="language-javascript line-numbers">Math.sqr(var value)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<img style="max-width:400px;" src="images/custom/math/sqr.png"></img>
+<p><br></p>
 <h2 id="sqrt"><b>sqrt</b>
 </h2>
 <p class="comment">Calculates the square root of the value.</p>
 <pre><code class="language-javascript line-numbers">Math.sqrt(var value)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<img style="max-width:400px;" src="images/custom/math/sqrt.png"></img>
+<p><a href="https://en.wikipedia.org/wiki/Square_root">Wikipedia: Square Root</a>
+<br></p>
 <h2 id="tan"><b>tan</b>
 </h2>
 <p class="comment">Calculates the tan value (radian based).</p>
 <pre><code class="language-javascript line-numbers">Math.tan(var value)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<img style="max-width:400px;" src="images/custom/math/tan.png"></img>
+<p><br></p>
 <h2 id="tanh"><b>tanh</b>
 </h2>
 <p class="comment">Calculates the tanh value (radian based).</p>
 <pre><code class="language-javascript line-numbers">Math.tanh(var value)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<img style="max-width:400px;" src="images/custom/math/tanh.png"></img>
+<p><br></p>
 <h2 id="to0to1"><b>to0To1</b>
 </h2>
 <p class="comment">Converts a value inside a range defined by the JSON data in range obj to a normalised value.</p>
@@ -369,18 +448,27 @@ const var o2 = f2.create();
 </h2>
 <p class="comment">Converts radian (0...2PI) to degree (0...3600).</p>
 <pre><code class="language-javascript line-numbers">Math.toDegrees(var value)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<p><a href="https://en.wikipedia.org/wiki/Degree_(angle">Wikipedia: Degrees</a>
+)</p>
+<pre><code class="language-javascript line-numbers">Console.print(Math.toDegrees(Math.PI*2)); // 360.0</code></pre>
+<p><br></p>
 <h2 id="toradians"><b>toRadians</b>
 </h2>
 <p class="comment">Converts degree (0...3600) to radian (0...2<i>PI).</i>
 </p>
 <pre><code class="language-javascript line-numbers">Math.toRadians(var value)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<p><a href="https://en.wikipedia.org/wiki/Radian">Wikipedia: Radian</a>
+</p>
+<pre><code class="language-javascript line-numbers">Console.print(Math.toRadians(360)); // 6.2831.. // PI*2</code></pre>
+<p><br></p>
 <h2 id="wrap"><b>wrap</b>
 </h2>
 <p class="comment">Wraps the value around the limit (always positive).</p>
 <pre><code class="language-javascript line-numbers">Math.wrap(var value, var limit)</code></pre>
-<p><br>Unlike its sibling <code>fmod()</code>
+<p><br></p>
+<p>Unlike its sibling <a href="scripting/scripting-api/math/index.html#fmod">fmod()</a>
 , this function will not behave weird with negative values, so if you rely on it to loop around correctly with negative numbers, use this instead.</p>
 <pre><code class="language-javascript line-numbers">// fmod will not wrap around zero
 Console.print(Math.fmod(-1.0, 19.0)); // -> -1.0
@@ -394,7 +482,7 @@ Console.print(Math.wrap(-1.0, 19.0)); // -> 18.0</code></pre>
 <span class="content-footer-right">Next: <a href="scripting/scripting-api/message/index.html">Message</a>
 </span>
 
-<p class="content-footer-metadata">Christoph Hart<br>03.06.2019<br></p>
+<p class="content-footer-metadata">Christoph Hart, Do Mayer<br>03.06.2019<br></p>
 </div>
 
 			<!-- content end -->

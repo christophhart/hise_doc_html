@@ -64,6 +64,196 @@
 <p class="comment">Set a global font.</p>
 <pre><code class="language-javascript line-numbers">ScriptLookAndFeel.setGlobalFont( String fontName, float fontSize)</code></pre>
 <p><br><br></p>
+<h2 id="setinlinestylesheet"><b>setInlineStyleSheet</b>
+</h2>
+<p class="comment">Parses CSS code and switches the look and feel to use the CSS renderer.</p>
+<pre><code class="language-javascript line-numbers">ScriptLookAndFeel.setInlineStyleSheet( String cssCode)</code></pre>
+<p><br>This method will take a string and parse it as <a href="glossary/css.html">CSS </a>
+ code that will be applied to whatever component is registered to this LookAndFeel object.</p>
+<pre><code class="language-javascript line-numbers">const var b1 = Content.addButton("b1", 0, 0);
+const var laf = Content.createLocalLookAndFeel();
+
+b1.setLocalLookAndFeel(laf);
+
+/** Set the inline style sheet that just colours the button. */
+laf.setInlineStyleSheet("button{
+	background-color: red;
+}");</code></pre>
+<p>This method is for quick and dirty use cases, for more complex style sheets it's recommended to use <a href="scripting/scripting-api/scriptlookandfeel/index.html#setstylesheet">setStyleSheet</a>
+ with a file reference so you can edit the CSS in a specific code editor tab with proper CSS syntax highlighting & autocomplete.<br></p>
+<h2 id="setstylesheet"><b>setStyleSheet</b>
+</h2>
+<p class="comment">Parses CSS code from a style sheet file in the scripts folder and switches the look and feel to use the CSS renderer.</p>
+<pre><code class="language-javascript line-numbers">ScriptLookAndFeel.setStyleSheet( String fileName)</code></pre>
+<p><br>This method will load (or create) a file with the specified filename in the <code>Scripts</code>
+ folder of your project and parse it as CSS code that will be applied to any UI component that is associated with this LookAndFeel object.</p>
+<p>The file will then be included (like an external script file or a .glsl file) and you can open it using the drop down in the code editor. </p>
+<p class="comment">The code editor will then switch to CSS mode with proper syntax highlighting & autocomplete of all supported CSS properties. Also pressing F5 while editing the CSS code will <b>not</b>
+ recompile the entire script, but just reparse the CSS and update the (currently) visible UI components. This allows a super fast iteration of UI design!</p>
+<p>Take a look at the CSS reference guide <a href="glossary/css.html">here</a>
+ for a list of supported properties & language features.<br></p>
+<h2 id="setstylesheetproperty"><b>setStyleSheetProperty</b>
+</h2>
+<p class="comment">Sets a variable that can be queried from a style sheet.</p>
+<pre><code class="language-javascript line-numbers">ScriptLookAndFeel.setStyleSheetProperty( String variableId, var value,  String type)</code></pre>
+<p><br>This allows you to send a dynamic value to all components that use the LookAndFeel object. Just call this method with a valid ID, a value and supply an optional type conversion and then query the value in CSS using the standard <a href="glossary/css.html#variable-handling">CSS syntax for variables</a>
+:</p>
+<pre><code class="language-javascript line-numbers">// HiseScript:
+// Set myProperty as a pixel value
+laf.setStyleSheetProperty("myProperty", "10", "px");
+
+// CSS side
+button
+{
+	/** read the property and use it as border radius. */
+	border-radius: var(--myProperty);
+}</code></pre>
+<p class="comment">Note that calling this method will automatically repaint the components so you don't have to explicitely repaint them with <code>sendRepaintMessage()</code>
+ or friends.</p>
+<h3 id="inbuilt-colour-properties"><b>Inbuilt colour properties</b>
+</h3>
+<p>Be aware that HISE will automatically send changes to any of the colour properties from an UI component to the CSS, so if you eg. want to update the background color based on the <code>bgColour</code>
+ property, you don't need to use this method, but just use the variable in your CSS code like this:</p>
+<pre><code class="language-javascript line-numbers">button
+{
+	background-color: var(--bgColour);
+}</code></pre>
+<h3 id="value-converters"><b>Value converters</b>
+</h3>
+<p>The third argument in the function call is a string that can be used to convert the value into a CSS value domain.</p>
+<table><thead><td><b>Type </b>
+</td>
+<td><b>Expected Value </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><code>""</code>
+ </td>
+<td>any string </td>
+<td>does no conversion and just passes the raw string over to CSS </td>
+</tr>
+<tr><td><code>"px"</code>
+ </td>
+<td>a number </td>
+<td>uses the number as pixel value </td>
+</tr>
+<tr><td><code>"%"</code>
+ </td>
+<td>a float number between 0.0 and 1.0 </td>
+<td>converts the number to a percentage value. </td>
+</tr>
+<tr><td><code>"color"</code>
+ </td>
+<td>a colour value (either int or string) </td>
+<td>converts any colour from HiseScript (eg. <code>Colours.red</code>
+ or <code>0xFF00FF00</code>
+ into a propert CSS string ('#FF00FF00') </td>
+</tr>
+<tr><td><code>path</code>
+ </td>
+<td>a <a href="scripting/scripting-api/path/index.html">Path</a>
+ object. </td>
+<td>Converts the given path into a base64 string which then can be used as <code>background-image</code>
+ property to replace the standard background rectangle path. </td>
+</tr>
+<tr><td><code>class</code>
+ </td>
+<td>a string </td>
+<td>writes one or multiple class selectors into the component. </td>
+</tr>
+</table>
+<pre><code class="language-javascript line-numbers">// HiseScript:
+// Raw string
+laf.setStyleSheetProperty("rawString", "bold", "");
+
+// Pixel value (25px)
+laf.setStyleSheetProperty("pixelVariable", 25, "px");
+
+// Relative value (80%)
+laf.setStyleSheetProperty("percentageVariable", 0.8, "%");
+
+// Colour value (#FF0000FF)
+laf.setStyleSheetProperty("colorVariable", Colours.blue, "color");
+
+// Path object (some Base64 gibberish)
+const var p = Content.createPath();
+p.addEllipse([12, 12, 30, 30]);
+laf.setStyleSheetProperty("pathVariable", p, "path");
+
+// set the CSS class
+const var b = Content.getComponent("button");
+b.setStyleSheetProperty("class", ".someclass", "class");
+
+// CSS side
+button
+{
+	font-weight: var(--bold);
+	padding-left: var(--pixelVariable);
+	transform: scale(var(--percentageVariable));
+	background-color: var(--colorVariable);
+	background-image: var(--pathVariable);
+}
+
+.someclass 
+{
+	/* will be applied to the `b` Button only. */
+	background: red;
+}</code></pre>
+<p>The last conversion allows you to pass any path in HISE over to CSS and render it with box shadows & different stroke types. </p>
+<h3 id="precedence"><b>Precedence</b>
+</h3>
+<p>Using this method from the LAF object will send the value to all objects that use the LAF, however there is another <a href="scripting/scripting-api/scriptbutton/index.html#setstylesheetproperty">method</a>
+ that you can call on individual UI components in order to use different properties for different components. </p>
+<p>In that case, the properties set by the component method will always override the properties set by this method, even if they are executed in reversed order:</p>
+<pre><code class="language-javascript line-numbers">const var b1 = Content.addButton("b1", 0, 0);
+const var b2 = Content.addButton("b2", 130, 0);
+
+const var laf = Content.createLocalLookAndFeel();
+
+b1.setLocalLookAndFeel(laf);
+b2.setLocalLookAndFeel(laf);
+
+/** Set the inline style sheet that just colours the button. */
+laf.setInlineStyleSheet("button{
+	background-color: var(--c);
+}");
+
+/** Set the component specific property. */
+b1.setStyleSheetProperty("c", Colours.blue, "color");
+
+/** Set the "global" property for all components. */
+laf.setStyleSheetProperty("c", Colours.red, "color");</code></pre>
+<p>In this code example, the first button will be blue, even if the property for the component was set before setting the global component.</p>
+<h3 id="debugging-properties"><b>Debugging properties</b>
+</h3>
+<p>In order to check the value of each property for individual components, you can right click on any UI component in the Interface designer that has assigned a CSS LookAndFeel and then choose <code>Show CSS debugger</code>
+ in the context menu. Doing so for the second button will show this:</p>
+<pre><code class="language-javascript line-numbers">Current variable values:
+{
+  "c": "#FFFF0000",
+  "bgColour": "#00000000",
+  "itemColour": "#00000000",
+  "itemColour2": "#00000000",
+  "textColour": "#00000000"
+}
+==============================
+
+/* CSS for component hierarchy: */
+
+button #b2 .scriptbutton
+
+/** Component stylesheet: */
+button #b2 .scriptbutton {
+  background-color[]: var(--c)
+}
+
+
+/** Inherited style sheets: */
+button {
+  background-color[]: var(--c)
+}</code></pre>
+<p><br></p>
 <h2 id="unloadallimages"><b>unloadAllImages</b>
 </h2>
 <p class="comment">Unload all images from the look and feel object.</p>

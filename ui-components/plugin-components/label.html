@@ -98,6 +98,63 @@ Console.print(Label1.getValue());</code></pre>
 </h2>
 <p><a href="scripting/scripting-api/scriptlabel/index.html">ScriptLabel</a>
 </p>
+<h2 id="css-styling"><b>CSS Styling</b>
+</h2>
+<p>You can use CSS to style the label beyond the possibilities of the default HISE properties. The selector for the label is <code>label</code>
+, but there are other selectors for additional styling:</p>
+<ul><li>style the text input using the <code>input</code>
+ selector (while typing text)</li>
+<li>style the selection (text colour and background colour) with the <code>::selection</code>
+ selector</li>
+</ul>
+<p class="comment">Note that the <code>input</code>
+ selector will also style all text input elements (eg. when shift-clicking on a <a href="ui-components/plugin-components/knob.html">Slider</a>
+). The <code>label</code>
+ selector is also used for styling the popup labels for all components (Sliders, Tables & SliderPacks).</p>
+<h3 id="stylesheet-example"><b>Stylesheet Example</b>
+</h3>
+<pre><code class="language-javascript line-numbers">const var l = Content.addLabel("Label1", 10, 10);
+
+l.set("textColour", 0xFFEEEEEE);
+l.set("bgColour", Colours.darkgoldenrod);
+
+const var laf = Content.createLocalLookAndFeel();
+
+laf.setInlineStyleSheet("
+
+*
+{
+	letter-spacing: 2px;
+	font-weight: bold;
+}
+
+/** Render the default appearance. */
+label
+{
+	background-color: var(--bgColour);
+	color: var(--textColour);	
+	border-radius: 3px;
+}
+
+/** If you edit the text, it will use this selector. */
+input
+{
+	background: red;
+	text-align: center;
+	padding-top: 0.5px;
+	padding-left: 2px;
+	caret-color: blue;
+}
+
+/** Style the text selection with this selector. */
+::selection
+{
+	background: green;
+	color: white;
+}
+");
+
+l.setLocalLookAndFeel(laf);</code></pre>
 <div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
 </span>
 

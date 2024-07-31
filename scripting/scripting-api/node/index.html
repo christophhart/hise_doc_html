@@ -40,6 +40,16 @@
 
 		<div class="content"><h1 id="node"><b>Node</b>
 </h1>
+<p><br>The <code>Node</code>
+ object is how you can access <a href="scriptnode/list/index.html">ScriptNode nodes</a>
+ with scripting. The <a href="working-with-hise/workspaces/scripting-workspace/scriptnode.html">ScriptNode Editor</a>
+ is normally taking care of a lot of these functions, but if you want to manipulate a <a href="scripting/scripting-api/dspnetwork/index.html">DSPNetwork</a>
+ via script, this gives you access to each single nodes properties and methods.</p>
+<pre><code class="language-javascript line-numbers">const var sn = Engine.createDspNetwork("ScriptNode");
+
+const var node = sn.create("core.oscillator", "osc");
+
+Console.print(node.getNumParameters());</code></pre>
 <p><br></p>
 <h1 id="class-methods
 "><b>Class methods<br></b>
@@ -125,7 +135,7 @@
 <span class="content-footer-right">Next: <a href="scripting/scripting-api/path/index.html">Path</a>
 </span>
 
-<p class="content-footer-metadata"><br><br></p>
+<p class="content-footer-metadata">Christoph Hart<br>31.07.2024<br></p>
 </div>
 
 			<!-- content end -->

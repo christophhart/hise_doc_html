@@ -828,6 +828,12 @@
     "color": "#DEB887"
   },
   {
+    "key": "Export: Setup Export Wizard",
+    "url": "working-with-hise/menu-reference/export/index.html#setup-export-wizard",
+    "weight": 60,
+    "color": "#DEB887"
+  },
+  {
     "key": "Export: Export as Instrument (VSTi / AUi) plugin",
     "url": "working-with-hise/menu-reference/export/index.html#export-as-instrument-vsti-/-aui-plugin",
     "weight": 60,
@@ -908,6 +914,12 @@
   {
     "key": "Export: Clean Build directory",
     "url": "working-with-hise/menu-reference/export/index.html#clean-build-directory",
+    "weight": 60,
+    "color": "#DEB887"
+  },
+  {
+    "key": "Export: Clean DSP network files",
+    "url": "working-with-hise/menu-reference/export/index.html#clean-dsp-network-files",
     "weight": 60,
     "color": "#DEB887"
   },
@@ -1244,6 +1256,12 @@
   {
     "key": "Project: Extra Definitions Linux",
     "url": "working-with-hise/settings/project.html#extra-definitions-linux",
+    "weight": 60,
+    "color": "#DEB887"
+  },
+  {
+    "key": "Project: Extra Definitions Network Dll",
+    "url": "working-with-hise/settings/project.html#extra-definitions-network-dll",
     "weight": 60,
     "color": "#DEB887"
   },
@@ -2868,6 +2886,12 @@
     "color": "#9064FF"
   },
   {
+    "key": "Plugin Components: Multipage Dialog",
+    "url": "ui-components/plugin-components/multipagedialog.html",
+    "weight": 70,
+    "color": "#9064FF"
+  },
+  {
     "key": "Floating Tiles: Layout Floating Tiles",
     "url": "ui-components/floating-tiles/layout/index.html",
     "weight": 70,
@@ -4050,6 +4074,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "Scripting API: ScriptMultipageDialog",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html",
+    "weight": 70,
+    "color": "#D557D9"
+  },
+  {
     "key": "Scripting API: ScriptPanel",
     "url": "scripting/scripting-api/scriptpanel/index.html",
     "weight": 70,
@@ -4771,61 +4801,61 @@
   },
   {
     "key": "Buffer.detectPitch()",
-    "url": "scripting/scripting-api/buffer.html#detectpitch",
+    "url": "scripting/scripting-api/buffer/index.html#detectpitch",
     "weight": 60,
     "color": "#D557D9"
   },
   {
     "key": "Buffer.fromBase64()",
-    "url": "scripting/scripting-api/buffer.html#frombase64",
+    "url": "scripting/scripting-api/buffer/index.html#frombase64",
     "weight": 60,
     "color": "#D557D9"
   },
   {
     "key": "Buffer.getMagnitude()",
-    "url": "scripting/scripting-api/buffer.html#getmagnitude",
+    "url": "scripting/scripting-api/buffer/index.html#getmagnitude",
     "weight": 60,
     "color": "#D557D9"
   },
   {
     "key": "Buffer.getPeakRange()",
-    "url": "scripting/scripting-api/buffer.html#getpeakrange",
+    "url": "scripting/scripting-api/buffer/index.html#getpeakrange",
     "weight": 60,
     "color": "#D557D9"
   },
   {
     "key": "Buffer.getRMSLevel()",
-    "url": "scripting/scripting-api/buffer.html#getrmslevel",
+    "url": "scripting/scripting-api/buffer/index.html#getrmslevel",
     "weight": 60,
     "color": "#D557D9"
   },
   {
     "key": "Buffer.indexOfPeak()",
-    "url": "scripting/scripting-api/buffer.html#indexofpeak",
+    "url": "scripting/scripting-api/buffer/index.html#indexofpeak",
     "weight": 60,
     "color": "#D557D9"
   },
   {
     "key": "Buffer.normalise()",
-    "url": "scripting/scripting-api/buffer.html#normalise",
+    "url": "scripting/scripting-api/buffer/index.html#normalise",
     "weight": 60,
     "color": "#D557D9"
   },
   {
     "key": "Buffer.toBase64()",
-    "url": "scripting/scripting-api/buffer.html#tobase64",
+    "url": "scripting/scripting-api/buffer/index.html#tobase64",
     "weight": 60,
     "color": "#D557D9"
   },
   {
     "key": "Buffer.toCharString()",
-    "url": "scripting/scripting-api/buffer.html#tocharstring",
+    "url": "scripting/scripting-api/buffer/index.html#tocharstring",
     "weight": 60,
     "color": "#D557D9"
   },
   {
     "key": "Buffer.trim()",
-    "url": "scripting/scripting-api/buffer.html#trim",
+    "url": "scripting/scripting-api/buffer/index.html#trim",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -5204,6 +5234,12 @@
   {
     "key": "Content.addLabel()",
     "url": "scripting/scripting-api/content/index.html#addlabel",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "Content.addMultipageDialog()",
+    "url": "scripting/scripting-api/content/index.html#addmultipagedialog",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -9684,6 +9720,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "Path.toBase64()",
+    "url": "scripting/scripting-api/path/index.html#tobase64",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "Path.toString()",
     "url": "scripting/scripting-api/path/index.html#tostring",
     "weight": 60,
@@ -10320,6 +10362,24 @@
     "color": "#D557D9"
   },
   {
+    "key": "ScriptAudioWaveform.setStyleSheetClass()",
+    "url": "scripting/scripting-api/scriptaudiowaveform/index.html#setstylesheetclass",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptAudioWaveform.setStyleSheetProperty()",
+    "url": "scripting/scripting-api/scriptaudiowaveform/index.html#setstylesheetproperty",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptAudioWaveform.setStyleSheetPseudoState()",
+    "url": "scripting/scripting-api/scriptaudiowaveform/index.html#setstylesheetpseudostate",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "ScriptAudioWaveform.setTooltip()",
     "url": "scripting/scripting-api/scriptaudiowaveform/index.html#settooltip",
     "weight": 60,
@@ -10526,6 +10586,24 @@
   {
     "key": "ScriptButton.setPropertiesFromJSON()",
     "url": "scripting/scripting-api/scriptbutton/index.html#setpropertiesfromjson",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptButton.setStyleSheetClass()",
+    "url": "scripting/scripting-api/scriptbutton/index.html#setstylesheetclass",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptButton.setStyleSheetProperty()",
+    "url": "scripting/scripting-api/scriptbutton/index.html#setstylesheetproperty",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptButton.setStyleSheetPseudoState()",
+    "url": "scripting/scripting-api/scriptbutton/index.html#setstylesheetpseudostate",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -10746,6 +10824,24 @@
     "color": "#D557D9"
   },
   {
+    "key": "ScriptComboBox.setStyleSheetClass()",
+    "url": "scripting/scripting-api/scriptcombobox/index.html#setstylesheetclass",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptComboBox.setStyleSheetProperty()",
+    "url": "scripting/scripting-api/scriptcombobox/index.html#setstylesheetproperty",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptComboBox.setStyleSheetPseudoState()",
+    "url": "scripting/scripting-api/scriptcombobox/index.html#setstylesheetpseudostate",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "ScriptComboBox.setTooltip()",
     "url": "scripting/scripting-api/scriptcombobox/index.html#settooltip",
     "weight": 60,
@@ -10958,6 +11054,24 @@
   {
     "key": "ScriptedViewport.setPropertiesFromJSON()",
     "url": "scripting/scripting-api/scriptedviewport/index.html#setpropertiesfromjson",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptedViewport.setStyleSheetClass()",
+    "url": "scripting/scripting-api/scriptedviewport/index.html#setstylesheetclass",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptedViewport.setStyleSheetProperty()",
+    "url": "scripting/scripting-api/scriptedviewport/index.html#setstylesheetproperty",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptedViewport.setStyleSheetPseudoState()",
+    "url": "scripting/scripting-api/scriptedviewport/index.html#setstylesheetpseudostate",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -11190,6 +11304,24 @@
     "color": "#D557D9"
   },
   {
+    "key": "ScriptFloatingTile.setStyleSheetClass()",
+    "url": "scripting/scripting-api/scriptfloatingtile/index.html#setstylesheetclass",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptFloatingTile.setStyleSheetProperty()",
+    "url": "scripting/scripting-api/scriptfloatingtile/index.html#setstylesheetproperty",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptFloatingTile.setStyleSheetPseudoState()",
+    "url": "scripting/scripting-api/scriptfloatingtile/index.html#setstylesheetpseudostate",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "ScriptFloatingTile.setTooltip()",
     "url": "scripting/scripting-api/scriptfloatingtile/index.html#settooltip",
     "weight": 60,
@@ -11396,6 +11528,24 @@
   {
     "key": "ScriptImage.setPropertiesFromJSON()",
     "url": "scripting/scripting-api/scriptimage/index.html#setpropertiesfromjson",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptImage.setStyleSheetClass()",
+    "url": "scripting/scripting-api/scriptimage/index.html#setstylesheetclass",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptImage.setStyleSheetProperty()",
+    "url": "scripting/scripting-api/scriptimage/index.html#setstylesheetproperty",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptImage.setStyleSheetPseudoState()",
+    "url": "scripting/scripting-api/scriptimage/index.html#setstylesheetpseudostate",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -11610,6 +11760,24 @@
     "color": "#D557D9"
   },
   {
+    "key": "ScriptLabel.setStyleSheetClass()",
+    "url": "scripting/scripting-api/scriptlabel/index.html#setstylesheetclass",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptLabel.setStyleSheetProperty()",
+    "url": "scripting/scripting-api/scriptlabel/index.html#setstylesheetproperty",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptLabel.setStyleSheetPseudoState()",
+    "url": "scripting/scripting-api/scriptlabel/index.html#setstylesheetpseudostate",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "ScriptLabel.setTooltip()",
     "url": "scripting/scripting-api/scriptlabel/index.html#settooltip",
     "weight": 60,
@@ -11684,6 +11852,12 @@
   {
     "key": "ScriptLookAndFeel.setStyleSheet()",
     "url": "scripting/scripting-api/scriptlookandfeel/index.html#setstylesheet",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptLookAndFeel.setStyleSheetProperty()",
+    "url": "scripting/scripting-api/scriptlookandfeel/index.html#setstylesheetproperty",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -11822,6 +11996,312 @@
   {
     "key": "ScriptModulationMatrix.updateValueMode()",
     "url": "scripting/scripting-api/scriptmodulationmatrix/index.html#updatevaluemode",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.add()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#add",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.addModalPage()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#addmodalpage",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.addPage()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#addpage",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.addToMacroControl()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#addtomacrocontrol",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.bindCallback()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#bindcallback",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.cancel()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#cancel",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.changed()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#changed",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.createLocalLookAndFeel()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#createlocallookandfeel",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.exportAsMonolith()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#exportasmonolith",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.fadeComponent()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#fadecomponent",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.get()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#get",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.getAllProperties()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#getallproperties",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.getChildComponents()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#getchildcomponents",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.getElementProperty()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#getelementproperty",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.getGlobalPositionX()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#getglobalpositionx",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.getGlobalPositionY()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#getglobalpositiony",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.getHeight()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#getheight",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.getId()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#getid",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.getLocalBounds()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#getlocalbounds",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.getState()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#getstate",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.getValueNormalized()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#getvaluenormalized",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.getWidth()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#getwidth",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.grabFocus()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#grabfocus",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.loadFromDataFile()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#loadfromdatafile",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.loseFocus()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#losefocus",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.navigate()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#navigate",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.resetDialog()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#resetdialog",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.set()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#set",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.setColour()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#setcolour",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.setConsumedKeyPresses()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#setconsumedkeypresses",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.setControlCallback()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#setcontrolcallback",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.setElementProperty()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#setelementproperty",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.setElementValue()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#setelementvalue",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.setKeyPressCallback()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#setkeypresscallback",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.setLocalLookAndFeel()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#setlocallookandfeel",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.setOnFinishCallback()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#setonfinishcallback",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.setOnPageLoadCallback()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#setonpageloadcallback",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.setPosition()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#setposition",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.setPropertiesFromJSON()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#setpropertiesfromjson",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.setStyleSheetClass()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#setstylesheetclass",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.setStyleSheetProperty()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#setstylesheetproperty",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.setStyleSheetPseudoState()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#setstylesheetpseudostate",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.setTooltip()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#settooltip",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.setValueNormalized()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#setvaluenormalized",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.setValueWithUndo()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#setvaluewithundo",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.setZLevel()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#setzlevel",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.show()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#show",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.showControl()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#showcontrol",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.showModalPage()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#showmodalpage",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.updateContentPropertyInternal()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#updatecontentpropertyinternal",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.updateValueFromProcessorConnection()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#updatevaluefromprocessorconnection",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -12090,6 +12570,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "ScriptPanel.setPanelValueWithUndo()",
+    "url": "scripting/scripting-api/scriptpanel/index.html#setpanelvaluewithundo",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "ScriptPanel.setPopupData()",
     "url": "scripting/scripting-api/scriptpanel/index.html#setpopupdata",
     "weight": 60,
@@ -12104,6 +12590,24 @@
   {
     "key": "ScriptPanel.setPropertiesFromJSON()",
     "url": "scripting/scripting-api/scriptpanel/index.html#setpropertiesfromjson",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptPanel.setStyleSheetClass()",
+    "url": "scripting/scripting-api/scriptpanel/index.html#setstylesheetclass",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptPanel.setStyleSheetProperty()",
+    "url": "scripting/scripting-api/scriptpanel/index.html#setstylesheetproperty",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptPanel.setStyleSheetPseudoState()",
+    "url": "scripting/scripting-api/scriptpanel/index.html#setstylesheetpseudostate",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -12128,12 +12632,6 @@
   {
     "key": "ScriptPanel.setValueNormalized()",
     "url": "scripting/scripting-api/scriptpanel/index.html#setvaluenormalized",
-    "weight": 60,
-    "color": "#D557D9"
-  },
-  {
-    "key": "ScriptPanel.setValueWithUndo()",
-    "url": "scripting/scripting-api/scriptpanel/index.html#setvaluewithundo",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -12462,6 +12960,24 @@
     "color": "#D557D9"
   },
   {
+    "key": "ScriptSlider.setStyleSheetClass()",
+    "url": "scripting/scripting-api/scriptslider/index.html#setstylesheetclass",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptSlider.setStyleSheetProperty()",
+    "url": "scripting/scripting-api/scriptslider/index.html#setstylesheetproperty",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptSlider.setStyleSheetPseudoState()",
+    "url": "scripting/scripting-api/scriptslider/index.html#setstylesheetpseudostate",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "ScriptSlider.setTooltip()",
     "url": "scripting/scripting-api/scriptslider/index.html#settooltip",
     "weight": 60,
@@ -12714,6 +13230,24 @@
     "color": "#D557D9"
   },
   {
+    "key": "ScriptSliderPack.setStyleSheetClass()",
+    "url": "scripting/scripting-api/scriptsliderpack/index.html#setstylesheetclass",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptSliderPack.setStyleSheetProperty()",
+    "url": "scripting/scripting-api/scriptsliderpack/index.html#setstylesheetproperty",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptSliderPack.setStyleSheetPseudoState()",
+    "url": "scripting/scripting-api/scriptsliderpack/index.html#setstylesheetpseudostate",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "ScriptSliderPack.setTooltip()",
     "url": "scripting/scripting-api/scriptsliderpack/index.html#settooltip",
     "weight": 60,
@@ -12944,6 +13478,24 @@
   {
     "key": "ScriptTable.setSnapValues()",
     "url": "scripting/scripting-api/scripttable/index.html#setsnapvalues",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptTable.setStyleSheetClass()",
+    "url": "scripting/scripting-api/scripttable/index.html#setstylesheetclass",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptTable.setStyleSheetProperty()",
+    "url": "scripting/scripting-api/scripttable/index.html#setstylesheetproperty",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptTable.setStyleSheetPseudoState()",
+    "url": "scripting/scripting-api/scripttable/index.html#setstylesheetpseudostate",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -13184,6 +13736,24 @@
   {
     "key": "ScriptWebView.setPropertiesFromJSON()",
     "url": "scripting/scripting-api/scriptwebview/index.html#setpropertiesfromjson",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptWebView.setStyleSheetClass()",
+    "url": "scripting/scripting-api/scriptwebview/index.html#setstylesheetclass",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptWebView.setStyleSheetProperty()",
+    "url": "scripting/scripting-api/scriptwebview/index.html#setstylesheetproperty",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptWebView.setStyleSheetPseudoState()",
+    "url": "scripting/scripting-api/scriptwebview/index.html#setstylesheetpseudostate",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -16464,6 +17034,12 @@
     "color": "#BD6F50"
   },
   {
+    "key": "Glossary: CSS Tutorial for HISE",
+    "url": "glossary/css.html",
+    "weight": 80,
+    "color": "#BD6F50"
+  },
+  {
     "key": "Glossary: HISE Command Line Tool",
     "url": "glossary/command-line-tool.html",
     "weight": 80,
@@ -16490,6 +17066,12 @@
   {
     "key": "Glossary: Macro Control System",
     "url": "glossary/macrocontrols.html",
+    "weight": 80,
+    "color": "#BD6F50"
+  },
+  {
+    "key": "Glossary: Multipage Dialog Reference",
+    "url": "glossary/multipageproperties.html",
     "weight": 80,
     "color": "#BD6F50"
   },
@@ -16544,6 +17126,78 @@
   {
     "key": "Crash reporting: Testdrive your setup",
     "url": "glossary/crash-reporting.html#testdrive-your-setup",
+    "weight": 70,
+    "color": "#BD6F50"
+  },
+  {
+    "key": "CSS Tutorial for HISE: General Syntax of CSS",
+    "url": "glossary/css.html#general-syntax-of-css",
+    "weight": 70,
+    "color": "#BD6F50"
+  },
+  {
+    "key": "CSS Tutorial for HISE: CSS Selectors",
+    "url": "glossary/css.html#css-selectors",
+    "weight": 70,
+    "color": "#BD6F50"
+  },
+  {
+    "key": "CSS Tutorial for HISE: Pseudo-States",
+    "url": "glossary/css.html#pseudo-states",
+    "weight": 70,
+    "color": "#BD6F50"
+  },
+  {
+    "key": "CSS Tutorial for HISE: Pseudo-Elements",
+    "url": "glossary/css.html#pseudo-elements",
+    "weight": 70,
+    "color": "#BD6F50"
+  },
+  {
+    "key": "CSS Tutorial for HISE: Color Specifications",
+    "url": "glossary/css.html#color-specifications",
+    "weight": 70,
+    "color": "#BD6F50"
+  },
+  {
+    "key": "CSS Tutorial for HISE: Color Gradients",
+    "url": "glossary/css.html#color-gradients",
+    "weight": 70,
+    "color": "#BD6F50"
+  },
+  {
+    "key": "CSS Tutorial for HISE: Padding, Margin, and Border",
+    "url": "glossary/css.html#padding-margin-and-border",
+    "weight": 70,
+    "color": "#BD6F50"
+  },
+  {
+    "key": "CSS Tutorial for HISE: Transitions",
+    "url": "glossary/css.html#transitions",
+    "weight": 70,
+    "color": "#BD6F50"
+  },
+  {
+    "key": "CSS Tutorial for HISE: Font-Handling",
+    "url": "glossary/css.html#font-handling",
+    "weight": 70,
+    "color": "#BD6F50"
+  },
+  {
+    "key": "CSS Tutorial for HISE: Variable Handling",
+    "url": "glossary/css.html#variable-handling",
+    "weight": 70,
+    "color": "#BD6F50"
+  },
+  {
+    "key": "CSS Tutorial for HISE: Shadows",
+    "url": "glossary/css.html#shadows",
+    "weight": 70,
+    "color": "#BD6F50"
+  },
+  {
+    "key": "CSS Tutorial for HISE: Keyword reference",
+    "url": "glossary/css.html#keyword-reference",
     "weight": 70,
     "color": "#BD6F50"
   },
@@ -16632,6 +17286,30 @@
     "color": "#BD6F50"
   },
   {
+    "key": "Multipage Dialog Reference: Layout",
+    "url": "glossary/multipageproperties.html#layout",
+    "weight": 70,
+    "color": "#BD6F50"
+  },
+  {
+    "key": "Multipage Dialog Reference: UI Elements",
+    "url": "glossary/multipageproperties.html#ui-elements",
+    "weight": 70,
+    "color": "#BD6F50"
+  },
+  {
+    "key": "Multipage Dialog Reference: Actions",
+    "url": "glossary/multipageproperties.html#actions",
+    "weight": 70,
+    "color": "#BD6F50"
+  },
+  {
+    "key": "Multipage Dialog Reference: Constants",
+    "url": "glossary/multipageproperties.html#constants",
+    "weight": 70,
+    "color": "#BD6F50"
+  },
+  {
     "key": "RNBO Import: Export the RNBO Patch",
     "url": "glossary/rnbo.html#export-the-rnbo-patch",
     "weight": 70,
@@ -16694,6 +17372,12 @@
   {
     "key": "All Snippets: BasicSynth",
     "url": "tutorials/all/index.html#basicsynth",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "All Snippets: Horizontal Linear Slider LAF",
+    "url": "tutorials/all/index.html#horizontal-linear-slider-laf",
     "weight": 70,
     "color": "#C5AC43"
   },
@@ -16794,6 +17478,12 @@
     "color": "#C5AC43"
   },
   {
+    "key": "Scripting Snippets: Modulation Matrix Tutorial",
+    "url": "tutorials/scripting/index.html#modulation-matrix-tutorial",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
     "key": "Scripting Snippets: Date",
     "url": "tutorials/scripting/index.html#date",
     "weight": 70,
@@ -16872,6 +17562,12 @@
     "color": "#C5AC43"
   },
   {
+    "key": "Scriptnode Snippets: SNEX Bufferstop",
+    "url": "tutorials/scriptnode/index.html#snex-bufferstop",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
     "key": "Scriptnode Snippets: SNEX One pole filter",
     "url": "tutorials/scriptnode/index.html#snex-one-pole-filter",
     "weight": 70,
@@ -16886,6 +17582,12 @@
   {
     "key": "Scriptnode Snippets: SNEX Saturation",
     "url": "tutorials/scriptnode/index.html#snex-saturation",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "Scriptnode Snippets: SNEX Velocity Modulator",
+    "url": "tutorials/scriptnode/index.html#snex-velocity-modulator",
     "weight": 70,
     "color": "#C5AC43"
   },
@@ -16920,6 +17622,18 @@
     "color": "#C5AC43"
   },
   {
+    "key": "UI Snippets: An enhanced Button LAF",
+    "url": "tutorials/ui/index.html#an-enhanced-button-laf",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "UI Snippets: Big & small Knob LAF",
+    "url": "tutorials/ui/index.html#big-&-small-knob-laf",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
     "key": "UI Snippets: Broadcaster Starting Point",
     "url": "tutorials/ui/index.html#broadcaster-starting-point",
     "weight": 70,
@@ -16944,8 +17658,26 @@
     "color": "#C5AC43"
   },
   {
+    "key": "UI Snippets: Customized Table LAF",
+    "url": "tutorials/ui/index.html#customized-table-laf",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
     "key": "UI Snippets: GLSL Hello World",
     "url": "tutorials/ui/index.html#glsl-hello-world",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "UI Snippets: LAF Tutorial Toolkit",
+    "url": "tutorials/ui/index.html#laf-tutorial-toolkit",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "UI Snippets: LAF UI Kit",
+    "url": "tutorials/ui/index.html#laf-ui-kit",
     "weight": 70,
     "color": "#C5AC43"
   },
@@ -16974,6 +17706,18 @@
     "color": "#C5AC43"
   },
   {
+    "key": "UI Snippets: Peak Meter LAF with FilmStrip Image",
+    "url": "tutorials/ui/index.html#peak-meter-laf-with-filmstrip-image",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "UI Snippets: Rotating Tape Reel Icon Knobs LAF",
+    "url": "tutorials/ui/index.html#rotating-tape-reel-icon-knobs-laf",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
     "key": "UI Snippets: Script references and callbacks for components",
     "url": "tutorials/ui/index.html#script-references-and-callbacks-for-components",
     "weight": 70,
@@ -16986,8 +17730,26 @@
     "color": "#C5AC43"
   },
   {
+    "key": "UI Snippets: Shaded Sliderpack LAF",
+    "url": "tutorials/ui/index.html#shaded-sliderpack-laf",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
     "key": "UI Snippets: SixState Filmstrip Button",
     "url": "tutorials/ui/index.html#sixstate-filmstrip-button",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "UI Snippets: Skeumorphic Knob LAF",
+    "url": "tutorials/ui/index.html#skeumorphic-knob-laf",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "UI Snippets: Slider Peak Meter LAF",
+    "url": "tutorials/ui/index.html#slider-peak-meter-laf",
     "weight": 70,
     "color": "#C5AC43"
   },

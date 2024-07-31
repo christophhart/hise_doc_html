@@ -40,6 +40,20 @@
 
 		<div class="content"><h1 id="graphics"><b>Graphics</b>
 </h1>
+<p>The <code>Graphics</code>
+ API gives you access to the <a href="ui-components/plugin-components/panel.html">Panel Components</a>
+ <a href="scripting/scripting-api/scriptpanel/index.html#setpaintroutine">PaintRoutine</a>
+. You can use it for the graphical drawing of a <a href="https://docs.hise.dev/scripting/scripting-in-hise/scriptpanel.html">ScriptPanel</a>
+.</p>
+<p>Access it with the <code>g</code>
+ keyword inside the PaintRoutine function and start drawing. </p>
+<pre><code class="language-javascript line-numbers">const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setColour(Colours.white);
+	g.drawRect([0,0,100,50], 2);
+});</code></pre>
 <p><br></p>
 <h1 id="class-methods
 "><b>Class methods<br></b>
@@ -48,7 +62,17 @@
 </h2>
 <p class="comment">Adds a drop shadow based on the alpha values of the current image.</p>
 <pre><code class="language-javascript line-numbers">Graphics.addDropShadowFromAlpha(var colour, int radius)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<pre><code class="language-javascript line-numbers">const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.loadImage("{PROJECT_FOLDER}image.png", "image");
+
+Panel1.setPaintRoutine(function(g)
+{		
+	g.drawImage("image", this.getLocalBounds(0), 0, 0); 
+	g.addDropShadowFromAlpha(Colours.black, 100); // borderShadow from 1 - 100
+});</code></pre>
+<p><br></p>
 <h2 id="addnoise"><b>addNoise</b>
 </h2>
 <p class="comment">Adds noise to the current layer.</p>
@@ -83,73 +107,302 @@
 <td>the area that should be painted with the noise. </td>
 </tr>
 </table>
-<p class="comment">HISE will cache internal images filled with the noise for performance reasons, however this means that using this method increases the memory usage (depending on the noise area size).<br></p>
+<p class="comment">HISE will cache internal images filled with the noise for performance reasons, however this means that using this method increases the memory usage (depending on the noise area size).</p>
+<pre><code class="language-javascript line-numbers">const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.beginLayer(0);
+	
+	g.addNoise(0.07); // 0 -> 0.999
+	
+	g.endLayer();
+});</code></pre>
+<p><br></p>
 <h2 id="applygamma"><b>applyGamma</b>
 </h2>
 <p class="comment">Applies a gamma correction to the current layer.</p>
 <pre><code class="language-javascript line-numbers">Graphics.applyGamma(float gamma)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<pre><code class="language-javascript line-numbers">const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.beginLayer(1);
+	g.setGradientFill([Colours.black, 0, 0,
+				   Colours.white, this.getWidth(), 0,
+				   false]);
+	g.fillRect(this.getLocalBounds(0));
+	
+	g.applyGamma(1.5); // baseline 1
+	
+	g.endLayer();
+});</code></pre>
+<p><br></p>
 <h2 id="applygradientmap"><b>applyGradientMap</b>
 </h2>
 <p class="comment">Applies a gradient map to the brightness level of the current layer.</p>
 <pre><code class="language-javascript line-numbers">Graphics.applyGradientMap(var darkColour, var brightColour)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<pre><code class="language-javascript line-numbers">const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.beginLayer(1);
+
+	g.setColour(Colours.grey);
+	g.fillRect(this.getLocalBounds(0));
+	g.applyGradientMap(Colours.withBrightness(Colours.blue, 0.5), Colours.withBrightness(Colours.red, 0.7));
+	
+	g.endLayer();
+
+});</code></pre>
+<p><br></p>
 <h2 id="applyhsl"><b>applyHSL</b>
 </h2>
 <p class="comment">Applies a HSL grading on the current layer.</p>
 <pre><code class="language-javascript line-numbers">Graphics.applyHSL(float hue, float saturation, float lightness)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<pre><code class="language-javascript line-numbers">const var Panel1 = Content.getComponent("Panel1");
+Panel1.loadImage("{PROJECT_FOLDER}image.png", "image");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.beginLayer(1);
+	g.drawImage("image", this.getLocalBounds(0),0,0);
+	
+	g.applyHSL(270, 100, 0); // Hue: 0 - 360, Saturation: 0 - 100: Lightness: 0 - 100
+		
+	g.endLayer();
+});</code></pre>
+<p>See <a href="https://en.wikipedia.org/wiki/HSL_and_HSV">HSL on Wikipedia</a>
+ for more about HSL.<br></p>
 <h2 id="applymask"><b>applyMask</b>
 </h2>
 <p class="comment">Applies a mask to the current layer.</p>
 <pre><code class="language-javascript line-numbers">Graphics.applyMask(var path, var area, bool invert)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<pre><code class="language-javascript line-numbers">const var Panel1 = Content.getComponent("Panel1");
+Panel1.loadImage("{PROJECT_FOLDER}image.png", "image");
+
+const var c = Content.createPath();
+
+c.startNewSubPath(0.0, 0.0);
+c.lineTo(1.0, 1.0);
+c.lineTo(1.0, 0.0);
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.beginLayer(1);
+	g.drawImage("image", this.getLocalBounds(0),0,0);
+	
+	g.applyMask(c, this.getLocalBounds(0), 0); // 1 to invert the mask. 
+	
+	g.endLayer();
+
+});</code></pre>
+<p><br></p>
 <h2 id="applysepia"><b>applySepia</b>
 </h2>
 <p class="comment">Applies an oldschool sepia filter on the current layer.</p>
 <pre><code class="language-javascript line-numbers">Graphics.applySepia()</code></pre>
-<p><br><br></p>
+<p><br></p>
+<pre><code class="language-javascript line-numbers">const var Panel1 = Content.getComponent("Panel1");
+Panel1.loadImage("{PROJECT_FOLDER}image.png", "image");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.beginLayer(0);
+	
+	g.drawImage("image", this.getLocalBounds(0),0,0);
+	
+	g.applySepia();
+	
+	g.endLayer();
+});</code></pre>
+<p><br></p>
 <h2 id="applyshader"><b>applyShader</b>
 </h2>
 <p class="comment">Applies an OpenGL shader to the panel. Returns false if the shader could not be compiled.</p>
 <pre><code class="language-javascript line-numbers">Graphics.applyShader(var shader, var area)</code></pre>
-<p><br>You can use this method in order to render the <a href="scripting/scripting-api/scriptshader/index.html">ScriptShader</a>
- object to the given area (relative to the ScriptPanel's boundaries).<br></p>
+<p><br>You can use this method in order to render the GLSL <a href="scripting/scripting-api/scriptshader/index.html">ScriptShader</a>
+ object to the given area (relative to the ScriptPanel's boundaries).</p>
+<pre><code class="language-javascript line-numbers">const var Panel1 = Content.addPanel("Panel1", 0, 0);
+
+const var sh = Content.createShader("GLSL/init.glsl");
+
+PAnel1.setPaintRoutine(function(g)
+{
+	g.applyShader(sh, this.getLocalBounds(0));
+});</code></pre>
+<p><br></p>
 <h2 id="applysharpness"><b>applySharpness</b>
 </h2>
 <p class="comment">Applies a sharpen / soften filter on the current layer.</p>
 <pre><code class="language-javascript line-numbers">Graphics.applySharpness(int delta)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<pre><code class="language-javascript line-numbers">const var Panel1 = Content.getComponent("Panel1");
+Panel1.loadImage("{PROJECT_FOLDER}image.png", "image");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.beginLayer(1);
+	g.drawImage("image", this.getLocalBounds(0),0,0);
+	
+	g.applySharpness(1); // apply a sharpness filter
+	
+	g.endLayer();
+
+});</code></pre>
+<p><br></p>
 <h2 id="applyvignette"><b>applyVignette</b>
 </h2>
 <p class="comment">Applies a vignette (dark corners on the current layer.</p>
 <pre><code class="language-javascript line-numbers">Graphics.applyVignette(float amount, float radius, float falloff)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<pre><code class="language-javascript line-numbers">const var Panel1 = Content.getComponent("Panel1");
+Panel1.loadImage("{PROJECT_FOLDER}image.png", "image");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.beginLayer(1);
+	
+	g.drawImage("image", this.getLocalBounds(0),0,0);
+	
+	g.applyVignette(10, 1, 0.5); // 
+	
+	g.endLayer();
+
+});</code></pre>
+<p><br></p>
 <h2 id="beginblendlayer"><b>beginBlendLayer</b>
 </h2>
 <p class="comment">Begins a new layer that will use the given blend effect.</p>
 <pre><code class="language-javascript line-numbers">Graphics.beginBlendLayer(String blendMode, float alpha)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<pre><code class="language-javascript line-numbers">const var Panel1 = Content.getComponent("Panel1");
+Panel1.loadImage("{PROJECT_FOLDER}image.png", "image");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.beginBlendLayer("Phoenix", 1);
+	
+	g.drawImage("image", this.getLocalBounds(0),0,0);
+	
+	g.endLayer();
+});</code></pre>
+<h2 id="modes"><b>Modes</b>
+</h2>
+<ul><li>"Normal",</li>
+<li>"Lighten",</li>
+<li>"Darken",</li>
+<li>"Multiply",</li>
+<li>"Average",</li>
+<li>"Add",</li>
+<li>"Subtract",</li>
+<li>"Difference",</li>
+<li>"Negation",</li>
+<li>"Screen",</li>
+<li>"Exclusion",</li>
+<li>"Overlay",</li>
+<li>"SoftLight",</li>
+<li>"HardLight",</li>
+<li>"ColorDodge",</li>
+<li>"ColorBurn",</li>
+<li>"LinearDodge",</li>
+<li>"LinearBurn",</li>
+<li>"LinearLight",</li>
+<li>"VividLight",</li>
+<li>"PinLight",</li>
+<li>"HardMix",</li>
+<li>"Reflect",</li>
+<li>"Glow",</li>
+<li>"Phoenix"<br></li>
+</ul>
 <h2 id="beginlayer"><b>beginLayer</b>
 </h2>
 <p class="comment">Starts a new Layer.</p>
 <pre><code class="language-javascript line-numbers">Graphics.beginLayer(bool drawOnParent)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<p>Create a new layer with beginLayer() and endLayer() and fill with the code in between.</p>
+<pre><code class="language-javascript line-numbers">const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.beginLayer(true); 
+	
+	g.endLayer();
+});</code></pre>
+<p><br></p>
 <h2 id="boxblur"><b>boxBlur</b>
 </h2>
 <p class="comment">Applies a box blur to the current layer.</p>
 <pre><code class="language-javascript line-numbers">Graphics.boxBlur(var blurAmount)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<pre><code class="language-javascript line-numbers">const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.loadImage("{PROJECT_FOLDER}image.png", "image");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.beginLayer(1);
+	g.drawImage("image", this.getLocalBounds(0),0,0);
+	
+	g.boxBlur(10); // apply box blur 0 - 100
+	
+	g.endLayer();
+});</code></pre>
+<p><br></p>
 <h2 id="desaturate"><b>desaturate</b>
 </h2>
 <p class="comment">Removes all colour from the current layer.</p>
 <pre><code class="language-javascript line-numbers">Graphics.desaturate()</code></pre>
-<p><br><br></p>
+<p><br></p>
+<p>Completely desaturates the image to grayscale.</p>
+<pre><code class="language-javascript line-numbers">const var Panel1 = Content.getComponent("Panel1");
+Panel1.loadImage("{PROJECT_FOLDER}image.png", "image");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.beginBlendLayer("Phoenix", 1);
+	
+	g.drawImage("image", this.getLocalBounds(0),0,0);
+	
+	g.desaturate();
+	
+	g.endLayer();
+});</code></pre>
+<p><br></p>
 <h2 id="drawalignedtext"><b>drawAlignedText</b>
 </h2>
 <p class="comment">Draws a text with the given alignment (see the Label alignment property).</p>
 <pre><code class="language-javascript line-numbers">Graphics.drawAlignedText(String text, var area, String alignment)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<pre><code class="language-javascript line-numbers">Engine.loadFontAs("{PROJECT_FOLDER}fonts/Nunito-Regular.ttf", "nunito");
+
+const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setFont("nunito", 32);
+	g.setColour(Colours.white);
+	g.drawAlignedText("Hello World", this.getLocalBounds(0), "top");
+	
+});</code></pre>
+<h3 id="alignment-positions"><b>Alignment positions</b>
+</h3>
+<ul><li>"left"</li>
+<li>"right"</li>
+<li>"top"</li>
+<li>"bottom"</li>
+<li>"centred"</li>
+<li>"centredTop"</li>
+<li>"centredBottom"</li>
+<li>"topLeft"</li>
+<li>"topRight"</li>
+<li>"bottomLeft"</li>
+<li>"bottomRight"<br></li>
+</ul>
 <h2 id="drawalignedtextshadow"><b>drawAlignedTextShadow</b>
 </h2>
 <p class="comment">Renders a (blurred) shadow for the text.</p>
@@ -207,7 +460,16 @@ Panel1.setPaintRoutine(function(g)
 </h2>
 <p class="comment">Draws a drop shadow around a rectangle.</p>
 <pre><code class="language-javascript line-numbers">Graphics.drawDropShadow(var area, var colour, int radius)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<pre><code class="language-javascript line-numbers">const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.drawDropShadow(this.getLocalBounds(12), Colours.black, 20);
+	g.setColour(Colours.grey);
+	g.fillRect(this.getLocalBounds(12));
+});</code></pre>
+<p><br></p>
 <h2 id="drawdropshadowfrompath"><b>drawDropShadowFromPath</b>
 </h2>
 <p class="comment">Draws a drop shadow from a path.</p>
@@ -238,47 +500,148 @@ Panel.setPaintRoutine(function(g)
     g.setColour(Colours.white);
     g.fillPath(p, area);
 });</code></pre>
+<pre><code class="language-javascript line-numbers">const var Panel1 = Content.getComponent("Panel1");
+
+// that's a poor circle, but the blur will save us...
+var circlePath = Content.createPath();
+circlePath.startNewSubPath(0.5, 0);
+circlePath.quadraticTo(1.0, 0.0, 1.0, 0.5);
+circlePath.quadraticTo(1.0, 1.0, 0.5, 1.0);
+circlePath.quadraticTo(0.0, 1.0, 0.0, 0.5);
+circlePath.quadraticTo(0.0, 0.0, 0.5, 0.0);
+
+Panel1.set("width", Panel1.get("height"));
+
+Panel1.setPaintRoutine(function(g)
+{
+	g.drawDropShadowFromPath(circlePath, this.getLocalBounds(50), Colours.black, 50, [0, 0]);
+});</code></pre>
 <p><br></p>
 <h2 id="drawellipse"><b>drawEllipse</b>
 </h2>
 <p class="comment">Draws a ellipse in the given area.</p>
 <pre><code class="language-javascript line-numbers">Graphics.drawEllipse(var area, float lineThickness)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<pre><code class="language-javascript line-numbers">const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setColour(Colours.white);
+	g.drawEllipse([10,10,80,50], 1.5);
+});</code></pre>
+<p><br></p>
 <h2 id="drawfftspectrum"><b>drawFFTSpectrum</b>
 </h2>
 <p class="comment">Draws the spectrum of the FFT object to the panel.</p>
 <pre><code class="language-javascript line-numbers">Graphics.drawFFTSpectrum(var fftObject, var area)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<p class="comment">under construction</p>
+<pre><code class="language-javascript line-numbers">const var Panel1 = Content.getComponent("Panel1");
+
+const var fft = Engine.createFFT();
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setColour(Colours.white);
+	g.drawFFTSpectrum(fft, this.getLocalBounds(0));
+
+});</code></pre>
+<p><br></p>
 <h2 id="drawfittedtext"><b>drawFittedText</b>
 </h2>
 <p class="comment">Tries to draw a text string inside a given space.</p>
 <pre><code class="language-javascript line-numbers">Graphics.drawFittedText(String text, var area, String alignment, int maxLines, float scale)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<p class="comment">old multi-line text method</p>
+<pre><code class="language-javascript line-numbers">Engine.loadFontAs("{PROJECT_FOLDER}fonts/Nunito-Regular.ttf", "nunito");
+
+const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setFont("nunito", 32);
+	g.setColour(Colours.white);
+	g.drawFittedText("Hello World", this.getLocalBounds(0), "topLeft", 2, 20);
+});</code></pre>
+<p><br></p>
 <h2 id="drawhorizontalline"><b>drawHorizontalLine</b>
 </h2>
 <p class="comment">Draws a (non interpolated) horizontal line.</p>
 <pre><code class="language-javascript line-numbers">Graphics.drawHorizontalLine(int y, float x1, float x2)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<pre><code class="language-javascript line-numbers">const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setColour(Colours.white);
+	g.drawHorizontalLine(0, 0, this.getWidth()); // xStart, yStart, length
+});</code></pre>
+<p><br></p>
 <h2 id="drawimage"><b>drawImage</b>
 </h2>
 <p class="comment">Draws a image into the area.</p>
 <pre><code class="language-javascript line-numbers">Graphics.drawImage(String imageName, var area, int xOffset, int yOffset)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<pre><code class="language-javascript line-numbers">const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.loadImage("{PROJECT_FOLDER}image.png", "image"); // Load image.png from the "Images" folder
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.drawImage("image", this.getLocalBounds(0), 0, 0); // draw the image in the Panel boundaries.
+	
+});</code></pre>
+<p><br></p>
 <h2 id="drawline"><b>drawLine</b>
 </h2>
 <p class="comment">Draws a line.</p>
 <pre><code class="language-javascript line-numbers">Graphics.drawLine(float x1, float x2, float y1, float y2, float lineThickness)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<pre><code class="language-javascript line-numbers">const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setColour(Colours.white);
+	g.drawLine(0, 100, 50, 100, 1.2); // x1,x2,y1,y2,linewidth
+});</code></pre>
+<p><br></p>
 <h2 id="drawmarkdowntext"><b>drawMarkdownText</b>
 </h2>
 <p class="comment">Draws the text of the given markdown renderer to its specified area.</p>
 <pre><code class="language-javascript line-numbers">Graphics.drawMarkdownText(var markdownRenderer)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<p>Draw a <a href="scripting/scripting-api/markdownrenderer/index.html">MarkdownRenderer</a>
+ element on a panel.</p>
+<pre><code class="language-javascript line-numbers">const var Panel1 = Content.getComponent("Panel1");
+
+const var markd = Content.createMarkdownRenderer();
+markd.setTextBounds(Panel1.getLocalBounds(0));
+
+markd.setText("
+## Heading
+Explain explain explain
+");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.drawMarkdownText(markd);
+});</code></pre>
+<p><br></p>
 <h2 id="drawmultilinetext"><b>drawMultiLineText</b>
 </h2>
 <p class="comment">Break to new lines when the text becomes wider than maxWidth.</p>
 <pre><code class="language-javascript line-numbers">Graphics.drawMultiLineText(String text, var xy, int maxWidth, String alignment, float leading)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<pre><code class="language-javascript line-numbers">const var Panel1 = Content.getComponent("Panel1");
+
+const var text = "Lorem ipsum HISEorium explanadum in excelsis christophorum non delandam improprium contenatio cimex."
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setColour(Colours.white);
+	g.drawMultiLineText(text, [0,20], this.getWidth(), "left", 2.); // text, width, alignment, lineHeight
+});</code></pre>
+<p><br></p>
 <h2 id="drawpath"><b>drawPath</b>
 </h2>
 <p class="comment">Draws the given path.</p>
@@ -312,108 +675,352 @@ Panel1.setPaintRoutine(function(g)
 </h2>
 <p class="comment">Draws a rectangle.</p>
 <pre><code class="language-javascript line-numbers">Graphics.drawRect(var area, float borderSize)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<pre><code class="language-javascript line-numbers">const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setColour(Colours.white);
+	g.drawRect(this.getLocalBounds(0), 3);
+});</code></pre>
+<p><br></p>
 <h2 id="drawrepaintmarker"><b>drawRepaintMarker</b>
 </h2>
 <p class="comment">fills the entire component with a random colour to indicate a UI repaint.</p>
 <pre><code class="language-javascript line-numbers">Graphics.drawRepaintMarker( String label)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<p>Draws a differently colored background each time the panel is redrawn. This can be used to debug the paint routine.</p>
+<pre><code class="language-javascript line-numbers">const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.drawRepaintMarker(""); 
+});</code></pre>
+<p><br></p>
 <h2 id="drawroundedrectangle"><b>drawRoundedRectangle</b>
 </h2>
 <p class="comment">Draws a rounded rectangle. cornerData can be either a float number (for the corner size) or a JSON object for more customization options.</p>
 <pre><code class="language-javascript line-numbers">Graphics.drawRoundedRectangle(var area, var cornerData, float borderSize)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<pre><code class="language-javascript line-numbers">const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setColour(Colours.white);
+	
+	// area, float value (0-50) for all corners or object with {Cornersize:15, Rounded:[1,1,1,1]}, lineWidth
+	g.drawRoundedRectangle([8,8,90,60], {CornerSize:15, Rounded:[0,1,1,0]}, 1.5); 
+});</code></pre>
+<p><br></p>
 <h2 id="drawsvg"><b>drawSVG</b>
 </h2>
 <p class="comment">Draws a SVG object within the given bounds and opacity.</p>
 <pre><code class="language-javascript line-numbers">Graphics.drawSVG(var svgObject, var bounds, float opacity)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<p>Draw a SVG to the panel. You first have to create a SVG object with <a href="scripting/scripting-api/content/index.html#createsvg">Content.createSVG("Base64String")</a>
+ and then pass it to the drawSVG function. You can create the Base64 encoded SVG string with the <a href="working-with-hise/menu-reference/tools/index.html#show-svg-to-path-converter">SVG to Path Converter</a>
+ that you can find under <b>Tools > Scripting Tools</b>
+.</p>
+<pre><code class="language-javascript line-numbers">const var Panel1 = Content.getComponent("Panel1");
+
+const var svg = Content.createSVG("552.nT6K8CFjCTOD.Xa2dUB7vwL.SvXp6TpBfQoF8BK9fB04advjZYtXueJWWylbAdFn2PtHYAvT.HE.5rS67tttXTRauwfO3CIDiu+uEnPhmjIRhwHzJhQF3KBCMfvDQ7t31dIDgESh.gDAfDfAG.yX3jEmynrvT6sGDhQgIS.mtvWqbE19fR+gS37cSa4dYTpb.jfkyJYy3PyjkcyHqiHkbkmw0xosaVsFbxVQosIEihh9Mv2rJRRobNsgevG537uF5+jOIbpRFgN6kaiccsXO3.R4Cmv1V2Nn01x+OFiaUWLMJ8Bwqzz3Oc91UV8SE5cH4u3PqUGWVebIyRsw48BhlN9rBwrz797idlkWt7DT4p2TTfSTz4L1vT586Bx6wT5los6KELGYsD9l0vxX2Hq2aZ2rpGVVYb..FbwsEgrDMmMuWo0KZZndSzCMpw+ZcoVcYs9Hc4C0.zG4SZc4IxoRn2A3j0CaSoU8met3T+XD9nfkG5I.iKsD8g7mm4CjWcfU+g57voNdPnfPf.C.YHCuCPQ..D.VbASWpJIv.zgSfoDP4fAkPqLUiDXB.n..V7tA3Hb.iq3e.SSDCbUQzX3KnvI9YcxM6fibJgmc42KQ3z.uEElWxrMVBU.J1gKFfMkE9fPWLPtyXTAFX.gIKvPCvjUfnO.FubCO.OzFZEtB9CDBDLLstdfvZ0LokAGD6UR.RFeMvXSxYionq.qoALngCSAwAtBX.Fo.");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setColour(Colours.white);
+	g.drawSVG(svg, this.getLocalBounds(0), 1);
+});</code></pre>
+<p><br></p>
 <h2 id="drawtext"><b>drawText</b>
 </h2>
 <p class="comment">Draws a centered and vertically stretched text.</p>
 <pre><code class="language-javascript line-numbers">Graphics.drawText(String text, var area)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<p>This will draw a text string to the center of the panel. If you don't specify your own font it will use the HISE default font.</p>
+<pre><code class="language-javascript line-numbers">Engine.loadFontAs("{PROJECT_FOLDER}fonts/Nunito-Regular.ttf", "nunito");
+
+const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setFont("nunito", 32);
+	g.setColour(Colours.white);
+	g.drawText("Hello World", this.getLocalBounds(0));
+});</code></pre>
+<p><br></p>
 <h2 id="drawtriangle"><b>drawTriangle</b>
 </h2>
 <p class="comment">Draws a triangle rotated by the angle in radians.</p>
 <pre><code class="language-javascript line-numbers">Graphics.drawTriangle(var area, float angle, float lineThickness)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<pre><code class="language-javascript line-numbers">const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setColour(Colours.white);
+	g.drawTriangle(this.getLocalBounds(0), Math.toRadians(180), 2);
+});</code></pre>
+<p><br></p>
 <h2 id="drawverticalline"><b>drawVerticalLine</b>
 </h2>
 <p class="comment">Draws a (non interpolated) vertical line.</p>
 <pre><code class="language-javascript line-numbers">Graphics.drawVerticalLine(int x, float y1, float y2)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<pre><code class="language-javascript line-numbers">const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setColour(Colours.white);
+	g.drawVerticalLine(this.getWidth()/2, 0, this.getHeight()); // xStart, yStart, length
+});</code></pre>
+<p><br></p>
 <h2 id="endlayer"><b>endLayer</b>
 </h2>
 <p class="comment">flushes the current layer.</p>
 <pre><code class="language-javascript line-numbers">Graphics.endLayer()</code></pre>
-<p><br><br></p>
+<p><br></p>
+<pre><code class="language-javascript line-numbers">const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.beginLayer(true); 
+	
+	 // fill the layer.
+	
+	g.endLayer();
+});</code></pre>
+<p><br></p>
 <h2 id="fillall"><b>fillAll</b>
 </h2>
 <p class="comment">Fills the whole area with the given colour.</p>
 <pre><code class="language-javascript line-numbers">Graphics.fillAll(var colour)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<pre><code class="language-javascript line-numbers">const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.fillAll(Colours.grey);	
+});</code></pre>
+<p><br></p>
 <h2 id="fillellipse"><b>fillEllipse</b>
 </h2>
 <p class="comment">Fills a ellipse in the given area.</p>
 <pre><code class="language-javascript line-numbers">Graphics.fillEllipse(var area)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<pre><code class="language-javascript line-numbers">const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setColour(Colours.pink);
+	g.fillEllipse([0,0,this.getWidth(), this.getHeight()]);
+});</code></pre>
+<p><br></p>
 <h2 id="fillpath"><b>fillPath</b>
 </h2>
 <p class="comment">Fills a Path.</p>
 <pre><code class="language-javascript line-numbers">Graphics.fillPath(var path, var area)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<pre><code class="language-javascript line-numbers">const var p = Content.createPath();
+
+p.startNewSubPath(0.0, 0.0);
+p.lineTo(0, 0);
+p.lineTo(0.5, 1);
+p.lineTo(1, 0);
+
+const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setColour(Colours.withAlpha(Colours.white, 0.5));	
+	g.fillPath(p, this.getLocalBounds(0));
+});</code></pre>
+<p><br></p>
 <h2 id="fillrect"><b>fillRect</b>
 </h2>
 <p class="comment">Fills a rectangle with the given colour.</p>
 <pre><code class="language-javascript line-numbers">Graphics.fillRect(var area)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<pre><code class="language-javascript line-numbers">Panel1.setPaintRoutine(function(g)
+{	
+	g.setColour(Colours.white);	
+	g.fillRect([0,0,this.getWidth(),this.getHeight()]);
+});</code></pre>
+<p><br></p>
 <h2 id="fillroundedrectangle"><b>fillRoundedRectangle</b>
 </h2>
 <p class="comment">Fills a rounded rectangle. cornerData can be either a float number (for the corner size) or a JSON object for more customization options.</p>
 <pre><code class="language-javascript line-numbers">Graphics.fillRoundedRectangle(var area, var cornerData)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<pre><code class="language-javascript line-numbers">const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setColour(Colours.white);
+	g.fillRoundedRectangle(this.getLocalBounds(10), 25); // area, rounded 0 - 100+
+});</code></pre>
+<p><br></p>
 <h2 id="filltriangle"><b>fillTriangle</b>
 </h2>
 <p class="comment">Fills a triangle rotated by the angle in radians.</p>
 <pre><code class="language-javascript line-numbers">Graphics.fillTriangle(var area, float angle)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<pre><code class="language-javascript line-numbers">const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setColour(Colours.white);	
+	g.fillTriangle([0,0,this.getWidth(), this.getHeight()], Math.toRadians(90));
+});</code></pre>
+<p><br></p>
 <h2 id="flip"><b>flip</b>
 </h2>
 <p class="comment">Flips the canvas at the center.</p>
 <pre><code class="language-javascript line-numbers">Graphics.flip(bool horizontally, var totalArea)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<p>Flips the Panel horizontally. Set the boolean to<br>0 to flip. </p>
+<pre><code class="language-javascript line-numbers">const var p = Content.createPath();
+
+p.startNewSubPath(0.0, 0.0);
+p.lineTo(0, 0);
+p.lineTo(0.8, 1);
+p.lineTo(1, 0);
+
+const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setColour(Colours.withAlpha(Colours.white, 0.5));	
+	g.flip(0, this.getLocalBounds(0));
+	g.fillPath(p, this.getLocalBounds(0));
+});</code></pre>
+<p><br></p>
 <h2 id="gaussianblur"><b>gaussianBlur</b>
 </h2>
 <p class="comment">Applies gaussian blur to the current layer.</p>
 <pre><code class="language-javascript line-numbers">Graphics.gaussianBlur(var blurAmount)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<pre><code class="language-javascript line-numbers">const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.beginLayer(true);
+	
+	g.setColour(Colours.white);
+	g.fillRoundedRectangle(this.getLocalBounds(10), 50);
+	g.gaussianBlur(12);
+	
+	g.endLayer();
+});</code></pre>
+<p><br></p>
 <h2 id="getstringwidth"><b>getStringWidth</b>
 </h2>
 <p class="comment">Returns the width of the string using the current font.</p>
 <pre><code class="language-javascript line-numbers">Graphics.getStringWidth(String text)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<pre><code class="language-javascript line-numbers">const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	Console.print(g.getStringWidth("Hello"));
+});</code></pre>
+<p><br></p>
 <h2 id="rotate"><b>rotate</b>
 </h2>
 <p class="comment">Rotates the canvas around center <code>[x, y]</code>
  by the given amount in radian.</p>
 <pre><code class="language-javascript line-numbers">Graphics.rotate(var angleInRadian, var center)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<p>Use this with a path object.</p>
+<pre><code class="language-javascript line-numbers">const var Panel1 = Content.getComponent("Panel1");
+
+const var p = Content.createPath();
+
+p.startNewSubPath(0.0, 0.0);
+p.lineTo(0, 0);
+p.lineTo(0.8, 1);
+p.lineTo(1, 0);
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setColour(Colours.withAlpha(Colours.white, 0.5));	
+	g.rotate(Math.toRadians(180), [this.getWidth()/2,this.getHeight()/2]);
+	g.fillPath(p, this.getLocalBounds(0));
+});</code></pre>
+<p><br></p>
 <h2 id="setcolour"><b>setColour</b>
 </h2>
 <p class="comment">Sets the current colour.</p>
 <pre><code class="language-javascript line-numbers">Graphics.setColour(var colour)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<p>Set a color for an element to draw. For many elements you first have to set a color to visualise the draw or fill call. </p>
+<p>After typing the "Colours." handle you can select a colour by name of a predefined list. Take a look at the <a href="scripting/scripting-api/colours/index.html">Colours API</a>
+ for more colours options.</p>
+<pre><code class="language-javascript line-numbers">const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setColour(Colours.white);
+	g.fillEllipse([0,0,50,50]);
+
+});</code></pre>
+<pre><code class="language-javascript line-numbers">const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setColour(Colours.white);
+	g.fillEllipse([0,0,50,50]);
+	
+	g.setColour(Colours.grey);
+	g.fillEllipse([55,0,50,50]);
+	
+	g.setColour(Colours.black);
+	g.fillEllipse([110,0,50,50]);
+	
+	g.setColour(Colours.red);
+	g.fillEllipse([0,55,50,50]);
+	
+	g.setColour(Colours.green);
+	g.fillEllipse([55,55,50,50]);
+	
+	g.setColour(Colours.dodgerblue);
+	g.fillEllipse([110,55,50,50]);		
+});</code></pre>
+<p><br></p>
 <h2 id="setfont"><b>setFont</b>
 </h2>
 <p class="comment">Sets the current font.</p>
 <pre><code class="language-javascript line-numbers">Graphics.setFont(String fontName, float fontSize)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<p>Set a font, a color and draw some text.</p>
+<p>Load a font from the Image folder with <a href="scripting/scripting-api/engine/index.html#loadfontas">Engine.setFontAs</a>
+. Then you can set the font by its given fontID.</p>
+<pre><code class="language-javascript line-numbers">Engine.loadFontAs("{PROJECT_FOLDER}Nunito-Regular.ttf", "nunito");
+
+const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setFont("nunito", 48);
+	g.setColour(Colours.white);
+	g.drawAlignedText("hello", this.getLocalBounds(0), "top");
+});</code></pre>
+<p><br></p>
 <h2 id="setfontwithspacing"><b>setFontWithSpacing</b>
 </h2>
 <p class="comment">Sets the current font with the specified spacing between the characters.</p>
 <pre><code class="language-javascript line-numbers">Graphics.setFontWithSpacing(String fontName, float fontSize, float spacing)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<pre><code class="language-javascript line-numbers">Engine.loadFontAs("{PROJECT_FOLDER}fonts/Nunito-Regular.ttf", "nunito");
+
+const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setFontWithSpacing("nunito", 36, 0.08); // from 0 to 1 over the whole width of the panel.
+	g.setColour(Colours.white);
+	g.drawAlignedText("hello", this.getLocalBounds(0), "top");
+});</code></pre>
+<p><br></p>
 <h2 id="setgradientfill"><b>setGradientFill</b>
 </h2>
 <p class="comment">Sets the current gradient via an array [Colour1, x1, y1, Colour2, x2, y2]</p>
@@ -447,19 +1054,37 @@ g.setGradientFill([Colours.white, 0.0, 0.0,
 				   Colours.white, 0.0, 100.0,
 				   false,
 				   Colours.black, 0.5]);</code></pre>
+<pre><code class="language-javascript line-numbers">Panel1.setPaintRoutine(function(g)
+{	
+	g.setGradientFill([Colours.white, 0 , 0,
+				   Colours.black, this.getWidth()/1.5, 0,
+				   false]);
+				   
+	g.fillRect(this.getLocalBounds(0));
+});</code></pre>
 <p><br></p>
 <h2 id="setopacity"><b>setOpacity</b>
 </h2>
 <p class="comment">Sets a global transparency level.</p>
 <pre><code class="language-javascript line-numbers">Graphics.setOpacity(float alphaValue)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<pre><code class="language-javascript line-numbers">const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.loadImage("{PROJECT_FOLDER}image.png", "image");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setOpacity(0.3);	
+	g.drawImage("image", this.getLocalBounds(0), 0, 0); 
+});</code></pre>
+<p><br></p>
 <div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
 </span>
 
 <span class="content-footer-right">Next: <a href="scripting/scripting-api/lorismanager/index.html">LorisManager</a>
 </span>
 
-<p class="content-footer-metadata"><br><br></p>
+<p class="content-footer-metadata">Do Mayer<br>17.07.2024<br></p>
 </div>
 
 			<!-- content end -->

@@ -40,7 +40,8 @@
 
 		<div class="content"><h1 id="transporthandler"><b>TransportHandler</b>
 </h1>
-<p><br>This class can be used to register callbacks that react on certain host tranport events. As of now, these events are supported:</p>
+<p><br>The <code>TransportHandler</code>
+ class can be used to register callbacks that react on host transport events. As of now, these events are supported:</p>
 <ul><li>Tempo changes</li>
 <li>Time signature changes</li>
 <li>Transport state changes (only playback)</li>
@@ -49,6 +50,7 @@
 </ul>
 <p>In order to use it, just create an object with <a href="scripting/scripting-api/engine/index.html#createtransporthandler">Engine.createTransportHandler()</a>
 and then use the functions to register callbacks.</p>
+<pre><code class="language-javascript line-numbers">const var TransportHandler = Engine.createTransportHandler();</code></pre>
 <h3 id="execution-modes"><b>Execution modes</b>
 </h3>
 <p>There are two execution modes for the callbacks: <b>synchronous</b>

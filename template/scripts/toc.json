@@ -1119,6 +1119,12 @@ var rootDb = {
               "Colour": "#DEB887",
               "Children": [
                 {
+                  "URL": "working-with-hise/menu-reference/export/index.html#setup-export-wizard",
+                  "Title": "Setup Export Wizard",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
                   "URL": "working-with-hise/menu-reference/export/index.html#export-as-instrument-vsti-/-aui-plugin",
                   "Title": "Export as Instrument (VSTi / AUi) plugin",
                   "Colour": "#DEB887",
@@ -1199,6 +1205,12 @@ var rootDb = {
                 {
                   "URL": "working-with-hise/menu-reference/export/index.html#clean-build-directory",
                   "Title": "Clean Build directory",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
+                  "URL": "working-with-hise/menu-reference/export/index.html#clean-dsp-network-files",
+                  "Title": "Clean DSP network files",
                   "Colour": "#DEB887",
                   "Children": []
                 },
@@ -1552,6 +1564,12 @@ var rootDb = {
                 {
                   "URL": "working-with-hise/settings/project.html#extra-definitions-linux",
                   "Title": "Extra Definitions Linux",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
+                  "URL": "working-with-hise/settings/project.html#extra-definitions-network-dll",
+                  "Title": "Extra Definitions Network Dll",
                   "Colour": "#DEB887",
                   "Children": []
                 },
@@ -3409,6 +3427,12 @@ var rootDb = {
             {
               "URL": "ui-components/plugin-components/viewport.html",
               "Title": "Viewport",
+              "Colour": "#9064FF",
+              "Children": []
+            },
+            {
+              "URL": "ui-components/plugin-components/multipagedialog.html",
+              "Title": "Multipage Dialog",
               "Colour": "#9064FF",
               "Children": []
             }
@@ -5277,61 +5301,61 @@ var rootDb = {
               "Colour": "#D557D9",
               "Children": [
                 {
-                  "URL": "scripting/scripting-api/buffer.html#detectpitch",
+                  "URL": "scripting/scripting-api/buffer/index.html#detectpitch",
                   "Title": "detectPitch",
                   "Colour": "#D557D9",
                   "Children": []
                 },
                 {
-                  "URL": "scripting/scripting-api/buffer.html#frombase64",
+                  "URL": "scripting/scripting-api/buffer/index.html#frombase64",
                   "Title": "fromBase64",
                   "Colour": "#D557D9",
                   "Children": []
                 },
                 {
-                  "URL": "scripting/scripting-api/buffer.html#getmagnitude",
+                  "URL": "scripting/scripting-api/buffer/index.html#getmagnitude",
                   "Title": "getMagnitude",
                   "Colour": "#D557D9",
                   "Children": []
                 },
                 {
-                  "URL": "scripting/scripting-api/buffer.html#getpeakrange",
+                  "URL": "scripting/scripting-api/buffer/index.html#getpeakrange",
                   "Title": "getPeakRange",
                   "Colour": "#D557D9",
                   "Children": []
                 },
                 {
-                  "URL": "scripting/scripting-api/buffer.html#getrmslevel",
+                  "URL": "scripting/scripting-api/buffer/index.html#getrmslevel",
                   "Title": "getRMSLevel",
                   "Colour": "#D557D9",
                   "Children": []
                 },
                 {
-                  "URL": "scripting/scripting-api/buffer.html#indexofpeak",
+                  "URL": "scripting/scripting-api/buffer/index.html#indexofpeak",
                   "Title": "indexOfPeak",
                   "Colour": "#D557D9",
                   "Children": []
                 },
                 {
-                  "URL": "scripting/scripting-api/buffer.html#normalise",
+                  "URL": "scripting/scripting-api/buffer/index.html#normalise",
                   "Title": "normalise",
                   "Colour": "#D557D9",
                   "Children": []
                 },
                 {
-                  "URL": "scripting/scripting-api/buffer.html#tobase64",
+                  "URL": "scripting/scripting-api/buffer/index.html#tobase64",
                   "Title": "toBase64",
                   "Colour": "#D557D9",
                   "Children": []
                 },
                 {
-                  "URL": "scripting/scripting-api/buffer.html#tocharstring",
+                  "URL": "scripting/scripting-api/buffer/index.html#tocharstring",
                   "Title": "toCharString",
                   "Colour": "#D557D9",
                   "Children": []
                 },
                 {
-                  "URL": "scripting/scripting-api/buffer.html#trim",
+                  "URL": "scripting/scripting-api/buffer/index.html#trim",
                   "Title": "trim",
                   "Colour": "#D557D9",
                   "Children": []
@@ -5753,6 +5777,12 @@ var rootDb = {
                 {
                   "URL": "scripting/scripting-api/content/index.html#addlabel",
                   "Title": "addLabel",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/content/index.html#addmultipagedialog",
+                  "Title": "addMultipageDialog",
                   "Colour": "#D557D9",
                   "Children": []
                 },
@@ -10491,6 +10521,12 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scripting/scripting-api/path/index.html#tobase64",
+                  "Title": "toBase64",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/path/index.html#tostring",
                   "Title": "toString",
                   "Colour": "#D557D9",
@@ -11155,6 +11191,24 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scripting/scripting-api/scriptaudiowaveform/index.html#setstylesheetclass",
+                  "Title": "setStyleSheetClass",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptaudiowaveform/index.html#setstylesheetproperty",
+                  "Title": "setStyleSheetProperty",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptaudiowaveform/index.html#setstylesheetpseudostate",
+                  "Title": "setStyleSheetPseudoState",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/scriptaudiowaveform/index.html#settooltip",
                   "Title": "setTooltip",
                   "Colour": "#D557D9",
@@ -11368,6 +11422,24 @@ var rootDb = {
                 {
                   "URL": "scripting/scripting-api/scriptbutton/index.html#setpropertiesfromjson",
                   "Title": "setPropertiesFromJSON",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptbutton/index.html#setstylesheetclass",
+                  "Title": "setStyleSheetClass",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptbutton/index.html#setstylesheetproperty",
+                  "Title": "setStyleSheetProperty",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptbutton/index.html#setstylesheetpseudostate",
+                  "Title": "setStyleSheetPseudoState",
                   "Colour": "#D557D9",
                   "Children": []
                 },
@@ -11595,6 +11667,24 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scripting/scripting-api/scriptcombobox/index.html#setstylesheetclass",
+                  "Title": "setStyleSheetClass",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptcombobox/index.html#setstylesheetproperty",
+                  "Title": "setStyleSheetProperty",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptcombobox/index.html#setstylesheetpseudostate",
+                  "Title": "setStyleSheetPseudoState",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/scriptcombobox/index.html#settooltip",
                   "Title": "setTooltip",
                   "Colour": "#D557D9",
@@ -11814,6 +11904,24 @@ var rootDb = {
                 {
                   "URL": "scripting/scripting-api/scriptedviewport/index.html#setpropertiesfromjson",
                   "Title": "setPropertiesFromJSON",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptedviewport/index.html#setstylesheetclass",
+                  "Title": "setStyleSheetClass",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptedviewport/index.html#setstylesheetproperty",
+                  "Title": "setStyleSheetProperty",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptedviewport/index.html#setstylesheetpseudostate",
+                  "Title": "setStyleSheetPseudoState",
                   "Colour": "#D557D9",
                   "Children": []
                 },
@@ -12053,6 +12161,24 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scripting/scripting-api/scriptfloatingtile/index.html#setstylesheetclass",
+                  "Title": "setStyleSheetClass",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptfloatingtile/index.html#setstylesheetproperty",
+                  "Title": "setStyleSheetProperty",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptfloatingtile/index.html#setstylesheetpseudostate",
+                  "Title": "setStyleSheetPseudoState",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/scriptfloatingtile/index.html#settooltip",
                   "Title": "setTooltip",
                   "Colour": "#D557D9",
@@ -12266,6 +12392,24 @@ var rootDb = {
                 {
                   "URL": "scripting/scripting-api/scriptimage/index.html#setpropertiesfromjson",
                   "Title": "setPropertiesFromJSON",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptimage/index.html#setstylesheetclass",
+                  "Title": "setStyleSheetClass",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptimage/index.html#setstylesheetproperty",
+                  "Title": "setStyleSheetProperty",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptimage/index.html#setstylesheetpseudostate",
+                  "Title": "setStyleSheetPseudoState",
                   "Colour": "#D557D9",
                   "Children": []
                 },
@@ -12487,6 +12631,24 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scripting/scripting-api/scriptlabel/index.html#setstylesheetclass",
+                  "Title": "setStyleSheetClass",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptlabel/index.html#setstylesheetproperty",
+                  "Title": "setStyleSheetProperty",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptlabel/index.html#setstylesheetpseudostate",
+                  "Title": "setStyleSheetPseudoState",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/scriptlabel/index.html#settooltip",
                   "Title": "setTooltip",
                   "Colour": "#D557D9",
@@ -12568,6 +12730,12 @@ var rootDb = {
                 {
                   "URL": "scripting/scripting-api/scriptlookandfeel/index.html#setstylesheet",
                   "Title": "setStyleSheet",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptlookandfeel/index.html#setstylesheetproperty",
+                  "Title": "setStyleSheetProperty",
                   "Colour": "#D557D9",
                   "Children": []
                 },
@@ -12713,6 +12881,319 @@ var rootDb = {
                 {
                   "URL": "scripting/scripting-api/scriptmodulationmatrix/index.html#updatevaluemode",
                   "Title": "updateValueMode",
+                  "Colour": "#D557D9",
+                  "Children": []
+                }
+              ]
+            },
+            {
+              "URL": "scripting/scripting-api/scriptmultipagedialog/index.html",
+              "Title": "ScriptMultipageDialog",
+              "Colour": "#D557D9",
+              "Children": [
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#add",
+                  "Title": "add",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#addmodalpage",
+                  "Title": "addModalPage",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#addpage",
+                  "Title": "addPage",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#addtomacrocontrol",
+                  "Title": "addToMacroControl",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#bindcallback",
+                  "Title": "bindCallback",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#cancel",
+                  "Title": "cancel",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#changed",
+                  "Title": "changed",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#createlocallookandfeel",
+                  "Title": "createLocalLookAndFeel",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#exportasmonolith",
+                  "Title": "exportAsMonolith",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#fadecomponent",
+                  "Title": "fadeComponent",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#get",
+                  "Title": "get",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#getallproperties",
+                  "Title": "getAllProperties",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#getchildcomponents",
+                  "Title": "getChildComponents",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#getelementproperty",
+                  "Title": "getElementProperty",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#getglobalpositionx",
+                  "Title": "getGlobalPositionX",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#getglobalpositiony",
+                  "Title": "getGlobalPositionY",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#getheight",
+                  "Title": "getHeight",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#getid",
+                  "Title": "getId",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#getlocalbounds",
+                  "Title": "getLocalBounds",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#getstate",
+                  "Title": "getState",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#getvaluenormalized",
+                  "Title": "getValueNormalized",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#getwidth",
+                  "Title": "getWidth",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#grabfocus",
+                  "Title": "grabFocus",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#loadfromdatafile",
+                  "Title": "loadFromDataFile",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#losefocus",
+                  "Title": "loseFocus",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#navigate",
+                  "Title": "navigate",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#resetdialog",
+                  "Title": "resetDialog",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#set",
+                  "Title": "set",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#setcolour",
+                  "Title": "setColour",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#setconsumedkeypresses",
+                  "Title": "setConsumedKeyPresses",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#setcontrolcallback",
+                  "Title": "setControlCallback",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#setelementproperty",
+                  "Title": "setElementProperty",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#setelementvalue",
+                  "Title": "setElementValue",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#setkeypresscallback",
+                  "Title": "setKeyPressCallback",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#setlocallookandfeel",
+                  "Title": "setLocalLookAndFeel",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#setonfinishcallback",
+                  "Title": "setOnFinishCallback",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#setonpageloadcallback",
+                  "Title": "setOnPageLoadCallback",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#setposition",
+                  "Title": "setPosition",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#setpropertiesfromjson",
+                  "Title": "setPropertiesFromJSON",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#setstylesheetclass",
+                  "Title": "setStyleSheetClass",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#setstylesheetproperty",
+                  "Title": "setStyleSheetProperty",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#setstylesheetpseudostate",
+                  "Title": "setStyleSheetPseudoState",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#settooltip",
+                  "Title": "setTooltip",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#setvaluenormalized",
+                  "Title": "setValueNormalized",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#setvaluewithundo",
+                  "Title": "setValueWithUndo",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#setzlevel",
+                  "Title": "setZLevel",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#show",
+                  "Title": "show",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#showcontrol",
+                  "Title": "showControl",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#showmodalpage",
+                  "Title": "showModalPage",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#updatecontentpropertyinternal",
+                  "Title": "updateContentPropertyInternal",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#updatevaluefromprocessorconnection",
+                  "Title": "updateValueFromProcessorConnection",
                   "Colour": "#D557D9",
                   "Children": []
                 }
@@ -12988,6 +13469,12 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scripting/scripting-api/scriptpanel/index.html#setpanelvaluewithundo",
+                  "Title": "setPanelValueWithUndo",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/scriptpanel/index.html#setpopupdata",
                   "Title": "setPopupData",
                   "Colour": "#D557D9",
@@ -13002,6 +13489,24 @@ var rootDb = {
                 {
                   "URL": "scripting/scripting-api/scriptpanel/index.html#setpropertiesfromjson",
                   "Title": "setPropertiesFromJSON",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptpanel/index.html#setstylesheetclass",
+                  "Title": "setStyleSheetClass",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptpanel/index.html#setstylesheetproperty",
+                  "Title": "setStyleSheetProperty",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptpanel/index.html#setstylesheetpseudostate",
+                  "Title": "setStyleSheetPseudoState",
                   "Colour": "#D557D9",
                   "Children": []
                 },
@@ -13026,12 +13531,6 @@ var rootDb = {
                 {
                   "URL": "scripting/scripting-api/scriptpanel/index.html#setvaluenormalized",
                   "Title": "setValueNormalized",
-                  "Colour": "#D557D9",
-                  "Children": []
-                },
-                {
-                  "URL": "scripting/scripting-api/scriptpanel/index.html#setvaluewithundo",
-                  "Title": "setValueWithUndo",
                   "Colour": "#D557D9",
                   "Children": []
                 },
@@ -13374,6 +13873,24 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scripting/scripting-api/scriptslider/index.html#setstylesheetclass",
+                  "Title": "setStyleSheetClass",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptslider/index.html#setstylesheetproperty",
+                  "Title": "setStyleSheetProperty",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptslider/index.html#setstylesheetpseudostate",
+                  "Title": "setStyleSheetPseudoState",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/scriptslider/index.html#settooltip",
                   "Title": "setTooltip",
                   "Colour": "#D557D9",
@@ -13633,6 +14150,24 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scripting/scripting-api/scriptsliderpack/index.html#setstylesheetclass",
+                  "Title": "setStyleSheetClass",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptsliderpack/index.html#setstylesheetproperty",
+                  "Title": "setStyleSheetProperty",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptsliderpack/index.html#setstylesheetpseudostate",
+                  "Title": "setStyleSheetPseudoState",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/scriptsliderpack/index.html#settooltip",
                   "Title": "setTooltip",
                   "Colour": "#D557D9",
@@ -13870,6 +14405,24 @@ var rootDb = {
                 {
                   "URL": "scripting/scripting-api/scripttable/index.html#setsnapvalues",
                   "Title": "setSnapValues",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scripttable/index.html#setstylesheetclass",
+                  "Title": "setStyleSheetClass",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scripttable/index.html#setstylesheetproperty",
+                  "Title": "setStyleSheetProperty",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scripttable/index.html#setstylesheetpseudostate",
+                  "Title": "setStyleSheetPseudoState",
                   "Colour": "#D557D9",
                   "Children": []
                 },
@@ -14117,6 +14670,24 @@ var rootDb = {
                 {
                   "URL": "scripting/scripting-api/scriptwebview/index.html#setpropertiesfromjson",
                   "Title": "setPropertiesFromJSON",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptwebview/index.html#setstylesheetclass",
+                  "Title": "setStyleSheetClass",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptwebview/index.html#setstylesheetproperty",
+                  "Title": "setStyleSheetProperty",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptwebview/index.html#setstylesheetpseudostate",
+                  "Title": "setStyleSheetPseudoState",
                   "Colour": "#D557D9",
                   "Children": []
                 },
@@ -18522,6 +19093,193 @@ var rootDb = {
           ]
         },
         {
+          "URL": "glossary/css.html",
+          "Title": "CSS Tutorial for HISE",
+          "Colour": "#BD6F50",
+          "Children": [
+            {
+              "URL": "glossary/css.html#general-syntax-of-css",
+              "Title": "General Syntax of CSS",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/css.html#css-selectors",
+              "Title": "CSS Selectors",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/css.html#universal-selector",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/css.html#element-selector",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/css.html#class-selector",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/css.html#id-selector",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/css.html#debugging-selectors",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/css.html#pseudo-states",
+              "Title": "Pseudo-States",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/css.html#pseudo-elements",
+              "Title": "Pseudo-Elements",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/css.html#color-specifications",
+              "Title": "Color Specifications",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/css.html#color-gradients",
+              "Title": "Color Gradients",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/css.html#linear-gradients",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/css.html#padding-margin-and-border",
+              "Title": "Padding, Margin, and Border",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/css.html#padding",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/css.html#examples",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/css.html#margin",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/css.html#border",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/css.html#transitions",
+              "Title": "Transitions",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/css.html#font-handling",
+              "Title": "Font-Handling",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/css.html#variable-handling",
+              "Title": "Variable Handling",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/css.html#shadows",
+              "Title": "Shadows",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/css.html#text-shadows",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/css.html#box-shadows",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/css.html#keyword-reference",
+              "Title": "Keyword reference",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/css.html#supported-type-ids",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/css.html#supported-pseudo-class-ids",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/css.html#supported-expression-ids",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/css.html#supported-property-ids",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/css.html#supported-property-constants",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/css.html#supported-property-expressions",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            }
+          ]
+        },
+        {
           "URL": "glossary/command-line-tool.html",
           "Title": "HISE Command Line Tool",
           "Colour": "#BD6F50",
@@ -19001,6 +19759,271 @@ var rootDb = {
           ]
         },
         {
+          "URL": "glossary/multipageproperties.html",
+          "Title": "Multipage Dialog Reference",
+          "Colour": "#BD6F50",
+          "Children": [
+            {
+              "URL": "glossary/multipageproperties.html#layout",
+              "Title": "Layout",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/multipageproperties.html#branch",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/multipageproperties.html#column",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/multipageproperties.html#eventlogger",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/multipageproperties.html#htmlelement",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/multipageproperties.html#image",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/multipageproperties.html#list",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/multipageproperties.html#markdowntext",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/multipageproperties.html#placeholder",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/multipageproperties.html#simpletext",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/multipageproperties.html#spacer",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/multipageproperties.html#ui-elements",
+              "Title": "UI Elements",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/multipageproperties.html#button",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/multipageproperties.html#choice",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/multipageproperties.html#codeeditor",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/multipageproperties.html#colourchooser",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/multipageproperties.html#fileselector",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/multipageproperties.html#table",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/multipageproperties.html#taglist",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/multipageproperties.html#textinput",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/multipageproperties.html#actions",
+              "Title": "Actions",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/multipageproperties.html#appdatafilewriter",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/multipageproperties.html#commandlinetask",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/multipageproperties.html#copyasset",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/multipageproperties.html#copysiblingfile",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/multipageproperties.html#downloadtask",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/multipageproperties.html#dummywait",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/multipageproperties.html#hlacdecoder",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/multipageproperties.html#httprequest",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/multipageproperties.html#javascriptfunction",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/multipageproperties.html#lambdatask",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/multipageproperties.html#launch",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/multipageproperties.html#skip",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/multipageproperties.html#unziptask",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/multipageproperties.html#constants",
+              "Title": "Constants",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/multipageproperties.html#copyprotection",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/multipageproperties.html#directoryscanner",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/multipageproperties.html#filelogger",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/multipageproperties.html#operatingsystem",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/multipageproperties.html#persistentsettings",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/multipageproperties.html#plugindirectories",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/multipageproperties.html#projectinfo",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/multipageproperties.html#relativefileloader",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            }
+          ]
+        },
+        {
           "URL": "glossary/rnbo.html",
           "Title": "RNBO Import",
           "Colour": "#BD6F50",
@@ -19100,6 +20123,12 @@ var rootDb = {
             {
               "URL": "tutorials/all/index.html#basicsynth",
               "Title": "BasicSynth",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/all/index.html#horizontal-linear-slider-laf",
+              "Title": "Horizontal Linear Slider LAF",
               "Colour": "#C5AC43",
               "Children": []
             }
@@ -19221,6 +20250,12 @@ var rootDb = {
               "Children": []
             },
             {
+              "URL": "tutorials/scripting/index.html#modulation-matrix-tutorial",
+              "Title": "Modulation Matrix Tutorial",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
               "URL": "tutorials/scripting/index.html#date",
               "Title": "Date",
               "Colour": "#C5AC43",
@@ -19306,6 +20341,12 @@ var rootDb = {
               "Children": []
             },
             {
+              "URL": "tutorials/scriptnode/index.html#snex-bufferstop",
+              "Title": "SNEX Bufferstop",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
               "URL": "tutorials/scriptnode/index.html#snex-one-pole-filter",
               "Title": "SNEX One pole filter",
               "Colour": "#C5AC43",
@@ -19320,6 +20361,12 @@ var rootDb = {
             {
               "URL": "tutorials/scriptnode/index.html#snex-saturation",
               "Title": "SNEX Saturation",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/scriptnode/index.html#snex-velocity-modulator",
+              "Title": "SNEX Velocity Modulator",
               "Colour": "#C5AC43",
               "Children": []
             },
@@ -19361,6 +20408,18 @@ var rootDb = {
               "Children": []
             },
             {
+              "URL": "tutorials/ui/index.html#an-enhanced-button-laf",
+              "Title": "An enhanced Button LAF",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/ui/index.html#big-&-small-knob-laf",
+              "Title": "Big & small Knob LAF",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
               "URL": "tutorials/ui/index.html#broadcaster-starting-point",
               "Title": "Broadcaster Starting Point",
               "Colour": "#C5AC43",
@@ -19385,8 +20444,26 @@ var rootDb = {
               "Children": []
             },
             {
+              "URL": "tutorials/ui/index.html#customized-table-laf",
+              "Title": "Customized Table LAF",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
               "URL": "tutorials/ui/index.html#glsl-hello-world",
               "Title": "GLSL Hello World",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/ui/index.html#laf-tutorial-toolkit",
+              "Title": "LAF Tutorial Toolkit",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/ui/index.html#laf-ui-kit",
+              "Title": "LAF UI Kit",
               "Colour": "#C5AC43",
               "Children": []
             },
@@ -19415,6 +20492,18 @@ var rootDb = {
               "Children": []
             },
             {
+              "URL": "tutorials/ui/index.html#peak-meter-laf-with-filmstrip-image",
+              "Title": "Peak Meter LAF with FilmStrip Image",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/ui/index.html#rotating-tape-reel-icon-knobs-laf",
+              "Title": "Rotating Tape Reel Icon Knobs LAF",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
               "URL": "tutorials/ui/index.html#script-references-and-callbacks-for-components",
               "Title": "Script references and callbacks for components",
               "Colour": "#C5AC43",
@@ -19427,8 +20516,26 @@ var rootDb = {
               "Children": []
             },
             {
+              "URL": "tutorials/ui/index.html#shaded-sliderpack-laf",
+              "Title": "Shaded Sliderpack LAF",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
               "URL": "tutorials/ui/index.html#sixstate-filmstrip-button",
               "Title": "SixState Filmstrip Button",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/ui/index.html#skeumorphic-knob-laf",
+              "Title": "Skeumorphic Knob LAF",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/ui/index.html#slider-peak-meter-laf",
+              "Title": "Slider Peak Meter LAF",
               "Colour": "#C5AC43",
               "Children": []
             },

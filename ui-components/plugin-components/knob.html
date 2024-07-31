@@ -144,6 +144,192 @@
 </h2>
 <p><a href="scripting/scripting-api/scriptslider/index.html">ScriptSlider</a>
 </p>
+<h2 id="css-styling"><b>CSS Styling</b>
+</h2>
+<p>Styling a slider / knob with <a href="glossary/css.html">CSS</a>
+ is a bit more complex than using CSS for other UI elements because there is no 1:1 representation in a "standard" CSS context. However you can still get pretty far if you combine it with some HISE scripting. </p>
+<p>In order to define the look of a slider or knob, you can use either the class selector <code>.scriptslider</code>
+ or the ID selector <code>#Knob1</code>
+. The following <a href="glossary/css.html#pseudo-states">pseudo states</a>
+ are available:</p>
+<ul><li><code>:hover</code>
+ for hovering over the slider</li>
+<li><code>:active</code>
+ when you click on (and drag) the slider</li>
+<li><code>:disabled</code>
+ when the slider's <code>enabled</code>
+ property is set to false</li>
+</ul>
+<p>In almost any case you will need to use the two <a href="glossary/css.html#pseudo-elements">pseudo elements</a>
+ <code>::before</code>
+ and <code>::after</code>
+ to implement the different parts of the slider:</p>
+<ul><li>in a horizontal slider the <code>::before</code>
+ element will be used to render the "track" and the <code>::after</code>
+ element for the thumb of the slider</li>
+<li>in a knob the <code>::before</code>
+ element will be used to render the full arc of the knob circle and the <code>::after</code>
+ element the path of the value</li>
+<li>in order to calculate how the slider should display its value, you will need to use the <a href="glossary/css.html#variable-handling">CSS variable</a>
+ <code>var(--value)</code>
+ that will contain the normalized value from 0...1.</li>
+</ul>
+<h3 id="example-stylesheet"><b>Example Stylesheet</b>
+</h3>
+<p>Let's start with a horizontal slider example first:</p>
+<pre><code class="language-javascript line-numbers">const var s = Content.addKnob("Knob1", 10, 10);
+
+s.set("showTextBox", false);
+s.set("style", "Horizontal");
+s.set("height", 24);
+
+const var laf = Content.createLocalLookAndFeel();
+
+laf.setInlineStyleSheet("
+.scriptslider
+{
+	background: #333;
+	margin: 0px;
+	border: 2px solid #555;
+	border-radius: 5px;
+	box-shadow: inset 0px 2px 5px black;
+}
+
+/** This is used for the value rectangle. */
+.scriptslider::before
+{
+	/** Required so that it will be rendered. */
+	content: '';	
+	background: #555;
+	margin: 4px;
+	/** we can use the --value variable for calculating the width
+	    of the value rectangle. Note that the calc() implemention
+	    in HISE does not support multiple operators so you have to
+	    use one calc expression per operator!) */
+	width: max(10px, calc(5px + calc(100% * var(--value))));
+	border-radius: 3px;
+}
+
+/** Define some hover & active states. */
+.scriptslider::before:hover { background: #666; }
+.scriptslider::before:active { background: linear-gradient(to bottom, #777, #666); }
+");
+
+s.setLocalLookAndFeel(laf);</code></pre>
+<p>In order to implement a knob with a radial value display, we need to create a path in HISE that we pass onto the slider. We'll use a broadcaster attached to the <a href="scripting/scripting-api/broadcaster/index.html#attachtocomponentvalue">component value</a>
+ for this (so you can easily add multiple sliders by just attaching the broadcaster to more than one component.</p>
+<pre><code class="language-javascript line-numbers">const var s = Content.addKnob("Knob1", 10, 10);
+
+s.set("showTextBox", false);
+s.set("style", "Knob");
+s.set("height", 50);
+s.set("width", 50);
+
+const var laf = Content.createLocalLookAndFeel();
+const var vp = Content.createPath();
+const var ARC_POS = 2.4;
+
+/** This function is called from the broadcaster whenever the slider value changes. */
+inline function updateSliderPath(component, value)
+{
+	// We can reuse the same path since it is not stored as reference. */
+	vp.clear();
+	vp.startNewSubPath(0.0, 0.0);
+	vp.startNewSubPath(1.0, 1.0);
+	vp.addArc([0.1, 0.1, 0.8, 0.8], 
+	           -1.0 * ARC_POS, 
+	           -1.0 * ARC_POS + 0.2 +  component.getValueNormalized() * (2.0 * ARC_POS - 0.2));
+	           
+	// We want it to render the "outline" of the arc so we need to transform it to a 
+	// stroked path
+	local sp = vp.createStrokedPath(0.2, []);
+	
+	// Now we pass in the stroked path using the "path" conversion type to create a Base64
+	// string that is stored to the stylesheet of the component.
+	// Note that this must not use laf.setStyleSheetProperty() because that would send the path
+	// to all registered sliders!
+	component.setStyleSheetProperty("valuePath", sp, "path");
+}
+
+
+// Now we add the broadcaster and attach it to our slider.
+const var sliderPathUpdater = Engine.createBroadcaster({
+  "id": "sliderPathUpdater",
+  "args": ["component", "value"]
+});
+
+// If you want more sliders, just pass them into this array here
+sliderPathUpdater.attachToComponentValue(["Knob1"], "");
+sliderPathUpdater.addListener(0, "\"update the slider path\"", updateSliderPath);
+
+laf.setInlineStyleSheet("
+.scriptslider
+{
+	color: white;
+	vertical-align: bottom;
+	font-size: 0.8em;
+}
+
+/** Draw the circle in the middle. */
+.scriptslider::after
+{
+	content: '';
+
+	/** Needs to set to absolute so that the area won't be 
+	    sliced away from the normal slider area which prevents the
+	    text from showing up. */
+	position: absolute;
+	
+	border-radius: 50%;
+	margin: 15px;
+	background: #555;
+}
+
+/** Draw the value path that we calculated in HISE script. */
+.scriptslider::before
+{
+	content: '';
+	position: absolute;
+	background-color: #555;
+	
+	/** Use the path from HISE script as background shape. */
+	background-image: var(--valuePath);
+	margin: 4px;
+}
+
+.scriptslider::before:hover { background: #666; }
+.scriptslider::before:active { background: linear-gradient(to bottom, #777, #666); }
+");
+
+s.setLocalLookAndFeel(laf);</code></pre>
+<h3 id="additional-ui-elements"><b>Additional UI elements</b>
+</h3>
+<p>In order to style the value popup that you enable with the <code>showValuePopup</code>
+ property, you can use the HTML tag selector <code>label</code>
+. This is consistent with the popup label for Tables and SliderPack elements.</p>
+<pre><code class="language-javascript line-numbers">label
+{
+	background: red;
+	padding: 3px 10px;
+	margin: 5px;
+	border-radius: 50%;
+	box-shadow: 0px 2px 3px black;
+}</code></pre>
+<p>In order to style the text input box that is opened with a shift-click, you can use the HTML tag selector <code>input</code>
+. Styling the text selection is the same as with the text input on a label. This is consistent with the styling of <a href="ui-components/plugin-components/label.html">Label</a>
+ elements.</p>
+<pre><code class="language-javascript line-numbers">input
+{
+	background: green;
+	text-align: center;
+	border-radius: 50%;
+}
+
+::selection
+{
+	background: red;
+	color: green;
+}</code></pre>
 <div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
 </span>
 

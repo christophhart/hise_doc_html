@@ -40,8 +40,10 @@
 
 		<div class="content"><h1 id="userpresethandler"><b>UserPresetHandler</b>
 </h1>
-<p>The UserPresetHandler class can be used to customize the data handling of your project. You can attach callbacks to certain events (eg. loading user presets), define a custom data object that will replace the default XML structure of a user preset and add custom automation parameters. In order to use it, create it with <code>Engine.createUserPresetHandler()</code>
+<p>The <code>UserPresetHandler</code>
+ object can be used to customize the data handling of your project. You can attach callbacks to certain events (eg. loading user presets), define a custom data object that will replace the default XML structure of a user preset and add custom automation parameters. In order to use it, create it with <a href="scripting/scripting-api/engine/index.html#createuserpresethandler">Engine.createUserPresetHandler()</a>
  and then use one of its methods.</p>
+<pre><code class="language-javascript line-numbers">const var UserPresetHandler = Engine.createUserPresetHandler();</code></pre>
 <p class="comment">It's considered best practice to only have one of these objects around.<br></p>
 <h1 id="class-methods
 "><b>Class methods<br></b>

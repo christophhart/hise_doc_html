@@ -40,6 +40,29 @@
 
 		<div class="content"><h1 id="path"><b>Path</b>
 </h1>
+<p>The <code>Path</code>
+ object with which you can define a path that can be drawn to a <a href="ui-components/plugin-components/panel.html">Panel</a>
+. You can create a new path object with <a href="scripting/scripting-api/content/index.html#createpath">Content.createPath()</a>
+ and draw it with <a href="scripting/scripting-api/graphics/index.html#drawpath">Graphics.drawPath()</a>
+.</p>
+<pre><code class="language-javascript line-numbers">const var p = Content.createPath();
+
+p.startNewSubPath(0.0, 0.0);
+p.lineTo(0.2, 1.0);
+p.lineTo(1.0, 0.2);
+p.lineTo(0.7, 1.0);
+
+const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{
+    g.setColour(Colours.white);
+    
+    var path_data = {}; // pathStrokeStyle object  
+    path_data.Thickness = 3.0;
+    
+	g.drawPath(p, this.getLocalBounds(10), path_data);
+});</code></pre>
 <p><br></p>
 <h1 id="class-methods
 "><b>Class methods<br></b>
@@ -174,6 +197,11 @@
 <p class="comment">Starts a new Path. It does not clear the path, so use 'clear()' if you want to start all over again.</p>
 <pre><code class="language-javascript line-numbers">Path.startNewSubPath(var x, var y)</code></pre>
 <p><br><br></p>
+<h2 id="tobase64"><b>toBase64</b>
+</h2>
+<p class="comment">Creates a base64 encoded representation of the path.</p>
+<pre><code class="language-javascript line-numbers">Path.toBase64()</code></pre>
+<p><br><br></p>
 <h2 id="tostring"><b>toString</b>
 </h2>
 <p class="comment">Creates a string representation of this path.</p>
@@ -185,7 +213,7 @@
 <span class="content-footer-right">Next: <a href="scripting/scripting-api/routingmatrix/index.html">RoutingMatrix</a>
 </span>
 
-<p class="content-footer-metadata"><br><br></p>
+<p class="content-footer-metadata">Christoph Hart<br>31.07.2024<br></p>
 </div>
 
 			<!-- content end -->

@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="scriptmultipagedialog"><b>ScriptMultipageDialog</b>
+</h1>
+<p><br>This is the scripting reference object to a <a href="ui-components/plugin-components/multipagedialog.html">Multipage Dialog</a>
+ UI component and can be used to programmatically build complex dialogs or load prebuilt dialogs made with the multipagecreator tool. The workflow of using this class is somewhat similar to the <a href="scripting/scripting-api/builder/index.html">Builder</a>
+ class: </p>
+<ol><li>Create an instance / reference to the multipage dialog</li>
+<li>Add pages / elements using <a href="scripting/scripting-api/scriptmultipagedialog/index.html#add">add()</a>
+ or <a href="scripting/scripting-api/scriptmultipagedialog/index.html#addpage">addPage()</a>
+ which returns an integer index so that you can reference the element later</li>
+<li>Modify the elements using the supplied index with <a href="scripting/scripting-api/scriptmultipagedialog/index.html#setelementproperty">setElementProperty()</a>
+ or <a href="scripting/scripting-api/scriptmultipagedialog/index.html#setelementvalue">setElementValue()</a>
+</li>
+<li>Attach callbacks to "global events" using <a href="scripting/scripting-api/scriptmultipagedialog/index.html#setonfinishcallback">setOnFinishCallback()</a>
+ or <a href="scripting/scripting-api/scriptmultipagedialog/index.html#setonpageloadcallback">setOnPageLoad()</a>
+ or specific components using <a href="scripting/scripting-api/scriptmultipagedialog/index.html#bindcallback">bindCallback()</a>
+</li>
+<li>"Flush" the changes and show the dialog using <a href="scripting/scripting-api/scriptmultipagedialog/index.html#show">show()</a>
+</li>
+</ol>
+<p class="comment">Note that the state of the dialog is not persistent across compilations so you need to rebuild the dialog everytime you compile. If you want to reset the dialog after the onInit callback, you can use the <a href="scripting/scripting-api/scriptmultipagedialog/index.html#resetdialog">resetDialog()</a>
+ method which will clear all the pages and internal states.</p>
+<h3 id="hello-world-example"><b>Hello world example</b>
+</h3>
+<p>This code snippet will create a multipage dialog and shows how to use the API to build up a dialog that you can attach HiseScript callbacks to:</p>
+<pre><code class="language-javascript line-numbers">// Create a multipage dialog component
+const var mp = Content.addMultipageDialog("mp", 0, 0);
+
+// the text property is used as title
+mp.set("text", "Hello Dialog!");
+
+// I swear this is the "last" time I'll do this...
+mp.set("Font", "Comic Sans MS");
+
+// The width / height properties will define what
+// area is masked by the dialog
+mp.set("height", 600);
+
+// The actual dialog size is set by those properties
+mp.set("DialogWidth", 550);
+mp.set("DialogHeight", 500);
+
+// Add two pages
+const var firstPage = mp.addPage();
+const var secondPage = mp.addPage();
+
+// Add a markdown text
+mp.add(firstPage, mp.types.MarkdownText, { Text: "This is some markdown  \n> Noice!" });
+
+// This function will be called when you click the button defined below...
+inline function hiseCallback(id, value, state)
+{
+	Console.print("ID: " + id + ", value: " + value);
+}
+
+// Add a button to the second page
+mp.add(secondPage, mp.types.Button, 
+{ 
+   ID: "MyButton", 
+   Text: "Click me", 
+   // You can bind HiseScript callbacks to react on
+   // button clicks like this:
+   Code: mp.bindCallback("hiseCallback", hiseCallback, // Create a multipage dialog component
+const var mp = Content.addMultipageDialog("mp", 0, 0);
+
+// the text property is used as title
+mp.set("text", "Hello Dialog!");
+
+// I swear this is the "last" time I'll do this...
+mp.set("Font", "Comic Sans MS");
+
+// The width / height properties will define what
+// area is masked by the dialog
+mp.set("height", 600);
+
+// The actual dialog size is set by those properties
+mp.set("DialogWidth", 550);
+mp.set("DialogHeight", 500);
+
+// Add two pages
+const var firstPage = mp.addPage();
+const var secondPage = mp.addPage();
+
+// Add a markdown text
+mp.add(firstPage, mp.types.MarkdownText, { Text: "This is some markdown  \n> Noice!" });
+
+// This function will be called when you click the button defined below...
+inline function hiseCallback(id, value, state)
+{
+	Console.print("ID: " + id + ", value: " + value);
+}
+
+// Add a button to the second page
+mp.add(secondPage, mp.types.Button, 
+{ 
+   ID: "MyButton", 
+   Text: "Click me", 
+   // You can bind HiseScript callbacks to react on
+   // button clicks like this:
+   Code: mp.bindCallback("hiseCallback", hiseCallback, "string")
+});
+
+// Show the dialog
+mp.show(true);)
+});
+
+// Show the dialog
+mp.show(true);</code></pre>
+<p><br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="add"><b>add</b>
+</h2>
+<p class="comment">Adds an element to the parent with the given type and properties.</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.add(int parentIndex, String type,  var properties)</code></pre>
+<p><br>This will add a UI element to a parent defined by the <code>parentIndex</code>
+ index. The <code>type</code>
+ argument must be a valid type string.</p>
+<p class="comment">It's highly recommended to use the typelist provided as the <code>ScriptMultipageDialog.types</code>
+ constant.</p>
+<p>The <code>properties</code>
+ argument must be a JSON object that will contain the property definitions for the UI element.</p>
+<p>For a reference of all available UI elements and their properties, take a look at this list:</p>
+<p><a href="glossary/multipageproperties.html">Multipage Dialog Reference</a>
+<br></p>
+<h2 id="addmodalpage"><b>addModalPage</b>
+</h2>
+<p class="comment">Adds a modal page to the dialog that can be populated like a normal page and shown using showModalPage().</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.addModalPage()</code></pre>
+<p><br><br></p>
+<h2 id="addpage"><b>addPage</b>
+</h2>
+<p class="comment">Adds a page to the dialog and returns the element index of the page.</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.addPage()</code></pre>
+<p><br>This will add a page to the dialog and return an integer index that can be used to add elements to the page.</p>
+<pre><code class="language-javascript line-numbers">const var mp = Content.addMultipageDialog("mp", 0, 0);
+
+for(i = 0; i < 10; i++)
+	mp.addPage();</code></pre>
+<p>Make sure to store the page index returned by this function as you will need it to add UI elements to the page later.</p>
+<p><br></p>
+<h2 id="addtomacrocontrol"><b>addToMacroControl</b>
+</h2>
+<p class="comment">Adds the knob / button to a macro controller (from 0 to 7).</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.addToMacroControl(int macroIndex)</code></pre>
+<p><br><br></p>
+<h2 id="bindcallback"><b>bindCallback</b>
+</h2>
+<p class="comment">Registers a callable object to the dialog and returns the codestring that calls it from within the dialogs Javascript engine.</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.bindCallback(String id, var callback, var notificationType)</code></pre>
+<p><br><br></p>
+<h2 id="cancel"><b>cancel</b>
+</h2>
+<p class="comment">Closes the dialog (as if the user pressed the cancel button).</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.cancel()</code></pre>
+<p><br><br></p>
+<h2 id="changed"><b>changed</b>
+</h2>
+<p class="comment">Call this to indicate that the value has changed (the onControl callback will be executed.</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.changed()</code></pre>
+<p><br><br></p>
+<h2 id="createlocallookandfeel"><b>createLocalLookAndFeel</b>
+</h2>
+<p class="comment">Returns a local look and feel if it was registered before.</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.createLocalLookAndFeel(ScriptContentComponent *contentComponent, Component *componentToRegister)</code></pre>
+<p><br><br></p>
+<h2 id="exportasmonolith"><b>exportAsMonolith</b>
+</h2>
+<p class="comment">Exports the entire dialog.</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.exportAsMonolith(var optionalFile)</code></pre>
+<p><br><br></p>
+<h2 id="fadecomponent"><b>fadeComponent</b>
+</h2>
+<p class="comment">Toggles the visibility and fades a component using the global animator.</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.fadeComponent(bool shouldBeVisible, int milliseconds)</code></pre>
+<p><br><br></p>
+<h2 id="get"><b>get</b>
+</h2>
+<p class="comment">returns the value of the property.</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.get(String propertyName)</code></pre>
+<p><br><br></p>
+<h2 id="getallproperties"><b>getAllProperties</b>
+</h2>
+<p class="comment">Returns a list of all property IDs as array.</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.getAllProperties()</code></pre>
+<p><br><br></p>
+<h2 id="getchildcomponents"><b>getChildComponents</b>
+</h2>
+<p class="comment">Returns list of component's children</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.getChildComponents()</code></pre>
+<p><br><br></p>
+<h2 id="getelementproperty"><b>getElementProperty</b>
+</h2>
+<p class="comment">Returns the value for the given element ID.</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.getElementProperty(int elementId, String propertyId)</code></pre>
+<p><br><br></p>
+<h2 id="getglobalpositionx"><b>getGlobalPositionX</b>
+</h2>
+<p class="comment">Returns the absolute x-position relative to the interface.</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.getGlobalPositionX()</code></pre>
+<p><br><br></p>
+<h2 id="getglobalpositiony"><b>getGlobalPositionY</b>
+</h2>
+<p class="comment">Returns the absolute y-position relative to the interface.</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.getGlobalPositionY()</code></pre>
+<p><br><br></p>
+<h2 id="getheight"><b>getHeight</b>
+</h2>
+<p class="comment">Returns the height of the component.</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.getHeight()</code></pre>
+<p><br><br></p>
+<h2 id="getid"><b>getId</b>
+</h2>
+<p class="comment">Returns the ID of the component.</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.getId()</code></pre>
+<p><br><br></p>
+<h2 id="getlocalbounds"><b>getLocalBounds</b>
+</h2>
+<p class="comment">Returns a [x, y, w, h] array that was reduced by the given amount.</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.getLocalBounds(float reduceAmount)</code></pre>
+<p><br><br></p>
+<h2 id="getstate"><b>getState</b>
+</h2>
+<p class="comment">returns the state object for the dialog.</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.getState()</code></pre>
+<p><br><br></p>
+<h2 id="getvaluenormalized"><b>getValueNormalized</b>
+</h2>
+<p class="comment">Returns the normalized value.</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.getValueNormalized()</code></pre>
+<p><br><br></p>
+<h2 id="getwidth"><b>getWidth</b>
+</h2>
+<p class="comment">Returns the width of the component.</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.getWidth()</code></pre>
+<p><br><br></p>
+<h2 id="grabfocus"><b>grabFocus</b>
+</h2>
+<p class="comment">Call this method in order to grab the keyboard focus for this component.</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.grabFocus()</code></pre>
+<p><br><br></p>
+<h2 id="loadfromdatafile"><b>loadFromDataFile</b>
+</h2>
+<p class="comment">Loads the dialog from a file (on the disk).</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.loadFromDataFile(var fileObject)</code></pre>
+<p><br><br></p>
+<h2 id="losefocus"><b>loseFocus</b>
+</h2>
+<p class="comment">Call this method in order to give away the focus for this component.</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.loseFocus()</code></pre>
+<p><br><br></p>
+<h2 id="navigate"><b>navigate</b>
+</h2>
+<p class="comment">Navigates to the given page index.</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.navigate(int pageIndex, bool submitCurrentPage)</code></pre>
+<p><br><br></p>
+<h2 id="resetdialog"><b>resetDialog</b>
+</h2>
+<p class="comment">Clears the dialog.</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.resetDialog()</code></pre>
+<p><br><br></p>
+<h2 id="set"><b>set</b>
+</h2>
+<p class="comment">Sets the property.</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.set(String propertyName, var value)</code></pre>
+<p><br><br></p>
+<h2 id="setcolour"><b>setColour</b>
+</h2>
+<p class="comment">sets the colour of the component (BG, IT1, IT2, TXT).</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.setColour(int colourId, int colourAs32bitHex)</code></pre>
+<p><br><br></p>
+<h2 id="setconsumedkeypresses"><b>setConsumedKeyPresses</b>
+</h2>
+<p class="comment">Registers a selection of key presses to be consumed by this component.</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.setConsumedKeyPresses(var listOfKeys)</code></pre>
+<p><br><br></p>
+<h2 id="setcontrolcallback"><b>setControlCallback</b>
+</h2>
+<p class="comment">Pass a inline function for a custom callback event.</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.setControlCallback(var controlFunction)</code></pre>
+<p><br><br></p>
+<h2 id="setelementproperty"><b>setElementProperty</b>
+</h2>
+<p class="comment">Sets the property for the given element ID and updates the dialog.</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.setElementProperty(int elementId, String propertyId,  var newValue)</code></pre>
+<p><br><br></p>
+<h2 id="setelementvalue"><b>setElementValue</b>
+</h2>
+<p class="comment">Sets the value of the given element ID and calls the callback.</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.setElementValue(int elementId, var value)</code></pre>
+<p><br><br></p>
+<h2 id="setkeypresscallback"><b>setKeyPressCallback</b>
+</h2>
+<p class="comment">Adds a callback to react on key presses (when this component is focused).</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.setKeyPressCallback(var keyboardFunction)</code></pre>
+<p><br><br></p>
+<h2 id="setlocallookandfeel"><b>setLocalLookAndFeel</b>
+</h2>
+<p class="comment">Attaches the local look and feel to this component.</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.setLocalLookAndFeel(var lafObject)</code></pre>
+<p><br><br></p>
+<h2 id="setonfinishcallback"><b>setOnFinishCallback</b>
+</h2>
+<p class="comment">Registers a function that will be called when the dialog is finished.</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.setOnFinishCallback(var onFinish)</code></pre>
+<p><br><br></p>
+<h2 id="setonpageloadcallback"><b>setOnPageLoadCallback</b>
+</h2>
+<p class="comment">Registers a function that will be called when the dialog shows a new page.</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.setOnPageLoadCallback(var onPageLoad)</code></pre>
+<p><br><br></p>
+<h2 id="setposition"><b>setPosition</b>
+</h2>
+<p class="comment">Sets the position of the component.</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.setPosition(int x, int y, int w, int h)</code></pre>
+<p><br><br></p>
+<h2 id="setpropertiesfromjson"><b>setPropertiesFromJSON</b>
+</h2>
+<p class="comment">Restores all properties from a JSON object.</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.setPropertiesFromJSON( var jsonData)</code></pre>
+<p><br><br></p>
+<h2 id="setstylesheetclass"><b>setStyleSheetClass</b>
+</h2>
+<p class="comment">Sets the given class selectors for the component stylesheet.</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.setStyleSheetClass( String classIds)</code></pre>
+<p><br><br></p>
+<h2 id="setstylesheetproperty"><b>setStyleSheetProperty</b>
+</h2>
+<p class="comment">Sets a variable for this component that can be queried from a style sheet.</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.setStyleSheetProperty( String variableId,  var value,  String type)</code></pre>
+<p><br><br></p>
+<h2 id="setstylesheetpseudostate"><b>setStyleSheetPseudoState</b>
+</h2>
+<p class="comment">Programatically sets a pseudo state (:hover, :active, :checked, :focus, :disabled) that will be used by the CSS renderer.</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.setStyleSheetPseudoState( String pseudoState)</code></pre>
+<p><br><br></p>
+<h2 id="settooltip"><b>setTooltip</b>
+</h2>
+<p class="comment">Shows a informative text on mouse hover.</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.setTooltip( String tooltip)</code></pre>
+<p><br><br></p>
+<h2 id="setvaluenormalized"><b>setValueNormalized</b>
+</h2>
+<p class="comment">Sets the current value from a range 0.0 ... 1.0.</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.setValueNormalized(double normalizedValue)</code></pre>
+<p><br><br></p>
+<h2 id="setvaluewithundo"><b>setValueWithUndo</b>
+</h2>
+<p class="comment">Sets the current value and adds it to the undo list. Don't call this from onControl!</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.setValueWithUndo(var newValue)</code></pre>
+<p><br><br></p>
+<h2 id="setzlevel"><b>setZLevel</b>
+</h2>
+<p class="comment">Changes the depth hierarchy (z-axis) of sibling components (Back, Default, Front or AlwaysOnTop).</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.setZLevel(String zLevel)</code></pre>
+<p><br><br></p>
+<h2 id="show"><b>show</b>
+</h2>
+<p class="comment">Shows the dialog (with optionally clearing the state.</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.show(bool clearState)</code></pre>
+<p><br><br></p>
+<h2 id="showcontrol"><b>showControl</b>
+</h2>
+<p class="comment">Hides / Shows the control.</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.showControl(bool shouldBeVisible)</code></pre>
+<p><br><br></p>
+<h2 id="showmodalpage"><b>showModalPage</b>
+</h2>
+<p class="comment">Shows a modal page with the given index and the state object.</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.showModalPage(int pageIndex, var modalState, var finishCallback)</code></pre>
+<p><br><br></p>
+<h2 id="updatecontentpropertyinternal"><b>updateContentPropertyInternal</b>
+</h2>
+<p class="comment">This updates the internal content data object from the script processor.</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.updateContentPropertyInternal(int propertyId,  var newValue)</code></pre>
+<p><br><br></p>
+<h2 id="updatevaluefromprocessorconnection"><b>updateValueFromProcessorConnection</b>
+</h2>
+<p class="comment">Updates the value from the processor connection. Call this method whenever the module state has changed and you want to refresh the knob value to show the current state.</p>
+<pre><code class="language-javascript line-numbers">ScriptMultipageDialog.updateValueFromProcessorConnection()</code></pre>
+<p><br><br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/scriptpanel/index.html">ScriptPanel</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>24.06.2024<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

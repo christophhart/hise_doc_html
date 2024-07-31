@@ -40,13 +40,14 @@
 
 		<div class="content"><h1 id="sampler"><b>Sampler</b>
 </h1>
-<p>This object can be used to access sampler-specific properties, like loading samplemaps, changing sample properties, setting the current RR index, etc.</p>
+<p>The <code>Sampler</code>
+object can be used to access sampler-specific properties, like loading samplemaps, changing sample properties, setting the current RR index, etc.</p>
 <p class="comment">If you have a generic reference obtained by calling <code>Synth.getChildSynth()</code>
 , you can turn it into a Sampler reference with <a href="scripting/scripting-api/childsynth/index.html#assampler">ChildSynth.asSampler()</a>
 :</p>
-<pre><code class="language-javascript line-numbers">const var genericReference = Synth.getChildSynth("MySampler");
+<pre><code class="language-javascript line-numbers">const var Sampler1 = Synth.getChildSynth("Sampler1");
 
-genericReference.asSampler().loadSampleMap("My SampleMap");</code></pre>
+Sampler1.asSampler().loadSampleMap("My SampleMap");</code></pre>
 <p>Be aware that most of the functions that change samples will be executed asynchronously - if you want to keep your UI updated, take a look at <a href="scripting/scripting-api/scriptpanel/index.html#setloadingcallback">ScriptPanel.setLoadingCallback()</a>
 <br></p>
 <h1 id="class-methods

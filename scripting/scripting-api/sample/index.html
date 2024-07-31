@@ -40,6 +40,25 @@
 
 		<div class="content"><h1 id="sample"><b>Sample</b>
 </h1>
+<p>Functions for doing something with a single samples selected from a Sampler. You can get and filter the array of samples from the sampler with one of these functions:</p>
+<ul><li><a href="scripting/scripting-api/sampler/index.html#createlistfromguiselection">Sampler.createListFromGUISelection()</a>
+</li>
+<li><a href="scripting/scripting-api/sampler/index.html#createlistfromscriptselection">Sampler.createListFromScriptSelection()</a>
+</li>
+<li><a href="scripting/scripting-api/sampler/index.html#createselection">Sampler.createSelection(String regex)</a>
+</li>
+<li><a href="scripting/scripting-api/sampler/index.html#createselectionfromindexes">Sampler.createSelectionFromIndexes(var indexData)</a>
+</li>
+<li><a href="scripting/scripting-api/sampler/index.html#createselectionwithfilter">Sampler.createSelectionWithFilter(var filterFunction)</a>
+</li>
+</ul>
+<pre><code class="language-javascript line-numbers">const var Sampler1 = Synth.getChildSynth("Sampler1"); // Script reference to Sampler module
+
+const var sampler_obj = Sampler1.asSampler(); // Sampler object
+
+const var sample = sampler_obj.createSelection("foley").pop(); // single sample from regex array
+
+Console.print(sample.get(sample.FileName));</code></pre>
 <p><br></p>
 <h1 id="class-methods
 "><b>Class methods<br></b>
@@ -105,7 +124,7 @@
 <span class="content-footer-right">Next: <a href="scripting/scripting-api/sampler/index.html">Sampler</a>
 </span>
 
-<p class="content-footer-metadata"><br><br></p>
+<p class="content-footer-metadata">Christoph Hart<br>31.07.2024<br></p>
 </div>
 
 			<!-- content end -->

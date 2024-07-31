@@ -41,9 +41,42 @@
 		<div class="content"><h1 id="colours"><b>Colours</b>
 </h1>
 <p>The <code>Colours</code>
- keyword gives you access to one function (<code>withAlpha</code>
-) and a list of named Colours that can be used in a Panels <a href="scripting/scripting-api/graphics/index.html">g</a>
- context.<br></p>
+ keyword gives you access to predefined colour and functions to interpolate and modify colours in a <a href="scripting/scripting-in-hise/scriptpanel.html">ScriptPanels</a>
+ <a href="scripting/scripting-api/graphics/index.html">g</a>
+ context.</p>
+<pre><code class="language-javascript line-numbers">const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setColour(Colours.fromVec4([0.7,0,1,1])); // [r,g,b,a] float array.
+	g.fillEllipse([0,0,50,50]);
+	
+	g.setColour(Colours.mix(Colours.blue, Colours.red, 0.7)); // interpolates between two colors
+	g.fillEllipse([55,0,50,50]);
+	
+	g.setColour(Colours.withHue(Colours.saddlebrown, 0.1)); // interpolates through the whole hue cycle from 0-1
+	g.fillEllipse([110,0,50,50]);
+	
+	
+	g.setColour(Colours.withAlpha(0xAAAAAAAA, 0.2)); // sets the colours alpha transparency 
+	g.fillEllipse([0,55,50,50]);
+	
+	g.setColour(Colours.withBrightness(0xAAAAAAAA, 0.6)); // sets the brightness
+	g.fillEllipse([55,55,50,50]);
+	
+	g.setColour(Colours.withSaturation(0xAAAAAAAA, 0.6)); // set the saturation
+	g.fillEllipse([110,55,50,50]);	
+	
+	g.setColour(Colours.withMultipliedAlpha(0xAAAAAAAA, 0.2)); // sets a multiplied alpha value
+	g.fillEllipse([0,110,50,50]);
+	
+	g.setColour(Colours.withMultipliedBrightness(0xAAAAAAAA, 0.6)); // sets a multiplied brightness
+	g.fillEllipse([55,110,50,50]);
+
+	g.setColour(Colours.withMultipliedSaturation(0xAAAAAAAA, 0.6)); // sets a multiplied saturation.
+	g.fillEllipse([110,110,50,50]);	
+});</code></pre>
+<p><br></p>
 <h1 id="class-methods
 "><b>Class methods<br></b>
 </h1>
@@ -61,7 +94,9 @@
 </h2>
 <p class="comment">Converts a colour to a [r, g, b, a] array that can be passed to GLSL as vec4.</p>
 <pre><code class="language-javascript line-numbers">Colours.toVec4(var colour)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<pre><code class="language-javascript line-numbers">Console.print(trace(Colours.toVec4(Colours.saddlebrown)));</code></pre>
+<p><br></p>
 <h2 id="withalpha"><b>withAlpha</b>
 </h2>
 <p class="comment">Returns a colour value with the specified alpha value.</p>

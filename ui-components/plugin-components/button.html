@@ -101,6 +101,58 @@
 </h2>
 <p><a href="scripting/scripting-api/scriptbutton/index.html">ScriptButton</a>
 </p>
+<h2 id="css-styling"><b>CSS Styling</b>
+</h2>
+<p>Styling a button with the new <a href="glossary/css.html">CSS</a>
+ renderer is a very straightforward process. You can define a stylesheet with the generic <code>button</code>
+ HTML selector, the class id <code>.scriptbutton</code>
+ or using the specific button name as ID selector (<code>#Button1</code>
+).</p>
+<p>It supports the following CSS <a href="glossary/css.html#pseudo-states">pseudo states</a>
+:</p>
+<ul><li><code>:hover</code>
+: when hovering over the button</li>
+<li><code>:active</code>
+: when pressing the button</li>
+<li><code>:checked</code>
+: when the button value is true</li>
+<li><code>:disabled</code>
+: when the <code>enabled</code>
+ property is set to false</li>
+</ul>
+<h3 id="example-stylesheet"><b>Example Stylesheet</b>
+</h3>
+<pre><code class="language-javascript line-numbers">const var b = Content.addButton("Button1", 10, 10);
+
+const var laf = Content.createLocalLookAndFeel();
+
+laf.setInlineStyleSheet("
+button
+{
+	background: blue;
+	border-radius: 3px;
+	color: white;
+	transition: background-color 0.5s ease-in;
+}
+
+button:hover
+{
+	font-weight: bold;
+}
+
+button:active
+{
+	margin: 2px;
+}
+
+button:checked
+{
+	background: white;
+	color: black;
+}
+");
+
+b.setLocalLookAndFeel(laf);</code></pre>
 <div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
 </span>
 

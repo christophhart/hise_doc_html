@@ -40,7 +40,9 @@
 
 		<div class="content"><h1 id="timer"><b>Timer</b>
 </h1>
-<p><br>This class will run a periodic callback with a customizable interval in order to implement UI interactions / animations. The frequency of the callbacks is not exact as it will be scheduled by the scripting background process to be approximately the time that you want it to be, but this means that you must not use this for any kind of MIDI processing logic (use the inbuild onTimer callback for this as this is sample accurate).</p>
+<p><br>The <code>Timer</code>
+ class will run a periodic callback with a customizable interval in order to implement UI interactions / animations. Be aware: The refresh rate of the callbacks will not be super precise because it will be scheduled by a background process to be approximately the time that you want it to be. This means that you better not use this for any kind of MIDI processing logic (use the inbuild <a href="hise-modules/midi-processors/list/scriptprocessor.html#the-ontimer-callback">onTimer callback</a>
+ for this, as the callback is sample accurate).</p>
 <h2 id="suspending-the-timerobject"><b>Suspending the TimerObject</b>
 </h2>
 <p>Contrary to the timer callback of a ScriptPanel, this callback will not be suspended when the interface is not shown, which means it keeps running when the interface is hidden. Depending on how your project is using these objects, this might create a significant overhead when using multiple instances. If you want to suspend the callbacks of this object to, you have to use the <a href="scripting/scripting-api/content/index.html#setsuspendtimercallback">Content.setSuspendTimerCallback</a>

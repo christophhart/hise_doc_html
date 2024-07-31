@@ -86,6 +86,93 @@
 </h2>
 <p><a href="scripting/scripting-api/scripttable/index.html">ScriptTable</a>
 </p>
+<h2 id="css-styling"><b>CSS Styling</b>
+</h2>
+<p>You can also use CSS in order to style the table appearance. It uses the following selectors & additional properties:</p>
+<ul><li>style the <b>background & the path</b>
+ of the table using the <code>.scripttable</code>
+ class ID (note that the HTML tag <code>table</code>
+ is reserved for the Viewport in table mode)</li>
+<li>in order to draw the actual table path, you can use the CSS property <code>var(--tablePath)</code>
+ as the <code>background-image</code>
+ property, which will contain the Base64 representation of the path. </li>
+<li>style the <b>text overlay</b>
+ with the HTML tag selector <code>label</code>
+</li>
+<li>style the individual <b>table points</b>
+ using the class selector <code>.tablepoint</code>
+. It supports the <code>:hover</code>
+ and <code>:active</code>
+ pseudo-selectors, as well as the <code>:first-child</code>
+ and <code>:last-child</code>
+ selectors for the first and last point at the left and right edges.</li>
+<li>style the <b>position indicator</b>
+ using the class selector <code>.playhead</code>
+. You can calculate the position using the CSS property <code>var(--playhead)</code>
+, which contains the normalised x-position (note that this is consistent with the playhead rendering) of the AudioWaveform).</li>
+</ul>
+<h3 id="stylesheet-example"><b>Stylesheet Example</b>
+</h3>
+<pre><code class="language-javascript line-numbers">const var t = Content.addTable("Table1", 10, 10);
+
+t.set("width", 300);
+t.set("height", 100);
+
+const var laf = Content.createLocalLookAndFeel();
+
+t.getTableValue(Math.random());
+
+
+laf.setInlineStyleSheet("
+
+.scripttable
+{
+	background: #444;
+	border-radius: 3px;
+	
+	
+}
+
+.scripttable::before
+{
+	content: '';
+	background-image: var(--tablePath);
+	background-color: #aaa;
+	box-shadow: inset 0px 2px 4px rgba(0,0,0, 0.5);
+}
+
+.tablepoint
+{
+	background: rgba(255,255,255, 0.5);
+	border-radius: 50%;
+	margin: 2px;
+	box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.tablepoint:hover
+{
+	background: white;
+}
+
+label
+{
+	background: rgba(255, 255, 255, 0.9);
+	color: #222;
+	border: 1px solid #aaa;
+	padding: 5px;
+}
+
+.playhead::before
+{
+	content: '';
+	width: 2px;
+	left: calc(calc(var(--playhead) * 100%) - 1px);
+	background: white;
+	box-shadow: 0px 0px 4px black;
+}
+");
+
+t.setLocalLookAndFeel(laf);</code></pre>
 <div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
 </span>
 

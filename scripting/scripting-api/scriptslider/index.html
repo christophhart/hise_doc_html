@@ -40,6 +40,9 @@
 
 		<div class="content"><h1 id="scriptslider"><b>ScriptSlider</b>
 </h1>
+<p><br>Create a reference to a <a href="ui-components/plugin-components/knob.html">Slider</a>
+ UI component and modify its values.</p>
+<pre><code class="language-javascript line-numbers">const var Knob1 = Content.getComponent("Knob1");</code></pre>
 <p><br></p>
 <h1 id="class-methods
 "><b>Class methods<br></b>
@@ -62,7 +65,7 @@
 <h2 id="createlocallookandfeel"><b>createLocalLookAndFeel</b>
 </h2>
 <p class="comment">Returns a local look and feel if it was registered before.</p>
-<pre><code class="language-javascript line-numbers">ScriptSlider.createLocalLookAndFeel()</code></pre>
+<pre><code class="language-javascript line-numbers">ScriptSlider.createLocalLookAndFeel(ScriptContentComponent *contentComponent, Component *componentToRegister)</code></pre>
 <p><br><br></p>
 <h2 id="createmodifiers"><b>createModifiers</b>
 </h2>
@@ -303,6 +306,21 @@ Knob1.setModifiers(mods.TextInput, [mods.doubleClick, mods.noKeyModifier]);</cod
 <p class="comment">Sets the style Knob, Horizontal, Vertical.</p>
 <pre><code class="language-javascript line-numbers">ScriptSlider.setStyle(String style)</code></pre>
 <p><br><br></p>
+<h2 id="setstylesheetclass"><b>setStyleSheetClass</b>
+</h2>
+<p class="comment">Sets the given class selectors for the component stylesheet.</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.setStyleSheetClass( String classIds)</code></pre>
+<p><br><br></p>
+<h2 id="setstylesheetproperty"><b>setStyleSheetProperty</b>
+</h2>
+<p class="comment">Sets a variable for this component that can be queried from a style sheet.</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.setStyleSheetProperty( String variableId,  var value,  String type)</code></pre>
+<p><br><br></p>
+<h2 id="setstylesheetpseudostate"><b>setStyleSheetPseudoState</b>
+</h2>
+<p class="comment">Programatically sets a pseudo state (:hover, :active, :checked, :focus, :disabled) that will be used by the CSS renderer.</p>
+<pre><code class="language-javascript line-numbers">ScriptSlider.setStyleSheetPseudoState( String pseudoState)</code></pre>
+<p><br><br></p>
 <h2 id="settooltip"><b>setTooltip</b>
 </h2>
 <p class="comment">Shows a informative text on mouse hover.</p>
@@ -354,7 +372,7 @@ Knob1.setModifiers(mods.TextInput, [mods.doubleClick, mods.noKeyModifier]);</cod
 <span class="content-footer-right">Next: <a href="scripting/scripting-api/scriptsliderpack/index.html">ScriptSliderPack</a>
 </span>
 
-<p class="content-footer-metadata"><br><br></p>
+<p class="content-footer-metadata">Christoph Hart<br>30.07.2024<br></p>
 </div>
 
 			<!-- content end -->

@@ -106,10 +106,92 @@
 </tr>
 </table>
 <p><br></p>
+<h2 id="css-styling"><b>CSS Styling</b>
+</h2>
+<p>If you are using the table as a item list, you can style its appearance using the <code>scriptviewport</code>
+ class selector (or the ID selector <code>#ScriptViewport1</code>
+). With this selector, you can style the background of the entire component. In order to customize the individual components you can use these additional selectors:</p>
+<ul><li>for styling the items in the list, use the HTML tag selector for table rows <code>tr</code>
+. It supports <code>:hover</code>
+, <code>:active</code>
+ and <code>:checked</code>
+ pseudo states with the same concept as the Buttons (<code>:active</code>
+ is pressed and <code>:checked</code>
+ is selected)</li>
+<li>for styling the scrollbar use the HTML tag selector <code>scrollbar</code>
+. It also supports <code>:hover</code>
+ and <code>:active</code>
+ states.</li>
+</ul>
+<h3 id="example-stylesheet"><b>Example Stylesheet</b>
+</h3>
+<pre><code class="language-javascript line-numbers">const var vp = Content.addViewport("Viewport1", 10, 10);
+
+// set the properties so that it shows up as item list
+vp.set("useList", true);
+vp.set("height", 200);
+vp.set("bgColour", 0);
+vp.set("items", "Item1\nItem2\nItem3\nItem1\nItem2\nItem3\nItem1\nItem2\nItem3\n");
+
+const var laf = Content.createLocalLookAndFeel();
+
+laf.setInlineStyleSheet("
+/** Style the items in the list. */
+tr
+{
+	background-color: orange;
+	color: black;
+	text-align: left;
+	padding: 10px;
+	margin: 2px;
+	border-radius: 5px;
+	box-shadow: 0px 0px 2px black;
+}
+
+tr:hover
+{
+	background-color: color-mix(in rgba, orange 60%, white);
+	transition: background-color 0.3s ease-in-out;
+}
+
+/** On mouse down. */
+tr:active
+{
+	background: color-mix(in rgba, orange 40%, white);
+	margin: 3px;
+}
+
+/** If the row is selected. */
+tr:checked
+{
+	background: red;
+	font-weight: bold;
+	border: 3px solid rgba(255, 255,255, 0.4);
+}
+
+/** Style the scrollbar. */
+scrollbar
+{
+	background-color: orange;
+	
+	/** Defining the width overrides the scrollbarThickness property. */
+	width: 16px;
+	margin: 3px;
+	border-radius: 5px;
+}
+
+scrollbar:hover
+{
+	background-color: color-mix(in rgba, orange 60%, white);
+	transition: background-color 0.3s ease-in-out;
+}
+");
+
+vp.setLocalLookAndFeel(laf);</code></pre>
 <div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
 </span>
 
-<span class="content-footer-right">Next: <a href="ui-components/floating-tiles/index.html">Floating Tiles</a>
+<span class="content-footer-right">Next: <a href="ui-components/plugin-components/multipagedialog.html">Multipage Dialog</a>
 </span>
 
 <p class="content-footer-metadata">Christoph Hart<br>18.03.2019<br></p>
