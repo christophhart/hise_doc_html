@@ -119,6 +119,28 @@ arr.clear();
 
 Console.print(trace(arr)); // []</code></pre>
 <p><br></p>
+<h2 id="clone"><b>clone</b>
+</h2>
+<p class="comment">Creates a deep copy of the array.</p>
+<pre><code class="language-javascript line-numbers">Array.clone()</code></pre>
+<p><br>If you assign an array object<br>reference to another constant or variable, you're only setting the reference. Making any changes to the array B by referencing it will also make changes to array A. If you need a separate set of data to work on, you need to clone it. </p>
+<pre><code class="language-javascript line-numbers">const arr1 = [0, 1];
+
+var arr2 = arr1;
+
+// Changing any element in arr2 will also change it in arr1
+arr2[0] = 22;
+Console.print(trace(arr1)); // [22, 1]
+
+// Reset the element 0 back to 0
+arr1[0] = 0;
+
+// Cloning the array creates a new dataset in memory, separate from the original array
+arr2 = arr1.clone();
+Console.print(trace(arr1)); [0, 1]
+arr2[0] = 22;
+Console.print(trace(arr2)); [22, 1]</code></pre>
+<p>Because arrays in HISE are effectively objects (which is hinted at by them having a bunch of class methods we're looking at here), this method will also work with any other object, including JSON objects, component references etc.<br></p>
 <h2 id="concat"><b>concat</b>
 </h2>
 <p class="comment">Concatenates (joins) two or more arrays</p>
@@ -165,6 +187,16 @@ Console.print(trace(arr4)); // [5, 6, 7, 8, 9, 10, 11, 12, 13]</code></pre>
 Console.print(fruits.contains("banana")); // true
 Console.print(fruits.contains("grape"));  // false</code></pre>
 <p><br></p>
+<h2 id="every"><b>every</b>
+</h2>
+<p class="comment">Checks if all array elements pass a function test.</p>
+<pre><code class="language-javascript line-numbers">Array.every(var testFunction, var optionalThisObject)</code></pre>
+<p><br><br></p>
+<h2 id="filter"><b>filter</b>
+</h2>
+<p class="comment">Creates a new array filled with elements that pass the function test.</p>
+<pre><code class="language-javascript line-numbers">Array.filter(var testFunction, var optionalThisObject)</code></pre>
+<p><br><br></p>
 <h2 id="find"><b>find</b>
 </h2>
 <p class="comment">Returns the value of the first element that passes the function test.</p>
@@ -194,6 +226,16 @@ function findH()
 
 Console.print(findH()); // Hello</code></pre>
 <p><br></p>
+<h2 id="findindex"><b>findIndex</b>
+</h2>
+<p class="comment">Returns the index of the first element that passes the function test.</p>
+<pre><code class="language-javascript line-numbers">Array.findIndex(var testFunction, var optionalThisObject)</code></pre>
+<p><br><br></p>
+<h2 id="foreach"><b>forEach</b>
+</h2>
+<p class="comment">Calls a function for each element.</p>
+<pre><code class="language-javascript line-numbers">Array.forEach(var testFunction, var optionalThisObject)</code></pre>
+<p><br><br></p>
 <h2 id="indexof"><b>indexOf</b>
 </h2>
 <p class="comment">Searches the array and returns the first index.</p>
@@ -260,7 +302,52 @@ box.set("items", list.join("\n"));                // sets the list as items</cod
 </h2>
 <p class="comment">Creates a new array from calling a function for every array element.</p>
 <pre><code class="language-javascript line-numbers">Array.map(var testFunction, var optionalThisObject)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<p>This is useful if you want to perform an operation for every single element of an array by passing in a premade function. An alternative would be to use a <code>for(x in array)</code>
+ loop, but the map method allows for cleaner multidimensional processing.</p>
+<p>You need to pass in a function to be executed on each element of the array and an (optional) object that will be used as <code>this</code>
+ in the function call.</p>
+<p>The function can have up to three parameters:</p>
+<ol><li>the element</li>
+<li>the index of the element</li>
+<li>the full array</li>
+</ol>
+<p>and is supposed to return a value that will be added to the newly created array that is returned by the function:</p>
+<pre><code class="language-javascript line-numbers">function(element, index, array)
+{
+	return someValue;
+}</code></pre>
+<p>But you can omit the second and third parameter if you don't need it.</p>
+<pre><code class="language-javascript line-numbers">const arr1 = ["hello", 2, 3];
+
+arr1.map(function(element, index)
+{
+	Console.print(index + ": " + element);
+});
+
+// Output: 
+// Interface: 0: hello
+// Interface: 1: 2
+// Interface: 2: 3</code></pre>
+<p>The method returns an array of individual function returns. If no return exists, the element will be undefined/null.</p>
+<pre><code class="language-javascript line-numbers">const arr1 = [0, 1];
+
+const arr2 = arr1.map(function(element)
+{
+	return element + 10;
+});
+
+Console.print(trace(arr2)); // [10, 11]</code></pre>
+<p>In order to supply a object that you can reference through <code>this</code>
+ in the function call, use the second argument:</p>
+<pre><code class="language-javascript line-numbers">const test = 10;
+const arr1 = [0, 1];
+
+arr1.map(function(element)
+{
+	Console.print(test); // 10
+}, test);</code></pre>
+<p><br></p>
 <h2 id="pop"><b>pop</b>
 </h2>
 <p class="comment">Removes and returns the last element.</p>
@@ -309,17 +396,47 @@ Console.stop()</code></pre>
 </h2>
 <p class="comment">Adds the given element at the end and returns the size.</p>
 <pre><code class="language-javascript line-numbers">Array.pushIfNotAlreadyThere(var elementToInsert)</code></pre>
-<p><br><br></p>
+<p><br>The method will not add an element to an array if a matching element already exists inside the array.<br>If the argument is an element that already exists, the return will still be the first index beyond the end of an array (not an index of a first/any matching element).</p>
+<p>It is basically a short version of typing:</p>
+<pre><code class="language-javascript line-numbers">if(myArray.indexOf(someElement) == -1)
+	myArray.push(someElement);</code></pre>
+<pre><code class="language-javascript line-numbers">const arr1 = [0, 1];
+
+arr1.pushIfNotAlreadyThere(2);
+Console.print(trace(arr1)); // [0, 1, 2]
+
+// It won't add an element if it already exists in the array
+arr1.pushIfNotAlreadyThere(2);
+Console.print(trace(arr1)); // [0, 1, 2]
+
+arr1.pushIfNotAlreadyThere(1);
+Console.print(trace(arr1)); // [0, 1, 2]
+
+Console.print(arr1.pushIfNotAlreadyThere(1)); // 3</code></pre>
+<p><br></p>
 <h2 id="remove"><b>remove</b>
 </h2>
 <p class="comment">Removes all instances of the given element.</p>
 <pre><code class="language-javascript line-numbers">Array.remove(var elementToRemove)</code></pre>
-<p><br><br></p>
+<p><br>Note that this will search and remove the value you pass in as argument - if you want to remove an element at a certain index, use <a href="scripting/scripting-api/array/index.html#removeelement">Array.removeElement()</a>
+ instead.</p>
+<pre><code class="language-javascript line-numbers">const var arr1 = [1, 2, 3, 4, 2, 5,];
+arr1.remove(2);
+
+Console.print(trace(arr1)); // [1, 3, 4, 5]</code></pre>
+<p><br></p>
 <h2 id="removeelement"><b>removeElement</b>
 </h2>
 <p class="comment">Removes the element at the given position.</p>
 <pre><code class="language-javascript line-numbers">Array.removeElement(int index)</code></pre>
-<p><br><br></p>
+<p><br>Note that the argument you pass into this function is supposed to be the (zero-based) index in the array, in order to remove a(ll) element(s) by value, use <a href="scripting/scripting-api/array/index.html#remove">Array.remove()</a>
+ instead</p>
+<pre><code class="language-javascript line-numbers">const var arr1 = [1, 5, 3];
+Console.print(arr1[1]); // 5
+
+arr1.removeElement(1);
+Console.print(arr1[1]); // 3</code></pre>
+<p><br></p>
 <h2 id="reserve"><b>reserve</b>
 </h2>
 <p class="comment">Reserves the space needed for the given amount of elements.</p>
@@ -339,6 +456,12 @@ Console.print(array.length) // will print 65</code></pre>
 </h2>
 <p class="comment">Reverses the order of the elements in the array.</p>
 <pre><code class="language-javascript line-numbers">Array.reverse()</code></pre>
+<p><br><code>javascriptconst var arr1 = [1, 2, 3];arr1.reverse();Console.print(trace(arr1)); // [3, 2, 1]</code>
+<br></p>
+<h2 id="some"><b>some</b>
+</h2>
+<p class="comment">Checks if any array elements pass a function test.</p>
+<pre><code class="language-javascript line-numbers">Array.some(var testFunction, var optionalThisObject)</code></pre>
 <p><br><br></p>
 <h2 id="sort"><b>sort</b>
 </h2>
@@ -356,12 +479,27 @@ for(i in a)
     Console.print(i); 
 
 // Result: 1, 1, 2, 4, 6</code></pre>
-<p><br></p>
+<p class="comment">You can also customize the sorting by supplying a custom sort function with <a href="scripting/scripting-api/engine/index.html#sortwithfunction">Engine.sortWithFunction()</a>
+.<br></p>
 <h2 id="sortnatural"><b>sortNatural</b>
 </h2>
 <p class="comment">Sorts array of numbers, objects, or strings with "number in string" priority. Can also sort a combination of all types</p>
 <pre><code class="language-javascript line-numbers">Array.sortNatural()</code></pre>
-<p><br><br></p>
+<p><br>It puts arrays first in index order (doesn't sort them), followed by a mix of int, double and string variables. If a string starts with a number, it'll get thrown in the mix.</p>
+<p>JSON objects go last.</p>
+<pre><code class="language-javascript line-numbers">const var arr1 = [5.2, 3, "1", "17", 
+				  [4, 2], [1, 12], 
+				  "word", "with2", "3LittlePigs", 
+				  {"prop1": 12, "prop2": 55}];
+				  
+arr1.sortNatural();
+
+// [[4, 2], [1, 12], "1", 3, 
+// "3LittlePigs", 5.2, "17", 
+// {"prop1": 12, "prop2": 55} ]
+Console.print(trace(arr1));</code></pre>
+<p class="comment">You can also customize the sorting by supplying a custom sort function with <a href="scripting/scripting-api/engine/index.html#sortwithfunction">Engine.sortWithFunction()</a>
+.<br></p>
 <div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
 </span>
 

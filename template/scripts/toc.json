@@ -4677,6 +4677,12 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scripting/scripting-api/array/index.html#clone",
+                  "Title": "clone",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/array/index.html#concat",
                   "Title": "concat",
                   "Colour": "#D557D9",
@@ -4689,8 +4695,32 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scripting/scripting-api/array/index.html#every",
+                  "Title": "every",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/array/index.html#filter",
+                  "Title": "filter",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/array/index.html#find",
                   "Title": "find",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/array/index.html#findindex",
+                  "Title": "findIndex",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/array/index.html#foreach",
+                  "Title": "forEach",
                   "Colour": "#D557D9",
                   "Children": []
                 },
@@ -4763,6 +4793,12 @@ var rootDb = {
                 {
                   "URL": "scripting/scripting-api/array/index.html#reverse",
                   "Title": "reverse",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/array/index.html#some",
+                  "Title": "some",
                   "Colour": "#D557D9",
                   "Children": []
                 },
@@ -20123,6 +20159,12 @@ var rootDb = {
             {
               "URL": "tutorials/all/index.html#basicsynth",
               "Title": "BasicSynth",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/all/index.html#dynamic-plugin-parameters",
+              "Title": "Dynamic Plugin Parameters",
               "Colour": "#C5AC43",
               "Children": []
             },

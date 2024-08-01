@@ -4218,6 +4218,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "Array.clone()",
+    "url": "scripting/scripting-api/array/index.html#clone",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "Array.concat()",
     "url": "scripting/scripting-api/array/index.html#concat",
     "weight": 60,
@@ -4230,8 +4236,32 @@
     "color": "#D557D9"
   },
   {
+    "key": "Array.every()",
+    "url": "scripting/scripting-api/array/index.html#every",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "Array.filter()",
+    "url": "scripting/scripting-api/array/index.html#filter",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "Array.find()",
     "url": "scripting/scripting-api/array/index.html#find",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "Array.findIndex()",
+    "url": "scripting/scripting-api/array/index.html#findindex",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "Array.forEach()",
+    "url": "scripting/scripting-api/array/index.html#foreach",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -4304,6 +4334,12 @@
   {
     "key": "Array.reverse()",
     "url": "scripting/scripting-api/array/index.html#reverse",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "Array.some()",
+    "url": "scripting/scripting-api/array/index.html#some",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -17372,6 +17408,12 @@
   {
     "key": "All Snippets: BasicSynth",
     "url": "tutorials/all/index.html#basicsynth",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "All Snippets: Dynamic Plugin Parameters",
+    "url": "tutorials/all/index.html#dynamic-plugin-parameters",
     "weight": 70,
     "color": "#C5AC43"
   },
