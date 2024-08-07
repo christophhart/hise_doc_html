@@ -5180,6 +5180,12 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scripting/scripting-api/broadcaster/index.html#attachtointerfacesize",
+                  "Title": "attachToInterfaceSize",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/broadcaster/index.html#attachtomoduleparameter",
                   "Title": "attachToModuleParameter",
                   "Colour": "#D557D9",

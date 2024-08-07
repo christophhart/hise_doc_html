@@ -4686,6 +4686,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "Broadcaster.attachToInterfaceSize()",
+    "url": "scripting/scripting-api/broadcaster/index.html#attachtointerfacesize",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "Broadcaster.attachToModuleParameter()",
     "url": "scripting/scripting-api/broadcaster/index.html#attachtomoduleparameter",
     "weight": 60,

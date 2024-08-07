@@ -774,6 +774,15 @@ bc.addListener(Button1, "Menu callback", function(component, index)
 <p class="comment">Registers this broadcaster to be notified about changes to the EQ (adding / removing / selecting filter bands).</p>
 <pre><code class="language-javascript line-numbers">Broadcaster.attachToEqEvents(var moduleIds, var eventTypes, var optionalMetadata)</code></pre>
 <p><br><br></p>
+<h2 id="attachtointerfacesize"><b>attachToInterfaceSize</b>
+</h2>
+<p class="comment">Registers the broadcaster to be notified when the interface size changes.</p>
+<pre><code class="language-javascript line-numbers">Broadcaster.attachToInterfaceSize(var optionalMetadata)</code></pre>
+<p><br>This will call registered functions when you change the interface size using <code>Content.setHeight()</code>
+ or <code>Content.setWidth()</code>
+ (and once with the initial value from <code>Content.makeFrontInterface()</code>
+).</p>
+<p class="comment">Note that this will not be triggered when the scale factor of the UI changes.<br></p>
 <h2 id="attachtomoduleparameter"><b>attachToModuleParameter</b>
 </h2>
 <p class="comment">Registers this broadcaster to be notified when a module parameter changes.</p>
