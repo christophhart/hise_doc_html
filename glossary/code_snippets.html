@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="code-snippet-templates"><b>Code snippet templates</b>
+</h1>
+<p><br>This is a new feature of HISE 4.0.1 and gives you the ability to quickly insert commonly used code snippets. There are a few predefined snippets but you can also write your own definitions that suit your workflow / coding style using an easy JSON formatted list.</p>
+<h2 id="how-to-use-the-code-snippets"><b>How to use the code snippets</b>
+</h2>
+<p>Code snippets will show up in the autocomplete popup next to all other available items and when you select it, it will paste in the code and preselect the region selections defined by the snippet so you can quickly enter the values by cycling through the selection using the tab button.</p>
+<p>In order to check out the feature, just type in <code>inlin</code>
+, then select the <code>inline3 (...)</code>
+ template and press enter. It will create this code for you:</p>
+<pre><code class="language-javascript line-numbers">inline function functionName(args1, args2, args3)
+{
+	// body
+};</code></pre>
+<p>This particular template is setup so that it highlights the function name and the three argument IDs (just like the normal API method items will highlight the parameters). Enter the function name, press <code>TAB</code>
+, then the first argument, then <code>TAB</code>
+ again, etc.</p>
+<p>Another nice workflow of using templates is to select multiple occurences of the same variable name to customize more complex templates. As an example to this, check out the <code>for (...)</code>
+ template. If you select it, it will paste in this code:</p>
+<pre><code class="language-javascript line-numbers">for(LOOP_VAR = 0; LOOP_VAR < 10; LOOP_VAR++)
+{
+	// loop body
+}</code></pre>
+<p>and preselect all <code>LOOP_VAR</code>
+ occurrences (as well as the <code>// loop body</code>
+ comment). Now if you press <code>Ctrl+D</code>
+ two times it will select all <code>LOOP_VAR</code>
+ occurrences so you can replace it with something else (maybe <code>i</code>
+?) . As last step cycle through the selections until you selected the loop body and type away the code that belongs in that loop.</p>
+<h2 id="how-to-write-your-own-code-snippets"><b>How to write your own code snippets</b>
+</h2>
+<p>Using the factory snippets that come with HISE are only 50% of the awesomeness of this new feature so let's take a look at how to define your own snippets. HISE will dynamically load two JSON files from its app data directory:</p>
+<ol><li><code>hiseCodeSnippets.json</code>
+ - contain the factory snippets. This file is overriden each time that the autocomplete menu is being built so <b>DO NOT MAKE ANY CHANGES HERE!</b>
+.</li>
+<li><code>userCodeSnippets.json</code>
+ - is the list of "persistent" snippets defined by the user that you can use for your own snippets.</li>
+</ol>
+<p>So in order to add your snippets, load and edit the <code>userCodeSnippets.json</code>
+ file in a text editor, then save and rebuild the autocomplete menu. If you misspell anything or make a JSON formatting error, it will print out the error in the Console.</p>
+<p class="comment">The most robust way of triggering a autocomplete rebuild is to click on the <b>Goto Workspace</b>
+ button in the Module Tree as this will rebuild the editor window.</p>
+<h3 id="json-format"><b>JSON Format</b>
+</h3>
+<p>The JSON file is a list of objects that define a single template item. Each template item needs to define these properties:</p>
+<table><thead><td><b>Property </b>
+</td>
+<td><b>Type </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><code>name</code>
+ </td>
+<td>String </td>
+<td>The name as it will appear in the autocomplete list. Good practice is to append <code> (...)</code>
+ to it so you know that this is a snippet. </td>
+</tr>
+<tr><td><code>code</code>
+ </td>
+<td>String </td>
+<td>The code that will be inserted into the code editor when you press enter. See below for further details. </td>
+</tr>
+<tr><td><code>priority</code>
+ </td>
+<td>int </td>
+<td>a number that lets you move the template to the top (big number) or to the bottom (small number) of the list. </td>
+</tr>
+<tr><td><code>language</code>
+ </td>
+<td>String </td>
+<td>A language ID that will be used by HISE to determine whether to use that item in the particular context (so you can filter templates by the language of the editor). Must be one of the predefined items: <code>"HiseScript"</code>
+, <code>"SNEX"</code>
+, <code>"GLSL"</code>
+ or <code>"Faust"</code>
+.<br>Omit this property (or use an empty string to use the template in all contexts). </td>
+</tr>
+<tr><td><code>description</code>
+ </td>
+<td>String </td>
+<td>A markdown formatted string that will show up as explanation when you select the item in the autocomplete list. </td>
+</tr>
+</table>
+<h3 id="code-format"><b>Code format</b>
+</h3>
+<p>Now for the <code>code</code>
+ property that defines what will be inserted into the code editor there are a few rules:</p>
+<h4 id="use-escaped-strings-so-that-everything-goes-into-one-line"><b>Use escaped strings so that everything goes into one line</b>
+</h4>
+<p>If you want to paste in complex snippets, use the escape character for special characters (whitespaces and quotes). Eg. this snippet:</p>
+<pre><code class="language-javascript line-numbers">function()
+{
+	something("MyValue");
+};</code></pre>
+<p>would be</p>
+<pre><code class="language-javascript line-numbers">{
+  "code": "function()\n{\n\tsomething(\"MyValue\");\n};\n"	
+}</code></pre>
+<h4 id="use-the-$-character-to-define-preselected-regions"><b>Use the </b>
+<b>$</b>
+<b> character to define preselected regions</b>
+</h4>
+<p>In order to make the most out of your snippets, you will need to define regions that the code editor will preselect after the insertion. In order to do so, just use the <code>$</code>
+ character to define the start and end of the preselected region.</p>
+<pre><code class="language-javascript line-numbers">function myFunction($args1$, $args2$)
+                     -----    -----</code></pre>
+<p>When parsing the template, HISE will then remove the <code>$</code>
+ parser and create the selection regions.</p>
+<p class="comment">Obviously this means that there must be an even number of <code>$</code>
+ characters in the code string.</p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="glossary/crash-reporting.html">Crash reporting</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>10.09.2024<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

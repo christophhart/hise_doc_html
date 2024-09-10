@@ -678,6 +678,18 @@
     "color": "#DEB887"
   },
   {
+    "key": "File: Show HISE App data folder folder in Explorer",
+    "url": "working-with-hise/menu-reference/file/index.html#show-hise-app-data-folder-folder-in-explorer",
+    "weight": 60,
+    "color": "#DEB887"
+  },
+  {
+    "key": "File: Show Project App Data folder in Explorer",
+    "url": "working-with-hise/menu-reference/file/index.html#show-project-app-data-folder-in-explorer",
+    "weight": 60,
+    "color": "#DEB887"
+  },
+  {
     "key": "File: Show snippet browser",
     "url": "working-with-hise/menu-reference/file/index.html#show-snippet-browser",
     "weight": 60,
@@ -3122,12 +3134,6 @@
   {
     "key": "HISE Floating tiles: Note",
     "url": "ui-components/floating-tiles/hise/note.html",
-    "weight": 60,
-    "color": "#9064FF"
-  },
-  {
-    "key": "HISE Floating tiles: RLottieDevPanel",
-    "url": "ui-components/floating-tiles/hise/rlottiedevpanel.html",
     "weight": 60,
     "color": "#9064FF"
   },
@@ -17070,6 +17076,12 @@
     "color": "#BD6F50"
   },
   {
+    "key": "Glossary: Code snippet templates",
+    "url": "glossary/code_snippets.html",
+    "weight": 80,
+    "color": "#BD6F50"
+  },
+  {
     "key": "Glossary: Crash reporting",
     "url": "glossary/crash-reporting.html",
     "weight": 80,
@@ -17162,6 +17174,18 @@
   {
     "key": "Add UI customisations: Add the documentation",
     "url": "glossary/add_custom_laf.html#add-the-documentation",
+    "weight": 70,
+    "color": "#BD6F50"
+  },
+  {
+    "key": "Code snippet templates: How to use the code snippets",
+    "url": "glossary/code_snippets.html#how-to-use-the-code-snippets",
+    "weight": 70,
+    "color": "#BD6F50"
+  },
+  {
+    "key": "Code snippet templates: How to write your own code snippets",
+    "url": "glossary/code_snippets.html#how-to-write-your-own-code-snippets",
     "weight": 70,
     "color": "#BD6F50"
   },
@@ -17642,6 +17666,12 @@
   {
     "key": "Scriptnode Snippets: Stereo Widener",
     "url": "tutorials/scriptnode/index.html#stereo-widener",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "UI Snippets: Expandable GUI",
+    "url": "tutorials/ui/index.html#expandable-gui",
     "weight": 70,
     "color": "#C5AC43"
   },

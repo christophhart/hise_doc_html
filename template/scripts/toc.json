@@ -955,6 +955,18 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "working-with-hise/menu-reference/file/index.html#show-hise-app-data-folder-folder-in-explorer",
+                  "Title": "Show HISE App data folder folder in Explorer",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
+                  "URL": "working-with-hise/menu-reference/file/index.html#show-project-app-data-folder-in-explorer",
+                  "Title": "Show Project App Data folder in Explorer",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
                   "URL": "working-with-hise/menu-reference/file/index.html#show-snippet-browser",
                   "Title": "Show snippet browser",
                   "Colour": "#DEB887",
@@ -3675,12 +3687,6 @@ var rootDb = {
                 {
                   "URL": "ui-components/floating-tiles/hise/note.html",
                   "Title": "Note",
-                  "Colour": "#9064FF",
-                  "Children": []
-                },
-                {
-                  "URL": "ui-components/floating-tiles/hise/rlottiedevpanel.html",
-                  "Title": "RLottieDevPanel",
                   "Colour": "#9064FF",
                   "Children": []
                 },
@@ -19110,6 +19116,49 @@ var rootDb = {
           ]
         },
         {
+          "URL": "glossary/code_snippets.html",
+          "Title": "Code snippet templates",
+          "Colour": "#BD6F50",
+          "Children": [
+            {
+              "URL": "glossary/code_snippets.html#how-to-use-the-code-snippets",
+              "Title": "How to use the code snippets",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/code_snippets.html#how-to-write-your-own-code-snippets",
+              "Title": "How to write your own code snippets",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/code_snippets.html#json-format",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/code_snippets.html#code-format",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/code_snippets.html#use-escaped-strings-so-that-everything-goes-into-one-line",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/code_snippets.html#use-the-$-character-to-define-preselected-regions",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            }
+          ]
+        },
+        {
           "URL": "glossary/crash-reporting.html",
           "Title": "Crash reporting",
           "Colour": "#BD6F50",
@@ -20431,6 +20480,12 @@ var rootDb = {
           "Title": "UI Snippets",
           "Colour": "#C5AC43",
           "Children": [
+            {
+              "URL": "tutorials/ui/index.html#expandable-gui",
+              "Title": "Expandable GUI",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
             {
               "URL": "tutorials/ui/index.html#glsl-morphball",
               "Title": "GLSL MorphBall",
