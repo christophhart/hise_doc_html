@@ -41,13 +41,27 @@
 		<div class="content"><h1 id="polyphonic-script-fx"><b>Polyphonic Script FX</b>
 </h1>
 <p>Type ID: <code>PolyScriptFX</code>
-<br></p>
+<br>Interface classes: <a href="scriptnode/manual/glossary.html#voiceresetter">VoiceResetter</a>
+ </p>
 <p class="comment"><b>A polyphonic scriptable audio effect.</b>
 <br></p>
 <img src="images/module_screenshot_polyscriptfx.png"></img>
 <p><br></p>
 <p>Create a polyphonic Script FX with <a href="scriptnode/index.html">Scriptnode</a>
 .</p>
+<p>The Polyphonic Script FX is the <a href="scriptnode/manual/glossary.html#polyphony">polyphonic</a>
+ version of the scriptnode FX module which allows per-voice effect processing.</p>
+<p>If you load a DspNetwork in a polyphonic module, it will use the polyphonic version of every node (if available / applicable). Furthermore, it will reset the processing state before each voice is being rendered (eg. clearing out filter coefficients & resetting the state of any rampers).</p>
+<p>You can also compile DspNetworks to be used as a polyphonic C++ class in its hardcoded counterpart, the <a href="hise-modules/effects/list/hardcodedpolyphonicfx.html">HardcodedPolyphonicFX</a>
+.</p>
+<h3 id="voice-management"><b>Voice Management</b>
+</h3>
+<p>Although this module is named <b>FX</b>
+ it can also be used as a sound generator. This gets especially interesting in combination with the spurious <a href="hise-modules/sound-generators/list/silentsynth.html">SilentSynth</a>
+ module to build multichannel / dynamic sound generators. Therefore this module has the functionality of the <a href="scriptnode/manual/glossary.html#voiceresetter">VoiceResetter</a>
+ class which allows you to keep voices alive until you send a voice reset message from inside your network.</p>
+<p class="comment">Note that this behaviour is toggled with the <code>HasTail</code>
+ flag of the loaded network and if it is enabled (which is the unlucky default value when you create a new DspNetwork), then the voice will not be killed which leads to a stackup of voices. So if you use the polyphonic FX module, either use it without this flag or make sure to use a voice-management node inside the network.</p>
 <div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
 </span>
 

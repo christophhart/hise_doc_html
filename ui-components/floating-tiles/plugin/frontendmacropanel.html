@@ -63,6 +63,62 @@
 </table>
 <p><br>A list of all connected macro parameters. You have to enable the the functionality with <a href="scripting/scripting-api/engine/index.html#setfrontendmacros">Engine.setFrontendMacros</a>
 .</p>
+<p>This is the most convenient way of giving the user full control over the macro control assignments, but you can roll your own management solution using the <a href="scripting/scripting-api/macrohandler/index.html">Macrohandler</a>
+ Scripting API class that lets you manipulate the macro connections through a JSON object.</p>
+<h2 id="css-styling"><b>CSS Styling</b>
+</h2>
+<p>The FrontEndMacroPanel can also be styled using the CSS renderer. This allows a far more in-depth customization than the scripted look and feel. In order to use the CSS renderer, register a LookAndFeel with a stylesheet to the FloatingTile and define the following selectors:</p>
+<table><thead><td><b>Selector </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><code>table</code>
+ </td>
+<td>Draws the background of the entire table. It also uses the <code>margin</code>
+ and <code>padding</code>
+ properties for positioning </td>
+</tr>
+<tr><td><code>th</code>
+ </td>
+<td>Draws the cells of the table header. Use the pseudo states <code>:first-child</code>
+ and <code>last-child</code>
+ to style the edges </td>
+</tr>
+<tr><td><code>tr</code>
+ </td>
+<td>Draws the background of a table row. </td>
+</tr>
+<tr><td><code>td</code>
+ </td>
+<td>Draws the content of a table cell (in this case the text of the first two columns). </td>
+</tr>
+<tr><td><code>button</code>
+ </td>
+<td>Renders the Inverted button. Use the <code>width</code>
+ property to change the size of the button column. </td>
+</tr>
+<tr><td><code>.range-slider</code>
+ </td>
+<td>Renders the range sliders. Use the <code>width</code>
+ property to change the size of the button column. </td>
+</tr>
+<tr><td><code>scrollbar</code>
+ </td>
+<td>Render the scrollbar that appears when the number of rows exceed the table height. </td>
+</tr>
+</table>
+<h3 id="layouting"><b>Layouting</b>
+</h3>
+<p>In addition to the UI rendering, the CSS stylesheets will also be used for determining the positions & size of each element:</p>
+<ul><li>the table header height is determined by the height of the <code>th</code>
+ element which takes the font height & vertical margin / padding into account</li>
+<li>the table row height is determined by the height of the <code>td</code>
+ element which takes the font height & vertical margin / padding into account</li>
+<li>the table column widths are determined by the width of the text of the header or cell and the horizontal margin / padding. Note that the second column (with the parameter target ID) is supposed to be stretched to fill the remaining size while the other columns are fix-sized depending on the width of the text or the UI element</li>
+</ul>
+<p class="comment">Note that the styling of this component is 100% identical to the styling of the <a href="ui-components/floating-tiles/plugin/midilearnpanel.html">MidiLearnPanel</a>
+.</p>
 <div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
 </span>
 

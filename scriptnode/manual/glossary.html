@@ -122,6 +122,21 @@
 <p>Scriptnode has a inbuilt concept of polyphony - nodes which have a "state" exist in two versions: a monophonic one and a polyphonic one with a "state" per voice. As soon as you create a DSP Network in a polyphonic script module, it will create the polyphonic version and use HISE's voice management system to handle the polyphonic states automatically. </p>
 <p class="comment">A polyphonic node will always have the suffix <code>[poly]</code>
  in its header. This is a quick way to see which nodes have a polyphonic state.</p>
+<h2 id="voiceresetter"><b>VoiceResetter</b>
+</h2>
+<p>A voice resetter is an interface class for HISE modules that give them the power to keep voices alive and kill them if they have finished playing. Whenever you try to implement a sound generating algorithm in scriptnode to create your own polyphonic synthesiser, you will have to send a message to the HISE voice management system when your voice should stop playing. This task is usually performed by either the <a href="scriptnode/list/envelope/voice_manager.html">envelope.voice_manager</a>
+ node or the <a href="scriptnode/list/envelope/silent_killer.html">envelope.silent_killer</a>
+ node. Then on the "HISE" side (always think of scriptnode as black box when it comes to communication with the rest of your project), you will need a module that has the ability of killing voices which will pick up the message from these nodes and perform the voice reset so that your voice count doesn't explode.</p>
+<p>There are multiple modules which offer this feature, some just offer that functionality as isolated purpose (the <a href="hise-modules/modulators/envelopes/list/scriptnodevoicekiller.html">Scriptnode Voice Killer</a>
+) and some modules have this function built in (eg. the <a href="hise-modules/modulators/envelopes/list/scriptenvelopemodulator.html">Script Envelope Modulator</a>
+) or the <a href="hise-modules/effects/list/polyscriptfx.html">Polyphonic Script FX</a>
+. The patch browser will show a little panic button in the coloured icon for every module that has an active voice-reset functionality:</p>
+<img src="hise-modules/modulators/envelopes/list/scriptnodevoicekiller.html"></img>
+<p class="comment">Note that the polyphonic script FX <b>can</b>
+ have that functionality enabled (it's tied to the <code>HasTail</code>
+ property of the loaded network). If the panic button is greyed out, then it won't act as voice resetter. Note that if the <code>HasTail</code>
+ flag is set in polyphonic effects they will keep the voice alive unless you add a voice-management node in there which might result in voice leaks as discussed <a href="https://github.com/christophhart/HISE/issues/564">here</a>
+</p>
 <div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
 </span>
 

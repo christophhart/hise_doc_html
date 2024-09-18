@@ -678,8 +678,8 @@
     "color": "#DEB887"
   },
   {
-    "key": "File: Show HISE App data folder folder in Explorer",
-    "url": "working-with-hise/menu-reference/file/index.html#show-hise-app-data-folder-folder-in-explorer",
+    "key": "File: Show HISE App data folder in Explorer",
+    "url": "working-with-hise/menu-reference/file/index.html#show-hise-app-data-folder-in-explorer",
     "weight": 60,
     "color": "#DEB887"
   },
@@ -1518,6 +1518,12 @@
     "color": "#DEB887"
   },
   {
+    "key": "Development: Default Project Folder",
+    "url": "working-with-hise/settings/development.html#default-project-folder",
+    "weight": 60,
+    "color": "#DEB887"
+  },
+  {
     "key": "Development: Enable Callstack",
     "url": "working-with-hise/settings/development.html#enable-callstack",
     "weight": 60,
@@ -1616,6 +1622,12 @@
   {
     "key": "Development: Enable Shader Line Numbers",
     "url": "working-with-hise/settings/development.html#enable-shader-line-numbers",
+    "weight": 60,
+    "color": "#DEB887"
+  },
+  {
+    "key": "Development: Show Welcome Screen",
+    "url": "working-with-hise/settings/development.html#show-welcome-screen",
     "weight": 60,
     "color": "#DEB887"
   },
@@ -3192,12 +3204,6 @@
     "color": "#9064FF"
   },
   {
-    "key": "HISE Floating tiles: ModuleBrowser",
-    "url": "ui-components/floating-tiles/hise/modulebrowser.html",
-    "weight": 60,
-    "color": "#9064FF"
-  },
-  {
     "key": "HISE Floating tiles: PatchBrowser",
     "url": "ui-components/floating-tiles/hise/patchbrowser.html",
     "weight": 60,
@@ -3642,8 +3648,8 @@
     "color": "#D557D9"
   },
   {
-    "key": "Script Panel: Context menus (aka Popup Menu)",
-    "url": "scripting/scripting-in-hise/scriptpanel.html#context-menus-aka-popup-menu",
+    "key": "Script Panel: Context Menus",
+    "url": "scripting/scripting-in-hise/scriptpanel.html#context-menus",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -7614,6 +7620,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "GlobalCable.deregisterCallback()",
+    "url": "scripting/scripting-api/globalcable/index.html#deregistercallback",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "GlobalCable.getValue()",
     "url": "scripting/scripting-api/globalcable/index.html#getvalue",
     "weight": 60,
@@ -7682,6 +7694,12 @@
   {
     "key": "GlobalRoutingManager.getEventData()",
     "url": "scripting/scripting-api/globalroutingmanager/index.html#geteventdata",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "GlobalRoutingManager.removeOSCCallback()",
+    "url": "scripting/scripting-api/globalroutingmanager/index.html#removeosccallback",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -15114,6 +15132,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "Unlocker.contains()",
+    "url": "scripting/scripting-api/unlocker/index.html#contains",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "Unlocker.getLicenseKeyFile()",
     "url": "scripting/scripting-api/unlocker/index.html#getlicensekeyfile",
     "weight": 60,
@@ -15494,6 +15518,12 @@
   {
     "key": "Scriptnode Glossary: Polyphony",
     "url": "scriptnode/manual/glossary.html#polyphony",
+    "weight": 60,
+    "color": "#F15761"
+  },
+  {
+    "key": "Scriptnode Glossary: VoiceResetter",
+    "url": "scriptnode/manual/glossary.html#voiceresetter",
     "weight": 60,
     "color": "#F15761"
   },

@@ -955,8 +955,8 @@ var rootDb = {
                   "Children": []
                 },
                 {
-                  "URL": "working-with-hise/menu-reference/file/index.html#show-hise-app-data-folder-folder-in-explorer",
-                  "Title": "Show HISE App data folder folder in Explorer",
+                  "URL": "working-with-hise/menu-reference/file/index.html#show-hise-app-data-folder-in-explorer",
+                  "Title": "Show HISE App data folder in Explorer",
                   "Colour": "#DEB887",
                   "Children": []
                 },
@@ -1833,6 +1833,12 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "working-with-hise/settings/development.html#default-project-folder",
+                  "Title": "Default Project Folder",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
                   "URL": "working-with-hise/settings/development.html#enable-callstack",
                   "Title": "Enable Callstack",
                   "Colour": "#DEB887",
@@ -1931,6 +1937,12 @@ var rootDb = {
                 {
                   "URL": "working-with-hise/settings/development.html#enable-shader-line-numbers",
                   "Title": "Enable Shader Line Numbers",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
+                  "URL": "working-with-hise/settings/development.html#show-welcome-screen",
+                  "Title": "Show Welcome Screen",
                   "Colour": "#DEB887",
                   "Children": []
                 },
@@ -3165,6 +3177,18 @@ var rootDb = {
                   "Colour": "#3A6666",
                   "Children": [
                     {
+                      "URL": "hise-modules/effects/list/hardcodedpolyphonicfx.html#additional-modulation-slots",
+                      "Title": "",
+                      "Colour": "#3A6666",
+                      "Children": []
+                    },
+                    {
+                      "URL": "hise-modules/effects/list/hardcodedpolyphonicfx.html#voice-management",
+                      "Title": "",
+                      "Colour": "#3A6666",
+                      "Children": []
+                    },
+                    {
                       "URL": "hise-modules/effects/list/hardcodedpolyphonicfx.html#parameters",
                       "Title": "Parameters",
                       "Colour": "#3A6666",
@@ -3242,6 +3266,12 @@ var rootDb = {
                   "Title": "Polyphonic Script FX",
                   "Colour": "#3A6666",
                   "Children": [
+                    {
+                      "URL": "hise-modules/effects/list/polyscriptfx.html#voice-management",
+                      "Title": "",
+                      "Colour": "#3A6666",
+                      "Children": []
+                    },
                     {
                       "URL": "hise-modules/effects/list/polyscriptfx.html#parameters",
                       "Title": "Parameters",
@@ -3741,12 +3771,6 @@ var rootDb = {
                 {
                   "URL": "ui-components/floating-tiles/hise/unuseddspnodelist.html",
                   "Title": "UnusedDspNodeList",
-                  "Colour": "#9064FF",
-                  "Children": []
-                },
-                {
-                  "URL": "ui-components/floating-tiles/hise/modulebrowser.html",
-                  "Title": "ModuleBrowser",
                   "Colour": "#9064FF",
                   "Children": []
                 },
@@ -4501,8 +4525,8 @@ var rootDb = {
                   "Children": []
                 },
                 {
-                  "URL": "scripting/scripting-in-hise/scriptpanel.html#context-menus-aka-popup-menu",
-                  "Title": "Context menus (aka Popup Menu)",
+                  "URL": "scripting/scripting-in-hise/scriptpanel.html#context-menus",
+                  "Title": "Context Menus",
                   "Colour": "#D557D9",
                   "Children": []
                 },
@@ -8283,6 +8307,12 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scripting/scripting-api/globalcable/index.html#deregistercallback",
+                  "Title": "deregisterCallback",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/globalcable/index.html#getvalue",
                   "Title": "getValue",
                   "Colour": "#D557D9",
@@ -8358,6 +8388,12 @@ var rootDb = {
                 {
                   "URL": "scripting/scripting-api/globalroutingmanager/index.html#geteventdata",
                   "Title": "getEventData",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/globalroutingmanager/index.html#removeosccallback",
+                  "Title": "removeOSCCallback",
                   "Colour": "#D557D9",
                   "Children": []
                 },
@@ -16146,6 +16182,12 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scripting/scripting-api/unlocker/index.html#contains",
+                  "Title": "contains",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/unlocker/index.html#getlicensekeyfile",
                   "Title": "getLicenseKeyFile",
                   "Colour": "#D557D9",
@@ -16623,6 +16665,12 @@ var rootDb = {
                 {
                   "URL": "scriptnode/manual/glossary.html#polyphony",
                   "Title": "Polyphony",
+                  "Colour": "#F15761",
+                  "Children": []
+                },
+                {
+                  "URL": "scriptnode/manual/glossary.html#voiceresetter",
+                  "Title": "VoiceResetter",
                   "Colour": "#F15761",
                   "Children": []
                 }

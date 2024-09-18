@@ -42,11 +42,31 @@
 </h1>
 <p>Type ID: <code>HardcodedPolyphonicFX</code>
 <br>Interface classes: <a href="scripting/scripting-api/routingmatrix/index.html">RoutingMatrix</a>
-<br></p>
+ <a href="scriptnode/manual/glossary.html#voiceresetter">VoiceResetter</a>
+ </p>
 <p class="comment"><b>Select a compiled polyphonic DSP Network to process it in the effect chain.</b>
 <br></p>
 <img src="images/module_screenshot_hardcodedpolyphonicfx.png"></img>
 <p><br></p>
+<p>This module can load compiled networks with the <code>AllowPolyphonic</code>
+ flag and process voice-based DSP algorithms. It is the hardcoded counterpart of the <a href="hise-modules/effects/list/polyscriptfx.html">Polyphonic Script FX</a>
+.</p>
+<p>In order to use this module, you need to compile at least one network with the <code>AllowPolyphonic</code>
+ flag set to true, then select it in the drop down menu (or call the Scripting API method <a href="scripting/scripting-api/slotfx/index.html#seteffect">SlotFX.setEffect()</a>
+ if you want to do that programmatically).</p>
+<p class="comment">Be aware that unlike the dynamic scriptnode modules, the hardcoded / compiled versions expect a static channel count so make sure that the <code>CompileChannelAmount</code>
+ property of the network matches the actual channel configuration.</p>
+<h3 id="additional-modulation-slots"><b>Additional modulation slots</b>
+</h3>
+<p>Besides a considerable boost in CPU performance, using the hardcoded module gives you the ability of modulating the first parameters of your effect with a dedicated modulation chain that you can fill with HISE moduleators (velocity, AHDSR, etc). This feature is deactivated by default, but you can recompile HISE with the preprocessor <code>NUM_HARDCODED_POLY_FX_MODS</code>
+ set to the number of modulation slots you need. This is a global property, so if you want to control the first three parameters of each hardcoded poly FX with a modulation chain, recompile HISE with <code>NUM_HARDCODED_POLY_FX_MODS=3</code>
+.</p>
+<p class="comment">Obviously you will need to put that preprocessor also in your <b>ExtraDefinition</b>
+ fields of your project so it will be picked up when exporting your plugin.</p>
+<h3 id="voice-management"><b>Voice management</b>
+</h3>
+<p>Just like the polyphonic script FX, this module can manage the voice logic of HISE. Read more about this topic <a href="hise-modules/effects/list/polyscriptfx.html#voice-management">here</a>
+.</p>
 <div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
 </span>
 
