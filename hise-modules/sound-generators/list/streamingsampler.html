@@ -195,6 +195,78 @@ obj.SkipLatency = true;
 
 // Update the options
 Sampler.setTimestretchOptions(obj);</code></pre>
+<h2 id="release-start"><b>Release Start</b>
+</h2>
+<img src="images/custom/releasestart.png"></img>
+<p>This is a new feature in HISE 4.1.0 and allows you to use the natural trail of a sustain sample as release sample without having to chop the sample and setup a second sampler with the release trigger logic. You can enable this by setting the <b>ReleaseStart</b>
+ value to a non-zero value. If that is the case, then the sample will be played normally, but as soon as you release the key, it will seek to the position you specified and play it back until the end. This works with disk-streaming, HLAC multimics & loops so it can be used in any configuration that you run the sampler with. Note that for performance reasons, HISE tries to deactivate the entire logic until at least a single sample of a samplemap uses this feature, then it assumes that all samples use this feature. Also the memory usage will be increased as it requires another preload buffer for each sample at the release position.</p>
+<p class="comment">If you use that feature make sure to use a gain envelope with a long release time as the envelope release will fade out the release trail otherwise.</p>
+<p>The native implementation of this features direct into the streaming engine allows special modes that improve the smoothness of the fade between sustain part & release trail. You can specify the length of the fade, the gamma curve as well as whether it should apply gain matching to reduce the volume bump.</p>
+<h3 id="release-start-options"><b>Release Start Options</b>
+</h3>
+<p>The interface to setting the release start options is the same as the time stretching algorithm: There is no UI, instead you need to query and set a JSON object that define the settings using the <a href="scripting/scripting-api/sampler#setreleasestartoptions">scripting API</a>
+.</p>
+<table><thead><td><b>Property </b>
+</td>
+<td><b>Type </b>
+</td>
+<td><b>Default </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><code>ReleaseFadeTime</code>
+ </td>
+<td><code>int</code>
+ </td>
+<td><code>4096</code>
+ </td>
+<td>The fade time in samples. The sample rate is derived from the sample not the audio processing rate. </td>
+</tr>
+<tr><td><code>FadeGamma</code>
+ </td>
+<td><code>float</code>
+ </td>
+<td><code>1.0</code>
+ </td>
+<td>The gamma curve for the fade. <code>1.0</code>
+ means linear and other values will create a curve using the <code>output = Math.pow(input, gamma)</code>
+ formula. The values for the gamma curve must lie between <code>0.125</code>
+ and <code>4.0</code>
+ </td>
+</tr>
+<tr><td><code>UseAscendingZeroCrossing</code>
+ </td>
+<td><code>bool</code>
+ </td>
+<td><code>false</code>
+ </td>
+<td>if true, then the start of the fade will wait until the sample goes through the next positive zero crossing (from negative to positive). If you set the release start position correctly (also a positive zero crossing), then it makes sure that the start of the fade is phase-aligned. </td>
+</tr>
+<tr><td><code>GainMatchingMode</code>
+ </td>
+<td><code>String</code>
+ </td>
+<td><code>None</code>
+ </td>
+<td>This setting will define how the sample tries to blend the fade between sustain and release phase. These options are available: <code>["None", "Volume", "Offset"]</code>
+. <b>Volume</b>
+ will monitor the peaks of the sample while playing back, and then apply a constant gain factor to the release tail to match the current volume. <b>Offset</b>
+ will jump into the release tail to skip the louder part if the current gain is low (coming soon). </td>
+</tr>
+<tr><td><code>PeakSmoothing</code>
+ </td>
+<td><code>float</code>
+ </td>
+<td><code>0.96</code>
+ </td>
+<td>The filter coefficient for smoothing the volume detection of the currently playing sample. This <b>must</b>
+ be a number below 1.0 and the higher the number the slower the max peak will change. </td>
+</tr>
+</table>
+<p>Do you remember when I told you that there is no UI? I was lying. There is in fact a popup window that allows you to change the values of the setting properties on the fly (in the sample editor, next to the loop improve icon):</p>
+<img src="images/custom/releasestartpopup.png"></img>
+<p>This allows you to check different options quicker during development, but remember that in order to make persistent setting changes, you will still have to use the API call (but there's a quick shortcut that creates the script lines for you in the popup).</p>
 <h2 id="compress-and-export"><b>Compress and Export</b>
 </h2>
 <h3 id="export-to-hlac-(monolith)"><b>Export to HLAC (Monolith)</b>

@@ -2177,6 +2177,18 @@ var rootDb = {
                       "Children": []
                     },
                     {
+                      "URL": "hise-modules/sound-generators/list/streamingsampler.html#release-start",
+                      "Title": "Release Start",
+                      "Colour": "#414141",
+                      "Children": []
+                    },
+                    {
+                      "URL": "hise-modules/sound-generators/list/streamingsampler.html#release-start-options",
+                      "Title": "",
+                      "Colour": "#414141",
+                      "Children": []
+                    },
+                    {
                       "URL": "hise-modules/sound-generators/list/streamingsampler.html#compress-and-export",
                       "Title": "Compress and Export",
                       "Colour": "#414141",
@@ -10872,6 +10884,12 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scripting/scripting-api/sampler/index.html#getreleasestartoptions",
+                  "Title": "getReleaseStartOptions",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/sampler/index.html#getrrgroupsformessage",
                   "Title": "getRRGroupsForMessage",
                   "Colour": "#D557D9",
@@ -11024,6 +11042,12 @@ var rootDb = {
                 {
                   "URL": "scripting/scripting-api/sampler/index.html#setmultigroupindexforeventid",
                   "Title": "setMultiGroupIndexForEventId",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/sampler/index.html#setreleasestartoptions",
+                  "Title": "setReleaseStartOptions",
                   "Colour": "#D557D9",
                   "Children": []
                 },

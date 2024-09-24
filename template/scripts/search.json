@@ -1866,6 +1866,12 @@
     "color": "#414141"
   },
   {
+    "key": "Sampler: Release Start",
+    "url": "hise-modules/sound-generators/list/streamingsampler.html#release-start",
+    "weight": 50,
+    "color": "#414141"
+  },
+  {
     "key": "Sampler: Compress and Export",
     "url": "hise-modules/sound-generators/list/streamingsampler.html#compress-and-export",
     "weight": 50,
@@ -10032,6 +10038,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "Sampler.getReleaseStartOptions()",
+    "url": "scripting/scripting-api/sampler/index.html#getreleasestartoptions",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "Sampler.getRRGroupsForMessage()",
     "url": "scripting/scripting-api/sampler/index.html#getrrgroupsformessage",
     "weight": 60,
@@ -10184,6 +10196,12 @@
   {
     "key": "Sampler.setMultiGroupIndexForEventId()",
     "url": "scripting/scripting-api/sampler/index.html#setmultigroupindexforeventid",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "Sampler.setReleaseStartOptions()",
+    "url": "scripting/scripting-api/sampler/index.html#setreleasestartoptions",
     "weight": 60,
     "color": "#D557D9"
   },
