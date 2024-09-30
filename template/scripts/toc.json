@@ -1947,6 +1947,12 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "working-with-hise/settings/development.html#global-hise-scale-factor",
+                  "Title": "Global Hise Scale Factor",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
                   "URL": "working-with-hise/settings/development.html#doc-repository",
                   "Title": "Doc Repository",
                   "Colour": "#DEB887",
@@ -3729,6 +3735,12 @@ var rootDb = {
                 {
                   "URL": "ui-components/floating-tiles/hise/note.html",
                   "Title": "Note",
+                  "Colour": "#9064FF",
+                  "Children": []
+                },
+                {
+                  "URL": "ui-components/floating-tiles/hise/rlottiedevpanel.html",
+                  "Title": "RLottieDevPanel",
                   "Colour": "#9064FF",
                   "Children": []
                 },

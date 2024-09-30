@@ -1632,6 +1632,12 @@
     "color": "#DEB887"
   },
   {
+    "key": "Development: Global Hise Scale Factor",
+    "url": "working-with-hise/settings/development.html#global-hise-scale-factor",
+    "weight": 60,
+    "color": "#DEB887"
+  },
+  {
     "key": "Development: Doc Repository",
     "url": "working-with-hise/settings/development.html#doc-repository",
     "weight": 60,
@@ -3152,6 +3158,12 @@
   {
     "key": "HISE Floating tiles: Note",
     "url": "ui-components/floating-tiles/hise/note.html",
+    "weight": 60,
+    "color": "#9064FF"
+  },
+  {
+    "key": "HISE Floating tiles: RLottieDevPanel",
+    "url": "ui-components/floating-tiles/hise/rlottiedevpanel.html",
     "weight": 60,
     "color": "#9064FF"
   },
