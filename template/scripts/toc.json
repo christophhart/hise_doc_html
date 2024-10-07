@@ -1354,6 +1354,12 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "working-with-hise/menu-reference/tools/index.html#create-c++-code-for-global-cables",
+                  "Title": "Create C++ code for global cables",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
                   "URL": "working-with-hise/menu-reference/tools/index.html#create-rsa-key-pair",
                   "Title": "Create RSA Key pair",
                   "Colour": "#DEB887",
@@ -10162,6 +10168,12 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scripting/scripting-api/modulator/index.html#isbipolar",
+                  "Title": "isBipolar",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/modulator/index.html#isbypassed",
                   "Title": "isBypassed",
                   "Colour": "#D557D9",
@@ -10194,6 +10206,12 @@ var rootDb = {
                 {
                   "URL": "scripting/scripting-api/modulator/index.html#setintensity",
                   "Title": "setIntensity",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/modulator/index.html#setisbipolar",
+                  "Title": "setIsBipolar",
                   "Colour": "#D557D9",
                   "Children": []
                 }
@@ -16218,6 +16236,12 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scripting/scripting-api/unlocker/index.html#checkmusehub",
+                  "Title": "checkMuseHub",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/unlocker/index.html#contains",
                   "Title": "contains",
                   "Colour": "#D557D9",
@@ -18483,6 +18507,18 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scriptnode/list/routing/local_cable.html",
+                  "Title": "local_cable",
+                  "Colour": "#F15761",
+                  "Children": []
+                },
+                {
+                  "URL": "scriptnode/list/routing/local_cable_unscaled.html",
+                  "Title": "local_cable_unscaled",
+                  "Colour": "#F15761",
+                  "Children": []
+                },
+                {
                   "URL": "scriptnode/list/routing/event_data_reader.html",
                   "Title": "event_data_reader",
                   "Colour": "#F15761",
@@ -18698,6 +18734,12 @@ var rootDb = {
                 {
                   "URL": "scriptnode/list/control/normaliser.html",
                   "Title": "normaliser",
+                  "Colour": "#F15761",
+                  "Children": []
+                },
+                {
+                  "URL": "scriptnode/list/control/unscaler.html",
+                  "Title": "unscaler",
                   "Colour": "#F15761",
                   "Children": []
                 },

@@ -1056,6 +1056,12 @@
     "color": "#DEB887"
   },
   {
+    "key": "Tools: Create C++ code for global cables",
+    "url": "working-with-hise/menu-reference/tools/index.html#create-c++-code-for-global-cables",
+    "weight": 60,
+    "color": "#DEB887"
+  },
+  {
     "key": "Tools: Create RSA Key pair",
     "url": "working-with-hise/menu-reference/tools/index.html#create-rsa-key-pair",
     "weight": 60,
@@ -9372,6 +9378,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "Modulator.isBipolar()",
+    "url": "scripting/scripting-api/modulator/index.html#isbipolar",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "Modulator.isBypassed()",
     "url": "scripting/scripting-api/modulator/index.html#isbypassed",
     "weight": 60,
@@ -9404,6 +9416,12 @@
   {
     "key": "Modulator.setIntensity()",
     "url": "scripting/scripting-api/modulator/index.html#setintensity",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "Modulator.setIsBipolar()",
+    "url": "scripting/scripting-api/modulator/index.html#setisbipolar",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -15162,6 +15180,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "Unlocker.checkMuseHub()",
+    "url": "scripting/scripting-api/unlocker/index.html#checkmusehub",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "Unlocker.contains()",
     "url": "scripting/scripting-api/unlocker/index.html#contains",
     "weight": 60,
@@ -16578,6 +16602,18 @@
     "color": "#F15761"
   },
   {
+    "key": "routing: local_cable",
+    "url": "scriptnode/list/routing/local_cable.html",
+    "weight": 60,
+    "color": "#F15761"
+  },
+  {
+    "key": "routing: local_cable_unscaled",
+    "url": "scriptnode/list/routing/local_cable_unscaled.html",
+    "weight": 60,
+    "color": "#F15761"
+  },
+  {
     "key": "routing: event_data_reader",
     "url": "scriptnode/list/routing/event_data_reader.html",
     "weight": 60,
@@ -16772,6 +16808,12 @@
   {
     "key": "control: normaliser",
     "url": "scriptnode/list/control/normaliser.html",
+    "weight": 60,
+    "color": "#F15761"
+  },
+  {
+    "key": "control: unscaler",
+    "url": "scriptnode/list/control/unscaler.html",
     "weight": 60,
     "color": "#F15761"
   },

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="local_cable"><b>local_cable</b>
+</h1>
+<p class="comment"><code>routing.local_cable</code>
+</p>
+<img src="images/sn_screen_routing__local_cable.png"></img>
+<p>A node for replacing cable connections within a network</p>
+<h2 id="parameters"><b>Parameters</b>
+</h2>
+<table><thead><td><b>ID </b>
+</td>
+<td><b>Range </b>
+</td>
+<td><b>Default </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>Value </td>
+<td>0.00 - 1.00 </td>
+<td>0.00 </td>
+<td>no description. </td>
+</tr>
+</table>
+<p><br>The functionality of this node is similar to the <a href="scriptnode/list/routing/global_cable.html">global_cable</a>
+ node but the connections are scoped to the network only (hence the name <b>local</b>
+). You can use it in complex patches to improve the clarity of the network which might look convoluted with lots of cable connections.</p>
+<p>Here's a (pretty random) network with lots of connections:</p>
+<img src="images/custom/scriptnode/local_cable_dirty.png"></img>
+<p>If we now send every root parameter into a dedicated local_cable and then add connections by adding matching local_cable nodes in the vicinity of the targets, we get a much cleaner looking network:</p>
+<img src="images/custom/scriptnode/local_cable_clean.png"></img>
+<h3 id="ux-helpers"><b>UX Helpers</b>
+</h3>
+<p>There are a few functions that will improve the workflow when using local cables. The first thing you'll notice is that there is a list of all local cables:</p>
+<img src="images/custom/scriptnode/local_cable_list.png"></img>
+<ul><li>the dot will show the current value as LED indicator giving you a quick overview over the current value of each cable</li>
+<li>Clicking on one of them will highlight all occurence of local_cable nodes that use that ID (and unfolding its parents if they are hidden). </li>
+<li>Right click and select "Replace local cable with direct connections" will remove all nodes and replace the connections with a plain ol' cable. This is fully undoable.</li>
+</ul>
+<p>The inverse operation (turning cables into connections through a local_cable) can be achieved from the connections editor. Right click on any modulation source (either draggers or sliders) to see a list of connections:</p>
+<img src="images/custom/scriptnode/local_cable_connections.png"></img>
+<p>Click on the second icon to the left to replace the connection with a local cable. You will be asked to supply a ID for the connection for further customization. Also undoable.</p>
+<p class="comment">Note that this function will detect whether to create a <code>local_cable</code>
+ node or its unscaled brother, the <code>local_cable_unscaled</code>
+ node based on the connection type that it should replace.</p>
+<p>With these two functions you should be able to reorganize your networks to yield a nice clean looking appearance. Note that if you compile the networks, it will internally remove all local_cables and replace it with the normal connections (so basically the step that you perform with the right click option in the list).</p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scriptnode/list/routing/local_cable_unscaled.html">local_cable_unscaled</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>07.10.2024<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>
