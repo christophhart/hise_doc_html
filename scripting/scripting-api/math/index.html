@@ -237,6 +237,16 @@ const var y = Math.from0To1(0.5, prototype);
 // but that shouldn't have a real world impact
 Console.assertTrue(Math.abs(x - y) < 0.001);</code></pre>
 <p><br></p>
+<h2 id="isinf"><b>isinf</b>
+</h2>
+<p class="comment">Checks for infinity.</p>
+<pre><code class="language-javascript line-numbers">Math.isinf(var value)</code></pre>
+<p><br><br></p>
+<h2 id="isnan"><b>isnan</b>
+</h2>
+<p class="comment">Checks for NaN (invalid floating point value).</p>
+<pre><code class="language-javascript line-numbers">Math.isnan(var value)</code></pre>
+<p><br><br></p>
 <h2 id="log"><b>log</b>
 </h2>
 <p class="comment">Calculates the log value (with base E).</p>
@@ -304,6 +314,11 @@ Console.assertTrue(Math.abs(x - y) < 0.001);</code></pre>
 <p><br></p>
 <img style="max-width:400px;" src="images/custom/math/round.png"></img>
 <p>Rounds the value up or down at .5<br></p>
+<h2 id="sanitize"><b>sanitize</b>
+</h2>
+<p class="comment">Sets infinity & NaN floating point numbers to zero.</p>
+<pre><code class="language-javascript line-numbers">Math.sanitize(var value)</code></pre>
+<p><br><br></p>
 <h2 id="sign"><b>sign</b>
 </h2>
 <p class="comment">Returns the sign of the value.</p>

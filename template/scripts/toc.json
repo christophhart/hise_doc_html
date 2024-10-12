@@ -8967,6 +8967,18 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scripting/scripting-api/math/index.html#isinf",
+                  "Title": "isinf",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/math/index.html#isnan",
+                  "Title": "isnan",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/math/index.html#log",
                   "Title": "log",
                   "Colour": "#D557D9",
@@ -9017,6 +9029,12 @@ var rootDb = {
                 {
                   "URL": "scripting/scripting-api/math/index.html#round",
                   "Title": "round",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/math/index.html#sanitize",
+                  "Title": "sanitize",
                   "Colour": "#D557D9",
                   "Children": []
                 },
@@ -16536,6 +16554,91 @@ var rootDb = {
           "Colour": "#F15761",
           "Children": [
             {
+              "URL": "scriptnode/manual/organisation.html",
+              "Title": "Organisation",
+              "Colour": "#F15761",
+              "Children": [
+                {
+                  "URL": "scriptnode/manual/organisation.html#node-tools",
+                  "Title": "Node tools",
+                  "Colour": "#F15761",
+                  "Children": []
+                },
+                {
+                  "URL": "scriptnode/manual/organisation.html#naming",
+                  "Title": "",
+                  "Colour": "#F15761",
+                  "Children": []
+                },
+                {
+                  "URL": "scriptnode/manual/organisation.html#colour",
+                  "Title": "",
+                  "Colour": "#F15761",
+                  "Children": []
+                },
+                {
+                  "URL": "scriptnode/manual/organisation.html#comments",
+                  "Title": "",
+                  "Colour": "#F15761",
+                  "Children": []
+                },
+                {
+                  "URL": "scriptnode/manual/organisation.html#example",
+                  "Title": "",
+                  "Colour": "#F15761",
+                  "Children": []
+                },
+                {
+                  "URL": "scriptnode/manual/organisation.html#connection-/-cable-tools",
+                  "Title": "Connection / cable tools",
+                  "Colour": "#F15761",
+                  "Children": []
+                },
+                {
+                  "URL": "scriptnode/manual/organisation.html#use-local-cables",
+                  "Title": "",
+                  "Colour": "#F15761",
+                  "Children": []
+                },
+                {
+                  "URL": "scriptnode/manual/organisation.html#fold-nodes-&-hide-parameters",
+                  "Title": "",
+                  "Colour": "#F15761",
+                  "Children": []
+                },
+                {
+                  "URL": "scriptnode/manual/organisation.html#example",
+                  "Title": "",
+                  "Colour": "#F15761",
+                  "Children": []
+                },
+                {
+                  "URL": "scriptnode/manual/organisation.html#container-tools",
+                  "Title": "Container tools",
+                  "Colour": "#F15761",
+                  "Children": []
+                },
+                {
+                  "URL": "scriptnode/manual/organisation.html#vertical-/-horizontal-alignment",
+                  "Title": "",
+                  "Colour": "#F15761",
+                  "Children": []
+                },
+                {
+                  "URL": "scriptnode/manual/organisation.html#focus-a-container",
+                  "Title": "",
+                  "Colour": "#F15761",
+                  "Children": []
+                },
+                {
+                  "URL": "scriptnode/manual/organisation.html#locking-containers",
+                  "Title": "",
+                  "Colour": "#F15761",
+                  "Children": []
+                }
+              ]
+            },
+            {
               "URL": "scriptnode/manual/snex_index.html",
               "Title": "",
               "Colour": "#F15761",
@@ -18744,6 +18847,18 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scriptnode/list/control/locked_mod.html",
+                  "Title": "locked_mod",
+                  "Colour": "#F15761",
+                  "Children": []
+                },
+                {
+                  "URL": "scriptnode/list/control/locked_mod_unscaled.html",
+                  "Title": "locked_mod_unscaled",
+                  "Colour": "#F15761",
+                  "Children": []
+                },
+                {
                   "URL": "scriptnode/list/control/random.html",
                   "Title": "random",
                   "Colour": "#F15761",
@@ -19110,6 +19225,24 @@ var rootDb = {
                 {
                   "URL": "scriptnode/list/template/softbypass_switch8.html",
                   "Title": "softbypass_switch8",
+                  "Colour": "#F15761",
+                  "Children": []
+                },
+                {
+                  "URL": "scriptnode/list/template/lfo.html",
+                  "Title": "lfo",
+                  "Colour": "#F15761",
+                  "Children": []
+                },
+                {
+                  "URL": "scriptnode/list/template/modchain2localcable.html",
+                  "Title": "modchain2localcable",
+                  "Colour": "#F15761",
+                  "Children": []
+                },
+                {
+                  "URL": "scriptnode/list/template/simple_chain.html",
+                  "Title": "simple_chain",
                   "Colour": "#F15761",
                   "Children": []
                 }

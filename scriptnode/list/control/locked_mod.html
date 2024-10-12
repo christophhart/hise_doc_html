@@ -38,12 +38,12 @@
 
 		</nav>
 
-		<div class="content"><h1 id="tempo_sync"><b>tempo_sync</b>
+		<div class="content"><h1 id="locked_mod"><b>locked_mod</b>
 </h1>
-<p class="comment"><code>control.tempo_sync</code>
+<p class="comment"><code>control.locked_mod</code>
 </p>
-<img src="images/sn_screen_control__tempo_sync.png"></img>
-<p>send out a tempo-synced time value</p>
+<img src="images/sn_screen_control__locked_mod.png"></img>
+<p>Shows a modulation dragger on its parent container if it is locked</p>
 <h2 id="parameters"><b>Parameters</b>
 </h2>
 <table><thead><td><b>ID </b>
@@ -55,41 +55,29 @@
 <td><b>Description </b>
 </td>
 </thead>
-<tr><td>Tempo </td>
-<td>0.00 - 23.00 </td>
-<td>0.00 </td>
-<td>an integer from 0 to 18 that is using the default HISE tempo indexes </td>
-</tr>
-<tr><td>Multiplier </td>
-<td>1.00 - 16.00 </td>
-<td>1.00 </td>
-<td>multiplies the tempo index and allows odd tempo rates like 3/16 </td>
-</tr>
-<tr><td>Enabled </td>
+<tr><td>Value </td>
 <td>0.00 - 1.00 </td>
 <td>0.00 </td>
-<td>switches between tempo synced time and unsynced time </td>
-</tr>
-<tr><td>UnsyncedTime </td>
-<td>0.00 - 1000.00 </td>
-<td>200.00 </td>
-<td>if tempo syncing is disabled, this can be used to determine the unsynched time </td>
+<td>the value you want to send to the modulation output of the container </td>
 </tr>
 </table>
-<p>A lot of time based effects need to be synched to an external clock and this is where this node comes in handy. A new value is send out:</p>
-<ul><li>whenever the tempo changes (and the sync is enabled)</li>
-<li>whenever one of the parameters that will change the synched time changes</li>
+<p><br>This node is useful if you have a container in your network that you want to treat as opaque modulation source. In order to do so:</p>
+<ul><li>add this node as a immediate child of a container, </li>
+<li>connect its <b>Value</b>
+ parameter to whatever modulation source you want</li>
+<li>lock the container (by selecting it and click the lock icon in the toolbar)</li>
 </ul>
-<p>The value that is send out is calculated as milliseconds, but if you need it in another domain (eg. Hz), you might want to use the <a href="scriptnode/list/control/converter.html">converter</a>
- with the <b>Ms2Freq</b>
- converter.<br></p>
+<p>This will then show a node with a modulation dragger that you can connect to any other target. </p>
+<img src="images/custom/scriptnode/lock_example.png"></img>
+<p>Internally it will connect it to this node.</p>
+<p class="comment">Note that in order for this to work, the node must be a immediate child of the container you want to lock (in order to allow nested usage of locked containers).</p>
 <div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
 </span>
 
-<span class="content-footer-right">Next: <a href="scriptnode/list/control/transport.html">transport</a>
+<span class="content-footer-right">Next: <a href="scriptnode/list/control/locked_mod_unscaled.html">locked_mod_unscaled</a>
 </span>
 
-<p class="content-footer-metadata">Christoph Hart<br>04.07.2022<br></p>
+<p class="content-footer-metadata">Christoph Hart<br>12.10.2024<br></p>
 </div>
 
 			<!-- content end -->

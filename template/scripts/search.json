@@ -8232,6 +8232,18 @@
     "color": "#D557D9"
   },
   {
+    "key": "Math.isinf()",
+    "url": "scripting/scripting-api/math/index.html#isinf",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "Math.isnan()",
+    "url": "scripting/scripting-api/math/index.html#isnan",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "Math.log()",
     "url": "scripting/scripting-api/math/index.html#log",
     "weight": 60,
@@ -8282,6 +8294,12 @@
   {
     "key": "Math.round()",
     "url": "scripting/scripting-api/math/index.html#round",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "Math.sanitize()",
+    "url": "scripting/scripting-api/math/index.html#sanitize",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -15474,6 +15492,12 @@
     "color": "#F15761"
   },
   {
+    "key": "Scriptnode Manual: Organisation",
+    "url": "scriptnode/manual/organisation.html",
+    "weight": 70,
+    "color": "#F15761"
+  },
+  {
     "key": "Scriptnode Manual: Scriptnode C++ Generator",
     "url": "scriptnode/manual/cpp_generator.html",
     "weight": 70,
@@ -15495,6 +15519,24 @@
     "key": "Scriptnode Manual: Third Party C++ Nodes",
     "url": "scriptnode/manual/third_party.html",
     "weight": 70,
+    "color": "#F15761"
+  },
+  {
+    "key": "Organisation: Node tools",
+    "url": "scriptnode/manual/organisation.html#node-tools",
+    "weight": 60,
+    "color": "#F15761"
+  },
+  {
+    "key": "Organisation: Connection / cable tools",
+    "url": "scriptnode/manual/organisation.html#connection-/-cable-tools",
+    "weight": 60,
+    "color": "#F15761"
+  },
+  {
+    "key": "Organisation: Container tools",
+    "url": "scriptnode/manual/organisation.html#container-tools",
+    "weight": 60,
     "color": "#F15761"
   },
   {
@@ -16818,6 +16860,18 @@
     "color": "#F15761"
   },
   {
+    "key": "control: locked_mod",
+    "url": "scriptnode/list/control/locked_mod.html",
+    "weight": 60,
+    "color": "#F15761"
+  },
+  {
+    "key": "control: locked_mod_unscaled",
+    "url": "scriptnode/list/control/locked_mod_unscaled.html",
+    "weight": 60,
+    "color": "#F15761"
+  },
+  {
     "key": "control: random",
     "url": "scriptnode/list/control/random.html",
     "weight": 60,
@@ -17156,6 +17210,24 @@
   {
     "key": "template: softbypass_switch8",
     "url": "scriptnode/list/template/softbypass_switch8.html",
+    "weight": 60,
+    "color": "#F15761"
+  },
+  {
+    "key": "template: lfo",
+    "url": "scriptnode/list/template/lfo.html",
+    "weight": 60,
+    "color": "#F15761"
+  },
+  {
+    "key": "template: modchain2localcable",
+    "url": "scriptnode/list/template/modchain2localcable.html",
+    "weight": 60,
+    "color": "#F15761"
+  },
+  {
+    "key": "template: simple_chain",
+    "url": "scriptnode/list/template/simple_chain.html",
     "weight": 60,
     "color": "#F15761"
   },
