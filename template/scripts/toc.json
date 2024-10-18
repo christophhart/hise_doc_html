@@ -1330,8 +1330,8 @@ var rootDb = {
                   "Children": []
                 },
                 {
-                  "URL": "working-with-hise/menu-reference/tools/index.html#record-one-second-audio-file",
-                  "Title": "Record one second audio file",
+                  "URL": "working-with-hise/menu-reference/tools/index.html#render-hise-output-to-disk",
+                  "Title": "Render HISE output to disk",
                   "Colour": "#DEB887",
                   "Children": []
                 },
@@ -2184,6 +2184,12 @@ var rootDb = {
                     },
                     {
                       "URL": "hise-modules/sound-generators/list/streamingsampler.html#timestretching-options",
+                      "Title": "",
+                      "Colour": "#414141",
+                      "Children": []
+                    },
+                    {
+                      "URL": "hise-modules/sound-generators/list/streamingsampler.html#the-skiplatency-property",
                       "Title": "",
                       "Colour": "#414141",
                       "Children": []
@@ -5248,6 +5254,12 @@ var rootDb = {
                 {
                   "URL": "scripting/scripting-api/broadcaster/index.html#attachtomoduleparameter",
                   "Title": "attachToModuleParameter",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/broadcaster/index.html#attachtononrealtimechange",
+                  "Title": "attachToNonRealtimeChange",
                   "Colour": "#D557D9",
                   "Children": []
                 },
@@ -19225,24 +19237,6 @@ var rootDb = {
                 {
                   "URL": "scriptnode/list/template/softbypass_switch8.html",
                   "Title": "softbypass_switch8",
-                  "Colour": "#F15761",
-                  "Children": []
-                },
-                {
-                  "URL": "scriptnode/list/template/lfo.html",
-                  "Title": "lfo",
-                  "Colour": "#F15761",
-                  "Children": []
-                },
-                {
-                  "URL": "scriptnode/list/template/modchain2localcable.html",
-                  "Title": "modchain2localcable",
-                  "Colour": "#F15761",
-                  "Children": []
-                },
-                {
-                  "URL": "scriptnode/list/template/simple_chain.html",
-                  "Title": "simple_chain",
                   "Colour": "#F15761",
                   "Children": []
                 }

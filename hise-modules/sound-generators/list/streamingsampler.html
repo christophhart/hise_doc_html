@@ -163,7 +163,7 @@
  </td>
 <td><code>false</code>
  </td>
-<td>If true, starting a new voice will skip the inherent latency of the timestretching algorithm. This vastly improves the timing of the voice, however it comes with a pretty steep CPU overhead because it has to (silently) calculate the timestretched signal for the duration of the latency (about 50ms). </td>
+<td>If false, the voice start will be delayed by a short amount of time. If true, the voice start will be executed immediately and cause a pretty big spike in CPU usage (see below for a detailed explanation). </td>
 </tr>
 <tr><td><code>NumQuarters</code>
  </td>
@@ -190,11 +190,39 @@ const var obj = Sampler.getTimestretchOptions();
 // print out all properties
 Console.print(trace(obj));
 
-// Apply your changed
+// Apply your changes
 obj.SkipLatency = true;
 
 // Update the options
 Sampler.setTimestretchOptions(obj);</code></pre>
+<h4 id="the-skiplatency-property"><b>The </b>
+<b>SkipLatency</b>
+<b> property</b>
+</h4>
+<p>Until HISE 4.1.0 the SkipLatency property (that is set to <code>false</code>
+ as default) introduced a very big latency at the start of the voice:</p>
+<img src="https://forum.hise.audio/assets/uploads/files/1728557959510-testfull.png"></img>
+<p>The rationale was to keep the CPU spikes in check:</p>
+<img src="https://forum.hise.audio/assets/uploads/files/1728558366002-98171806-906d-44a8-8521-5bf17a5d6217-image.png"></img>
+<p>If you set SkipLatency to <code>true</code>
+, then it will feed the first 4096 samples into the timestretch engine so that the voice will start rendering the sample right away:</p>
+<img src="https://forum.hise.audio/assets/uploads/files/1728557860512-latencysync.png"></img>
+<p>But that workload at the voice start caused a very big CPU spike that is not very reassuring:</p>
+<img src="https://forum.hise.audio/assets/uploads/files/1728558426675-675b83cf-9ff1-40bf-8447-7b44d1b10b83-image.png"></img>
+<p>This basically gave you the option between</p>
+<ol><li>it being unusable because the latency is ridiculously high and</li>
+<li>it being unusable because the CPU spike is ridiculously high</li>
+</ol>
+<p>so it effectively made the timestretching engine sit around collecting dust. In order to solve that problem, I had to ditch the first option (introducing the latency) and replace it with something that has a reasonable amount of latency but without blowing up the CPU. This was achieved by the following routine:</p>
+<ul><li>when a voice is started, it will not start rendering the output. </li>
+<li>instead it will fire up the background thread that is usually busy shuffling and preparing data from the hard drive and tell it to process the first 50ms As Fast As Possible (tm).</li>
+<li>when the task is done, the voice can start rendering the data right from the start. </li>
+</ul>
+<p>With this approach, you'll get no CPU spikes (on the audio thread) and a reasonably low latency:</p>
+<img src="https://forum.hise.audio/assets/uploads/files/1728558026597-latencylazy.png"></img>
+<img src="https://forum.hise.audio/assets/uploads/files/1728558266133-fee5a576-0128-442e-9f3c-ed0d0eb4c260-image.png"></img>
+<p>How low is the latency? This depends on how fast the background thread can be scheduled and finish its task, but it usually happens within 1-2 audio buffers. My initial tests yielded an average latency of around 270 samples (with 512 samples buffer size)</p>
+<p class="comment">Be aware that when you run your plugin in offline mode (eg. if you use the bounce to disk feature), it always uses the synchronous option of directly calculating the voice start since there are no realtime requirements in this scenario.</p>
 <h2 id="release-start"><b>Release Start</b>
 </h2>
 <img src="images/custom/releasestart.png"></img>

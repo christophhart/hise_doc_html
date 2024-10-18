@@ -180,6 +180,27 @@
  is set to true. </p>
 <p>If you want full customization of it's appeareance take a look at: <a href="glossary/custom_lookandfeel.html#presetbrowser">Preset Browser Look and Feel Customizations</a>
 </p>
+<h2 id="css-styling"><b>CSS Styling</b>
+</h2>
+<p>The preset browser and its sub components can also be fully styled using the <a href="glossary/css.html">CSS</a>
+ Renderer. In order to target each component, take a look at this cheat sheet that shows the CSS selector for each part:</p>
+<p><b>Preset Browser:</b>
+</p>
+<img src="images/custom/preset_css.png"></img>
+<p><b>Modal Popup:</b>
+</p>
+<img src="images/custom/preset_modal_css.png"></img>
+<p>Some remarks:</p>
+<ul><li>most properties related to positioning will not work - there are plenty of tools available to change the layout of the preset browser and the CSS renderer is focused on customizing the graphics of the preset browser. The notable exception to this rule is the <code>padding</code>
+ property of the <code>.modal</code>
+ class selector that you can use to define the size of the background of the modal popup.</li>
+<li>for a detailed overview of how to style the individual components, you can take a look at the basic UI element CSS reference: <a href="ui-components/plugin-components/button.html">button</a>
+, <a href="ui-components/plugin-components/label.html">label</a>
+</li>
+<li>the context menu of the <b>More</b>
+ button can be styled just like the context menu of the <a href="ui-components/plugin-components/combobox.html">ComboBox</a>
+</li>
+</ul>
 <div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
 </span>
 

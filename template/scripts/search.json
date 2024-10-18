@@ -1032,8 +1032,8 @@
     "color": "#DEB887"
   },
   {
-    "key": "Tools: Record one second audio file",
-    "url": "working-with-hise/menu-reference/tools/index.html#record-one-second-audio-file",
+    "key": "Tools: Render HISE output to disk",
+    "url": "working-with-hise/menu-reference/tools/index.html#render-hise-output-to-disk",
     "weight": 60,
     "color": "#DEB887"
   },
@@ -4730,6 +4730,12 @@
   {
     "key": "Broadcaster.attachToModuleParameter()",
     "url": "scripting/scripting-api/broadcaster/index.html#attachtomoduleparameter",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "Broadcaster.attachToNonRealtimeChange()",
+    "url": "scripting/scripting-api/broadcaster/index.html#attachtononrealtimechange",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -17210,24 +17216,6 @@
   {
     "key": "template: softbypass_switch8",
     "url": "scriptnode/list/template/softbypass_switch8.html",
-    "weight": 60,
-    "color": "#F15761"
-  },
-  {
-    "key": "template: lfo",
-    "url": "scriptnode/list/template/lfo.html",
-    "weight": 60,
-    "color": "#F15761"
-  },
-  {
-    "key": "template: modchain2localcable",
-    "url": "scriptnode/list/template/modchain2localcable.html",
-    "weight": 60,
-    "color": "#F15761"
-  },
-  {
-    "key": "template: simple_chain",
-    "url": "scriptnode/list/template/simple_chain.html",
     "weight": 60,
     "color": "#F15761"
   },
