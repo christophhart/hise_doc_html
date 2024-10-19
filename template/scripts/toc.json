@@ -20631,6 +20631,12 @@ var rootDb = {
           "Colour": "#C5AC43",
           "Children": [
             {
+              "URL": "tutorials/scriptnode/index.html#simple-drum-synthesiser",
+              "Title": "Simple Drum Synthesiser",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
               "URL": "tutorials/scriptnode/index.html#snex-oneshot-player",
               "Title": "SNEX Oneshot Player",
               "Colour": "#C5AC43",
