@@ -52,17 +52,20 @@
 </h1>
 <h2 id="copy"><b>copy</b>
 </h2>
-<p class="comment">Copies the file.</p>
+<p class="comment">Copies the file. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/file/copy.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">File.copy(var target)</code></pre>
 <p><br><br></p>
 <h2 id="createdirectory"><b>createDirectory</b>
 </h2>
-<p class="comment">Returns the new directory created at the file location, if directory doesn't already exist</p>
+<p class="comment">Returns the new directory created at the file location, if directory doesn't already exist <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/file/createdirectory.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">File.createDirectory(String directoryName)</code></pre>
 <p><br><br></p>
 <h2 id="deletefileordirectory"><b>deleteFileOrDirectory</b>
 </h2>
-<p class="comment">Deletes the file or directory WITHOUT confirmation.</p>
+<p class="comment">Deletes the file or directory WITHOUT confirmation. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/file/deletefileordirectory.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">File.deleteFileOrDirectory()</code></pre>
 <p><br><br></p>
 <h2 id="extractzipfile"><b>extractZipFile</b>
@@ -128,82 +131,98 @@
 <p>If you extract a small archive (less than ~400 files), the callback will also be executed for each file (this limit prevents the scripting queue to be clogged with huge archives).<br></p>
 <h2 id="getbytesfreeonvolume"><b>getBytesFreeOnVolume</b>
 </h2>
-<p class="comment">Returns the number of bytes free on the drive that this file lives on.</p>
+<p class="comment">Returns the number of bytes free on the drive that this file lives on. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/file/getbytesfreeonvolume.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">File.getBytesFreeOnVolume()</code></pre>
 <p><br><br></p>
 <h2 id="getchildfile"><b>getChildFile</b>
 </h2>
-<p class="comment">Returns a child file if this is a directory.</p>
+<p class="comment">Returns a child file if this is a directory. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/file/getchildfile.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">File.getChildFile(String childFileName)</code></pre>
 <p><br><br></p>
 <h2 id="gethash"><b>getHash</b>
 </h2>
-<p class="comment">Reads a file and generates the hash of its contents.</p>
+<p class="comment">Reads a file and generates the hash of its contents. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/file/gethash.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">File.getHash()</code></pre>
 <p><br><br></p>
 <h2 id="getnonexistentsibling"><b>getNonExistentSibling</b>
 </h2>
-<p class="comment">Returns a sibling file that doesn't exist.</p>
+<p class="comment">Returns a sibling file that doesn't exist. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/file/getnonexistentsibling.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">File.getNonExistentSibling()</code></pre>
 <p><br><br></p>
 <h2 id="getnumzippeditems"><b>getNumZippedItems</b>
 </h2>
-<p class="comment">Returns the number of items in the zip file.</p>
+<p class="comment">Returns the number of items in the zip file. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/file/getnumzippeditems.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">File.getNumZippedItems()</code></pre>
 <p><br><br></p>
 <h2 id="getparentdirectory"><b>getParentDirectory</b>
 </h2>
-<p class="comment">Returns the parent directory as File.</p>
+<p class="comment">Returns the parent directory as File. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/file/getparentdirectory.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">File.getParentDirectory()</code></pre>
 <p><br><br></p>
 <h2 id="getredirectedfolder"><b>getRedirectedFolder</b>
 </h2>
-<p class="comment">If this file is a folder that contains a HISE redirection file (LinkWindows / LinkOSX file), then it will return the redirection target, otherwise it will return itself.</p>
+<p class="comment">If this file is a folder that contains a HISE redirection file (LinkWindows / LinkOSX file), then it will return the redirection target, otherwise it will return itself. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/file/getredirectedfolder.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">File.getRedirectedFolder()</code></pre>
 <p><br><br></p>
 <h2 id="getrelativepathfrom"><b>getRelativePathFrom</b>
 </h2>
-<p class="comment">Returns a relative path from the given other file.</p>
+<p class="comment">Returns a relative path from the given other file. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/file/getrelativepathfrom.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">File.getRelativePathFrom(var otherFile)</code></pre>
 <p><br><br></p>
 <h2 id="getsize"><b>getSize</b>
 </h2>
-<p class="comment">Returns the size of the file in bytes.</p>
+<p class="comment">Returns the size of the file in bytes. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/file/getsize.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">File.getSize()</code></pre>
 <p><br><br></p>
 <h2 id="haswriteaccess"><b>hasWriteAccess</b>
 </h2>
-<p class="comment">true if it's possible to create and write to this file. If the file doesn't already exist, this will check its parent directory to see if writing is allowed.</p>
+<p class="comment">true if it's possible to create and write to this file. If the file doesn't already exist, this will check its parent directory to see if writing is allowed. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/file/haswriteaccess.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">File.hasWriteAccess()</code></pre>
 <p><br><br></p>
 <h2 id="ischildof"><b>isChildOf</b>
 </h2>
-<p class="comment">Checks if this file is a child file of the other file.</p>
+<p class="comment">Checks if this file is a child file of the other file. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/file/ischildof.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">File.isChildOf(var otherFile, bool checkSubdirectories)</code></pre>
 <p><br><br></p>
 <h2 id="isdirectory"><b>isDirectory</b>
 </h2>
-<p class="comment">Checks if this file exists and is a directory.</p>
+<p class="comment">Checks if this file exists and is a directory. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/file/isdirectory.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">File.isDirectory()</code></pre>
 <p><br><br></p>
 <h2 id="isfile"><b>isFile</b>
 </h2>
-<p class="comment">Checks if this file exists and is a file.</p>
+<p class="comment">Checks if this file exists and is a file. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/file/isfile.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">File.isFile()</code></pre>
 <p><br><br></p>
 <h2 id="issamefileas"><b>isSameFileAs</b>
 </h2>
-<p class="comment">Checks if the file matches the other file (the object comparison might not work reliably).</p>
+<p class="comment">Checks if the file matches the other file (the object comparison might not work reliably). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/file/issamefileas.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">File.isSameFileAs(var otherFile)</code></pre>
 <p><br><br></p>
 <h2 id="loadasaudiofile"><b>loadAsAudioFile</b>
 </h2>
-<p class="comment">Loads the given file as audio file.</p>
+<p class="comment">Loads the given file as audio file. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/file/loadasaudiofile.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">File.loadAsAudioFile()</code></pre>
 <p><br><br></p>
 <h2 id="loadasmidifile"><b>loadAsMidiFile</b>
 </h2>
-<p class="comment">Loads the track (zero-based) of the MIDI file. If successful, it returns an object containing the time signature and a list of all events.</p>
+<p class="comment">Loads the track (zero-based) of the MIDI file. If successful, it returns an object containing the time signature and a list of all events. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/file/loadasmidifile.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">File.loadAsMidiFile(int trackIndex)</code></pre>
 <p><br><br></p>
 <h2 id="loadasobject"><b>loadAsObject</b>
@@ -214,12 +233,14 @@
 <p><br></p>
 <h2 id="loadasstring"><b>loadAsString</b>
 </h2>
-<p class="comment">Loads the given file as text.</p>
+<p class="comment">Loads the given file as text. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/file/loadasstring.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">File.loadAsString()</code></pre>
 <p><br><br></p>
 <h2 id="loadaudiometadata"><b>loadAudioMetadata</b>
 </h2>
-<p class="comment">Tries to parse the metadata from the audio file (channel amount, length, samplerate, etc) and returns a JSON object if sucessful.</p>
+<p class="comment">Tries to parse the metadata from the audio file (channel amount, length, samplerate, etc) and returns a JSON object if sucessful. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/file/loadaudiometadata.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">File.loadAudioMetadata()</code></pre>
 <p><br><br></p>
 <h2 id="loadencryptedobject"><b>loadEncryptedObject</b>
@@ -232,32 +253,38 @@
 <p>You can use these functions to create an authentification scheme that stores the license key in a file in order to bypass online activation.<br></p>
 <h2 id="loadfromxmlfile"><b>loadFromXmlFile</b>
 </h2>
-<p class="comment">Loads the XML file and tries to parse it as JSON object.</p>
+<p class="comment">Loads the XML file and tries to parse it as JSON object. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/file/loadfromxmlfile.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">File.loadFromXmlFile()</code></pre>
 <p><br><br></p>
 <h2 id="loadmidimetadata"><b>loadMidiMetadata</b>
 </h2>
-<p class="comment">Tries to parse the metadata of the MIDI file and returns a JSON object if successful.</p>
+<p class="comment">Tries to parse the metadata of the MIDI file and returns a JSON object if successful. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/file/loadmidimetadata.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">File.loadMidiMetadata()</code></pre>
 <p><br><br></p>
 <h2 id="move"><b>move</b>
 </h2>
-<p class="comment">Moves the file.</p>
+<p class="comment">Moves the file. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/file/move.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">File.move(var target)</code></pre>
 <p><br><br></p>
 <h2 id="rename"><b>rename</b>
 </h2>
-<p class="comment">Renames the file.</p>
+<p class="comment">Renames the file. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/file/rename.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">File.rename(String newName)</code></pre>
 <p><br><br></p>
 <h2 id="setexecutepermission"><b>setExecutePermission</b>
 </h2>
-<p class="comment">Changes the execute-permissions of a file.</p>
+<p class="comment">Changes the execute-permissions of a file. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/file/setexecutepermission.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">File.setExecutePermission(bool shouldBeExecutable)</code></pre>
 <p><br><br></p>
 <h2 id="setreadonly"><b>setReadOnly</b>
 </h2>
-<p class="comment">Changes the read/write permission for the given file.</p>
+<p class="comment">Changes the read/write permission for the given file. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/file/setreadonly.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">File.setReadOnly(bool shouldBeReadOnly, bool applyRecursively)</code></pre>
 <p><br><br></p>
 <h2 id="show"><b>show</b>
@@ -267,7 +294,8 @@
 <p><br>This opens a OS specific file browser that will reveal the file to the user.<br></p>
 <h2 id="startasprocess"><b>startAsProcess</b>
 </h2>
-<p class="comment">Launches the file as a process.</p>
+<p class="comment">Launches the file as a process. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/file/startasprocess.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">File.startAsProcess(String parameters)</code></pre>
 <p><br><br></p>
 <h2 id="toreferencestring"><b>toReferenceString</b>
@@ -326,12 +354,14 @@
 <p><br></p>
 <h2 id="writeasxmlfile"><b>writeAsXmlFile</b>
 </h2>
-<p class="comment">Replaces the XML file with the JSON content (needs to be convertible).</p>
+<p class="comment">Replaces the XML file with the JSON content (needs to be convertible). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/file/writeasxmlfile.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">File.writeAsXmlFile(var jsonDataToBeXmled, String tagName)</code></pre>
 <p><br><br></p>
 <h2 id="writeaudiofile"><b>writeAudioFile</b>
 </h2>
-<p class="comment">Writes the given data (either a Buffer or Array of Buffers) to a audio file.</p>
+<p class="comment">Writes the given data (either a Buffer or Array of Buffers) to a audio file. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/file/writeaudiofile.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">File.writeAudioFile(var audioData, double sampleRate, int bitDepth)</code></pre>
 <p><br><br></p>
 <h2 id="writeencryptedobject"><b>writeEncryptedObject</b>
@@ -343,12 +373,14 @@
  with the same key.<br></p>
 <h2 id="writemidifile"><b>writeMidiFile</b>
 </h2>
-<p class="comment">Writes the array of MessageHolders as MIDI file using the metadataObject to determine time signature, tempo, etc.</p>
+<p class="comment">Writes the array of MessageHolders as MIDI file using the metadataObject to determine time signature, tempo, etc. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/file/writemidifile.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">File.writeMidiFile(var eventList, var metadataObject)</code></pre>
 <p><br><br></p>
 <h2 id="writeobject"><b>writeObject</b>
 </h2>
-<p class="comment">Replaces the file content with the JSON data.</p>
+<p class="comment">Replaces the file content with the JSON data. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/file/writeobject.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">File.writeObject(var jsonData)</code></pre>
 <p><br><br></p>
 <h2 id="writestring"><b>writeString</b>
@@ -358,7 +390,7 @@
 <p><br>It will return <code>true</code>
  if the file operation was completed successfully or <code>false</code>
  if there was an error during the operation.<br></p>
-<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+<div class="content-footer"><span class="content-footer-left"><a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/file/Readme.md">Edit on GitHub</a>
 </span>
 
 <span class="content-footer-right">Next: <a href="scripting/scripting-api/filesystem/index.html">FileSystem</a>

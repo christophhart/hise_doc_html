@@ -58,190 +58,227 @@ Message.setChannel(newChannel) // changes the channel of the midi message</code>
  which performs a few safe checks to prevent stuck notes in this scenario.<br></p>
 <h2 id="getchannel"><b>getChannel</b>
 </h2>
-<p class="comment">Returns the MIDI Channel from 1 to 16.</p>
+<p class="comment">Returns the MIDI Channel from 1 to 16. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/message/getchannel.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Message.getChannel()</code></pre>
 <p><br><br></p>
 <h2 id="getcoarsedetune"><b>getCoarseDetune</b>
 </h2>
-<p class="comment">Returns the coarse detune amount in semitones.</p>
+<p class="comment">Returns the coarse detune amount in semitones. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/message/getcoarsedetune.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Message.getCoarseDetune()</code></pre>
 <p><br><br></p>
 <h2 id="getcontrollernumber"><b>getControllerNumber</b>
 </h2>
-<p class="comment">returns the controller number or 'undefined', if the message is neither controller nor pitch wheel nor aftertouch.</p>
+<p class="comment">returns the controller number or 'undefined', if the message is neither controller nor pitch wheel nor aftertouch. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/message/getcontrollernumber.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Message.getControllerNumber()</code></pre>
 <p><br><br></p>
 <h2 id="getcontrollervalue"><b>getControllerValue</b>
 </h2>
-<p class="comment">Returns the value of the controller.</p>
+<p class="comment">Returns the value of the controller. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/message/getcontrollervalue.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Message.getControllerValue()</code></pre>
 <p><br><br></p>
 <h2 id="geteventid"><b>getEventId</b>
 </h2>
-<p class="comment">Returns the event id of the current message.</p>
+<p class="comment">Returns the event id of the current message. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/message/geteventid.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Message.getEventId()</code></pre>
 <p><br><br></p>
 <h2 id="getfinedetune"><b>getFineDetune</b>
 </h2>
-<p class="comment">Returns the fine detune amount int cents.</p>
+<p class="comment">Returns the fine detune amount int cents. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/message/getfinedetune.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Message.getFineDetune()</code></pre>
 <p><br><br></p>
 <h2 id="getgain"><b>getGain</b>
 </h2>
-<p class="comment">Returns the volume of the note.</p>
+<p class="comment">Returns the volume of the note. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/message/getgain.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Message.getGain()</code></pre>
 <p><br><br></p>
 <h2 id="getmonophonicaftertouchpressure"><b>getMonophonicAftertouchPressure</b>
 </h2>
-<p class="comment">Returns the aftertouch value of the monophonic aftertouch message.</p>
+<p class="comment">Returns the aftertouch value of the monophonic aftertouch message. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/message/getmonophonicaftertouchpressure.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Message.getMonophonicAftertouchPressure()</code></pre>
 <p><br><br></p>
 <h2 id="getnotenumber"><b>getNoteNumber</b>
 </h2>
-<p class="comment">Return the note number. This can be called only on midi event callbacks.</p>
+<p class="comment">Return the note number. This can be called only on midi event callbacks. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/message/getnotenumber.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Message.getNoteNumber()</code></pre>
 <p><br><br></p>
 <h2 id="getpolyaftertouchnotenumber"><b>getPolyAfterTouchNoteNumber</b>
 </h2>
-<p class="comment">Returns the polyphonic aftertouch note number.</p>
+<p class="comment">Returns the polyphonic aftertouch note number. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/message/getpolyaftertouchnotenumber.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Message.getPolyAfterTouchNoteNumber()</code></pre>
 <p><br><br></p>
 <h2 id="getpolyaftertouchpressurevalue"><b>getPolyAfterTouchPressureValue</b>
 </h2>
-<p class="comment">Checks if the message is a POLYPHONIC aftertouch message (Use isChannelPressure() for monophonic aftertouch).</p>
+<p class="comment">Checks if the message is a POLYPHONIC aftertouch message (Use isChannelPressure() for monophonic aftertouch). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/message/getpolyaftertouchpressurevalue.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Message.getPolyAfterTouchPressureValue()</code></pre>
 <p><br><br></p>
 <h2 id="getprogramchangenumber"><b>getProgramChangeNumber</b>
 </h2>
-<p class="comment">Returns the program change number or -1 if it isn't a program change message.</p>
+<p class="comment">Returns the program change number or -1 if it isn't a program change message. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/message/getprogramchangenumber.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Message.getProgramChangeNumber()</code></pre>
 <p><br><br></p>
 <h2 id="gettimestamp"><b>getTimestamp</b>
 </h2>
-<p class="comment">Returns the timestamp of the message.</p>
+<p class="comment">Returns the timestamp of the message. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/message/gettimestamp.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Message.getTimestamp()</code></pre>
 <p><br><br></p>
 <h2 id="gettransposeamount"><b>getTransposeAmount</b>
 </h2>
-<p class="comment">Gets the tranpose value.</p>
+<p class="comment">Gets the tranpose value. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/message/gettransposeamount.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Message.getTransposeAmount()</code></pre>
 <p><br><br></p>
 <h2 id="getvelocity"><b>getVelocity</b>
 </h2>
-<p class="comment">Returns the Velocity.</p>
+<p class="comment">Returns the Velocity. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/message/getvelocity.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Message.getVelocity()</code></pre>
 <p><br><br></p>
 <h2 id="ignoreevent"><b>ignoreEvent</b>
 </h2>
-<p class="comment">Ignores the event.</p>
+<p class="comment">Ignores the event. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/message/ignoreevent.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Message.ignoreEvent(bool shouldBeIgnored=true)</code></pre>
 <p><br><br></p>
 <h2 id="isartificial"><b>isArtificial</b>
 </h2>
-<p class="comment">Checks if the event was created by a script earlier.</p>
+<p class="comment">Checks if the event was created by a script earlier. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/message/isartificial.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Message.isArtificial()</code></pre>
 <p><br><br></p>
 <h2 id="ismonophonicaftertouch"><b>isMonophonicAfterTouch</b>
 </h2>
-<p class="comment">Checks if the message is a MONOPHONIC aftertouch message.</p>
+<p class="comment">Checks if the message is a MONOPHONIC aftertouch message. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/message/ismonophonicaftertouch.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Message.isMonophonicAfterTouch()</code></pre>
 <p><br><br></p>
 <h2 id="ispolyaftertouch"><b>isPolyAftertouch</b>
 </h2>
-<p class="comment">Checks if the message is a POLYPHONIC aftertouch message (Use isChannelPressure() for monophonic aftertouch).</p>
+<p class="comment">Checks if the message is a POLYPHONIC aftertouch message (Use isChannelPressure() for monophonic aftertouch). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/message/ispolyaftertouch.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Message.isPolyAftertouch()</code></pre>
 <p><br><br></p>
 <h2 id="isprogramchange"><b>isProgramChange</b>
 </h2>
-<p class="comment">Checks if the message is a program change message.</p>
+<p class="comment">Checks if the message is a program change message. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/message/isprogramchange.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Message.isProgramChange()</code></pre>
 <p><br><br></p>
 <h2 id="makeartificial"><b>makeArtificial</b>
 </h2>
-<p class="comment">Creates a artificial copy of this event and returns the new event ID. If the event is already artificial it will return the event ID.</p>
+<p class="comment">Creates a artificial copy of this event and returns the new event ID. If the event is already artificial it will return the event ID. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/message/makeartificial.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Message.makeArtificial()</code></pre>
 <p><br><br></p>
 <h2 id="makeartificialorlocal"><b>makeArtificialOrLocal</b>
 </h2>
-<p class="comment">Creates a artificial copy of this event and returns the new event ID. If the event is artificial it will make a new one with a new ID.</p>
+<p class="comment">Creates a artificial copy of this event and returns the new event ID. If the event is artificial it will make a new one with a new ID. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/message/makeartificialorlocal.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Message.makeArtificialOrLocal()</code></pre>
 <p><br><br></p>
 <h2 id="sendtomidiout"><b>sendToMidiOut</b>
 </h2>
-<p class="comment">This will forward the message to the MIDI out of the plugin.</p>
+<p class="comment">This will forward the message to the MIDI out of the plugin. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/message/sendtomidiout.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Message.sendToMidiOut()</code></pre>
 <p><br><br></p>
 <h2 id="setallnotesoffcallback"><b>setAllNotesOffCallback</b>
 </h2>
-<p class="comment">Sets a callback that will be performed when an all notes off message is received.</p>
+<p class="comment">Sets a callback that will be performed when an all notes off message is received. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/message/setallnotesoffcallback.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Message.setAllNotesOffCallback(var onAllNotesOffCallback)</code></pre>
 <p><br><br></p>
 <h2 id="setchannel"><b>setChannel</b>
 </h2>
-<p class="comment">Changes the MIDI channel from 1 to 16.</p>
+<p class="comment">Changes the MIDI channel from 1 to 16. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/message/setchannel.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Message.setChannel(int newChannel)</code></pre>
 <p><br><br></p>
 <h2 id="setcoarsedetune"><b>setCoarseDetune</b>
 </h2>
-<p class="comment">Sets the coarse detune amount in semitones.</p>
+<p class="comment">Sets the coarse detune amount in semitones. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/message/setcoarsedetune.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Message.setCoarseDetune(int semiToneDetune)</code></pre>
 <p><br><br></p>
 <h2 id="setcontrollernumber"><b>setControllerNumber</b>
 </h2>
-<p class="comment">Changes the ControllerNumber.</p>
+<p class="comment">Changes the ControllerNumber. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/message/setcontrollernumber.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Message.setControllerNumber(int newControllerNumber)</code></pre>
 <p><br><br></p>
 <h2 id="setcontrollervalue"><b>setControllerValue</b>
 </h2>
-<p class="comment">Changes the controller value (range 0 - 127).</p>
+<p class="comment">Changes the controller value (range 0 - 127). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/message/setcontrollervalue.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Message.setControllerValue(int newControllerValue)</code></pre>
 <p><br><br></p>
 <h2 id="setfinedetune"><b>setFineDetune</b>
 </h2>
-<p class="comment">Sets the fine detune amount in cents.</p>
+<p class="comment">Sets the fine detune amount in cents. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/message/setfinedetune.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Message.setFineDetune(int cents)</code></pre>
 <p><br><br></p>
 <h2 id="setgain"><b>setGain</b>
 </h2>
-<p class="comment">Sets the volume of the note (-100 = silence).</p>
+<p class="comment">Sets the volume of the note (-100 = silence). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/message/setgain.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Message.setGain(int gainInDecibels)</code></pre>
 <p><br><br></p>
 <h2 id="setmonophonicaftertouchpressure"><b>setMonophonicAfterTouchPressure</b>
 </h2>
-<p class="comment">Sets the pressure value of the monophonic aftertouch message</p>
+<p class="comment">Sets the pressure value of the monophonic aftertouch message <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/message/setmonophonicaftertouchpressure.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Message.setMonophonicAfterTouchPressure(int pressure)</code></pre>
 <p><br><br></p>
 <h2 id="setnotenumber"><b>setNoteNumber</b>
 </h2>
-<p class="comment">Changes the note number.</p>
+<p class="comment">Changes the note number. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/message/setnotenumber.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Message.setNoteNumber(int newNoteNumber)</code></pre>
 <p><br><br></p>
 <h2 id="setpolyaftertouchnotenumberandpressurevalue"><b>setPolyAfterTouchNoteNumberAndPressureValue</b>
 </h2>
-<p class="comment">Copied from MidiMessage.</p>
+<p class="comment">Copied from MidiMessage. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/message/setpolyaftertouchnotenumberandpressurevalue.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Message.setPolyAfterTouchNoteNumberAndPressureValue(int noteNumber, int aftertouchAmount)</code></pre>
 <p><br><br></p>
 <h2 id="setstartoffset"><b>setStartOffset</b>
 </h2>
-<p class="comment">Sets the start offset for the given message.</p>
+<p class="comment">Sets the start offset for the given message. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/message/setstartoffset.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Message.setStartOffset(int newStartOffset)</code></pre>
 <p><br><br></p>
 <h2 id="settransposeamount"><b>setTransposeAmount</b>
 </h2>
-<p class="comment">Transposes the note on.</p>
+<p class="comment">Transposes the note on. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/message/settransposeamount.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Message.setTransposeAmount(int tranposeValue)</code></pre>
 <p><br><br></p>
 <h2 id="setvelocity"><b>setVelocity</b>
 </h2>
-<p class="comment">Changes the velocity (range 1 - 127).</p>
+<p class="comment">Changes the velocity (range 1 - 127). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/message/setvelocity.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Message.setVelocity(int newVelocity)</code></pre>
 <p><br><br></p>
 <h2 id="store"><b>store</b>
 </h2>
-<p class="comment">Stores a copy of the current event into the given holder object.</p>
+<p class="comment">Stores a copy of the current event into the given holder object. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/message/store.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Message.store(var messageEventHolder)</code></pre>
 <p><br><br></p>
-<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+<div class="content-footer"><span class="content-footer-left"><a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/message/Readme.md">Edit on GitHub</a>
 </span>
 
 <span class="content-footer-right">Next: <a href="scripting/scripting-api/messageholder/index.html">MessageHolder</a>

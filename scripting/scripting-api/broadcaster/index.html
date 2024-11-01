@@ -525,7 +525,8 @@ function(index, isTrue)
 <p>Note that the function will be called (synchronously) when you register it so that the listener is updated to the current value.<br></p>
 <h2 id="addmoduleparametersyncer"><b>addModuleParameterSyncer</b>
 </h2>
-<p class="comment">Adds a listener that will sync module parameters from the attached module parameter source.</p>
+<p class="comment">Adds a listener that will sync module parameters from the attached module parameter source. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/broadcaster/addmoduleparametersyncer.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Broadcaster.addModuleParameterSyncer(String moduleId, var parameterIndex, var metadata)</code></pre>
 <p><br><br></p>
 <h2 id="attachtocomplexdata"><b>attachToComplexData</b>
@@ -771,7 +772,8 @@ bc.addListener(Button1, "Menu callback", function(component, index)
 <p><br></p>
 <h2 id="attachtoeqevents"><b>attachToEqEvents</b>
 </h2>
-<p class="comment">Registers this broadcaster to be notified about changes to the EQ (adding / removing / selecting filter bands).</p>
+<p class="comment">Registers this broadcaster to be notified about changes to the EQ (adding / removing / selecting filter bands). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/broadcaster/attachtoeqevents.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Broadcaster.attachToEqEvents(var moduleIds, var eventTypes, var optionalMetadata)</code></pre>
 <p><br><br></p>
 <h2 id="attachtointerfacesize"><b>attachToInterfaceSize</b>
@@ -785,22 +787,26 @@ bc.addListener(Button1, "Menu callback", function(component, index)
 <p class="comment">Note that this will not be triggered when the scale factor of the UI changes.<br></p>
 <h2 id="attachtomoduleparameter"><b>attachToModuleParameter</b>
 </h2>
-<p class="comment">Registers this broadcaster to be notified when a module parameter changes.</p>
+<p class="comment">Registers this broadcaster to be notified when a module parameter changes. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/broadcaster/attachtomoduleparameter.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Broadcaster.attachToModuleParameter(var moduleIds, var parameterIds, var optionalMetadata)</code></pre>
 <p><br><br></p>
 <h2 id="attachtononrealtimechange"><b>attachToNonRealtimeChange</b>
 </h2>
-<p class="comment">Attaches this broadcaster to receive realtime / nonrealtime render change events.</p>
+<p class="comment">Attaches this broadcaster to receive realtime / nonrealtime render change events. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/broadcaster/attachtononrealtimechange.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Broadcaster.attachToNonRealtimeChange(var optionalMetadata)</code></pre>
 <p><br><br></p>
 <h2 id="attachtootherbroadcaster"><b>attachToOtherBroadcaster</b>
 </h2>
-<p class="comment">Attaches this broadcaster to another broadcaster(s) to forward the messages.</p>
+<p class="comment">Attaches this broadcaster to another broadcaster(s) to forward the messages. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/broadcaster/attachtootherbroadcaster.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Broadcaster.attachToOtherBroadcaster(var otherBroadcaster, var argTransformFunction, bool async, var optionalMetadata)</code></pre>
 <p><br><br></p>
 <h2 id="attachtoprocessingspecs"><b>attachToProcessingSpecs</b>
 </h2>
-<p class="comment">Attaches this broadcaster to changes of the audio processing specs (samplerate / buffer size).</p>
+<p class="comment">Attaches this broadcaster to changes of the audio processing specs (samplerate / buffer size). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/broadcaster/attachtoprocessingspecs.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Broadcaster.attachToProcessingSpecs(var optionalMetadata)</code></pre>
 <p><br><br></p>
 <h2 id="attachtoradiogroup"><b>attachToRadioGroup</b>
@@ -972,27 +978,32 @@ b.addListener("", "funky", function(eventType, samplerId, data)
 <p><br></p>
 <h2 id="callwithdelay"><b>callWithDelay</b>
 </h2>
-<p class="comment">Calls a function after a short period of time. This is exclusive, so if you pass in a new function while another is pending, the first will be replaced.</p>
+<p class="comment">Calls a function after a short period of time. This is exclusive, so if you pass in a new function while another is pending, the first will be replaced. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/broadcaster/callwithdelay.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Broadcaster.callWithDelay(int delayInMilliseconds, var argArray, var function)</code></pre>
 <p><br><br></p>
 <h2 id="isbypassed"><b>isBypassed</b>
 </h2>
-<p class="comment">Checks if the broadcaster is bypassed.</p>
+<p class="comment">Checks if the broadcaster is bypassed. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/broadcaster/isbypassed.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Broadcaster.isBypassed()</code></pre>
 <p><br><br></p>
 <h2 id="refreshcontextmenustate"><b>refreshContextMenuState</b>
 </h2>
-<p class="comment">If this broadcaster is attached to a context menu, calling this method will update the states for the menu items.</p>
+<p class="comment">If this broadcaster is attached to a context menu, calling this method will update the states for the menu items. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/broadcaster/refreshcontextmenustate.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Broadcaster.refreshContextMenuState()</code></pre>
 <p><br><br></p>
 <h2 id="removealllisteners"><b>removeAllListeners</b>
 </h2>
-<p class="comment">Removes all listeners.</p>
+<p class="comment">Removes all listeners. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/broadcaster/removealllisteners.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Broadcaster.removeAllListeners()</code></pre>
 <p><br><br></p>
 <h2 id="removeallsources"><b>removeAllSources</b>
 </h2>
-<p class="comment">Removes all sources.</p>
+<p class="comment">Removes all sources. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/broadcaster/removeallsources.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Broadcaster.removeAllSources()</code></pre>
 <p><br><br></p>
 <h2 id="removelistener"><b>removeListener</b>
@@ -1003,12 +1014,14 @@ b.addListener("", "funky", function(eventType, samplerId, data)
 <p class="comment">If you just want to temporarily deactivate a listener, you can do so by pressing the bypass button in the Broadcaster Controller. This is helpful for debugging<br></p>
 <h2 id="removesource"><b>removeSource</b>
 </h2>
-<p class="comment">Removes the source with the given metadata.</p>
+<p class="comment">Removes the source with the given metadata. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/broadcaster/removesource.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Broadcaster.removeSource(var metadata)</code></pre>
 <p><br><br></p>
 <h2 id="resendlastmessage"><b>resendLastMessage</b>
 </h2>
-<p class="comment">Resends the current state.</p>
+<p class="comment">Resends the current state. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/broadcaster/resendlastmessage.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Broadcaster.resendLastMessage(var isSync)</code></pre>
 <p><br><br></p>
 <h2 id="reset"><b>reset</b>
@@ -1018,7 +1031,8 @@ b.addListener("", "funky", function(eventType, samplerId, data)
 <p><br>This resets the value to the default values passed into the constructor and sends a message to all listeners.<br></p>
 <h2 id="sendasyncmessage"><b>sendAsyncMessage</b>
 </h2>
-<p class="comment">Sends an asynchronous message to all listeners. the length of args must match the default value list.</p>
+<p class="comment">Sends an asynchronous message to all listeners. the length of args must match the default value list. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/broadcaster/sendasyncmessage.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Broadcaster.sendAsyncMessage(var args)</code></pre>
 <p><br><br></p>
 <h2 id="sendmessage"><b>sendMessage</b>
@@ -1044,12 +1058,14 @@ b.addListener("", "funky", function(eventType, samplerId, data)
 <p>Be aware that if you call this method while a callback is pending, it will override the value to be send out and restart the timer, so the first message might get lost.<br></p>
 <h2 id="sendsyncmessage"><b>sendSyncMessage</b>
 </h2>
-<p class="comment">Sends a synchronous message to all listeners (same as the dot assignment operator). the length of args must match the default value list.</p>
+<p class="comment">Sends a synchronous message to all listeners (same as the dot assignment operator). the length of args must match the default value list. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/broadcaster/sendsyncmessage.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Broadcaster.sendSyncMessage(var args)</code></pre>
 <p><br><br></p>
 <h2 id="setbypassed"><b>setBypassed</b>
 </h2>
-<p class="comment">Deactivates the broadcaster so that it will not send messages. If sendMessageIfEnabled is true, it will send the last value when unbypassed.</p>
+<p class="comment">Deactivates the broadcaster so that it will not send messages. If sendMessageIfEnabled is true, it will send the last value when unbypassed. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/broadcaster/setbypassed.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Broadcaster.setBypassed(bool shouldBeBypassed, bool sendMessageIfEnabled, bool async)</code></pre>
 <p><br><br></p>
 <h2 id="setenablequeue"><b>setEnableQueue</b>
@@ -1073,14 +1089,16 @@ bc.sendMessage(1, false);</code></pre>
 <p><br>This function will enforce synchronous execution of its callback independently of which function is called.<br></p>
 <h2 id="setrealtimemode"><b>setRealtimeMode</b>
 </h2>
-<p class="comment">Guarantees that the synchronous execution of the listener callbacks can be called from the audio thread.</p>
+<p class="comment">Guarantees that the synchronous execution of the listener callbacks can be called from the audio thread. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/broadcaster/setrealtimemode.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Broadcaster.setRealtimeMode(bool enableRealTimeMode)</code></pre>
 <p><br><br></p>
 <h2 id="setreplacethisreference"><b>setReplaceThisReference</b>
 </h2>
 <p class="comment">This will control whether the <code>this</code>
  reference for the listener function will be replaced with the object passed into <code>addListener</code>
-.</p>
+. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/broadcaster/setreplacethisreference.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Broadcaster.setReplaceThisReference(bool shouldReplaceThisReference)</code></pre>
 <p><br><br></p>
 <h2 id="setsendmessageforundefinedargs"><b>setSendMessageForUndefinedArgs</b>
@@ -1092,7 +1110,7 @@ bc.sendMessage(1, false);</code></pre>
  before passing the parameters into function calls to avoid script errors).</p>
 <p class="comment">If you create a broadcaster, all the arguments will have an <code>undefined</code>
  state until you send the first message.<br></p>
-<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+<div class="content-footer"><span class="content-footer-left"><a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/broadcaster/Readme.md">Edit on GitHub</a>
 </span>
 
 <span class="content-footer-right">Next: <a href="scripting/scripting-api/buffer/index.html">Buffer</a>

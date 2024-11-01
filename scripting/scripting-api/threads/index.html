@@ -139,12 +139,14 @@ backgroundTask.callOnBackgroundThread(function(t)
 <p><br>The return value is one of the constants of this class, so if you can compare it against those. If you just want to dump the thread info to the console, you should use getCurrentThreadName() as this returns a string.<br></p>
 <h2 id="getcurrentthreadname"><b>getCurrentThreadName</b>
 </h2>
-<p class="comment">Returns the name of the current thread (for debugging purposes only!).</p>
+<p class="comment">Returns the name of the current thread (for debugging purposes only!). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/threads/getcurrentthreadname.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Threads.getCurrentThreadName()</code></pre>
 <p><br><br></p>
 <h2 id="getlockerthread"><b>getLockerThread</b>
 </h2>
-<p class="comment">Returns the thread ID of the thread the locks the given thread ID.</p>
+<p class="comment">Returns the thread ID of the thread the locks the given thread ID. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/threads/getlockerthread.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Threads.getLockerThread(int threadThatIsLocked)</code></pre>
 <p><br><br></p>
 <h2 id="isaudiorunning"><b>isAudioRunning</b>
@@ -155,30 +157,35 @@ backgroundTask.callOnBackgroundThread(function(t)
 <p><br></p>
 <h2 id="iscurrentlyexporting"><b>isCurrentlyExporting</b>
 </h2>
-<p class="comment">Returns true if the audio exporter is currently rendering the audio on a background thread.</p>
+<p class="comment">Returns true if the audio exporter is currently rendering the audio on a background thread. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/threads/iscurrentlyexporting.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Threads.isCurrentlyExporting()</code></pre>
 <p><br><br></p>
 <h2 id="islocked"><b>isLocked</b>
 </h2>
-<p class="comment">Returns true if the given thread is currently locked.</p>
+<p class="comment">Returns true if the given thread is currently locked. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/threads/islocked.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Threads.isLocked(int thread)</code></pre>
 <p><br><br></p>
 <h2 id="islockedbycurrentthread"><b>isLockedByCurrentThread</b>
 </h2>
-<p class="comment">Returns true if the given thread is currently locked by the current thread.</p>
+<p class="comment">Returns true if the given thread is currently locked by the current thread. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/threads/islockedbycurrentthread.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Threads.isLockedByCurrentThread(int thread)</code></pre>
 <p><br><br></p>
 <h2 id="killvoicesandcall"><b>killVoicesAndCall</b>
 </h2>
-<p class="comment">Kills all voices, suspends the audio processing and calls the given function on the loading thread. Returns true if the function was executed synchronously.</p>
+<p class="comment">Kills all voices, suspends the audio processing and calls the given function on the loading thread. Returns true if the function was executed synchronously. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/threads/killvoicesandcall.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Threads.killVoicesAndCall( var functionToExecute)</code></pre>
 <p><br><br></p>
 <h2 id="tostring"><b>toString</b>
 </h2>
-<p class="comment">Returns the name of the given string (for debugging purposes only!).</p>
+<p class="comment">Returns the name of the given string (for debugging purposes only!). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/threads/tostring.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Threads.toString(int thread)</code></pre>
 <p><br><br></p>
-<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+<div class="content-footer"><span class="content-footer-left"><a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/threads/Readme.md">Edit on GitHub</a>
 </span>
 
 <span class="content-footer-right">Next: <a href="scripting/scripting-api/threadsafestorage/index.html">ThreadSafeStorage</a>

@@ -49,17 +49,20 @@
 </h1>
 <h2 id="asmidiprocessor"><b>asMidiProcessor</b>
 </h2>
-<p class="comment">Returns a typed MIDI processor reference (for setting attributes etc).</p>
+<p class="comment">Returns a typed MIDI processor reference (for setting attributes etc). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/midiplayer/asmidiprocessor.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">MidiPlayer.asMidiProcessor()</code></pre>
 <p><br><br></p>
 <h2 id="clearallsequences"><b>clearAllSequences</b>
 </h2>
-<p class="comment">Removes all sequences and tracks.</p>
+<p class="comment">Removes all sequences and tracks. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/midiplayer/clearallsequences.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">MidiPlayer.clearAllSequences()</code></pre>
 <p><br><br></p>
 <h2 id="connecttometronome"><b>connectToMetronome</b>
 </h2>
-<p class="comment">Connects this MIDI player to the given metronome.</p>
+<p class="comment">Connects this MIDI player to the given metronome. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/midiplayer/connecttometronome.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">MidiPlayer.connectToMetronome(var metronome)</code></pre>
 <p><br><br></p>
 <h2 id="connecttopanel"><b>connectToPanel</b>
@@ -81,7 +84,8 @@
  to fetch the data and write the UI logic you want.<br></p>
 <h2 id="converteventlisttonoterectangles"><b>convertEventListToNoteRectangles</b>
 </h2>
-<p class="comment">Converts a given array of Message holders to a rectangle list.</p>
+<p class="comment">Converts a given array of Message holders to a rectangle list. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/midiplayer/converteventlisttonoterectangles.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">MidiPlayer.convertEventListToNoteRectangles(var eventList, var targetBounds)</code></pre>
 <p><br><br></p>
 <h2 id="create"><b>create</b>
@@ -96,12 +100,14 @@
 <br></p>
 <h2 id="flushmessagelist"><b>flushMessageList</b>
 </h2>
-<p class="comment">Writes the given array of MessageHolder objects into the current sequence. This is undoable.</p>
+<p class="comment">Writes the given array of MessageHolder objects into the current sequence. This is undoable. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/midiplayer/flushmessagelist.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">MidiPlayer.flushMessageList(var messageList)</code></pre>
 <p><br><br></p>
 <h2 id="flushmessagelisttosequence"><b>flushMessageListToSequence</b>
 </h2>
-<p class="comment">Writes the given array of MessageHolder objects into the sequence with the given (one-based!) index. This is undoable.</p>
+<p class="comment">Writes the given array of MessageHolder objects into the sequence with the given (one-based!) index. This is undoable. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/midiplayer/flushmessagelisttosequence.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">MidiPlayer.flushMessageListToSequence(var messageList, int sequenceIndexOneBased)</code></pre>
 <p><br><br></p>
 <h2 id="geteventlist"><b>getEventList</b>
@@ -127,17 +133,20 @@
  after finishing the processing to apply the changes.<br></p>
 <h2 id="geteventlistfromsequence"><b>getEventListFromSequence</b>
 </h2>
-<p class="comment">Creates an array containing all MIDI messages from the sequence with the given (one-based!) index into Message Holders.</p>
+<p class="comment">Creates an array containing all MIDI messages from the sequence with the given (one-based!) index into Message Holders. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/midiplayer/geteventlistfromsequence.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">MidiPlayer.getEventListFromSequence(int sequenceIndexOneBased)</code></pre>
 <p><br><br></p>
 <h2 id="getlastplayednoteposition"><b>getLastPlayedNotePosition</b>
 </h2>
-<p class="comment">Returns the position of the last played note.</p>
+<p class="comment">Returns the position of the last played note. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/midiplayer/getlastplayednoteposition.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">MidiPlayer.getLastPlayedNotePosition()</code></pre>
 <p><br><br></p>
 <h2 id="getmidifilelist"><b>getMidiFileList</b>
 </h2>
-<p class="comment">Returns a list of all MIDI files that are embedded in the plugin.</p>
+<p class="comment">Returns a list of all MIDI files that are embedded in the plugin. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/midiplayer/getmidifilelist.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">MidiPlayer.getMidiFileList()</code></pre>
 <p><br><br></p>
 <h2 id="getnoterectanglelist"><b>getNoteRectangleList</b>
@@ -179,37 +188,44 @@ Panel.setPaintRoutine(function(g)
 <p><br></p>
 <h2 id="getnumsequences"><b>getNumSequences</b>
 </h2>
-<p class="comment">Returns the number of loaded sequences.</p>
+<p class="comment">Returns the number of loaded sequences. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/midiplayer/getnumsequences.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">MidiPlayer.getNumSequences()</code></pre>
 <p><br><br></p>
 <h2 id="getnumtracks"><b>getNumTracks</b>
 </h2>
-<p class="comment">Returns the number of tracks in the current sequence.</p>
+<p class="comment">Returns the number of tracks in the current sequence. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/midiplayer/getnumtracks.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">MidiPlayer.getNumTracks()</code></pre>
 <p><br><br></p>
 <h2 id="getplaybackposition"><b>getPlaybackPosition</b>
 </h2>
-<p class="comment">Returns the playback position in the current loop between 0.0 and 1.0.</p>
+<p class="comment">Returns the playback position in the current loop between 0.0 and 1.0. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/midiplayer/getplaybackposition.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">MidiPlayer.getPlaybackPosition()</code></pre>
 <p><br><br></p>
 <h2 id="getplaystate"><b>getPlayState</b>
 </h2>
-<p class="comment">Returns the play state (0 = stop, 1 = play, 2 = recording.</p>
+<p class="comment">Returns the play state (0 = stop, 1 = play, 2 = recording. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/midiplayer/getplaystate.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">MidiPlayer.getPlayState()</code></pre>
 <p><br><br></p>
 <h2 id="getticksperquarter"><b>getTicksPerQuarter</b>
 </h2>
-<p class="comment">Returns the tick resolution for a quarter note.</p>
+<p class="comment">Returns the tick resolution for a quarter note. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/midiplayer/getticksperquarter.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">MidiPlayer.getTicksPerQuarter()</code></pre>
 <p><br><br></p>
 <h2 id="gettimesignature"><b>getTimeSignature</b>
 </h2>
-<p class="comment">Returns an object with properties about the length of the current sequence.</p>
+<p class="comment">Returns an object with properties about the length of the current sequence. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/midiplayer/gettimesignature.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">MidiPlayer.getTimeSignature()</code></pre>
 <p><br><br></p>
 <h2 id="gettimesignaturefromsequence"><b>getTimeSignatureFromSequence</b>
 </h2>
-<p class="comment">Returns an object with properties about the length of the sequence with the given index.</p>
+<p class="comment">Returns an object with properties about the length of the sequence with the given index. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/midiplayer/gettimesignaturefromsequence.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">MidiPlayer.getTimeSignatureFromSequence(int index)</code></pre>
 <p><br><br></p>
 <h2 id="isempty"><b>isEmpty</b>
@@ -227,17 +243,20 @@ inline function sequenceHasNoEvents(player)
 <p><br></p>
 <h2 id="issequenceempty"><b>isSequenceEmpty</b>
 </h2>
-<p class="comment">Returns true if the sequence with the given (one-based!) index doesn't contain any midi data.</p>
+<p class="comment">Returns true if the sequence with the given (one-based!) index doesn't contain any midi data. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/midiplayer/issequenceempty.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">MidiPlayer.isSequenceEmpty(int indexOneBased)</code></pre>
 <p><br><br></p>
 <h2 id="play"><b>play</b>
 </h2>
-<p class="comment">Starts playing. Use the timestamp to delay the event or use the currents event timestamp for sample accurate playback.</p>
+<p class="comment">Starts playing. Use the timestamp to delay the event or use the currents event timestamp for sample accurate playback. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/midiplayer/play.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">MidiPlayer.play(int timestamp)</code></pre>
 <p><br><br></p>
 <h2 id="record"><b>record</b>
 </h2>
-<p class="comment">Starts recording (not yet implemented). Use the timestamp to delay the event or use the currents event timestamp for sample accurate playback.</p>
+<p class="comment">Starts recording (not yet implemented). Use the timestamp to delay the event or use the currents event timestamp for sample accurate playback. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/midiplayer/record.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">MidiPlayer.record(int timestamp)</code></pre>
 <p><br><br></p>
 <h2 id="redo"><b>redo</b>
@@ -248,7 +267,8 @@ inline function sequenceHasNoEvents(player)
 , this will not use the global undo manager, but a dedicated undo manager for each MIDI player (otherwise the actions interfere with changing UI values, which would be very annoying).<br></p>
 <h2 id="reset"><b>reset</b>
 </h2>
-<p class="comment">Resets the current sequence to the last loaded file.</p>
+<p class="comment">Resets the current sequence to the last loaded file. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/midiplayer/reset.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">MidiPlayer.reset()</code></pre>
 <p><br><br></p>
 <h2 id="saveasmidifile"><b>saveAsMidiFile</b>
@@ -260,22 +280,26 @@ inline function sequenceHasNoEvents(player)
  use this method unless you know exactly what to do .<br></p>
 <h2 id="setautomationhandlerconsumescontrollerevents"><b>setAutomationHandlerConsumesControllerEvents</b>
 </h2>
-<p class="comment">This will send any CC messages from the MIDI file to the global MIDI handler.</p>
+<p class="comment">This will send any CC messages from the MIDI file to the global MIDI handler. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/midiplayer/setautomationhandlerconsumescontrollerevents.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">MidiPlayer.setAutomationHandlerConsumesControllerEvents(bool shouldBeEnabled)</code></pre>
 <p><br><br></p>
 <h2 id="setfile"><b>setFile</b>
 </h2>
-<p class="comment">Loads a MIDI file and switches to this sequence if specified.</p>
+<p class="comment">Loads a MIDI file and switches to this sequence if specified. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/midiplayer/setfile.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">MidiPlayer.setFile(var fileName, bool clearExistingSequences, bool selectNewSequence)</code></pre>
 <p><br><br></p>
 <h2 id="setglobalplaybackratio"><b>setGlobalPlaybackRatio</b>
 </h2>
-<p class="comment">Sets a global playback ratio (for all MIDI players).</p>
+<p class="comment">Sets a global playback ratio (for all MIDI players). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/midiplayer/setglobalplaybackratio.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">MidiPlayer.setGlobalPlaybackRatio(double globalRatio)</code></pre>
 <p><br><br></p>
 <h2 id="setplaybackcallback"><b>setPlaybackCallback</b>
 </h2>
-<p class="comment">Attaches a callback with two arguments (timestamp, playState) that gets executed when the play state changes.</p>
+<p class="comment">Attaches a callback with two arguments (timestamp, playState) that gets executed when the play state changes. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/midiplayer/setplaybackcallback.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">MidiPlayer.setPlaybackCallback(var playbackCallback, var synchronous)</code></pre>
 <p><br><br></p>
 <h2 id="setplaybackposition"><b>setPlaybackPosition</b>
@@ -293,7 +317,8 @@ inline function sequenceHasNoEvents(player)
 <p><br></p>
 <h2 id="setrecordeventcallback"><b>setRecordEventCallback</b>
 </h2>
-<p class="comment">Sets a inline function that will process every note that is about to be recorded.</p>
+<p class="comment">Sets a inline function that will process every note that is about to be recorded. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/midiplayer/setrecordeventcallback.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">MidiPlayer.setRecordEventCallback(var recordEventCallback)</code></pre>
 <p><br><br></p>
 <h2 id="setrepaintonpositionchange"><b>setRepaintOnPositionChange</b>
@@ -304,27 +329,32 @@ inline function sequenceHasNoEvents(player)
  to repaint during playback (eg. to display a ruler that indicates the position), set this to true and it repaint() will be called periodically during playback.<br></p>
 <h2 id="setsequence"><b>setSequence</b>
 </h2>
-<p class="comment">Enables the (previously loaded) sequence with the given (one-based!) index.</p>
+<p class="comment">Enables the (previously loaded) sequence with the given (one-based!) index. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/midiplayer/setsequence.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">MidiPlayer.setSequence(int sequenceIndex)</code></pre>
 <p><br><br></p>
 <h2 id="setsequencecallback"><b>setSequenceCallback</b>
 </h2>
-<p class="comment">Attaches a callback that gets executed whenever the sequence was changed.</p>
+<p class="comment">Attaches a callback that gets executed whenever the sequence was changed. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/midiplayer/setsequencecallback.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">MidiPlayer.setSequenceCallback(var updateFunction)</code></pre>
 <p><br><br></p>
 <h2 id="setsynctomasterclock"><b>setSyncToMasterClock</b>
 </h2>
-<p class="comment">Syncs the playback of this MIDI player to the master clock (external or internal).</p>
+<p class="comment">Syncs the playback of this MIDI player to the master clock (external or internal). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/midiplayer/setsynctomasterclock.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">MidiPlayer.setSyncToMasterClock(bool shouldSyncToMasterClock)</code></pre>
 <p><br><br></p>
 <h2 id="settimesignature"><b>setTimeSignature</b>
 </h2>
-<p class="comment">Sets the timing information of the current sequence using the given object.</p>
+<p class="comment">Sets the timing information of the current sequence using the given object. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/midiplayer/settimesignature.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">MidiPlayer.setTimeSignature(var timeSignatureObject)</code></pre>
 <p><br><br></p>
 <h2 id="settimesignaturetosequence"><b>setTimeSignatureToSequence</b>
 </h2>
-<p class="comment">Sets the timing information of the sequence with the given index using the given object.</p>
+<p class="comment">Sets the timing information of the sequence with the given index using the given object. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/midiplayer/settimesignaturetosequence.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">MidiPlayer.setTimeSignatureToSequence(int index, var timeSignatureObject)</code></pre>
 <p><br><br></p>
 <h2 id="settrack"><b>setTrack</b>
@@ -335,25 +365,29 @@ inline function sequenceHasNoEvents(player)
 , not with zero). Be aware that changing tracks is not as "dynamic" as switching between different sequences.<br> </p>
 <h2 id="setuseglobalundomanager"><b>setUseGlobalUndoManager</b>
 </h2>
-<p class="comment">If enabled, it uses the global undo manager for all edits (So you can use Engine.undo()).</p>
+<p class="comment">If enabled, it uses the global undo manager for all edits (So you can use Engine.undo()). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/midiplayer/setuseglobalundomanager.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">MidiPlayer.setUseGlobalUndoManager(bool shouldUseGlobalUndoManager)</code></pre>
 <p><br><br></p>
 <h2 id="setusetimestampinticks"><b>setUseTimestampInTicks</b>
 </h2>
-<p class="comment">Uses Ticks instead of samples when editing the MIDI data.</p>
+<p class="comment">Uses Ticks instead of samples when editing the MIDI data. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/midiplayer/setusetimestampinticks.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">MidiPlayer.setUseTimestampInTicks(bool shouldUseTicksAsTimestamps)</code></pre>
 <p><br><br></p>
 <h2 id="stop"><b>stop</b>
 </h2>
-<p class="comment">Starts playing. Use the timestamp to delay the event or use the currents event timestamp for sample accurate playback.</p>
+<p class="comment">Starts playing. Use the timestamp to delay the event or use the currents event timestamp for sample accurate playback. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/midiplayer/stop.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">MidiPlayer.stop(int timestamp)</code></pre>
 <p><br><br></p>
 <h2 id="undo"><b>undo</b>
 </h2>
-<p class="comment">Undo the last edit.</p>
+<p class="comment">Undo the last edit. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/midiplayer/undo.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">MidiPlayer.undo()</code></pre>
 <p><br><br></p>
-<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+<div class="content-footer"><span class="content-footer-left"><a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/midiplayer/Readme.md">Edit on GitHub</a>
 </span>
 
 <span class="content-footer-right">Next: <a href="scripting/scripting-api/midiprocessor/index.html">MidiProcessor</a>

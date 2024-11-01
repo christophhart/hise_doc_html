@@ -49,30 +49,35 @@
 </h1>
 <h2 id="clear"><b>clear</b>
 </h2>
-<p class="comment">Clears the data. If another thread tries to read the value, it will block until that operation is done.</p>
+<p class="comment">Clears the data. If another thread tries to read the value, it will block until that operation is done. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/threadsafestorage/clear.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">ThreadSafeStorage.clear()</code></pre>
 <p><br><br></p>
 <h2 id="load"><b>load</b>
 </h2>
-<p class="comment">Loads the data. If the data is currently being written, this will lock and wait until the write operation is completed.</p>
+<p class="comment">Loads the data. If the data is currently being written, this will lock and wait until the write operation is completed. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/threadsafestorage/load.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">ThreadSafeStorage.load()</code></pre>
 <p><br><br></p>
 <h2 id="store"><b>store</b>
 </h2>
-<p class="comment">Writes the given data to the internal storage. If another thread tries to read the value, it will block until that operation is done.</p>
+<p class="comment">Writes the given data to the internal storage. If another thread tries to read the value, it will block until that operation is done. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/threadsafestorage/store.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">ThreadSafeStorage.store(var dataToStore)</code></pre>
 <p><br><br></p>
 <h2 id="storewithcopy"><b>storeWithCopy</b>
 </h2>
-<p class="comment">Creates a copy of the data and writes the copy to the data storage. If another thread tries to read the value, it will block until that operation is done.</p>
+<p class="comment">Creates a copy of the data and writes the copy to the data storage. If another thread tries to read the value, it will block until that operation is done. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/threadsafestorage/storewithcopy.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">ThreadSafeStorage.storeWithCopy(var dataToStore)</code></pre>
 <p><br><br></p>
 <h2 id="tryload"><b>tryLoad</b>
 </h2>
-<p class="comment">Loads the data if the lock can be gained or returns a given default value if the data is currently being written.</p>
+<p class="comment">Loads the data if the lock can be gained or returns a given default value if the data is currently being written. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/threadsafestorage/tryload.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">ThreadSafeStorage.tryLoad(var returnValueIfLocked)</code></pre>
 <p><br><br></p>
-<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+<div class="content-footer"><span class="content-footer-left"><a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/threadsafestorage/Readme.md">Edit on GitHub</a>
 </span>
 
 <span class="content-footer-right">Next: <a href="scripting/scripting-api/timer/index.html">Timer</a>

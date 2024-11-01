@@ -56,80 +56,95 @@ Console.print(node.getNumParameters());</code></pre>
 </h1>
 <h2 id="connectto"><b>connectTo</b>
 </h2>
-<p class="comment">Connects this node to the given parameter target. sourceInfo is either the parameter name (String) or output slot (integer).</p>
+<p class="comment">Connects this node to the given parameter target. sourceInfo is either the parameter name (String) or output slot (integer). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/node/connectto.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Node.connectTo(var parameterTarget, var sourceInfo)</code></pre>
 <p><br><br></p>
 <h2 id="connecttobypass"><b>connectToBypass</b>
 </h2>
-<p class="comment">Connects the bypass button of this node to the given source info ("NodeId.ParameterId").</p>
+<p class="comment">Connects the bypass button of this node to the given source info ("NodeId.ParameterId"). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/node/connecttobypass.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Node.connectToBypass(var sourceInfo)</code></pre>
 <p><br><br></p>
 <h2 id="get"><b>get</b>
 </h2>
-<p class="comment">Returns a property of the node.</p>
+<p class="comment">Returns a property of the node. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/node/get.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Node.get(var id)</code></pre>
 <p><br><br></p>
 <h2 id="getchildnodes"><b>getChildNodes</b>
 </h2>
-<p class="comment">Returns a list of child nodes if this node is a container.</p>
+<p class="comment">Returns a list of child nodes if this node is a container. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/node/getchildnodes.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Node.getChildNodes(bool recursive)</code></pre>
 <p><br><br></p>
 <h2 id="getindexinparent"><b>getIndexInParent</b>
 </h2>
-<p class="comment">Returns the index in the parent.</p>
+<p class="comment">Returns the index in the parent. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/node/getindexinparent.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Node.getIndexInParent()</code></pre>
 <p><br><br></p>
 <h2 id="getnodeholder"><b>getNodeHolder</b>
 </h2>
-<p class="comment">Not necessarily the DSP network.</p>
+<p class="comment">Not necessarily the DSP network. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/node/getnodeholder.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Node.getNodeHolder()</code></pre>
 <p><br><br></p>
 <h2 id="getnumparameters"><b>getNumParameters</b>
 </h2>
-<p class="comment">Returns the number of parameters.</p>
+<p class="comment">Returns the number of parameters. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/node/getnumparameters.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Node.getNumParameters()</code></pre>
 <p><br><br></p>
 <h2 id="getparameter"><b>getParameter</b>
 </h2>
-<p class="comment">Returns a reference to a parameter.</p>
+<p class="comment">Returns a reference to a parameter. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/node/getparameter.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Node.getParameter(var indexOrId)</code></pre>
 <p><br><br></p>
 <h2 id="isactive"><b>isActive</b>
 </h2>
-<p class="comment">Checks if the node is inserted into the signal path.</p>
+<p class="comment">Checks if the node is inserted into the signal path. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/node/isactive.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Node.isActive(bool checkRecursively)</code></pre>
 <p><br><br></p>
 <h2 id="isbypassed"><b>isBypassed</b>
 </h2>
-<p class="comment">Checks if the node is bypassed.</p>
+<p class="comment">Checks if the node is bypassed. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/node/isbypassed.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Node.isBypassed()</code></pre>
 <p><br><br></p>
 <h2 id="reset"><b>reset</b>
 </h2>
-<p class="comment">Reset the node's internal state (eg. at voice start).</p>
+<p class="comment">Reset the node's internal state (eg. at voice start). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/node/reset.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Node.reset()=0</code></pre>
 <p><br><br></p>
 <h2 id="set"><b>set</b>
 </h2>
-<p class="comment">Sets the property of the node.</p>
+<p class="comment">Sets the property of the node. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/node/set.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Node.set(var id, var value)</code></pre>
 <p><br><br></p>
 <h2 id="setbypassed"><b>setBypassed</b>
 </h2>
-<p class="comment">Bypasses the node.</p>
+<p class="comment">Bypasses the node. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/node/setbypassed.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Node.setBypassed(bool shouldBeBypassed)</code></pre>
 <p><br><br></p>
 <h2 id="setcomplexdataindex"><b>setComplexDataIndex</b>
 </h2>
-<p class="comment">Sets the complex data type at the dataSlot to the given index and data (if embedded).</p>
+<p class="comment">Sets the complex data type at the dataSlot to the given index and data (if embedded). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/node/setcomplexdataindex.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Node.setComplexDataIndex(String dataType, int dataSlot, int indexValue)</code></pre>
 <p><br><br></p>
 <h2 id="setparent"><b>setParent</b>
 </h2>
-<p class="comment">Inserts the node into the given parent container.</p>
+<p class="comment">Inserts the node into the given parent container. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/node/setparent.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Node.setParent(var parentNode, int indexInParent)</code></pre>
 <p><br><br></p>
-<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+<div class="content-footer"><span class="content-footer-left"><a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/node/Readme.md">Edit on GitHub</a>
 </span>
 
 <span class="content-footer-right">Next: <a href="scripting/scripting-api/path/index.html">Path</a>

@@ -53,22 +53,26 @@
 <p><br>This returns a list of all audio files that are included in the given Expansion. Also it will load all audio files into the pool so they are available in the list.<br></p>
 <h2 id="getdatafilelist"><b>getDataFileList</b>
 </h2>
-<p class="comment">Returns a list of all available data files in the expansion.</p>
+<p class="comment">Returns a list of all available data files in the expansion. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/expansion/getdatafilelist.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Expansion.getDataFileList()</code></pre>
 <p><br><br></p>
 <h2 id="getexpansiontype"><b>getExpansionType</b>
 </h2>
-<p class="comment">returns the expansion type. Use the constants of ExpansionHandler to resolve the integer number.</p>
+<p class="comment">returns the expansion type. Use the constants of ExpansionHandler to resolve the integer number. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/expansion/getexpansiontype.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Expansion.getExpansionType()</code></pre>
 <p><br><br></p>
 <h2 id="getimagelist"><b>getImageList</b>
 </h2>
-<p class="comment">Returns a list of all available images in the expansion.</p>
+<p class="comment">Returns a list of all available images in the expansion. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/expansion/getimagelist.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Expansion.getImageList()</code></pre>
 <p><br><br></p>
 <h2 id="getmidifilelist"><b>getMidiFileList</b>
 </h2>
-<p class="comment">Returns a list of all available MIDI files in the expansion.</p>
+<p class="comment">Returns a list of all available MIDI files in the expansion. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/expansion/getmidifilelist.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Expansion.getMidiFileList()</code></pre>
 <p><br><br></p>
 <h2 id="getproperties"><b>getProperties</b>
@@ -87,7 +91,8 @@
 <p><br></p>
 <h2 id="getrootfolder"><b>getRootFolder</b>
 </h2>
-<p class="comment">Returns the root folder for this expansion.</p>
+<p class="comment">Returns the root folder for this expansion. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/expansion/getrootfolder.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Expansion.getRootFolder()</code></pre>
 <p><br><br></p>
 <h2 id="getsamplefolder"><b>getSampleFolder</b>
@@ -99,18 +104,21 @@
 <br></p>
 <h2 id="getsamplemaplist"><b>getSampleMapList</b>
 </h2>
-<p class="comment">Returns a list of all available sample maps in the expansion.</p>
+<p class="comment">Returns a list of all available sample maps in the expansion. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/expansion/getsamplemaplist.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Expansion.getSampleMapList()</code></pre>
 <p><br><br></p>
 <h2 id="getuserpresetlist"><b>getUserPresetList</b>
 </h2>
-<p class="comment">Returns a list of all available user presets in the expansion.</p>
+<p class="comment">Returns a list of all available user presets in the expansion. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/expansion/getuserpresetlist.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Expansion.getUserPresetList()</code></pre>
 <p><br><br></p>
 <h2 id="getwildcardreference"><b>getWildcardReference</b>
 </h2>
 <p class="comment">Returns a valid wildcard reference ((<code>{EXP::Name}relativePath</code>
-) for the expansion.</p>
+) for the expansion. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/expansion/getwildcardreference.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Expansion.getWildcardReference(var relativePath)</code></pre>
 <p><br><br></p>
 <h2 id="loaddatafile"><b>loadDataFile</b>
@@ -131,7 +139,8 @@
 <br></p>
 <h2 id="setallowduplicatesamples"><b>setAllowDuplicateSamples</b>
 </h2>
-<p class="comment">Sets whether the samples are allowed to be duplicated for this expansion. Set this to false if you operate on the same samples differently.</p>
+<p class="comment">Sets whether the samples are allowed to be duplicated for this expansion. Set this to false if you operate on the same samples differently. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/expansion/setallowduplicatesamples.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Expansion.setAllowDuplicateSamples(bool shouldAllowDuplicates)</code></pre>
 <p><br><br></p>
 <h2 id="setsamplefolder"><b>setSampleFolder</b>
@@ -143,15 +152,17 @@
 <p>It's also recommended to hint to the user that he might want to restart the plugin after changing this location in order to remove any chances that the old sample path is still being cached somewhere.<br></p>
 <h2 id="unloadexpansion"><b>unloadExpansion</b>
 </h2>
-<p class="comment">Unloads this expansion so it will not show up in the list of expansions until the next restart.</p>
+<p class="comment">Unloads this expansion so it will not show up in the list of expansions until the next restart. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/expansion/unloadexpansion.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Expansion.unloadExpansion()</code></pre>
 <p><br><br></p>
 <h2 id="writedatafile"><b>writeDataFile</b>
 </h2>
-<p class="comment">Writes the given data into the file in the AdditionalSourceCode directory of the expansion.</p>
+<p class="comment">Writes the given data into the file in the AdditionalSourceCode directory of the expansion. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/expansion/writedatafile.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Expansion.writeDataFile(var relativePath, var dataToWrite)</code></pre>
 <p><br><br></p>
-<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+<div class="content-footer"><span class="content-footer-left"><a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/expansion/Readme.md">Edit on GitHub</a>
 </span>
 
 <span class="content-footer-right">Next: <a href="scripting/scripting-api/expansionhandler/index.html">ExpansionHandler</a>

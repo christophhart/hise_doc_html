@@ -89,22 +89,26 @@ and then use the functions to register callbacks.</p>
 </h1>
 <h2 id="isnonrealtime"><b>isNonRealtime</b>
 </h2>
-<p class="comment">This will return true if the DAW is currently bouncing the audio to a file. You can use this in the transport change callback to modify your processing chain.</p>
+<p class="comment">This will return true if the DAW is currently bouncing the audio to a file. You can use this in the transport change callback to modify your processing chain. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/transporthandler/isnonrealtime.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">TransportHandler.isNonRealtime()</code></pre>
 <p><br><br></p>
 <h2 id="sendgridsynconnextcallback"><b>sendGridSyncOnNextCallback</b>
 </h2>
-<p class="comment">sends a message on the next grid callback to resync the external clock.</p>
+<p class="comment">sends a message on the next grid callback to resync the external clock. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/transporthandler/sendgridsynconnextcallback.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">TransportHandler.sendGridSyncOnNextCallback()</code></pre>
 <p><br><br></p>
 <h2 id="setenablegrid"><b>setEnableGrid</b>
 </h2>
-<p class="comment">Enables a high precision grid timer.</p>
+<p class="comment">Enables a high precision grid timer. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/transporthandler/setenablegrid.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">TransportHandler.setEnableGrid(bool shouldBeEnabled, int tempoFactor)</code></pre>
 <p><br><br></p>
 <h2 id="setlinkbpmtosyncmode"><b>setLinkBpmToSyncMode</b>
 </h2>
-<p class="comment">If enabled, this will link the internal / external BPM to the sync mode.</p>
+<p class="comment">If enabled, this will link the internal / external BPM to the sync mode. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/transporthandler/setlinkbpmtosyncmode.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">TransportHandler.setLinkBpmToSyncMode(bool shouldPrefer)</code></pre>
 <p><br><br></p>
 <h2 id="setonbeatchange"><b>setOnBeatChange</b>
@@ -147,7 +151,8 @@ th.setOnBypass(function(isBypassed)
 <p class="comment">If you want to simulate the behaviour of bypassing the plugin during development, you can use the new bypass button at the top left of the HISE controller popup (next to the master clock controls).<br></p>
 <h2 id="setongridchange"><b>setOnGridChange</b>
 </h2>
-<p class="comment">Registers a callback to changes in the grid.</p>
+<p class="comment">Registers a callback to changes in the grid. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/transporthandler/setongridchange.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">TransportHandler.setOnGridChange(var sync, var f)</code></pre>
 <p><br><br></p>
 <h2 id="setonsignaturechange"><b>setOnSignatureChange</b>
@@ -176,25 +181,29 @@ th.setOnBypass(function(isBypassed)
 <p class="comment">This function will also be called once at registration.<br></p>
 <h2 id="setsyncmode"><b>setSyncMode</b>
 </h2>
-<p class="comment">Sets the sync mode for the global clock.</p>
+<p class="comment">Sets the sync mode for the global clock. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/transporthandler/setsyncmode.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">TransportHandler.setSyncMode(int syncMode)</code></pre>
 <p><br><br></p>
 <h2 id="startinternalclock"><b>startInternalClock</b>
 </h2>
-<p class="comment">Starts the internal master clock.</p>
+<p class="comment">Starts the internal master clock. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/transporthandler/startinternalclock.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">TransportHandler.startInternalClock(int timestamp)</code></pre>
 <p><br><br></p>
 <h2 id="stopinternalclock"><b>stopInternalClock</b>
 </h2>
-<p class="comment">Stops the internal master clock.</p>
+<p class="comment">Stops the internal master clock. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/transporthandler/stopinternalclock.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">TransportHandler.stopInternalClock(int timestamp)</code></pre>
 <p><br><br></p>
 <h2 id="stopinternalclockonexternalstop"><b>stopInternalClockOnExternalStop</b>
 </h2>
-<p class="comment">Sets the internal clock to stop when the external clock was stopped.</p>
+<p class="comment">Sets the internal clock to stop when the external clock was stopped. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/transporthandler/stopinternalclockonexternalstop.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">TransportHandler.stopInternalClockOnExternalStop(bool shouldStop)</code></pre>
 <p><br><br></p>
-<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+<div class="content-footer"><span class="content-footer-left"><a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/transporthandler/Readme.md">Edit on GitHub</a>
 </span>
 
 <span class="content-footer-right">Next: <a href="scripting/scripting-api/unlocker/index.html">Unlocker</a>

@@ -58,66 +58,78 @@
 </h1>
 <h2 id="clear"><b>clear</b>
 </h2>
-<p class="comment">Removes all nodes.</p>
+<p class="comment">Removes all nodes. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/dspnetwork/clear.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">DspNetwork.clear(bool removeNodesFromSignalChain, bool removeUnusedNodes)</code></pre>
 <p><br><br></p>
 <h2 id="create"><b>create</b>
 </h2>
 <p class="comment">Creates and returns a node with the given path (<code>factory.node</code>
-). If a node with the id already exists, it returns this node.</p>
+). If a node with the id already exists, it returns this node. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/dspnetwork/create.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">DspNetwork.create(String path, String id)</code></pre>
 <p><br><br></p>
 <h2 id="createandadd"><b>createAndAdd</b>
 </h2>
-<p class="comment">Creates a node, names it automatically and adds it at the end of the given parent.</p>
+<p class="comment">Creates a node, names it automatically and adds it at the end of the given parent. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/dspnetwork/createandadd.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">DspNetwork.createAndAdd(String path, String id, var parent)</code></pre>
 <p><br><br></p>
 <h2 id="createfromjson"><b>createFromJSON</b>
 </h2>
-<p class="comment">Creates multiple nodes from the given JSON object.</p>
+<p class="comment">Creates multiple nodes from the given JSON object. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/dspnetwork/createfromjson.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">DspNetwork.createFromJSON(var jsonData, var parent)</code></pre>
 <p><br><br></p>
 <h2 id="createtest"><b>createTest</b>
 </h2>
-<p class="comment">Creates a test object for this network.</p>
+<p class="comment">Creates a test object for this network. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/dspnetwork/createtest.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">DspNetwork.createTest(var testData)</code></pre>
 <p><br><br></p>
 <h2 id="deleteifunused"><b>deleteIfUnused</b>
 </h2>
-<p class="comment">Deletes the node if it is not in a signal path.</p>
+<p class="comment">Deletes the node if it is not in a signal path. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/dspnetwork/deleteifunused.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">DspNetwork.deleteIfUnused(String id)</code></pre>
 <p><br><br></p>
 <h2 id="get"><b>get</b>
 </h2>
-<p class="comment">Returns a reference to the node with the given id.</p>
+<p class="comment">Returns a reference to the node with the given id. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/dspnetwork/get.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">DspNetwork.get(var id)</code></pre>
 <p><br><br></p>
 <h2 id="preparetoplay"><b>prepareToPlay</b>
 </h2>
-<p class="comment">Initialise processing of all nodes.</p>
+<p class="comment">Initialise processing of all nodes. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/dspnetwork/preparetoplay.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">DspNetwork.prepareToPlay(double sampleRate, double blockSize)</code></pre>
 <p><br><br></p>
 <h2 id="processblock"><b>processBlock</b>
 </h2>
-<p class="comment">Process the given channel array with the node network.</p>
+<p class="comment">Process the given channel array with the node network. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/dspnetwork/processblock.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">DspNetwork.processBlock(var data)</code></pre>
 <p><br><br></p>
 <h2 id="setforwardcontrolstoparameters"><b>setForwardControlsToParameters</b>
 </h2>
-<p class="comment">Defines whether the UI controls of this script control the parameters or regular script callbacks.</p>
+<p class="comment">Defines whether the UI controls of this script control the parameters or regular script callbacks. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/dspnetwork/setforwardcontrolstoparameters.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">DspNetwork.setForwardControlsToParameters(bool shouldForward)</code></pre>
 <p><br><br></p>
 <h2 id="setparameterdatafromjson"><b>setParameterDataFromJSON</b>
 </h2>
-<p class="comment">Sets the parameters of this node according to the JSON data.</p>
+<p class="comment">Sets the parameters of this node according to the JSON data. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/dspnetwork/setparameterdatafromjson.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">DspNetwork.setParameterDataFromJSON(var jsonData)</code></pre>
 <p><br><br></p>
 <h2 id="undo"><b>undo</b>
 </h2>
-<p class="comment">Undo the last action.</p>
+<p class="comment">Undo the last action. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/dspnetwork/undo.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">DspNetwork.undo()</code></pre>
 <p><br><br></p>
-<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+<div class="content-footer"><span class="content-footer-left"><a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/dspnetwork/Readme.md">Edit on GitHub</a>
 </span>
 
 <span class="content-footer-right">Next: <a href="scripting/scripting-api/effect/index.html">Effect</a>

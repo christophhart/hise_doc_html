@@ -132,7 +132,8 @@ Server.callWithPOST("post_test.php", p, function(status, response)
 <p><br></p>
 <h2 id="cleanfinisheddownloads"><b>cleanFinishedDownloads</b>
 </h2>
-<p class="comment">Removes all finished downloads from the list.</p>
+<p class="comment">Removes all finished downloads from the list. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/server/cleanfinisheddownloads.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Server.cleanFinishedDownloads()</code></pre>
 <p><br><br></p>
 <h2 id="downloadfile"><b>downloadFile</b>
@@ -209,7 +210,8 @@ Content.getComponent("Button1").setControlCallback(onButton1Control);</code></pr
 <p><br></p>
 <h2 id="getpendingcalls"><b>getPendingCalls</b>
 </h2>
-<p class="comment">Returns a list of all pending Calls.</p>
+<p class="comment">Returns a list of all pending Calls. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/server/getpendingcalls.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Server.getPendingCalls()</code></pre>
 <p><br><br></p>
 <h2 id="getpendingdownloads"><b>getPendingDownloads</b>
@@ -221,37 +223,44 @@ Content.getComponent("Button1").setControlCallback(onButton1Control);</code></pr
 <br></p>
 <h2 id="isemailaddress"><b>isEmailAddress</b>
 </h2>
-<p class="comment">Checks if given email address is valid - not fool proof.</p>
+<p class="comment">Checks if given email address is valid - not fool proof. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/server/isemailaddress.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Server.isEmailAddress(String email)</code></pre>
 <p><br><br></p>
 <h2 id="isonline"><b>isOnline</b>
 </h2>
-<p class="comment">Returns true if the system is connected to the internet.</p>
+<p class="comment">Returns true if the system is connected to the internet. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/server/isonline.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Server.isOnline()</code></pre>
 <p><br><br></p>
 <h2 id="resendlastcall"><b>resendLastCall</b>
 </h2>
-<p class="comment">Resends the last call to the Server (eg. in case that there was no internet connection).</p>
+<p class="comment">Resends the last call to the Server (eg. in case that there was no internet connection). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/server/resendlastcall.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Server.resendLastCall()</code></pre>
 <p><br><br></p>
 <h2 id="setbaseurl"><b>setBaseURL</b>
 </h2>
-<p class="comment">Sets the base URL for all server queries.</p>
+<p class="comment">Sets the base URL for all server queries. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/server/setbaseurl.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Server.setBaseURL(String url)</code></pre>
 <p><br><br></p>
 <h2 id="setenforcetrailingslash"><b>setEnforceTrailingSlash</b>
 </h2>
-<p class="comment">Sets whether to append a trailing slash to each POST call (default is true).</p>
+<p class="comment">Sets whether to append a trailing slash to each POST call (default is true). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/server/setenforcetrailingslash.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Server.setEnforceTrailingSlash(bool shouldAddSlash)</code></pre>
 <p><br><br></p>
 <h2 id="sethttpheader"><b>setHttpHeader</b>
 </h2>
-<p class="comment">Adds the given String to the HTTP POST header.</p>
+<p class="comment">Adds the given String to the HTTP POST header. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/server/sethttpheader.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Server.setHttpHeader(String additionalHeader)</code></pre>
 <p><br><br></p>
 <h2 id="setnumalloweddownloads"><b>setNumAllowedDownloads</b>
 </h2>
-<p class="comment">Sets the maximal number of parallel downloads.</p>
+<p class="comment">Sets the maximal number of parallel downloads. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/server/setnumalloweddownloads.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Server.setNumAllowedDownloads(int maxNumberOfParallelDownloads)</code></pre>
 <p><br><br></p>
 <h2 id="setservercallback"><b>setServerCallback</b>
@@ -289,10 +298,11 @@ Interface: DONE</code></pre>
 <p>As you can see the start / end callback is only called once. Be aware that this callback is not used when there is a download in progress as this has it's own notification tools.<br></p>
 <h2 id="settimeoutmessagestring"><b>setTimeoutMessageString</b>
 </h2>
-<p class="comment">Sets a string that is parsed as timeout message when the server doesn't respond. Default is "{}" (empty JSON object).</p>
+<p class="comment">Sets a string that is parsed as timeout message when the server doesn't respond. Default is "{}" (empty JSON object). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/server/settimeoutmessagestring.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Server.setTimeoutMessageString(String timeoutMessage)</code></pre>
 <p><br><br></p>
-<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+<div class="content-footer"><span class="content-footer-left"><a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/server/Readme.md">Edit on GitHub</a>
 </span>
 
 <span class="content-footer-right">Next: <a href="scripting/scripting-api/settings/index.html">Settings</a>

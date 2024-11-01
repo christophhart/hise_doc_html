@@ -48,27 +48,32 @@
 </h1>
 <h2 id="addcontroller"><b>addController</b>
 </h2>
-<p class="comment">Adds a controller to the buffer.</p>
+<p class="comment">Adds a controller to the buffer. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/addcontroller.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.addController(int channel, int number, int value, int timeStampSamples)</code></pre>
 <p><br><br></p>
 <h2 id="addeffect"><b>addEffect</b>
 </h2>
-<p class="comment">Adds a effect (index = -1 to append it at the end).</p>
+<p class="comment">Adds a effect (index = -1 to append it at the end). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/addeffect.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.addEffect( String type,  String id, int index)</code></pre>
 <p><br><br></p>
 <h2 id="addmessagefromholder"><b>addMessageFromHolder</b>
 </h2>
-<p class="comment">Adds the event from the given holder and returns a event id for note ons.</p>
+<p class="comment">Adds the event from the given holder and returns a event id for note ons. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/addmessagefromholder.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.addMessageFromHolder(var messageHolder)</code></pre>
 <p><br><br></p>
 <h2 id="addmodulator"><b>addModulator</b>
 </h2>
-<p class="comment">Adds a Modulator to the synth's chain. If it already exists, it returns the index.</p>
+<p class="comment">Adds a Modulator to the synth's chain. If it already exists, it returns the index. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/addmodulator.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.addModulator(int chainId,  String type,  String id)</code></pre>
 <p><br><br></p>
 <h2 id="addnoteoff"><b>addNoteOff</b>
 </h2>
-<p class="comment">Adds a note off to the buffer.</p>
+<p class="comment">Adds a note off to the buffer. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/addnoteoff.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.addNoteOff(int channel, int noteNumber, int timeStampSamples)</code></pre>
 <p><br><br></p>
 <h2 id="addnoteon"><b>addNoteOn</b>
@@ -80,227 +85,272 @@
  which performs a few safe checks to prevent stuck notes in this scenario.<br></p>
 <h2 id="addpitchfade"><b>addPitchFade</b>
 </h2>
-<p class="comment">Adds a pitch fade to the given event ID.</p>
+<p class="comment">Adds a pitch fade to the given event ID. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/addpitchfade.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.addPitchFade(int eventId, int fadeTimeMilliseconds, int targetCoarsePitch, int targetFinePitch)</code></pre>
 <p><br><br></p>
 <h2 id="addtofront"><b>addToFront</b>
 </h2>
-<p class="comment">Adds the interface to the Container's body (or the frontend interface if compiled)</p>
+<p class="comment">Adds the interface to the Container's body (or the frontend interface if compiled) <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/addtofront.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.addToFront(bool addToFront)</code></pre>
 <p><br><br></p>
 <h2 id="addvolumefade"><b>addVolumeFade</b>
 </h2>
-<p class="comment">Fades all voices with the given event id to the target volume (in decibels).</p>
+<p class="comment">Fades all voices with the given event id to the target volume (in decibels). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/addvolumefade.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.addVolumeFade(int eventId, int fadeTimeMilliseconds, int targetVolume)</code></pre>
 <p><br><br></p>
 <h2 id="attachnote"><b>attachNote</b>
 </h2>
-<p class="comment">Attaches an artificial note to be stopped when the original note is stopped.</p>
+<p class="comment">Attaches an artificial note to be stopped when the original note is stopped. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/attachnote.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.attachNote(int originalNoteId, int artificialNoteId)</code></pre>
 <p><br><br></p>
 <h2 id="createbuilder"><b>createBuilder</b>
 </h2>
-<p class="comment">Creates a Builder object that can be used to create the module tree.</p>
+<p class="comment">Creates a Builder object that can be used to create the module tree. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/createbuilder.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.createBuilder()</code></pre>
 <p><br><br></p>
 <h2 id="defercallbacks"><b>deferCallbacks</b>
 </h2>
-<p class="comment">Defers all callbacks to the message thread (midi callbacks become read-only).</p>
+<p class="comment">Defers all callbacks to the message thread (midi callbacks become read-only). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/defercallbacks.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.deferCallbacks(bool makeAsynchronous)</code></pre>
 <p><br><br></p>
 <h2 id="getalleffects"><b>getAllEffects</b>
 </h2>
-<p class="comment">Returns an array of all effects that match the given regex.</p>
+<p class="comment">Returns an array of all effects that match the given regex. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/getalleffects.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.getAllEffects(String regex)</code></pre>
 <p><br><br></p>
 <h2 id="getallmodulators"><b>getAllModulators</b>
 </h2>
-<p class="comment">Returns an array of all modulators that match the given regex.</p>
+<p class="comment">Returns an array of all modulators that match the given regex. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/getallmodulators.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.getAllModulators(String regex)</code></pre>
 <p><br><br></p>
 <h2 id="getattribute"><b>getAttribute</b>
 </h2>
-<p class="comment">Returns the attribute of the parent synth.</p>
+<p class="comment">Returns the attribute of the parent synth. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/getattribute.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.getAttribute(int attributeIndex)</code></pre>
 <p><br><br></p>
 <h2 id="getaudiosampleprocessor"><b>getAudioSampleProcessor</b>
 </h2>
-<p class="comment">Returns the child synth with the supplied name.</p>
+<p class="comment">Returns the child synth with the supplied name. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/getaudiosampleprocessor.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.getAudioSampleProcessor( String name)</code></pre>
 <p><br><br></p>
 <h2 id="getchildsynth"><b>getChildSynth</b>
 </h2>
-<p class="comment">Returns the child synth with the supplied name.</p>
+<p class="comment">Returns the child synth with the supplied name. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/getchildsynth.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.getChildSynth( String name)</code></pre>
 <p><br><br></p>
 <h2 id="getchildsynthbyindex"><b>getChildSynthByIndex</b>
 </h2>
-<p class="comment">Returns the child synth with the given index.</p>
+<p class="comment">Returns the child synth with the given index. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/getchildsynthbyindex.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.getChildSynthByIndex(int index)</code></pre>
 <p><br><br></p>
 <h2 id="getdisplaybuffersource"><b>getDisplayBufferSource</b>
 </h2>
-<p class="comment">Returns a reference to a processor that holds a display buffer.</p>
+<p class="comment">Returns a reference to a processor that holds a display buffer. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/getdisplaybuffersource.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.getDisplayBufferSource( String name)</code></pre>
 <p><br><br></p>
 <h2 id="geteffect"><b>getEffect</b>
 </h2>
-<p class="comment">Returns the Effect with the supplied name. Can only be called in onInit(). It looks also in all child processors.</p>
+<p class="comment">Returns the Effect with the supplied name. Can only be called in onInit(). It looks also in all child processors. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/geteffect.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.getEffect( String name)</code></pre>
 <p><br><br></p>
 <h2 id="getidlist"><b>getIdList</b>
 </h2>
-<p class="comment">Searches the child processors and returns a list with every ID of the given type.</p>
+<p class="comment">Searches the child processors and returns a list with every ID of the given type. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/getidlist.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.getIdList( String type)</code></pre>
 <p><br><br></p>
 <h2 id="getmidiplayer"><b>getMidiPlayer</b>
 </h2>
-<p class="comment">Creates a reference to the given MIDI player.</p>
+<p class="comment">Creates a reference to the given MIDI player. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/getmidiplayer.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.getMidiPlayer( String playerId)</code></pre>
 <p><br><br></p>
 <h2 id="getmidiprocessor"><b>getMidiProcessor</b>
 </h2>
-<p class="comment">Returns the MidiProcessor with the supplied name. Can not be the own name!</p>
+<p class="comment">Returns the MidiProcessor with the supplied name. Can not be the own name! <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/getmidiprocessor.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.getMidiProcessor( String name)</code></pre>
 <p><br><br></p>
 <h2 id="getmodulator"><b>getModulator</b>
 </h2>
-<p class="comment">Returns the Modulator with the supplied name. Can be only called in onInit. It looks also in all child processors.</p>
+<p class="comment">Returns the Modulator with the supplied name. Can be only called in onInit. It looks also in all child processors. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/getmodulator.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.getModulator( String name)</code></pre>
 <p><br><br></p>
 <h2 id="getmodulatorindex"><b>getModulatorIndex</b>
 </h2>
-<p class="comment">Returns the index of the Modulator in the chain with the supplied chainId</p>
+<p class="comment">Returns the index of the Modulator in the chain with the supplied chainId <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/getmodulatorindex.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.getModulatorIndex(int chainId,  String id)</code></pre>
 <p><br><br></p>
 <h2 id="getnumchildsynths"><b>getNumChildSynths</b>
 </h2>
-<p class="comment">Returns the number of child synths. Works with SynthGroups and SynthChains.</p>
+<p class="comment">Returns the number of child synths. Works with SynthGroups and SynthChains. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/getnumchildsynths.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.getNumChildSynths()</code></pre>
 <p><br><br></p>
 <h2 id="getnumpressedkeys"><b>getNumPressedKeys</b>
 </h2>
-<p class="comment">Returns the number of pressed keys (!= the number of playing voices!).</p>
+<p class="comment">Returns the number of pressed keys (!= the number of playing voices!). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/getnumpressedkeys.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.getNumPressedKeys()</code></pre>
 <p><br><br></p>
 <h2 id="getroutingmatrix"><b>getRoutingMatrix</b>
 </h2>
-<p class="comment">Creates a reference to the routing matrix of the given processor.</p>
+<p class="comment">Creates a reference to the routing matrix of the given processor. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/getroutingmatrix.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.getRoutingMatrix( String processorId)</code></pre>
 <p><br><br></p>
 <h2 id="getsampler"><b>getSampler</b>
 </h2>
-<p class="comment">Returns the first sampler with the name name.</p>
+<p class="comment">Returns the first sampler with the name name. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/getsampler.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.getSampler( String name)</code></pre>
 <p><br><br></p>
 <h2 id="getsliderpackprocessor"><b>getSliderPackProcessor</b>
 </h2>
-<p class="comment">Returns the sliderpack processor with the given name.</p>
+<p class="comment">Returns the sliderpack processor with the given name. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/getsliderpackprocessor.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.getSliderPackProcessor( String name)</code></pre>
 <p><br><br></p>
 <h2 id="getslotfx"><b>getSlotFX</b>
 </h2>
-<p class="comment">Returns the first slot with the given name.</p>
+<p class="comment">Returns the first slot with the given name. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/getslotfx.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.getSlotFX( String name)</code></pre>
 <p><br><br></p>
 <h2 id="gettableprocessor"><b>getTableProcessor</b>
 </h2>
-<p class="comment">Returns the table processor with the given name.</p>
+<p class="comment">Returns the table processor with the given name. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/gettableprocessor.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.getTableProcessor( String name)</code></pre>
 <p><br><br></p>
 <h2 id="gettimerinterval"><b>getTimerInterval</b>
 </h2>
-<p class="comment">Returns the current timer interval in seconds.</p>
+<p class="comment">Returns the current timer interval in seconds. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/gettimerinterval.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.getTimerInterval()</code></pre>
 <p><br><br></p>
 <h2 id="isartificialeventactive"><b>isArtificialEventActive</b>
 </h2>
-<p class="comment">Checks if the artificial event is active</p>
+<p class="comment">Checks if the artificial event is active <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/isartificialeventactive.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.isArtificialEventActive(int eventId)</code></pre>
 <p><br><br></p>
 <h2 id="iskeydown"><b>isKeyDown</b>
 </h2>
-<p class="comment">Checks if the given key is pressed.</p>
+<p class="comment">Checks if the given key is pressed. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/iskeydown.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.isKeyDown(int noteNumber)</code></pre>
 <p><br><br></p>
 <h2 id="islegatointerval"><b>isLegatoInterval</b>
 </h2>
-<p class="comment">Checks if any key is pressed.</p>
+<p class="comment">Checks if any key is pressed. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/islegatointerval.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.isLegatoInterval()</code></pre>
 <p><br><br></p>
 <h2 id="issustainpedaldown"><b>isSustainPedalDown</b>
 </h2>
-<p class="comment">Returns true if the sustain pedal is pressed.</p>
+<p class="comment">Returns true if the sustain pedal is pressed. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/issustainpedaldown.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.isSustainPedalDown()</code></pre>
 <p><br><br></p>
 <h2 id="istimerrunning"><b>isTimerRunning</b>
 </h2>
-<p class="comment">Checks if the timer for this script is running.</p>
+<p class="comment">Checks if the timer for this script is running. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/istimerrunning.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.isTimerRunning()</code></pre>
 <p><br><br></p>
 <h2 id="noteoff"><b>noteOff</b>
 </h2>
-<p class="comment">Sends a note off message. The envelopes will tail off.</p>
+<p class="comment">Sends a note off message. The envelopes will tail off. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/noteoff.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.noteOff(int noteNumber)</code></pre>
 <p><br><br></p>
 <h2 id="noteoffbyeventid"><b>noteOffByEventId</b>
 </h2>
-<p class="comment">Sends a note off message for the supplied event ID. This is more stable than the deprecated noteOff() method.</p>
+<p class="comment">Sends a note off message for the supplied event ID. This is more stable than the deprecated noteOff() method. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/noteoffbyeventid.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.noteOffByEventId(int eventId)</code></pre>
 <p><br><br></p>
 <h2 id="noteoffdelayedbyeventid"><b>noteOffDelayedByEventId</b>
 </h2>
-<p class="comment">Sends a note off message for the supplied event ID with the given delay in samples.</p>
+<p class="comment">Sends a note off message for the supplied event ID with the given delay in samples. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/noteoffdelayedbyeventid.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.noteOffDelayedByEventId(int eventId, int timestamp)</code></pre>
 <p><br><br></p>
 <h2 id="noteofffromui"><b>noteOffFromUI</b>
 </h2>
-<p class="comment">Injects a note off to the incoming MIDI buffer (similar to playNoteFromUI).</p>
+<p class="comment">Injects a note off to the incoming MIDI buffer (similar to playNoteFromUI). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/noteofffromui.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.noteOffFromUI(int channel, int noteNumber)</code></pre>
 <p><br><br></p>
 <h2 id="playnote"><b>playNote</b>
 </h2>
-<p class="comment">Plays a note and returns the event id. Be careful or you get stuck notes!</p>
+<p class="comment">Plays a note and returns the event id. Be careful or you get stuck notes! <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/playnote.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.playNote(int noteNumber, int velocity)</code></pre>
 <p><br><br></p>
 <h2 id="playnotefromui"><b>playNoteFromUI</b>
 </h2>
-<p class="comment">Injects a note on to the incoming MIDI buffer (just as if the virtual keyboard was pressed.</p>
+<p class="comment">Injects a note on to the incoming MIDI buffer (just as if the virtual keyboard was pressed. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/playnotefromui.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.playNoteFromUI(int channel, int noteNumber, int velocity)</code></pre>
 <p><br><br></p>
 <h2 id="playnotewithstartoffset"><b>playNoteWithStartOffset</b>
 </h2>
-<p class="comment">Plays a note and returns the event id with the given channel and start offset.</p>
+<p class="comment">Plays a note and returns the event id with the given channel and start offset. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/playnotewithstartoffset.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.playNoteWithStartOffset(int channel, int number, int velocity, int offset)</code></pre>
 <p><br><br></p>
 <h2 id="removeeffect"><b>removeEffect</b>
 </h2>
-<p class="comment">Removes the given effect.</p>
+<p class="comment">Removes the given effect. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/removeeffect.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.removeEffect(var effect)</code></pre>
 <p><br><br></p>
 <h2 id="removemodulator"><b>removeModulator</b>
 </h2>
-<p class="comment">Removes the modulator.</p>
+<p class="comment">Removes the modulator. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/removemodulator.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.removeModulator(var mod)</code></pre>
 <p><br><br></p>
 <h2 id="sendcontroller"><b>sendController</b>
 </h2>
-<p class="comment">Sends a controller event to the synth.</p>
+<p class="comment">Sends a controller event to the synth. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/sendcontroller.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.sendController(int controllerNumber, int controllerValue)</code></pre>
 <p><br><br></p>
 <h2 id="sendcontrollertochildsynths"><b>sendControllerToChildSynths</b>
 </h2>
-<p class="comment">The same as sendController (for backwards compatibility)</p>
+<p class="comment">The same as sendController (for backwards compatibility) <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/sendcontrollertochildsynths.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.sendControllerToChildSynths(int controllerNumber, int controllerValue)</code></pre>
 <p><br><br></p>
 <h2 id="setattribute"><b>setAttribute</b>
 </h2>
-<p class="comment">Sets an attribute of the parent synth.</p>
+<p class="comment">Sets an attribute of the parent synth. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/setattribute.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.setAttribute(int attributeIndex, float newAttribute)</code></pre>
 <p><br><br></p>
 <h2 id="setclockspeed"><b>setClockSpeed</b>
 </h2>
-<p class="comment">Sets the internal clock speed.</p>
+<p class="comment">Sets the internal clock speed. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/setclockspeed.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.setClockSpeed(int clockSpeed)</code></pre>
 <p><br><br></p>
 <h2 id="setfixnoteonafternoteoff"><b>setFixNoteOnAfterNoteOff</b>
@@ -334,12 +384,14 @@
 <p class="comment">It's your responsibility to watch out that this call does not occur in a control that is connected to the same macro control or you might end up getting a recursive loop and freeze your system!<br></p>
 <h2 id="setmodulatorattribute"><b>setModulatorAttribute</b>
 </h2>
-<p class="comment">Sets a ModulatorAttribute.</p>
+<p class="comment">Sets a ModulatorAttribute. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/setmodulatorattribute.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.setModulatorAttribute(int chainId, int modulatorIndex, int attributeIndex, float newValue)</code></pre>
 <p><br><br></p>
 <h2 id="setshouldkillretriggerednote"><b>setShouldKillRetriggeredNote</b>
 </h2>
-<p class="comment">If set to true, this will kill retriggered notes (default).</p>
+<p class="comment">If set to true, this will kill retriggered notes (default). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/setshouldkillretriggerednote.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.setShouldKillRetriggeredNote(bool killNote)</code></pre>
 <p><br><br></p>
 <h2 id="setuseuniformvoicehandler"><b>setUseUniformVoiceHandler</b>
@@ -350,25 +402,29 @@
 <p>In order to use this function, call it with a container ID that you want to be used as root for the voice unification. This is not required to be the master container, so you can still perform additional MIDI processing (arpeggiators, glide scripts etc). However you need to ensure that beyond that point every sound generator will start not more than one voice for each incoming MIDI event.<br></p>
 <h2 id="setvoicegainvalue"><b>setVoiceGainValue</b>
 </h2>
-<p class="comment">Applies a gain factor to a specified voice.</p>
+<p class="comment">Applies a gain factor to a specified voice. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/setvoicegainvalue.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.setVoiceGainValue(int voiceIndex, float gainValue)</code></pre>
 <p><br><br></p>
 <h2 id="setvoicepitchvalue"><b>setVoicePitchValue</b>
 </h2>
-<p class="comment">Applies a pitch factor (0.5 ... 2.0) to a specified voice.</p>
+<p class="comment">Applies a pitch factor (0.5 ... 2.0) to a specified voice. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/setvoicepitchvalue.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.setVoicePitchValue(int voiceIndex, double pitchValue)</code></pre>
 <p><br><br></p>
 <h2 id="starttimer"><b>startTimer</b>
 </h2>
-<p class="comment">Starts the timer of the synth.</p>
+<p class="comment">Starts the timer of the synth. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/starttimer.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.startTimer(double seconds)</code></pre>
 <p><br><br></p>
 <h2 id="stoptimer"><b>stopTimer</b>
 </h2>
-<p class="comment">Stops the timer of the synth. You can call this also in the timer callback.</p>
+<p class="comment">Stops the timer of the synth. You can call this also in the timer callback. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/stoptimer.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Synth.stopTimer()</code></pre>
 <p><br><br></p>
-<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+<div class="content-footer"><span class="content-footer-left"><a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/synth/Readme.md">Edit on GitHub</a>
 </span>
 
 <span class="content-footer-right">Next: <a href="scripting/scripting-api/table/index.html">Table</a>

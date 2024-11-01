@@ -55,37 +55,44 @@ Sampler1.asSampler().loadSampleMap("My SampleMap");</code></pre>
 </h1>
 <h2 id="clearsamplemap"><b>clearSampleMap</b>
 </h2>
-<p class="comment">Clears the current samplemap.</p>
+<p class="comment">Clears the current samplemap. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/sampler/clearsamplemap.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Sampler.clearSampleMap()</code></pre>
 <p><br><br></p>
 <h2 id="createlistfromguiselection"><b>createListFromGUISelection</b>
 </h2>
-<p class="comment">Returns a list of the sounds selected in the samplemap.</p>
+<p class="comment">Returns a list of the sounds selected in the samplemap. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/sampler/createlistfromguiselection.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Sampler.createListFromGUISelection()</code></pre>
 <p><br><br></p>
 <h2 id="createlistfromscriptselection"><b>createListFromScriptSelection</b>
 </h2>
-<p class="comment">Returns a list of the sounds selected by the selectSounds() method.</p>
+<p class="comment">Returns a list of the sounds selected by the selectSounds() method. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/sampler/createlistfromscriptselection.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Sampler.createListFromScriptSelection()</code></pre>
 <p><br><br></p>
 <h2 id="createselection"><b>createSelection</b>
 </h2>
-<p class="comment">Returns an array with all samples that match this regex.</p>
+<p class="comment">Returns an array with all samples that match this regex. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/sampler/createselection.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Sampler.createSelection(String regex)</code></pre>
 <p><br><br></p>
 <h2 id="createselectionfromindexes"><b>createSelectionFromIndexes</b>
 </h2>
-<p class="comment">Returns an array with all samples from the index data (can be either int or array of int, -1 selects all.).</p>
+<p class="comment">Returns an array with all samples from the index data (can be either int or array of int, -1 selects all.). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/sampler/createselectionfromindexes.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Sampler.createSelectionFromIndexes(var indexData)</code></pre>
 <p><br><br></p>
 <h2 id="createselectionwithfilter"><b>createSelectionWithFilter</b>
 </h2>
-<p class="comment">Returns an array with all samples that match the filter function.</p>
+<p class="comment">Returns an array with all samples that match the filter function. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/sampler/createselectionwithfilter.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Sampler.createSelectionWithFilter(var filterFunction)</code></pre>
 <p><br><br></p>
 <h2 id="enableroundrobin"><b>enableRoundRobin</b>
 </h2>
-<p class="comment">Enables / Disables the automatic round robin group start logic (works only on samplers).</p>
+<p class="comment">Enables / Disables the automatic round robin group start logic (works only on samplers). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/sampler/enableroundrobin.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Sampler.enableRoundRobin(bool shouldUseRoundRobin)</code></pre>
 <p><br><br></p>
 <h2 id="getactiverrgroup"><b>getActiveRRGroup</b>
@@ -104,102 +111,122 @@ Sampler1.asSampler().loadSampleMap("My SampleMap");</code></pre>
 ).<br></p>
 <h2 id="getattribute"><b>getAttribute</b>
 </h2>
-<p class="comment">Gets the attribute with the given index (use the constants for clearer code).</p>
+<p class="comment">Gets the attribute with the given index (use the constants for clearer code). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/sampler/getattribute.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Sampler.getAttribute(int index)</code></pre>
 <p><br><br></p>
 <h2 id="getattributeid"><b>getAttributeId</b>
 </h2>
-<p class="comment">Returns the ID of the attribute with the given index.</p>
+<p class="comment">Returns the ID of the attribute with the given index. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/sampler/getattributeid.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Sampler.getAttributeId(int index)</code></pre>
 <p><br><br></p>
 <h2 id="getattributeindex"><b>getAttributeIndex</b>
 </h2>
-<p class="comment">Returns the index of the attribute with the given ID.</p>
+<p class="comment">Returns the index of the attribute with the given ID. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/sampler/getattributeindex.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Sampler.getAttributeIndex(String id)</code></pre>
 <p><br><br></p>
 <h2 id="getaudiowaveformcontentasbase64"><b>getAudioWaveformContentAsBase64</b>
 </h2>
-<p class="comment">Converts the user preset data of a audio waveform to a base 64 samplemap.</p>
+<p class="comment">Converts the user preset data of a audio waveform to a base 64 samplemap. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/sampler/getaudiowaveformcontentasbase64.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Sampler.getAudioWaveformContentAsBase64(var presetObj)</code></pre>
 <p><br><br></p>
 <h2 id="getcurrentsamplemapid"><b>getCurrentSampleMapId</b>
 </h2>
-<p class="comment">Returns the currently loaded sample map.</p>
+<p class="comment">Returns the currently loaded sample map. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/sampler/getcurrentsamplemapid.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Sampler.getCurrentSampleMapId()</code></pre>
 <p><br><br></p>
 <h2 id="getmicpositionname"><b>getMicPositionName</b>
 </h2>
-<p class="comment">Returns the name of the channel with the given index (Multimic samples only.</p>
+<p class="comment">Returns the name of the channel with the given index (Multimic samples only. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/sampler/getmicpositionname.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Sampler.getMicPositionName(int channelIndex)</code></pre>
 <p><br><br></p>
 <h2 id="getnumactivegroups"><b>getNumActiveGroups</b>
 </h2>
-<p class="comment">Returns the number of currently active groups.</p>
+<p class="comment">Returns the number of currently active groups. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/sampler/getnumactivegroups.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Sampler.getNumActiveGroups()</code></pre>
 <p><br><br></p>
 <h2 id="getnumattributes"><b>getNumAttributes</b>
 </h2>
-<p class="comment">Returns the number of attributes.</p>
+<p class="comment">Returns the number of attributes. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/sampler/getnumattributes.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Sampler.getNumAttributes()</code></pre>
 <p><br><br></p>
 <h2 id="getnummicpositions"><b>getNumMicPositions</b>
 </h2>
-<p class="comment">Returns the number of mic positions.</p>
+<p class="comment">Returns the number of mic positions. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/sampler/getnummicpositions.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Sampler.getNumMicPositions()</code></pre>
 <p><br><br></p>
 <h2 id="getnumselectedsounds"><b>getNumSelectedSounds</b>
 </h2>
-<p class="comment">Returns the amount of selected samples.</p>
+<p class="comment">Returns the amount of selected samples. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/sampler/getnumselectedsounds.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Sampler.getNumSelectedSounds()</code></pre>
 <p><br><br></p>
 <h2 id="getreleasestartoptions"><b>getReleaseStartOptions</b>
 </h2>
-<p class="comment">Returns the current release start options as JSON object.</p>
+<p class="comment">Returns the current release start options as JSON object. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/sampler/getreleasestartoptions.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Sampler.getReleaseStartOptions()</code></pre>
 <p><br><br></p>
 <h2 id="getrrgroupsformessage"><b>getRRGroupsForMessage</b>
 </h2>
-<p class="comment">Returns the amount of actual RR groups for the notenumber and velocity</p>
+<p class="comment">Returns the amount of actual RR groups for the notenumber and velocity <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/sampler/getrrgroupsformessage.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Sampler.getRRGroupsForMessage(int noteNumber, int velocity)</code></pre>
 <p><br><br></p>
 <h2 id="getsamplemapasbase64"><b>getSampleMapAsBase64</b>
 </h2>
-<p class="comment">Returns a base64 compressed string containing the entire samplemap.</p>
+<p class="comment">Returns a base64 compressed string containing the entire samplemap. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/sampler/getsamplemapasbase64.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Sampler.getSampleMapAsBase64()</code></pre>
 <p><br><br></p>
 <h2 id="getsamplemaplist"><b>getSampleMapList</b>
 </h2>
-<p class="comment">Returns an array with all available sample maps.</p>
+<p class="comment">Returns an array with all available sample maps. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/sampler/getsamplemaplist.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Sampler.getSampleMapList()</code></pre>
 <p><br><br></p>
 <h2 id="getsoundproperty"><b>getSoundProperty</b>
 </h2>
-<p class="comment">Returns the property of the sound with the specified index.</p>
+<p class="comment">Returns the property of the sound with the specified index. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/sampler/getsoundproperty.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Sampler.getSoundProperty(int propertyIndex, int soundIndex)</code></pre>
 <p><br><br></p>
 <h2 id="gettimestretchoptions"><b>getTimestretchOptions</b>
 </h2>
-<p class="comment">Returns the current timestretching options as JSON object.</p>
+<p class="comment">Returns the current timestretching options as JSON object. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/sampler/gettimestretchoptions.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Sampler.getTimestretchOptions()</code></pre>
 <p><br><br></p>
 <h2 id="importsamples"><b>importSamples</b>
 </h2>
-<p class="comment">Loads a few samples in the current samplemap and returns a list of references to these samples.</p>
+<p class="comment">Loads a few samples in the current samplemap and returns a list of references to these samples. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/sampler/importsamples.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Sampler.importSamples(var fileNameList, bool skipExistingSamples)</code></pre>
 <p><br><br></p>
 <h2 id="ismicpositionpurged"><b>isMicPositionPurged</b>
 </h2>
-<p class="comment">Checks if the mic position is purged.</p>
+<p class="comment">Checks if the mic position is purged. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/sampler/ismicpositionpurged.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Sampler.isMicPositionPurged(int micIndex)</code></pre>
 <p><br><br></p>
 <h2 id="isnotenumbermapped"><b>isNoteNumberMapped</b>
 </h2>
-<p class="comment">Checks whether the note number is mapped to any samples.</p>
+<p class="comment">Checks whether the note number is mapped to any samples. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/sampler/isnotenumbermapped.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Sampler.isNoteNumberMapped(int noteNumber)</code></pre>
 <p><br><br></p>
 <h2 id="loadsampleforanalysis"><b>loadSampleForAnalysis</b>
 </h2>
-<p class="comment">Loads the content of the given sample into an array of VariantBuffers that can be used for analysis.</p>
+<p class="comment">Loads the content of the given sample into an array of VariantBuffers that can be used for analysis. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/sampler/loadsampleforanalysis.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Sampler.loadSampleForAnalysis(int indexInSelection)</code></pre>
 <p><br><br></p>
 <h2 id="loadsamplemap"><b>loadSampleMap</b>
@@ -245,37 +272,44 @@ Sampler1.asSampler().loadSampleMap("My SampleMap");</code></pre>
 <p class="comment">The SFZ importer is not fully standard compliant (at this point it's just the old HISE SFZ import that has been cleaned up a little bit). However the goal is to offer enough standard compliance so that all mapping information of a SFZ is being imported correctly and without crashing the plugin (obviously stuff like the envelope attack time will never be parsed). If you encounter an issue with a SFZ file, please post it in the forum, then I'll take a look.<br></p>
 <h2 id="parsesamplefile"><b>parseSampleFile</b>
 </h2>
-<p class="comment">Creates a JSON object from the sample file that can be used with loadSampleMapFromJSON.</p>
+<p class="comment">Creates a JSON object from the sample file that can be used with loadSampleMapFromJSON. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/sampler/parsesamplefile.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Sampler.parseSampleFile(var sampleFile)</code></pre>
 <p><br><br></p>
 <h2 id="purgemicposition"><b>purgeMicPosition</b>
 </h2>
-<p class="comment">Purges all samples of the given mic (Multimic samples only).</p>
+<p class="comment">Purges all samples of the given mic (Multimic samples only). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/sampler/purgemicposition.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Sampler.purgeMicPosition(String micName, bool shouldBePurged)</code></pre>
 <p><br><br></p>
 <h2 id="purgesampleselection"><b>purgeSampleSelection</b>
 </h2>
-<p class="comment">Purges the array of sampler sounds (and unpurges the rest).</p>
+<p class="comment">Purges the array of sampler sounds (and unpurges the rest). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/sampler/purgesampleselection.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Sampler.purgeSampleSelection(var selection)</code></pre>
 <p><br><br></p>
 <h2 id="refreshinterface"><b>refreshInterface</b>
 </h2>
-<p class="comment">Refreshes the interface. Call this after you changed the properties.</p>
+<p class="comment">Refreshes the interface. Call this after you changed the properties. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/sampler/refreshinterface.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Sampler.refreshInterface()</code></pre>
 <p><br><br></p>
 <h2 id="refreshrrmap"><b>refreshRRMap</b>
 </h2>
-<p class="comment">Recalculates the RR Map. Call this at compile time if you want to use 'getRRGroupForMessage()'.</p>
+<p class="comment">Recalculates the RR Map. Call this at compile time if you want to use 'getRRGroupForMessage()'. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/sampler/refreshrrmap.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Sampler.refreshRRMap()</code></pre>
 <p><br><br></p>
 <h2 id="savecurrentsamplemap"><b>saveCurrentSampleMap</b>
 </h2>
-<p class="comment">Saves (and loads) the current samplemap to the given path (which should be the same string as the ID).</p>
+<p class="comment">Saves (and loads) the current samplemap to the given path (which should be the same string as the ID). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/sampler/savecurrentsamplemap.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Sampler.saveCurrentSampleMap(String relativePathWithoutXml)</code></pre>
 <p><br><br></p>
 <h2 id="selectsounds"><b>selectSounds</b>
 </h2>
-<p class="comment">Selects samples using the regex string as wildcard and the selectMode ("SELECT", "ADD", "SUBTRACT")</p>
+<p class="comment">Selects samples using the regex string as wildcard and the selectMode ("SELECT", "ADD", "SUBTRACT") <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/sampler/selectsounds.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Sampler.selectSounds(String regex)</code></pre>
 <p><br><br></p>
 <h2 id="setactivegroup"><b>setActiveGroup</b>
@@ -302,12 +336,14 @@ Sampler1.asSampler().loadSampleMap("My SampleMap");</code></pre>
 <p>The method also works with artificial notes and the internal event queue can store up to 64 note on messages (there's a tradeoff between object size and functionality here but with 64 messages within a single audio callback you should have enough headroom for even the most craziest applications).<br></p>
 <h2 id="setattribute"><b>setAttribute</b>
 </h2>
-<p class="comment">Sets a attribute to the given value.</p>
+<p class="comment">Sets a attribute to the given value. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/sampler/setattribute.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Sampler.setAttribute(int index, var newValue)</code></pre>
 <p><br><br></p>
 <h2 id="setguiselection"><b>setGUISelection</b>
 </h2>
-<p class="comment">Sets the currently selected samples on the interface to the given list.</p>
+<p class="comment">Sets the currently selected samples on the interface to the given list. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/sampler/setguiselection.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Sampler.setGUISelection(var sampleList, bool addToSelection)</code></pre>
 <p><br><br></p>
 <h2 id="setmultigroupindex"><b>setMultiGroupIndex</b>
@@ -374,27 +410,32 @@ Sampler.setReleaseStartOptions(obj);</code></pre>
 <p><br></p>
 <h2 id="setrrgroupvolume"><b>setRRGroupVolume</b>
 </h2>
-<p class="comment">Sets the volume of a particular group (use -1 for active group). Only works with disabled crossfade tables.</p>
+<p class="comment">Sets the volume of a particular group (use -1 for active group). Only works with disabled crossfade tables. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/sampler/setrrgroupvolume.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Sampler.setRRGroupVolume(int groupIndex, int gainInDecibels)</code></pre>
 <p><br><br></p>
 <h2 id="setsortbyrrgroup"><b>setSortByRRGroup</b>
 </h2>
-<p class="comment">Enables a presorting of the sounds into RR groups. This might improve the performance at voice start if you have a lot of samples (> 20.000) in many RR groups.</p>
+<p class="comment">Enables a presorting of the sounds into RR groups. This might improve the performance at voice start if you have a lot of samples (> 20.000) in many RR groups. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/sampler/setsortbyrrgroup.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Sampler.setSortByRRGroup(bool shouldSort)</code></pre>
 <p><br><br></p>
 <h2 id="setsoundproperty"><b>setSoundProperty</b>
 </h2>
-<p class="comment">Sets the property for the index within the selection.</p>
+<p class="comment">Sets the property for the index within the selection. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/sampler/setsoundproperty.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Sampler.setSoundProperty(int soundIndex, int propertyIndex, var newValue)</code></pre>
 <p><br><br></p>
 <h2 id="setsoundpropertyforallsamples"><b>setSoundPropertyForAllSamples</b>
 </h2>
-<p class="comment">Sets the property for all samples of the sampler.</p>
+<p class="comment">Sets the property for all samples of the sampler. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/sampler/setsoundpropertyforallsamples.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Sampler.setSoundPropertyForAllSamples(int propertyIndex, var newValue)</code></pre>
 <p><br><br></p>
 <h2 id="setsoundpropertyforselection"><b>setSoundPropertyForSelection</b>
 </h2>
-<p class="comment">Sets the property of the sampler sound for the selection.</p>
+<p class="comment">Sets the property of the sampler sound for the selection. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/sampler/setsoundpropertyforselection.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Sampler.setSoundPropertyForSelection(int propertyIndex, var newValue)</code></pre>
 <p><br><br></p>
 <h2 id="settimestretchoptions"><b>setTimestretchOptions</b>
@@ -415,10 +456,11 @@ Sampler.setReleaseStartOptions(obj);</code></pre>
 <p class="comment">Currently the time ratio is limited to 50% - 200% of the original time, but that limitation might be lifted at some point.<br></p>
 <h2 id="setusestaticmatrix"><b>setUseStaticMatrix</b>
 </h2>
-<p class="comment">Disables dynamic resizing when a sample map is loaded.</p>
+<p class="comment">Disables dynamic resizing when a sample map is loaded. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/sampler/setusestaticmatrix.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Sampler.setUseStaticMatrix(bool shouldUseStaticMatrix)</code></pre>
 <p><br><br></p>
-<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+<div class="content-footer"><span class="content-footer-left"><a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/sampler/Readme.md">Edit on GitHub</a>
 </span>
 
 <span class="content-footer-right">Next: <a href="scripting/scripting-api/scriptaudiowaveform/index.html">ScriptAudioWaveform</a>

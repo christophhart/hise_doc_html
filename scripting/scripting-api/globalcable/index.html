@@ -60,7 +60,8 @@
 </h1>
 <h2 id="connecttoglobalmodulator"><b>connectToGlobalModulator</b>
 </h2>
-<p class="comment">Connects the cable to a global LFO modulation output as source.</p>
+<p class="comment">Connects the cable to a global LFO modulation output as source. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/globalcable/connecttoglobalmodulator.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">GlobalCable.connectToGlobalModulator( String lfoId, bool addToMod)</code></pre>
 <p><br><br></p>
 <h2 id="connecttomacrocontrol"><b>connectToMacroControl</b>
@@ -94,12 +95,14 @@
 <p><br></p>
 <h2 id="connecttomoduleparameter"><b>connectToModuleParameter</b>
 </h2>
-<p class="comment">Connects the cable to a module parameter using a JSON object for defining the range.</p>
+<p class="comment">Connects the cable to a module parameter using a JSON object for defining the range. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/globalcable/connecttomoduleparameter.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">GlobalCable.connectToModuleParameter( String processorId, var parameterIndexOrId, var targetObject)</code></pre>
 <p><br><br></p>
 <h2 id="deregistercallback"><b>deregisterCallback</b>
 </h2>
-<p class="comment">Deregisteres a callback from the cable.</p>
+<p class="comment">Deregisteres a callback from the cable. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/globalcable/deregistercallback.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">GlobalCable.deregisterCallback(var callbackFunction)</code></pre>
 <p><br><br></p>
 <h2 id="getvalue"><b>getValue</b>
@@ -110,7 +113,8 @@
  function.<br></p>
 <h2 id="getvaluenormalised"><b>getValueNormalised</b>
 </h2>
-<p class="comment">Returns the normalised value between 0...1</p>
+<p class="comment">Returns the normalised value between 0...1 <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/globalcable/getvaluenormalised.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">GlobalCable.getValueNormalised()</code></pre>
 <p><br><br></p>
 <h2 id="registercallback"><b>registerCallback</b>
@@ -125,17 +129,20 @@
 <p>If you're using a synchronous callback then the function you pass in must be an inline function as this might be executed on the audio thread and normal functions are not realtime safe.<br></p>
 <h2 id="setrange"><b>setRange</b>
 </h2>
-<p class="comment">Set the input range using a min and max value (no steps / no skew factor).</p>
+<p class="comment">Set the input range using a min and max value (no steps / no skew factor). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/globalcable/setrange.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">GlobalCable.setRange(double min, double max)</code></pre>
 <p><br><br></p>
 <h2 id="setrangewithskew"><b>setRangeWithSkew</b>
 </h2>
-<p class="comment">Set the input range using a min and max value and a mid point for skewing the range.</p>
+<p class="comment">Set the input range using a min and max value and a mid point for skewing the range. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/globalcable/setrangewithskew.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">GlobalCable.setRangeWithSkew(double min, double max, double midPoint)</code></pre>
 <p><br><br></p>
 <h2 id="setrangewithstep"><b>setRangeWithStep</b>
 </h2>
-<p class="comment">Set the input range using a min and max value as well as a step size.</p>
+<p class="comment">Set the input range using a min and max value as well as a step size. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/globalcable/setrangewithstep.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">GlobalCable.setRangeWithStep(double min, double max, double stepSize)</code></pre>
 <p><br><br></p>
 <h2 id="setvalue"><b>setValue</b>
@@ -146,10 +153,11 @@
 <p class="comment">Be aware that calling this method will not trigger any scripting callbacks attached to itself.<br></p>
 <h2 id="setvaluenormalised"><b>setValueNormalised</b>
 </h2>
-<p class="comment">Sends the normalised value to all targets.</p>
+<p class="comment">Sends the normalised value to all targets. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/globalcable/setvaluenormalised.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">GlobalCable.setValueNormalised(double normalisedInput)</code></pre>
 <p><br><br></p>
-<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+<div class="content-footer"><span class="content-footer-left"><a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/globalcable/Readme.md">Edit on GitHub</a>
 </span>
 
 <span class="content-footer-right">Next: <a href="scripting/scripting-api/globalroutingmanager/index.html">GlobalRoutingManager</a>

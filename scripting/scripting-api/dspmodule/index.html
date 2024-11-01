@@ -46,85 +46,101 @@
 </h1>
 <h2 id="dspinstance"><b>DspInstance</b>
 </h2>
-<p class="comment">Creates a new instance from the given Factory with the supplied name.</p>
+<p class="comment">Creates a new instance from the given Factory with the supplied name. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/dspmodule/dspinstance.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">DspModule.DspInstance( DspFactory *f,  String moduleName_)</code></pre>
 <p><br><br></p>
 <h2 id="getconstant"><b>getConstant</b>
 </h2>
-<p class="comment">Returns the constant at the given index.</p>
+<p class="comment">Returns the constant at the given index. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/dspmodule/getconstant.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">DspModule.getConstant(int index)</code></pre>
 <p><br><br></p>
 <h2 id="getconstantid"><b>getConstantId</b>
 </h2>
-<p class="comment">Returns the name of the constant.</p>
+<p class="comment">Returns the name of the constant. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/dspmodule/getconstantid.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">DspModule.getConstantId(int index)</code></pre>
 <p><br><br></p>
 <h2 id="getinfo"><b>getInfo</b>
 </h2>
-<p class="comment">Returns an informative String.</p>
+<p class="comment">Returns an informative String. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/dspmodule/getinfo.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">DspModule.getInfo()</code></pre>
 <p><br><br></p>
 <h2 id="getnumconstants"><b>getNumConstants</b>
 </h2>
-<p class="comment">Returns the number of constants.</p>
+<p class="comment">Returns the number of constants. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/dspmodule/getnumconstants.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">DspModule.getNumConstants()</code></pre>
 <p><br><br></p>
 <h2 id="getnumparameters"><b>getNumParameters</b>
 </h2>
-<p class="comment">Returns the number of parameters.</p>
+<p class="comment">Returns the number of parameters. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/dspmodule/getnumparameters.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">DspModule.getNumParameters()</code></pre>
 <p><br><br></p>
 <h2 id="getparameter"><b>getParameter</b>
 </h2>
-<p class="comment">Returns the parameter with the given index.</p>
+<p class="comment">Returns the parameter with the given index. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/dspmodule/getparameter.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">DspModule.getParameter(int index)</code></pre>
 <p><br><br></p>
 <h2 id="getstringparameter"><b>getStringParameter</b>
 </h2>
-<p class="comment">Gets the string value.</p>
+<p class="comment">Gets the string value. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/dspmodule/getstringparameter.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">DspModule.getStringParameter(int index)</code></pre>
 <p><br><br></p>
 <h2 id="isbypassed"><b>isBypassed</b>
 </h2>
-<p class="comment">Checks if the processing is enabled.</p>
+<p class="comment">Checks if the processing is enabled. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/dspmodule/isbypassed.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">DspModule.isBypassed()</code></pre>
 <p><br><br></p>
 <h2 id="operator->>"><b>operator >></b>
 </h2>
-<p class="comment">Applies the module on the data.</p>
+<p class="comment">Applies the module on the data. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/dspmodule/operator->>">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">DspModule.operator >>( var data)</code></pre>
 <p><br><br></p>
 <h2 id="operator<<"><b>operator<<</b>
 </h2>
-<p class="comment">Applies the module on the data.</p>
+<p class="comment">Applies the module on the data. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/dspmodule/operator<<">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">DspModule.operator<<( var data)</code></pre>
 <p><br><br></p>
 <h2 id="preparetoplay"><b>prepareToPlay</b>
 </h2>
-<p class="comment">Calls the setup method of the external module.</p>
+<p class="comment">Calls the setup method of the external module. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/dspmodule/preparetoplay.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">DspModule.prepareToPlay(double sampleRate, int samplesPerBlock)</code></pre>
 <p><br><br></p>
 <h2 id="processblock"><b>processBlock</b>
 </h2>
-<p class="comment">Calls the processMethod of the external module.</p>
+<p class="comment">Calls the processMethod of the external module. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/dspmodule/processblock.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">DspModule.processBlock( var data)</code></pre>
 <p><br><br></p>
 <h2 id="setbypassed"><b>setBypassed</b>
 </h2>
-<p class="comment">Enables / Disables the processing.</p>
+<p class="comment">Enables / Disables the processing. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/dspmodule/setbypassed.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">DspModule.setBypassed(bool shouldBeBypassed)</code></pre>
 <p><br><br></p>
 <h2 id="setparameter"><b>setParameter</b>
 </h2>
-<p class="comment">Sets the float parameter with the given index.</p>
+<p class="comment">Sets the float parameter with the given index. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/dspmodule/setparameter.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">DspModule.setParameter(int index, float newValue)</code></pre>
 <p><br><br></p>
 <h2 id="setstringparameter"><b>setStringParameter</b>
 </h2>
-<p class="comment">Sets a String value.</p>
+<p class="comment">Sets a String value. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/dspmodule/setstringparameter.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">DspModule.setStringParameter(int index, String value)</code></pre>
 <p><br><br></p>
-<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+<div class="content-footer"><span class="content-footer-left"><a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/dspmodule/Readme.md">Edit on GitHub</a>
 </span>
 
 <span class="content-footer-right">Next: <a href="scripting/scripting-api/dspnetwork/index.html">DspNetwork</a>

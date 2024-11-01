@@ -114,7 +114,8 @@ builder.flush();</code></pre>
 <p>Obviously that means that you cannot use this class in any other script processor than the main interface one, but I don't see any reason to do so.<br></p>
 <h2 id="clearchildren"><b>clearChildren</b>
 </h2>
-<p class="comment">Clears all child processors of the chain in the module with the given build index</p>
+<p class="comment">Clears all child processors of the chain in the module with the given build index <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/builder/clearchildren.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Builder.clearChildren(int buildIndex, int chainIndex)</code></pre>
 <p><br><br></p>
 <h2 id="connecttoscript"><b>connectToScript</b>
@@ -130,7 +131,8 @@ builder.flush();</code></pre>
 <p>If you need to modify the script, just do so - the script processor should detect that it's connected to an external file and then update it accordingly if you make changes. Just be aware that in order to apply those changes to all script processors that might use the script, you have to recompile them (using the Recompile all scripts) function<br></p>
 <h2 id="create"><b>create</b>
 </h2>
-<p class="comment">Creates a module and returns the build index (0=master container).</p>
+<p class="comment">Creates a module and returns the build index (0=master container). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/builder/create.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Builder.create(var type, var id, int rootBuildIndex, int chainIndex)</code></pre>
 <p><br><br></p>
 <h2 id="flush"><b>flush</b>
@@ -151,7 +153,8 @@ asSampler.loadSampleMap("MySampleMap");</code></pre>
  object - it contains all available types (eg. MidiPlayer, TableProcessor, RoutingMatrix, etc).<br> </p>
 <h2 id="getexisting"><b>getExisting</b>
 </h2>
-<p class="comment">Adds the existing module to the internal list and returns the index for refering to it.</p>
+<p class="comment">Adds the existing module to the internal list and returns the index for refering to it. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/builder/getexisting.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">Builder.getExisting(String processorId)</code></pre>
 <p><br><br></p>
 <h2 id="setattributes"><b>setAttributes</b>
@@ -171,7 +174,7 @@ builder.setAttributes(ahdsr, {
   "Release": 100.0
 });</code></pre>
 <p>You don't need to specify all parameters, just the ones that you want to be non-default.<br></p>
-<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+<div class="content-footer"><span class="content-footer-left"><a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/builder/Readme.md">Edit on GitHub</a>
 </span>
 
 <span class="content-footer-right">Next: <a href="scripting/scripting-api/childsynth/index.html">ChildSynth</a>

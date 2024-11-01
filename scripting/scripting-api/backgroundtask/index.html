@@ -60,22 +60,26 @@
 <p><br></p>
 <h2 id="getprogress"><b>getProgress</b>
 </h2>
-<p class="comment">Get the progress for this task.</p>
+<p class="comment">Get the progress for this task. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/backgroundtask/getprogress.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">BackgroundTask.getProgress()</code></pre>
 <p><br><br></p>
 <h2 id="getproperty"><b>getProperty</b>
 </h2>
-<p class="comment">Retrieve a property through a thread safe container.</p>
+<p class="comment">Retrieve a property through a thread safe container. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/backgroundtask/getproperty.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">BackgroundTask.getProperty(String id)</code></pre>
 <p><br><br></p>
 <h2 id="getstatusmessage"><b>getStatusMessage</b>
 </h2>
-<p class="comment">Returns the current status message.</p>
+<p class="comment">Returns the current status message. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/backgroundtask/getstatusmessage.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">BackgroundTask.getStatusMessage()</code></pre>
 <p><br><br></p>
 <h2 id="killvoicesandcall"><b>killVoicesAndCall</b>
 </h2>
-<p class="comment">Kills all voices and calls the given function on the sample loading thread.</p>
+<p class="comment">Kills all voices and calls the given function on the sample loading thread. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/backgroundtask/killvoicesandcall.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">BackgroundTask.killVoicesAndCall(var loadingFunction)</code></pre>
 <p><br><br></p>
 <h2 id="runprocess"><b>runProcess</b>
@@ -194,17 +198,20 @@ Content.getComponent("Run").setControlCallback(onButton);</code></pre>
 <p class="comment">Be aware that this only captures the notification system for the time the task is active but does not lock the real loading thread so if you spawn a task on the main loading thread (eg. loading a samplemap) while your custom task is active, it might create glitches and inconsistent notifications.<br></p>
 <h2 id="setprogress"><b>setProgress</b>
 </h2>
-<p class="comment">Set a progress for this task.</p>
+<p class="comment">Set a progress for this task. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/backgroundtask/setprogress.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">BackgroundTask.setProgress(double p)</code></pre>
 <p><br><br></p>
 <h2 id="setproperty"><b>setProperty</b>
 </h2>
-<p class="comment">Set a property to a thread safe container.</p>
+<p class="comment">Set a property to a thread safe container. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/backgroundtask/setproperty.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">BackgroundTask.setProperty(String id, var value)</code></pre>
 <p><br><br></p>
 <h2 id="setstatusmessage"><b>setStatusMessage</b>
 </h2>
-<p class="comment">Sets a status message.</p>
+<p class="comment">Sets a status message. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/backgroundtask/setstatusmessage.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">BackgroundTask.setStatusMessage(String m)</code></pre>
 <p><br><br></p>
 <h2 id="settimeout"><b>setTimeOut</b>
@@ -236,7 +243,7 @@ Content.getComponent("Run").setControlCallback(onButton);</code></pre>
 </ol>
 <p>If you're doing things in a loop it's highly advised to call it once per loop and the time between two calls to <code>shouldAbort()</code>
  must never exceed the thread timeout (in fact the execution will time out if you fail to do so which is a safe check that should prevent you from forgetting to call this).<br></p>
-<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+<div class="content-footer"><span class="content-footer-left"><a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/backgroundtask/Readme.md">Edit on GitHub</a>
 </span>
 
 <span class="content-footer-right">Next: <a href="scripting/scripting-api/beatportmanager/index.html">BeatportManager</a>

@@ -66,58 +66,69 @@
  in order to remove previously registered functions.<br></p>
 <h2 id="clearattachedcallbacks"><b>clearAttachedCallbacks</b>
 </h2>
-<p class="comment">Clears all attached callbacks.</p>
+<p class="comment">Clears all attached callbacks. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/userpresethandler/clearattachedcallbacks.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">UserPresetHandler.clearAttachedCallbacks()</code></pre>
 <p><br><br></p>
 <h2 id="createobjectforautomationvalues"><b>createObjectForAutomationValues</b>
 </h2>
-<p class="comment">Creates an object containing the values for every automation ID.</p>
+<p class="comment">Creates an object containing the values for every automation ID. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/userpresethandler/createobjectforautomationvalues.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">UserPresetHandler.createObjectForAutomationValues()</code></pre>
 <p><br><br></p>
 <h2 id="createobjectforsaveinpresetcomponents"><b>createObjectForSaveInPresetComponents</b>
 </h2>
 <p class="comment">Creates an object containing all values of components with the <code>saveInPreset</code>
- flag.</p>
+ flag. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/userpresethandler/createobjectforsaveinpresetcomponents.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">UserPresetHandler.createObjectForSaveInPresetComponents()</code></pre>
 <p><br><br></p>
 <h2 id="getautomationindex"><b>getAutomationIndex</b>
 </h2>
-<p class="comment">Returns the automation index.</p>
+<p class="comment">Returns the automation index. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/userpresethandler/getautomationindex.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">UserPresetHandler.getAutomationIndex(String automationID)</code></pre>
 <p><br><br></p>
 <h2 id="getsecondssincelastpresetload"><b>getSecondsSinceLastPresetLoad</b>
 </h2>
-<p class="comment">Returns the amount of seconds since the last preset has been loaded.</p>
+<p class="comment">Returns the amount of seconds since the last preset has been loaded. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/userpresethandler/getsecondssincelastpresetload.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">UserPresetHandler.getSecondsSinceLastPresetLoad()</code></pre>
 <p><br><br></p>
 <h2 id="iscurrentlyloadingpreset"><b>isCurrentlyLoadingPreset</b>
 </h2>
-<p class="comment">Returns true if this is called somewhere inside a preset load. This takes the thread ID into account to avoid false positives when calling this on another thread.</p>
+<p class="comment">Returns true if this is called somewhere inside a preset load. This takes the thread ID into account to avoid false positives when calling this on another thread. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/userpresethandler/iscurrentlyloadingpreset.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">UserPresetHandler.isCurrentlyLoadingPreset()</code></pre>
 <p><br><br></p>
 <h2 id="isinternalpresetload"><b>isInternalPresetLoad</b>
 </h2>
-<p class="comment">Returns true if the user preset that is about to be loaded is a DAW state (or initial state). This function is only useful during the pre / post load callbacks.</p>
+<p class="comment">Returns true if the user preset that is about to be loaded is a DAW state (or initial state). This function is only useful during the pre / post load callbacks. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/userpresethandler/isinternalpresetload.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">UserPresetHandler.isInternalPresetLoad()</code></pre>
 <p><br><br></p>
 <h2 id="isoldversion"><b>isOldVersion</b>
 </h2>
-<p class="comment">Checks if the given version string is a older version than the current project version number.</p>
+<p class="comment">Checks if the given version string is a older version than the current project version number. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/userpresethandler/isoldversion.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">UserPresetHandler.isOldVersion( String version)</code></pre>
 <p><br><br></p>
 <h2 id="resettodefaultuserpreset"><b>resetToDefaultUserPreset</b>
 </h2>
-<p class="comment">Loads the default user preset (if it's defined in the project).</p>
+<p class="comment">Loads the default user preset (if it's defined in the project). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/userpresethandler/resettodefaultuserpreset.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">UserPresetHandler.resetToDefaultUserPreset()</code></pre>
 <p><br><br></p>
 <h2 id="runtest"><b>runTest</b>
 </h2>
-<p class="comment">Runs a few tests that catches data persistency issues.</p>
+<p class="comment">Runs a few tests that catches data persistency issues. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/userpresethandler/runtest.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">UserPresetHandler.runTest()</code></pre>
 <p><br><br></p>
 <h2 id="setautomationvalue"><b>setAutomationValue</b>
 </h2>
-<p class="comment">Sends an automation value change for the given index.</p>
+<p class="comment">Sends an automation value change for the given index. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/userpresethandler/setautomationvalue.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">UserPresetHandler.setAutomationValue(int automationIndex, float newValue)</code></pre>
 <p><br><br></p>
 <h2 id="setcustomautomation"><b>setCustomAutomation</b>
@@ -224,22 +235,26 @@
  connections).<br></p>
 <h2 id="setenableuserpresetpreprocessing"><b>setEnableUserPresetPreprocessing</b>
 </h2>
-<p class="comment">Enables a preprocessing of every user preset that is being loaded.</p>
+<p class="comment">Enables a preprocessing of every user preset that is being loaded. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/userpresethandler/setenableuserpresetpreprocessing.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">UserPresetHandler.setEnableUserPresetPreprocessing(bool processBeforeLoading, bool shouldUnpackComplexData)</code></pre>
 <p><br><br></p>
 <h2 id="setpostcallback"><b>setPostCallback</b>
 </h2>
-<p class="comment">Sets a callback that will be executed after the preset has been loaded.</p>
+<p class="comment">Sets a callback that will be executed after the preset has been loaded. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/userpresethandler/setpostcallback.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">UserPresetHandler.setPostCallback(var presetPostCallback)</code></pre>
 <p><br><br></p>
 <h2 id="setpostsavecallback"><b>setPostSaveCallback</b>
 </h2>
-<p class="comment">Sets a callback that will be executed after a preset has been saved.</p>
+<p class="comment">Sets a callback that will be executed after a preset has been saved. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/userpresethandler/setpostsavecallback.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">UserPresetHandler.setPostSaveCallback(var presetPostSaveCallback)</code></pre>
 <p><br><br></p>
 <h2 id="setprecallback"><b>setPreCallback</b>
 </h2>
-<p class="comment">Sets a callback that will be executed synchronously before the preset was loaded</p>
+<p class="comment">Sets a callback that will be executed synchronously before the preset was loaded <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/userpresethandler/setprecallback.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">UserPresetHandler.setPreCallback(var presetPreCallback)</code></pre>
 <p><br><br></p>
 <h2 id="setusecustomuserpresetmodel"><b>setUseCustomUserPresetModel</b>
@@ -270,28 +285,32 @@ uph.setUseCustomUserPresetModel(onPresetLoad, onPresetSave, false);</code></pre>
 <p>Also be aware that if you want to use the custom automation model, you will need to enable this mode too.<br></p>
 <h2 id="setuseundoforpresetloading"><b>setUseUndoForPresetLoading</b>
 </h2>
-<p class="comment">Enables Engine.undo() to restore the previous user preset (default is disabled).</p>
+<p class="comment">Enables Engine.undo() to restore the previous user preset (default is disabled). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/userpresethandler/setuseundoforpresetloading.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">UserPresetHandler.setUseUndoForPresetLoading(bool shouldUseUndoManager)</code></pre>
 <p><br><br></p>
 <h2 id="updateautomationvalues"><b>updateAutomationValues</b>
 </h2>
-<p class="comment">Updates the given automation values and optionally sends out a message.</p>
+<p class="comment">Updates the given automation values and optionally sends out a message. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/userpresethandler/updateautomationvalues.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">UserPresetHandler.updateAutomationValues(var data, var sendMessage, bool useUndoManager)</code></pre>
 <p><br><br></p>
 <h2 id="updateconnectedcomponentsfrommodulestate"><b>updateConnectedComponentsFromModuleState</b>
 </h2>
 <p class="comment">Restores the values for all UI elements that are connected to a processor with the <code>processorID</code>
  / <code>parameterId</code>
- properties.</p>
+ properties. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/userpresethandler/updateconnectedcomponentsfrommodulestate.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">UserPresetHandler.updateConnectedComponentsFromModuleState()</code></pre>
 <p><br><br></p>
 <h2 id="updatesaveinpresetcomponents"><b>updateSaveInPresetComponents</b>
 </h2>
 <p class="comment">Restores all values of components with the <code>saveInPreset</code>
- flag.</p>
+ flag. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/userpresethandler/updatesaveinpresetcomponents.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">UserPresetHandler.updateSaveInPresetComponents(var obj)</code></pre>
 <p><br><br></p>
-<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+<div class="content-footer"><span class="content-footer-left"><a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/userpresethandler/Readme.md">Edit on GitHub</a>
 </span>
 
 <span class="content-footer-right">Next: <a href="scriptnode/index.html">ScriptNode</a>

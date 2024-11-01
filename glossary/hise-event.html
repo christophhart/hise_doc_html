@@ -62,7 +62,7 @@
 <p>So internally, real events are stored in a simple array and adressed via note number (this yields the lowest overhead). Artificial events are stored in a array of fixed-sized stacks (currently 16) and also adressed via note number. This slightly increases the overhead for the scripting call <code>Synth.noteOffFromEventId()</code>
  because it has to do more searching, but allows multiple artificial notes with the same note number being active at the same time.</p>
 <p>With this system it should be possible to write pretty robust and encapsulated MIDI scripts. However it might break older scripts (I had to change the Legato Retrigger Script for example).</p>
-<div class="content-footer"><span class="content-footer-left"><a href="https://forum.hise.audio">Join Discussion</a>
+<div class="content-footer"><span class="content-footer-left"><a href="https://github.com/christophhart/hise_documentation/edit/master/glossary/hise-event.md">Edit on GitHub</a>
 </span>
 
 <span class="content-footer-right">Next: <a href="glossary/custom_lookandfeel.html">Look and Feel Customization</a>
