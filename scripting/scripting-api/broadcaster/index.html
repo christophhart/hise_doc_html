@@ -772,10 +772,25 @@ bc.addListener(Button1, "Menu callback", function(component, index)
 <p><br></p>
 <h2 id="attachtoeqevents"><b>attachToEqEvents</b>
 </h2>
-<p class="comment">Registers this broadcaster to be notified about changes to the EQ (adding / removing / selecting filter bands). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/broadcaster/attachtoeqevents.md">Edit on GitHub</a>
-</p>
+<p class="comment">Registers this broadcaster to be notified about changes to the EQ (adding / removing / selecting filter bands).</p>
 <pre><code class="language-javascript line-numbers">Broadcaster.attachToEqEvents(var moduleIds, var eventTypes, var optionalMetadata)</code></pre>
-<p><br><br></p>
+<p><br>The <a href="hise-modules/effects/list/curveeq.html">parametric EQ</a>
+ in HISE has a dynamic amount of EQ bands which can be addressed using the math formula</p>
+<pre><code class="language-javascript line-numbers">attributeIndex = attributeType + bandIndex * bandOffset</code></pre>
+<p>Adding & Removing bands however cannot be queried by the standard HISE parameter system, but you can use this attachment type to be notified whenever a Band is added / removed.</p>
+<ul><li><code>moduleIds</code>
+ must be either a single string with the EQ ID or a list of strings for multiple EQs</li>
+<li><code>eventType</code>
+ must be one or multiple strings from this selection: <code>["BandAdded", "BandRemoved", "BandSelected", "FFTEnabled"]</code>
+</li>
+</ul>
+<p>Once a broadcaster is attached to EQ events, it will fire its callbacks with three parameters:</p>
+<pre><code class="language-javascript line-numbers">function(eventType, value)
+{
+   // eventType is one of the strings that define the event
+   // value is a context dependent value (eg. the band index at selection)...
+}</code></pre>
+<p><br></p>
 <h2 id="attachtointerfacesize"><b>attachToInterfaceSize</b>
 </h2>
 <p class="comment">Registers the broadcaster to be notified when the interface size changes.</p>
