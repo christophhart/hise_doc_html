@@ -18028,5 +18028,641 @@
     "url": "tutorials/ui/index.html#colour-the-keyboard",
     "weight": 70,
     "color": "#C5AC43"
+  },
+  {
+    "key": "C++ API: Introduction",
+    "url": "cpp_api/index.html#introduction",
+    "weight": 80,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "C++ API: How to use the C++ side of HISE",
+    "url": "cpp_api/index.html#how-to-use-the-c++-side-of-hise",
+    "weight": 80,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "C++ API: Getting started with HISE C++",
+    "url": "cpp_api/index.html#getting-started-with-hise-c++",
+    "weight": 80,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "C++ API: Create your own classes",
+    "url": "cpp_api/index.html#create-your-own-classes",
+    "weight": 80,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "C++ API: Code organisation",
+    "url": "cpp_api/index.html#code-organisation",
+    "weight": 80,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "C++ API: Usage of Preprocessor definitions",
+    "url": "cpp_api/index.html#usage-of-preprocessor-definitions",
+    "weight": 80,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "C++ API: namespace hise",
+    "url": "cpp_api/hise/index.html",
+    "weight": 80,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "C++ API: namespace raw",
+    "url": "cpp_api/raw/index.html",
+    "weight": 80,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "namespace hise: AudioSampleProcessor",
+    "url": "cpp_api/hise/classhise_1_1_audio_sample_processor.html",
+    "weight": 70,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "namespace hise: Chain",
+    "url": "cpp_api/hise/classhise_1_1_chain.html",
+    "weight": 70,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "namespace hise: ControlledObject",
+    "url": "cpp_api/hise/classhise_1_1_controlled_object.html",
+    "weight": 70,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "namespace hise: EffectProcessor",
+    "url": "cpp_api/hise/classhise_1_1_effect_processor.html",
+    "weight": 70,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "namespace hise: EventIdHandler",
+    "url": "cpp_api/hise/classhise_1_1_event_id_handler.html",
+    "weight": 70,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "namespace hise: HiseEvent",
+    "url": "cpp_api/hise/classhise_1_1_hise_event.html",
+    "weight": 70,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "namespace hise: HiseEventBuffer",
+    "url": "cpp_api/hise/classhise_1_1_hise_event_buffer.html",
+    "weight": 70,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "namespace hise: LockfreeQueue",
+    "url": "cpp_api/hise/classhise_1_1_lockfree_queue.html",
+    "weight": 70,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "namespace hise: MainController",
+    "url": "cpp_api/hise/classhise_1_1_main_controller.html",
+    "weight": 70,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "namespace hise: MidiPlayer",
+    "url": "cpp_api/hise/classhise_1_1_midi_player.html",
+    "weight": 70,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "namespace hise: MidiProcessor",
+    "url": "cpp_api/hise/classhise_1_1_midi_processor.html",
+    "weight": 70,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "namespace hise: Modulator",
+    "url": "cpp_api/hise/classhise_1_1_modulator.html",
+    "weight": 70,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "namespace hise: ModulatorChain",
+    "url": "cpp_api/hise/classhise_1_1_modulator_chain.html",
+    "weight": 70,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "namespace hise: ModulatorSynth",
+    "url": "cpp_api/hise/classhise_1_1_modulator_synth.html",
+    "weight": 70,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "namespace hise: PoolBase",
+    "url": "cpp_api/hise/classhise_1_1_pool_base.html",
+    "weight": 70,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "namespace hise: PooledUIUpdater",
+    "url": "cpp_api/hise/classhise_1_1_pooled_u_i_updater.html",
+    "weight": 70,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "namespace hise: Processor",
+    "url": "cpp_api/hise/classhise_1_1_processor.html",
+    "weight": 70,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "namespace hise: ProjectHandler",
+    "url": "cpp_api/hise/classhise_1_1_project_handler.html",
+    "weight": 70,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "namespace hise: SafeFunctionCall",
+    "url": "cpp_api/hise/structhise_1_1_safe_function_call.html",
+    "weight": 70,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "namespace hise: Table",
+    "url": "cpp_api/hise/classhise_1_1_table.html",
+    "weight": 70,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "namespace hise: TempoListener",
+    "url": "cpp_api/hise/classhise_1_1_tempo_listener.html",
+    "weight": 70,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "AudioSampleProcessor: Class Hierarchy",
+    "url": "cpp_api/hise/classhise_1_1_audio_sample_processor.html#class-hierarchy",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "AudioSampleProcessor: Class methods",
+    "url": "cpp_api/hise/classhise_1_1_audio_sample_processor.html#class-methods",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "Chain: Class Hierarchy",
+    "url": "cpp_api/hise/classhise_1_1_chain.html#class-hierarchy",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "Chain: Class methods",
+    "url": "cpp_api/hise/classhise_1_1_chain.html#class-methods",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "ControlledObject: Class Hierarchy",
+    "url": "cpp_api/hise/classhise_1_1_controlled_object.html#class-hierarchy",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "ControlledObject: Class methods",
+    "url": "cpp_api/hise/classhise_1_1_controlled_object.html#class-methods",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "EffectProcessor: Class Hierarchy",
+    "url": "cpp_api/hise/classhise_1_1_effect_processor.html#class-hierarchy",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "EffectProcessor: Class methods",
+    "url": "cpp_api/hise/classhise_1_1_effect_processor.html#class-methods",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "EventIdHandler: Class methods",
+    "url": "cpp_api/hise/classhise_1_1_event_id_handler.html#class-methods",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "HiseEvent: Public types",
+    "url": "cpp_api/hise/classhise_1_1_hise_event.html#public-types",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "HiseEvent: Class methods",
+    "url": "cpp_api/hise/classhise_1_1_hise_event.html#class-methods",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "HiseEventBuffer: Class methods",
+    "url": "cpp_api/hise/classhise_1_1_hise_event_buffer.html#class-methods",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "LockfreeQueue: Class methods",
+    "url": "cpp_api/hise/classhise_1_1_lockfree_queue.html#class-methods",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "MainController: Class Hierarchy",
+    "url": "cpp_api/hise/classhise_1_1_main_controller.html#class-hierarchy",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "MainController: Class methods",
+    "url": "cpp_api/hise/classhise_1_1_main_controller.html#class-methods",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "MidiPlayer: Class Hierarchy",
+    "url": "cpp_api/hise/classhise_1_1_midi_player.html#class-hierarchy",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "MidiPlayer: Public types",
+    "url": "cpp_api/hise/classhise_1_1_midi_player.html#public-types",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "MidiPlayer: Class methods",
+    "url": "cpp_api/hise/classhise_1_1_midi_player.html#class-methods",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "MidiProcessor: Class Hierarchy",
+    "url": "cpp_api/hise/classhise_1_1_midi_processor.html#class-hierarchy",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "MidiProcessor: Class methods",
+    "url": "cpp_api/hise/classhise_1_1_midi_processor.html#class-methods",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "Modulator: Class Hierarchy",
+    "url": "cpp_api/hise/classhise_1_1_modulator.html#class-hierarchy",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "Modulator: Class methods",
+    "url": "cpp_api/hise/classhise_1_1_modulator.html#class-methods",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "ModulatorChain: Class Hierarchy",
+    "url": "cpp_api/hise/classhise_1_1_modulator_chain.html#class-hierarchy",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "ModulatorChain: Class methods",
+    "url": "cpp_api/hise/classhise_1_1_modulator_chain.html#class-methods",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "ModulatorSynth: Class Hierarchy",
+    "url": "cpp_api/hise/classhise_1_1_modulator_synth.html#class-hierarchy",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "ModulatorSynth: Public types",
+    "url": "cpp_api/hise/classhise_1_1_modulator_synth.html#public-types",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "ModulatorSynth: Class methods",
+    "url": "cpp_api/hise/classhise_1_1_modulator_synth.html#class-methods",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "PoolBase: Class Hierarchy",
+    "url": "cpp_api/hise/classhise_1_1_pool_base.html#class-hierarchy",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "PoolBase: Class methods",
+    "url": "cpp_api/hise/classhise_1_1_pool_base.html#class-methods",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "PooledUIUpdater: Class Hierarchy",
+    "url": "cpp_api/hise/classhise_1_1_pooled_u_i_updater.html#class-hierarchy",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "PooledUIUpdater: Class methods",
+    "url": "cpp_api/hise/classhise_1_1_pooled_u_i_updater.html#class-methods",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "Processor: Class Hierarchy",
+    "url": "cpp_api/hise/classhise_1_1_processor.html#class-hierarchy",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "Processor: Class methods",
+    "url": "cpp_api/hise/classhise_1_1_processor.html#class-methods",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "ProjectHandler: Class Hierarchy",
+    "url": "cpp_api/hise/classhise_1_1_project_handler.html#class-hierarchy",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "ProjectHandler: Class methods",
+    "url": "cpp_api/hise/classhise_1_1_project_handler.html#class-methods",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "SafeFunctionCall: Public types",
+    "url": "cpp_api/hise/structhise_1_1_safe_function_call.html#public-types",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "SafeFunctionCall: Class methods",
+    "url": "cpp_api/hise/structhise_1_1_safe_function_call.html#class-methods",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "Table: Class Hierarchy",
+    "url": "cpp_api/hise/classhise_1_1_table.html#class-hierarchy",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "Table: Public types",
+    "url": "cpp_api/hise/classhise_1_1_table.html#public-types",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "Table: Class methods",
+    "url": "cpp_api/hise/classhise_1_1_table.html#class-methods",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "TempoListener: Class Hierarchy",
+    "url": "cpp_api/hise/classhise_1_1_tempo_listener.html#class-hierarchy",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "TempoListener: Class methods",
+    "url": "cpp_api/hise/classhise_1_1_tempo_listener.html#class-methods",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "namespace raw: raw::Builder",
+    "url": "cpp_api/raw/classhise_1_1raw_1_1_builder.html",
+    "weight": 70,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "namespace raw: raw::Data",
+    "url": "cpp_api/raw/structhise_1_1raw_1_1_data.html",
+    "weight": 70,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "namespace raw: raw::DataHolder",
+    "url": "cpp_api/raw/classhise_1_1raw_1_1_data_holder.html",
+    "weight": 70,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "namespace raw: raw::DataHolderBase",
+    "url": "cpp_api/raw/classhise_1_1raw_1_1_data_holder_base.html",
+    "weight": 70,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "namespace raw: raw::GenericStorage",
+    "url": "cpp_api/raw/classhise_1_1raw_1_1_generic_storage.html",
+    "weight": 70,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "namespace raw: raw::MainProcessor",
+    "url": "cpp_api/raw/classhise_1_1raw_1_1_main_processor.html",
+    "weight": 70,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "namespace raw: raw::PluginParameter",
+    "url": "cpp_api/raw/classhise_1_1raw_1_1_plugin_parameter.html",
+    "weight": 70,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "namespace raw: raw::Pool",
+    "url": "cpp_api/raw/classhise_1_1raw_1_1_pool.html",
+    "weight": 70,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "namespace raw: raw::Positioner",
+    "url": "cpp_api/raw/classhise_1_1raw_1_1_positioner.html",
+    "weight": 70,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "namespace raw: raw::Reference",
+    "url": "cpp_api/raw/classhise_1_1raw_1_1_reference.html",
+    "weight": 70,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "namespace raw: raw::Storage",
+    "url": "cpp_api/raw/classhise_1_1raw_1_1_storage.html",
+    "weight": 70,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "namespace raw: raw::TaskAfterSuspension",
+    "url": "cpp_api/raw/classhise_1_1raw_1_1_task_after_suspension.html",
+    "weight": 70,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "namespace raw: raw::UIConnection",
+    "url": "cpp_api/raw/classhise_1_1raw_1_1_u_i_connection.html",
+    "weight": 70,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "raw::Builder: Class methods",
+    "url": "cpp_api/raw/classhise_1_1raw_1_1_builder.html#class-methods",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "raw::Data: Class methods",
+    "url": "cpp_api/raw/structhise_1_1raw_1_1_data.html#class-methods",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "raw::DataHolder: Class Hierarchy",
+    "url": "cpp_api/raw/classhise_1_1raw_1_1_data_holder.html#class-hierarchy",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "raw::DataHolder: Class methods",
+    "url": "cpp_api/raw/classhise_1_1raw_1_1_data_holder.html#class-methods",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "raw::DataHolderBase: Class Hierarchy",
+    "url": "cpp_api/raw/classhise_1_1raw_1_1_data_holder_base.html#class-hierarchy",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "raw::DataHolderBase: Class methods",
+    "url": "cpp_api/raw/classhise_1_1raw_1_1_data_holder_base.html#class-methods",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "raw::GenericStorage: Class Hierarchy",
+    "url": "cpp_api/raw/classhise_1_1raw_1_1_generic_storage.html#class-hierarchy",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "raw::GenericStorage: Class methods",
+    "url": "cpp_api/raw/classhise_1_1raw_1_1_generic_storage.html#class-methods",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "raw::MainProcessor: Initialisation",
+    "url": "cpp_api/raw/classhise_1_1raw_1_1_main_processor.html#initialisation",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "raw::MainProcessor: Class Hierarchy",
+    "url": "cpp_api/raw/classhise_1_1raw_1_1_main_processor.html#class-hierarchy",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "raw::MainProcessor: Public types",
+    "url": "cpp_api/raw/classhise_1_1raw_1_1_main_processor.html#public-types",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "raw::MainProcessor: Class methods",
+    "url": "cpp_api/raw/classhise_1_1raw_1_1_main_processor.html#class-methods",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "raw::PluginParameter: Class Hierarchy",
+    "url": "cpp_api/raw/classhise_1_1raw_1_1_plugin_parameter.html#class-hierarchy",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "raw::PluginParameter: Class methods",
+    "url": "cpp_api/raw/classhise_1_1raw_1_1_plugin_parameter.html#class-methods",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "raw::Pool: Class Hierarchy",
+    "url": "cpp_api/raw/classhise_1_1raw_1_1_pool.html#class-hierarchy",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "raw::Pool: Class methods",
+    "url": "cpp_api/raw/classhise_1_1raw_1_1_pool.html#class-methods",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "raw::Positioner: Class methods",
+    "url": "cpp_api/raw/classhise_1_1raw_1_1_positioner.html#class-methods",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "raw::Reference: Class Hierarchy",
+    "url": "cpp_api/raw/classhise_1_1raw_1_1_reference.html#class-hierarchy",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "raw::Reference: Class methods",
+    "url": "cpp_api/raw/classhise_1_1raw_1_1_reference.html#class-methods",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "raw::Storage: Class Hierarchy",
+    "url": "cpp_api/raw/classhise_1_1raw_1_1_storage.html#class-hierarchy",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "raw::Storage: Class methods",
+    "url": "cpp_api/raw/classhise_1_1raw_1_1_storage.html#class-methods",
+    "weight": 60,
+    "color": "#CCCCCC"
+  },
+  {
+    "key": "raw::TaskAfterSuspension: Public types",
+    "url": "cpp_api/raw/classhise_1_1raw_1_1_task_after_suspension.html#public-types",
+    "weight": 60,
+    "color": "#CCCCCC"
   }
 ]
