@@ -40,6 +40,7 @@
 
 		<div class="content"><h1 id="development-recipes"><b>Development Recipes</b>
 </h1>
+<p>A collection of development and workflow recipes.</p>
 <h2 id="move-your-faust-code-from-windows-to-macos"><b>Move your Faust code from Windows to MacOS</b>
 </h2>
 <p>When you copy your Windows Project structure and open it in the Mac version of HISE you will find that you need to build the dynlib on Mac (the Mac version of a DLL) which might sometimes fail.</p>
@@ -47,7 +48,10 @@
 <p>Move the entire project to a MacOS hard drive or use <a href="glossary/git.html">git</a>
  to check out the project on the Mac system.</p>
 <p>Delete all the files in these folders:</p>
-<p>{Project}/AdditionalSourceCode/nodes. <-- this will be C++ headers or .cpp files{Project}/DspNetworks/Binaries. <— everything from here<br>{Project}/DspNetworks/ThirdParty <-- again C++ code in here (be careful about user generated scripts)</p>
+<p><code>{Project}/AdditionalSourceCode/nodes</code>
+ <-- this will be C++ headers or .cpp files<code>{Project}/DspNetworks/Binaries</code>
+ <— everything from here <code>{Project}/DspNetworks/ThirdParty</code>
+ <-- again C++ code in here (be careful about user generated scripts)</p>
 <p>At this point you can load your project, open a scriptnode and compile your MacOS DLL/dynlib.</p>
 <div class="content-footer"><span class="content-footer-left"><a href="https://github.com/christophhart/hise_documentation/edit/master/glossary/development_recipes.md">Edit on GitHub</a>
 </span>
