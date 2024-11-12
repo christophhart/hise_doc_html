@@ -59,30 +59,30 @@
 <p><a href="working-with-hise/project-management/projects-folders/images.html">Images</a>
  - A folder that can contain image files and filmstrips for usage in the interface designer as well as a few predefined hooks (e.g. splashscreen and fonts). Per scripting accessible via <code>"{PROJECT_FOLDER}image.png"</code>
 .</p>
-<p><a href="working-with-hise/project-management/projects-folders/meta-data">MetaData</a>
+<p><a href="working-with-hise/project-management/projects-folders/meta-data.html">MetaData</a>
  - The Metadata _info files (.xml) in the projects root folder hold the project specific settings.</p>
-<p><a href="working-with-hise/project-management/projects-folders/midi-files">MidiFiles</a>
- - A folder for MIDI files used in the <a href="hise-modules/midi-processors/list/midiplayer">Midiplayer</a>
+<p><a href="working-with-hise/project-management/projects-folders/midi-files.html">MidiFiles</a>
+ - A folder for MIDI files used in the <a href="hise-modules/midi-processors/list/midiplayer.html">Midiplayer</a>
 </p>
-<p><a href="working-with-hise/project-management/projects-folders/presets">Presets</a>
+<p><a href="working-with-hise/project-management/projects-folders/presets.html">Presets</a>
  - Contains the <b>HISE Preset files</b>
  (<code>.hip</code>
 ), which are the save-files of your Projects plugin architecture. The auto-save files will also show up here.</p>
-<p><a href="working-with-hise/project-management/projects-folders/sample-maps">SampleMaps</a>
- - When you mapped samples in the <a href="hise-modules/sound-generators/list/streamingsampler">Sampler</a>
+<p><a href="working-with-hise/project-management/projects-folders/sample-maps.html">SampleMaps</a>
+ - When you mapped samples in the <a href="hise-modules/sound-generators/list/streamingsampler.html">Sampler</a>
  this folder will hold the <code>SampleMap.xml</code>
 's that point to your samples.</p>
-<p><a href="working-with-hise/project-management/projects-folders/samples">Samples</a>
+<p><a href="working-with-hise/project-management/projects-folders/samples.html">Samples</a>
  - The folder for your samples and the compressed <code>.ch1</code>
 -monolith files.</p>
-<p><a href="working-with-hise/project-management/projects-folders/scripts">Scripts</a>
+<p><a href="working-with-hise/project-management/projects-folders/scripts.html">Scripts</a>
  - If you create an interface for your instrument this folder will hold the main <code>interface.js</code>
 -file + all the scripts that you need for building the GUI and user-interactions of your instrument.</p>
-<p><a href="working-with-hise/project-management/projects-folders/user-presets">UserPresets</a>
+<p><a href="working-with-hise/project-management/projects-folders/user-presets.html">UserPresets</a>
  - The folder for the User-<code>.presets</code>
- that can save different states of your instruments GUI. You can easily organize these with the <a href="ui-components/floating-tiles/plugin/presetbrowser">Presetbrowser</a>
+ that can save different states of your instruments GUI. You can easily organize these with the <a href="ui-components/floating-tiles/plugin/presetbrowser.html">Presetbrowser</a>
 -FloatingTile.</p>
-<p><a href="working-with-hise/project-management/projects-folders/xml-preset-backups">XmlPresetBackups</a>
+<p><a href="working-with-hise/project-management/projects-folders/xml-preset-backups.html">XmlPresetBackups</a>
  - The folder for your <b>HISE presets</b>
  human readable <code>.xml</code>
  savefiles. </p>
@@ -104,11 +104,11 @@
 .</p>
 <h2 id="file-pools"><b>File Pools</b>
 </h2>
-<p>There are a few data types (<a href="ui-components/floating-tiles/hise/samplepooltable">SamplePool</a>
-, <a href="ui-components/floating-tiles/hise/imagepool">ImagePool</a>
-, <a href="ui-components/floating-tiles/hise/midifilepool">MidifilePool</a>
-, <a href="ui-components/floating-tiles/hise/audiofilepool">AudiofilePool</a>
-, <a href="ui-components/floating-tiles/hise/samplemappool">SampleMapPool</a>
+<p>There are a few data types (<a href="ui-components/floating-tiles/hise/samplepooltable.html">SamplePool</a>
+, <a href="ui-components/floating-tiles/hise/imagepool.html">ImagePool</a>
+, <a href="ui-components/floating-tiles/hise/midifilepool.html">MidifilePool</a>
+, <a href="ui-components/floating-tiles/hise/audiofilepool.html">AudiofilePool</a>
+, <a href="ui-components/floating-tiles/hise/samplemappool.html">SampleMapPool</a>
 ) in HISE that use a pool system that caches loaded resources as long as they are used. These pools makes sure that you reuse internal data (so that when eg. two convolution reverbs use the same impulse response, they will use the same audio buffer in the memory).</p>
 <p>Some file types are even cached from the beginning: They are loaded into the pool on startup and then the files aren't accessed directly anymore but the cached data is used instead. </p>
 <p class="comment">This might lead to a few quirks that are often solved by restarting HISE after changing a file in order to use the updated version instead of the cached one.</p>
@@ -133,9 +133,9 @@
 <li>If you want to load images, you will most likely use files from the Images subdirectory. HISE is smart enough to assume this too. This means you can (and must) omit <code>Images/</code>
  from the path string. In this case, <code>{PROJECT_FOLDER}</code>
  will not point to the actual HISE project folder, <b>but to the subdirectory that is appropriate to the context</b>
-. Now depending on the API call this might vary: <a href="scripting/scripting-api/audiosampleprocessor#setfile">AudioSampleProcessor.setFile()</a>
- will automatically use the <a href="working-with-hise/project-management/projects-folders/audio-files">AudioFiles</a>
- subdirectory. For some API calls, you even don't need the project folder wildcard, because you are not supposed to use anything outside the subdirectory. Examples for this behaviour is <a href="scripting/scripting-api/sampler#loadsamplemap">Sampler.loadSampleMap()</a>
+. Now depending on the API call this might vary: <a href="scripting/scripting-api/audiosampleprocessor/index.html#setfile">AudioSampleProcessor.setFile()</a>
+ will automatically use the <a href="working-with-hise/project-management/projects-folders/audio-files.html">AudioFiles</a>
+ subdirectory. For some API calls, you even don't need the project folder wildcard, because you are not supposed to use anything outside the subdirectory. Examples for this behaviour is <a href="scripting/scripting-api/sampler/index.html#loadsamplemap">Sampler.loadSampleMap()</a>
  which automatically searches in the <b>SampleMaps</b>
  Folder and the <code>include()</code>
  command that includes other script files from the <b>Scripts</b>

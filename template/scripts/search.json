@@ -240,6 +240,12 @@
     "color": "#DEB887"
   },
   {
+    "key": "Project Folders: Meta-Data",
+    "url": "working-with-hise/project-management/projects-folders/meta-data.html",
+    "weight": 60,
+    "color": "#DEB887"
+  },
+  {
     "key": "Project Folders: MidiFiles",
     "url": "working-with-hise/project-management/projects-folders/midi-files.html",
     "weight": 60,
@@ -7134,6 +7140,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "FFT.setUseFallbackEngine()",
+    "url": "scripting/scripting-api/fft/index.html#setusefallbackengine",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "FFT.setWindowType()",
     "url": "scripting/scripting-api/fft/index.html#setwindowtype",
     "weight": 60,
@@ -7250,6 +7262,12 @@
   {
     "key": "File.loadAsAudioFile()",
     "url": "scripting/scripting-api/file/index.html#loadasaudiofile",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "File.loadAsBase64String()",
+    "url": "scripting/scripting-api/file/index.html#loadasbase64string",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -9570,6 +9588,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "NeuralNetwork.loadOnnxModel()",
+    "url": "scripting/scripting-api/neuralnetwork/index.html#loadonnxmodel",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "NeuralNetwork.loadPytorchModel()",
     "url": "scripting/scripting-api/neuralnetwork/index.html#loadpytorchmodel",
     "weight": 60,
@@ -9590,6 +9614,12 @@
   {
     "key": "NeuralNetwork.process()",
     "url": "scripting/scripting-api/neuralnetwork/index.html#process",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "NeuralNetwork.processFFTSpectrum()",
+    "url": "scripting/scripting-api/neuralnetwork/index.html#processfftspectrum",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -17616,6 +17646,12 @@
     "color": "#C5AC43"
   },
   {
+    "key": "All Snippets: Midi file sort by tag",
+    "url": "tutorials/all/index.html#midi-file-sort-by-tag",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
     "key": "Modules Snippets: Control current EQ band",
     "url": "tutorials/modules/index.html#control-current-eq-band",
     "weight": 70,
@@ -17736,6 +17772,12 @@
     "color": "#C5AC43"
   },
   {
+    "key": "Scriptnode Snippets: Continuous Per-Event Modulation",
+    "url": "tutorials/scriptnode/index.html#continuous-per-event-modulation",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
     "key": "Scriptnode Snippets: Simple Drum Synthesiser",
     "url": "tutorials/scriptnode/index.html#simple-drum-synthesiser",
     "weight": 70,
@@ -17838,26 +17880,26 @@
     "color": "#C5AC43"
   },
   {
-    "key": "UI Snippets: Expandable GUI",
-    "url": "tutorials/ui/index.html#expandable-gui",
-    "weight": 70,
-    "color": "#C5AC43"
-  },
-  {
     "key": "UI Snippets: GLSL MorphBall",
     "url": "tutorials/ui/index.html#glsl-morphball",
     "weight": 70,
     "color": "#C5AC43"
   },
   {
-    "key": "UI Snippets: GLSL Slider",
-    "url": "tutorials/ui/index.html#glsl-slider",
+    "key": "UI Snippets: Rotate an image",
+    "url": "tutorials/ui/index.html#rotate-an-image",
     "weight": 70,
     "color": "#C5AC43"
   },
   {
-    "key": "UI Snippets: Rotate an image",
-    "url": "tutorials/ui/index.html#rotate-an-image",
+    "key": "UI Snippets: Expandable GUI",
+    "url": "tutorials/ui/index.html#expandable-gui",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "UI Snippets: GLSL Slider",
+    "url": "tutorials/ui/index.html#glsl-slider",
     "weight": 70,
     "color": "#C5AC43"
   },
@@ -17888,6 +17930,12 @@
   {
     "key": "UI Snippets: Button Pack",
     "url": "tutorials/ui/index.html#button-pack",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "UI Snippets: Zoomable waveform (Start+End)",
+    "url": "tutorials/ui/index.html#zoomable-waveform-start+end",
     "weight": 70,
     "color": "#C5AC43"
   },
@@ -18006,8 +18054,14 @@
     "color": "#C5AC43"
   },
   {
-    "key": "UI Snippets: Dynamic List",
-    "url": "tutorials/ui/index.html#dynamic-list",
+    "key": "UI Snippets: Zoomable waveform (Pos+Zoom)",
+    "url": "tutorials/ui/index.html#zoomable-waveform-pos+zoom",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "UI Snippets: Two linked Sliders",
+    "url": "tutorials/ui/index.html#two-linked-sliders",
     "weight": 70,
     "color": "#C5AC43"
   },
@@ -18018,8 +18072,8 @@
     "color": "#C5AC43"
   },
   {
-    "key": "UI Snippets: Two linked Sliders",
-    "url": "tutorials/ui/index.html#two-linked-sliders",
+    "key": "UI Snippets: Dynamic List",
+    "url": "tutorials/ui/index.html#dynamic-list",
     "weight": 70,
     "color": "#C5AC43"
   },

@@ -287,6 +287,12 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "working-with-hise/project-management/projects-folders/meta-data.html",
+                  "Title": "Meta-Data",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
                   "URL": "working-with-hise/project-management/projects-folders/midi-files.html",
                   "Title": "MidiFiles",
                   "Colour": "#DEB887",
@@ -7791,6 +7797,12 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scripting/scripting-api/fft/index.html#setusefallbackengine",
+                  "Title": "setUseFallbackEngine",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/fft/index.html#setwindowtype",
                   "Title": "setWindowType",
                   "Colour": "#D557D9",
@@ -7914,6 +7926,12 @@ var rootDb = {
                 {
                   "URL": "scripting/scripting-api/file/index.html#loadasaudiofile",
                   "Title": "loadAsAudioFile",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/file/index.html#loadasbase64string",
+                  "Title": "loadAsBase64String",
                   "Colour": "#D557D9",
                   "Children": []
                 },
@@ -10387,6 +10405,12 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scripting/scripting-api/neuralnetwork/index.html#loadonnxmodel",
+                  "Title": "loadOnnxModel",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/neuralnetwork/index.html#loadpytorchmodel",
                   "Title": "loadPytorchModel",
                   "Colour": "#D557D9",
@@ -10407,6 +10431,12 @@ var rootDb = {
                 {
                   "URL": "scripting/scripting-api/neuralnetwork/index.html#process",
                   "Title": "process",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/neuralnetwork/index.html#processfftspectrum",
+                  "Title": "processFFTSpectrum",
                   "Colour": "#D557D9",
                   "Children": []
                 },
@@ -20481,6 +20511,12 @@ var rootDb = {
               "Title": "Horizontal Linear Slider LAF",
               "Colour": "#C5AC43",
               "Children": []
+            },
+            {
+              "URL": "tutorials/all/index.html#midi-file-sort-by-tag",
+              "Title": "Midi file sort by tag",
+              "Colour": "#C5AC43",
+              "Children": []
             }
           ]
         },
@@ -20631,6 +20667,12 @@ var rootDb = {
           "Colour": "#C5AC43",
           "Children": [
             {
+              "URL": "tutorials/scriptnode/index.html#continuous-per-event-modulation",
+              "Title": "Continuous Per-Event Modulation",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
               "URL": "tutorials/scriptnode/index.html#simple-drum-synthesiser",
               "Title": "Simple Drum Synthesiser",
               "Colour": "#C5AC43",
@@ -20740,26 +20782,26 @@ var rootDb = {
           "Colour": "#C5AC43",
           "Children": [
             {
-              "URL": "tutorials/ui/index.html#expandable-gui",
-              "Title": "Expandable GUI",
-              "Colour": "#C5AC43",
-              "Children": []
-            },
-            {
               "URL": "tutorials/ui/index.html#glsl-morphball",
               "Title": "GLSL MorphBall",
               "Colour": "#C5AC43",
               "Children": []
             },
             {
-              "URL": "tutorials/ui/index.html#glsl-slider",
-              "Title": "GLSL Slider",
+              "URL": "tutorials/ui/index.html#rotate-an-image",
+              "Title": "Rotate an image",
               "Colour": "#C5AC43",
               "Children": []
             },
             {
-              "URL": "tutorials/ui/index.html#rotate-an-image",
-              "Title": "Rotate an image",
+              "URL": "tutorials/ui/index.html#expandable-gui",
+              "Title": "Expandable GUI",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/ui/index.html#glsl-slider",
+              "Title": "GLSL Slider",
               "Colour": "#C5AC43",
               "Children": []
             },
@@ -20790,6 +20832,12 @@ var rootDb = {
             {
               "URL": "tutorials/ui/index.html#button-pack",
               "Title": "Button Pack",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/ui/index.html#zoomable-waveform-start+end",
+              "Title": "Zoomable waveform (Start+End)",
               "Colour": "#C5AC43",
               "Children": []
             },
@@ -20908,8 +20956,14 @@ var rootDb = {
               "Children": []
             },
             {
-              "URL": "tutorials/ui/index.html#dynamic-list",
-              "Title": "Dynamic List",
+              "URL": "tutorials/ui/index.html#zoomable-waveform-pos+zoom",
+              "Title": "Zoomable waveform (Pos+Zoom)",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/ui/index.html#two-linked-sliders",
+              "Title": "Two linked Sliders",
               "Colour": "#C5AC43",
               "Children": []
             },
@@ -20920,8 +20974,8 @@ var rootDb = {
               "Children": []
             },
             {
-              "URL": "tutorials/ui/index.html#two-linked-sliders",
-              "Title": "Two linked Sliders",
+              "URL": "tutorials/ui/index.html#dynamic-list",
+              "Title": "Dynamic List",
               "Colour": "#C5AC43",
               "Children": []
             },
