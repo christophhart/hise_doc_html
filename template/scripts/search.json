@@ -17286,6 +17286,12 @@
     "color": "#BD6F50"
   },
   {
+    "key": "Glossary: Development Recipes",
+    "url": "glossary/development_recipes.html",
+    "weight": 80,
+    "color": "#BD6F50"
+  },
+  {
     "key": "Glossary: HISE Command Line Tool",
     "url": "glossary/command-line-tool.html",
     "weight": 80,
@@ -17456,6 +17462,12 @@
   {
     "key": "CSS Tutorial for HISE: Keyword reference",
     "url": "glossary/css.html#keyword-reference",
+    "weight": 70,
+    "color": "#BD6F50"
+  },
+  {
+    "key": "Development Recipes: Move your Faust code from Windows to MacOS",
+    "url": "glossary/development_recipes.html#move-your-faust-code-from-windows-to-macos",
     "weight": 70,
     "color": "#BD6F50"
   },

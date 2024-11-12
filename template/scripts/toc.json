@@ -19654,6 +19654,19 @@ var rootDb = {
           ]
         },
         {
+          "URL": "glossary/development_recipes.html",
+          "Title": "Development Recipes",
+          "Colour": "#BD6F50",
+          "Children": [
+            {
+              "URL": "glossary/development_recipes.html#move-your-faust-code-from-windows-to-macos",
+              "Title": "Move your Faust code from Windows to MacOS",
+              "Colour": "#BD6F50",
+              "Children": []
+            }
+          ]
+        },
+        {
           "URL": "glossary/command-line-tool.html",
           "Title": "HISE Command Line Tool",
           "Colour": "#BD6F50",
