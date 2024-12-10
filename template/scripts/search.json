@@ -16806,6 +16806,12 @@
     "color": "#F15761"
   },
   {
+    "key": "control: compare",
+    "url": "scriptnode/list/control/compare.html",
+    "weight": 60,
+    "color": "#F15761"
+  },
+  {
     "key": "control: change",
     "url": "scriptnode/list/control/change.html",
     "weight": 60,

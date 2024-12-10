@@ -18799,6 +18799,12 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scriptnode/list/control/compare.html",
+                  "Title": "compare",
+                  "Colour": "#F15761",
+                  "Children": []
+                },
+                {
                   "URL": "scriptnode/list/control/change.html",
                   "Title": "change",
                   "Colour": "#F15761",
