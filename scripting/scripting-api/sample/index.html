@@ -77,10 +77,118 @@ Console.print(sample.get(sample.FileName));</code></pre>
 <p><br><br></p>
 <h2 id="get"><b>get</b>
 </h2>
-<p class="comment">Returns the sample property. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/sample/get.md">Edit on GitHub</a>
-</p>
+<p class="comment">Returns the sample property.</p>
 <pre><code class="language-javascript line-numbers">Sample.get(int propertyIndex)</code></pre>
-<p><br><br></p>
+<p><br></p>
+<table><thead><td><b>Attribute Name					</b>
+</td>
+<td><b>escription</b>
+</td>
+</thead>
+<tr><td><code>FileName</code>
+				</td>
+<td>he file name</td>
+</tr>
+<tr><td><code>Root</code>
+					</td>
+<td>he root note</td>
+</tr>
+<tr><td><code>HiKey</code>
+				</td>
+<td>he highest mapped key</td>
+</tr>
+<tr><td><code>LoKey</code>
+				</td>
+<td>he lowest mapped key</td>
+</tr>
+<tr><td><code>LoVel</code>
+				</td>
+<td>he lowest mapped velocity</td>
+</tr>
+<tr><td><code>HiVel</code>
+				</td>
+<td>he highest mapped velocity</td>
+</tr>
+<tr><td><code>RRGroup</code>
+				</td>
+<td>he group index for round robin / random group start behaviour</td>
+</tr>
+<tr><td><code>Volume</code>
+				</td>
+<td>he gain in decibels.</td>
+</tr>
+<tr><td><code>Pan</code>
+					</td>
+<td>he stereo balance (-100 = left, 100 = right)</td>
+</tr>
+<tr><td><code>Normalized</code>
+			</td>
+<td>nables / disables Autogain to 0dB for all samples.</td>
+</tr>
+<tr><td><code>Pitch</code>
+				</td>
+<td>he pitch factor in cents (+- 100). This is for fine tuning, for anything else, use RootNote.</td>
+</tr>
+<tr><td><code>SampleStart</code>
+			</td>
+<td>he start of the sample.</td>
+</tr>
+<tr><td><code>SampleEnd</code>
+			</td>
+<td>he end sample</td>
+</tr>
+<tr><td><code>SampleStartMod</code>
+		</td>
+<td>he amount of samples that the sample start can be modulated.</td>
+</tr>
+<tr><td><code>LoopStart</code>
+			</td>
+<td>he loop start in samples. This is independent from the sample start / end (so 0 is the SampleStart value and not the beginning of the file , but it checks the bounds.</td>
+</tr>
+<tr><td><code>LoopEnd</code>
+				</td>
+<td>he loop end in samples. This is independent from the sample start / end, but it checks the bounds.</td>
+</tr>
+<tr><td><code>LoopXFade</code>
+			</td>
+<td>he loop crossfade at the end of the loop (using a recalculated buffer)</td>
+<td><code>LoopEnabled</code>
+ 			</td>
+<td>rue if the sample should be looped.</td>
+</tr>
+<tr><td><code>ReleaseStart</code>
+ 		</td>
+<td>he release start value. A value of 0 disables the feature.</td>
+</tr>
+<tr><td><code>LowerVelocityXFade</code>
+	</td>
+<td>he length of the lower velocity crossfade (0 if there is no crossfade).</td>
+</tr>
+<tr><td><code>UpperVelocityXFade</code>
+	</td>
+<td>he length of the upper velocity crossfade (0 if there is no crossfade).</td>
+</tr>
+<tr><td><code>SampleState</code>
+			</td>
+<td>his property allows to set the state of samples between Normal(0) and Purged (1)</td>
+</tr>
+<tr><td><code>Reversed</code>
+				</td>
+<td>hether the sample is reversed.</td>
+</tr>
+</table>
+<p>Example to print the <code>SamplEnd</code>
+ of all samples:</p>
+<pre><code class="language-javascript line-numbers">const selection = Synth.getChildSynth("Sampler1").asSampler().createSelection(".")` //Array of `Sample` objects.
+`for (sample in selection){
+  Console.print(sample.get(Sampler.SamplEnd));
+}</code></pre>
+<p>Note that attribute names belong to the <code>Sampler</code>
+ class, not <code>Sample</code>
+</p>
+<p>trace() does not work on <code>Sample</code>
+ objects. Use the <a href="working-with-hise/workspaces/scripting-workspace/code-editor.html#scriptwatchtable">Script Watch Table</a>
+ to peek inside.<br></p>
 <h2 id="getcustomproperties"><b>getCustomProperties</b>
 </h2>
 <p class="comment">Returns an object that can hold additional properties. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/sample/getcustomproperties.md">Edit on GitHub</a>

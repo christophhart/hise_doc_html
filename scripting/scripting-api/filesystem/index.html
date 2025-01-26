@@ -178,7 +178,12 @@
 <p><br>You can use this method to access files from one of the given locations (take a look at the <a href="scripting/scripting-api/filesystem/index.html#special-locations">Special Locations</a>
  above for a list of available folders).</p>
 <p>You can navigate from that folder to the file you want with the <a href="scripting/scripting-api/file/index.html#getchildfile">File.getChildFile()</a>
- method.<br></p>
+ method.</p>
+<p>To get files from the <a href="working-with-hise/project-management/projects-folders/audio-files.html">AudioFiles</a>
+ folder of an exported project, eg. for use in a <a href="hise-modules/effects/list/convolution.html">Convolution Reverb</a>
+ or an <a href="hise-modules/sound-generators/list/audiolooper.html">Audio Loop Player</a>
+, use <a href="scripting/scripting-api/engine/index.html#loadaudiofilesintopool">Engine.loadAudioFilesIntoPool()</a>
+.<br></p>
 <h2 id="getsystemid"><b>getSystemId</b>
 </h2>
 <p class="comment">Returns a unique machine ID that can be used to identify the computer. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/filesystem/getsystemid.md">Edit on GitHub</a>

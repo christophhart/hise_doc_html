@@ -1143,6 +1143,12 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "working-with-hise/menu-reference/export/index.html#compile-project",
+                  "Title": "Compile project",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
                   "URL": "working-with-hise/menu-reference/export/index.html#export-as-instrument-vsti-/-aui-plugin",
                   "Title": "Export as Instrument (VSTi / AUi) plugin",
                   "Colour": "#DEB887",
@@ -1332,6 +1338,12 @@ var rootDb = {
                 {
                   "URL": "working-with-hise/menu-reference/tools/index.html#show-dsp-network-dll-info",
                   "Title": "Show DSP Network DLL info",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
+                  "URL": "working-with-hise/menu-reference/tools/index.html#replace-scriptnode-modules-with-hardcoded-modules",
+                  "Title": "Replace Scriptnode modules with Hardcoded modules",
                   "Colour": "#DEB887",
                   "Children": []
                 },
@@ -1744,6 +1756,12 @@ var rootDb = {
                 {
                   "URL": "working-with-hise/settings/project.html#include-loris-in-frontend",
                   "Title": "Include Loris In Frontend",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
+                  "URL": "working-with-hise/settings/project.html#project-type",
+                  "Title": "Project Type",
                   "Colour": "#DEB887",
                   "Children": []
                 },
@@ -3136,7 +3154,13 @@ var rootDb = {
                   "Colour": "#3A6666",
                   "Children": [
                     {
-                      "URL": "hise-modules/effects/list/convolution.html#load-audiofiles-per-script",
+                      "URL": "hise-modules/effects/list/convolution.html#loading-a-single-impulse-response-called-impulse.wav",
+                      "Title": "",
+                      "Colour": "#3A6666",
+                      "Children": []
+                    },
+                    {
+                      "URL": "hise-modules/effects/list/convolution.html#including-several-user-selectable-impulse-responses-with-a-plugin",
                       "Title": "",
                       "Colour": "#3A6666",
                       "Children": []
@@ -3360,6 +3384,12 @@ var rootDb = {
                   "Title": "Send Effect",
                   "Colour": "#3A6666",
                   "Children": [
+                    {
+                      "URL": "hise-modules/effects/list/sendfx.html#example-",
+                      "Title": "Example ",
+                      "Colour": "#3A6666",
+                      "Children": []
+                    },
                     {
                       "URL": "hise-modules/effects/list/sendfx.html#parameters",
                       "Title": "Parameters",
@@ -4869,6 +4899,12 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scripting/scripting-api/array/index.html#shift",
+                  "Title": "shift",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/array/index.html#some",
                   "Title": "some",
                   "Colour": "#D557D9",
@@ -5664,6 +5700,12 @@ var rootDb = {
               "Colour": "#D557D9",
               "Children": [
                 {
+                  "URL": "scripting/scripting-api/colours/index.html#fromhsl",
+                  "Title": "fromHsl",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/colours/index.html#fromvec4",
                   "Title": "fromVec4",
                   "Colour": "#D557D9",
@@ -5672,6 +5714,12 @@ var rootDb = {
                 {
                   "URL": "scripting/scripting-api/colours/index.html#mix",
                   "Title": "mix",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/colours/index.html#tohsl",
+                  "Title": "toHsl",
                   "Colour": "#D557D9",
                   "Children": []
                 },
@@ -5949,6 +5997,12 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scripting/scripting-api/content/index.html#componentexists",
+                  "Title": "componentExists",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/content/index.html#createlocallookandfeel",
                   "Title": "createLocalLookAndFeel",
                   "Colour": "#D557D9",
@@ -6011,6 +6065,12 @@ var rootDb = {
                 {
                   "URL": "scripting/scripting-api/content/index.html#getcurrenttooltip",
                   "Title": "getCurrentTooltip",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/content/index.html#getinterfacesize",
+                  "Title": "getInterfaceSize",
                   "Colour": "#D557D9",
                   "Children": []
                 },
@@ -7403,6 +7463,12 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scripting/scripting-api/engine/index.html#setpreloadmessage",
+                  "Title": "setPreloadMessage",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/engine/index.html#setuserpresettaglist",
                   "Title": "setUserPresetTagList",
                   "Colour": "#D557D9",
@@ -7818,6 +7884,12 @@ var rootDb = {
                 {
                   "URL": "scripting/scripting-api/file/index.html#copy",
                   "Title": "copy",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/file/index.html#copydirectory",
+                  "Title": "copyDirectory",
                   "Colour": "#D557D9",
                   "Children": []
                 },
@@ -10746,6 +10818,18 @@ var rootDb = {
                 {
                   "URL": "scripting/scripting-api/routingmatrix/index.html#getdestinationchannelforsource",
                   "Title": "getDestinationChannelForSource",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/routingmatrix/index.html#getnumdestinationchannels",
+                  "Title": "getNumDestinationChannels",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/routingmatrix/index.html#getnumsourcechannels",
+                  "Title": "getNumSourceChannels",
                   "Colour": "#D557D9",
                   "Children": []
                 },
@@ -14427,6 +14511,12 @@ var rootDb = {
               "Colour": "#D557D9",
               "Children": [
                 {
+                  "URL": "scripting/scripting-api/scripttable/index.html#addtablepoint",
+                  "Title": "addTablePoint",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/scripttable/index.html#addtomacrocontrol",
                   "Title": "addToMacroControl",
                   "Colour": "#D557D9",
@@ -14547,6 +14637,12 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scripting/scripting-api/scripttable/index.html#reset",
+                  "Title": "reset",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/scripttable/index.html#sendrepaintmessage",
                   "Title": "sendRepaintMessage",
                   "Colour": "#D557D9",
@@ -14621,6 +14717,12 @@ var rootDb = {
                 {
                   "URL": "scripting/scripting-api/scripttable/index.html#setstylesheetpseudostate",
                   "Title": "setStyleSheetPseudoState",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scripttable/index.html#settablepoint",
+                  "Title": "setTablePoint",
                   "Colour": "#D557D9",
                   "Children": []
                 },

@@ -51,16 +51,50 @@
 <p>This is a fast convolution reverb based on the excellent <a href="https://github.com/HiFi-LoFi/FFTConvolver">FFTConvolver</a>
  library. You can load a pooled audio file into this module and it will use it as impulse response for the convolution algorithm.</p>
 <p class="comment">This module can also be used for cabinet simulation when a cabinet IR is used.</p>
-<h3 id="load-audiofiles-per-script"><b>Load AudioFiles per script</b>
+<h3 id="loading-a-single-impulse-response-called-impulse.wav"><b>Loading a single impulse response called impulse.wav</b>
 </h3>
+<p>The file impulse.wav should be placed in the AudioFiles folder. This script assumes there is a Convolution Reverb already added called <code>Convolution Reverb1</code>
+.</p>
 <pre><code class="language-javascript line-numbers">// Create a typed Audio Sample Script Reference with right click on the Convolution Module
 const var ConvolutionReverb1 = Synth.getAudioSampleProcessor("Convolution Reverb1");
 
-// load all Audio Files from the AudioFiles Folder into the Pool
+// Load all Audio Files from the AudioFiles Folder into the Pool
 Engine.loadAudioFilesIntoPool();
 
-// set a new file 
+// Load the impulse response. Use of {PROJECT_FOLDER} here automatically refers to the AudioFiles folder.
 ConvolutionReverb1.setFile("{PROJECT_FOLDER}impulse.wav");</code></pre>
+<h3 id="including-several-user-selectable-impulse-responses-with-a-plugin"><b>Including several user-selectable impulse responses with a plugin</b>
+</h3>
+<p>Impulse Response files should be placed in the AudioFiles project directory. If <a href="working-with-hise/settings/project.html#embed-audio-files">Embed Audio Files</a>
+ is enabled, they will be embeded into the compiled plugin.</p>
+<p>Call <a href="scripting/scripting-api/engine/index.html#loadaudiofilesintopool">Engine.loadAudioFilesIntoPool()</a>
+ to ensure the files are accessible in the compiled plugin. This returns an array of paths in the <code>{PROJECT_FOLDER}filename.wav</code>
+ format, which can be directly loaded into the Convolution Reverb.</p>
+<pre><code class="language-javascript line-numbers">// Create a typed Audio Sample Script Reference with right click on the Convolution Module
+const var ConvolutionReverb1 = Synth.getAudioSampleProcessor("Convolution Reverb1");
+
+// Create a comboBox
+const var impulseSelector = Content.addComboBox("impulseSelector",0,0);
+
+// Clear the items in the combobox. Otherwise, the entire list will be appended each time the script is run.
+impulseSelector.set("items","");
+
+// Load all Audio Files from the AudioFiles Folder into the Pool and get the list of references
+const var impulses = Engine.loadAudioFilesIntoPool();
+
+// Add names of impulse responses to the comboBox
+for (impulse in impulses)
+{ 
+  impulseSelector.addItem(impulse.replace(".wav","").replace("{PROJECT_FOLDER}","")); //Add just the name, removing the .wav extension and `{PROJECT_FOLDER}`
+}
+
+// Create custom callback for the comboBox
+inline function onimpulseSelectorControl(component, value)
+{
+  ConvolutionReverb1.setFile(impulses[value - 1]); //Load the selected IR. Note that the comboBox value is 1 indexed
+};
+
+impulseSelector.setControlCallback(onimpulseSelectorControl);</code></pre>
 <h2 id="parameters-"><b>Parameters </b>
 </h2>
 <table><thead><td><b>#</b>

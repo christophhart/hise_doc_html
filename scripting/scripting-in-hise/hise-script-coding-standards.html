@@ -438,6 +438,10 @@ global g_myGlobalVariable = 50;</code></pre>
 <ul><li>For larger projects it's a good idea to declare all global variables in an external script file called <code>Globals.js</code>
  and include it at the top of your interface script.</li>
 </ul>
+<p><br></p>
+<ul><li>The scope of global variables is across all execution instances until you quit HISE.</li>
+</ul>
+<p class="comment">If your programme sets a global variable, the next time you run (compile) your programme, that variable will have the value set during the previous execution instance.</p>
 <h3 id="numbers"><b>Numbers</b>
 </h3>
 <ul><li>Floating point numbers should have at least one digit before and after the dot.</li>

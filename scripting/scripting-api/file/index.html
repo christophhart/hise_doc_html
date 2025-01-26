@@ -52,9 +52,15 @@
 </h1>
 <h2 id="copy"><b>copy</b>
 </h2>
-<p class="comment">Copies the file. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/file/copy.md">Edit on GitHub</a>
+<p class="comment">Copies the file. The target isn't the directory to put it in, it's the actual file to create. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/file/copy.md">Edit on GitHub</a>
 </p>
 <pre><code class="language-javascript line-numbers">File.copy(var target)</code></pre>
+<p><br><br></p>
+<h2 id="copydirectory"><b>copyDirectory</b>
+</h2>
+<p class="comment">Recursively copies the directory. The target is the actual directory to create, not the directory into which the new one should be placed. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/file/copydirectory.md">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">File.copyDirectory(var target)</code></pre>
 <p><br><br></p>
 <h2 id="createdirectory"><b>createDirectory</b>
 </h2>
@@ -74,8 +80,7 @@
 <pre><code class="language-javascript line-numbers">File.extractZipFile(var targetDirectory, bool overwriteFiles, var callback)</code></pre>
 <p><br>This method will extract a standard ZIP file (without password protection) to the given target directory (which can be either a file path String or a <a href="scripting/scripting-api/file/index.html">File</a>
  object).</p>
-<p>In order to extract to privileged locations on Windows, for example the user's VST3 folder, it is neccessary to add an extra linker flag <code>/MANIFESTUAC:level='requireAdministrator'</code>
- to your project's .jucer file.</p>
+<p>In order to extract to privileged locations on Windows, for example the user's VST3 folder, it is neccessary to enable the 'Admin Permissions' checkbox in your project's preferences. There isn't currently a way to do this on OSX.</p>
 <p>The extraction process will be executed on the sample loading thread and you can assign a callback that is executed to track the extraction progress.</p>
 <p>The callback expects a single parameter that will contain a JSON object with the following properties:</p>
 <table><thead><td><b>Property </b>
@@ -221,7 +226,7 @@
 <p><br><br></p>
 <h2 id="loadasbase64string"><b>loadAsBase64String</b>
 </h2>
-<p class="comment">Loads the binary file, compresses it with zstd and returns a Base64 string. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/file/loadasbase64string">Edit on GitHub</a>
+<p class="comment">Loads the binary file, compresses it with zstd and returns a Base64 string. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/file/loadasbase64string.md">Edit on GitHub</a>
 </p>
 <pre><code class="language-javascript line-numbers">File.loadAsBase64String()</code></pre>
 <p><br><br></p>
@@ -271,7 +276,7 @@
 <p><br><br></p>
 <h2 id="move"><b>move</b>
 </h2>
-<p class="comment">Moves the file. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/file/move.md">Edit on GitHub</a>
+<p class="comment">Moves the file. The target isn't the directory to put it in, it's the actual file to create. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/file/move.md">Edit on GitHub</a>
 </p>
 <pre><code class="language-javascript line-numbers">File.move(var target)</code></pre>
 <p><br><br></p>
@@ -346,7 +351,7 @@
 <td><code>Textfile</code>
  </td>
 </tr>
-<tr><td><code>OnlyExtension</code>
+<tr><td><code>Extension</code>
  </td>
 <td><code>.txt</code>
  </td>

@@ -852,6 +852,12 @@
     "color": "#DEB887"
   },
   {
+    "key": "Export: Compile project",
+    "url": "working-with-hise/menu-reference/export/index.html#compile-project",
+    "weight": 60,
+    "color": "#DEB887"
+  },
+  {
     "key": "Export: Export as Instrument (VSTi / AUi) plugin",
     "url": "working-with-hise/menu-reference/export/index.html#export-as-instrument-vsti-/-aui-plugin",
     "weight": 60,
@@ -1034,6 +1040,12 @@
   {
     "key": "Tools: Show DSP Network DLL info",
     "url": "working-with-hise/menu-reference/tools/index.html#show-dsp-network-dll-info",
+    "weight": 60,
+    "color": "#DEB887"
+  },
+  {
+    "key": "Tools: Replace Scriptnode modules with Hardcoded modules",
+    "url": "working-with-hise/menu-reference/tools/index.html#replace-scriptnode-modules-with-hardcoded-modules",
     "weight": 60,
     "color": "#DEB887"
   },
@@ -1436,6 +1448,12 @@
   {
     "key": "Project: Include Loris In Frontend",
     "url": "working-with-hise/settings/project.html#include-loris-in-frontend",
+    "weight": 60,
+    "color": "#DEB887"
+  },
+  {
+    "key": "Project: Project Type",
+    "url": "working-with-hise/settings/project.html#project-type",
     "weight": 60,
     "color": "#DEB887"
   },
@@ -2822,6 +2840,12 @@
   {
     "key": "Script FX: Parameters",
     "url": "hise-modules/effects/list/scriptfx.html#parameters",
+    "weight": 50,
+    "color": "#3A6666"
+  },
+  {
+    "key": "Send Effect: Example ",
+    "url": "hise-modules/effects/list/sendfx.html#example-",
     "weight": 50,
     "color": "#3A6666"
   },
@@ -4380,6 +4404,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "Array.shift()",
+    "url": "scripting/scripting-api/array/index.html#shift",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "Array.some()",
     "url": "scripting/scripting-api/array/index.html#some",
     "weight": 60,
@@ -5112,6 +5142,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "Colours.fromHsl()",
+    "url": "scripting/scripting-api/colours/index.html#fromhsl",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "Colours.fromVec4()",
     "url": "scripting/scripting-api/colours/index.html#fromvec4",
     "weight": 60,
@@ -5120,6 +5156,12 @@
   {
     "key": "Colours.mix()",
     "url": "scripting/scripting-api/colours/index.html#mix",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "Colours.toHsl()",
+    "url": "scripting/scripting-api/colours/index.html#tohsl",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -5376,6 +5418,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "Content.componentExists()",
+    "url": "scripting/scripting-api/content/index.html#componentexists",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "Content.createLocalLookAndFeel()",
     "url": "scripting/scripting-api/content/index.html#createlocallookandfeel",
     "weight": 60,
@@ -5438,6 +5486,12 @@
   {
     "key": "Content.getCurrentTooltip()",
     "url": "scripting/scripting-api/content/index.html#getcurrenttooltip",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "Content.getInterfaceSize()",
+    "url": "scripting/scripting-api/content/index.html#getinterfacesize",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -6774,6 +6828,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "Engine.setPreloadMessage()",
+    "url": "scripting/scripting-api/engine/index.html#setpreloadmessage",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "Engine.setUserPresetTagList()",
     "url": "scripting/scripting-api/engine/index.html#setuserpresettaglist",
     "weight": 60,
@@ -7154,6 +7214,12 @@
   {
     "key": "File.copy()",
     "url": "scripting/scripting-api/file/index.html#copy",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "File.copyDirectory()",
+    "url": "scripting/scripting-api/file/index.html#copydirectory",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -9908,6 +9974,18 @@
   {
     "key": "RoutingMatrix.getDestinationChannelForSource()",
     "url": "scripting/scripting-api/routingmatrix/index.html#getdestinationchannelforsource",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "RoutingMatrix.getNumDestinationChannels()",
+    "url": "scripting/scripting-api/routingmatrix/index.html#getnumdestinationchannels",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "RoutingMatrix.getNumSourceChannels()",
+    "url": "scripting/scripting-api/routingmatrix/index.html#getnumsourcechannels",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -13470,6 +13548,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "ScriptTable.addTablePoint()",
+    "url": "scripting/scripting-api/scripttable/index.html#addtablepoint",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "ScriptTable.addToMacroControl()",
     "url": "scripting/scripting-api/scripttable/index.html#addtomacrocontrol",
     "weight": 60,
@@ -13590,6 +13674,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "ScriptTable.reset()",
+    "url": "scripting/scripting-api/scripttable/index.html#reset",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "ScriptTable.sendRepaintMessage()",
     "url": "scripting/scripting-api/scripttable/index.html#sendrepaintmessage",
     "weight": 60,
@@ -13664,6 +13754,12 @@
   {
     "key": "ScriptTable.setStyleSheetPseudoState()",
     "url": "scripting/scripting-api/scripttable/index.html#setstylesheetpseudostate",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptTable.setTablePoint()",
+    "url": "scripting/scripting-api/scripttable/index.html#settablepoint",
     "weight": 60,
     "color": "#D557D9"
   },
