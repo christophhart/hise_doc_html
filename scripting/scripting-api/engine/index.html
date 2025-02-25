@@ -177,6 +177,12 @@ const var bc = Engine.createBroadcaster({
  will need to have as many parameters as you define with the <code>args</code>
  property or it will cause an error message. Also if you are planning to attach the broadcaster to a predefined internal event (eg. component property changes), the numbers must also match the expected argument amount (in this particular case: 3)</p>
 <p><br></p>
+<h2 id="createbxlicenser"><b>createBXLicenser</b>
+</h2>
+<p class="comment">Creates a BX Licenser object (requires the proprietary SDK). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/engine/createbxlicenser">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">Engine.createBXLicenser()</code></pre>
+<p><br><br></p>
 <h2 id="createdspnetwork"><b>createDspNetwork</b>
 </h2>
 <p class="comment">Creates a Dsp node network. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/engine/createdspnetwork.md">Edit on GitHub</a>
@@ -711,6 +717,12 @@ modeSelector.setControlCallback(modeCallback);</code></pre>
 </p>
 <pre><code class="language-javascript line-numbers">Engine.getZoomLevel()</code></pre>
 <p><br><br></p>
+<h2 id="inttohexstring"><b>intToHexString</b>
+</h2>
+<p class="comment">Returns a number as string in hexadecimal format (0xFFFFFFFF). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/engine/inttohexstring">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">Engine.intToHexString(int value)</code></pre>
+<p><br><br></p>
 <h2 id="iscontrollerusedbyautomation"><b>isControllerUsedByAutomation</b>
 </h2>
 <p class="comment">Checks if the given CC number is used for parameter automation and returns the index of the control. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/engine/iscontrollerusedbyautomation.md">Edit on GitHub</a>
@@ -1061,7 +1073,7 @@ Engine.setFrontendMacros(macroNames);</code></pre>
 <div class="content-footer"><span class="content-footer-left"><a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/engine/Readme.md">Edit on GitHub</a>
 </span>
 
-<span class="content-footer-right">Next: <a href="scripting/scripting-api/errorhandler/index.html">ErrorHandler</a>
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/server/index.html">Server</a>
 </span>
 
 <p class="content-footer-metadata"><br><br></p>

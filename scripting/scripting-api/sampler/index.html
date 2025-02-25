@@ -334,6 +334,14 @@ Sampler1.asSampler().loadSampleMap("My SampleMap");</code></pre>
 <p class="comment">This queue has a very limited lifetime and will get automatically cleared after each audio render callback of the sampler. This ensures that it won't stack up "unused" notes, but this also means that this procedure does not work with events that are not processed immediately (eg. because you've delayed them using <code>Message.delayEvent()</code>
  after calling this method).</p>
 <p>The method also works with artificial notes and the internal event queue can store up to 64 note on messages (there's a tradeoff between object size and functionality here but with 64 messages within a single audio callback you should have enough headroom for even the most craziest applications).<br></p>
+<h2 id="setallowreleasestart"><b>setAllowReleaseStart</b>
+</h2>
+<p class="comment">Enable / disables the release start feature for the given event.</p>
+<pre><code class="language-javascript line-numbers">Sampler.setAllowReleaseStart(int eventId, bool shouldBeAllowed)</code></pre>
+<p><br>This function can be used to enable / disable the release start feature of a sampler.</p>
+<p>You can either disable / enable it for each event by supplying a currently active event ID or globally by passing in <code>-1</code>
+ as event ID. Using it on a per event basis allows you to eg. deactivate the release skip when you're implementing a custom logic (eg. legato intervals).</p>
+<p>The function returns true if it has found the provided event ID so you can verify that your script works as intended. It is safe (and recommended) to call this in the noteOff callback and it will be picked up correctly by the given sampler.<br></p>
 <h2 id="setattribute"><b>setAttribute</b>
 </h2>
 <p class="comment">Sets a attribute to the given value. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/sampler/setattribute.md">Edit on GitHub</a>
@@ -463,7 +471,7 @@ Sampler.setReleaseStartOptions(obj);</code></pre>
 <div class="content-footer"><span class="content-footer-left"><a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/sampler/Readme.md">Edit on GitHub</a>
 </span>
 
-<span class="content-footer-right">Next: <a href="scripting/scripting-api/scriptaudiowaveform/index.html">ScriptAudioWaveform</a>
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/markdownrenderer/index.html">MarkdownRenderer</a>
 </span>
 
 <p class="content-footer-metadata">Christoph Hart<br><br></p>
