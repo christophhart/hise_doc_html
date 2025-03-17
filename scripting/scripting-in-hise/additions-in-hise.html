@@ -543,7 +543,7 @@ inline function someOtherFunction()
 <td><b>Description </b>
 </td>
 </thead>
-<tr><td><code>print</code>
+<tr><td><code>.print</code>
  </td>
 <td><code>(expression)</code>
  </td>
@@ -551,38 +551,39 @@ inline function someOtherFunction()
  and <code>exit expression</code>
  when entering and leaving the scope. </td>
 </tr>
-<tr><td><code>profile</code>
+<tr><td><code>.profile</code>
  </td>
 <td><code>(ID)</code>
  </td>
-<td>Prints the duration of the scope with the literal string as label. </td>
+<td>Starts a profiling session (if <code>HISE_INCLUDE_PROFILING_TOOLKIT</code>
+ is enabled) of the scope including all child statements. </td>
 </tr>
-<tr><td><code>trace</code>
+<tr><td><code>.trace</code>
  </td>
 <td><code>(ID)</code>
  </td>
-<td>Creates a label for the Perfetto tracer so you can find it by searching for the ID </td>
+<td>Creates a named item for the given scope when profiling. Use this to quickly find the code in a complex profiling session. </td>
 </tr>
-<tr><td><code>dump</code>
+<tr><td><code>.dump</code>
  </td>
 <td><code>(e1, e2, ...)</code>
  </td>
 <td>Dumps whatever variables you put in there at the beginning and the end of the scope. </td>
 </tr>
-<tr><td><code>count</code>
+<tr><td><code>.count</code>
  </td>
 <td><code>(ID)</code>
  </td>
 <td>Counts the number of times that this scope is executed (reset at compilation). </td>
 </tr>
-<tr><td><code>before</code>
+<tr><td><code>.before</code>
  </td>
 <td><code>(actual, expected)</code>
  </td>
 <td>Checks the equality of the two expressions <b>at the beginning of the scope</b>
  and throws a compile error if they don't match. </td>
 </tr>
-<tr><td><code>after</code>
+<tr><td><code>.after</code>
  </td>
 <td><code>(actual, expected)</code>
  </td>
@@ -662,23 +663,30 @@ inline function getDoubleValue(x)
 <td><b>Description </b>
 </td>
 </thead>
-<tr><td><code>set</code>
+<tr><td><code>.set</code>
  </td>
 <td><code>(variable, tempValue)</code>
  </td>
 <td>temporarily sets the given variable to the temp value and resets it after the scope. </td>
 </tr>
-<tr><td><code>lock</code>
+<tr><td><code>.lock</code>
  </td>
 <td><code>(Threads.XXX)</code>
  </td>
 <td>Locks the given thread for the duration of the scope. This performs additional safe checks to avoid common mistakes that lead to deadlocks. </td>
 </tr>
-<tr><td><code>defer</code>
+<tr><td><code>.defer</code>
  </td>
 <td><code>("path")</code>
  </td>
 <td>This suspends all notifications for the given path until the scope is done. </td>
+</tr>
+<tr><td><code>.bypass</code>
+ </td>
+<td><code>(broadcaster, send)</code>
+ </td>
+<td>temporarily deactivates the given broadcaster and sends a message after the scope when <code>send</code>
+ is true. </td>
 </tr>
 </table>
 <p>We already know our little buddy <code>set</code>

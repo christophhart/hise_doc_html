@@ -192,6 +192,13 @@
 <td>Suspend </td>
 <td>This simulates the suspension of the UI timers just as if the user would close your plugin window. You can use this to check if any vital functionality is depending on the UI timers being active. </td>
 </tr>
+<tr><td><img src="images/icon_profile.png"></img>
+</td>
+<td><code> </code>
+ </td>
+<td>Profile </td>
+<td>description </td>
+</tr>
 </table>
 <p>Behind the scenes, HISE uses a layer called ScriptComponent that wraps around the data model for each control. It stores a reference to the data and communicates between the actual GUI you see and the script / UI model in the backend. However, in some cases these connections may break and you'll wind up with a somewhat broken interface. This can easily be fixed by deleting all those wrappers and create them new from the UI model. You can do that with the <b>Rebuild Button</b>
 . If you only rebuild the interface, your ScriptProcessor script will not automatically be recompiled, so in order to make a full reset, you need to rebuild the interface first, and then recompile your script.</p>

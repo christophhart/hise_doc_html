@@ -91,6 +91,12 @@
 <h1 id="class-methods
 "><b>Class methods<br></b>
 </h1>
+<h2 id="addbuffertowebsocket"><b>addBufferToWebSocket</b>
+</h2>
+<p class="comment">Adds a buffer to be synchronised through the websocket. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptwebview/addbuffertowebsocket">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">ScriptWebView.addBufferToWebSocket(int bufferIndex, var buffer)</code></pre>
+<p><br><br></p>
 <h2 id="addtomacrocontrol"><b>addToMacroControl</b>
 </h2>
 <p class="comment">Adds the knob / button to a macro controller (from 0 to 7). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptwebview/addtomacrocontrol.md">Edit on GitHub</a>
@@ -248,6 +254,12 @@ window.someFunction = function(args)
 </p>
 <pre><code class="language-javascript line-numbers">ScriptWebView.sendRepaintMessage()</code></pre>
 <p><br><br></p>
+<h2 id="sendtowebsocket"><b>sendToWebSocket</b>
+</h2>
+<p class="comment">Sends the data to the websocket. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptwebview/sendtowebsocket">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">ScriptWebView.sendToWebSocket(String id, var data)</code></pre>
+<p><br><br></p>
 <h2 id="set"><b>set</b>
 </h2>
 <p class="comment">Sets the property. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptwebview/set.md">Edit on GitHub</a>
@@ -271,6 +283,18 @@ window.someFunction = function(args)
 <p class="comment">Pass a inline function for a custom callback event. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptwebview/setcontrolcallback.md">Edit on GitHub</a>
 </p>
 <pre><code class="language-javascript line-numbers">ScriptWebView.setControlCallback(var controlFunction)</code></pre>
+<p><br><br></p>
+<h2 id="setenablewebsocket"><b>setEnableWebSocket</b>
+</h2>
+<p class="comment">Enables Websocket communication between HISE and the webview. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptwebview/setenablewebsocket">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">ScriptWebView.setEnableWebSocket(int port)</code></pre>
+<p><br><br></p>
+<h2 id="sethtmlcontent"><b>setHtmlContent</b>
+</h2>
+<p class="comment">Sets the HTML content to be used by the webview. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptwebview/sethtmlcontent">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">ScriptWebView.setHtmlContent( String htmlCode)</code></pre>
 <p><br><br></p>
 <h2 id="setindexfile"><b>setIndexFile</b>
 </h2>
@@ -344,6 +368,12 @@ window.someFunction = function(args)
 </p>
 <pre><code class="language-javascript line-numbers">ScriptWebView.setValueWithUndo(var newValue)</code></pre>
 <p><br><br></p>
+<h2 id="setwebsocketcallback"><b>setWebSocketCallback</b>
+</h2>
+<p class="comment">Registers a callable object to be notified for incoming messages from the websocket. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptwebview/setwebsocketcallback">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">ScriptWebView.setWebSocketCallback(var callbackFunction)</code></pre>
+<p><br><br></p>
 <h2 id="setzlevel"><b>setZLevel</b>
 </h2>
 <p class="comment">Changes the depth hierarchy (z-axis) of sibling components (Back, Default, Front or AlwaysOnTop). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptwebview/setzlevel.md">Edit on GitHub</a>
@@ -355,6 +385,12 @@ window.someFunction = function(args)
 <p class="comment">Hides / Shows the control. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptwebview/showcontrol.md">Edit on GitHub</a>
 </p>
 <pre><code class="language-javascript line-numbers">ScriptWebView.showControl(bool shouldBeVisible)</code></pre>
+<p><br><br></p>
+<h2 id="updatebuffer"><b>updateBuffer</b>
+</h2>
+<p class="comment">Sends the buffer to the webview through the websocket connection. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptwebview/updatebuffer">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">ScriptWebView.updateBuffer(int bufferIndex)</code></pre>
 <p><br><br></p>
 <h2 id="updatecontentpropertyinternal"><b>updateContentPropertyInternal</b>
 </h2>
@@ -371,7 +407,7 @@ window.someFunction = function(args)
 <div class="content-footer"><span class="content-footer-left"><a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptwebview/Readme.md">Edit on GitHub</a>
 </span>
 
-<span class="content-footer-right">Next: <a href="scripting/scripting-api/fft/index.html">FFT</a>
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/server/index.html">Server</a>
 </span>
 
 <p class="content-footer-metadata">Christoph Hart<br>27.05.2023<br></p>

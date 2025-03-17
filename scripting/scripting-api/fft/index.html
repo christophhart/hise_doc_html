@@ -48,12 +48,6 @@
 <h1 id="class-methods
 "><b>Class methods<br></b>
 </h1>
-<h2 id="dumpspectrum"><b>dumpSpectrum</b>
-</h2>
-<p class="comment">Dumps the spectrum image to the given file (as PNG image). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/fft/dumpspectrum.md">Edit on GitHub</a>
-</p>
-<pre><code class="language-javascript line-numbers">FFT.dumpSpectrum(var file, bool output, int numFreqPixels, int numTimePixels)</code></pre>
-<p><br><br></p>
 <h2 id="getspectrum2dparameters"><b>getSpectrum2DParameters</b>
 </h2>
 <p class="comment">Returns the JSON data for the spectrum parameters. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/fft/getspectrum2dparameters.md">Edit on GitHub</a>
@@ -114,6 +108,12 @@
 </p>
 <pre><code class="language-javascript line-numbers">FFT.setUseFallbackEngine(bool shouldUseFallback)</code></pre>
 <p><br><br></p>
+<h2 id="setusespectrumlist"><b>setUseSpectrumList</b>
+</h2>
+<p class="comment">Flushes the given spectrum list to a file. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/fft/setusespectrumlist">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">FFT.setUseSpectrumList(int numRows)</code></pre>
+<p><br><br></p>
 <h2 id="setwindowtype"><b>setWindowType</b>
 </h2>
 <p class="comment">Sets a window function that will be applied to the data chunks before processing. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/fft/setwindowtype.md">Edit on GitHub</a>
@@ -123,7 +123,7 @@
 <div class="content-footer"><span class="content-footer-left"><a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/fft/Readme.md">Edit on GitHub</a>
 </span>
 
-<span class="content-footer-right">Next: <a href="scripting/scripting-api/math/index.html">Math</a>
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/file/index.html">File</a>
 </span>
 
 <p class="content-footer-metadata">Do Mayer<br>17.07.2024<br></p>
