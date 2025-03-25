@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="rectangle"><b>Rectangle</b>
+</h1>
+<p><br>This object type is a native type in HiseScript and represents a two dimensional rectangle. The functionality was "inspired" (read stolen) from the <a href="https://docs.juce.com/master/classRectangle.html">JUCE class</a>
+ and is a helpful tool for all UI tasks.</p>
+<p class="comment">Note that most methods create and return a new rectangle object which makes it unsuitable for any realtime thread operations, but that should not be a serious limitation as 99% of the use cases will be within paint routines or other UI related functions.</p>
+<p>Until now, the representation of rectangles in HiseScript was a plain ol' JS array with four elements (<code>[x, y, width, height]</code>
+). This was fine (and for backwards compatibility you can still use JS arrays to represent rectangles), but there are a few advantages of having a dedicated type for rectangles:</p>
+<ol><li>better debugging: print in one line, inspect multiple rectangles with the rectangle viewer</li>
+<li>inbuilt methods for common tasks like scaling, translating and slicing rectangles</li>
+</ol>
+<p>You can create a Rectangle using the inbuild function <code>Rectangle()</code>
+. This function accepts a variety of arguments to create a rectangle:</p>
+<pre><code class="language-javascript line-numbers">// creates an empty rectangle
+var r0  = Rectangle();                   
+
+// accepts a JS array and converts it to a Rectangle
+var r1  = Rectangle([x, y, w, h]);       
+
+// creates a rectangle at the origin position [0, 0] 
+var r2a = Rectangle(width, height);      
+
+// creates a rectangle from two points.
+var r2b = Rectangle([x1, y1], [x2, y2]); 
+
+// creates a rectangle with the given dimensions.
+var r4  = Rectangle(x, y, w, h);</code></pre>
+<p>The rectangle can then be used / modified like a JS array but has some additional QOL methods:</p>
+<pre><code class="language-javascript line-numbers">Panel1.setPaintRoutine(function(g)
+{
+	// Create a rectangle
+	var rect = Rectangle(100, 100);
+	
+	// Access / change members
+	Console.print(rect[0]); // use the [0, 1, 2, 3] indexes like before
+	Console.print(rect.x); // or use x, y, width, height
+	
+	rect.width = 90;
+	
+	// Pass that object into API calls that expect a rectangle
+	g.fillRect(rect.reduced(10));
+});</code></pre>
+<p class="comment">Note that for backwards compatibility, HISE will still use the JS arrays for all methods or callbacks that return a rectangle (eg. <code>ScriptComponent.getLocalBounds()</code>
+ or the <code>obj.area</code>
+ property in LAF functions). In order to change that you can enable the preprocessor <code>HISE_USE_SCRIPT_RECTANGLE_OBJECT=1</code>
+, then it will return a Rectangle object for the full experience.</p>
+<h3 id="inspect-rectangles-using-sampling"><b>Inspect rectangles using sampling</b>
+</h3>
+<p>A neat feature of the Rectangle class is that it allows you to quickly inspect the rectangles using a sampling session. These are the steps you have to take:</p>
+<ol><li>Enable sampling for a scope using the <code>.sample("id")</code>
+ scoped statement</li>
+<li>Use <a href="scripting/scripting-api/console/index.html#sample">Console.sample()</a>
+ to add data points</li>
+<li>Click on the inspect icon next to the <code>.sample()</code>
+ scoped statement to open the rectangle viewer.</li>
+</ol>
+<pre><code class="language-javascript line-numbers">{
+	.sample("withAspectRatioLike");
+	
+	var r = Rectangle(20, 10, 300, 300);
+	var other = Rectangle(500, 80, 100, 50);
+	
+	Console.sample("target", r);
+	Console.sample("other", other);	
+	Console.sample("fitted", r.withAspectRatioLike(other));
+}</code></pre>
+<p>If you now click on the icon at the top, it will open a popup that shows all items of the sampling session, in this case three rectangles that are a perfect visualisation of what the <a href="scripting/scripting-api/rectangle/index.html#withaspectratiolike">withAspectRatioLike</a>
+ method is doing:</p>
+<img src="scripting/scripting-api/rectangle/index.html#withaspectratiolike"></img>
+<p><br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="assign"><b>assign</b>
+</h2>
+<p class="comment">Override this method and assign the new value to the given id. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/rectangle/assign.md">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">Rectangle.assign( String id,  var newValue) override</code></pre>
+<p><br><br></p>
+<h2 id="constrainedwithin"><b>constrainedWithin</b>
+</h2>
+<p class="comment">Tries to fit this rectangle within a target area, returning the result.</p>
+<pre><code class="language-javascript line-numbers">Rectangle.constrainedWithin(var targetArea)</code></pre>
+<p><br>This function moves the rectangle into the given target area while keeping the size the same. This is useful if you eg. want to display a text at the hover position but make sure that the entire text is visible when you hover at the edges.</p>
+<pre><code class="language-javascript line-numbers">{
+	.sample("constrainedWithin");
+	
+	var textPos = Rectangle(200, 20);
+	var bounds = Rectangle(100, 100, 400, 300);
+	
+	Console.sample("bounds", bounds);
+	Console.sample("textBounds", textPos);
+	Console.sample("fitted", textPos.constrainedWithin(bounds));
+}</code></pre>
+<p>Result:</p>
+<img src="images/custom/rect/constrainedwithin.png"></img>
+<p><br></p>
+<h2 id="contains"><b>contains</b>
+</h2>
+<p class="comment">Returns true if this other rectangle is completely inside this one. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/rectangle/contains.md">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">Rectangle.contains(var otherRectOrPoint)</code></pre>
+<p><br><br></p>
+<h2 id="expanded"><b>expanded</b>
+</h2>
+<p class="comment">Returns a rectangle that is larger than this one by a given amount. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/rectangle/expanded.md">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">Rectangle.expanded(double x, double optionalY)</code></pre>
+<p><br><br></p>
+<h2 id="getintersection"><b>getIntersection</b>
+</h2>
+<p class="comment">Returns the intersection of both rectangles (the largest rectangle that fits into both rectangles. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/rectangle/getintersection.md">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">Rectangle.getIntersection(var otherRect)</code></pre>
+<p><br><br></p>
+<h2 id="getunion"><b>getUnion</b>
+</h2>
+<p class="comment">Returns the smallest rectangle that contains both this one and the one passed-in.</p>
+<pre><code class="language-javascript line-numbers">Rectangle.getUnion(var otherRect)</code></pre>
+<p><br></p>
+<pre><code class="language-javascript line-numbers">{
+	.sample("getUnion");
+	
+	var r1 = Rectangle(10, 50, 90, 65);
+	var r2 = Rectangle(300, 200, 10, 55);
+	
+	Console.sample("r1", r1);
+	Console.sample("r2", r2);
+	Console.sample("union", r1.getUnion(r2));
+}</code></pre>
+<p>Result:</p>
+<img src="images/custom/rect/getunion.png"></img>
+<p><br></p>
+<h2 id="intersects"><b>intersects</b>
+</h2>
+<p class="comment">Returns true if any part of another rectangle overlaps this one. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/rectangle/intersects.md">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">Rectangle.intersects(var otherRect)</code></pre>
+<p><br><br></p>
+<h2 id="isempty"><b>isEmpty</b>
+</h2>
+<p class="comment">Returns true if the rectangle's width or height are zero or less. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/rectangle/isempty.md">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">Rectangle.isEmpty()</code></pre>
+<p><br><br></p>
+<h2 id="reduced"><b>reduced</b>
+</h2>
+<p class="comment">Returns a rectangle that is smaller than this one by a given amount.</p>
+<pre><code class="language-javascript line-numbers">Rectangle.reduced(double x, double optionalY)</code></pre>
+<p><br>This function can be called with either one or two arguments. If you call it with two arguments, it will be reduced with different X / Y values, if you call it with one argument, it will reduce all sides equally:</p>
+<pre><code class="language-javascript line-numbers">{
+	.sample("reduced");
+	
+	var x = Rectangle(20, 20, 400, 200);
+	
+	Console.sample("before", x);
+	Console.sample("afterTwoArgs", x.reduced(50, 20));
+	Console.sample("afterOneArg", x.reduced(30));
+}</code></pre>
+<img src="images/custom/rect/reduced.png"></img>
+<p><br></p>
+<h2 id="removefrombottom"><b>removeFromBottom</b>
+</h2>
+<p class="comment">Removes a strip from the bottom of this rectangle, reducing this rectangle by the specified amount and returning the section that was removed.</p>
+<pre><code class="language-javascript line-numbers">Rectangle.removeFromBottom(double numToRemove)</code></pre>
+<p><br>This function (and it's siblings <code>removeFromLeft(), removeFromRight()</code>
+ and <code>removeFromTop()</code>
+ are incredibly useful to divide a rectangle into different areas for layout purposes (eg. rendering a text label beyond a slider knob). Note that calling this method modifies the rectangle, slices off and returns the part.</p>
+<pre><code class="language-javascript line-numbers">{
+	.sample("slicing");
+	
+	var r = Rectangle(20, 20, 500, 400);
+	
+	Console.sample("full", r);
+	
+	var top = r.removeFromTop(50);
+	
+	Console.sample("topLeft", top.removeFromLeft(50));
+	Console.sample("top", top);
+	Console.sample("remaining", r);
+};</code></pre>
+<p>Result:</p>
+<img src="images/custom/rect/removefrombottom.png"></img>
+<p><br></p>
+<h2 id="removefromleft"><b>removeFromLeft</b>
+</h2>
+<p class="comment">Removes a strip from the left of this rectangle, reducing this rectangle by the specified amount and returning the section that was removed. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/rectangle/removefromleft.md">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">Rectangle.removeFromLeft(double numToRemove)</code></pre>
+<p><br><br></p>
+<h2 id="removefromright"><b>removeFromRight</b>
+</h2>
+<p class="comment">Removes a strip from the right of this rectangle, reducing this rectangle by the specified amount and returning the section that was removed. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/rectangle/removefromright.md">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">Rectangle.removeFromRight(double numToRemove)</code></pre>
+<p><br><br></p>
+<h2 id="removefromtop"><b>removeFromTop</b>
+</h2>
+<p class="comment">Removes a strip from the top of this rectangle, reducing this rectangle by the specified amount and returning the section that was removed. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/rectangle/removefromtop.md">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">Rectangle.removeFromTop(double numToRemove)</code></pre>
+<p><br><br></p>
+<h2 id="scaled"><b>scaled</b>
+</h2>
+<p class="comment">Returns a rectangle with the position and size being scaled by the given factors. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/rectangle/scaled.md">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">Rectangle.scaled(double factorX, double optionalFactorY)</code></pre>
+<p><br><br></p>
+<h2 id="setcentre"><b>setCentre</b>
+</h2>
+<p class="comment">Changes the position of the rectangle's centre (leaving its size unchanged). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/rectangle/setcentre.md">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">Rectangle.setCentre(double centerX, double centerY)</code></pre>
+<p><br><br></p>
+<h2 id="setposition"><b>setPosition</b>
+</h2>
+<p class="comment">Changes the position of the rectangle's top-left corner (leaving its size unchanged). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/rectangle/setposition.md">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">Rectangle.setPosition(double x, double y)</code></pre>
+<p><br><br></p>
+<h2 id="setsize"><b>setSize</b>
+</h2>
+<p class="comment">Changes the rectangle's size, leaving the position of its top-left corner unchanged. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/rectangle/setsize.md">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">Rectangle.setSize(double width, double height)</code></pre>
+<p><br><br></p>
+<h2 id="toarray"><b>toArray</b>
+</h2>
+<p class="comment">Returns a standard JS array with the position [x, y, w, h]. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/rectangle/toarray.md">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">Rectangle.toArray()</code></pre>
+<p><br><br></p>
+<h2 id="translated"><b>translated</b>
+</h2>
+<p class="comment">Returns a rectangle which is the same as this one moved by a given amount. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/rectangle/translated.md">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">Rectangle.translated(double deltaX, double deltaY)</code></pre>
+<p><br><br></p>
+<h2 id="withaspectratiolike"><b>withAspectRatioLike</b>
+</h2>
+<p class="comment">Returns the biggest rectangle that fits in this rectangle using the aspect ratio of the other rectangle.</p>
+<pre><code class="language-javascript line-numbers">Rectangle.withAspectRatioLike(var otherRect)</code></pre>
+<p><br>This method is useful if you have a path that you want to render somewhere while keeping it's aspect ratio the same.</p>
+<pre><code class="language-javascript line-numbers">{
+	.sample("withAspectRatioLike");
+	
+	var r = Rectangle(20, 10, 300, 300]);
+	var other = Rectangle(500, 80, 100, 50);
+	
+	Console.sample("target", r);
+	Console.sample("other", other);	
+	Console.sample("fitted", r.withAspectRatioLike(other));
+}</code></pre>
+<p>Result:</p>
+<img src="images/custom/rectangle-sample.png"></img>
+<p><br></p>
+<h2 id="withbottom"><b>withBottom</b>
+</h2>
+<p class="comment">Returns a new rectangle with a different bottom edge position, but the same top edge as this one. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/rectangle/withbottom.md">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">Rectangle.withBottom(double newBottom)</code></pre>
+<p><br><br></p>
+<h2 id="withbottomy"><b>withBottomY</b>
+</h2>
+<p class="comment">Returns a rectangle which has the same size and x-position as this one, but whose bottom edge has the given position. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/rectangle/withbottomy.md">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">Rectangle.withBottomY(double newBottomY)</code></pre>
+<p><br><br></p>
+<h2 id="withcentre"><b>withCentre</b>
+</h2>
+<p class="comment">Returns a rectangle with the same size as this one, but a new centre position. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/rectangle/withcentre.md">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">Rectangle.withCentre(double newWidth, double newHeight)</code></pre>
+<p><br><br></p>
+<h2 id="withheight"><b>withHeight</b>
+</h2>
+<p class="comment">Returns a rectangle which has the same position and width as this one, but with a different height. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/rectangle/withheight.md">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">Rectangle.withHeight(double newHeight)</code></pre>
+<p><br><br></p>
+<h2 id="withleft"><b>withLeft</b>
+</h2>
+<p class="comment">Returns a new rectangle with a different x position, but the same right-hand edge as this one. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/rectangle/withleft.md">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">Rectangle.withLeft(double newLeft)</code></pre>
+<p><br><br></p>
+<h2 id="withright"><b>withRight</b>
+</h2>
+<p class="comment">Returns a new rectangle with a different right-hand edge position, but the same left-hand edge as this one. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/rectangle/withright.md">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">Rectangle.withRight(double newRight)</code></pre>
+<p><br><br></p>
+<h2 id="withsize"><b>withSize</b>
+</h2>
+<p class="comment">Returns a rectangle with the same top-left position as this one, but a new size. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/rectangle/withsize.md">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">Rectangle.withSize(double newWidth, double newHeight)</code></pre>
+<p><br><br></p>
+<h2 id="withsizekeepingcentre"><b>withSizeKeepingCentre</b>
+</h2>
+<p class="comment">Returns a rectangle with the same centre position as this one, but a new size.</p>
+<pre><code class="language-javascript line-numbers">Rectangle.withSizeKeepingCentre(double newWidth, double newHeight)</code></pre>
+<p><br>This is useful if you want to draw something with a centered alignment.</p>
+<pre><code class="language-javascript line-numbers">{
+	.sample("withSizeKeepingCentre");
+	
+	var x = Rectangle(10, 10, 300, 300);
+	
+	Console.sample("bounds", x);
+	Console.sample("smaller", x.withSizeKeepingCentre(50, 50));
+}</code></pre>
+<img src="images/custom/rect/withsizekeepingcentre.png"></img>
+<p><br></p>
+<h2 id="withtrimmedbottom"><b>withTrimmedBottom</b>
+</h2>
+<p class="comment">Returns a version of this rectangle with the given amount removed from its bottom edge. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/rectangle/withtrimmedbottom.md">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">Rectangle.withTrimmedBottom(double amountToRemove)</code></pre>
+<p><br><br></p>
+<h2 id="withtrimmedleft"><b>withTrimmedLeft</b>
+</h2>
+<p class="comment">Returns a version of this rectangle with the given amount removed from its left-hand edge. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/rectangle/withtrimmedleft.md">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">Rectangle.withTrimmedLeft(double amountToRemove)</code></pre>
+<p><br><br></p>
+<h2 id="withtrimmedright"><b>withTrimmedRight</b>
+</h2>
+<p class="comment">Returns a version of this rectangle with the given amount removed from its right-hand edge. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/rectangle/withtrimmedright.md">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">Rectangle.withTrimmedRight(double amountToRemove)</code></pre>
+<p><br><br></p>
+<h2 id="withtrimmedtop"><b>withTrimmedTop</b>
+</h2>
+<p class="comment">Returns a version of this rectangle with the given amount removed from its top edge. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/rectangle/withtrimmedtop.md">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">Rectangle.withTrimmedTop(double amountToRemove)</code></pre>
+<p><br><br></p>
+<h2 id="withwidth"><b>withWidth</b>
+</h2>
+<p class="comment">Returns a rectangle which has the same position and height as this one, but with a different width. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/rectangle/withwidth.md">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">Rectangle.withWidth(double newWidth)</code></pre>
+<p><br><br></p>
+<h2 id="withx"><b>withX</b>
+</h2>
+<p class="comment">Returns a rectangle which has the same size and y-position as this one, but with a different x-position. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/rectangle/withx.md">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">Rectangle.withX(double newX)</code></pre>
+<p><br><br></p>
+<h2 id="withy"><b>withY</b>
+</h2>
+<p class="comment">Returns a rectangle which has the same size and x-position as this one, but with a different y-position. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/rectangle/withy.md">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">Rectangle.withY(double newY)</code></pre>
+<p><br><br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/rectangle/Readme.md">Edit on GitHub</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scripting/scripting-api/routingmatrix/index.html">RoutingMatrix</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>24.03.2025<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

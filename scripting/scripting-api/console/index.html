@@ -120,10 +120,26 @@ Console.stop(); // wrapping these two Console commands around your code.</code><
 <p><br><br></p>
 <h2 id="sample"><b>sample</b>
 </h2>
-<p class="comment">Stores the current state of the given data into the current sampling session. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/console/sample">Edit on GitHub</a>
-</p>
+<p class="comment">Stores the current state of the given data into the current sampling session.</p>
 <pre><code class="language-javascript line-numbers">Console.sample( String label, var dataToSample)</code></pre>
-<p><br><br></p>
+<p><br>This samples the given data point and stores it with the provided label. In order to use this, a sampling session must be active, which can be achieved with either <a href="scripting/scripting-api/console/index.html#startsampling">Console</a>
+ or the <code>.sample()</code>
+ scoped statement.</p>
+<p>Once you've started a sampling session, you can call this method and it will create a copy of the provided data and lets you inspect the data by clicking on the item in the code editor next to this line.</p>
+<pre><code class="language-javascript line-numbers">{
+	.sample("my session"); // starts a sampling session until the block is done
+	
+	var x = [1, 2, 3, 4, 5];
+	
+	// creates a snapshot of the array and stores it as the first label
+	Console.sample("first", x);
+	
+	x[2] = 0;
+	
+	// creates a snapshot of the array and stores it under the second label
+	Console.sample("second", x);
+}</code></pre>
+<p>Note how th<br></p>
 <h2 id="startbenchmark"><b>startBenchmark</b>
 </h2>
 <p class="comment">Starts the benchmark. You can give it a name that will be displayed with the result if desired. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/console/startbenchmark.md">Edit on GitHub</a>
@@ -132,7 +148,7 @@ Console.stop(); // wrapping these two Console commands around your code.</code><
 <p><br><br></p>
 <h2 id="startsampling"><b>startSampling</b>
 </h2>
-<p class="comment">Starts a sampling session with the given ID. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/console/startsampling">Edit on GitHub</a>
+<p class="comment">Starts a sampling session with the given ID. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/console/startsampling.md">Edit on GitHub</a>
 </p>
 <pre><code class="language-javascript line-numbers">Console.startSampling( String sessionId)</code></pre>
 <p><br><br></p>

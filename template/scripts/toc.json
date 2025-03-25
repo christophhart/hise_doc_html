@@ -7439,12 +7439,6 @@ var rootDb = {
                   "Children": []
                 },
                 {
-                  "URL": "scripting/scripting-api/engine/index.html#setcompileprogress",
-                  "Title": "setCompileProgress",
-                  "Colour": "#D557D9",
-                  "Children": []
-                },
-                {
                   "URL": "scripting/scripting-api/engine/index.html#setcurrentexpansion",
                   "Title": "setCurrentExpansion",
                   "Colour": "#D557D9",
@@ -10841,6 +10835,223 @@ var rootDb = {
                 {
                   "URL": "scripting/scripting-api/path/index.html#tostring",
                   "Title": "toString",
+                  "Colour": "#D557D9",
+                  "Children": []
+                }
+              ]
+            },
+            {
+              "URL": "scripting/scripting-api/rectangle/index.html",
+              "Title": "Rectangle",
+              "Colour": "#D557D9",
+              "Children": [
+                {
+                  "URL": "scripting/scripting-api/rectangle/index.html#assign",
+                  "Title": "assign",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/rectangle/index.html#constrainedwithin",
+                  "Title": "constrainedWithin",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/rectangle/index.html#contains",
+                  "Title": "contains",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/rectangle/index.html#expanded",
+                  "Title": "expanded",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/rectangle/index.html#getintersection",
+                  "Title": "getIntersection",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/rectangle/index.html#getunion",
+                  "Title": "getUnion",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/rectangle/index.html#intersects",
+                  "Title": "intersects",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/rectangle/index.html#isempty",
+                  "Title": "isEmpty",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/rectangle/index.html#reduced",
+                  "Title": "reduced",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/rectangle/index.html#removefrombottom",
+                  "Title": "removeFromBottom",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/rectangle/index.html#removefromleft",
+                  "Title": "removeFromLeft",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/rectangle/index.html#removefromright",
+                  "Title": "removeFromRight",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/rectangle/index.html#removefromtop",
+                  "Title": "removeFromTop",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/rectangle/index.html#scaled",
+                  "Title": "scaled",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/rectangle/index.html#setcentre",
+                  "Title": "setCentre",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/rectangle/index.html#setposition",
+                  "Title": "setPosition",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/rectangle/index.html#setsize",
+                  "Title": "setSize",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/rectangle/index.html#toarray",
+                  "Title": "toArray",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/rectangle/index.html#translated",
+                  "Title": "translated",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/rectangle/index.html#withaspectratiolike",
+                  "Title": "withAspectRatioLike",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/rectangle/index.html#withbottom",
+                  "Title": "withBottom",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/rectangle/index.html#withbottomy",
+                  "Title": "withBottomY",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/rectangle/index.html#withcentre",
+                  "Title": "withCentre",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/rectangle/index.html#withheight",
+                  "Title": "withHeight",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/rectangle/index.html#withleft",
+                  "Title": "withLeft",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/rectangle/index.html#withright",
+                  "Title": "withRight",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/rectangle/index.html#withsize",
+                  "Title": "withSize",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/rectangle/index.html#withsizekeepingcentre",
+                  "Title": "withSizeKeepingCentre",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/rectangle/index.html#withtrimmedbottom",
+                  "Title": "withTrimmedBottom",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/rectangle/index.html#withtrimmedleft",
+                  "Title": "withTrimmedLeft",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/rectangle/index.html#withtrimmedright",
+                  "Title": "withTrimmedRight",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/rectangle/index.html#withtrimmedtop",
+                  "Title": "withTrimmedTop",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/rectangle/index.html#withwidth",
+                  "Title": "withWidth",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/rectangle/index.html#withx",
+                  "Title": "withX",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/rectangle/index.html#withy",
+                  "Title": "withY",
                   "Colour": "#D557D9",
                   "Children": []
                 }
