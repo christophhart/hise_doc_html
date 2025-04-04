@@ -127,6 +127,18 @@
 <img src="images/custom/cablecallback.svg"></img>
 <p>Be aware that if you've set a range then the value that will be passed into the callback will be converted from the normalised 0...1 range to whatever range you need.</p>
 <p>If you're using a synchronous callback then the function you pass in must be an inline function as this might be executed on the audio thread and normal functions are not realtime safe.<br></p>
+<h2 id="registerdatacallback"><b>registerDataCallback</b>
+</h2>
+<p class="comment">Registers a function that will be executed asynchronously when the data receives a JSON data chunk. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/globalcable/registerdatacallback">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">GlobalCable.registerDataCallback(var dataCallbackFunction)</code></pre>
+<p><br><br></p>
+<h2 id="senddata"><b>sendData</b>
+</h2>
+<p class="comment">Sends any type of data (JSON, string, buffers) to the target. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/globalcable/senddata">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">GlobalCable.sendData(var dataToSend)</code></pre>
+<p><br><br></p>
 <h2 id="setrange"><b>setRange</b>
 </h2>
 <p class="comment">Set the input range using a min and max value (no steps / no skew factor). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/globalcable/setrange.md">Edit on GitHub</a>

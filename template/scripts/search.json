@@ -6240,6 +6240,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "Engine.createNKSManager()",
+    "url": "scripting/scripting-api/engine/index.html#createnksmanager",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "Engine.createThreadSafeStorage()",
     "url": "scripting/scripting-api/engine/index.html#createthreadsafestorage",
     "weight": 60,
@@ -7802,6 +7808,18 @@
   {
     "key": "GlobalCable.registerCallback()",
     "url": "scripting/scripting-api/globalcable/index.html#registercallback",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "GlobalCable.registerDataCallback()",
+    "url": "scripting/scripting-api/globalcable/index.html#registerdatacallback",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "GlobalCable.sendData()",
+    "url": "scripting/scripting-api/globalcable/index.html#senddata",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -17156,6 +17174,12 @@
   {
     "key": "fx: haas",
     "url": "scriptnode/list/fx/haas.html",
+    "weight": 60,
+    "color": "#F15761"
+  },
+  {
+    "key": "fx: pitch_shift",
+    "url": "scriptnode/list/fx/pitch_shift.html",
     "weight": 60,
     "color": "#F15761"
   },

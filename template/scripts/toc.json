@@ -6869,6 +6869,12 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scripting/scripting-api/engine/index.html#createnksmanager",
+                  "Title": "createNKSManager",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/engine/index.html#createthreadsafestorage",
                   "Title": "createThreadSafeStorage",
                   "Colour": "#D557D9",
@@ -8501,6 +8507,18 @@ var rootDb = {
                 {
                   "URL": "scripting/scripting-api/globalcable/index.html#registercallback",
                   "Title": "registerCallback",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/globalcable/index.html#registerdatacallback",
+                  "Title": "registerDataCallback",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/globalcable/index.html#senddata",
+                  "Title": "sendData",
                   "Colour": "#D557D9",
                   "Children": []
                 },
@@ -19149,6 +19167,12 @@ var rootDb = {
                 {
                   "URL": "scriptnode/list/fx/haas.html",
                   "Title": "haas",
+                  "Colour": "#F15761",
+                  "Children": []
+                },
+                {
+                  "URL": "scriptnode/list/fx/pitch_shift.html",
+                  "Title": "pitch_shift",
                   "Colour": "#F15761",
                   "Children": []
                 },
