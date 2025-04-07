@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Docs</title>
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="pluginparametersimulator"><b>PluginParameterSimulator</b>
+</h1>
+<p><br></p>
+<p class="comment">A floating tile that simulates the interaction with plugin parameters through a DAW</p>
+<img src="images/floating-tiles/pluginparametersimulator.png"></img>
+<table><thead><td><b>ID </b>
+</td>
+<td><b>Default Value </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><code>Font</code>
+ </td>
+<td>Oxygen Bold </td>
+<td>no description </td>
+</tr>
+<tr><td><code>FontSize</code>
+ </td>
+<td>14.0 </td>
+<td>no description </td>
+</tr>
+</table>
+<p><br>This floating tile is a development tool that can be used to test / debug the <a href="glossary/plugin-parameters.html">Plugin Parameter</a>
+ handling within HISE. It simulates a DAW host and shows knobs for all plugin parameters exactly as they would be listed in the host when you compile your project as plugin. This lets you verify the order, ranges & behaviour of all plugin parameters as well as test the behaviour of different hosts.</p>
+<p>It supports the full feature set of the HISE plugin parameter handling, which includes:</p>
+<ul><li>naming & range conversion / value suffix</li>
+<li>all three plugin parameter types (macro plugin parameters, custom automation slots and script controls with <code>isPluginParameter==true</code>
+).</li>
+<li>parameter gestures - dragging the sliders will send a parameter change gesture to HISE which you can then react to in your script.</li>
+<li>parameter groups && custom sorting</li>
+<li>NKS support (simulates the NKS parameter mapping if enabled)</li>
+</ul>
+<p>The recommended way to use this floating tile is a custom popup - just click on the custom popup button on the top left in HISE, then add this floating tile, adjust the size to your screen setup and save it so you can later open it with a single click.</p>
+<p class="comment">Note that the entire plugin parameter list is being rebuilt after every compilation of your main interface script. If you have changed any plugin parameter property through the Interface Designer, you need to recompile your script to apply the changes.</p>
+<h3 id="thread-/-automation-simulator"><b>Thread / automation simulator</b>
+</h3>
+<p>In addition to just view / interact with the plugin parameters you can also simulate different scenarios:</p>
+<ul><li>host automation (which means that the parameter callback will most likely happen in the audio thread).</li>
+<li>dedicated automation thread (last time I checked Protools is sending it's parameter automation on a dedicated thread)</li>
+<li>zig-zag automation with definable resolution in the audio thread. If you're dragging the slider, all that HISE can do is to send the most recent change at the next audio callback. In order to analyse the CPU performance in scenarios where the host might split up the audio buffer to increase the automation resolution, you can simulate this by selecting a automation resolution when the zig-zag mode is enabled. This will split the audio buffer into chunks of the given buffer size (basically the same as eg. the <a href="scriptnode/list/container/fix32_block.html">container.fix32_block</a>
+ node is doing) and then send the zig zag ramp value with the given resolution</li>
+</ul>
+<p>These tools are available through the selectors in the top bar.</p>
+<p class="comment">Note that the resolution selector only affects the zig zag mode in the audio thread. If you're running the custom AAX thread, it will send a new value about every 5 milliseconds.</p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://github.com/christophhart/hise_documentation/edit/master/ui-components/floating-tiles/hise/pluginparametersimulator.md">Edit on GitHub</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="ui-components/floating-tiles/hise/scriptbroadcastermap.html">ScriptBroadcasterMap</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>07.04.2025<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

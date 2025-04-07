@@ -74,6 +74,18 @@
 </h3>
 <h3 id="validate-user-presets"><b>Validate user presets</b>
 </h3>
+<p>Before exporting your plugin, you can use this function in in order to run a series of <b>sanity checks</b>
+ to ensure your plugin parameters are properly configured:</p>
+<ul><li>No duplicate parameter indices,</li>
+<li>No illegal parameter names or duplicate IDs</li>
+<li>All parameters with the <code>isPluginParameter</code>
+ have a non empty <code>pluginParameterName</code>
+ property</li>
+<li>All parameters that change other plugin parameters have the <code>isMetaParameter</code>
+ flag set</li>
+</ul>
+<p>This function will also print a report to the console so you can quickly inspect the list of plugin parameters. Note that for a proper testing / development experience it's recommended to use the <a href="ui-components/floating-tiles/hise/pluginparametersimulator.html">PluginParameterSimulator</a>
+ floating tile.</p>
 <h3 id="collect-unreferenced-images"><b>Collect unreferenced images</b>
 </h3>
 <h3 id="reset-ui-controls-to-default-values"><b>Reset UI controls to default values</b>

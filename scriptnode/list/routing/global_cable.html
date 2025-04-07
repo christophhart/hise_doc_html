@@ -92,9 +92,40 @@ using cable_manager_t = routing::global_cable_cpp_manager<SN_GLOBAL_CABLE(623777
 {
 	if(P == 0)
 	{
-		setGlobalCableValue<GlobalCables::Funky_cable>(v);
-	}</code></pre>
+		this->setGlobalCableValue<GlobalCables::Funky_cable>(v);
+	}
+}</code></pre>
 <p class="comment">Note that calling this method is realtime safe and you can call it from anywhere in your processing code. It might be a bit more efficient to limit the calls to once per block though as there might be a few listeners that will execute their callback synchronously.</p>
+<h3 id="sending-/-receiving-arbitrary-data-through-a-global-cable-in-c++"><b>Sending / Receiving arbitrary data through a global cable in C++</b>
+</h3>
+<p>You can now also send any kind of <code>juce::var</code>
+ data back to HISE and register a callback to receive the data in your script. In order to do so, just use the method <code>sendDataToGlobalCable</code>
+ instead of <code>setGlobalCableValue</code>
+:</p>
+<pre><code class="language-clike line-numbers">juce::var x("someString");
+juce::var x2(new VariantBuffer(512));
+juce::var x3(JSON::fromString("{noice: 1234}"));
+
+this->sendDataToGlobalCable<GlobalCables::Funky_cable>(x1);
+this->sendDataToGlobalCable<GlobalCables::Funky_cable>(x2);
+this->sendDataToGlobalCable<GlobalCables::Another_funky_cable>(x3);</code></pre>
+<p>Note that the data is being cloned for each target & is not realtime safe so this rather for heavyweight tasks like sending analysis data back to the UI.</p>
+<p>in order to register a C++ lambda to receive a <code>juce::var</code>
+ data object when you call the scripting method <code>GlobalCable.sendData()</code>
+, use this method either in the constructor of your node or the prepare callback:</p>
+<pre><code class="language-clike line-numbers">registerDataCallback<GlobalCables::Funky_cable>([](const var& funky)
+{
+	if(auto b = funky.getBuffer())
+	{
+	    // do something with the buffer content
+	}
+	if(funky.isString())
+	{
+		auto text = funky.toString();
+
+		// do something with the string
+	}
+});</code></pre>
 <div class="content-footer"><span class="content-footer-left"><a href="https://github.com/christophhart/hise_documentation/edit/master/scriptnode/list/routing/global_cable.md">Edit on GitHub</a>
 </span>
 

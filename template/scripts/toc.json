@@ -3937,6 +3937,12 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "ui-components/floating-tiles/hise/pluginparametersimulator.html",
+                  "Title": "PluginParameterSimulator",
+                  "Colour": "#9064FF",
+                  "Children": []
+                },
+                {
                   "URL": "ui-components/floating-tiles/hise/scriptbroadcastermap.html",
                   "Title": "ScriptBroadcasterMap",
                   "Colour": "#9064FF",
@@ -16947,6 +16953,12 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scripting/scripting-api/userpresethandler/index.html#sendparametergesture",
+                  "Title": "sendParameterGesture",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/userpresethandler/index.html#setautomationvalue",
                   "Title": "setAutomationValue",
                   "Colour": "#D557D9",
@@ -16961,6 +16973,24 @@ var rootDb = {
                 {
                   "URL": "scripting/scripting-api/userpresethandler/index.html#setenableuserpresetpreprocessing",
                   "Title": "setEnableUserPresetPreprocessing",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/userpresethandler/index.html#setparametergesturecallback",
+                  "Title": "setParameterGestureCallback",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/userpresethandler/index.html#setpluginparametergroupnames",
+                  "Title": "setPluginParameterGroupNames",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/userpresethandler/index.html#setpluginparametersortfunction",
+                  "Title": "setPluginParameterSortFunction",
                   "Colour": "#D557D9",
                   "Children": []
                 },
@@ -20850,6 +20880,79 @@ var rootDb = {
             {
               "URL": "glossary/multipageproperties.html#relativefileloader",
               "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            }
+          ]
+        },
+        {
+          "URL": "glossary/plugin-parameters.html",
+          "Title": "Plugin Parameters",
+          "Colour": "#BD6F50",
+          "Children": [
+            {
+              "URL": "glossary/plugin-parameters.html#introduction",
+              "Title": "Introduction",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/plugin-parameters.html#threading-considerations",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/plugin-parameters.html#types-of-plugin-parameters-in-hise",
+              "Title": "Types of Plugin Parameters in HISE",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/plugin-parameters.html#1.-ui-components",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/plugin-parameters.html#minimal-setup",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/plugin-parameters.html#custom-automation-slots",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/plugin-parameters.html#example",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/plugin-parameters.html#3.-dynamic-plugin-parameter-slots-macro-controls",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/plugin-parameters.html#combining-plugin-parameter-types",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/plugin-parameters.html#gestures",
+              "Title": "Gestures",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/plugin-parameters.html#tools-in-hise-for-plugin-parameter-management",
+              "Title": "Tools in HISE for Plugin Parameter Management",
               "Colour": "#BD6F50",
               "Children": []
             }

@@ -93,7 +93,7 @@
 </h1>
 <h2 id="addbuffertowebsocket"><b>addBufferToWebSocket</b>
 </h2>
-<p class="comment">Adds a buffer to be synchronised through the websocket. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptwebview/addbuffertowebsocket">Edit on GitHub</a>
+<p class="comment">Adds a buffer to be synchronised through the websocket. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptwebview/addbuffertowebsocket.md">Edit on GitHub</a>
 </p>
 <pre><code class="language-javascript line-numbers">ScriptWebView.addBufferToWebSocket(int bufferIndex, var buffer)</code></pre>
 <p><br><br></p>
@@ -256,10 +256,15 @@ window.someFunction = function(args)
 <p><br><br></p>
 <h2 id="sendtowebsocket"><b>sendToWebSocket</b>
 </h2>
-<p class="comment">Sends the data to the websocket. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptwebview/sendtowebsocket">Edit on GitHub</a>
-</p>
+<p class="comment">Sends the data to the websocket.</p>
 <pre><code class="language-javascript line-numbers">ScriptWebView.sendToWebSocket(String id, var data)</code></pre>
-<p><br><br></p>
+<p><br>This will send some data through the WebSocket connection to the webview. The communication is asynchronous, but not realtime safe.</p>
+<p>The function expects two parameters, an <code>id</code>
+ and some <code>data</code>
+ that you want to send - either a String or a Buffer (or a JSON object that will be converted to a JSON string internally)</p>
+<p>The ID will be used to coallascate calls (so subsequent calls with the same ID might only send that last data over to the webview).</p>
+<p class="comment">Note that the ID can also be a stringified JSON object, which is a good practice if you want to attach some metadata to a audio buffer that you send over.</p>
+<p><br></p>
 <h2 id="set"><b>set</b>
 </h2>
 <p class="comment">Sets the property. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptwebview/set.md">Edit on GitHub</a>
@@ -286,13 +291,105 @@ window.someFunction = function(args)
 <p><br><br></p>
 <h2 id="setenablewebsocket"><b>setEnableWebSocket</b>
 </h2>
-<p class="comment">Enables Websocket communication between HISE and the webview. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptwebview/setenablewebsocket">Edit on GitHub</a>
-</p>
+<p class="comment">Enables Websocket communication between HISE and the webview.</p>
 <pre><code class="language-javascript line-numbers">ScriptWebView.setEnableWebSocket(int port)</code></pre>
-<p><br><br></p>
+<p><br>This function will enable a bidirectional communication over a <a href="https://en.wikipedia.org/wiki/WebSocket">Websocket</a>
+ connection between HISE and any webview that is shown on the screen. After a connection is established, you can use <a href="scripting/scripting-api/scriptwebview/index.html#sendtowebsocket">ScriptWebView.sendToWebsocket()</a>
+ to send messages and add a callback that listens to data coming back from the WebView with <a href="scripting/scripting-api/scriptwebview/index.html#setwebsocketcallback">ScriptWebView.setWebSocketCallback()</a>
+</p>
+<h4 id="websocket-vs-direct-communication"><b>WebSocket vs direct communication</b>
+</h4>
+<p>A websocket is an alternative option to the direct using the <a href="scripting/scripting-api/scriptwebview/index.html#bindcallback">ScriptWebView.bindCallback()</a>
+ and <a href="scripting/scripting-api/scriptwebview/index.html#callfunction">ScriptWebView.callFunction()</a>
+ functions. Here is a overview of the advantages of each concept:</p>
+<table><thead><td><b>Topic </b>
+</td>
+<td><b>WebSocket </b>
+</td>
+<td><b>Direct communication </b>
+</td>
+</thead>
+<tr><td><b>Data</b>
+ </td>
+<td>large data blobs (eg. audio streams / images) </td>
+<td>simple data (text, small JSONs) </td>
+</tr>
+<tr><td><b>Development</b>
+ </td>
+<td>possible to develop the entire webview in a separate browser </td>
+<td>more tightly coupled to HISE (can't communicate with "external" webviews). </td>
+</tr>
+<tr><td><b>Setup</b>
+ </td>
+<td>more complicated setup, requires additional code in the webview </td>
+<td>just bind & call the functions you want. </td>
+</tr>
+</table>
+<h4 id="client-side-(webview-javascript)"><b>Client side (Webview Javascript)</b>
+</h4>
+<p>In order to streamline the implementation of the websocket communication with HISE, there is a minimal framework that contains a <code>HiseWebSocketServer</code>
+ class that handles all the communication.</p>
+<p>In order to load the framework, just need to include this script in your HTML header:</p>
+<pre><code class="language-xml line-numbers"><head>
+<script src="hisewebsocket-min.js"></script>
+</head></code></pre>
+<p class="comment">Note that you don't need to provide the actual <code>hisewebsocket-min.js</code>
+ file as it's embedded in the webview wrapper and will automatically be loaded. However if you want to develop your webview through an external IDE, you will have to manually provide that file. Just copy this minified JS beauty into the root directory where your <code>index.html</code>
+ file resides:</p>
+<pre><code class="language-javascript line-numbers">class HiseWebSocketServer{constructor(e){this.port=e,this.eventListeners=[],this.initQueue=[],window.addEventListener("load",this.initialise),window.addEventListener("beforeunload",this.onUnload)}onUnload=()=>{this.socket.close()};onReader=e=>{let t=new Uint8Array(e.target.result),s=this.parseWebSocketMessage(t);for(let i=0;i<this.eventListeners.length;i++)this.eventListeners[i](s.id,s.data)};onMessage=e=>{let t=new FileReader;t.onload=this.onReader,t.readAsArrayBuffer(e.data)};initialise=()=>{console.log("PORT: "+this.port),this.socket=new WebSocket("ws://localhost:"+this.port),this.socket.onmessage=this.onMessage,this.socket.onopen=this.sendInitMessages};sendInitMessages=()=>{for(let e=0;e<this.initQueue.length;e++)console.log("send init message"+this.initQueue[e]),this.send(this.initQueue[e]);this.initQueue=[]};parseWebSocketMessage(e){let t=0,s=1==new DataView(e.buffer,t,1).getUint8(0,!0);t++;let i=new DataView(e.buffer,t,2).getUint16(0,!0);t+=2;let n=new TextDecoder().decode(e.slice(t,t+i-1));t+=i;let o=new DataView(e.buffer,t,4).getUint32(0,!0);t+=4;let r;return r=s?new TextDecoder().decode(e.buffer.slice(t,t+o)):new Float32Array(e.buffer.slice(t,t+o)),{id:n,data:r}}addEventListener(e){this.eventListeners.push(e)}send(e){this.socket?this.socket.send(e):this.initQueue.push(e)}}</code></pre>
+<p>Now you can use the framework to create a HiseWebSocketServer object. It's recommended to put the initialisation code into a separate function and then call this from HISE to initialise the websocket server after everything has been loaded:</p>
+<pre><code class="language-javascript line-numbers"><script>
+var server;
+// this function will be called from HISE when everything is loaded
+window.initWebSocket = function(port)
+{
+	
+	// create a new instance of the WebSocket server that connects to HISE
+    server = new HiseWebSocketServer(port);
+
+	// Adds a function that receives the id and data that you send to the webview
+    server.addEventListener(function(id, data)
+    {
+		console.log(id, data);
+    });
+}
+</script></code></pre>
+<p>Now in HISE you can initialise the websocket like this:</p>
+<pre><code class="language-javascript line-numbers">const var wv = Content.addWebView("wv", 0, 0);
+
+// just pick a random port and hope that there will be no collisions...
+const var PORT = parseInt(Math.random() * 65536);
+wv.setEnableWebSocket(PORT);
+
+// we pass in the random port number to the initialisation function that opens
+// the server connection on the webview
+wv.callFunction("initWebSocket", PORT);</code></pre>
+<p class="comment">Note that choosing a random port number allows multiple plugin instances to communicate with their interface (while living with the 1/65536 chance of a collision, but that's life). However using a static / constant port number can also be used to implement a cross-instance communication across all plugin instances!</p>
+<h4 id="data-types"><b>Data Types</b>
+</h4>
+<p>The <code>data</code>
+ parameter that is passed to any callback that you register with <code>HiseWebSocketServer.addEventListener()</code>
+ contains the data and is one of two possible data types:</p>
+<ol><li>A <code>string</code>
+ if the data sent from HISE was a <a href="scripting/scripting-api/string/index.html">String</a>
+. </li>
+<li>A <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array">Float32Array</a>
+ if the data sent from HISE was a <a href="scripting/scripting-api/buffer/index.html">Buffer</a>
+ object.</li>
+</ol>
+<p>Note that the second data type is specifically added for transferring audio buffers between the webview and HISE to implement custom waveforms / oscilloscopes etc. If you want to send a JSON object (or a Array), you will need to convert and parse it yourself:</p>
+<pre><code class="language-javascript line-numbers">// on the HISE side
+ScriptWebview.sendToWebsocket("myobject", trace(obj));
+
+// on the Webview side
+function onWebSocketMessage(id, data)
+{
+	let obj = JSON.parse(data);
+}</code></pre>
+<p><br></p>
 <h2 id="sethtmlcontent"><b>setHtmlContent</b>
 </h2>
-<p class="comment">Sets the HTML content to be used by the webview. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptwebview/sethtmlcontent">Edit on GitHub</a>
+<p class="comment">Sets the HTML content to be used by the webview. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptwebview/sethtmlcontent.md">Edit on GitHub</a>
 </p>
 <pre><code class="language-javascript line-numbers">ScriptWebView.setHtmlContent( String htmlCode)</code></pre>
 <p><br><br></p>
@@ -370,10 +467,52 @@ window.someFunction = function(args)
 <p><br><br></p>
 <h2 id="setwebsocketcallback"><b>setWebSocketCallback</b>
 </h2>
-<p class="comment">Registers a callable object to be notified for incoming messages from the websocket. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptwebview/setwebsocketcallback">Edit on GitHub</a>
-</p>
+<p class="comment">Registers a callable object to be notified for incoming messages from the websocket.</p>
 <pre><code class="language-javascript line-numbers">ScriptWebView.setWebSocketCallback(var callbackFunction)</code></pre>
-<p><br><br></p>
+<p><br>This registers a callback that will be notified whenever you send anything through the established WebSocket connection.</p>
+<p>It expects a function with a single parameter which will hold the data coming in from the webview. You can expect three data types:</p>
+<ol><li>A String when you send a string.</li>
+<li>A JSON object when you send a JSON object (or Array) that was stringified. Note that you cannot send a JSON object directly, but use <code>JSON.stringify(myObject)</code>
+ in Javascript (see below)</li>
+<li>A Buffer object when you send a <code>Float32Array</code>
+ from your webview.</li>
+</ol>
+<p>In your webview code, you can use <code>HiseWebSocketServer.send()</code>
+ to send the data back to HISE.</p>
+<pre><code class="language-javascript line-numbers">// webview
+HiseWebSocketServer.send("send some string");
+
+// HISE
+// data will be a plain string
+ScriptWebView.setWebSocketCallback(function(data)
+{
+	Console.print(data) // "send some string"
+});
+
+// webview
+const x = { "key1": 12, "key2": "some value"};
+HiseWebSocketServer.send(JSON.stringify(x));
+
+// HISE
+// data will be a JSON object that you can trace to view
+ScriptWebView.setWebSocketCallback(function(data)
+{
+	Console.print(trace(data)) // { key1: 12, key12: "some value" }
+});
+
+// webview
+const x = new Float32Array(512);
+for(i = 0; i < x.length; i++)
+	x[i] = Math.random();
+HiseWebSocketServer.send(x);
+
+// HISE
+// data will be a Buffer object
+ScriptWebView.setWebSocketCallback(function(data)
+{
+	Console.print(data.length) // 512
+});</code></pre>
+<p>Note that the execution order is guaranteed to be the same as you send the values, so you can send multiple messages at once and expect it to come into HISE in the same order.<br></p>
 <h2 id="setzlevel"><b>setZLevel</b>
 </h2>
 <p class="comment">Changes the depth hierarchy (z-axis) of sibling components (Back, Default, Front or AlwaysOnTop). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptwebview/setzlevel.md">Edit on GitHub</a>
@@ -388,7 +527,7 @@ window.someFunction = function(args)
 <p><br><br></p>
 <h2 id="updatebuffer"><b>updateBuffer</b>
 </h2>
-<p class="comment">Sends the buffer to the webview through the websocket connection. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptwebview/updatebuffer">Edit on GitHub</a>
+<p class="comment">Sends the buffer to the webview through the websocket connection. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptwebview/updatebuffer.md">Edit on GitHub</a>
 </p>
 <pre><code class="language-javascript line-numbers">ScriptWebView.updateBuffer(int bufferIndex)</code></pre>
 <p><br><br></p>

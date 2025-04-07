@@ -129,22 +129,81 @@
 <p>If you're using a synchronous callback then the function you pass in must be an inline function as this might be executed on the audio thread and normal functions are not realtime safe.<br></p>
 <h2 id="registerdatacallback"><b>registerDataCallback</b>
 </h2>
-<p class="comment">Registers a function that will be executed asynchronously when the data receives a JSON data chunk. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/globalcable/registerdatacallback">Edit on GitHub</a>
-</p>
+<p class="comment">Registers a function that will be executed asynchronously when the data receives a JSON data chunk.</p>
 <pre><code class="language-javascript line-numbers">GlobalCable.registerDataCallback(var dataCallbackFunction)</code></pre>
-<p><br><br></p>
+<p><br>This will register a callback that receives any data that was transmitted over this cable. It can come from two sources:</p>
+<ol><li>The scripting method <a href="scripting/scripting-api/globalcable/index.html#senddata">Global Cable</a>
+</li>
+<li>A external C++ node using the <a href="scriptnode/list/routing/global_cable.html#sending-/-receiving-arbitrary-data-through-a-global-cable-in-c++">C++ function</a>
+</li>
+</ol>
+<p>The function expects a callable object with a single parameter that will contain the data that is transmitted.</p>
+<pre><code class="language-javascript line-numbers">// Create a global routing manager
+const var rm = Engine.getGlobalRoutingManager();
+
+// Create the data cable
+const var dataCable = rm.getCable("dataCable");
+
+
+// Register the callback
+dataCable.registerDataCallback(function(data)
+{
+	Console.print("DATA: " + trace(data));
+});
+
+// Create some arbitrary data
+const var bf = Buffer.create(32);
+bf[10] = 90.0;
+
+// Send the data over (this will not fire the callback above
+// but other targets)
+dataCable.sendData([bf, 100, "a string"]);</code></pre>
+<p class="comment">The function is always being called synchronously and it creates a deep copy of the entire data for each target so this might be not the best solution in a scenario that requires fast communication (eg. UI updates of buffers etc).</p>
+<p><br></p>
 <h2 id="senddata"><b>sendData</b>
 </h2>
-<p class="comment">Sends any type of data (JSON, string, buffers) to the target. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/globalcable/senddata">Edit on GitHub</a>
-</p>
+<p class="comment">Sends any type of data (JSON, string, buffers) to the target.</p>
 <pre><code class="language-javascript line-numbers">GlobalCable.sendData(var dataToSend)</code></pre>
-<p><br><br></p>
+<p><br>This function can be used to send any kind of arbitrary data to the global cable targets. This can be used for safe communication between different scripts and even external C++ nodes. In order to use this method, just call it with any kind of data and it will be send to all targets that are registered to this cable.</p>
+<pre><code class="language-javascript line-numbers">const var rm = Engine.getGlobalRoutingManager();
+const var c = rm.getCable("myDataCable");
+c.sendData({ someJson: 1234, also: "strings are supported" });
+c.sendData([ 1, 2, 3, 4, 5, 6]);
+c.sendData(Buffer.create(128));</code></pre>
+<p>Note that there is not a data queue for the sender side of this protocol, which means that if you register a target after the data has been sent, it will not be "initialised" with the previously sent value. However if you're using the C++ API in your external node, it will queue the data that is about to be sent if the cable is not connected yet. </p>
+<p>Also it will skip its own callbacks, so if you register a callback using <a href="scripting/scripting-api/globalcable/index.html#registerdatacallback">Global Cable.registerDataCallback()</a>
+, it will not be executed:</p>
+<pre><code class="language-javascript line-numbers">const var rm = Engine.getGlobalRoutingManager();
+
+// Create a instance of a cable
+const var c1 = rm.getCable("myDataCable");
+
+// Create a duplicate instance
+const var c2 = rm.getCable("myDataCable");
+
+// Register two callbacks to both objects
+c1.registerDataCallback(x => Console.print("C1 executed: " + trace(x)));
+c2.registerDataCallback(x => Console.print("C2 executed: " + trace(x)));
+
+Console.print("Send through cable 1");
+c1.sendData("some data");
+
+Console.print("Send through cable 2");
+c2.sendData("some data");
+
+// Output:
+// Interface: Send through cable 1
+// Interface: C2 executed: "some data"
+// Interface: Send through cable 2
+// Interface: C1 executed: "some data"</code></pre>
+<p>As you can see if you send a value through the first cable object it will skip the C1 callback and vice versa. This behaviour is also the same on the C++ side.</p>
+<p><br></p>
 <h2 id="setrange"><b>setRange</b>
 </h2>
-<p class="comment">Set the input range using a min and max value (no steps / no skew factor). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/globalcable/setrange.md">Edit on GitHub</a>
-</p>
+<p class="comment">Set the input range using a min and max value (no steps / no skew factor).</p>
 <pre><code class="language-javascript line-numbers">GlobalCable.setRange(double min, double max)</code></pre>
-<p><br><br></p>
+<p><br>This function can be used if you want to transmit more complex data than a single number - it accepts any kind of data object (JSON, array, Buffers, Strings) and sends the raw byte to all registered targets.</p>
+<p>Note that this involves a deep copy creation for each listener so it might not be the fastest option (and is definitely not realtime safe), but if you want to communicate complex information across modules (and even into C++ nodes), this is the way to do it safely.<br></p>
 <h2 id="setrangewithskew"><b>setRangeWithSkew</b>
 </h2>
 <p class="comment">Set the input range using a min and max value and a mid point for skewing the range. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/globalcable/setrangewithskew.md">Edit on GitHub</a>

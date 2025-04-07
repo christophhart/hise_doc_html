@@ -3348,6 +3348,12 @@
     "color": "#9064FF"
   },
   {
+    "key": "HISE Floating tiles: PluginParameterSimulator",
+    "url": "ui-components/floating-tiles/hise/pluginparametersimulator.html",
+    "weight": 60,
+    "color": "#9064FF"
+  },
+  {
     "key": "HISE Floating tiles: ScriptBroadcasterMap",
     "url": "ui-components/floating-tiles/hise/scriptbroadcastermap.html",
     "weight": 60,
@@ -15864,6 +15870,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "UserPresetHandler.sendParameterGesture()",
+    "url": "scripting/scripting-api/userpresethandler/index.html#sendparametergesture",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "UserPresetHandler.setAutomationValue()",
     "url": "scripting/scripting-api/userpresethandler/index.html#setautomationvalue",
     "weight": 60,
@@ -15878,6 +15890,24 @@
   {
     "key": "UserPresetHandler.setEnableUserPresetPreprocessing()",
     "url": "scripting/scripting-api/userpresethandler/index.html#setenableuserpresetpreprocessing",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "UserPresetHandler.setParameterGestureCallback()",
+    "url": "scripting/scripting-api/userpresethandler/index.html#setparametergesturecallback",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "UserPresetHandler.setPluginParameterGroupNames()",
+    "url": "scripting/scripting-api/userpresethandler/index.html#setpluginparametergroupnames",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "UserPresetHandler.setPluginParameterSortFunction()",
+    "url": "scripting/scripting-api/userpresethandler/index.html#setpluginparametersortfunction",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -17766,6 +17796,12 @@
     "color": "#BD6F50"
   },
   {
+    "key": "Glossary: Plugin Parameters",
+    "url": "glossary/plugin-parameters.html",
+    "weight": 80,
+    "color": "#BD6F50"
+  },
+  {
     "key": "Glossary: RNBO Import",
     "url": "glossary/rnbo.html",
     "weight": 80,
@@ -18014,6 +18050,30 @@
   {
     "key": "Multipage Dialog Reference: Constants",
     "url": "glossary/multipageproperties.html#constants",
+    "weight": 70,
+    "color": "#BD6F50"
+  },
+  {
+    "key": "Plugin Parameters: Introduction",
+    "url": "glossary/plugin-parameters.html#introduction",
+    "weight": 70,
+    "color": "#BD6F50"
+  },
+  {
+    "key": "Plugin Parameters: Types of Plugin Parameters in HISE",
+    "url": "glossary/plugin-parameters.html#types-of-plugin-parameters-in-hise",
+    "weight": 70,
+    "color": "#BD6F50"
+  },
+  {
+    "key": "Plugin Parameters: Gestures",
+    "url": "glossary/plugin-parameters.html#gestures",
+    "weight": 70,
+    "color": "#BD6F50"
+  },
+  {
+    "key": "Plugin Parameters: Tools in HISE for Plugin Parameter Management",
+    "url": "glossary/plugin-parameters.html#tools-in-hise-for-plugin-parameter-management",
     "weight": 70,
     "color": "#BD6F50"
   },
