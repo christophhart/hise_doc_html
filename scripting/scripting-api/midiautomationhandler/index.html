@@ -40,53 +40,246 @@
 
 		<div class="content"><h1 id="midiautomationhandler"><b>MidiAutomationHandler</b>
 </h1>
-<p> Get and set Midi automation data with the <code>MidiAutomationHandler</code>
-.<br></p>
+<p>This class is a interface for modifying the MIDI control assignments in HISE through scripting.</p>
+<p>You can:</p>
+<ul><li>edit / change the list of assignments</li>
+<li>attach a callback (or broadcaster) that listen to changes of MIDI control assignments</li>
+<li>customize the behaviour / appearance of any MIDI assignment related interactions.</li>
+</ul>
+<p>A common practice in plugins is the ability to right click on a control and assign it to a MIDI CC controller so that it can be controlled by hardware controllers (or MIDI clips from the host). </p>
+<p>This can be achieved in HISE by setting the <code>enableMidiLearn</code>
+ property of any suitable component (slider / button / combobox) to true (or set the <code>allowMidiAutomation</code>
+ property in the JSON object that you pass into <a href="scripting/scripting-api/userpresethandler/index.html#setcustomautomation">UserPresetHandler.setCustomAutomation()</a>
+ if you're using the custom automation model). </p>
+<p>The assignments can be modified using the <a href="ui-components/floating-tiles/plugin/midilearnpanel.html">MidiLearnPanel</a>
+ floating tile which allows you to remove connections, modify the range of how the parameter is mapped and invert the parameter.</p>
+<p>However if you need more flexibility you can use this class and implement your own MIDI assignment interface.</p>
+<p class="comment">Note that MIDI assignments are stored in the user preset system by default, so you don't need to use this class for data management.</p>
+<p><br></p>
 <h1 id="class-methods
 "><b>Class methods<br></b>
 </h1>
 <h2 id="getautomationdataobject"><b>getAutomationDataObject</b>
 </h2>
-<p class="comment">Returns an object that contains the MIDI automation data. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/midiautomationhandler/getautomationdataobject.md">Edit on GitHub</a>
-</p>
+<p class="comment">Returns an object that contains the MIDI automation data.</p>
 <pre><code class="language-javascript line-numbers">MidiAutomationHandler.getAutomationDataObject()</code></pre>
-<p><br><br></p>
+<p><br>This method returns an array with JSON objects for every MIDI control assignment that is present. The JSON object will have these properties:</p>
+<table><thead><td><b>Property </b>
+</td>
+<td><b>Type </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><code>Controller</code>
+ </td>
+<td>int </td>
+<td>the CC number (zero based) of the MIDI assignment. </td>
+</tr>
+<tr><td><code>Channel</code>
+ </td>
+<td>int </td>
+<td>the MIDI channel of the MIDI assignment (see below). This is one-based(!) and a omni connection that applies to all MIDI channels should have the value <code>-1</code>
+. </td>
+</tr>
+<tr><td><code>Processor</code>
+ </td>
+<td>String </td>
+<td>the ID of the module that connects to the MIDI control. This is most likely your Interface. </td>
+</tr>
+<tr><td><code>Attribute</code>
+ </td>
+<td>String </td>
+<td>the ID (not the index!) of the attribute that the MIDI assignment is supposed to control. </td>
+</tr>
+<tr><td><code>MacroIndex</code>
+ </td>
+<td>int </td>
+<td>if the control is mapped to a macro control, this will contain the index. </td>
+</tr>
+<tr><td><code>Start</code>
+ </td>
+<td>double </td>
+<td>the current start of the mapped range as it was set in the MidiLearnPanel. By default this is equal to the <code>FullStart</code>
+ property. </td>
+</tr>
+<tr><td><code>End</code>
+ </td>
+<td>double </td>
+<td>the current end of the mapped range as it was set in the MidiLearnPanel. By default this is equal to the <code>FullEnd</code>
+ property. </td>
+</tr>
+<tr><td>'Inverted' </td>
+<td>bool </td>
+<td>whether the MIDI assignment should invert the value range (basically what the Invert button does on the MidiLearnPanel). Note that this does not affect the <code>Start</code>
+ and <code>End</code>
+ properties and it's still expected that <code>Start < End</code>
+. </td>
+</tr>
+<tr><td><code>FullStart</code>
+ </td>
+<td>double </td>
+<td>the lower limit of the range that can be set (in the MidiLearnPanel this would be the min value of the range sliders). </td>
+</tr>
+<tr><td><code>FullEnd</code>
+ </td>
+<td>double </td>
+<td>the upper limit of the range that can be set (in the MidiLearnPanel this would be the min value of the range sliders). </td>
+</tr>
+<tr><td><code>Skew</code>
+ </td>
+<td>double </td>
+<td>the logarithmic skew of the range that can be used for changing the gamma curve of the MIDI assignment. </td>
+</tr>
+<tr><td><code>Interval</code>
+ </td>
+<td>double </td>
+<td>the step size of the MIDI assignments. For discrete controls this can be <code>1.0</code>
+. </td>
+</tr>
+<tr><td><code>Converter</code>
+ </td>
+<td>String </td>
+<td>a spurious Base64 string that will contain the encoded text to value converter so that it displays the values correctly. </td>
+</tr>
+</table>
+<h3 id="note-about-the-channel-property"><b>Note about the Channel property</b>
+</h3>
+<p>Starting with HISE 4.5.0 there is the ability of filtering MIDI CC messages by MIDI channel, so that you can eg. assign the modwheel of the MIDI channel 2 to another control than the modwheel of the MIDI channel 1. </p>
+<p>By default this is deactivated (so in our example any modwheel message from any channel would control an assigned UI element). If you don't see the <code>Channel</code>
+ property in the JSON object, you have to enable the support for different MIDI channels by adding <code>HISE_USE_MIDI_CHANNELS_FOR_AUTOMATION=1</code>
+ to your <a href="working-with-hise/settings/project.html#extra-definitions-windows">Extra Definitions field</a>
+ (you don't have to recompile HISE for it to be applied though).</p>
+<h3 id="data-example"><b>Data Example</b>
+</h3>
+<p>Here's one JSON object in its full glory:</p>
+<pre><code class="language-javascript line-numbers">[{
+  "Controller": 1,
+  "Channel": 0,
+  "Processor": "Interface",
+  "MacroIndex": -1,
+  "Start": 0.0,
+  "End": 1.0,
+  "FullStart": 0.0,
+  "FullEnd": 1.0,
+  "Skew": 1.0,
+  "Interval": 0.01,
+  "Converter": "37.nT6K8CBGgC..VEFa0U1Pu4lckIGckIG.ADPXiQWZ1UF.ADf...",
+  "Attribute": "Knob1",
+  "Inverted": false
+}]</code></pre>
+<p><br></p>
 <h2 id="setautomationdatafromobject"><b>setAutomationDataFromObject</b>
 </h2>
-<p class="comment">Sets the MIDI automation from the automation data object. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/midiautomationhandler/setautomationdatafromobject.md">Edit on GitHub</a>
-</p>
+<p class="comment">Sets the MIDI automation from the automation data object.</p>
 <pre><code class="language-javascript line-numbers">MidiAutomationHandler.setAutomationDataFromObject(var automationData)</code></pre>
-<p><br><br></p>
+<p><br>This can be used to modify the list of MIDI assignments programmatically. It expects an array of JSON objects with the exact format as described in the method above and will replace all MIDI assignments with this data and send an update message to the <a href="ui-components/floating-tiles/plugin/midilearnpanel.html">MidiLearnPanel</a>
+ and any attached <a href="scripting/scripting-api/midiautomationhandler/index.html#setupdatecallback">callback</a>
+.</p>
+<pre><code class="language-javascript line-numbers">function modifySecondController()
+{
+	// grab the existing list
+	var list = mh.getAutomationDataObject();
+	
+	// set the second range start to 50%
+	list[1].Start = 0.5;
+	
+	// send the list back to the automation handler.
+	mh.setAutomationDataObject(list);
+}</code></pre>
+<p><br></p>
 <h2 id="setconsumeautomatedcontrollers"><b>setConsumeAutomatedControllers</b>
 </h2>
-<p class="comment">Sets whether a automated MIDI CC message should be consumed by the automation handler (default is enabled). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/midiautomationhandler/setconsumeautomatedcontrollers.md">Edit on GitHub</a>
-</p>
+<p class="comment">Sets whether a automated MIDI CC message should be consumed by the automation handler (default is enabled).</p>
 <pre><code class="language-javascript line-numbers">MidiAutomationHandler.setConsumeAutomatedControllers(bool shouldBeConsumed)</code></pre>
-<p><br><br></p>
+<p><br>This setting specifies whether a MIDI control that is assigned to a UI control should be excempted from further processing. The default value for this is <code>true</code>
+ (so HISE will not forward a MIDI control message to its internal processing chain if it was assigned to a UI control), but for some projects you might want to enable this to be able to process all MIDI messages, regardless of the MIDI assignments.<br></p>
 <h2 id="setcontrollernumbernames"><b>setControllerNumberNames</b>
 </h2>
-<p class="comment">Replaces the names in the popup. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/midiautomationhandler/setcontrollernumbernames.md">Edit on GitHub</a>
-</p>
+<p class="comment">Replaces the names in the popup.</p>
 <pre><code class="language-javascript line-numbers">MidiAutomationHandler.setControllerNumberNames(var ccName, var nameArray)</code></pre>
-<p><br><br></p>
+<p><br>This can be used to modify the appearance of the context menu. By default it displays the controller types as <code>"CC #2"</code>
+, but if you don't like that, you can customize the strings used for the popup menu as well as the text "Add XXX" / "Remove XXX" for the ultimate UX customization!</p>
+<p><code>ccName</code>
+ must be a string and <code>ccNames</code>
+ an array with strings. Note that the length of <code>ccNames</code>
+ must be either 127 or the exact length of the array you passed into <a href="scripting/scripting-api/midiautomationhandler/index.html#setcontrollernumbersinpopup">MidiAutomationHandler.setControllerNumbersInPopup()</a>
+</p>
+<pre><code class="language-javascript line-numbers">mh.setControllerNumbersInPopup([1, 2, 7]);
+mh.setControllerNumberNames("Funky Controller!!!", ["Modwheel", "Breath Controller", "Volume"]);</code></pre>
+<p>The context menu will then look like this:</p>
+<img src="images/custom/setcontrollernumbers.png"></img>
+<p><br></p>
 <h2 id="setcontrollernumbersinpopup"><b>setControllerNumbersInPopup</b>
 </h2>
-<p class="comment">Sets the numbers that are displayed in the MIDI automation popup. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/midiautomationhandler/setcontrollernumbersinpopup.md">Edit on GitHub</a>
-</p>
+<p class="comment">Sets the numbers that are displayed in the MIDI automation popup.</p>
 <pre><code class="language-javascript line-numbers">MidiAutomationHandler.setControllerNumbersInPopup(var numberArray)</code></pre>
-<p><br><br></p>
+<p><br>This can be used to modify the appearance of the context menu. By default it displays all 127 CC numbers in a submenu, but if you don't like that, you can limit the list of available entries by supplying a list of CC numbers that you want to show.</p>
+<p><br></p>
 <h2 id="setexclusivemode"><b>setExclusiveMode</b>
 </h2>
-<p class="comment">Enables the "exclusive" mode for MIDI automation (only one active parameter for each controller). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/midiautomationhandler/setexclusivemode.md">Edit on GitHub</a>
-</p>
+<p class="comment">Enables the "exclusive" mode for MIDI automation (only one active parameter for each controller).</p>
 <pre><code class="language-javascript line-numbers">MidiAutomationHandler.setExclusiveMode(bool shouldBeExclusive)</code></pre>
-<p><br><br></p>
+<p><br>By default you can assign a single MIDI controller to multiple UI controls so if you want to eg. control the volume of multiple channels with your modwheel this can be achieved by assigning it to those controls.</p>
+<p>However this might be an unwanted behaviour for your project so if you want to ensure that there is only a single connection for each MIDI control present, call this function with <code>true</code>
+ and it will change the behaviour of the context menu:</p>
+<ol><li>It will grey out MIDI assignments that are already connected to another MIDI controller.</li>
+<li>When you enable MIDI learn and then assign a controller to a knob, it will remove any existing connection to other controls for this particular MIDI controller. Note that if you are using <code>HISE_USE_MIDI_CHANNELS_FOR_AUTOMATION=1</code>
+ to support different assignments for MIDI channels, it will retain connections from different MIDI channels, but remove "Omni" connections as well as connections with the same channel.</li>
+</ol>
+<p class="comment">Note that this logic will not be used to check the data you pass into <a href="scripting/scripting-api/midiautomationhandler/index.html#setautomationdatafromobject">MidiAutomationHandler.setAutomationDataFromObject()</a>
+ so you must take care of avoiding duplicates in there yourself.<br></p>
 <h2 id="setupdatecallback"><b>setUpdateCallback</b>
 </h2>
-<p class="comment">Set a function (with one parameter containing the automation data as JSON) that will be executed whenever the MIDI automation changes. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/midiautomationhandler/setupdatecallback.md">Edit on GitHub</a>
-</p>
+<p class="comment">Set a function (with one parameter containing the automation data as JSON) that will be executed whenever the MIDI automation changes.</p>
 <pre><code class="language-javascript line-numbers">MidiAutomationHandler.setUpdateCallback(var callback)</code></pre>
-<p><br><br></p>
+<p><br>This can be used to attach a function (or <a href="scripting/scripting-api/broadcaster/index.html">Broadcaster</a>
+) to be notified whenever the MIDI assignments change). The events that cause this call back are:</p>
+<ul><li>adding / removing connections through the context menu selection</li>
+<li>when MIDI learn is active and a suitable MIDI message was received</li>
+<li>removing connections with the <a href="ui-components/floating-tiles/plugin/midilearnpanel.html">MidiLearnPanel</a>
+.</li>
+<li>calling <a href="scripting/scripting-api/midiautomationhandler/index.html#setautomationdatafromobject">MidiAutomationHandler.setAutomationDataFromObject()</a>
+</li>
+<li>loading user presets (this includes the initial preset)</li>
+</ul>
+<p class="comment">Note that changing the properties of a connection (eg. the range) in the MIDI learn panel does not send an update message.</p>
+<p>Whenever one of these events is happening, it will <b>asynchronously</b>
+ call this function. It expects a callable object with a single parameter which contains the JS array with JSON objects exactly as returned by <a href="scripting/scripting-api/midiautomationhandler/index.html#getautomationdataobject">MidiAutomationHandler.getAutomationDataObject()</a>
+.</p>
+<pre><code class="language-javascript line-numbers">const var mh = Engine.createMidiAutomationHandler();
+
+mh.setUpdateCallback(function(obj)
+{
+	Console.print(trace(obj));
+});</code></pre>
+<p class="comment">Never call <a href="scripting/scripting-api/midiautomationhandler/index.html#setautomationdatafromobject">MidiAutomationHandler.setAutomationDataFromObject()</a>
+ inside this function or it will cause an endless loop of callbacks! Note that trying to outsmart this rule by using a simple recursion protection would not work as the update message is asynchronous.</p>
+<pre><code class="language-javascript line-numbers">const var mh = Engine.createMidiAutomationHandler();
+
+// This freezes your computer.
+mh.setUpdateCallback(function(obj)
+{
+	obj[0].Start = 0.5;
+	mh.setAutomationDataFromObject(obj);
+});
+
+var recursion = false;
+
+// Good idea and extra points for using scoped statements,
+// but this freezes your computer too because the update message
+// will be called asynchronously...
+mh.setUpdateCallback(function(obj)
+{
+	if(!recursion)
+	{
+		.set(recursion, true);
+		
+		obj[0].Start = 0.5;
+		mh.setAutomationDataFromObject(obj);
+	}
+});</code></pre>
+<p><br></p>
 <div class="content-footer"><span class="content-footer-left"><a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/midiautomationhandler/Readme.md">Edit on GitHub</a>
 </span>
 
