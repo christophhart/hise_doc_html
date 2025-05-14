@@ -43,21 +43,21 @@
 </h1>
 <img src="images/custom/code-editor.png"></img>
 <p>The Code Editor features three main elements. </p>
-<ul><li>A basic <a href="working-with-hise/workspaces/scripting-workspace/code-editor#script-editor">Script Editor</a>
+<ul><li>A basic <a href="working-with-hise/hise-interface/code-editor/index.html#script-editor">Script Editor</a>
  with HISE/Javascript syntax highlighting, </li>
-<li>the <a href="working-with-hise/workspaces/scripting-workspace/code-editor#console">Console</a>
+<li>the <a href="working-with-hise/hise-interface/code-editor/index.html#console">Console</a>
  for getting feedback, and the </li>
-<li><a href="working-with-hise/workspaces/scripting-workspace/code-editor#scriptwatchtable">ScriptWatchTable</a>
+<li><a href="working-with-hise/hise-interface/code-editor/index.html#scriptwatchtable">ScriptWatchTable</a>
  with which you can observe the referenced variables of the connected ScriptProcessor.</li>
 </ul>
 <h2 id="script-editor"><b>Script Editor</b>
 </h2>
-<p>The Script Editor it the central place to edit <a href="scripting">Scripts</a>
+<p>The Script Editor it the central place to edit <a href="scripting/index.html">Scripts</a>
  inside HISE. </p>
-<p>The scripts live in the <a href="hise-modules">Module Tree</a>
- in their respective "Script" Modules (like <a href="hise-modules/midi-processors/list/scriptprocessor">MIDI: Script Processor</a>
-, <a href="hise-modules/modulators/envelopes/list/scriptenvelopemodulator">Script Envelope Modulator</a>
- or <a href="hise-modules/effects/list/scriptfx">Script FX</a>
+<p>The scripts live in the <a href="hise-modules/index.html">Module Tree</a>
+ in their respective "Script" Modules (like <a href="hise-modules/midi-processors/list/scriptprocessor.html">MIDI: Script Processor</a>
+, <a href="hise-modules/modulators/envelopes/list/scriptenvelopemodulator.html">Script Envelope Modulator</a>
+ or <a href="hise-modules/effects/list/scriptfx.html">Script FX</a>
 ) and can be connected and shown in the <b>Script Editor</b>
  with the little <b>Open in Code Editor</b>
  icon displayed on the module in the Module Tree.</p>
@@ -67,7 +67,7 @@
 </ul>
 <p>The <b>Callback drop-down</b>
  let you select the callbacks that are part of the current script. The <code>onInit</code>
- callback is the main callback that gets executed everytime you hit Compile [F5]. Learn more about the other callbacks types in: <a href="hise-modules/midi-processors/list/scriptprocessor#callbacks">Scripting Callbacks</a>
+ callback is the main callback that gets executed everytime you hit Compile [F5]. Learn more about the other callbacks types in: <a href="hise-modules/midi-processors/list/scriptprocessor.html#callbacks">Scripting Callbacks</a>
 .</p>
 <p>Behind the scenes these callbacks are part of the same <code>.js</code>
  file. You can take a look at the file(s) in your project folder at <code>Scripts > ScriptPocessors > {your xml save name} ></code>
@@ -90,7 +90,7 @@
 <p>There is a way to insert commonly used and user defined code snippets inside the Code Editor. Just start typing <code>for</code>
  in the Code Editor and accept the yellow colored <code>for(...)</code>
  with <code>Enter</code>
- to create a for-loop template. You can select all templated variables inside the code snippet with Ctrl-D and bulk change them. Learn more about the <a href="glossary/code_snippets">Code Snippet Templates</a>
+ to create a for-loop template. You can select all templated variables inside the code snippet with Ctrl-D and bulk change them. Learn more about the <a href="glossary/code_snippets.html">Code Snippet Templates</a>
  and how to customize them to your needs. </p>
 <h3 id="breakpoints"><b>Breakpoints</b>
 </h3>
@@ -133,7 +133,7 @@
 </h2>
 <img src="images/custom/console.png"></img>
 <p>The Console is your feedback-system when it comes to scripting. It will show you if everything worked out, but also when it did'nt. If there is something wrong with the script it will print an error-message and show a stack-trace of the error. (You can double-click on the red error message to directly jump to the erroneous line). A right-click on the console gives you a little context menu with the possibility to clear the console.</p>
-<p>All <a href="scripting/scripting-api/console">Console API</a>
+<p>All <a href="scripting/scripting-api/console/index.html">Console API</a>
  calls print directly to the Console. The most important being the <code>Console.print()</code>
  command, which comes in handy if you want to check the expected values of your scripting. </p>
 <pre><code class="language-javascript line-numbers">const var x = ["Hello ", "World!"];
@@ -150,7 +150,7 @@ Console.print(trace(x)); // ["Hello ", "World!"]</code></pre>
  values.</p>
 <p>In the top you can find a searchbar to filter down the variables. If you <b>double-click</b>
  an item, it will automatically jump to its definition in the Script Editor.</p>
-<p>If you have defined a reference to a <a href="hise-modules">HISE Modules</a>
+<p>If you have defined a reference to a <a href="hise-modules/index.html">HISE Modules</a>
  with a variable you can even <b>right-click</b>
  on the item to open a popup that shows the module directly in the <b>ScriptWatchTable</b>
 . This can also be used to show the content of arrays and (JSON) objects.</p>
@@ -163,32 +163,32 @@ Console.print(trace(x)); // ["Hello ", "World!"]</code></pre>
 </thead>
 <tr><td><img src="images/custom/var.png"></img>
 </td>
-<td><a href="scripting/scripting-in-hise/additions-in-hise#inline-functions">var</a>
+<td><a href="scripting/scripting-in-hise/javascript.html#variables">var</a>
  - variables, functions and objects </td>
 </tr>
 <tr><td><img src="images/custom/const.png"></img>
 </td>
-<td><a href="{LINK1}">const</a>
+<td><a href="scripting/scripting-in-hise/additions-in-hise.html#const-variables">const</a>
  - constant variables </td>
 </tr>
 <tr><td><img src="images/custom/reg.png"></img>
 </td>
-<td><a href="{LINK2}">reg</a>
+<td><a href="scripting/scripting-in-hise/additions-in-hise.html#reg-variables">reg</a>
  - registered variables </td>
 </tr>
 <tr><td><img src="images/custom/globals.png"></img>
 </td>
-<td><a href="{LINK3}">Globals.x</a>
+<td><a href="scripting/scripting-in-hise/additions-in-hise.html#globals.x-variables">Globals.x</a>
  - global variables </td>
 </tr>
 <tr><td><img src="images/custom/namespace.png"></img>
 </td>
-<td><a href="{LINK4}">Namespaces</a>
+<td><a href="scripting/scripting-in-hise/additions-in-hise.html#namespaces">Namespaces</a>
  - namespace wrapper<br></td>
 </tr>
 <tr><td><img src="images/custom/inline.png"></img>
 </td>
-<td><a href="{LINK5}">inline functions</a>
+<td><a href="scripting/scripting-in-hise/additions-in-hise.html#inline-functions">inline functions</a>
  - scoped functions </td>
 </tr>
 </table>

@@ -58,10 +58,10 @@
 <h2 id="interface-and-sliders"><b>Interface and Sliders</b>
 </h2>
 <img src="images/custom/phasewizard_sliders.png"></img>
-<p>When we switch to the <a href="working-with-hise/workspaces/scripting-workspace">Scripting Workspace</a>
+<p>When we switch to the <a href="working-with-hise/hise-interface/code-editor/index.html">Scripting Workspace</a>
  right now, it looks quite empty. Let's create a new Interface ScriptProcessor by clicking the little house button in the top bar and accept the default settings. Now that we have an interface we can start to add a few sliders to control the Waveform Synthesizers parameters. Let's start with the <b>Mix</b>
  parameter. </p>
-<p>Add a new <a href="ui-components/plugin-components/knob">Slider</a>
+<p>Add a new <a href="ui-components/plugin-components/knob.html">Slider</a>
  with a <b>right-click</b>
  on the Interface in <b>edit mode</b>
 . Let's change the <code>ID</code>
@@ -74,7 +74,7 @@
  and <code>parameterId</code>
  selectors. With them we can link the UI Component directly to a Module attribute/parameter. In our case we want to select "Waveform Generator" and "Mix".</p>
 <p>That was easy.. the Slider is now hooked to the Mix parameter of the Waveform Generator. Check if it works by opening an <b>Interface Preview</b>
- Window via <a href="working-with-hise/menu-reference/view#add-interface-preview">View > Add Interface preview</a>
+ Window via <a href="working-with-hise/menu-reference/view/index.html#add-interface-preview">View > Add Interface preview</a>
  and compare it to the value of the Mix control in the Main-Workingspace. But oh, something is still out of sync. The displayed values don't match each other.</p>
 <p>We have to adjust the Sliders value representation to display its values in <b>%</b>
 . Scroll down in the Property Editor to the <b>Component Specific Properties</b>
@@ -96,9 +96,9 @@
 <h2 id="keyboard-and-visualisation-"><b>Keyboard and Visualisation </b>
 </h2>
 <img src="images/custom/phasewizard_viz.png"></img>
-<p>A <a href="ui-components/floating-tiles/plugin">Floating Tile</a>
- is a special kind of UI Component that has built-in functionalities for the most common use-cases. Let's add an on-screen <a href="ui-components/floating-tiles/plugin/keyboard">Keyboard</a>
- and an <a href="ui-components/floating-tiles/plugin/audioanalyser">Audioanalyser</a>
+<p>A <a href="ui-components/floating-tiles/plugin/index.html">Floating Tile</a>
+ is a special kind of UI Component that has built-in functionalities for the most common use-cases. Let's add an on-screen <a href="ui-components/floating-tiles/plugin/keyboard.html">Keyboard</a>
+ and an <a href="ui-components/floating-tiles/plugin/audioanalyser.html">Audioanalyser</a>
  to display our Goniometer.</p>
 <p>Right-click on the interface again and add a new <b>FloatingTile</b>
 . In the <b>Component Specific Properties</b>
@@ -127,7 +127,7 @@ s alpha-value to zero to blend the visualization with the background.<br></p>
 <h2 id="combobox-waveform-selector"><b>ComboBox WaveForm Selector</b>
 </h2>
 <img src="images/custom/phasewizard_selectors.png"></img>
-<p>In the next step we want to create drop-down selectors for the wave-forms of both synths. For this task we need a <a href="ui-components/plugin-components/combobox">ComboBox</a>
+<p>In the next step we want to create drop-down selectors for the wave-forms of both synths. For this task we need a <a href="ui-components/plugin-components/combobox.html">ComboBox</a>
  and a little bit of scripting. </p>
 <p>The ComboBox can hold a list of <code>items</code>
  that are defined in the <b>Component Specific Properties</b>
@@ -140,7 +140,7 @@ Saw
 Square
 Noise</code></pre>
 <p>This time we don't have a simple plug&play method at hand to connect the ComboBox to the WaveForm-Selector of the Waveform Generator. Let's do it with scripting.<br></p>
-<p>If we want to access and manipulate the Waveform Generator by script, we first have to create a <a href="scripting/scripting-in-hise">Script Reference</a>
+<p>If we want to access and manipulate the Waveform Generator by script, we first have to create a <a href="scripting/scripting-in-hise/index.html">Script Reference</a>
  to it. This reference is a variable that "references" the Module and let us access it with its methods and current attributes/parameters. </p>
 <p class="comment">A convenient shortcut to auto-generate the script-code for the Script Reference is to select and <b>right-click</b>
  the topbar of the Module in the Main-Workingspace and select <b>Create generic script reference</b>
@@ -150,7 +150,7 @@ Noise</code></pre>
 const var WaveformGenerator = Synth.getChildSynth("Waveform Generator");</code></pre>
 <p>The Waveform Generator is now accessible with this handle. Start to type <code>Wav...</code>
  in the line underneath and press <code>ESC</code>
- to access the <a href="working-with-hise/workspaces/scripting-workspace/code-editor#autocomplete-popup-esc">Autocomplete Popup</a>
+ to access the <a href="working-with-hise/hise-interface/code-editor/code-editor#autocomplete-popup-esc">Autocomplete Popup</a>
 .</p>
 <p>Let's try out to <code>get</code>
  'n' <code>set</code>

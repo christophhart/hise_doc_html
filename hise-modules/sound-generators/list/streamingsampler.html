@@ -74,16 +74,16 @@
 <h2 id="sampler-tabs"><b>Sampler Tabs</b>
 </h2>
 <p>The Sampler features four special edit tabs:</p>
-<ul><li><a href="working-with-hise/workspaces/sampler-workspace/sample-settings">Sampler Settings</a>
+<ul><li><a href="working-with-hise/hise-interface/sampler-workspace/sample-settings.html">Sampler Settings</a>
 </li>
-<li><a href="working-with-hise/workspaces/sampler-workspace/sample-editor">Sample Editor</a>
+<li><a href="working-with-hise/hise-interface/sampler-workspace/sample-editor.html">Sample Editor</a>
 </li>
-<li><a href="working-with-hise/workspaces/sampler-workspace/sample-map-editor">Map Editor</a>
+<li><a href="working-with-hise/hise-interface/sampler-workspace/sample-map-editor.html">Map Editor</a>
 </li>
-<li><a href="working-with-hise/workspaces/sampler-workspace/sample-table">Table View</a>
+<li><a href="working-with-hise/hise-interface/sampler-workspace/sample-table.html">Table View</a>
 </li>
 </ul>
-<p>Additional to the default chains, it features two extra <a href="hise-modules/sound-generators/list/streamingsampler#chains-">Modulation Chains</a>
+<p>Additional to the default chains, it features two extra <a href="hise-modules/sound-generators/list/streamingsampler.html#chains-">Modulation Chains</a>
  to modulate the <b>Sample Start</b>
  of samples and the <b>Group Fade</b>
  between different RRGroups.</p>
@@ -110,7 +110,7 @@
 <p>Starting with HISE 3.5.1 the sampler module has an inbuilt timestretching mode that allows you to independently control pitch and time of your samplemaps.</p>
 <p>It's using the (slightly modified) timestretching algorithm from <a href="https://github.com/Signalsmith-Audio/signalsmith-stretch">signalsmith</a>
  which is a pretty new library with a reasonably good performance / sound quality ratio. It's licensed permissively which means that the library can be embedded into the HISE codebase and used in proprietary projects.</p>
-<p>In order to use the timestretching mode, just switch the mode in the Sampler Settings and adjust the stretch ratio using either the slider on the Sampler Settings (if applicable) or the scripting API call <a href="scripting/scripting-api/sampler#settimestretchratio">Sampler.setTimestretchRatio()</a>
+<p>In order to use the timestretching mode, just switch the mode in the Sampler Settings and adjust the stretch ratio using either the slider on the Sampler Settings (if applicable) or the scripting API call <a href="scripting/scripting-api/sampler/index.html#settimestretchratio">Sampler.setTimestretchRatio()</a>
 . There are four modes which define how this stretch ratio is applied to the samples:</p>
 <table><thead><td><b>Mode </b>
 </td>
@@ -233,7 +233,7 @@ Sampler.setTimestretchOptions(obj);</code></pre>
 <p>The native implementation of this features direct into the streaming engine allows special modes that improve the smoothness of the fade between sustain part & release trail. You can specify the length of the fade, the gamma curve as well as whether it should apply gain matching to reduce the volume bump.</p>
 <h3 id="release-start-options"><b>Release Start Options</b>
 </h3>
-<p>The interface to setting the release start options is the same as the time stretching algorithm: There is no UI, instead you need to query and set a JSON object that define the settings using the <a href="scripting/scripting-api/sampler#setreleasestartoptions">scripting API</a>
+<p>The interface to setting the release start options is the same as the time stretching algorithm: There is no UI, instead you need to query and set a JSON object that define the settings using the <a href="scripting/scripting-api/sampler/index.html#setreleasestartoptions">scripting API</a>
 .</p>
 <table><thead><td><b>Property </b>
 </td>
@@ -304,7 +304,7 @@ Sampler.setTimestretchOptions(obj);</code></pre>
 <p>A freshly mapped SampleMap plays the samples directly from the Samples folder. This is not the most efficient way to play samples, though, especially if you have a lot of mapped samples. </p>
 <p>Here the HLAC (HISE Lossless Audio Codec) comes in to compress all the SampleMaps samples into one big "monolith" chunk. <b>Export to HLAC</b>
  will render your samples in a single compressed file, to have faster access to the audio material. This shrinks the overall filesize + speeds up general file access. The <code>.ch1</code>
- monolith files will end up in the root directory of the <a href="working-with-hise/project-management/projects-folders/samples">Samples Folder</a>
+ monolith files will end up in the root directory of the <a href="working-with-hise/project-management/projects-folders/samples.html">Samples Folder</a>
 .</p>
 <p class="comment">Read this Forum entry of Christoph if you want to understand how it works behind the hood: <a href="https://forum.hise.audio/topic/236/hise-lossless-audio-codec-is-ready">HISE Lossless Audio Codec is ready</a>
  </p>
@@ -328,7 +328,7 @@ Sampler.setTimestretchOptions(obj);</code></pre>
 <p class="comment">If your material is 16bit from the start, you won‘t get any benefits from using Full Dynamics. Just disable it at exporting and the end user will not have this option.</p>
 <h3 id="hise-resources-archive-file"><b>Hise Resources Archive File</b>
 </h3>
-<p>If you want to distribute the samples to the enduser you have the option to compress the monoliths (lossless) further for delivery. <a href="working-with-hise/menu-reference/export#export-samples-for-installer">Export > Export Samples for installer</a>
+<p>If you want to distribute the samples to the enduser you have the option to compress the monoliths (lossless) further for delivery. <a href="working-with-hise/menu-reference/export/index.html#export-samples-for-installer">Export > Export Samples for installer</a>
 .</p>
 <p>The HLAC codec is optimized for maximal decoding performance so a standard lossless algorithm like FLAC can provide you with a 10%-20% better compression ratio. </p>
 <p>The Hise Resource is a file archive that uses the FLAC codec and splits up the files into customizable chunks of 500MB - 1GB. So if you compress a 3.7GB library and choose 1GB file size, you will get these files:</p>

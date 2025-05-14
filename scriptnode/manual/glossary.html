@@ -87,7 +87,7 @@
 : swaps the min and max value for inverting the curve</li>
 </ul>
 <p>You can change the ranges anytime, either by right-clicking on the knob and change its properties in the popup editor, or by using the range editor which gives you a more intuitive approach.</p>
-<p>A description of this user interface can be found <a href="working-with-hise/workspaces/scripting-workspace/scriptnode#node-properties">here</a>
+<p>A description of this user interface can be found <a href="working-with-hise/hise-interface/scriptnode-editor/index.html">here</a>
 </p>
 <h3 id="scaled-vs.-unscaled-parameters"><b>Scaled vs. unscaled parameters</b>
 </h3>
@@ -115,7 +115,7 @@
 <p class="comment">Note that you can toggle the opacity of the cables. This helps you reduce the visual clutter during development.</p>
 <h2 id="property"><b>Property</b>
 </h2>
-<p>A property is a more "static" attribute of a node - it can't be controlled on audio rate and rather defines the behaviour of the node - eg. whether the <a href="scriptnode/list/control/smoothed_parameter">smoothed_parameter</a>
+<p>A property is a more "static" attribute of a node - it can't be controlled on audio rate and rather defines the behaviour of the node - eg. whether the <a href="scriptnode/list/control/smoothed_parameter.html">smoothed_parameter</a>
  node should use a linear ramp or an exponential curve for the smoothing algorithm.</p>
 <p>These properties are usually selected using a drop down combobox selector. If you then compile the DSP network, it will hardcode this value into the C++ class which allows a bit more optimization.</p>
 <h2 id="polyphony"><b>Polyphony</b>
@@ -125,14 +125,14 @@
  in its header. This is a quick way to see which nodes have a polyphonic state.</p>
 <h2 id="voiceresetter"><b>VoiceResetter</b>
 </h2>
-<p>A voice resetter is an interface class for HISE modules that give them the power to keep voices alive and kill them if they have finished playing. Whenever you try to implement a sound generating algorithm in scriptnode to create your own polyphonic synthesiser, you will have to send a message to the HISE voice management system when your voice should stop playing. This task is usually performed by either the <a href="scriptnode/list/envelope/voice_manager">envelope.voice_manager</a>
- node or the <a href="scriptnode/list/envelope/silent_killer">envelope.silent_killer</a>
+<p>A voice resetter is an interface class for HISE modules that give them the power to keep voices alive and kill them if they have finished playing. Whenever you try to implement a sound generating algorithm in scriptnode to create your own polyphonic synthesiser, you will have to send a message to the HISE voice management system when your voice should stop playing. This task is usually performed by either the <a href="scriptnode/list/envelope/voice_manager.html">envelope.voice_manager</a>
+ node or the <a href="scriptnode/list/envelope/silent_killer.html">envelope.silent_killer</a>
  node. Then on the "HISE" side (always think of scriptnode as black box when it comes to communication with the rest of your project), you will need a module that has the ability of killing voices which will pick up the message from these nodes and perform the voice reset so that your voice count doesn't explode.</p>
-<p>There are multiple modules which offer this feature, some just offer that functionality as isolated purpose (the <a href="hise-modules/modulators/envelopes/list/scriptnodevoicekiller">Scriptnode Voice Killer</a>
-) and some modules have this function built in (eg. the <a href="hise-modules/modulators/envelopes/list/scriptenvelopemodulator">Script Envelope Modulator</a>
-) or the <a href="hise-modules/effects/list/polyscriptfx">Polyphonic Script FX</a>
+<p>There are multiple modules which offer this feature, some just offer that functionality as isolated purpose (the <a href="hise-modules/modulators/envelopes/list/scriptnodevoicekiller.html">Scriptnode Voice Killer</a>
+) and some modules have this function built in (eg. the <a href="hise-modules/modulators/envelopes/list/scriptenvelopemodulator.html">Script Envelope Modulator</a>
+) or the <a href="hise-modules/effects/list/polyscriptfx.html">Polyphonic Script FX</a>
 . The patch browser will show a little panic button in the coloured icon for every module that has an active voice-reset functionality:</p>
-<img src="hise-modules/modulators/envelopes/list/scriptnodevoicekiller"></img>
+<img src="hise-modules/modulators/envelopes/list/scriptnodevoicekiller.html"></img>
 <p class="comment">Note that the polyphonic script FX <b>can</b>
  have that functionality enabled (it's tied to the <code>HasTail</code>
  property of the loaded network). If the panic button is greyed out, then it won't act as voice resetter. Note that if the <code>HasTail</code>

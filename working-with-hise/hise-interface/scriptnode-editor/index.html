@@ -43,7 +43,7 @@
 </h1>
 <img src="images/interface/scriptnode-editor.png"></img>
 <p>After adding a <a href="scriptnode/index.html">Scriptnode</a>
- module to the <a href="introduction/hise-interface/left-panel/module-tree">Module Tree</a>
+ module to the <a href="working-with-hise/hise-interface/left-panel/module-tree.html">Module Tree</a>
  you can edit its DSP network the ScriptNode Editor. Click the little <code>Open in..</code>
  icon on the audio module to connect and display it's network in the Scriptnode Editor.<br> </p>
 <h1 id="the-scriptnode-canvas"><b>The Scriptnode canvas</b>
@@ -51,20 +51,20 @@
 <img src="images/interface/scriptnode-canvas.png"></img>
 <p>In the middle of the interface you can see the Scriptnode Canvas. It is a zoomable map of the DSP network tree. You can use [Ctrl + Mousewheel] to zoom in/out, and move the view on the empty sides or with [clicked Mousewheel] anywhere in the map.</p>
 <p>It features: </p>
-<ul><li>the audio modules main container node for adding <a href="introduction/hise-interface/scriptnode-editor#toolbar">Script nodes</a>
+<ul><li>the audio modules main container node for adding <a href="scriptnode/list/index.html">Script nodes</a>
  </li>
 <li>a visual representation of the <b>audio signal</b>
  and the channel amount (the cables underneath the nodes)</li>
 <li>a visual representation of the <b>modulation & parameter</b>
  connections (the cables that are hanging over the nodes)</li>
-<li>a <a href="scriptnode/list">toolbar</a>
+<li>a <a href="working-with-hise/hise-interface/scriptnode-editor/index.html#toolbar">toolbar</a>
  with useful tools that help in designing DSP networks</li>
 </ul>
-<p>You can add new nodes by clicking inside the container node and selecting a new node from the <a href="introduction/hise-interface/scriptnode-editor#add-node-popup">Add node popup</a>
-. You can drag them around, mute them, fold them with [double-click], change their individual parameter values, unhide their parameters (in case of containers), and delete them with the little X or [DEL]. For a complete reference and description of each node, please take a look at the <a href="scriptnode/list">Scriptnode Node List</a>
+<p>You can add new nodes by clicking inside the container node and selecting a new node from the <a href="working-with-hise/hise-interface/scriptnode-editor/index.html#add-node-popup">Add node popup</a>
+. You can drag them around, mute them, fold them with [double-click], change their individual parameter values, unhide their parameters (in case of containers), and delete them with the little X or [DEL]. For a complete reference and description of each node, please take a look at the <a href="scriptnode/list/index.html">Scriptnode Node List</a>
 .</p>
-<p>If you want to take a look at some examples check out the <a href="tutorials/scriptnode">Scriptnode Snippets</a>
- in the <a href="tutorials#the-snippet-browser">Snippet Browser</a>
+<p>If you want to take a look at some examples check out the <a href="tutorials/scriptnode/index.html">Scriptnode Snippets</a>
+ in the <a href="tutorials/index.html#the-snippet-browser">Snippet Browser</a>
 .</p>
 <h2 id="add-node-popup"><b>Add Node Popup</b>
 </h2>
@@ -135,7 +135,7 @@
 <p>A list of all nodes that are currently used in the network. If you click on a node, it will focus the selection (you can select multiple nodes by holding down the command modifier). This can be an effective way of navigating big networks where you need to focus on certain parts.</p>
 <p><b>Unused Nodes</b>
 </p>
-<p>This is a list of nodes that have been created but removed from the current processing chain. If you delete nodes, they will be kept around and can be easily reinserted later. You can delete the nodes permanently in the <a href="introduction/hise-interface/scriptnode-editor#add-node-popup">Add node popup</a>
+<p>This is a list of nodes that have been created but removed from the current processing chain. If you delete nodes, they will be kept around and can be easily reinserted later. You can delete the nodes permanently in the <a href="working-with-hise/hise-interface/scriptnode-editor/index.html#add-node-popup">Add node popup</a>
 </p>
 <h1 id="node-properties"><b>Node Properties</b>
 </h1>
@@ -172,7 +172,7 @@
 <p>This range will be used to convert incoming parameter values (cables). An example: If you have a parameter that is mapped from 2 to 4 sent in to a normalised value of <code>0.5</code>
  (either through modulation or another parameter), it will calculate the actual value using that range (so in this case 3). Changing the range of the knob will also change this, so if you change the maximum to 6, it will then set the value to 3.</p>
 <p class="comment">Normalised modulation is just the default mode of operation in scriptnode, but there is also another mode which bypasses the target range and sends the raw value. This is called <code>unscaled</code>
- modulation. If you want to read more about this, take a look at the <a href="scriptnode/list/control">control</a>
+ modulation. If you want to read more about this, take a look at the <a href="scriptnode/list/control/index.html">control</a>
  factory.</p>
 <p>Right clicking on a range editor will open a context menu with options to:</p>
 <table><thead><td><b>Item </b>
@@ -205,13 +205,13 @@
 <h1 id="script-driven-nodes"><b>Script driven nodes</b>
 </h1>
 <p>Scriptnode features nodes that evaluate a script to produce or manipulate audio: After creating a new file, you can click on the little <code>Open in..</code>
- symbol on the nodes surface to open its script in the <a href="introduction/hise-interface/code-editor">Code Editor</a>
+ symbol on the nodes surface to open its script in the <a href="working-with-hise/hise-interface/code-editor/index.html">Code Editor</a>
 .</p>
-<ul><li>The <a href="scriptnode/list/core/snex_node">Snex node</a>
- in which you can use HISEs own jit compilable <a href="scriptnode/manual/snex">SNEX</a>
+<ul><li>The <a href="scriptnode/list/core/snex_node.html">Snex node</a>
+ in which you can use HISEs own jit compilable <a href="scriptnode/manual/snex.html">SNEX</a>
  language. </li>
 </ul>
-<ul><li>The <a href="scriptnode/list/core/faust">Faust node</a>
+<ul><li>The <a href="scriptnode/list/core/faust.html">Faust node</a>
  in which you can use the <a href="https://faust.grame.fr/">Faust</a>
 (Functional Audio Stream) language and process it in HISE.</li>
 </ul>

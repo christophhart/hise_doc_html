@@ -118,14 +118,14 @@
 </ol>
 <p>If you want to use that feature, you can set a Javascript function that will be called whenever one of these events happen.</p>
 <p class="comment">The concept of the active expansion is also important during development: for example the list of available samplemaps in the HISE sampler module is using the active expansion. You can change the active expansion in HISE using the <a href="ui-components/floating-tiles/hise/expansioneditbar.html">ExpansionEditBar</a>
-, which is part of the <a href="working-with-hise/workspaces/sampler-workspace">Sampler Workspace</a>
+, which is part of the <a href="working-with-hise/hise-interface/sampler-workspace/index.html">Sampler Workspace</a>
 </p>
 <h3 id="samples"><b>Samples</b>
 </h3>
 <p>If you encode a samplemap to an HLAC monolith, the samples will not be loaded using the references in the map, but by looking up the samplemap ID and trying to find the matching .chx file. If you load a samplemap from an expansion you can use both the expansion's subfolder as well as the main sample folder for storing the HLAC monolith files, however it's highly recommended to put them into the main sample folder so that the user can choose the location.</p>
 <h3 id="userpresets"><b>UserPresets</b>
 </h3>
-<p>Handling user presets that are included in expansions is pretty easy, but requires some adjustment. By default, the <a href="ui-components/floating-tiles/plugin/presetbrowser">Preset Browser</a>
+<p>Handling user presets that are included in expansions is pretty easy, but requires some adjustment. By default, the <a href="ui-components/floating-tiles/plugin/presetbrowser.html">Preset Browser</a>
  is using the main user preset directory to find and load display files (so in the end it's just a "glorified" file browser).<br>If you want to browse user presets in expansions, you will need to set the <code>showExpansions</code>
  property to true. In this case, it will add another column to the left that will select the expansion. If you click on a selection, the preset browser will switch to the user preset folder of the expansion. If you want to go back to the <b>Factory Content</b>
  user presets, you have to click on the expansion again to deselect it.</p>
