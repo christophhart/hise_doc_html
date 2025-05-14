@@ -4626,6 +4626,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "AudioFile.loadBuffer()",
+    "url": "scripting/scripting-api/audiofile/index.html#loadbuffer",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "AudioFile.loadFile()",
     "url": "scripting/scripting-api/audiofile/index.html#loadfile",
     "weight": 60,
@@ -5100,6 +5106,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "Buffer.getNextZeroCrossing()",
+    "url": "scripting/scripting-api/buffer/index.html#getnextzerocrossing",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "Buffer.getPeakRange()",
     "url": "scripting/scripting-api/buffer/index.html#getpeakrange",
     "weight": 60,
@@ -5112,6 +5124,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "Buffer.getSlice()",
+    "url": "scripting/scripting-api/buffer/index.html#getslice",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "Buffer.indexOfPeak()",
     "url": "scripting/scripting-api/buffer/index.html#indexofpeak",
     "weight": 60,
@@ -5120,6 +5138,12 @@
   {
     "key": "Buffer.normalise()",
     "url": "scripting/scripting-api/buffer/index.html#normalise",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "Buffer.resample()",
+    "url": "scripting/scripting-api/buffer/index.html#resample",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -12980,12 +13004,6 @@
   {
     "key": "ScriptPanel.addToMacroControl()",
     "url": "scripting/scripting-api/scriptpanel/index.html#addtomacrocontrol",
-    "weight": 60,
-    "color": "#D557D9"
-  },
-  {
-    "key": "ScriptPanel.changed()",
-    "url": "scripting/scripting-api/scriptpanel/index.html#changed",
     "weight": 60,
     "color": "#D557D9"
   },

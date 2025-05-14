@@ -139,6 +139,200 @@
 <td>If VectorGraphics are activated you can change this value for a flat keyboard </td>
 </tr>
 </table>
+<h2 id="css-styling"><b>CSS Styling</b>
+</h2>
+<p>The MIDI keyboard can also be styled using the new CSS renderer in HISE. You can use animations, shadows & all nice CSS things to make a pretty keyboard. If you want to do so:</p>
+<ol><li>Make sure the <code>CustomGraphics</code>
+ property is set to false.</li>
+<li>Disable <code>DefaultAppearance</code>
+ to be able to resize the keys.</li>
+<li>Setup the <code>KeyWidth</code>
+ and <code>BlackKeyRatio</code>
+ properties to match your desired proportions</li>
+<li>Assign a CSS LookAndFeel to this floating tile and define the style.</li>
+</ol>
+<p>This is an example JSON property set which looks good with CSS.</p>
+<pre><code class="language-javascript line-numbers">{
+  "KeyWidth": 18.0,
+  "DisplayOctaveNumber": false,
+  "LowKey": 24,
+  "HiKey": 127,
+  "CustomGraphics": false,
+  "DefaultAppearance": false,
+  "BlackKeyRatio": 0.6,
+  "ToggleMode": false,
+  "MidiChannel": 1,
+  "UseVectorGraphics": true,
+  "UseFlatStyle": false,
+  "MPEKeyboard": false,
+  "MPEStartChannel": 2,
+  "MPEEndChannel": 16
+}</code></pre>
+<p class="comment">Note that the CSS renderer will apply an additional margin of 10px to the black key area. This is so that you can render shadows properly that would otherwise be truncated by the bounding box.</p>
+<h3 id="class-selectors"><b>Class Selectors</b>
+</h3>
+<p>In CSS, the following class selectors are available:</p>
+<ul><li><code>.keyboard</code>
+ - use this to draw the background behind the keys.</li>
+<li><code>.whitekey</code>
+ - this is used to render every white key.</li>
+<li><code>.blackkey</code>
+ - this is used to render every black key.</li>
+</ul>
+<h3 id="pseudo-elements-&-states"><b>Pseudo Elements & States</b>
+</h3>
+<p>You can use the <code>::before</code>
+ and <code>::after</code>
+ pseudo elements for additional customizations for each key. It also supports these pseudo states:</p>
+<ul><li><code>:hover</code>
+ - this is used when the user hovers over the key</li>
+<li><code>:active</code>
+ - this is used when a key is pressed down</li>
+</ul>
+<h3 id="variables"><b>Variables</b>
+</h3>
+<p>There are a few additional variables that you can use in the CSS stylesheet:</p>
+<ul><li><code>keyColour</code>
+ - this will be either <code>transparent</code>
+ or the colour defined with <a href="scripting/scripting-api/engine/index.html#setkeycolour">Engine.setKeyColour()</a>
+ for each key.</li>
+<li><code>noteName</code>
+ - this will be a non-empty string containing the label for each C note (eg. "C2").</li>
+</ul>
+<h3 id="css-example"><b>CSS Example</b>
+</h3>
+<img src="images/custom/csskeyboard.png"></img>
+<p>This is an example stylesheet for a noice keyboard that you can use as starting point for your custom CSS. Make sure you use the JSON property set from above to make it look as shown in the screenshot - all dimension properties should be relative so this should scale OKish with different proportions, but you might adapt it a bit.</p>
+<pre><code class="language-javascript line-numbers">/** CSS Stylesheet for the MIDI keyboard. */
+
+/** Render the background. */
+.keyboard
+{
+	background: red;
+}
+
+/** The class for the white key. */
+.whitekey
+{
+	/** noteName will contain the C name if applicable. */
+	content: var(--noteName);
+	background: #eef;
+	margin: 5% 5%;
+	margin-bottom: 10%;
+	border-radius: 2px;
+	transition: margin 0.1s;
+	transition: border-color 0.1s;
+	box-shadow: none;
+	vertical-align: bottom;
+	font-size: 10px;
+	padding-bottom: 3px;
+	color: #666;
+	border: 1px solid rgba(255,255,255,0.7);
+}
+
+/** This renders the key color overlay. */
+.whitekey::after
+{
+	content: '';
+	background-color: color-mix(in rgb, var(--keyColour) 60%, transparent);
+	border-radius: 2px;
+}
+
+/** The hover state for the white key. */
+.whitekey:hover
+{
+	background: white;
+}
+
+/** This renders the bottom element of the white key. */
+.whitekey::before
+{
+	content: '';
+	background: linear-gradient(to bottom, #333, #000);
+	position: absolute;
+	bottom: 0px;
+	height: 8%;
+	margin: 5%;
+	border-radius: 15%;
+	transition: bottom 0.05s;
+}
+
+/** The pressed state. */
+.whitekey:active
+{
+	margin-bottom: 5%;
+	background-color: linear-gradient(to bottom, #eef, #dde);
+	box-shadow: inset 0px 2px 10px rgba(0, 0, 0, 0.3);
+	border-color: transparent;
+}
+
+/** The first key. Could be used for additional shadows, but doesn't work. */
+.whitekey:first-child
+{
+	background: red !important;
+}
+
+/** When pressed, the side element should be pushed down too. */
+.whitekey::before:active
+{
+	bottom: -5%;
+	background-color: #111;
+}
+
+/** Now the black keys. */
+.blackkey
+{
+	background: #222;
+	border-radius: 5%;
+	
+	border-width: 10px 4px;
+	border-color: red;
+	border-style: solid;
+	
+	transition: margin-top 0.1s;
+	margin: 10px;
+	box-shadow: 0px 3% 10% rgba(0, 0, 0, 0.5);
+}
+
+.blackkey:active
+{
+	margin-top: 12px;
+}
+
+/** This renders the "top surface" of the black key. */
+.blackkey::before
+{
+	content: '';
+	margin: 20%;
+	/** Move it up to create a pseudo 3D effect. */
+	margin-bottom: 20%;
+	margin-top: 3%;
+	transition: margin-bottom 0.1s;
+	transition: background-color 0.1s;
+	background: linear-gradient(to top, #363636, #282828);
+	border-radius: 5%;
+}
+
+
+/** When pushed down we brighten it up and remove the bottom margin
+    Note that this isn't 100% realistic but it enhances the visibility
+    of the pressed black state. 
+*/
+.blackkey::before:active
+{
+	background: linear-gradient(to top, #404040, #363636);
+	margin-bottom: 6px;
+	
+}
+
+/** We'll use the after element for the colour overlay again. */
+.blackkey::after
+{
+	content: '';
+	margin: 1px;
+	background-color: color-mix(in rgb, var(--keyColour) 20%, transparent);
+	border-radius: 2px;
+}</code></pre>
 <div class="content-footer"><span class="content-footer-left"><a href="https://github.com/christophhart/hise_documentation/edit/master/ui-components/floating-tiles/plugin/keyboard.md">Edit on GitHub</a>
 </span>
 

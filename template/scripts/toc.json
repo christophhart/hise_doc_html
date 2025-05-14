@@ -5184,6 +5184,12 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scripting/scripting-api/audiofile/index.html#loadbuffer",
+                  "Title": "loadBuffer",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/audiofile/index.html#loadfile",
                   "Title": "loadFile",
                   "Colour": "#D557D9",
@@ -5693,6 +5699,12 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scripting/scripting-api/buffer/index.html#getnextzerocrossing",
+                  "Title": "getNextZeroCrossing",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/buffer/index.html#getpeakrange",
                   "Title": "getPeakRange",
                   "Colour": "#D557D9",
@@ -5705,6 +5717,12 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scripting/scripting-api/buffer/index.html#getslice",
+                  "Title": "getSlice",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/buffer/index.html#indexofpeak",
                   "Title": "indexOfPeak",
                   "Colour": "#D557D9",
@@ -5713,6 +5731,12 @@ var rootDb = {
                 {
                   "URL": "scripting/scripting-api/buffer/index.html#normalise",
                   "Title": "normalise",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/buffer/index.html#resample",
+                  "Title": "resample",
                   "Colour": "#D557D9",
                   "Children": []
                 },
@@ -13978,12 +14002,6 @@ var rootDb = {
                 {
                   "URL": "scripting/scripting-api/scriptpanel/index.html#addtomacrocontrol",
                   "Title": "addToMacroControl",
-                  "Colour": "#D557D9",
-                  "Children": []
-                },
-                {
-                  "URL": "scripting/scripting-api/scriptpanel/index.html#changed",
-                  "Title": "changed",
                   "Colour": "#D557D9",
                   "Children": []
                 },

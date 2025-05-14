@@ -164,6 +164,12 @@ Console.print(b.getMagnitude(2, 2)); // 3</code></pre>
 </p>
 <pre><code class="language-javascript line-numbers">Buffer.getMagnitude(int startSample, int numSamples)</code></pre>
 <p><br><br></p>
+<h2 id="getnextzerocrossing"><b>getNextZeroCrossing</b>
+</h2>
+<p class="comment">Returns the next zero crossing at the position. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/buffer/getnextzerocrossing.md">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">Buffer.getNextZeroCrossing(int index)</code></pre>
+<p><br><br></p>
 <h2 id="getpeakrange"><b>getPeakRange</b>
 </h2>
 <p class="comment">Returns an array with the min and max value in the given range. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/buffer/getpeakrange.md">Edit on GitHub</a>
@@ -176,6 +182,12 @@ Console.print(b.getMagnitude(2, 2)); // 3</code></pre>
 </p>
 <pre><code class="language-javascript line-numbers">Buffer.getRMSLevel(int startSample, int numSamples)</code></pre>
 <p><br><br></p>
+<h2 id="getslice"><b>getSlice</b>
+</h2>
+<p class="comment">Returns a new buffer that contains a reference to a slice of this buffer. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/buffer/getslice.md">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">Buffer.getSlice(int offsetInBuffer, int numSamples)</code></pre>
+<p><br><br></p>
 <h2 id="indexofpeak"><b>indexOfPeak</b>
 </h2>
 <p class="comment">Returns the sample index with the highest peak. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/buffer/indexofpeak.md">Edit on GitHub</a>
@@ -187,6 +199,12 @@ Console.print(b.getMagnitude(2, 2)); // 3</code></pre>
 <p class="comment">Normalises the buffer to the given decibel value. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/buffer/normalise.md">Edit on GitHub</a>
 </p>
 <pre><code class="language-javascript line-numbers">Buffer.normalise(float gainInDecibels)</code></pre>
+<p><br><br></p>
+<h2 id="resample"><b>resample</b>
+</h2>
+<p class="comment">Returns a resampled buffer using the given resample ratio and interpolation type. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/buffer/resample.md">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">Buffer.resample(double ratio, String interpolationType, bool wrapAround)</code></pre>
 <p><br><br></p>
 <h2 id="tobase64"><b>toBase64</b>
 </h2>
