@@ -42,6 +42,8 @@
 </h1>
 <p>Create a reference to a <a href="ui-components/plugin-components/panel.html">Panel</a>
  UI component and modify its values.</p>
+<p>See <a href="scripting/scripting-in-hise/scriptpanel.html">Script Panel</a>
+ for examples and common usecases.</p>
 <pre><code class="language-javascript line-numbers">const var Panel1 = Content.getComponent("Panel1");</code></pre>
 <p><br></p>
 <h1 id="class-methods
@@ -59,7 +61,7 @@
 </ol>
 <p>The main use case for this method is to create dynamic components which have a varying amount of sub-elements: tables with modulation connections, effect slots, and basically anything that has a dynamic amount that can be changed in your script.</p>
 <p class="comment">Be aware that these panels are not accessible to the interface designer, so you have to set every property using scripting API calls.</p>
-<p>You can call this method again on the new panel and create a nested architecture of child panels. In order to delete the panel (and any child panel), use the <a href="scripting/scripting-api/scriptpanel/index.html#removefromparent">removeFromParent()</a>
+<p>You can call this method again on the new panel and create a nested architecture of child panels. In order to delete the panel (and any child panel), use the <a href="scripting/scripting-api/scriptpanel#removefromparent">removeFromParent()</a>
  method. </p>
 <p>For an example use case, take a look at the <a href="tutorials/recipes/ui/scriptpanel#horizontal-list-example">Horizontal List Recipe</a>
 <br></p>
@@ -737,116 +739,155 @@ ScriptPanel1.setMouseCursor("PointingHandCursor", Colours.white, [0, 0]);</code>
 <p><br>setPaintRoutine() automatically passes a <a href="https://docs.hise.dev/scripting/scripting-api/graphics/index.html">graphics API</a>
  object to the provided function, so it can be accessed from inside the paint routine. Conventionally, this parameter is named <code>g</code>
 . </p>
-<h2 id="examples"><b>Examples</b>
-</h2>
-<p>Setting a paint routine for a single panel:<code>const myPanel = Content.addPanel("myPanel",0,0);myPanel.setPaintRoutine(function(g){<br>g.fillRect(this.getLocalBounds(0));});</code>
-</p>
-<p>Using an inlined function to paint multiple panels:<code>const panel1 = Content.addPanel("panel1",0,0);const panel2 = Content.addPanel("panel2",0,60);</code>
-</p>
-<p>inline function paintPanels(g){<br> g.fillRect(this.getLocalBounds(0));}</p>
-<p>panel1.setPaintRoutine(paintPanels);panel2.setPaintRoutine(paintPanels);</p>
-<p>Using a regular function to paint multiple panels:<code>const panel1 = Content.addPanel("panel1",0,0);const panel2 = Content.addPanel("panel2",0,60);</code>
-</p>
-<p>function paintPanels(g) //The function declaration must come before setPaintRoutine().{<br>g.fillRect(this.getLocalBounds(0));}</p>
-<p>panel1.setPaintRoutine(paintPanels);panel2.setPaintRoutine(paintPanels);<br></p>
+<h3 id="examples"><b>Examples</b>
+</h3>
+<p>Setting a paint routine for a single panel:</p>
+<pre><code class="language-javascript line-numbers">const myPanel = Content.addPanel("myPanel",0,0);
+myPanel.setPaintRoutine(function(g)
+{
+  g.fillRect(this.getLocalBounds(0));
+});</code></pre>
+<p>Using an inlined function to paint multiple panels:</p>
+<pre><code class="language-javascript line-numbers">const panel1 = Content.addPanel("panel1",0,0);
+const panel2 = Content.addPanel("panel2",0,60);
+
+inline function paintPanels(g)
+{
+   g.fillRect(this.getLocalBounds(0));
+}
+
+panel1.setPaintRoutine(paintPanels);
+panel2.setPaintRoutine(paintPanels);</code></pre>
+<p>Using a regular function to paint multiple panels:</p>
+<pre><code class="language-javascript line-numbers">const panel1 = Content.addPanel("panel1",0,0);
+const panel2 = Content.addPanel("panel2",0,60);
+
+function paintPanels(g) //The function declaration must come before setPaintRoutine().
+{
+  g.fillRect(this.getLocalBounds(0));
+}
+
+panel1.setPaintRoutine(paintPanels);
+panel2.setPaintRoutine(paintPanels);</code></pre>
+<p><br></p>
 <h2 id="setpanelvaluewithundo"><b>setPanelValueWithUndo</b>
 </h2>
-<p class="comment">Sets a new value, stores this action in the undo manager and calls the control callbacks. [Edit on GitHub](https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptpanel/setpanelvaluewithundo.md)</p>
+<p class="comment">Sets a new value, stores this action in the undo manager and calls the control callbacks. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptpanel/setpanelvaluewithundo.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">ScriptPanel.setPanelValueWithUndo(var oldValue, var newValue, var actionName)</code></pre>
 <p><br><br></p>
 <h2 id="setpopupdata"><b>setPopupData</b>
 </h2>
-<p class="comment">Sets a FloatingTile that is used as popup. The position is a array [x , y, width, height] that is used for the popup dimension [Edit on GitHub](https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptpanel/setpopupdata.md)</p>
+<p class="comment">Sets a FloatingTile that is used as popup. The position is a array [x , y, width, height] that is used for the popup dimension <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptpanel/setpopupdata.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">ScriptPanel.setPopupData(var jsonData, var position)</code></pre>
 <p><br><br></p>
 <h2 id="setposition"><b>setPosition</b>
 </h2>
-<p class="comment">Sets the position of the component. [Edit on GitHub](https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptpanel/setposition.md)</p>
+<p class="comment">Sets the position of the component. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptpanel/setposition.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">ScriptPanel.setPosition(int x, int y, int w, int h)</code></pre>
 <p><br><br></p>
 <h2 id="setpropertiesfromjson"><b>setPropertiesFromJSON</b>
 </h2>
-<p class="comment">Restores all properties from a JSON object. [Edit on GitHub](https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptpanel/setpropertiesfromjson.md)</p>
+<p class="comment">Restores all properties from a JSON object. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptpanel/setpropertiesfromjson.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">ScriptPanel.setPropertiesFromJSON( var jsonData)</code></pre>
 <p><br><br></p>
 <h2 id="setstylesheetclass"><b>setStyleSheetClass</b>
 </h2>
-<p class="comment">Sets the given class selectors for the component stylesheet. [Edit on GitHub](https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptpanel/setstylesheetclass.md)</p>
+<p class="comment">Sets the given class selectors for the component stylesheet. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptpanel/setstylesheetclass.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">ScriptPanel.setStyleSheetClass( String classIds)</code></pre>
 <p><br><br></p>
 <h2 id="setstylesheetproperty"><b>setStyleSheetProperty</b>
 </h2>
-<p class="comment">Sets a variable for this component that can be queried from a style sheet. [Edit on GitHub](https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptpanel/setstylesheetproperty.md)</p>
+<p class="comment">Sets a variable for this component that can be queried from a style sheet. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptpanel/setstylesheetproperty.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">ScriptPanel.setStyleSheetProperty( String variableId,  var value,  String type)</code></pre>
 <p><br><br></p>
 <h2 id="setstylesheetpseudostate"><b>setStyleSheetPseudoState</b>
 </h2>
-<p class="comment">Programatically sets a pseudo state (:hover, :active, :checked, :focus, :disabled) that will be used by the CSS renderer. [Edit on GitHub](https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptpanel/setstylesheetpseudostate.md)</p>
+<p class="comment">Programatically sets a pseudo state (:hover, :active, :checked, :focus, :disabled) that will be used by the CSS renderer. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptpanel/setstylesheetpseudostate.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">ScriptPanel.setStyleSheetPseudoState( String pseudoState)</code></pre>
 <p><br><br></p>
 <h2 id="settimercallback"><b>setTimerCallback</b>
 </h2>
-<p class="comment">Sets a timer callback. [Edit on GitHub](https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptpanel/settimercallback.md)</p>
+<p class="comment">Sets a timer callback. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptpanel/settimercallback.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">ScriptPanel.setTimerCallback(var timerCallback)</code></pre>
 <p><br><br></p>
 <h2 id="settooltip"><b>setTooltip</b>
 </h2>
-<p class="comment">Shows a informative text on mouse hover. [Edit on GitHub](https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptpanel/settooltip.md)</p>
+<p class="comment">Shows a informative text on mouse hover. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptpanel/settooltip.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">ScriptPanel.setTooltip( String tooltip)</code></pre>
 <p><br><br></p>
 <h2 id="setvalue"><b>setValue</b>
 </h2>
-<p class="comment">Sets the current value [Edit on GitHub](https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptpanel/setvalue.md)</p>
+<p class="comment">Sets the current value <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptpanel/setvalue.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">ScriptPanel.setValue(var newValue)</code></pre>
 <p><br><br></p>
 <h2 id="setvaluenormalized"><b>setValueNormalized</b>
 </h2>
-<p class="comment">Sets the current value from a range 0.0 ... 1.0. [Edit on GitHub](https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptpanel/setvaluenormalized.md)</p>
+<p class="comment">Sets the current value from a range 0.0 ... 1.0. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptpanel/setvaluenormalized.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">ScriptPanel.setValueNormalized(double normalizedValue)</code></pre>
 <p><br><br></p>
 <h2 id="setvaluewithundo"><b>setValueWithUndo</b>
 </h2>
-<p class="comment">Sets the current value and adds it to the undo list. Don't call this from onControl! [Edit on GitHub](https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptpanel/setvaluewithundo.md)</p>
+<p class="comment">Sets the current value and adds it to the undo list. Don't call this from onControl! <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptpanel/setvaluewithundo.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">ScriptPanel.setValueWithUndo(var newValue)</code></pre>
 <p><br><br></p>
 <h2 id="setzlevel"><b>setZLevel</b>
 </h2>
-<p class="comment">Changes the depth hierarchy (z-axis) of sibling components (Back, Default, Front or AlwaysOnTop). [Edit on GitHub](https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptpanel/setzlevel.md)</p>
+<p class="comment">Changes the depth hierarchy (z-axis) of sibling components (Back, Default, Front or AlwaysOnTop). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptpanel/setzlevel.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">ScriptPanel.setZLevel(String zLevel)</code></pre>
 <p><br><br></p>
 <h2 id="showaspopup"><b>showAsPopup</b>
 </h2>
-<p class="comment">Opens the panel as popup. [Edit on GitHub](https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptpanel/showaspopup.md)</p>
+<p class="comment">Opens the panel as popup. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptpanel/showaspopup.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">ScriptPanel.showAsPopup(bool closeOtherPopups)</code></pre>
 <p><br><br></p>
 <h2 id="showcontrol"><b>showControl</b>
 </h2>
-<p class="comment">Hides / Shows the control. [Edit on GitHub](https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptpanel/showcontrol.md)</p>
+<p class="comment">Hides / Shows the control. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptpanel/showcontrol.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">ScriptPanel.showControl(bool shouldBeVisible)</code></pre>
 <p><br><br></p>
 <h2 id="startexternalfiledrag"><b>startExternalFileDrag</b>
 </h2>
-<p class="comment">Starts dragging an external file (or a number of files). [Edit on GitHub](https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptpanel/startexternalfiledrag.md)</p>
+<p class="comment">Starts dragging an external file (or a number of files). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptpanel/startexternalfiledrag.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">ScriptPanel.startExternalFileDrag(var fileOrFilesToDrag, bool moveOriginalFiles, var finishCallback)</code></pre>
 <p><br><br></p>
 <h2 id="startinternaldrag"><b>startInternalDrag</b>
 </h2>
-<p class="comment">Starts dragging something inside the UI. [Edit on GitHub](https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptpanel/startinternaldrag.md)</p>
+<p class="comment">Starts dragging something inside the UI. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptpanel/startinternaldrag.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">ScriptPanel.startInternalDrag(var dragData)</code></pre>
 <p><br><br></p>
 <h2 id="unloadallimages"><b>unloadAllImages</b>
 </h2>
-<p class="comment">Unload all images from the panel. [Edit on GitHub](https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptpanel/unloadallimages.md)</p>
+<p class="comment">Unload all images from the panel. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptpanel/unloadallimages.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">ScriptPanel.unloadAllImages()</code></pre>
 <p><br><br></p>
 <h2 id="updatecontentpropertyinternal"><b>updateContentPropertyInternal</b>
 </h2>
-<p class="comment">This updates the internal content data object from the script processor. [Edit on GitHub](https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptpanel/updatecontentpropertyinternal.md)</p>
+<p class="comment">This updates the internal content data object from the script processor. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptpanel/updatecontentpropertyinternal.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">ScriptPanel.updateContentPropertyInternal(int propertyId,  var newValue)</code></pre>
 <p><br><br></p>
 <h2 id="updatevaluefromprocessorconnection"><b>updateValueFromProcessorConnection</b>
 </h2>
-<p class="comment">Updates the value from the processor connection. Call this method whenever the module state has changed and you want to refresh the knob value to show the current state. [Edit on GitHub](https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptpanel/updatevaluefromprocessorconnection.md)</p>
+<p class="comment">Updates the value from the processor connection. Call this method whenever the module state has changed and you want to refresh the knob value to show the current state. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptpanel/updatevaluefromprocessorconnection.md">Edit on GitHub</a>
+</p>
 <pre><code class="language-javascript line-numbers">ScriptPanel.updateValueFromProcessorConnection()</code></pre>
 <p><br><br></p>
 <div class="content-footer"><span class="content-footer-left"><a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptpanel/Readme.md">Edit on GitHub</a>

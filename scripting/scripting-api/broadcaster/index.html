@@ -261,7 +261,11 @@ bc.sendMessage([90], false);</code></pre>
  and contains a list of strings describing the arguments of this broadcaster. </td>
 </tr>
 </table>
-<p>For an example usage take a look at the various API calls.<br></p>
+<p>For an example usage take a look at the various API calls.</p>
+<h2 id="queuing"><b>Queuing</b>
+</h2>
+<p>By default, messages from broadcasters are not queued; if they take too long, they are cancelled. To engage a system-wide queue (ensuring all messages are delivered), call <code>setEnableQueue()</code>
+.<br></p>
 <h1 id="class-methods
 "><b>Class methods<br></b>
 </h1>

@@ -731,9 +731,9 @@ modeSelector.setControlCallback(modeCallback);</code></pre>
 <p><br><br></p>
 <h2 id="iscontrollerusedbyautomation"><b>isControllerUsedByAutomation</b>
 </h2>
-<p class="comment">Checks if the given CC number is used for parameter automation and returns the index of the control. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/engine/iscontrollerusedbyautomation.md">Edit on GitHub</a>
+<p class="comment">Checks if the given CC number (single number) or channel / CC number (JS Array: [channel, CC]) is used for parameter automation and returns the index of the control. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/engine/iscontrollerusedbyautomation.md">Edit on GitHub</a>
 </p>
-<pre><code class="language-javascript line-numbers">Engine.isControllerUsedByAutomation(int controllerNumber)</code></pre>
+<pre><code class="language-javascript line-numbers">Engine.isControllerUsedByAutomation(var controllerNumber)</code></pre>
 <p><br><br></p>
 <h2 id="ishise"><b>isHISE</b>
 </h2>

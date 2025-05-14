@@ -43,7 +43,7 @@
 <p class="comment"><code>jdsp.jcompressor</code>
 </p>
 <img src="images/sn_screen_jdsp__jcompressor.png"></img>
-<p>Please enter a brief description.</p>
+<p>A wrapper around a standard compressor algorithm from the JUCE codebase</p>
 <h2 id="parameters"><b>Parameters</b>
 </h2>
 <table><thead><td><b>ID </b>
@@ -58,25 +58,27 @@
 <tr><td>Treshold </td>
 <td>-100.00 - 0.00 </td>
 <td>0.00 </td>
-<td>no description. </td>
+<td>Sets the threshold in dB of the compressor. </td>
 </tr>
 <tr><td>Ratio </td>
 <td>1.00 - 32.00 </td>
 <td>1.00 </td>
-<td>no description. </td>
+<td>Sets the ratio of the compressor (must be higher or equal to 1). </td>
 </tr>
 <tr><td>Attack </td>
 <td>0.00 - 300.00 </td>
 <td>1.00 </td>
-<td>no description. </td>
+<td>Sets the attack time in milliseconds of the compressor. </td>
 </tr>
 <tr><td>Release </td>
 <td>0.00 - 300.00 </td>
 <td>100.00 </td>
-<td>no description. </td>
+<td>Sets the release time in milliseconds of the compressor. </td>
 </tr>
 </table>
-<p><br></p>
+<p><br>This node wraps the <a href="https://docs.juce.com/master/classdsp_1_1Compressor.html">compressor</a>
+ class from the JUCE codebase and provides a very simple and lightweight compressor algorithm. It probably won't hold up as a dedicated effect (like most of the FX algorithms in HISE) but can be used for quickly changing the dynamics of a signal.</p>
+<p>The modulation output will send the gain reduction as a signal that can be used to visualize the compressors behaviour on your UI.</p>
 <div class="content-footer"><span class="content-footer-left"><a href="https://github.com/christophhart/hise_documentation/edit/master/scriptnode/list/jdsp/jcompressor.md">Edit on GitHub</a>
 </span>
 

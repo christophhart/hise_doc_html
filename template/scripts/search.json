@@ -1080,6 +1080,12 @@
     "color": "#DEB887"
   },
   {
+    "key": "Tools: Check latency of signal chain",
+    "url": "working-with-hise/menu-reference/tools/index.html#check-latency-of-signal-chain",
+    "weight": 60,
+    "color": "#DEB887"
+  },
+  {
     "key": "Tools: Create RSA Key pair",
     "url": "working-with-hise/menu-reference/tools/index.html#create-rsa-key-pair",
     "weight": 60,
@@ -17742,6 +17748,12 @@
     "color": "#BD6F50"
   },
   {
+    "key": "Glossary: Complex Group management",
+    "url": "glossary/complex-group-management.html",
+    "weight": 80,
+    "color": "#BD6F50"
+  },
+  {
     "key": "Glossary: Crash reporting",
     "url": "glossary/crash-reporting.html",
     "weight": 80,
@@ -17858,6 +17870,30 @@
   {
     "key": "Code snippet templates: How to write your own code snippets",
     "url": "glossary/code_snippets.html#how-to-write-your-own-code-snippets",
+    "weight": 70,
+    "color": "#BD6F50"
+  },
+  {
+    "key": "Complex Group management: Introducing: The Bitmask",
+    "url": "glossary/complex-group-management.html#introducing",
+    "weight": 70,
+    "color": "#BD6F50"
+  },
+  {
+    "key": "Complex Group management: Using the bitmask",
+    "url": "glossary/complex-group-management.html#using-the-bitmask",
+    "weight": 70,
+    "color": "#BD6F50"
+  },
+  {
+    "key": "Complex Group management: Cache groups (prefilter)",
+    "url": "glossary/complex-group-management.html#cache-groups-prefilter",
+    "weight": 70,
+    "color": "#BD6F50"
+  },
+  {
+    "key": "Complex Group management: Voice start logic",
+    "url": "glossary/complex-group-management.html#voice-start-logic",
     "weight": 70,
     "color": "#BD6F50"
   },

@@ -43,7 +43,7 @@
 <p class="comment"><code>jdsp.jdelay_thiran</code>
 </p>
 <img src="images/sn_screen_jdsp__jdelay_thiran.png"></img>
-<p>Please enter a brief description.</p>
+<p>A interpolating delay line using the Thiran interpolation</p>
 <h2 id="parameters"><b>Parameters</b>
 </h2>
 <table><thead><td><b>ID </b>
@@ -58,15 +58,32 @@
 <tr><td>Limit </td>
 <td>0.00 - 1000.00 </td>
 <td>1000.00 </td>
-<td>no description. </td>
+<td>the maximum delay time (in milliseconds) that this effect can use. This will resize the delay buffers and will impact the memory usage of this node. </td>
 </tr>
 <tr><td>DelayTime </td>
 <td>0.00 - 1000.00 </td>
 <td>0.00 </td>
-<td>no description. </td>
+<td>the delay time (in milliseconds). This can be a non-integer value will use the interpolation algorithm specified by the node type for calculating the values between samples. </td>
 </tr>
 </table>
-<p><br></p>
+<p><br>This is an interpolating delay line that uses a specific interpolation algorithm to smooth the sample position for non-integer delay values. It can be used to implement delay based modulation effects (chorus / flanger, etc).</p>
+<p>Be aware that by default there is no smoothing applied to the delay time so if you want to control the delay time with a knob, either use a <a href="scriptnode/list/control/smoothed_parameter.html">smoothed_parameter</a>
+ node between the Value parameter and the source or use the <a href="scriptnode/list/core/fix_delay.html">fix_delay</a>
+ node that automatically applies smoothing.</p>
+<p class="comment">Note that whenever you want to use this for modulating delay effects, you will need to put this node (and the modulation source) into a <a href="scriptnode/list/container/frame2_block.html">frame2_block</a>
+ container, otherwise the modulation updates will be dependant on the block size of the processing context.</p>
+<h3 id="interpolation-algorithm"><b>Interpolation algorithm</b>
+</h3>
+<p>If you want to use different interpolation algorithms you can use one of the other variants of this node. The algorithms differ in sound quality and CPU performance so just pick the one that you prefer for your DSP network.</p>
+<ul><li><a href="scriptnode/list/jdsp/jdelay.html">jdelay</a>
+ for the basic linear interpolation (LERP) algorithm.</li>
+<li><a href="scriptnode/list/jdsp/jdelay_thiran.html">jdelay_thiran</a>
+ for the <a href="https://docs.juce.com/master/structdsp_1_1DelayLineInterpolationTypes_1_1Thiran.html">Thiran</a>
+ algorithm</li>
+<li><a href="scriptnode/list/jdsp/jdelay_cubic.html">jdelay_cubic</a>
+ for the <a href="https://docs.juce.com/master/structdsp_1_1DelayLineInterpolationTypes_1_1Lagrange3rd.html">cubic Langrange</a>
+ interpolator.</li>
+</ul>
 <div class="content-footer"><span class="content-footer-left"><a href="https://github.com/christophhart/hise_documentation/edit/master/scriptnode/list/jdsp/jdelay_thiran.md">Edit on GitHub</a>
 </span>
 

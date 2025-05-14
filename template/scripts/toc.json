@@ -1378,6 +1378,12 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "working-with-hise/menu-reference/tools/index.html#check-latency-of-signal-chain",
+                  "Title": "Check latency of signal chain",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
                   "URL": "working-with-hise/menu-reference/tools/index.html#create-rsa-key-pair",
                   "Title": "Create RSA Key pair",
                   "Colour": "#DEB887",
@@ -19911,6 +19917,73 @@ var rootDb = {
             {
               "URL": "glossary/code_snippets.html#use-the-$-character-to-define-preselected-regions",
               "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            }
+          ]
+        },
+        {
+          "URL": "glossary/complex-group-management.html",
+          "Title": "Complex Group management",
+          "Colour": "#BD6F50",
+          "Children": [
+            {
+              "URL": "glossary/complex-group-management.html#introducing",
+              "Title": "Introducing: The Bitmask",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/complex-group-management.html#example",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/complex-group-management.html#using-the-bitmask",
+              "Title": "Using the bitmask",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/complex-group-management.html#ignore-bit",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/complex-group-management.html#sustain-samples-and-legato-samples-in-one-sampler",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/complex-group-management.html#different-rr-groups-per-keyswitch",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/complex-group-management.html#cache-groups-prefilter",
+              "Title": "Cache groups (prefilter)",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/complex-group-management.html#example",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/complex-group-management.html#solution",
+              "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/complex-group-management.html#voice-start-logic",
+              "Title": "Voice start logic",
               "Colour": "#BD6F50",
               "Children": []
             }

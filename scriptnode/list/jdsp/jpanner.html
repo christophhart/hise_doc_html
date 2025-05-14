@@ -58,15 +58,51 @@
 <tr><td>Pan </td>
 <td>-1.00 - 1.00 </td>
 <td>0.00 </td>
-<td>no description. </td>
+<td>The position in the stereo field from -1.0 (full left) to 1.0 (full right). </td>
 </tr>
 <tr><td>Rule </td>
 <td>0.00 - 6.00 </td>
 <td>1.00 </td>
-<td>no description. </td>
+<td>the panning rule that is used to determine the attenuation of signals across the stereo field. </td>
 </tr>
 </table>
-<p><br></p>
+<p><br>This node wraps some panning algorithms from the JUCE codebase in a node. You can choose on of the listed panning rules which will affect the gain of the signal. </p>
+<table><thead><td><b>Rule </b>
+</td>
+<td><b>Attenuation </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>Linear </td>
+<td>-6dB </td>
+<td>Regular 6 dB or linear panning rule, allows the panned sound to bep erceived as having a constant level when summed to mono. </td>
+</tr>
+<tr><td>Balanced </td>
+<td>0dB </td>
+<td>Both left and right are 1 when pan value is 0, with left decreasing to 0 above this value and right decreasing to 0 below it. </td>
+</tr>
+<tr><td>Sin3dB </td>
+<td>-3dB </td>
+<td>alternate version of the regular 3 dB panning rule with a sine curve. </td>
+</tr>
+<tr><td>Sin4p5dB </td>
+<td>-4.5dB </td>
+<td>alternate version of the regular 4.5 dB panning rule with a sine curve. </td>
+</tr>
+<tr><td>Sin6dB </td>
+<td>-6dB </td>
+<td>Alternate version of the regular 6 dB panning rule with a sine curve. </td>
+</tr>
+<tr><td>SquareRoot3dB </td>
+<td>-3dB </td>
+<td>regular 3 dB or constant power panning rule, allows the panned sound to be perceived as having a constant level regardless of the pan position. </td>
+</tr>
+<tr><td>SquareRoot4p5dB<br></td>
+<td>-4.5dB </td>
+<td>regular 4.5 dB panning rule, a compromise option between 3 dB and 6 dB panning rules. </td>
+</tr>
+</table>
 <div class="content-footer"><span class="content-footer-left"><a href="https://github.com/christophhart/hise_documentation/edit/master/scriptnode/list/jdsp/jpanner.md">Edit on GitHub</a>
 </span>
 

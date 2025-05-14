@@ -65,6 +65,19 @@ File > Save as XML<b> (which is recommended for using version control).</b>
 . It's the root container of all audio modules and the exit point of the final audio signal. </p>
 <p>The top-down arrangement follows the <a href="https://en.wikipedia.org/wiki/Tree_structure">tree structure</a>
  paradigm and allows to build instruments with an efficent signal flow, optimized for handling a lot of voices in parallel.</p>
+<p>The module tree is a powerful tool for viewing and editing the overall structure of a project.</p>
+<p>The colored squares function as bypass buttons. <img align="left" src="https://github.com/user-attachments/assets/a402715d-db5a-4a07-97f8-4855983a34c6"><br clear="left"/></p>
+<p>The arrow icon<br>!<a href="https://github.com/user-attachments/assets/d60e2de2-d1e6-44e8-a4b1-200a7ad4e72c">image</a>
+opens a processor for editing in the main workspace.</p>
+<p><img align="left" src="https://github.com/user-attachments/assets/2fee296b-d373-479d-8d59-ebb6fad3a654">On MIDI processors, the MIDI icon blinks to show incoming messages. Clicking the MIDI icon opens an Event Logger.<br /><br /></p>
+<p>Events can be filtered with a HISEScript expression, for example,<br><code>Message.isNoteOn() || Message.isNoteOff()</code>
+<br clear="left"/></p>
+<p>The small colored circle on modulator sources and targets indicates the current value of the modulator (if the dot is filled in, the modulator is at a value of 1.0). Clicking the circle opens a plotter.</p>
+<img src="https://github.com/user-attachments/assets/47f76eab-3e70-489d-b39c-2e20d725b5a0"></img>
+<p>Clicking a VU meter opens the routing matrix for that module. !<a href="https://github.com/user-attachments/assets/013b95ae-6790-4fe0-80a6-a496af2e30d8">image</a>
+</p>
+<p>The pencil enters edit mode, where submodules can be added, removed, and reordered via drag and drop.</p>
+<img src="https://github.com/user-attachments/assets/003355d0-6554-4503-8849-46e60829a61a"></img>
 <h3 id="add-a-sound-generator"><b>Add a Sound Generator</b>
 </h3>
 <p>In the <b>Module Tree</b>
