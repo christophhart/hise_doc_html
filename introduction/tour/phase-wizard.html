@@ -150,7 +150,7 @@ Noise</code></pre>
 const var WaveformGenerator = Synth.getChildSynth("Waveform Generator");</code></pre>
 <p>The Waveform Generator is now accessible with this handle. Start to type <code>Wav...</code>
  in the line underneath and press <code>ESC</code>
- to access the <a href="working-with-hise/hise-interface/code-editor/code-editor#autocomplete-popup-esc">Autocomplete Popup</a>
+ to access the <a href="working-with-hise/hise-interface/code-editor/index.html#autocomplete-popup-esc">Autocomplete Popup</a>
 .</p>
 <p>Let's try out to <code>get</code>
  'n' <code>set</code>
@@ -160,7 +160,7 @@ const var WaveformGenerator = Synth.getChildSynth("Waveform Generator");</code><
 Console.print(WaveformGenerator.getAttribute(WaveformGenerator.WaveForm1));</code></pre>
 <pre><code class="language-javascript line-numbers">// Set the Waveform Generators WaveForm1-Attribute index to the fifth item (Noise) 
 WaveformGenerator.setAttribute(WaveformGenerator.WaveForm1, 5);</code></pre>
-<p>Now that we can set the Waveforms via script we have to somehow connect them to our ComboBox to switch the values when we want to select another Waveform. Here the <a href="scripting/scripting-in-hise#create-custom-oncontrol-callbacks">Custom onControl Callback</a>
+<p>Now that we can set the Waveforms via script we have to somehow connect them to our ComboBox to switch the values when we want to select another Waveform. Here the <a href="scripting/scripting-in-hise/index.html#create-custom-oncontrol-callbacks">Custom onControl Callback</a>
  comes in. Let's create one (<b>right-click</b>
  on the ComboBox, select <b>Create custom callback</b>
  and paste the code into <code>onInit</code>
@@ -184,8 +184,8 @@ Content.getComponent("OSC1Wave").setControlCallback(onOSC1WaveControl);</code></
 <h2 id="settings-and-about"><b>Settings and About</b>
 </h2>
 <img src="images/custom/phasewizard.png"></img>
-<p>As next step we want to a create <a href="ui-components/floating-tiles/plugin/customsettings">CustomSettings</a>
- to give the user the ability to change the Audio Settings. We'll also add a <a href="ui-components/floating-tiles/plugin/midisources">MidiSources FloatingTile</a>
+<p>As next step we want to a create <a href="ui-components/floating-tiles/plugin/customsettings.html">CustomSettings</a>
+ to give the user the ability to change the Audio Settings. We'll also add a <a href="ui-components/floating-tiles/plugin/midisources.html">MidiSources FloatingTile</a>
  to hook up MIDI Devices. They will both be shown when the user clicks on a SettingsButton in the top right of the interface. </p>
 <p>Create both FloatingTiles, name them "Settings" and "MidiSources" and set their <code>ContentType</code>
 s to "CustomSettings" and "MidiSources". You can place them in the middle of the Interface. </p>
@@ -233,21 +233,21 @@ inline function onSettingsButtonControl(component, value)
 };
 
 Content.getComponent("SettingsButton").setControlCallback(onSettingsButtonControl);</code></pre>
-<p>In the next step we want to add a Logo that opens an <a href="ui-components/floating-tiles/plugin/aboutpagepanel">AboutPagePanel</a>
+<p>In the next step we want to add a Logo that opens an <a href="ui-components/floating-tiles/plugin/aboutpagepanel.html">AboutPagePanel</a>
  with Plugin information when you click on that Logo. </p>
 <p>First we want to create a new <b>Logo</b>
--<a href="ui-components/plugin-components/label">Label</a>
+-<a href="ui-components/plugin-components/label.html">Label</a>
  and set its "text" to our plugins name (+ "editable" :false). A <b>Label</b>
- can't do much more that that, though. We can change its Font and FontSize but it doesnt have the capability to react to mouse clicks. We will need a <a href="ui-components/plugin-components/panel">Panel</a>
+ can't do much more that that, though. We can change its Font and FontSize but it doesnt have the capability to react to mouse clicks. We will need a <a href="ui-components/plugin-components/panel.html">Panel</a>
  for that purpose.</p>
 <p>The <b>Panel</b>
-, also known as <a href="ui-components/plugin-components/panel#the-script-panel">ScriptPanel</a>
- has a lot of capabilities. If you plan to do some customized components, graphics and animations you should definitely check it out. For our case we only need its <a href="ui-components/plugin-components/panel#the-mouseevent-callback">MouseEvent callback</a>
+, also known as <a href="ui-components/plugin-components/panel.html#the-script-panel">ScriptPanel</a>
+ has a lot of capabilities. If you plan to do some customized components, graphics and animations you should definitely check it out. For our case we only need its <a href="ui-components/plugin-components/panel.html#the-mouseevent-callback">MouseEvent callback</a>
  to react to a simple click event. </p>
 <p>Create a new Panel (<b>LogoPanel</b>
 ) and get rid of its border by setting its Component Colors to <b>alpha: 0</b>
  (or "BorderSize": 0), and put it right on top of the Logo-Label in the interface. Now we can set the "allowCallbacks" property to "Clicks Only" to activate the Panels MouseCallback capability.</p>
-<p>Before we stitch everything together we have to create the <a href="ui-components/floating-tiles/plugin/aboutpagepanel">AboutPagePanel</a>
+<p>Before we stitch everything together we have to create the <a href="ui-components/floating-tiles/plugin/aboutpagepanel.html">AboutPagePanel</a>
 (<b>About</b>
 ). It has a few <code>Data</code>
 -property entries, in which we just want to show the Version, HISE Version and the Build Date.. We'll put it right below the Logo.</p>
@@ -287,21 +287,21 @@ LogoPanel.setMouseCallback(function(event)
 <pre><code class="language-javascript line-numbers">HiseSnippet 3156.3oc0Z07babaEeojW6HZqD6zLYRugQMsibGGERJIKo3IiW8gkslnOXDUjiam1DvcAEw3kKX1ETRzIdF0dxGysdr+Kzom5oFcuWZm1C8X9Kni+OP8Af8CrePIJkXMwzGr1GvC326S7dX259LaRP.y2nzX6zuKwnzMLaz2i2d41XpmwZqXTZby5swAjGSeF12wXo9cwAADGiRkF8ghoTZrqXXXbT+e1+79Kgcwd1jPRxe6xn1j0ocn7Dpcs9Dpq6pXGxNzNZydFq0rYdKybY8.3LpYEitX6mh2irIVLsQLMJc0G3P4L+FbLmDXT5JKwb52nM6.O072kFPa5RDOT0nArPJxqxbcDHVP0X41TWm5QhcfgQIy5IJgQUJg2wbCpCMldhx3lxAPIbnqOJMxoAup5vqxvCuRZv6JJ3cKyF19zt7jQDX65lq4wI9svfIPGVp4ZLxWcMykYvL73S0A+Txp9vCwbL4cqT4NnYqT412a7xh+8geH5w38Iqx76fphvdNnZnkYcZxVhcHpAwkXCRZfXlfQKfi1G6KYnEvvCIdDeLLN5iQRuoo1ivkRl7oImHZhn3YNwsuGB1REVQaSZQ7IfuDhyP4mbLBWtW.m0AsL10sI3qDff4kfxX7mBtTOWpGA0pmmMmx7PLusZrbUwbEZGel6j1rNcYdfd5NfT41ib6wK+0iWdrbR2TAD9hbtOsYONYx7CGs+UiVGP09bo5MxNHTKQa1jSDgiItsXkCQSjrMYNbFYoJTfp8pTfpM7BTsyPfpUf.I7CHbN0au.zptLr3u1g5Rx3sEOmOFU71GMAgukNihP3FPRFH1Yf7pMmIT3JuZNZ8WpGmKRbcpJakPEf3sIoEJTWeVWhOuOZh8UIHlP30KlW5MPsbnI2x6C2pUKXYQvunoHTvSFu.Z1GwjzDlANuSyNlFGCxZVn5PyltXSVOdJYOs8TM9fLHxQklhDNVmsGqN1i3NPthmgxGPhiGwXOEgQav5EPhfejFOYE4swbjKErOberWPWLjOh61Gw1m3GO0of0LlEgVI0hNYjuxjj8AlUNBB6AsERQZJaWp8SIN2FENh3WjmBF0xmPPNjVTOLXsPIRyTNXNdJPEPw59KTO.bbhSnmBqkjpKVpt.JSkrIYVp.3TJPINYUzGTzPQNRIvStx4snCzYFKsXR3FjCLx0IqmYgvPLaIaOG7Xi7szBI2jwIa4M4sK+0kGq7yKixNTqVENVnypKwuvgE0o3eZLNoWuNMI9QgSQSDNvNcEAlCth.8BVrU9xZSj4slGkuUWh2fpSvHL..pX3FgnBlJWVuvMCqWH5jQCJTXPYynySLjnVqrMKigeEpUzJ7x6maEdyvUngK0g3K42DJl5vrr98CEqW0bKad0b.+3gl2Z4f72Mb7Btj412mb7Pyat88IVCCuiYtBg2yijWjMNOrW6hx95rCpCETlgcq+7fAu5T.I6fySpiFFBPLd3prNtIwMT6IRHDwZ5lRL9r0VAxQHJVNLJntJMDUDzUZEx9PWHpRmEZhfmxYcMJ81wmS.gL7v59UaqdJsPW8E64PY6RelwgI.+ir5m7vbVGPc3siIT4OX0lP2qcRmOU12p4dQ82bMypSWsxbFTNoSDswt5KdwKNQL0Dp0DjWYkUjq.mbHOZx2vblZKLyByVsZ0YiB9Ux3ao.6hdX29AfITpaJUyTdFyDwIMVyYhOBMQzrl3NxQWyygbHPuBjeUXVNGZnOgzuISXNNTOQPhF5u7rLZn+1eLqFxZaMMjHSnt1Ik.mRAkZjgSGoAWk54+Epd.xOVfRPGTcFkNYEZPWWbeHqAjpaSYldXzVX2.hZBPzAvFPa56pH7Hp54p0lSQP0nxC8wcaSsCRy8JjV3dt7E61kf8EMPCCy86EN5RtPkDvpsMntYBCyT2cA4u4muxbKTYNPxlcgPftCau8bIavbHo2AQ8ePOrdh5f.Pk0zdsg6TBMy5uRyw252X0ACiYVxLzwEh49ElMDEKWdG3HeO.SkafOnbiupGTEU4MYz.R4xFcSbDE9U4ay67AxZY.42+MW9f7FmwYcInC0QCcnCxDYX7kYiLLdjUGpiiKoNKfJJ9P+DyNfE2nz6ZtIfLrK8YDm5DnXeONdOhQPuVsfsFBm9kFNJWscydj6YKkP8u3NDNQNCkvnK3u4YcRslyCROqYyyVxenkHjVj5VEAV0HfS51.DS87LcnZpj24Xo0Noflyo.91ga0NxR+YAvdNHsuwwEqTk0hDqeF+rpFIAsu7aNm5mG8CV5pYjQckQYVj9tXo9keWZaUsTdIu0YUW0.7RPsGp3CYTfoXkLRI.OIs2vSrJRdRBSVev1ZiyolNTrJVW8jiOG5lA5gLb5lKBtAuhKAM5.zMVCWZ0j5hGfqyW58JP8jrqozJueZsx6aEoALMQ17SQGb9j0A5JLbx5oC4ACxzByETikNev3CQGGZx5yzj0adPX790MW0m7U8Hd18SaMlwRWzdw+9T8QAg5QOaPVnt+ozNHiYtJ0EDrpokQcjTnWspcoXou7v2vjlI5H8SGduviFKGyfQZOfi1MmGvGako4hacqaoNpYuj9PN4DYaHY5NY5omNm+53mYeAwPKQJNlnIEG8vLtsHVVPezSsNazkmZMcxoJ++llpJxiwlrIfQ9qkB6BXEe59xp7SJDW0EYJRa0i2sGOc45fCEwW3lkhbCbmttDnF9LUl+PWVSr6R02HM4FbeBF7l2Kes7g8PrMAZTyGlQFFswtjUwhW1Q58GjVL0a4kSOc4qmawNrdd7M.2UZWWZ1daV1E5JQ1.QFdUhz5LaQiIdYaooYuBvtF5VmFHTb+V0k.VYpYuSzeMWzeVM5+mpVLo34US7e+NQmLIl6o0M26Gc0ZmZZ1A51Nto1klqG+Q08b6ZkxqJMS5drvjOIuG6+33SJpa+HxpFSupvk74Yhq+RZ1Pjieh0YHxim9pUj2spTVutY7cspKoFF80eHM.N92mKwxhV5sdKsDetLuBy2QERnubJpaicn8BRQOcb98xq0hlYFsVDYrqK6f32HnPdWVbI6Ans7b6eZJjb20zvpKNJut39gIlSeOUs.mkF79BSzUMWh4pnnd81ukIfLpMpATSNZiF4tFi4magZyMyLyXPbnbb7qQNsRvrZ0pyOy7UU6TJM9zVETs4.c+ulo7N40UASqevy8xjx96yWowPbUN2ctZKbZWkSlT1RHUG5oU4ppBO96gYrWl0suu.Aax3p7zSzl.tBg2qk3tzWGn6EPbdPGL0Mc5QXzcI9ApDY5YyotNqnxZmP8wjlPEBjOa60E6h1FT2m4zyVZPSm36yBHpyaVqC.+nwDg0qxjliLF+UyY990YBt91u8aOIcZt3..i7ev.2zDRF2yUTWl92xf3C3Hb.Q8N5ez.hOL.OPJ6qWszqjOvggEt2xrNka2tX7NRA30v3UNdGMJu+CfS8s4If8Jlq94WxeaHlQWrY789J.h1i5vIoLkD80wV08gZbHGDdS4w2FPoQSi8QGt2hUAptsg.XQUMXturp6M60QcZY3sSJdEYkFQbrk54JhmEXnATti7A3HgSBGrp34RgCVMZPcyy6njjqKaOQ9omH0IE1txk5G1TtaWR6Zixc2LZWtRTamZ.IpuJMRwe2I5Fw3ucC8.Z4sSn0UurqeslvEWym10D9.46gtAAjFmsBrAgUp5zWvdthS6fiFppyXB4Z5jy5Xckgyw505umqKuryiNbvs.M3H0y8YABsjRE06+.u8ItLfhJkb36tHlpNH2f4w51l4Qs0cN2l.w96sGIkaSgxyhbNTAWBk4s1l.MiDjDY8eeg05TOQ+IxqB3BoJN8LVE802Un458LUvEIB8Q+j5P02H5fgcAajsX2UIAidDEKNmMXgBY1AmpGCgwS8UmjNqjMEplNscAxZFtkx0PU+l3y57GKq0OJkRL5qakRbwiyKkON+sMqyb6qBaU2xkDDIW40.NmT9K49uztxqOM7Aqom9ee+zNDHqOsG1MQSez+4k+qEWh1k4h8+glh6LhquxP5p7tIWpG50nRkEVlWev6O2LzniDJ6Wev8aZ9ou9.VQoNG9S.3dYzCvkwdzAa6y9Ba0GtjHkxaHo.xsm7BcFybCwyn3OYqqYVs1bSUQ7VFnegssHy9G.Znh4J9K0xzrxvxyzW.dlIhmqZNasgkoYu.azcu.7L2Efm4OUdDU6uXONqiJD.HT+Ap5PJoZtQFMX7+gHXXpD</code></pre>
 <h2 id="export-&-compile"><b>Export & Compile</b>
 </h2>
-<p>If you've followed the <a href="introduction/installation#setting-up-vsti/plugin-compilation">Installation Instructions</a>
+<p>If you've followed the <a href="introduction/installation.html#setting-up-vsti/plugin-compilation">Installation Instructions</a>
  closely, and set up your system for plugin compilation you should be ready to export the VSTi right away. </p>
-<p>But before we proceed with the compilation process we should check the <a href="working-with-hise/settings/project">Project Settings</a>
+<p>But before we proceed with the compilation process we should check the <a href="working-with-hise/settings/project.html">Project Settings</a>
  again. The projects <code>Name</code>
  setting is going to be the name of the compiled binary and the <code>Version</code>
  setting will show up in the AboutPanel of the exported Standalone. The User Settings: <code>Company</code>
  is also important. It will determine the name of the systems %APPDATA%-Folder to hold plugin-specific settings.</p>
 <p>OK... let's do it. Select <b>Export ></b>
-<a href="working-with-hise/menu-reference/export#export-as-standalone-application">Export as Standalone Application</a>
+<a href="working-with-hise/menu-reference/export/index.html#export-as-standalone-application">Export as Standalone Application</a>
  to start the compilation process. You can choose if you want to compile a 32bit or a 64bit Standalone Version.</p>
 <p>A system console will pop up and inform you about current state of the compilation progress. After the compilation has (hopefully successfully) finished, you can find the final executable in your projects <code>Binaries\Compiled\App\</code>
  folder. Check out if it works..</p>
 <p>Gratulation!, you've managed to build and compile a full-fledged Standalone Synth plugin with <b>HISE!</b>
 </p>
-<p class="comment">If you want to use this plugin in a DAW, just <a href="working-with-hise/menu-reference/export#export-as-instrument-vsti-/-aui">Export as intrument Vsti / AUi plugin</a>
+<p class="comment">If you want to use this plugin in a DAW, just <a href="working-with-hise/menu-reference/export/index.html#export-as-instrument-vsti-/-aui">Export as intrument Vsti / AUi plugin</a>
 -plugin). It will compile the plugin to <code>.dll</code>
 /<code>.au</code>
  in the <code>Binaries\Compiled\</code>

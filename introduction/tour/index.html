@@ -154,9 +154,9 @@ File > Save as XML<b> you can open it with an external code editor to take a loo
 <img src="images/custom/scripting_workspace.png"></img>
 <p> When you open a new HISE project for the first time, you will see two editor next to each other: </p>
 <ul><li>The <a href="">Code Editor</a>
- which an IDE-like <a href="working-with-hise/hise-interface/code-editor/code-editor">Code editor</a>
+ which an IDE-like <a href="working-with-hise/hise-interface/code-editor/index.html">Code editor</a>
  for scripting.</li>
-<li>The <a href="working-with-hise/hise-interface/interface-designer#canvas">Interface Designer</a>
+<li>The <a href="working-with-hise/hise-interface/interface-designer/index.html">Interface Designer</a>
  which helps you to create a GUI for your plugin. </li>
 </ul>
 <p>The <b>Master Chain</b>
@@ -167,21 +167,21 @@ File > Save as XML<b> you can open it with an external code editor to take a loo
 <p class="comment">You can click the little "open icon" next to the ScriptProcessor "Interface" to open the script and the Interface Designer.</p>
 <p>Let us test the scripting. Type:</p>
 <pre><code class="language-javascript line-numbers">Console.print("Hello World");</code></pre>
-<p>in the onInit Tab, and hit [F5] to compile. This evaluates the script, redraws the interface and prints the message to the <a href="working-with-hise/hise-interface/code-editor#console">Console</a>
+<p>in the onInit Tab, and hit [F5] to compile. This evaluates the script, redraws the interface and prints the message to the <a href="working-with-hise/hise-interface/code-editor/index.html#console">Console</a>
  beneath the editor.</p>
 <p>We don't want to delve too much in scripting right now but it's important to know that even the basic use of <b>HISE</b>
- relies on scripting and learning about it is needed if you want to craft your own instrument or plugin. Check out the <a href="scripting">Scripting</a>
+ relies on scripting and learning about it is needed if you want to craft your own instrument or plugin. Check out the <a href="scripting/index.html">Scripting</a>
  docs for more.</p>
 <h2 id="interface-designer"><b>Interface Designer</b>
 </h2>
 <img src="images/custom/quick_tour/interface_designer.png"></img>
-<p>Now we'll take a look at the<br><a href="working-with-hise/hise-interface/interface-designer">Interface Designer</a>
+<p>Now we'll take a look at the<br><a href="working-with-hise/hise-interface/interface-designer/index.html">Interface Designer</a>
 . This is the place where you create the interface for your instrument/plugin. In the top-left corner of the Canvas you can find a little pen icon [F4]. With it you can toggle between the <b>edit</b>
  and the <b>presentation mode</b>
  of the Interface Designer. </p>
 <p>While in <b>edit mode</b>
- add a new <a href="ui-components/plugin-components/knob">Slider</a>
- <a href="ui-components">UI Component</a>
+ add a new <a href="ui-components/plugin-components/knob.html">Slider</a>
+ <a href="ui-components/index.html">UI Component</a>
  by <b>right-clicking</b>
  on the surface of the interface.You can drag the slider around or move it pixel-wise with the arrow keys (hold <b>Ctrl</b>
  to move it 10 pixels and/or <b>Shift</b>
@@ -191,7 +191,7 @@ File > Save as XML<b> you can open it with an external code editor to take a loo
 -Key.</p>
 <h4 id="property-editor"><b>Property Editor</b>
 </h4>
-<p>On the right hand side you can see the <a href="working-with-hise/hise-interface/interface-designer#property-editor">Property Editor</a>
+<p>On the right hand side you can see the <a href="working-with-hise/hise-interface/interface-designer/index.html#property-editor">Property Editor</a>
 . It lets you access and modify different properties of an UI Component.</p>
 <p>The Sliders <b>ID</b>
  will be "Knob1". You can change it to anything you want, but you should be aware that the <b>ID</b>
@@ -202,47 +202,47 @@ File > Save as XML<b> you can open it with an external code editor to take a loo
  [F4] the interface will lock down. You can now use the controls like in a finished plugin.</p>
 <h4 id="component-list"><b>Component List</b>
 </h4>
-<p>On the left hand side of the Interface Designer you can see an overview of your added UI Components in the <a href="working-with-hise/hise-interface/interface-designer#component-list">Component List</a>
+<p>On the left hand side of the Interface Designer you can see an overview of your added UI Components in the <a href="working-with-hise/hise-interface/interface-designer/index.html#component-list">Component List</a>
 . </p>
 <p>You can drag the Components to change the z-order of the components from the top (background) to the bottom (front). </p>
-<p>A neat way to group several elements together is to drag them into a shared <a href="ui-components/plugin-components/panel">Panel</a>
+<p>A neat way to group several elements together is to drag them into a shared <a href="ui-components/plugin-components/panel.html">Panel</a>
  Component. This makes it easy to structure complex projects as well as to implement page-like UI-designs. </p>
 <p>You can open a JSON representation of the UIComponents properties when you press the [j]-Key with a selected element. You can then edit these values on the fly and accept the changes with [F5].</p>
 <h2 id="scriptnode-editor"><b>ScriptNode Editor</b>
 </h2>
 <img src="images/custom/quick_tour/scriptnode_workspace.png"></img>
-<p>You can get access to the ScriptNode Editor in two ways. Either you create a <a href="hise-modules/effects/list/scriptfx">ScriptFX</a>
+<p>You can get access to the ScriptNode Editor in two ways. Either you create a <a href="hise-modules/effects/list/scriptfx.html">ScriptFX</a>
  in the FX-Chain of the <b>MasterChain</b>
- for creating a DSP effect, or by creating a <a href="hise-modules/sound-generators/list/scriptsynth">Scriptnode Synthesiser</a>
+ for creating a DSP effect, or by creating a <a href="hise-modules/sound-generators/list/scriptsynth.html">Scriptnode Synthesiser</a>
  Sound Generator in the Master Chain if you want to process incoming MIDI events.</p>
 <p>Click the little "open in"-icon next to their name to open the ScriptNode Editor.</p>
 <img src="images/custom/quick_tour/scriptnode_create.png"></img>
-<p>After creating a new DSP-Network you will see a empty container in which you can add new DSP nodes. Clicking into the chain opens up a "Create Node" window in which you can add new nodes and built your DSP-Network. Take a look at the <a href="scriptnode/list">Scriptnode Node list</a>
- and the <a href="scriptnode/101">ScriptNode 101</a>
+<p>After creating a new DSP-Network you will see a empty container in which you can add new DSP nodes. Clicking into the chain opens up a "Create Node" window in which you can add new nodes and built your DSP-Network. Take a look at the <a href="scriptnode/list/index.html">Scriptnode Node list</a>
+ and the <a href="scriptnode/101/index.html">ScriptNode 101</a>
  to get started.</p>
 <h2 id="sample-editor"><b>Sample Editor</b>
 </h2>
 <img src="images/custom/sampler-workspace.png"></img>
-<p>The <a href="working-with-hise/hise-interface/sampler-workspace">Sampler Workspace</a>
- is built all around the the <a href="hise-modules/sound-generators/list/streamingsampler">Sampler</a>
+<p>The <a href="working-with-hise/hise-interface/sampler-workspace/index.html">Sampler Workspace</a>
+ is built all around the the <a href="hise-modules/sound-generators/list/streamingsampler.html">Sampler</a>
  Module and displays three of its tabs in one workspace. </p>
-<p>The main task of these tabs is to map your samples into <a href="hise-modules/sound-generators/list/streamingsampler#sample-maps">SampleMaps</a>
+<p>The main task of these tabs is to map your samples into <a href="hise-modules/sound-generators/list/streamingsampler.html#sample-maps">SampleMaps</a>
 , edit them to suit your needs and finally export the mapped samples into a deliverable file-format that can be shipped with your instrument.</p>
 <p>General Workflow:</p>
-<ul><li>Put all the samples that you want to map into your Projects <a href="working-with-hise/hise-interface/sampler-workspace/sample-map-editor#filename-token-parser">Sample Folder</a>
+<ul><li>Put all the samples that you want to map into your Projects <a href="working-with-hise/project-management/projects-folders/samples.html">Sample Folder</a>
 </li>
-<li>Drag the samples from the <a href="working-with-hise/project-management/projects-folders/samples">Filebrowser</a>
- into the <a href="ui-components/floating-tiles/hise/filebrowser">Sample Map Editor</a>
+<li>Drag the samples from the <a href="ui-components/floating-tiles/hise/filebrowser.html">Filebrowser</a>
+ into the <a href="working-with-hise/hise-interface/sampler-workspace/sample-map-editor.html">Sample Map Editor</a>
  and choose one of three options to map them: </li>
 <li><b>Drop Point</b>
 , which places the samples where you drag them. </li>
 <li><b>Pitch Detection</b>
 , which automatically tries to detect the pitch of the samples.</li>
-<li><a href="working-with-hise/hise-interface/sampler-workspace/sample-map-editor">Filename Token Parser</a>
+<li><a href="working-with-hise/hise-interface/sampler-workspace/sample-map-editor.html#filename-token-parser">Filename Token Parser</a>
 , which reads the filename of your samples and maps them according to your requirements.</li>
 </ul>
-<ul><li>Edit and finetune your samples with the <a href="working-with-hise/hise-interface/sampler-workspace/sample-editor">Sample Editor</a>
- and the <a href="working-with-hise/hise-interface/sampler-workspace/sample-settings">Sampler Settings</a>
+<ul><li>Edit and finetune your samples with the <a href="working-with-hise/hise-interface/sampler-workspace/sample-editor.html">Sample Editor</a>
+ and the <a href="working-with-hise/hise-interface/sampler-workspace/sample-settings.html">Sampler Settings</a>
 . </li>
 <li>When you are happy with the map, save it. It'll appear in the SampleMap folder. You can now access SampleMaps with scripting[link] and play them with your instrument. </li>
 <li>If you are sure that you won't change the samples anymore you can compress them into the lossless <b>HLAC Monolith file-format</b>
