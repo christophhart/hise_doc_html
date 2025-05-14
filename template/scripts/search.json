@@ -132,8 +132,8 @@
     "color": "#DEB887"
   },
   {
-    "key": "HISE: Workspaces",
-    "url": "working-with-hise/workspaces/index.html",
+    "key": "HISE: HISE Interface",
+    "url": "working-with-hise/hise-interface/index.html",
     "weight": 80,
     "color": "#DEB887"
   },
@@ -420,213 +420,333 @@
     "color": "#DEB887"
   },
   {
-    "key": "Workspaces: Main Workspace",
-    "url": "working-with-hise/workspaces/main-workspace/index.html",
+    "key": "HISE Interface: HISE Interface Architecture",
+    "url": "working-with-hise/hise-interface/index.html#hise-interface-architecture",
     "weight": 70,
     "color": "#DEB887"
   },
   {
-    "key": "Workspaces: Scripting Workspace",
-    "url": "working-with-hise/workspaces/scripting-workspace/index.html",
+    "key": "HISE Interface: Customizing the HISE interface",
+    "url": "working-with-hise/hise-interface/index.html#customizing-the-hise-interface",
     "weight": 70,
     "color": "#DEB887"
   },
   {
-    "key": "Workspaces: Sampler Workspace",
-    "url": "working-with-hise/workspaces/sampler-workspace/index.html",
+    "key": "HISE Interface: Top Bar",
+    "url": "working-with-hise/hise-interface/top-bar/index.html",
     "weight": 70,
     "color": "#DEB887"
   },
   {
-    "key": "Workspaces: Custom Workspace",
-    "url": "working-with-hise/workspaces/custom-workspace/index.html",
+    "key": "HISE Interface: Left Panel",
+    "url": "working-with-hise/hise-interface/left-panel/index.html",
     "weight": 70,
     "color": "#DEB887"
   },
   {
-    "key": "Main Workspace: Left Panel",
-    "url": "working-with-hise/workspaces/main-workspace/left-panel.html",
+    "key": "HISE Interface: The Code editor",
+    "url": "working-with-hise/hise-interface/code-editor/index.html",
+    "weight": 70,
+    "color": "#DEB887"
+  },
+  {
+    "key": "HISE Interface: Interface Designer",
+    "url": "working-with-hise/hise-interface/interface-designer/index.html",
+    "weight": 70,
+    "color": "#DEB887"
+  },
+  {
+    "key": "HISE Interface: Sampler Workspace",
+    "url": "working-with-hise/hise-interface/sampler-workspace/index.html",
+    "weight": 70,
+    "color": "#DEB887"
+  },
+  {
+    "key": "HISE Interface: Scriptnode Editor",
+    "url": "working-with-hise/hise-interface/scriptnode-editor/index.html",
+    "weight": 70,
+    "color": "#DEB887"
+  },
+  {
+    "key": "HISE Interface: Custom Workspace",
+    "url": "working-with-hise/hise-interface/custom-workspace/index.html",
+    "weight": 70,
+    "color": "#DEB887"
+  },
+  {
+    "key": "Top Bar: Show Custom Popup",
+    "url": "working-with-hise/hise-interface/top-bar/index.html#show-custom-popup",
     "weight": 60,
     "color": "#DEB887"
   },
   {
-    "key": "Main Workspace: Module Panel",
-    "url": "working-with-hise/workspaces/main-workspace/module-panel.html",
+    "key": "Top Bar: Macro Controls",
+    "url": "working-with-hise/hise-interface/top-bar/index.html#macro-controls",
     "weight": 60,
     "color": "#DEB887"
   },
   {
-    "key": "Main Workspace: Right Panel",
-    "url": "working-with-hise/workspaces/main-workspace/right-panel.html",
+    "key": "Top Bar: Interface Preview",
+    "url": "working-with-hise/hise-interface/top-bar/index.html#interface-preview",
     "weight": 60,
     "color": "#DEB887"
   },
   {
-    "key": "Module Panel: Routing Matrix",
-    "url": "working-with-hise/workspaces/main-workspace/module-panel.html#routing-matrix",
+    "key": "Top Bar: Preset Browser",
+    "url": "working-with-hise/hise-interface/top-bar/index.html#preset-browser",
+    "weight": 60,
+    "color": "#DEB887"
+  },
+  {
+    "key": "Top Bar: HISE Controller ",
+    "url": "working-with-hise/hise-interface/top-bar/index.html#hise-controller-",
+    "weight": 60,
+    "color": "#DEB887"
+  },
+  {
+    "key": "Top Bar: Audio Analyser",
+    "url": "working-with-hise/hise-interface/top-bar/index.html#audio-analyser",
+    "weight": 60,
+    "color": "#DEB887"
+  },
+  {
+    "key": "Top Bar: Settings",
+    "url": "working-with-hise/hise-interface/top-bar/index.html#settings",
+    "weight": 60,
+    "color": "#DEB887"
+  },
+  {
+    "key": "Left Panel: The Module Tree",
+    "url": "working-with-hise/hise-interface/left-panel/module-tree.html",
+    "weight": 60,
+    "color": "#DEB887"
+  },
+  {
+    "key": "Left Panel: Project Directory",
+    "url": "working-with-hise/hise-interface/left-panel/project-directory.html",
+    "weight": 60,
+    "color": "#DEB887"
+  },
+  {
+    "key": "Left Panel: API Browser",
+    "url": "working-with-hise/hise-interface/left-panel/api-browser.html",
+    "weight": 60,
+    "color": "#DEB887"
+  },
+  {
+    "key": "The Module Tree: Adding Audio Modules",
+    "url": "working-with-hise/hise-interface/left-panel/module-tree.html#adding-audio-modules",
     "weight": 50,
     "color": "#DEB887"
   },
   {
-    "key": "Scripting Workspace: Interface Designer",
-    "url": "working-with-hise/workspaces/scripting-workspace/canvas.html",
-    "weight": 60,
-    "color": "#DEB887"
-  },
-  {
-    "key": "Scripting Workspace: The Code editor",
-    "url": "working-with-hise/workspaces/scripting-workspace/code-editor.html",
-    "weight": 60,
-    "color": "#DEB887"
-  },
-  {
-    "key": "Scripting Workspace: Scriptnode Editor",
-    "url": "working-with-hise/workspaces/scripting-workspace/scriptnode.html",
-    "weight": 60,
-    "color": "#DEB887"
-  },
-  {
-    "key": "Interface Designer: Canvas",
-    "url": "working-with-hise/workspaces/scripting-workspace/canvas.html#canvas",
+    "key": "The Module Tree: Routing Matrix",
+    "url": "working-with-hise/hise-interface/left-panel/module-tree.html#routing-matrix",
     "weight": 50,
     "color": "#DEB887"
   },
   {
-    "key": "Interface Designer: Component List",
-    "url": "working-with-hise/workspaces/scripting-workspace/canvas.html#component-list",
+    "key": "The Module Tree: Event Logger",
+    "url": "working-with-hise/hise-interface/left-panel/module-tree.html#event-logger",
     "weight": 50,
     "color": "#DEB887"
   },
   {
-    "key": "Interface Designer: Property Editor",
-    "url": "working-with-hise/workspaces/scripting-workspace/canvas.html#property-editor",
+    "key": "The Module Tree: Modulation Plotter",
+    "url": "working-with-hise/hise-interface/left-panel/module-tree.html#modulation-plotter",
+    "weight": 50,
+    "color": "#DEB887"
+  },
+  {
+    "key": "Project Directory: Expansion Creator",
+    "url": "working-with-hise/hise-interface/left-panel/project-directory.html#expansion-creator",
     "weight": 50,
     "color": "#DEB887"
   },
   {
     "key": "The Code editor: Script Editor",
-    "url": "working-with-hise/workspaces/scripting-workspace/code-editor.html#script-editor",
-    "weight": 50,
+    "url": "working-with-hise/hise-interface/code-editor/index.html#script-editor",
+    "weight": 60,
     "color": "#DEB887"
   },
   {
     "key": "The Code editor: Console",
-    "url": "working-with-hise/workspaces/scripting-workspace/code-editor.html#console",
-    "weight": 50,
+    "url": "working-with-hise/hise-interface/code-editor/index.html#console",
+    "weight": 60,
     "color": "#DEB887"
   },
   {
     "key": "The Code editor: ScriptWatchTable",
-    "url": "working-with-hise/workspaces/scripting-workspace/code-editor.html#scriptwatchtable",
-    "weight": 50,
+    "url": "working-with-hise/hise-interface/code-editor/index.html#scriptwatchtable",
+    "weight": 60,
     "color": "#DEB887"
   },
   {
-    "key": "Scriptnode Editor: The Node List",
-    "url": "working-with-hise/workspaces/scripting-workspace/scriptnode.html#the-node-list",
-    "weight": 50,
+    "key": "The Code editor: # define",
+    "url": "working-with-hise/hise-interface/code-editor/index.html#-define",
+    "weight": 60,
     "color": "#DEB887"
   },
   {
-    "key": "Scriptnode Editor: The DSP Network graph",
-    "url": "working-with-hise/workspaces/scripting-workspace/scriptnode.html#the-dsp-network-graph",
-    "weight": 50,
+    "key": "The Code editor: .profile",
+    "url": "working-with-hise/hise-interface/code-editor/index.html#.profile",
+    "weight": 60,
     "color": "#DEB887"
   },
   {
-    "key": "Scriptnode Editor: Node Properties",
-    "url": "working-with-hise/workspaces/scripting-workspace/scriptnode.html#node-properties",
-    "weight": 50,
+    "key": "Interface Designer: Canvas",
+    "url": "working-with-hise/hise-interface/interface-designer/index.html#canvas",
+    "weight": 60,
+    "color": "#DEB887"
+  },
+  {
+    "key": "Interface Designer: Component List",
+    "url": "working-with-hise/hise-interface/interface-designer/index.html#component-list",
+    "weight": 60,
+    "color": "#DEB887"
+  },
+  {
+    "key": "Interface Designer: Property Editor",
+    "url": "working-with-hise/hise-interface/interface-designer/index.html#property-editor",
+    "weight": 60,
     "color": "#DEB887"
   },
   {
     "key": "Sampler Workspace: Sample Editor",
-    "url": "working-with-hise/workspaces/sampler-workspace/sample-editor.html",
+    "url": "working-with-hise/hise-interface/sampler-workspace/sample-editor.html",
     "weight": 60,
     "color": "#DEB887"
   },
   {
-    "key": "Sampler Workspace: Map Editor",
-    "url": "working-with-hise/workspaces/sampler-workspace/sample-map-editor.html",
-    "weight": 60,
-    "color": "#DEB887"
-  },
-  {
-    "key": "Sampler Workspace: Sampler Settings",
-    "url": "working-with-hise/workspaces/sampler-workspace/sample-settings.html",
+    "key": "Sampler Workspace: Sample Map Editor",
+    "url": "working-with-hise/hise-interface/sampler-workspace/sample-map-editor.html",
     "weight": 60,
     "color": "#DEB887"
   },
   {
     "key": "Sampler Workspace: Sample Table",
-    "url": "working-with-hise/workspaces/sampler-workspace/sample-table.html",
+    "url": "working-with-hise/hise-interface/sampler-workspace/sample-table.html",
     "weight": 60,
     "color": "#DEB887"
   },
   {
-    "key": "Map Editor: Toolbar",
-    "url": "working-with-hise/workspaces/sampler-workspace/sample-map-editor.html#toolbar",
+    "key": "Sampler Workspace: Sampler Settings",
+    "url": "working-with-hise/hise-interface/sampler-workspace/sample-settings.html",
+    "weight": 60,
+    "color": "#DEB887"
+  },
+  {
+    "key": "Sample Editor: Toolbar",
+    "url": "working-with-hise/hise-interface/sampler-workspace/sample-editor.html#toolbar",
     "weight": 50,
     "color": "#DEB887"
   },
   {
-    "key": "Map Editor: SFZ Importer",
-    "url": "working-with-hise/workspaces/sampler-workspace/sample-map-editor.html#sfz-importer",
+    "key": "Sample Map Editor: Editing the Samplemap",
+    "url": "working-with-hise/hise-interface/sampler-workspace/sample-map-editor.html#editing-the-samplemap",
     "weight": 50,
     "color": "#DEB887"
   },
   {
-    "key": "Map Editor: Drop Point",
-    "url": "working-with-hise/workspaces/sampler-workspace/sample-map-editor.html#drop-point",
+    "key": "Sample Map Editor: Toolbar",
+    "url": "working-with-hise/hise-interface/sampler-workspace/sample-map-editor.html#toolbar",
     "weight": 50,
     "color": "#DEB887"
   },
   {
-    "key": "Map Editor: Pitch Detection",
-    "url": "working-with-hise/workspaces/sampler-workspace/sample-map-editor.html#pitch-detection",
+    "key": "Sample Map Editor: Filename Token Parser",
+    "url": "working-with-hise/hise-interface/sampler-workspace/sample-map-editor.html#filename-token-parser",
     "weight": 50,
     "color": "#DEB887"
   },
   {
-    "key": "Map Editor: Filename Token Parser",
-    "url": "working-with-hise/workspaces/sampler-workspace/sample-map-editor.html#filename-token-parser",
-    "weight": 50,
-    "color": "#DEB887"
-  },
-  {
-    "key": "Sampler Settings: Disk IO Settings\t",
-    "url": "working-with-hise/workspaces/sampler-workspace/sample-settings.html#disk-io-settings\t",
-    "weight": 50,
-    "color": "#DEB887"
-  },
-  {
-    "key": "Sampler Settings: Voice Settings",
-    "url": "working-with-hise/workspaces/sampler-workspace/sample-settings.html#voice-settings",
-    "weight": 50,
-    "color": "#DEB887"
-  },
-  {
-    "key": "Sampler Settings: Group Settings",
-    "url": "working-with-hise/workspaces/sampler-workspace/sample-settings.html#group-settings",
-    "weight": 50,
-    "color": "#DEB887"
-  },
-  {
-    "key": "Sampler Settings: Playback Settings",
-    "url": "working-with-hise/workspaces/sampler-workspace/sample-settings.html#playback-settings",
+    "key": "Sample Map Editor: SFZ Importer",
+    "url": "working-with-hise/hise-interface/sampler-workspace/sample-map-editor.html#sfz-importer",
     "weight": 50,
     "color": "#DEB887"
   },
   {
     "key": "Sample Table: RegEx Cheatsheet",
-    "url": "working-with-hise/workspaces/sampler-workspace/sample-table.html#regex-cheatsheet",
+    "url": "working-with-hise/hise-interface/sampler-workspace/sample-table.html#regex-cheatsheet",
     "weight": 50,
     "color": "#DEB887"
   },
   {
-    "key": "Sample Table: Isolate a token in the file name",
-    "url": "working-with-hise/workspaces/sampler-workspace/sample-table.html#isolate-a-token-in-the-file-name",
+    "key": "Sampler Settings: Disk IO Settings\t",
+    "url": "working-with-hise/hise-interface/sampler-workspace/sample-settings.html#disk-io-settings\t",
     "weight": 50,
+    "color": "#DEB887"
+  },
+  {
+    "key": "Sampler Settings: Voice Settings",
+    "url": "working-with-hise/hise-interface/sampler-workspace/sample-settings.html#voice-settings",
+    "weight": 50,
+    "color": "#DEB887"
+  },
+  {
+    "key": "Sampler Settings: Group Settings",
+    "url": "working-with-hise/hise-interface/sampler-workspace/sample-settings.html#group-settings",
+    "weight": 50,
+    "color": "#DEB887"
+  },
+  {
+    "key": "Sampler Settings: Playback Settings",
+    "url": "working-with-hise/hise-interface/sampler-workspace/sample-settings.html#playback-settings",
+    "weight": 50,
+    "color": "#DEB887"
+  },
+  {
+    "key": "Scriptnode Editor: The Scriptnode canvas",
+    "url": "working-with-hise/hise-interface/scriptnode-editor/index.html#the-scriptnode-canvas",
+    "weight": 60,
+    "color": "#DEB887"
+  },
+  {
+    "key": "Scriptnode Editor: Add Node Popup",
+    "url": "working-with-hise/hise-interface/scriptnode-editor/index.html#add-node-popup",
+    "weight": 60,
+    "color": "#DEB887"
+  },
+  {
+    "key": "Scriptnode Editor: Toolbar",
+    "url": "working-with-hise/hise-interface/scriptnode-editor/index.html#toolbar",
+    "weight": 60,
+    "color": "#DEB887"
+  },
+  {
+    "key": "Scriptnode Editor: The Node List",
+    "url": "working-with-hise/hise-interface/scriptnode-editor/index.html#the-node-list",
+    "weight": 60,
+    "color": "#DEB887"
+  },
+  {
+    "key": "Scriptnode Editor: Node Properties",
+    "url": "working-with-hise/hise-interface/scriptnode-editor/index.html#node-properties",
+    "weight": 60,
+    "color": "#DEB887"
+  },
+  {
+    "key": "Scriptnode Editor: Parameter Editing ",
+    "url": "working-with-hise/hise-interface/scriptnode-editor/index.html#parameter-editing-",
+    "weight": 60,
+    "color": "#DEB887"
+  },
+  {
+    "key": "Scriptnode Editor: Parameter popup",
+    "url": "working-with-hise/hise-interface/scriptnode-editor/index.html#parameter-popup",
+    "weight": 60,
+    "color": "#DEB887"
+  },
+  {
+    "key": "Scriptnode Editor: The Range editor",
+    "url": "working-with-hise/hise-interface/scriptnode-editor/index.html#the-range-editor",
+    "weight": 60,
+    "color": "#DEB887"
+  },
+  {
+    "key": "Scriptnode Editor: Script driven nodes",
+    "url": "working-with-hise/hise-interface/scriptnode-editor/index.html#script-driven-nodes",
+    "weight": 60,
     "color": "#DEB887"
   },
   {

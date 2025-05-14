@@ -5,7 +5,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<base href="https://docs.hise.dev/"/>
-	<title>HISE | Docs</title>
+	<title>HISE | Scripting | MIDI Player</title>
+	<meta name="description" content="The API reference for the MIDI player">
 	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
 	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
 	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
@@ -96,7 +97,7 @@
  time signature and 7 bars, use <code>MidiPlayer.create(3, 4, 7)</code>
 </p>
 <p>Be aware that this adds a new sequence to the player add the end of the list, so you probably want to check <code>isEmpty()</code>
- if you just want to write a <a href="tutorials/recipes/event-processing/create-midi-sequence">bunch of notes</a>
+ if you just want to write a <a href="tutorials/midi/index.html#play-chords-from-single-notes">bunch of notes</a>
 <br></p>
 <h2 id="flushmessagelist"><b>flushMessageList</b>
 </h2>
@@ -114,7 +115,7 @@
 </h2>
 <p class="comment">Creates an array containing all MIDI messages wrapped into MessageHolders for processing.</p>
 <pre><code class="language-javascript line-numbers">MidiPlayer.getEventList()</code></pre>
-<p><br>This is the first step of three when you want to process the content of a MIDI Player.<br>It creates an array of <a href="scripting/scripting-api/messageholder">MessageHolder</a>
+<p><br>This is the first step of three when you want to process the content of a MIDI Player.<br>It creates an array of <a href="scripting/scripting-api/messageholder/index.html">MessageHolder</a>
  objects which can be used to transform the MIDI data.</p>
 <p>The event ID of the events will be created consecutively and the events are sorted chronologically. You can find the matching note-off event to a note-on event using something like this:</p>
 <pre><code class="language-javascript line-numbers">inline function getNoteOff(list, noteOn)
@@ -129,7 +130,7 @@
 <p class="comment">There are a few new helper functions in the <code>Engine</code>
  class to help you converting between the domains (search for <code>QuarterBeats</code>
 )</p>
-<p>Also make sure to call <a href="scripting/scripting-api/midiplayer#flushmessagelist">flushMessageList()</a>
+<p>Also make sure to call <a href="scripting/scripting-api/midiplayer/index.html#flushmessagelist">flushMessageList()</a>
  after finishing the processing to apply the changes.<br></p>
 <h2 id="geteventlistfromsequence"><b>getEventListFromSequence</b>
 </h2>
@@ -232,7 +233,7 @@ Panel.setPaintRoutine(function(g)
 </h2>
 <p class="comment">Checks if the MIDI player contains a sequence to read / write.</p>
 <pre><code class="language-javascript line-numbers">MidiPlayer.isEmpty()</code></pre>
-<p><br>This doesn't check whether the current sequence contains any notes, but checks whether there is any sequence loaded at all: If you load up the MIDI Player, it will not have a sequence loaded until you either load a MIDI file, or call <a href="scripting/scripting-api/midiplayer#create">Midiplayer.create</a>
+<p><br>This doesn't check whether the current sequence contains any notes, but checks whether there is any sequence loaded at all: If you load up the MIDI Player, it will not have a sequence loaded until you either load a MIDI file, or call <a href="scripting/scripting-api/midiplayer/index.html#create">Midiplayer.create</a>
 .</p>
 <p>If you want to check whether the sequence is empty, you can use this:</p>
 <pre><code class="language-javascript line-numbers">// Do not call this in the audio thread obviously...
@@ -263,7 +264,7 @@ inline function sequenceHasNoEvents(player)
 </h2>
 <p class="comment">Redo the last edit.</p>
 <pre><code class="language-javascript line-numbers">MidiPlayer.redo()</code></pre>
-<p><br>Just like <a href="scripting/scripting-api/midiplayer#undo">undo()</a>
+<p><br>Just like <a href="scripting/scripting-api/midiplayer/index.html#undo">undo()</a>
 , this will not use the global undo manager, but a dedicated undo manager for each MIDI player (otherwise the actions interfere with changing UI values, which would be very annoying).<br></p>
 <h2 id="reset"><b>reset</b>
 </h2>
@@ -306,9 +307,9 @@ inline function sequenceHasNoEvents(player)
 </h2>
 <p class="comment">Sets the playback position in the current loop. Input must be between 0.0 and 1.0.</p>
 <pre><code class="language-javascript line-numbers">MidiPlayer.setPlaybackPosition(var newPosition)</code></pre>
-<p><br>Similar to <a href="scripting/scripting-api/audiosampleprocessor#setfile">AudioSampleProcessor.setFile()</a>
+<p><br>Similar to <a href="scripting/scripting-api/audiosampleprocessor/index.html#setfile">AudioSampleProcessor.setFile()</a>
 , this will load a file into the MIDI player.</p>
-<p>It uses the standard HISE syntax for <a href="working-with-hise/project-management#project-folder-wildcard">file references</a>
+<p>It uses the standard HISE syntax for <a href="working-with-hise/project-management/index.html#project-folder-wildcard">file references</a>
 . The other arguments let you choose</p>
 <ul><li>whether you want to clear the existing sequences or add this to the end of the list of "loaded" sequences. You can switch between multiple sequences on the fly (even during playback), so if you want to use this feature, you need to add multiple sequences by setting this flag to <code>true</code>
 .</li>
@@ -325,7 +326,7 @@ inline function sequenceHasNoEvents(player)
 </h2>
 <p class="comment">If true, the panel will get a repaint() call whenever the playback position changes.</p>
 <pre><code class="language-javascript line-numbers">MidiPlayer.setRepaintOnPositionChange(var shouldRepaintPanel)</code></pre>
-<p><br>By default this is off, but if you need your <a href="scripting/scripting-api/midiplayer#connecttopanel">connected Panel</a>
+<p><br>By default this is off, but if you need your <a href="scripting/scripting-api/midiplayer/index.html#connecttopanel">connected Panel</a>
  to repaint during playback (eg. to display a ruler that indicates the position), set this to true and it repaint() will be called periodically during playback.<br></p>
 <h2 id="setsequence"><b>setSequence</b>
 </h2>

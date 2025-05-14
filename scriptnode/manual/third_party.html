@@ -5,7 +5,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<base href="https://docs.hise.dev/"/>
-	<title>HISE | Docs</title>
+	<title>HISE | ScriptNode | Third Party C++ Nodes</title>
+	<meta name="description" content="Adding custom C++ nodes to your project">
 	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
 	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
 	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
@@ -40,8 +41,9 @@
 
 		<div class="content"><h1 id="third-party-c++-nodes"><b>Third Party C++ Nodes</b>
 </h1>
-<p><br>If you <a href="working-with-hise/menu-reference/export/index.html#compile-dsp-networks-as-dll">export</a>
- your scriptnode network as dynamic library, it will create a C++ file for each network. HISE will then load this code as dynamic library and allows you to use the C++ version of your networks inside HISE (either as "frozen" DspNetwork, a node inside a network or as HardcodedFX module). </p>
+<p><br>If you <a href="working-with-hise/menu-reference/export/index.html#compile-dsp-networks-as-dll">compile your scriptnode dsp networks as dll</a>
+ it will create a C++ file for each network. HISE will then load this code as dynamic library and allows you to use the C++ version of your networks inside HISE (either as "frozen" DspNetwork inside a network or as <a href="hise-modules/effects/list/hardcoded-master-fx.html">HardcodedFX module</a>
+) in the module tree. </p>
 <p>When you export your plugin, it will include these files into the C++ compilation so that you don't need to bother about shipping the dynamic library file alongside your plugin / app.</p>
 <p>But it doesn't stop there. This system can also be used to add any arbitrary C++ DSP code as node and even lets you run HISE under your IDE's debugger (VS or XCode) while developing the C++ nodes.</p>
 <p>In order to do so, you just need to add your files in the subfolder <code>DspNetworks/ThirdParty</code>

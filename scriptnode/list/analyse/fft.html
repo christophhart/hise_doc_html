@@ -5,7 +5,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<base href="https://docs.hise.dev/"/>
-	<title>HISE | Docs</title>
+	<title>HISE | ScriptNode | fft</title>
+	<meta name="description" content="A spectrum analyser">
 	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
 	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
 	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
@@ -44,8 +45,7 @@
 </p>
 <img src="images/sn_screen_analyse__fft.png"></img>
 <p>A spectrum analyser<br>This node will analyse the spectrum of the audio signal and display a FFT graph. If you want to show the spectrum on your main user interface, you need to register it as an external DisplayBuffer, then grab a <a href="scripting/scripting-api/displaybuffersource/index.html">reference</a>
- to it and <a href="scripting/scripting-api/scriptringbuffer#createpath">render</a>
- the output.</p>
+ to it and render the output.</p>
 <h3 id="changing-fft-properties"><b>Changing FFT properties</b>
 </h3>
 <p>You can change the FFT properties (window type, FFT size, decibel range etc) by supplying a JSON object and passing it to <a href="scripting/scripting-api/scriptringbuffer#setringbufferproperties">this method</a>

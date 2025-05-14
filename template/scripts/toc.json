@@ -598,305 +598,389 @@ var rootDb = {
           ]
         },
         {
-          "URL": "working-with-hise/workspaces/index.html",
-          "Title": "Workspaces",
+          "URL": "working-with-hise/hise-interface/index.html",
+          "Title": "HISE Interface",
           "Colour": "#DEB887",
           "Children": [
             {
-              "URL": "working-with-hise/workspaces/main-workspace/index.html",
-              "Title": "Main Workspace",
+              "URL": "working-with-hise/hise-interface/index.html#hise-interface-architecture",
+              "Title": "HISE Interface Architecture",
+              "Colour": "#DEB887",
+              "Children": []
+            },
+            {
+              "URL": "working-with-hise/hise-interface/index.html#customizing-the-hise-interface",
+              "Title": "Customizing the HISE interface",
+              "Colour": "#DEB887",
+              "Children": []
+            },
+            {
+              "URL": "working-with-hise/hise-interface/index.html#finding-the-right-floating-tile",
+              "Title": "",
+              "Colour": "#DEB887",
+              "Children": []
+            },
+            {
+              "URL": "working-with-hise/hise-interface/index.html#changing-the-size-absolute-vs.-relative",
+              "Title": "",
+              "Colour": "#DEB887",
+              "Children": []
+            },
+            {
+              "URL": "working-with-hise/hise-interface/index.html#changing-container-types-/-order-of-elements",
+              "Title": "",
+              "Colour": "#DEB887",
+              "Children": []
+            },
+            {
+              "URL": "working-with-hise/hise-interface/index.html#adding-shortcuts-for-folding-and-key-focus",
+              "Title": "",
+              "Colour": "#DEB887",
+              "Children": []
+            },
+            {
+              "URL": "working-with-hise/hise-interface/top-bar/index.html",
+              "Title": "Top Bar",
               "Colour": "#DEB887",
               "Children": [
                 {
-                  "URL": "working-with-hise/workspaces/main-workspace/left-panel.html",
-                  "Title": "Left Panel",
+                  "URL": "working-with-hise/hise-interface/top-bar/index.html#show-custom-popup",
+                  "Title": "Show Custom Popup",
                   "Colour": "#DEB887",
                   "Children": []
                 },
                 {
-                  "URL": "working-with-hise/workspaces/main-workspace/module-panel.html",
-                  "Title": "Module Panel",
+                  "URL": "working-with-hise/hise-interface/top-bar/index.html#macro-controls",
+                  "Title": "Macro Controls",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
+                  "URL": "working-with-hise/hise-interface/top-bar/index.html#interface-preview",
+                  "Title": "Interface Preview",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
+                  "URL": "working-with-hise/hise-interface/top-bar/index.html#preset-browser",
+                  "Title": "Preset Browser",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
+                  "URL": "working-with-hise/hise-interface/top-bar/index.html#hise-controller-",
+                  "Title": "HISE Controller ",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
+                  "URL": "working-with-hise/hise-interface/top-bar/index.html#quickplay-note",
+                  "Title": "",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
+                  "URL": "working-with-hise/hise-interface/top-bar/index.html#audio-analyser",
+                  "Title": "Audio Analyser",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
+                  "URL": "working-with-hise/hise-interface/top-bar/index.html#spectral",
+                  "Title": "",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
+                  "URL": "working-with-hise/hise-interface/top-bar/index.html#osc",
+                  "Title": "",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
+                  "URL": "working-with-hise/hise-interface/top-bar/index.html#gain",
+                  "Title": "",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
+                  "URL": "working-with-hise/hise-interface/top-bar/index.html#fft",
+                  "Title": "",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
+                  "URL": "working-with-hise/hise-interface/top-bar/index.html#pitch",
+                  "Title": "",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
+                  "URL": "working-with-hise/hise-interface/top-bar/index.html#stereo",
+                  "Title": "",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
+                  "URL": "working-with-hise/hise-interface/top-bar/index.html#cpu",
+                  "Title": "",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
+                  "URL": "working-with-hise/hise-interface/top-bar/index.html#settings",
+                  "Title": "Settings",
+                  "Colour": "#DEB887",
+                  "Children": []
+                }
+              ]
+            },
+            {
+              "URL": "working-with-hise/hise-interface/left-panel/index.html",
+              "Title": "Left Panel",
+              "Colour": "#DEB887",
+              "Children": [
+                {
+                  "URL": "working-with-hise/hise-interface/left-panel/module-tree.html",
+                  "Title": "The Module Tree",
                   "Colour": "#DEB887",
                   "Children": [
                     {
-                      "URL": "working-with-hise/workspaces/main-workspace/module-panel.html#routing-matrix",
+                      "URL": "working-with-hise/hise-interface/left-panel/module-tree.html#adding-audio-modules",
+                      "Title": "Adding Audio Modules",
+                      "Colour": "#DEB887",
+                      "Children": []
+                    },
+                    {
+                      "URL": "working-with-hise/hise-interface/left-panel/module-tree.html#routing-matrix",
                       "Title": "Routing Matrix",
                       "Colour": "#DEB887",
                       "Children": []
+                    },
+                    {
+                      "URL": "working-with-hise/hise-interface/left-panel/module-tree.html#event-logger",
+                      "Title": "Event Logger",
+                      "Colour": "#DEB887",
+                      "Children": []
+                    },
+                    {
+                      "URL": "working-with-hise/hise-interface/left-panel/module-tree.html#modulation-plotter",
+                      "Title": "Modulation Plotter",
+                      "Colour": "#DEB887",
+                      "Children": []
+                    },
+                    {
+                      "URL": "working-with-hise/hise-interface/left-panel/module-tree.html#additional-tips-&-links",
+                      "Title": "",
+                      "Colour": "#DEB887",
+                      "Children": []
                     }
                   ]
                 },
                 {
-                  "URL": "working-with-hise/workspaces/main-workspace/right-panel.html",
-                  "Title": "Right Panel",
+                  "URL": "working-with-hise/hise-interface/left-panel/project-directory.html",
+                  "Title": "Project Directory",
+                  "Colour": "#DEB887",
+                  "Children": [
+                    {
+                      "URL": "working-with-hise/hise-interface/left-panel/project-directory.html#expansion-creator",
+                      "Title": "Expansion Creator",
+                      "Colour": "#DEB887",
+                      "Children": []
+                    }
+                  ]
+                },
+                {
+                  "URL": "working-with-hise/hise-interface/left-panel/api-browser.html",
+                  "Title": "API Browser",
                   "Colour": "#DEB887",
                   "Children": []
                 }
               ]
             },
             {
-              "URL": "working-with-hise/workspaces/scripting-workspace/index.html",
-              "Title": "Scripting Workspace",
+              "URL": "working-with-hise/hise-interface/code-editor/index.html",
+              "Title": "The Code editor",
               "Colour": "#DEB887",
               "Children": [
                 {
-                  "URL": "working-with-hise/workspaces/scripting-workspace/canvas.html",
-                  "Title": "Interface Designer",
+                  "URL": "working-with-hise/hise-interface/code-editor/index.html#script-editor",
+                  "Title": "Script Editor",
                   "Colour": "#DEB887",
-                  "Children": [
-                    {
-                      "URL": "working-with-hise/workspaces/scripting-workspace/canvas.html#canvas",
-                      "Title": "Canvas",
-                      "Colour": "#DEB887",
-                      "Children": []
-                    },
-                    {
-                      "URL": "working-with-hise/workspaces/scripting-workspace/canvas.html#toolbar",
-                      "Title": "",
-                      "Colour": "#DEB887",
-                      "Children": []
-                    },
-                    {
-                      "URL": "working-with-hise/workspaces/scripting-workspace/canvas.html#select-and-position-ui-components",
-                      "Title": "",
-                      "Colour": "#DEB887",
-                      "Children": []
-                    },
-                    {
-                      "URL": "working-with-hise/workspaces/scripting-workspace/canvas.html#component-list",
-                      "Title": "Component List",
-                      "Colour": "#DEB887",
-                      "Children": []
-                    },
-                    {
-                      "URL": "working-with-hise/workspaces/scripting-workspace/canvas.html#property-editor",
-                      "Title": "Property Editor",
-                      "Colour": "#DEB887",
-                      "Children": []
-                    },
-                    {
-                      "URL": "working-with-hise/workspaces/scripting-workspace/canvas.html#set-the-id",
-                      "Title": "",
-                      "Colour": "#DEB887",
-                      "Children": []
-                    },
-                    {
-                      "URL": "working-with-hise/workspaces/scripting-workspace/canvas.html#copying-selected-properties-as-json",
-                      "Title": "",
-                      "Colour": "#DEB887",
-                      "Children": []
-                    }
-                  ]
+                  "Children": []
                 },
                 {
-                  "URL": "working-with-hise/workspaces/scripting-workspace/code-editor.html",
-                  "Title": "The Code editor",
+                  "URL": "working-with-hise/hise-interface/code-editor/index.html#repl",
+                  "Title": "",
                   "Colour": "#DEB887",
-                  "Children": [
-                    {
-                      "URL": "working-with-hise/workspaces/scripting-workspace/code-editor.html#script-editor",
-                      "Title": "Script Editor",
-                      "Colour": "#DEB887",
-                      "Children": []
-                    },
-                    {
-                      "URL": "working-with-hise/workspaces/scripting-workspace/code-editor.html#autocomplete-popup-esc",
-                      "Title": "",
-                      "Colour": "#DEB887",
-                      "Children": []
-                    },
-                    {
-                      "URL": "working-with-hise/workspaces/scripting-workspace/code-editor.html#breakpoints",
-                      "Title": "",
-                      "Colour": "#DEB887",
-                      "Children": []
-                    },
-                    {
-                      "URL": "working-with-hise/workspaces/scripting-workspace/code-editor.html#repl",
-                      "Title": "",
-                      "Colour": "#DEB887",
-                      "Children": []
-                    },
-                    {
-                      "URL": "working-with-hise/workspaces/scripting-workspace/code-editor.html#shortcuts",
-                      "Title": "",
-                      "Colour": "#DEB887",
-                      "Children": []
-                    },
-                    {
-                      "URL": "working-with-hise/workspaces/scripting-workspace/code-editor.html#console",
-                      "Title": "Console",
-                      "Colour": "#DEB887",
-                      "Children": []
-                    },
-                    {
-                      "URL": "working-with-hise/workspaces/scripting-workspace/code-editor.html#scriptwatchtable",
-                      "Title": "ScriptWatchTable",
-                      "Colour": "#DEB887",
-                      "Children": []
-                    },
-                    {
-                      "URL": "working-with-hise/workspaces/scripting-workspace/code-editor.html#types-",
-                      "Title": "",
-                      "Colour": "#DEB887",
-                      "Children": []
-                    }
-                  ]
+                  "Children": []
                 },
                 {
-                  "URL": "working-with-hise/workspaces/scripting-workspace/scriptnode.html",
-                  "Title": "Scriptnode Editor",
+                  "URL": "working-with-hise/hise-interface/code-editor/index.html#autocomplete-popup-esc",
+                  "Title": "",
                   "Colour": "#DEB887",
-                  "Children": [
-                    {
-                      "URL": "working-with-hise/workspaces/scripting-workspace/scriptnode.html#the-node-list",
-                      "Title": "The Node List",
-                      "Colour": "#DEB887",
-                      "Children": []
-                    },
-                    {
-                      "URL": "working-with-hise/workspaces/scripting-workspace/scriptnode.html#the-dsp-network-graph",
-                      "Title": "The DSP Network graph",
-                      "Colour": "#DEB887",
-                      "Children": []
-                    },
-                    {
-                      "URL": "working-with-hise/workspaces/scripting-workspace/scriptnode.html#toolbar",
-                      "Title": "",
-                      "Colour": "#DEB887",
-                      "Children": []
-                    },
-                    {
-                      "URL": "working-with-hise/workspaces/scripting-workspace/scriptnode.html#node-properties",
-                      "Title": "Node Properties",
-                      "Colour": "#DEB887",
-                      "Children": []
-                    },
-                    {
-                      "URL": "working-with-hise/workspaces/scripting-workspace/scriptnode.html#the-parameter-editor-",
-                      "Title": "",
-                      "Colour": "#DEB887",
-                      "Children": []
-                    },
-                    {
-                      "URL": "working-with-hise/workspaces/scripting-workspace/scriptnode.html#parameter-popup",
-                      "Title": "",
-                      "Colour": "#DEB887",
-                      "Children": []
-                    },
-                    {
-                      "URL": "working-with-hise/workspaces/scripting-workspace/scriptnode.html#the-range-editor",
-                      "Title": "",
-                      "Colour": "#DEB887",
-                      "Children": []
-                    },
-                    {
-                      "URL": "working-with-hise/workspaces/scripting-workspace/scriptnode.html#the-node-property-popup",
-                      "Title": "",
-                      "Colour": "#DEB887",
-                      "Children": []
-                    }
-                  ]
+                  "Children": []
+                },
+                {
+                  "URL": "working-with-hise/hise-interface/code-editor/index.html#code-snippets",
+                  "Title": "",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
+                  "URL": "working-with-hise/hise-interface/code-editor/index.html#breakpoints",
+                  "Title": "",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
+                  "URL": "working-with-hise/hise-interface/code-editor/index.html#shortcuts",
+                  "Title": "",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
+                  "URL": "working-with-hise/hise-interface/code-editor/index.html#console",
+                  "Title": "Console",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
+                  "URL": "working-with-hise/hise-interface/code-editor/index.html#scriptwatchtable",
+                  "Title": "ScriptWatchTable",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
+                  "URL": "working-with-hise/hise-interface/code-editor/index.html#types-",
+                  "Title": "",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
+                  "URL": "working-with-hise/hise-interface/code-editor/index.html#-define",
+                  "Title": "# define",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
+                  "URL": "working-with-hise/hise-interface/code-editor/index.html#.profile",
+                  "Title": ".profile",
+                  "Colour": "#DEB887",
+                  "Children": []
                 }
               ]
             },
             {
-              "URL": "working-with-hise/workspaces/sampler-workspace/index.html",
+              "URL": "working-with-hise/hise-interface/interface-designer/index.html",
+              "Title": "Interface Designer",
+              "Colour": "#DEB887",
+              "Children": [
+                {
+                  "URL": "working-with-hise/hise-interface/interface-designer/index.html#canvas",
+                  "Title": "Canvas",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
+                  "URL": "working-with-hise/hise-interface/interface-designer/index.html#toolbar",
+                  "Title": "",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
+                  "URL": "working-with-hise/hise-interface/interface-designer/index.html#select-and-position-ui-components",
+                  "Title": "",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
+                  "URL": "working-with-hise/hise-interface/interface-designer/index.html#component-list",
+                  "Title": "Component List",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
+                  "URL": "working-with-hise/hise-interface/interface-designer/index.html#property-editor",
+                  "Title": "Property Editor",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
+                  "URL": "working-with-hise/hise-interface/interface-designer/index.html#set-the-id",
+                  "Title": "",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
+                  "URL": "working-with-hise/hise-interface/interface-designer/index.html#copying-selected-properties-as-json",
+                  "Title": "",
+                  "Colour": "#DEB887",
+                  "Children": []
+                }
+              ]
+            },
+            {
+              "URL": "working-with-hise/hise-interface/sampler-workspace/index.html",
               "Title": "Sampler Workspace",
               "Colour": "#DEB887",
               "Children": [
                 {
-                  "URL": "working-with-hise/workspaces/sampler-workspace/sample-editor.html",
+                  "URL": "working-with-hise/hise-interface/sampler-workspace/sample-editor.html",
                   "Title": "Sample Editor",
-                  "Colour": "#DEB887",
-                  "Children": []
-                },
-                {
-                  "URL": "working-with-hise/workspaces/sampler-workspace/sample-map-editor.html",
-                  "Title": "Map Editor",
                   "Colour": "#DEB887",
                   "Children": [
                     {
-                      "URL": "working-with-hise/workspaces/sampler-workspace/sample-map-editor.html#toolbar",
+                      "URL": "working-with-hise/hise-interface/sampler-workspace/sample-editor.html#toolbar",
+                      "Title": "Toolbar",
+                      "Colour": "#DEB887",
+                      "Children": []
+                    }
+                  ]
+                },
+                {
+                  "URL": "working-with-hise/hise-interface/sampler-workspace/sample-map-editor.html",
+                  "Title": "Sample Map Editor",
+                  "Colour": "#DEB887",
+                  "Children": [
+                    {
+                      "URL": "working-with-hise/hise-interface/sampler-workspace/sample-map-editor.html#editing-the-samplemap",
+                      "Title": "Editing the Samplemap",
+                      "Colour": "#DEB887",
+                      "Children": []
+                    },
+                    {
+                      "URL": "working-with-hise/hise-interface/sampler-workspace/sample-map-editor.html#samplemap-value-setters",
+                      "Title": "",
+                      "Colour": "#DEB887",
+                      "Children": []
+                    },
+                    {
+                      "URL": "working-with-hise/hise-interface/sampler-workspace/sample-map-editor.html#toolbar",
                       "Title": "Toolbar",
                       "Colour": "#DEB887",
                       "Children": []
                     },
                     {
-                      "URL": "working-with-hise/workspaces/sampler-workspace/sample-map-editor.html#sfz-importer",
-                      "Title": "SFZ Importer",
-                      "Colour": "#DEB887",
-                      "Children": []
-                    },
-                    {
-                      "URL": "working-with-hise/workspaces/sampler-workspace/sample-map-editor.html#samplemap-value-setters",
-                      "Title": "",
-                      "Colour": "#DEB887",
-                      "Children": []
-                    },
-                    {
-                      "URL": "working-with-hise/workspaces/sampler-workspace/sample-map-editor.html#drop-point",
-                      "Title": "Drop Point",
-                      "Colour": "#DEB887",
-                      "Children": []
-                    },
-                    {
-                      "URL": "working-with-hise/workspaces/sampler-workspace/sample-map-editor.html#pitch-detection",
-                      "Title": "Pitch Detection",
-                      "Colour": "#DEB887",
-                      "Children": []
-                    },
-                    {
-                      "URL": "working-with-hise/workspaces/sampler-workspace/sample-map-editor.html#filename-token-parser",
+                      "URL": "working-with-hise/hise-interface/sampler-workspace/sample-map-editor.html#filename-token-parser",
                       "Title": "Filename Token Parser",
                       "Colour": "#DEB887",
                       "Children": []
                     },
                     {
-                      "URL": "working-with-hise/workspaces/sampler-workspace/sample-map-editor.html#the-rows",
+                      "URL": "working-with-hise/hise-interface/sampler-workspace/sample-map-editor.html#the-rows",
                       "Title": "",
                       "Colour": "#DEB887",
                       "Children": []
                     },
                     {
-                      "URL": "working-with-hise/workspaces/sampler-workspace/sample-map-editor.html#scripting",
-                      "Title": "",
-                      "Colour": "#DEB887",
-                      "Children": []
-                    }
-                  ]
-                },
-                {
-                  "URL": "working-with-hise/workspaces/sampler-workspace/sample-settings.html",
-                  "Title": "Sampler Settings",
-                  "Colour": "#DEB887",
-                  "Children": [
-                    {
-                      "URL": "working-with-hise/workspaces/sampler-workspace/sample-settings.html#disk-io-settings\t",
-                      "Title": "Disk IO Settings\t",
+                      "URL": "working-with-hise/hise-interface/sampler-workspace/sample-map-editor.html#sfz-importer",
+                      "Title": "SFZ Importer",
                       "Colour": "#DEB887",
                       "Children": []
                     },
                     {
-                      "URL": "working-with-hise/workspaces/sampler-workspace/sample-settings.html#voice-settings",
-                      "Title": "Voice Settings",
-                      "Colour": "#DEB887",
-                      "Children": []
-                    },
-                    {
-                      "URL": "working-with-hise/workspaces/sampler-workspace/sample-settings.html#group-settings",
-                      "Title": "Group Settings",
-                      "Colour": "#DEB887",
-                      "Children": []
-                    },
-                    {
-                      "URL": "working-with-hise/workspaces/sampler-workspace/sample-settings.html#playback-settings",
-                      "Title": "Playback Settings",
-                      "Colour": "#DEB887",
-                      "Children": []
-                    },
-                    {
-                      "URL": "working-with-hise/workspaces/sampler-workspace/sample-settings.html#scripting",
+                      "URL": "working-with-hise/hise-interface/sampler-workspace/sample-map-editor.html#scripting",
                       "Title": "",
                       "Colour": "#DEB887",
                       "Children": []
@@ -904,19 +988,56 @@ var rootDb = {
                   ]
                 },
                 {
-                  "URL": "working-with-hise/workspaces/sampler-workspace/sample-table.html",
+                  "URL": "working-with-hise/hise-interface/sampler-workspace/sample-table.html",
                   "Title": "Sample Table",
                   "Colour": "#DEB887",
                   "Children": [
                     {
-                      "URL": "working-with-hise/workspaces/sampler-workspace/sample-table.html#regex-cheatsheet",
+                      "URL": "working-with-hise/hise-interface/sampler-workspace/sample-table.html#regex-cheatsheet",
                       "Title": "RegEx Cheatsheet",
                       "Colour": "#DEB887",
                       "Children": []
                     },
                     {
-                      "URL": "working-with-hise/workspaces/sampler-workspace/sample-table.html#isolate-a-token-in-the-file-name",
-                      "Title": "Isolate a token in the file name",
+                      "URL": "working-with-hise/hise-interface/sampler-workspace/sample-table.html#isolate-a-token-in-the-file-name",
+                      "Title": "",
+                      "Colour": "#DEB887",
+                      "Children": []
+                    }
+                  ]
+                },
+                {
+                  "URL": "working-with-hise/hise-interface/sampler-workspace/sample-settings.html",
+                  "Title": "Sampler Settings",
+                  "Colour": "#DEB887",
+                  "Children": [
+                    {
+                      "URL": "working-with-hise/hise-interface/sampler-workspace/sample-settings.html#disk-io-settings\t",
+                      "Title": "Disk IO Settings\t",
+                      "Colour": "#DEB887",
+                      "Children": []
+                    },
+                    {
+                      "URL": "working-with-hise/hise-interface/sampler-workspace/sample-settings.html#voice-settings",
+                      "Title": "Voice Settings",
+                      "Colour": "#DEB887",
+                      "Children": []
+                    },
+                    {
+                      "URL": "working-with-hise/hise-interface/sampler-workspace/sample-settings.html#group-settings",
+                      "Title": "Group Settings",
+                      "Colour": "#DEB887",
+                      "Children": []
+                    },
+                    {
+                      "URL": "working-with-hise/hise-interface/sampler-workspace/sample-settings.html#playback-settings",
+                      "Title": "Playback Settings",
+                      "Colour": "#DEB887",
+                      "Children": []
+                    },
+                    {
+                      "URL": "working-with-hise/hise-interface/sampler-workspace/sample-settings.html#scripting",
+                      "Title": "",
                       "Colour": "#DEB887",
                       "Children": []
                     }
@@ -925,7 +1046,68 @@ var rootDb = {
               ]
             },
             {
-              "URL": "working-with-hise/workspaces/custom-workspace/index.html",
+              "URL": "working-with-hise/hise-interface/scriptnode-editor/index.html",
+              "Title": "Scriptnode Editor",
+              "Colour": "#DEB887",
+              "Children": [
+                {
+                  "URL": "working-with-hise/hise-interface/scriptnode-editor/index.html#the-scriptnode-canvas",
+                  "Title": "The Scriptnode canvas",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
+                  "URL": "working-with-hise/hise-interface/scriptnode-editor/index.html#add-node-popup",
+                  "Title": "Add Node Popup",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
+                  "URL": "working-with-hise/hise-interface/scriptnode-editor/index.html#toolbar",
+                  "Title": "Toolbar",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
+                  "URL": "working-with-hise/hise-interface/scriptnode-editor/index.html#the-node-list",
+                  "Title": "The Node List",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
+                  "URL": "working-with-hise/hise-interface/scriptnode-editor/index.html#node-properties",
+                  "Title": "Node Properties",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
+                  "URL": "working-with-hise/hise-interface/scriptnode-editor/index.html#parameter-editing-",
+                  "Title": "Parameter Editing ",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
+                  "URL": "working-with-hise/hise-interface/scriptnode-editor/index.html#parameter-popup",
+                  "Title": "Parameter popup",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
+                  "URL": "working-with-hise/hise-interface/scriptnode-editor/index.html#the-range-editor",
+                  "Title": "The Range editor",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
+                  "URL": "working-with-hise/hise-interface/scriptnode-editor/index.html#script-driven-nodes",
+                  "Title": "Script driven nodes",
+                  "Colour": "#DEB887",
+                  "Children": []
+                }
+              ]
+            },
+            {
+              "URL": "working-with-hise/hise-interface/custom-workspace/index.html",
               "Title": "Custom Workspace",
               "Colour": "#DEB887",
               "Children": []

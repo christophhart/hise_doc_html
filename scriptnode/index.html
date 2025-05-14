@@ -5,7 +5,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<base href="https://docs.hise.dev/"/>
-	<title>HISE | Docs</title>
+	<title>HISE | ScriptNode | Scriptnode</title>
+	<meta name="description" content="An introduction to scriptnode">
 	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
 	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
 	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
@@ -40,7 +41,28 @@
 
 		<div class="content"><h1 id="scriptnode"><b>Scriptnode</b>
 </h1>
-<h2 id="introduction"><b>Introduction</b>
+<img src="images/interface/scriptnode-start.png"></img>
+<p>With Scriptnode you get access to a full fledged modular DSP toolkit for building <a href="scriptnode/manual/glossary.html#dsp-network">DSP networks</a>
+ that can be inserted into the HISE audio chain.</p>
+<p>Add one of the following <b>Script</b>
+ audio modules to the <a href="introduction/hise-interface/left-panel/module-tree">Module Tree</a>
+, create a DSP network and start adding <a href="scriptnode/list">nodes</a>
+ to it.</p>
+<ul><li><a href="hise-modules/sound-generators/list/scriptsynth">Script FX</a>
+ - Use a DSP network in the FX Chain as an effect.</li>
+<li><a href="hise-modules/effects/list/scriptfx">Scriptnode Synthesiser</a>
+ - Use the MIDI input to build a multivoice Scriptnode synthesiser</li>
+</ul>
+<p>Add <b>Script Modulators</b>
+ to the Modulation Chain to build customized modulation signals:</p>
+<ul><li><a href="hise-modules/modulators/envelopes/list/scriptenvelopemodulator">Script Voice Start Modulator</a>
+</li>
+<li><a href="hise-modules/modulators/voice-start-modulators/list/scriptvoicestartmodulator">Script Time Variant Modulator</a>
+</li>
+<li><a href="hise-modules/modulators/time-variant-modulators/list/scripttimevariantmodulator">Script Envelope Modulator</a>
+</li>
+</ul>
+<h2 id="rationale"><b>Rationale</b>
 </h2>
 <p><b>HISE</b>
  started as a toolkit for developing sample based virtual instruments (hence the name: <i>Hart Instruments Sampler Engine</i>
@@ -57,7 +79,7 @@
 <li>when you export your plugin (or have finished the module you're working on), create a Cpp class that will contain the exact same algorithm and let the compiler optimize it to the degree of handwritten code.</li>
 </ul>
 <p>A little example: If you use 3 addition nodes like this:</p>
-<img src="../images/custom/scriptnode/additions.png"></img>
+<img src="images/custom/scriptnode/additions.png"></img>
 <p>the interpreter will have to calculate three nodes individually. The generated Cpp code will boil them down to a single assembly instruction:</p>
 <p class="comment">The CPP code generator uses compile-time template programming to minimize the amount of boilerplate code - after all, the Cpp code should be fairly readable (and with some caution, even modifyable).</p>
 <pre><code class="language-javascript line-numbers">assembly

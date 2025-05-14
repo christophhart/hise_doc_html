@@ -5,7 +5,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<base href="https://docs.hise.dev/"/>
-	<title>HISE | Docs</title>
+	<title>HISE | Scripting | Scripting in HISE</title>
+	<meta name="description" content="An introduction to scripting in HISE.">
 	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
 	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
 	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
@@ -70,7 +71,7 @@ const var SineWaveGenerator1 = Synth.getChildSynth("Sine Wave Generator1");</cod
  in the <code>onInit</code>
 -script and hit [Escape]. Select the full variable-name <code>SineWaveGenerator1</code>
  with the [Down Arrow] and [Enter] or click. When you now append a <code>.</code>
-(dot) and hit [Escape] again, you'll see a list of all available API methods and attributes/parameters of the Module in the <a href="working-with-hise/workspaces/scripting-workspace/code-editor.html#autocomplete-popup-esc">Autocomplete Popup</a>
+(dot) and hit [Escape] again, you'll see a list of all available API methods and attributes/parameters of the Module in the <a href="working-with-hise/workspaces/scripting-workspace/code-editor#autocomplete-popup-esc">Autocomplete Popup</a>
 .</p>
 <p>Let's try out the <code>getAttribute()</code>
  and <code>setAttribute()</code>
@@ -81,32 +82,32 @@ Console.print("Saturation Amount: " + SineWaveGenerator1.getAttribute(SineWaveGe
 
 // Set the SaturationAmount of the SineWaveGenerator to 17%
 SineWaveGenerator1.setAttribute(SineWaveGenerator1.SaturationAmount, 0.17);</code></pre>
-<p>In this way you can get and set the attributes/parameters of every Module. You can take a look at the parameters of each Module in the <a href="hise-modules/index.html">HISE Modules</a>
+<p>In this way you can get and set the attributes/parameters of every Module. You can take a look at the parameters of each Module in the <a href="hise-modules">HISE Modules</a>
  chapter. </p>
 <h3 id="uicomponent-references"><b>UIComponent References</b>
 </h3>
 <img src="images/custom/knob1.png"></img>
 <pre><code class="language-javascript line-numbers">// A script reference to a Slider UI Component
 const var Knob1 = Content.getComponent("Knob1");</code></pre>
-<p>Referencing UI Components works in the same way as with Modules. Select a newly created UI Component in the Interface Designers <a href="working-with-hise/workspaces/scripting-workspace/canvas.html#canvas">Canvas</a>
+<p>Referencing UI Components works in the same way as with Modules. Select a newly created UI Component in the Interface Designers <a href="working-with-hise/workspaces/scripting-workspace/canvas#canvas">Canvas</a>
  in <b>edit mode</b>
- or in the <a href="working-with-hise/workspaces/scripting-workspace/canvas.html#component-list">Component List</a>
+ or in the <a href="working-with-hise/workspaces/scripting-workspace/canvas#component-list">Component List</a>
  and <b>right-click</b>
  on it. Select <b>create script reference for selection</b>
  and paste the code in your <code>onInit</code>
  script.<br></p>
 <p class="comment">In a bigger project, you will most likely want to use multiple references. If you select many components and create a <b>script reference</b>
- it will store them in an <a href="scripting/scripting-api/array/index.html">Array</a>
+ it will store them in an <a href="scripting/scripting-api/array">Array</a>
  that you can iterate over.</p>
 <p>Now you can directly <code>set()</code>
  and <code>get()</code>
- the properties of the component in your script, which will show up in the <a href="working-with-hise/workspaces/scripting-workspace/canvas.html#property-editor">Property Editor</a>
+ the properties of the component in your script, which will show up in the <a href="working-with-hise/workspaces/scripting-workspace/canvas#property-editor">Property Editor</a>
  as "Overwritten by script". </p>
 <pre><code class="language-javascript line-numbers">// set and get a UI Components property
 Knob1.set("text", "Saturation");
 Console.print("text property: " + Knob1.get("text"));</code></pre>
 <p>The <code>getValue()</code>
- method will return the current "value" of the UIComponent. It depends on the kind of component which value it returns. Have a look at the <a href="ui-components/index.html">UI Components</a>
+ method will return the current "value" of the UIComponent. It depends on the kind of component which value it returns. Have a look at the <a href="ui-components">UI Components</a>
  section for more details.</p>
 <p class="comment">E.g: a 0-1 value range for Sliders, boolean 0/1 for Buttons, Array-indexes for each ComboBox item, an Array for the SliderPack and a 0-127 range for a Table.</p>
 <pre><code class="language-javascript line-numbers">// Prints the current value of the UI Component to the Console
@@ -138,7 +139,7 @@ inline function onKnob1Control(component, value)
 Content.getComponent("Knob1").setControlCallback(onKnob1Control);</code></pre>
 <p>But because this behaviour is needed very frequently, theres an extra shortcut for this connection. You can directly link a UI Components value to a Module attribute/parameter with the Components <code>processorId</code>
  and <code>parameterId</code>
- properties in the <a href="working-with-hise/workspaces/scripting-workspace/canvas.html#property-editor">Property Editor</a>
+ properties in the <a href="working-with-hise/workspaces/scripting-workspace/canvas#property-editor">Property Editor</a>
 . </p>
 <p>Nevertheless, the full power of the ControlCallback lies in its scripting flexibility to customize your instruments behaviour regarding incoming values:</p>
 <pre><code class="language-javascript line-numbers">inline function onKnob1Control(component, value)

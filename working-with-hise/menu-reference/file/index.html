@@ -5,7 +5,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<base href="https://docs.hise.dev/"/>
-	<title>HISE | Docs</title>
+	<title>HISE | HISE | File Menu</title>
+	<meta name="description" content="The file menu">
 	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
 	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
 	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
@@ -48,13 +49,22 @@
 <p>Load another project. Opens a OS Folder Browser.</p>
 <h3 id="show-project-folder-in-explorer"><b>Show Project folder in Explorer</b>
 </h3>
-<p>Open a OS Filebrowser in your current projects parent directory.</p>
+<p>Open a OS Filebrowser with your current projects project directory.</p>
 <h3 id="show-hise-app-data-folder-in-explorer"><b>Show HISE App data folder in Explorer</b>
 </h3>
+<p>Opens HISE's Appdata Folder</p>
+<p>On WIN: <code>..\AppData\Roaming\HISE\</code>
+</p>
+<p>Here you can find HISE settings <code>.xml</code>
+ and <code>.json</code>
+files.</p>
 <h3 id="show-project-app-data-folder-in-explorer"><b>Show Project App Data folder in Explorer</b>
 </h3>
+<p>This opens the currently loaded projects Appdata folder</p>
 <h3 id="show-snippet-browser"><b>Show snippet browser</b>
 </h3>
+<p><a href="working-with-hise/menu-reference/help/index.html#browse-example-snippets">Browse example snippets</a>
+</p>
 <h3 id="new"><b>New</b>
 </h3>
 <p><b>Shortcut:</b>
@@ -103,7 +113,8 @@
 <h3 id="save-as-archive"><b>Save As Archive</b>
 </h3>
 <p>Opens a <b>Save As</b>
- dialog to save the current HISE preset file as .hip.</p>
+ dialog to save the current HISE preset file as a <code>.hip</code>
+ file.</p>
 <h3 id="import-hise-snippet"><b>Import HISE Snippet</b>
 </h3>
 <p><b>Shortcut:</b>
@@ -120,6 +131,10 @@
 <p class="comment">Note that using this function will override the files in your repository so proceed with caution!</p>
 <h3 id="create-recovery-xml-from-archive"><b>Create recovery XML from Archive</b>
 </h3>
+<p>Converts a <code>.hip</code>
+ HISE archive file into a human readable<code>.xml</code>
+project file and saves it ("filename_Recovered") into the projects <code>Presets</code>
+ folder.</p>
 <h3 id="close-this-window"><b>Close this window</b>
 </h3>
 <h3 id="settings"><b>Settings</b>
@@ -127,6 +142,8 @@
 <p>Opens the HISE Settings window.</p>
 <h3 id="edit-shortcuts"><b>Edit Shortcuts</b>
 </h3>
+<p>Opens a menu for editing HISE Shortcuts</p>
+<img src="images/interface/shortcuts.png"></img>
 <h3 id="quit"><b>Quit</b>
 </h3>
 <p>Close HISE.</p>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | HISE | HISE Interface</title>
+	<meta name="description" content="HISE Interface Elements">
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="hise-interface"><b>HISE Interface</b>
+</h1>
+<img src="images/interface/interface_empty_4.png"></img>
+<p><a href="working-with-hise/menu-reference/index.html">Menu</a>
+  <a href="introduction/hise-interface/top-bar">Top Bar</a>
+  <a href="introduction/hise-interface/left-panel">Left Panel</a>
+  <a href="introduction/hise-interface/code-editor">Code Editor</a>
+ <a href="introduction/hise-interface/interface-designer">Interface Designer</a>
+  <a href="introduction/hise-interface/sampler-workspace">Sampler Workspace</a>
+  <a href="introduction/hise-interface/scriptnode-editor">Scriptnode Editor</a>
+  <a href="introduction/hise-interface/custom-workspace">Custom Workspace</a>
+</p>
+<h2 id="hise-interface-architecture"><b>HISE Interface Architecture</b>
+</h2>
+<p>HISE interface is built on a flexible system of modular elements called <a href="">floating tiles</a>
+.</p>
+<ul><li><a href="ui-components/floating-tiles/layout">Layout Floating tiles</a>
+ - for layouting purposes</li>
+</ul>
+<ul><li><a href="ui-components/floating-tiles/hise">HISE Floating tiles</a>
+ - for various functions and editors</li>
+</ul>
+<p>The HISE layout is defined in an JSON file called <code>editorData.json</code>
+ which you can find in the HISE app data directory <code>%APPDATA%</code>
+. You can edit this file to change the general layout of HISE. There is a shortcut that leads you to the appdata folder in the menu: <b>File > Show HISE appdata folder</b>
+.</p>
+<p class="comment">Make sure to keep a backup of this file as soon as you start making non-trivial changes. </p>
+<p>If you close HISE the latest/current HISE layout will be written into this file, so you have to make sure that HISE is not open while you're editing this file, otherwise your changes will be overwritten when you close HISE. </p>
+<p>Long story short: Close HISE, edit the <code>editorData.json</code>
+ and restart HISE to test & try out.</p>
+<h2 id="customizing-the-hise-interface"><b>Customizing the HISE interface</b>
+</h2>
+<h3 id="finding-the-right-floating-tile"><b>Finding the right floating tile</b>
+</h3>
+<p>The JSON file is huge so navigating to the part that is interesting is not trivial. The best approach is just searching the title of the floating tile you want to adjust in the text editor - most likely this string will show up as <code>ID</code>
+ property. If this doesn't help, you might search for neighbour floating tiles or the parent container and start your search mission from there. Once you've found the floating tile you want to change, you can proceed with one of those things:</p>
+<h3 id="changing-the-size-(absolute-vs.-relative)"><b>Changing the size (absolute vs. relative)</b>
+</h3>
+<p>The floating tiles in HISE can either have a fixed size or they can be relative to the width / height of its parent. If you want to change this, take a look at the <code>Size</code>
+ property of the <code>LayoutData</code>
+ child object. If you want an absolute size that does not resize when the parent size changes, just enter the pixel value as number: </p>
+<pre><code class="language-javascript line-numbers">"Size": 400.0</code></pre>
+<p>If you want it to scale with the parent, you need to pass in a negative number between -1.0 and 0.0, which will translate to the percentage of the parent:</p>
+<pre><code class="language-javascript line-numbers">"Size": -0.3333333 // 33% width</code></pre>
+<p> </p>
+<p class="comment">You can also choose to hide the floating tile by setting the <code>Visible</code>
+ property to false.</p>
+<h3 id="changing-container-types-/-order-of-elements"><b>Changing container types / order of elements</b>
+</h3>
+<p>If you want to swap vertical and horizontal layouts, or put all child elements into a tabbed component, you can do so by finding the parent element and change its <code>Type</code>
+ property to one of these strings:</p>
+<ul><li><code>VerticalTile</code>
+</li>
+<li><code>HorizontalTile</code>
+</li>
+<li><code>Tabs</code>
+</li>
+</ul>
+<p> If you want to change the order of floating tiles (eg. put the component list next to the property editor), you can do so by shuffling around the elements in the <code>Content</code>
+ array. </p>
+<p class="comment">Be careful that you do this properly or you'll end up with a corrupt JSON!</p>
+<h3 id="adding-shortcuts-for-folding-and-key-focus"><b>Adding shortcuts for folding and key focus</b>
+</h3>
+<p>You can also assign key shortcuts to any floating tile which perform one of two functions:</p>
+<ol><li>Grabbing the keyboard focus</li>
+<li>Toggling the fold state (the equivalent of pressing the triangular button)</li>
+</ol>
+<p>The second function does also grab the keyboard focus and it will ensure that at least one child element is visible (so if you fold the code editor, the interface editor will be made visible and gets the focus).</p>
+<p>In order to do so, add either <code>FoldKeyPress</code>
+ or <code>FocusKeyPress</code>
+ property to the <code>LayoutData</code>
+ object of the Floating tile you want to address.</p>
+<p>The value must be a string that describes the keypress:</p>
+<pre><code class="language-javascript line-numbers">"FoldKeyPress": "ctrl + L"
+"FocusKeyPress": "F9"</code></pre>
+<p> In order to find the right syntax for describing the key shortcut, you can use this script - the syntax is the same as the <code>description</code>
+ property of the function parameter object:</p>
+<pre><code class="language-javascript line-numbers">const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setKeyPressCallback(function(key)
+{
+	if(isDefined(key.description))
+		Console.print(key.description);
+		
+	return true;
+});</code></pre>
+<p>You can obviously only override key presses which are not assigned / consumed by other components, so <code>ctrl + C</code>
+ will most likely never reach this point.</p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://github.com/christophhart/hise_documentation/edit/master/working-with-hise/hise-interface/Readme.md">Edit on GitHub</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="working-with-hise/hise-interface/top-bar/index.html">Top Bar</a>
+</span>
+
+<p class="content-footer-metadata"><br><br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

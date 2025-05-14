@@ -5,7 +5,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<base href="https://docs.hise.dev/"/>
-	<title>HISE | Docs</title>
+	<title>HISE | Scripting | Graphics</title>
+	<meta name="description" content="Panel drawing functions">
 	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
 	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
 	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
@@ -43,7 +44,7 @@
 <p>The <code>Graphics</code>
  API gives you access to the <a href="ui-components/plugin-components/panel.html">Panel Components</a>
  <a href="scripting/scripting-api/scriptpanel/index.html#setpaintroutine">PaintRoutine</a>
-. You can use it for the graphical drawing of a <a href="https://docs.hise.dev/scripting/scripting-in-hise/scriptpanel.html">ScriptPanel</a>
+. You can use it for the graphical drawing of a <a href="scripting/scripting-in-hise/scriptpanel.html">ScriptPanel</a>
 .</p>
 <p>Access it with the <code>g</code>
  keyword inside the PaintRoutine function and start drawing. </p>
@@ -618,7 +619,7 @@ Panel1.setPaintRoutine(function(g)
 <p class="comment">Draws the text of the given markdown renderer to its specified area.</p>
 <pre><code class="language-javascript line-numbers">Graphics.drawMarkdownText(var markdownRenderer)</code></pre>
 <p><br></p>
-<p>Draw a <a href="scripting/scripting-api/markdownrenderer">MarkdownRenderer</a>
+<p>Draw a <a href="scripting/scripting-api/markdownrenderer/index.html">MarkdownRenderer</a>
  element on a panel.</p>
 <pre><code class="language-javascript line-numbers">const var Panel1 = Content.getComponent("Panel1");
 
@@ -725,8 +726,8 @@ Panel1.setPaintRoutine(function(g)
 <p class="comment">Draws a SVG object within the given bounds and opacity.</p>
 <pre><code class="language-javascript line-numbers">Graphics.drawSVG(var svgObject, var bounds, float opacity)</code></pre>
 <p><br></p>
-<p>Draw a SVG to the panel. You first have to create a SVG object with <a href="scripting/scripting-api/content#createsvg">Content.createSVG("Base64String")</a>
- and then pass it to the drawSVG function. You can create the Base64 encoded SVG string with the <a href="working-with-hise/menu-reference/tools#show-svg-to-path-converter">SVG to Path Converter</a>
+<p>Draw a SVG to the panel. You first have to create a SVG object with <a href="scripting/scripting-api/content/index.html#createsvg">Content.createSVG("Base64String")</a>
+ and then pass it to the drawSVG function. You can create the Base64 encoded SVG string with the <a href="working-with-hise/menu-reference/tools/index.html#show-svg-to-path-converter">SVG to Path Converter</a>
  that you can find under <b>Tools > Scripting Tools</b>
 .</p>
 <pre><code class="language-javascript line-numbers">const var Panel1 = Content.getComponent("Panel1");
@@ -961,7 +962,7 @@ Panel1.setPaintRoutine(function(g)
 <pre><code class="language-javascript line-numbers">Graphics.setColour(var colour)</code></pre>
 <p><br></p>
 <p>Set a color for an element to draw. For many elements you first have to set a color to visualise the draw or fill call. </p>
-<p>After typing the "Colours." handle you can select a colour by name of a predefined list. Take a look at the <a href="scripting/scripting-api/colours">Colours API</a>
+<p>After typing the "Colours." handle you can select a colour by name of a predefined list. Take a look at the <a href="scripting/scripting-api/colours/index.html">Colours API</a>
  for more colours options.</p>
 <pre><code class="language-javascript line-numbers">const var Panel1 = Content.getComponent("Panel1");
 
@@ -1000,7 +1001,7 @@ Panel1.setPaintRoutine(function(g)
 <pre><code class="language-javascript line-numbers">Graphics.setFont(String fontName, float fontSize)</code></pre>
 <p><br></p>
 <p>Set a font, a color and draw some text.</p>
-<p>Load a font from the Image folder with <a href="scripting/scripting-api/engine#loadfontas">Engine.setFontAs</a>
+<p>Load a font from the Image folder with <a href="scripting/scripting-api/engine/index.html#loadfontas">Engine.setFontAs</a>
 . Then you can set the font by its given fontID.</p>
 <pre><code class="language-javascript line-numbers">Engine.loadFontAs("{PROJECT_FOLDER}Nunito-Regular.ttf", "nunito");
 
