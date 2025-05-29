@@ -353,9 +353,42 @@ button:hover {
 <p>In this example, when you hover over the button, its background color will change from red to yellow over half a second.</p>
 <h2 id="font-handling"><b>Font-Handling</b>
 </h2>
-<p>CSS provides several properties for managing fonts. Note that the fonts must be loaded into HISE and then can be accessed with the same string as used in <code>g.setFont()</code>
-.</p>
-<pre><code class="language-javascript line-numbers">button {
+<p>CSS provides several properties for managing fonts:</p>
+<ul><li><code>font-family</code>
+ defines the font to be used</li>
+<li><code>font-weight</code>
+ defines the weight (bold or not)</li>
+<li><code>font-size</code>
+ defines the size of the font</li>
+<li><code>letter-spacing</code>
+: change the space between characters</li>
+<li><code>text-transform</code>
+: change to uppercase etc.</li>
+<li><code>text-align</code>
+ and <code>vertical-align</code>
+ will define the alignment of the text</li>
+</ul>
+<p>Note that the fonts must be loaded into HISE and then can be accessed with the same string as used in <code>g.setFont()</code>
+. If you're using the system fonts then you can directly use the font name in the <code>font-family</code>
+ property, but for custom fonts that you have loaded with <code>Engine.loadFontAs()</code>
+, you will need to import the font using the at rule defined by the <code>@font-face</code>
+ selector:</p>
+<pre><code class="language-javascript line-numbers">@font-face {
+    /* imports the font as FunkyFont */
+    font-family: FunkyFont;
+    /* This is optional if you haven't already called Engine.loadFontAs
+       but it will load the font with the given path.
+     */
+    src: url('{PROJECT_FOLDER}Fonts/DigitalNormal.ttf');
+}
+
+select {
+    /* now we can use our custom font. */
+    font-family: FunkyFont;
+}
+
+button {
+    /* system fonts are also available. */
     font-family: Arial, sans-serif;
     font-size: 16px;
     font-weight: bold;
