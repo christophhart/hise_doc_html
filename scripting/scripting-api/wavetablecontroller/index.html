@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Scripting | WavetableController</title>
+	<meta name="description" content="A controller object for the resynthesis options of a Wavetable synthesiser">
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="wavetablecontroller"><b>WavetableController</b>
+</h1>
+<p><br>This API class will provide methods for customizing the resynthesis feature of the <a href="hise-modules/sound-generators/list/wavetablesynth.html">Wavetable Synthesiser</a>
+.</p>
+<p>Create this object with <a href="scripting/scripting-api/synth/index.html#getwavetablecontroller">Synth.getWavetableController()</a>
+, then call one of the methods to setup the resynthesis.</p>
+<p><br></p>
+<h1 id="class-methods
+"><b>Class methods<br></b>
+</h1>
+<h2 id="getresynthesisoptions"><b>getResynthesisOptions</b>
+</h2>
+<p class="comment">Returns a JSON object with the current resynthesis options.</p>
+<pre><code class="language-javascript line-numbers">WavetableController.getResynthesisOptions()</code></pre>
+<p><br>Returns a JSON object with the current resynthesis options. Usually you call this method, then make your changes and call <a href="scripting/scripting-api/wavetablecontroller/index.html#setresynthesisoptions">setResynthesisOptions()</a>
+ with the modified object.<br></p>
+<h2 id="loaddata"><b>loadData</b>
+</h2>
+<p class="comment">Loads a file (or buffer) into the wavetable synth.</p>
+<pre><code class="language-javascript line-numbers">WavetableController.loadData(var bufferOrFile, var sampleRate, var loopRange)</code></pre>
+<p><br>This function allows you to programmatically create waveforms and send it to the wavetable synth.</p>
+<p>The function expects three parameters:</p>
+<ol><li>the buffer with the wavetable signal</li>
+<li>the sample rate (just use the current samplerate for the best sound quality).</li>
+<li>the loop range that defines the length of a single cycle (this way you can create wavetables with more than one cycle)</li>
+</ol>
+<p class="comment">Note that a wavetable synthesiser is also a <a href="scripting/scripting-api/audiosampleprocessor/index.html">AudioSampleProcessor</a>
+ and this function is basically a duplicate / combination of the <a href="scripting/scripting-api/audiofile/index.html#loadfile">Audiofile.loadBuffer()</a>
+ / <a href="scripting/scripting-api/audiofile/index.html#loadfile">Audiofile.loadFile()</a>
+ method</p>
+<pre><code class="language-javascript line-numbers">// Create a buffer with two cycles a 2048 samples
+const var bf = Buffer.create(2048 * 2);
+
+// Add a sine waveform in the first cycle
+for(i = 0; i < 2048; i++)
+	bf[i] = Math.sin(i / 2048.0 * 2.0 * Math.PI);
+
+// Add a saw waveform in the second cycle
+for(i = 2048; i < 4096; i++)
+	bf[i] = 2.0 * Math.fmod(i / 2048.0 - 0.5, 1.0) - 1.0;
+	
+// Create a reference to the wavetable controller
+const var wt = Synth.getWavetableController("Wavetable Synthesiser1");
+
+// Pass the cycles into the wavetable synthesiser.;
+// By supplying the `[0, 2048]` loop range the wavetable synthesiser will
+// automatically create two cycles so you can morph between the sine and the saw wave
+wt.loadData(bf, Engine.getSampleRate(), [0, 2048]);</code></pre>
+<p>Thanks to the mip-mapping process of the wavetable synthesiser, you do not need to care about band-limiting or aliasing at all as the wavetable synthesiser will automatically band limit the waveforms for each octave by removing the FFT bins that lie beyond the Nyquist frequency.</p>
+<p>You can also use a FFT object to create a harmonic series, then use the inverse FFT to create the wavetable cycle data. This is much more faster than creating the cycles in HiseScript directly and can be used to create any complex harmonic series (eg. by assigning a slider pack to the phase / harmonic buffers)</p>
+<pre><code class="language-javascript line-numbers">// Create a buffer with two cycles a 2048 samples
+const var bf = Buffer.create(2048 * 2);
+
+// Create an FFT object
+const var fft = Engine.createFFT();
+
+// This enables the inverse FFT step
+fft.setEnableInverseFFT(true);
+// We don't need any windowing here as we
+// directly synthesise the cycles on the frequency domain
+fft.setWindowType(fft.Rectangle);
+
+reg cycleIndex = 0;
+
+// This function will be called on the frequency domain
+// and contains a buffer with the frequency bins
+fft.setMagnitudeFunction(function(data)
+{
+	if(cycleIndex++ == 0)
+	{
+		// Set the second FFT bin to 0dB
+		// this will translate to a sine wave
+		// with the root frequency
+		data[1] = 1.0;
+	}
+	else
+	{
+		// create a few harmonics in the second cycle
+		data[1] = 0.5;
+		data[3] = 0.2;
+		data[5] = 0.1;
+	}
+
+}, false);
+
+// Here we pass in the cycle length, this means that
+// the FFT will be processed twice for the full buffer
+fft.prepare(2048, 1);
+
+// Process the (empty) buffer and get the resynthesized
+// data back
+const var processed = fft.process(bf);
+	
+// Create a reference to the wavetable controller
+const var wt = Synth.getWavetableController("Wavetable Synthesiser1");
+
+// Pass the resynthesised cycles into the wavetable synthesiser.;
+wt.loadData(processed, Engine.getSampleRate(), [0, 2048]);</code></pre>
+<p><br></p>
+<h2 id="resynthesise"><b>resynthesise</b>
+</h2>
+<p class="comment">Resynthesises the wavetables from the currently loaded audio file.</p>
+<pre><code class="language-javascript line-numbers">WavetableController.resynthesise()</code></pre>
+<p><br>This will resynthesise the wavetable based on the current options.<br> </p>
+<h2 id="saveasaudiofile"><b>saveAsAudioFile</b>
+</h2>
+<p class="comment">Saves the currently loaded wavetable as audio file. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/wavetablecontroller/saveasaudiofile">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">WavetableController.saveAsAudioFile( var outputFile)</code></pre>
+<p><br><br></p>
+<h2 id="saveashwt"><b>saveAsHwt</b>
+</h2>
+<p class="comment">Saves the currently loaded wavetable as HWT file somewhere.</p>
+<pre><code class="language-javascript line-numbers">WavetableController.saveAsHwt( var outputFile)</code></pre>
+<p><br>You can use this function to bake the completely processed wavetable into a .hwt file that you then can load as standard wavetable.</p>
+<p>Note that this will also include the post processing steps (and loading .hwt files will bypass the post processing to avoid duplication).</p>
+<p><br></p>
+<h2 id="setenableresynthesiscache"><b>setEnableResynthesisCache</b>
+</h2>
+<p class="comment">This will store all resynthesised wavetables to the given directory and reused if the same file is loaded again.</p>
+<pre><code class="language-javascript line-numbers">WavetableController.setEnableResynthesisCache( var cacheDirectory, bool clearCache)</code></pre>
+<p><br>The resynthesis step might take a few seconds so in order to increase the loading times of user generated patches (or during development) you can define a cache directory by passing in a file object (either a <a href="scripting/scripting-api/file/index.html">File</a>
+, a String containing an absolute path or one of the constants of the <a href="scripting/scripting-api/filesystem/index.html">FileSystem</a>
+ object (eg. <code>FileSystem.AudioFiles</code>
+)).</p>
+<p>If this method is called with a directory, any time the wavetable synthesiser has resynthesised an audio file, it will create a cached version from this file and the (currently used Resynthesis options) in the provided directory. If the file is then loaded again with the same settings, it will skip the resynthesis process to speed up the loading time.</p>
+<p class="comment">Note that the cache will not contain the post processing functions as they will be executed after loading the wavetable from the cache.</p>
+<p>The second argument of this function can be used to clear out the directory (which might be helpful during development).</p>
+<p><br></p>
+<h2 id="seterrorhandler"><b>setErrorHandler</b>
+</h2>
+<p class="comment">Sets up a function that will be executed when a error occurs during resynthesis. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/wavetablecontroller/seterrorhandler.md">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">WavetableController.setErrorHandler( var errorCallback)</code></pre>
+<p><br><br></p>
+<h2 id="setpostfxprocessors"><b>setPostFXProcessors</b>
+</h2>
+<p class="comment">Sets up a chain of post FX processors that will be applied to the loaded wavetable.</p>
+<pre><code class="language-javascript line-numbers">WavetableController.setPostFXProcessors( var postFXData)</code></pre>
+<p><br>This function can be used to add post-processing steps to the wavetable synthesiser. These are simple math functions with a single parameter that are applied on every wavetable after they have been loaded and can be used to customize the shape of the waveform:</p>
+<pre><code class="language-javascript line-numbers">wavetable_out = f(wavetable_in, parameter)</code></pre>
+<p class="comment">The functions are baked into the wavetables and are properly band limited using the same mip-map technique as when loading a normal wavetable, so these functions are not subject to realtime-manipulation, but will yield a alias-free sound.</p>
+<h3 id="post-processing-function-definition"><b>Post processing function definition</b>
+</h3>
+<p>You can use multiple post processing steps at once and they will be serially processed in order of definition. This function expects an array of JSON objects that describe every function. These are the supported properties:</p>
+<table><thead><td><b>Property </b>
+</td>
+<td><b>Type </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><code>Type</code>
+ </td>
+<td>String </td>
+<td>The type of FX from a predefined list (see below). </td>
+</tr>
+<tr><td><code>min</code>
+ </td>
+<td>double </td>
+<td>the parameter value for the lowest table index. </td>
+</tr>
+<tr><td><code>max</code>
+ </td>
+<td>double </td>
+<td>the parameter value for the highest table index. </td>
+</tr>
+<tr><td><code>middlePosition</code>
+ </td>
+<td>double </td>
+<td>the parameter value for the middle table index. </td>
+</tr>
+<tr><td><code>TableProcessor</code>
+ </td>
+<td>String </td>
+<td>The name of the HISE module that provides the Table (see below) </td>
+</tr>
+<tr><td><code>TableIndex</code>
+ </td>
+<td>int </td>
+<td>the index of the table that should be used for the parameter lookup table. </td>
+</tr>
+</table>
+<p>As you can see, with the exception of the <code>Type</code>
+ parameter that defines the function, all other properties are related to how the single <code>parameter</code>
+ will change for different table indexes, which allows you to create a dynamic function curve that you then can modulate through the <code>TableIndex</code>
+ parameter of the wavetable synth: for each cycle in the wavetable it will:</p>
+<ol><li>normalize the cycle position (so that if the wavetable has 100 cycles, the 50th cycle will have the position <code>0.5</code>
+)</li>
+<li>Apply the <a href="ui-components/plugin-components/table.html">Table</a>
+ (if defined) so that you can fully customize the curve if desired.</li>
+<li>Scale it to the range provided by the <code>min</code>
+, <code>max</code>
+ and <code>middlePosition</code>
+ attributes</li>
+<li>Apply the function to the entire cycle of the wavetable with the calculated <code>parameter</code>
+ value</li>
+</ol>
+<p>Here are a few examples that demonstrate the different use cases:</p>
+<pre><code class="language-javascript line-numbers">// A wavefold FX with a constant parameter of 0.8
+{
+	Type: "Fold",
+	min: 0.8,
+	max: 0.8
+}
+
+// A hard sync effect with a parameter of 0 at the first table 
+// and a parameter value of 0.5 at the last table
+{
+	Type: "Sync",
+	min: 0.0,
+	max: 0.5
+}
+
+// A FM effect using a sine wave with the same frequency as carrier
+// and the first table of the main UI defining the curve from 0.0 to 16.0
+{
+	Type: "FM1",
+	min: 0.0,
+	max: 16.0,
+	TableProcessor: "Interface",
+	TableIndex: 0
+}</code></pre>
+<h3 id="available-post-processing-functions"><b>Available post processing functions</b>
+</h3>
+<p>These are the available post processing functions. They are all shown with a basic sine wave as starting point.</p>
+<h3 id=""sin""><b>"Sin"</b>
+</h3>
+<p>This is a sinusoidal waveshaper that multiplies the amplitude with a sine wave. It can be used to quickly add harmonics without introducing too much distortion. The <code>parameter</code>
+ defines the amplitude of the sine wave (a value of <code>0.0</code>
+ will not change the waveform)</p>
+<img src="images/custom/postfx/sin.png"></img>
+<h3 id=""warp""><b>"Warp"</b>
+</h3>
+<p>This function skews the waveform to the start or end of the cycle and introduces very harsh harmonics. The <code>parameter</code>
+ defines how much the waveform is skewed towards either end (<code>0.0</code>
+ = left, <code>1.0</code>
+ = right, <code>0.5</code>
+ no change)</p>
+<img src="images/custom/postfx/warp.png"></img>
+<h3 id=""fold""><b>"Fold"</b>
+</h3>
+<p>This function folds the amplitude of the waveform at the <code>parameter</code>
+ value (so that every value that lies above the <code>parameter</code>
+ value is folded back).</p>
+<img src="images/custom/postfx/fold.png"></img>
+<h3 id=""clip""><b>"Clip"</b>
+</h3>
+<p>This function hard clips the waveform to the given amount. Note that this does not scale up the waveform, so if you want to clip it at 1.0, use the <code>"Normalise"</code>
+ step afterwards.</p>
+<img src="images/custom/postfx/clip.png"></img>
+<h3 id=""tanh""><b>"Tanh"</b>
+</h3>
+<p>This function applies a soft-clipping waveshaper (the standard tanh function) to the waveform. </p>
+<img src="images/custom/postfx/tanh.png"></img>
+<h3 id=""bitcrush""><b>"Bitcrush"</b>
+</h3>
+<p>This function applies a amplitude quantisation (aka bitcrusher) FX on the waveform</p>
+<img src="images/custom/postfx/bitcrush.png"></img>
+<h3 id=""sampleandhold""><b>"SampleAndHold"</b>
+</h3>
+<p>This function applies a amplitude quantisation (aka samplerate downsampler) FX on the waveform</p>
+<img src="images/custom/postfx/sampleandhold.png"></img>
+<h3 id=""sync";"><b>"Sync";</b>
+</h3>
+<p>This function will apply a hard-sync effect to the waveform. The parameter will define how much of the original period length should be used (0.0 = no effect, 1.0 = almost zero length)</p>
+<img src="images/custom/postfx/sync.png"></img>
+<h3 id=""phase""><b>"Phase"</b>
+</h3>
+<p>This function shifts the phase of the waveform. This will not change the harmonics of the cycle, but it will introduce phaseshifts when you start modulating the table index which will translate into subtle pitch changes.</p>
+<img src="images/custom/postfx/phase.png"></img>
+<h3 id=""fm1"-/-"fm2"-/-"fm3"-/-"fm4""><b>"FM1" / "FM2" / "FM3" / "FM4"</b>
+</h3>
+<p>These functions will apply a frequency modulation with a sinewave as carrier oscillator. The amount will define the amplitude of the carrier oscillator. The frequency of the carrier will be a multiple of the base frequency:</p>
+<p><code>"FM1"</code>
+ will use the root frequency of the waveform:</p>
+<img src="images/custom/postfx/fm1.png"></img>
+<p><code>"FM2"</code>
+ will use the first harmonic frequency of the waveform:</p>
+<img src="images/custom/postfx/fm2.png"></img>
+<p><code>"FM3"</code>
+ will use the second harmonic frequency of the waveform:</p>
+<img src="images/custom/postfx/fm3.png"></img>
+<p><code>"FM4"</code>
+ will use the third harmonic frequency of the waveform:</p>
+<img src="images/custom/postfx/fm4.png"></img>
+<h3 id=""root""><b>"Root"</b>
+</h3>
+<p>This function simply adds a sine wave with the base frequency and zero phase to the waveform so that you can change the ratio between the root frequency and the harmonics. The <code>parameter</code>
+ is the amplitude of the root frequency that's added to the waveform (and by supplying a negative value you can subtract the root frequency from the waveform granted that the phase is zero).</p>
+<p>The example now uses a saw wave as adding a sine wave to a sine wave would not yield an interesting graph:</p>
+<img src="images/custom/postfx/root.png"></img>
+<h2 id=""normalise""><b>"Normalise"</b>
+</h2>
+<p>This function normalises the waveform to flatten out gain changes between the tables. Note that the final wavetable set is again normalised but this can be used to change the dynamics between the cycles. The <code>parameter</code>
+ value is a percentage of how strong the normalisation should be applied (<code>0.0</code>
+= no change, <code>1.0</code>
+ = full normalisation).</p>
+<p>For the example, we'll use a sine wave with a <code>"Clip"</code>
+ post processor and a clip value of <code>0.8</code>
+ so that you can see the difference:</p>
+<img src="images/custom/postfx/normalise.png"></img>
+<p><br></p>
+<h2 id="setresynthesisoptions"><b>setResynthesisOptions</b>
+</h2>
+<p class="comment">Sets the current resynthesis options.</p>
+<pre><code class="language-javascript line-numbers">WavetableController.setResynthesisOptions( var optionData)</code></pre>
+<p><br>This will set the resynthesis options of the wavetable synthesiser based on the provided JSON object.</p>
+<table><thead><td><b>Property </b>
+</td>
+<td><b>Type </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>PhaseMode </td>
+<td>String </td>
+<td>One of three modes that define how to process the phase information (see below). </td>
+</tr>
+<tr><td>MipMapSize </td>
+<td>int </td>
+<td>the amount of semitones that is used for the mip map (default is 12=1 octave). The wavetable will be internally recalculated and band limited based on this setting. If you are mainly working with organic material, you could increase this a bit to save memory. </td>
+</tr>
+<tr><td>CycleMultiplier </td>
+<td>int </td>
+<td>the amount of cycles that is used to calculate a single wavetable. Increasing this value will "smooth" the spectrum, but you'll loose a bit of high frequency material. If you are using Loris this setting will not have any effect. </td>
+</tr>
+<tr><td>UseTransientMode </td>
+<td>bool </td>
+<td>If enabled, this will turn off the cycle multiplier for the first 4 cycles to allow a non-smoothed resynthesis of the transient of the sample. This preserves the high frequency content of the transient and might be useful for some sounds. </td>
+</tr>
+<tr><td>NumCycles </td>
+<td>int </td>
+<td>the number of cycles to create. If this is <code>-1</code>
+, then it will create as much cycles as the provided audio material contains, but you can set this to a fixed size. </td>
+</tr>
+<tr><td>ForceResynthesis </td>
+<td>bool </td>
+<td>This is more of a debugging property and it forces the resynthesis algorithm to always process the incoming audio material - if you load in wave files that already have a power of two cycle length, then it will skip the entire process and directly create the wavetables. With this property you can deactivate this to enforce a resynthesis every time. </td>
+</tr>
+<tr><td>UseLoris </td>
+<td>bool </td>
+<td>If enabled (and HISE / your plugin is compiled with <code>HISE_INCLUDE_LORIS</code>
+), then you can use the Loris library for resynthesis which offers a much better sound quality for organic material. Note that the Loris library is GPL licensed, so you cannot include this in a proprietary plugin without the explicit consent of the authors of this library! </td>
+</tr>
+<tr><td>ReverseOrder </td>
+<td>bool </td>
+<td>If enabled, it will reverse the order of the cycles of each wavetable which allows you to apply some modulation tricks that are not possible with the default order. </td>
+</tr>
+</table>
+<h3 id="phasemode"><b>PhaseMode</b>
+</h3>
+<p>The <code>PhaseMode</code>
+ property defines how the resynthesis should cope with the phase information and has three options:</p>
+<ul><li><code>ZeroPhase</code>
+ will ignore any phase information and treat every harmonic as sine wave starting at the zero position.</li>
+<li><code>StaticPhase</code>
+ will calculate the phase information of the very first cycle and then apply this to every cycle in the wavetable. This preserves the stereo field of the wavetable as well as the appearance of the waveform but removes all phase changes which can cause some pitch wobbling if the table index is automated</li>
+<li><code>DynamicPhase</code>
+ preserves the phase information of every cycle which is the best option for very organic material. It might sound a bit weird with some samples, so only use it if <code>StaticPhase</code>
+ doesn't suit your material.</li>
+</ul>
+<p class="comment">Note that calling will not cause a resynthesis of the currently loaded wavetable. If you want to do this, follow up this call with a call to <a href="scripting/scripting-api/wavetablecontroller/index.html#resynthesise">resynthesise()</a>
+.</p>
+<p><br></p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/wavetablecontroller/Readme.md">Edit on GitHub</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="scriptnode/index.html">ScriptNode</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>22.05.2025<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

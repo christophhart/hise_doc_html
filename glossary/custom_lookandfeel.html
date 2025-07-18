@@ -292,6 +292,10 @@ laf.registerFunction("drawPopupMenuBackground", function(g, obj)
  </td>
 <td>the slider value plus the suffix. </td>
 </tr>
+<tr><td><code>obj.valueAsText</code>
+ </td>
+<td>The prettified string representation of the slider value. </td>
+</tr>
 <tr><td><code>obj.suffix</code>
  </td>
 <td>the suffix property. </td>
@@ -317,6 +321,45 @@ laf.registerFunction("drawPopupMenuBackground", function(g, obj)
 <td>the mouse hover state of the slider. </td>
 </tr>
 </table>
+<p>If the slider is connected to a modulation target, the following properties will also be available:</p>
+<table><thead><td><b>Object Property </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><code>obj.scaledValue</code>
+ </td>
+<td>the normalized slider value after it has been scaled by all modulation connections with the "Scale" mode. </td>
+</tr>
+<tr><td><code>obj.addValue</code>
+ </td>
+<td>the normalized slider value after all unipolar / bipolar modulation connections have been added to the value. </td>
+</tr>
+<tr><td><code>obj.modulationActive</code>
+ </td>
+<td>whether any modulation connection is active. </td>
+</tr>
+<tr><td><code>obj.modMinValue</code>
+ </td>
+<td>the (normalized) minimal value of the modulated range. </td>
+</tr>
+<tr><td><code>obj.modMaxValue</code>
+ </td>
+<td>the (normalized) maximal value of the modulation range. </td>
+</tr>
+<tr><td><code>obj.lastModValue</code>
+ </td>
+<td>a smoothed value of the last modulation value. </td>
+</tr>
+<tr><td><code>obj.modulationDragState</code>
+ </td>
+<td>indicates if a mod source component is currently being dragged. The value is an integer: 0 = no drag, 1 = drag is active, 2 = drag is active and the mod source is currently hovered over this knob. </td>
+</tr>
+</table>
+<p class="comment">Note that in order to get the "actual" modulation value that you want to display, you will need to sum up and clip the <code>scaledValue</code>
+ and <code>addValue</code>
+ properties with <code>Math.range(obj.scaledValue + obj.addValue, 0.0, 1.0)</code>
+.</p>
 <p>In addition to these properties, all the colour properties from the interface designer are available too:</p>
 <ul><li><code>obj.bgColour</code>
 </li>
@@ -327,6 +370,57 @@ laf.registerFunction("drawPopupMenuBackground", function(g, obj)
 <li><code>obj.textColour</code>
 </li>
 </ul>
+<p>This is a full example of how to style a modulated rotary knob:</p>
+<pre><code class="language-javascript line-numbers">const var knobLaf = Content.createLocalLookAndFeel();
+
+const var ARC = 2.4;
+const var START = -ARC;
+const var ARC_WIDTH = 2.0 * ARC;
+const var THICKNESS = 14.0;
+
+var p = {};              
+p.EndCapStyle = "rounded"; 
+p.JointStyle = "beveled"; 
+p.Thickness = THICKNESS;
+
+inline function drawModSlider(g, obj)
+{
+	local a = Rectangle(obj.area).reduced(THICKNESS/2);
+	local n = Rectangle(0.0, 0.0, 1.0, 1.0);
+
+	local track = Content.createPath(); track.setBounds(n);
+	track.addArc(n, START-0.05, START + ARC_WIDTH+0.05);
+	
+	g.setColour(0x77000000);
+	g.drawPath(track, a, THICKNESS);
+	
+	local modRange = Content.createPath(); modRange.setBounds(n);
+	modRange.addArc(n, START + obj.modMinValue * ARC_WIDTH,
+					   START + obj.modMaxValue * ARC_WIDTH);
+					   
+	g.setColour(0x22FFFFFF);
+	g.drawPath(modRange, a, THICKNESS - 2);
+	
+	local value = Content.createPath(); value.setBounds(n);
+	value.addArc(n, START + obj.valueNormalized * ARC_WIDTH,
+					START + Math.range(obj.scaledValue + obj.addValue, 0.0, 1.0) * ARC_WIDTH);
+					
+	g.setColour(obj.itemColour1);
+	g.drawPath(value, a, THICKNESS - 4);
+	
+	local thumb = Content.createPath(); thumb.setBounds(n);
+	thumb.addArc(n, START + obj.valueNormalized * ARC_WIDTH - 0.01,
+					START + obj.valueNormalized * ARC_WIDTH + 0.01);
+	
+	g.setColour(Colours.white);
+	g.drawPath(thumb, a, p);
+	
+	g.drawAlignedText(obj.valueAsText, a, "centred");
+	g.setColour(0x55FFFFFF);
+	g.drawAlignedText(obj.text, a, "centredBottom");
+}
+
+knobLaf.registerFunction("drawRotarySlider", drawModSlider);</code></pre>
 <h3 id="drawlinearslider"><b>drawLinearSlider</b>
 </h3>
 <p class="comment">How to draw the stock HISE slider (linear and range style).</p>

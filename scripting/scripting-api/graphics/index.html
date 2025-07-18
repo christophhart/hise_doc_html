@@ -480,7 +480,7 @@ Panel1.setPaintRoutine(function(g)
 <p><br></p>
 <h2 id="drawdropshadowfrompath"><b>drawDropShadowFromPath</b>
 </h2>
-<p class="comment">Draws a drop shadow from a path.</p>
+<p class="comment">Draws a drop shadow from a path using melatonin blur.</p>
 <pre><code class="language-javascript line-numbers">Graphics.drawDropShadowFromPath(var path, var area, var colour, int radius, var offset)</code></pre>
 <p><br>This will draw a blurred version of the path that you can use to create a drop shadow effect.</p>
 <pre><code class="language-javascript line-numbers">const var Panel = Content.addPanel("Panel", 0, 0);
@@ -601,6 +601,12 @@ Panel1.setPaintRoutine(function(g)
 	
 });</code></pre>
 <p><br></p>
+<h2 id="drawinnershadowfrompath"><b>drawInnerShadowFromPath</b>
+</h2>
+<p class="comment">Draws an inner shadow for the given path using melatonin blur. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/graphics/drawinnershadowfrompath.md">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">Graphics.drawInnerShadowFromPath(var path, var area, var colour, int radius, var offset)</code></pre>
+<p><br><br></p>
 <h2 id="drawline"><b>drawLine</b>
 </h2>
 <p class="comment">Draws a line.</p>

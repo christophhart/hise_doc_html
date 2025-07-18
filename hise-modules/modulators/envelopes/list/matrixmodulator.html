@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Audio Modules | Matrix Modulator</title>
+	<meta name="description" content="A modulator that can connect to multiple modulation sources with dynamic assignments">
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="matrix-modulator"><b>Matrix Modulator</b>
+</h1>
+<p>Type ID: <code>MatrixModulator</code>
+<br></p>
+<p class="comment"><b>A modulator that can connect to multiple modulation sources with dynamic assignments</b>
+<br></p>
+<img src="images/module_screenshot_matrixmodulator.png"></img>
+<p><br></p>
+<p>This modulator is the backbone of the new modulation system in HISE 5.0 and allows you to build a complex modulation architecture found in modular synths. </p>
+<p class="comment">A feature complete example of the matrix modulation system can be found here: <a href="tutorials/scripting/index.html#modulation-matrix-tutorial">Modulation Matrix Tutorial</a>
+</p>
+<p>It is similar to the <a href="hise-modules/modulators/envelopes/list/globalenvelopemodulator.html">Global Modulators</a>
+ in the sense that it can be dynamically assigned and pick up the modulation signal from a modulator in a <a href="hise-modules/sound-generators/list/globalmodulatorcontainer.html">Global Modulator Container</a>
+, but it comes with a significant feature enhancement compared to those modules:</p>
+<h3 id="connectability"><b>Connectability</b>
+</h3>
+<ol><li>You can connect multiple modulation sources to a single MatrixModulator.</li>
+<li>The connection is type-agnostic, which means you can connect a LFO, a Envelope and a Velocity modulator to the same MatrixModulator. The global modulators were limited to the same type as the source (so eg. you could connect a velocity modulator which is a voice start modulator only to a <a href="hise-modules/modulators/voice-start-modulators/list/globalvoicestartmodulator.html">GlobalVoiceStartModulator</a>
+)</li>
+<li>You can also connect modulation sources to any UI knob by adding it as a modulation target through the <code>matrixTargetId</code>
+ property. This essentially gives you the ability to modulate anything with anything (within some limitations like polyphonic and buffer update rate).</li>
+</ol>
+<p class="comment">This highly reduces the complexity of your module tree - before you had to create as many global modulators as you want modulation slots for every modulation target and modulation type which exponentially grew the module tree. Now it's a single modulator for every modulation target.</p>
+<h3 id="flexibility"><b>Flexibility</b>
+</h3>
+<p>For each modulation connection you can:</p>
+<ul><li>control the intensity (how much the modulation source affects the target)</li>
+<li>control the modulation mode (how the modulation source is applied to the target)</li>
+<li>add an auxilliary modulation source that will apply its modulation signal to the intensity of this connection</li>
+<li>invert the modulation signal</li>
+</ul>
+<p>Essentially, this replicates most of the functionality of a modulation chain within a single modulator. The rationale for this is that there are some cases where the default behaviour of the modulation chain is a bit weird (Filter frequency modulation, I'm looking at you here), but cannot be changed for backwards compatibility reasons.</p>
+<p class="comment">For a mathematical description of each property take a look below.</p>
+<h3 id="data-model"><b>Data model</b>
+</h3>
+<p>Storing & restoring modulation connections is now handled entirely in HISE and all you have to do is to create a <a href="scripting/scripting-api/scriptmodulationmatrix/index.html">ScriptModulationMatrix</a>
+ and it will automatically attach itself to the preset system and store / restore the current modulation connections with user presets. You also get out-of-the-box full undo support for all operations on modulation connections</p>
+<h3 id="ui-integration"><b>UI Integration</b>
+</h3>
+<p>When it comes to interacting with a modulation system on the UI, there are a fairly established set of standard UI workflows / visualisations that people expect and a considerable amount of effort has flown into offering ready to use building blocks that offer most of the expected UI features. You can:</p>
+<ul><li>visualise modulation values on the <a href="ui-components/plugin-components/knob.html">Knob</a>
+ alongside its value - completely stylable with <a href="glossary/custom_lookandfeel.html#drawrotaryslider">LAF</a>
+.</li>
+<li>drag & drop modulation sources on a UI knob to add a connection - <a href="ui-components/floating-tiles/plugin/modulationmatrixcontroller.html">ModulationMatrixController</a>
+</li>
+<li>display & edit all modulation connections in a big matrix - <a href="ui-components/floating-tiles/plugin/modulationmatrix.html">ModulationMatrix</a>
+</li>
+</ul>
+<h2 id="connection-properties"><b>Connection Properties</b>
+</h2>
+<p>Now that we established what the matrix modulator can do, let's take a look at the inner workings. Each connection to a source modulator has the following properties that affect the modulation signal.</p>
+<p class="comment">Changing / editing these properties can be done with various inbuilt UI tools (see above) or programmatically through the ModulationMatrix object</p>
+<p>Note that the place where this gets stored is the associated Global Modulation Container, which stores each connection as XML element like this:</p>
+<pre><code class="language-xml line-numbers"><MatrixData>
+  <Connection TargetId="OSC1 Pitch" Mode="2" SourceIndex="1" Intensity="0.5853658536585367"
+              AuxIndex="-1.0" AuxIntensity="0.0" Inverted="0"/>
+</MatrixData></code></pre>
+<h3 id="source,-target"><b>Source</b>
+<b>, </b>
+<b>Target</b>
+</h3>
+<p>These properties are related to the source / target modulators and define what modulation signal is picked up and where it's sent to. A source is one of the modulators in the Global Modulator container and a target is either the ID of a matrix modulator or a UI knob with a non-empty <code>matrixTargetId</code>
+ property (in this case it's the exact string you put in there).</p>
+<p class="comment">note that internally the source & aux property is stored as and index while the target is stored as a string for internal reasons, but that is shielded away in any interaction with the data model so you always refer to the sources through their string (which is the ID of the modulator in the global modulator container)</p>
+<h3 id="inverted,-intensity,-mode"><b>Inverted</b>
+<b>, </b>
+<b>Intensity</b>
+<b>, </b>
+<b>Mode</b>
+</h3>
+<p>These properties define how the modulation signal is applied. In the default HISE modulation system, the <code>Mode</code>
+ is somewhat hardcoded in each modulation chain, depending on the context:</p>
+<ul><li>Gain modulation is always scaled</li>
+<li>Pitch / Pan modulation is always added</li>
+</ul>
+<p>However this static limitation might be the cause of most frustration from users trying to implement a more flexible modulation system. This has changed now with the matrix modulation system (also there's a new <b>Combined</b>
+ mode for traditional modulation chains but that's another topic). Any modulation connection can now be either used to scale (=multiply) the original value or add a unipolar or bipolar offset to the value. </p>
+<table><thead><td><b>Mode </b>
+</td>
+<td><b>Range </b>
+</td>
+<td><b>Operator </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>Scaled </td>
+<td>0.0 - 1.0 </td>
+<td><code>*</code>
+ </td>
+<td>multiplies the original value taking into account the intensity. </td>
+</tr>
+<tr><td>Unipolar </td>
+<td>-1.0 ... 1.0 </td>
+<td><code>+</code>
+ </td>
+<td>adds a modulation value to the original value. </td>
+</tr>
+<tr><td>Bipolar </td>
+<td>-1.0 ... 1.0 </td>
+<td><code>+</code>
+ </td>
+<td>adds a bipolar modulation value to the original value. </td>
+</tr>
+</table>
+<p class="comment">Note that every connection that scales the modulation value is applied <b>before</b>
+ any unipolar / bipolar offset connections, otherwise a scale multiplication to zero would "deactivate" any offset multiplication because of operator precedence.</p>
+<h3 id="auxindex-/-auxintensity"><b>AuxIndex</b>
+<b> / </b>
+<b>AuxIntensity</b>
+</h3>
+<p>This is an additional feature of the modulation system and allows you to apply another modulation signal to the intensity of this modulation connection. This can be used for nested modulation setups, eg:</p>
+<ul><li>LFO controls pitch, modulation controls LFO pitch amount: Source - LFO, Target - Pitch, Aux: Modwheel, AuxIntensity: 100%</li>
+<li>Envelope controls filter, velocity controls envelope amount: Source - Envelope, Target - Filter, Aux: Velocity, AuxIntensity: 100%</li>
+</ul>
+<p class="comment">note that the aux intensity is always applied using the scaled mode</p>
+<h3 id="pseudocode"><b>Pseudocode</b>
+</h3>
+<p>The best way of getting a feel for these properties is to play around with the ModulatorMatrix Tutorial, but for the nerds out there, this is a Frankensteiny-HiseScript translated replication of the mathematics behind the system. </p>
+<pre><code class="language-javascript line-numbers">// We take the "actual" parameter value from the UI
+var parameterValue = Knob.getValue();
+
+// first go through all scale connections
+for(c in scaleConnections)
+{
+	// grab the modulation value (always between 0...1) from the source mod
+	var mv = c.getModValue();
+	
+	if(c.isInverted())
+		mv = 1.0 - mv;
+	
+	// grab the intensity
+	var intensity = c.getIntensity();
+	
+	// If we have a aux connection, apply it to the intensity
+	if(c.getAuxIndex() != -1)
+	{
+		// apply the scale formula to the modulation intensity
+		var auxIntensity = c.getAuxIntensity();
+		var av = c.getAuxModSignal();
+		intensity *= (1.0 - auxIntensity + auxIntensity * av)
+	}
+	
+	// apply the scale formula
+	parameterValue *= (1.0 - intensity + intensity * mv);
+}
+
+// now we go through all unipolar / bipolar connections
+for(c in offsetConnections)
+{
+	var mv = c.getModValue();
+	
+	if(c.isInverted())
+		mv = 1.0 - mv;
+		
+	var intensity = c.getIntensity();
+	
+	// If we have a aux connection, apply it to the intensity
+	if(c.getAuxIndex() != -1)
+	{
+		// apply the scale formula to the modulation intensity
+		var auxIntensity = c.getAuxIntensity();
+		var av = c.getAuxModSignal();
+		intensity *= (1.0 - auxIntensity + auxIntensity * av)
+	}
+		
+	// if it's bipolar we scale it around the mid position and then add it;
+	// multiplied with the intensity, otherwise we just multiply the mod signal
+	// with the intensity
+	if(c.isBipolar())
+		parameterValue += intensity * 2.0 * (mv - 0.5);
+	else
+		parameterValue += intensity * mv;
+}</code></pre>
+<h2 id="parameters-"><b>Parameters </b>
+</h2>
+<table><thead><td><b>#</b>
+<b> </b>
+</td>
+<td><b>ID </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>0 </td>
+<td><code>Monophonic</code>
+ </td>
+<td>The matrix modulator can be set to monophonic like all other modulators, but it's highly recommended to leave this enabled in a polyphonic modulation context (and rather set the modulation sources to be monophonic if you want that behaviour). </td>
+</tr>
+<tr><td>1 </td>
+<td><code>Retrigger</code>
+ </td>
+<td>- </td>
+</tr>
+<tr><td>2 </td>
+<td><code>Value</code>
+ </td>
+<td>This parameter acts as base value for the modulation calculation and is supposed to be connected to your UI. </td>
+</tr>
+<tr><td>3 </td>
+<td><code>SmoothingTime</code>
+ </td>
+<td>This will apply smoothing on the value change to remove zipper noises. The smoothing will be applied to the modulation signal itself. </td>
+</tr>
+</table>
+<div class="content-footer"><span class="content-footer-left"><a href="https://github.com/christophhart/hise_documentation/edit/master/hise-modules/modulators/envelopes/list/matrixmodulator.md">Edit on GitHub</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="hise-modules/modulators/envelopes/list/mpemodulator.html">MPE Modulator</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>15.07.2025<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

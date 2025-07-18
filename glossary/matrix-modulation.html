@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | Glossary | Matrix Modulation System</title>
+	<meta name="description" content="New file">
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="matrix-modulation-system"><b>Matrix Modulation System</b>
+</h1>
+<p><br>This is a high-level overview of the new matrix modulation system in HISE 5.0 - there have been many changes to various locations within HISE so this page tries to summarize it all and provide links to the detailed documentation of each function where applicable.</p>
+<p>Before you dive into the specifics you can also take a look at the <a href="tutorials/scripting/index.html#modulation-matrix-tutorial">Modulation Matrix Tutorial</a>
+ that utilizes all the new functions and provides a reference implementation of how to design a synthesiser project with a complex modulation architecture.</p>
+<h2 id="introduction"><b>Introduction</b>
+</h2>
+<p>The modulation system in HISE was one of the first things that was implemented back in 2014 and had a emphasis on high performance as well as being suited towards sampled instrument design with a rather static modulation architecture and a signal system inspired by KONTAKT's modulation system.</p>
+<p>With the expansion of the target audience of HISE towards synth & effect developers, having to deal with some of the quirks of this modulation system was a common issue over the years:</p>
+<ul><li>adding / removing modulator connections is rather complicated and error prone, there is no inbuilt way of handling this use case so the developer relied on complicated script setups to implement a functionality that can be considered a standard. Also the requirement of one global modulator module per possible connection and modulation type blew up the module tree and had severe implications on the development UX.</li>
+<li>connecting a modulation target to a UI component was very complicated and involved lots of custom value conversions & other hacks.</li>
+<li>the modulation signal system with its emphasis on the static "intensity" modulation mode was rather limiting and unintuitive for people who are accustomed to modular synths</li>
+<li>there was an over-emphasis on performance vs. flexibility which is great for adding low-overhead modulators to huge sample playback instruments with large voice counts, but limits the modulation possibilities for synth projects where the overhead of the modulation system pales in comparison to the synthetic sound generators.</li>
+</ul>
+<p>Changes have been made over the years to HISE to somewhat mitigate these limitations, but with HISE 5.0 there has been a thorough rewrite of the entire modulation system with additions that are particularly tailored towards designing a complex modulation architecture with a modern UX:</p>
+<ol><li>Modulate any parameter, not just the ones that have a <a href="hise-modules/modulators/index.html">modulation chain</a>
+. There is still a benefit of using modulation chains as they allow sample accurate modulation, but most parameters (eg. effect parameters like a reverb size parameter) do not require sample accurate modulation hence a system that updates the parameter once per block is totally fine. For scriptnode / hardcoded FX modules you have a <a href="scriptnode/list/core/extra_mod.html">precise control</a>
+ over which parameters should be modulatable through a modulation chain and which will use the fallback parameter modulation system.</li>
+<li>Add / remove connections and control their intensity with standard UX tools. Users expect to <a href="ui-components/floating-tiles/plugin/modulationmatrixcontroller.html">drag and drop</a>
+ modulation sources to targets, edit the connections in a <a href="ui-components/floating-tiles/plugin/modulationmatrix.html">modulation matrix</a>
+ that shows all connections and see the modulation intensity as well as the current modulated value being <a href="glossary/custom_lookandfeel.html#drawrotaryslider">visualised</a>
+ on the UI (usually with some form of ring around the UI knob). I tried to come up with a set of generic UI elements that are fully stylable with CSS / custom LAF functions that are ready to use.</li>
+<li>A simple way of <a href="scripting/scripting-api/scriptmodulationmatrix/index.html">managing the data model of modulation connections</a>
+ is provided - no custom scripting is necessary anymore to store / restore the connections with user presets. Also there is now a single modulator module for every modulation target - no need to add multiple global modulator modules anymore.</li>
+<li>Get rid of all the quirks of the HISE modulation system: <a href="hise-modules/modulators/envelopes/list/globalenvelopemodulator.html">Global Envelope Modulator</a>
+ are fully supported, any modulation signal can be applied to the target as either <a href="hise-modules/modulators/envelopes/list/matrixmodulator.html#connection-properties">scale / unipolar or bipolar modulation</a>
+ and there is a unified system for visualization / connection of all modulation sources.</li>
+</ol>
+<h2 id="how-to-use-this-system"><b>How to use this system</b>
+</h2>
+<p>In order to make use of the new system, you need these things:</p>
+<ol><li>Use a (single) <a href="hise-modules/sound-generators/list/globalmodulatorcontainer.html">Global Modulator Container</a>
+ that provides all modulation sources that you want to offer. This includes envelope modulators.</li>
+<li>For every target that has a modulation chain (eg. gain modulation or pitch modulation), add a single new modulator: the <a href="hise-modules/modulators/envelopes/list/matrixmodulator.html">Matrix Modulator</a>
+. This module can be connected to multiple modulation sources and provides all the features listed above.</li>
+<li>For every UI element (currently limited to knobs / sliders) that are modulatable, either connect it to the <code>Value</code>
+ parameter of the MatrixModulator in order to use it as target or define the <code>matrixTargetId</code>
+ <a href="ui-components/plugin-components/knob.html">Slider</a>
+ to add it to the list of modulatable parameters. Once this is setup, you can now assign / unassign the modulation connections through the context menu or a drag & drop floating tile as well as directly read out the modulation range & values in the LAF object when rendering the knob appearance.</li>
+<li>There are additional UI elements that can be used for more features: a matrix component that lists either all connections or just the ones for a particular target and a drag component that you can use to simply drag & drop modulation connections by dropping it on a UI knob.</li>
+<li>For scripting access to this system, you can use the <a href="scripting/scripting-api/scriptmodulationmatrix/index.html">ScriptModulationMatrix</a>
+ object which offers methods to programmatically store / restore connections. By using this object it will also add the modulation connections to the user preset system so that connections are restored automatically when loading user presets.</li>
+</ol>
+<h2 id="scriptnode-/-modulation-bridge"><b>Scriptnode / Modulation bridge</b>
+</h2>
+<p>Since most of the effect design is done in scriptnode, a few things have changed in the interface between HISE and scriptnode in order to improve the modulatability of custom effects:</p>
+<ul><li>you can add modulation chains to scriptnode networks with a new preprocessor.</li>
+<li><a href="scriptnode/list/core/global_mod.html">global_mod</a>
+ and <a href="scriptnode/list/core/pitch_mod.html">pitch_mod</a>
+ signals as well as the <a href="scriptnode/list/core/extra_mod.html">extra_mod</a>
+ chain signals can now be picked up within scriptnode as well as compiled effects.</li>
+<li>you can define for each parameter of your network if it should be connected to a modulation chain or not. If you connect a parameter to a modulation chain, you can either connect it directly to its targets within the network and define a update rate for the modulation (similar to the fix_block nodes) or leave it unconnected and use the <code>extra_mod</code>
+ nodes to pick up a sample accurate modulation signal within the node. The latter option offers the ability of a sample accurate modulation of parameters in scriptnode.</li>
+</ul>
+<p class="comment">Read more about the interaction with scriptnode at the <a href="scriptnode/list/core/extra_mod.html">extra_mod</a>
+ documentation</p>
+<div class="content-footer"><span class="content-footer-left"><a href="https://github.com/christophhart/hise_documentation/edit/master/glossary/matrix-modulation.md">Edit on GitHub</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="glossary/multipageproperties.html">Multipage Dialog Reference</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>24.06.2025<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

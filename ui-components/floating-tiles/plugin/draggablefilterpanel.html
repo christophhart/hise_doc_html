@@ -66,17 +66,11 @@
  </td>
 <td><code>""</code>
  </td>
-<td>The ID of the parametric EQ </td>
+<td>The ID of the module that connects to this panel </td>
 </tr>
 <tr><td><code>Index</code>
  </td>
 <td>-1 </td>
-<td>no description </td>
-</tr>
-<tr><td><code>FollowWorkspace</code>
- </td>
-<td><code>false</code>
- </td>
 <td>no description </td>
 </tr>
 <tr><td><code>AllowFilterResizing</code>
@@ -88,6 +82,7 @@
 <tr><td><code>AllowDynamicSpectrumAnalyser</code>
  </td>
 <td>0 </td>
+<td>Set this to false to disable the ability to toggle the spectrum analyser </td>
 </tr>
 <tr><td><code>UseUndoManager</code>
  </td>
@@ -107,14 +102,111 @@
  </td>
 <td>Set to false to disable the contect menu. </td>
 </tr>
+<tr><td><code>ShowLines</code>
+ </td>
+<td><code>true</code>
+ </td>
+<td>Whether to display the grid in the background. </td>
+</tr>
 <tr><td><code>GainRange</code>
  </td>
 <td>24.0 </td>
 <td>Set the range of the min and max gain. The displayed value is set to -6 db of the range value. </td>
 </tr>
+<tr><td><code>PathType</code>
+ </td>
+<td>StrokeFullWidth </td>
+<td>the render style of the frequency graph. </td>
+</tr>
+<tr><td><code>PathMargin</code>
+ </td>
+<td>3.0 </td>
+<td>the margin of the frequency graph. </td>
+</tr>
 </table>
-<p>Connect is to a <a href="hise-modules/effects/list/curveeq.html">Parametric EQ</a>
- to display the editable filter curve in the floating tile. </p>
+<p>This FloatingTile expands on the <a href="ui-components/floating-tiles/plugin/filterdisplay.html">FilterDisplay</a>
+ UI element and offers a drag functionality to change the filter parameters directly in the filter graph.</p>
+<p>In order to use it connect is to a <a href="hise-modules/effects/list/curveeq.html">Parametric EQ</a>
+ or <a href="scripting/scripting-api/effect/index.html#setdraggablefilterdata">other types</a>
+ in order to display the editable filter curve in the floating tile. </p>
+<p class="comment">If you want to use it in HISE 5.0+ with other modules than the Parametric EQ, you will need to supply a JSON definition with <a href="scripting/scripting-api/effect/index.html#setdraggablefilterdata">this</a>
+ function.</p>
+<p>Note that this UI element does not store any data so you have to take care of the parameter persistency otherwise - the most obvious option is to use <a href="scripting/scripting-api/engine/index.html#addmodulestatetouserpreset">Engine.addModuleStateToUserPreset()</a>
+ which will save the entire module in the user preset.</p>
+<h3 id="pathtypes"><b>PathTypes</b>
+</h3>
+<p>There are four different path type available that define how the filter response graph is constructed:</p>
+<img src="images/custom/filterpathtypes.png"></img>
+<p>You might want to try out different types and see what style fits best.</p>
+<h3 id="example-snippets"><b>Example Snippets</b>
+</h3>
+<p>There are a few example snippets that demonstrate the usage of this floating tile in combination with different modules:</p>
+<ul><li><a href="tutorials/scriptnode/index.html#custom-draggable-eq">Custom Draggable EQ</a>
+</li>
+<li><a href="tutorials/ui/index.html#draggable-filter-example">Drggable Filter Example</a>
+</li>
+<li><a href="tutorials/ui/index.html#filterdisplay-pathtype-example">PathType example</a>
+</li>
+</ul>
+<h3 id="css-styling"><b>CSS Styling</b>
+</h3>
+<p>This element can also be styled using CSS. In order to do so, you can use the following selectors:</p>
+<h4 id="styling-the-filter-path"><b>Styling the filter path</b>
+</h4>
+<p>The filter background including the frequency response graph can be styled exactly like the <a href="ui-components/floating-tiles/plugin/filterdisplay.html">FilterDisplay</a>
+ using the the <code>.filtergraph</code>
+ class selector. In order to draw the frequency response, you can use the path supplied with the variable <code>var(--filterPath)</code>
+ as <code>background-image</code>
+ property.</p>
+<p class="comment">Note that if you use the <code>border</code>
+ property to stroke the path, you have to set the <code>box-sizing</code>
+ property to <code>border-box</code>
+, otherwise the path scaling will be off if you use any margin or padding property.</p>
+<h3 id="styling-the-filter-handles"><b>Styling the filter handles</b>
+</h3>
+<p>The <code>.filterHandle</code>
+ class selector styles each filter handle (the thing that you can drag around). There are a few variable values available in case you want to display some text:</p>
+<table><thead><td><b>Variable </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><code>type</code>
+ </td>
+<td>the type string as provided by the <code>TypeList</code>
+ property. </td>
+</tr>
+<tr><td><code>frequency</code>
+ </td>
+<td>a prettified string with the frequency (eg. <code>"1.5kHz"</code>
+). </td>
+</tr>
+<tr><td><code>q</code>
+ </td>
+<td>a string with the resonance (preformatted with a single decimal point). </td>
+</tr>
+<tr><td><code>gain</code>
+ </td>
+<td>a prettified string with the gain value (<code>-14.5 dB</code>
+). </td>
+</tr>
+<tr><td><code>index</code>
+ </td>
+<td>The (one-based) index of the drag handle. </td>
+</tr>
+</table>
+<p>If you want to improve the mouse behaviour, these pseudoclasses are available for different states:</p>
+<pre><code class="language-javascript line-numbers">/* when hovered. */
+.filterHandle:hover {}
+
+/* when the band is inactive. */
+.filterHandle:disabled {}
+
+/* when the band is selected. */
+.filterHandle:focus {}
+
+/* when the band is being dragged. */
+.filterHandle:active {}</code></pre>
 <div class="content-footer"><span class="content-footer-left"><a href="https://github.com/christophhart/hise_documentation/edit/master/ui-components/floating-tiles/plugin/draggablefilterpanel.md">Edit on GitHub</a>
 </span>
 

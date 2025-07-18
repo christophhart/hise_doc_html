@@ -61,13 +61,35 @@
 <td>0.00 </td>
 <td>no description. </td>
 </tr>
+<tr><td>Value </td>
+<td>0.00 - 1.00 </td>
+<td>1.00 </td>
+<td>no description. </td>
+</tr>
+<tr><td>ProcessSignal </td>
+<td>0.00 - 1.00 </td>
+<td>0.00 </td>
+<td>no description. </td>
+</tr>
+<tr><td>Mode </td>
+<td>0.00 - 2.00 </td>
+<td>0.00 </td>
+<td>no description. </td>
+</tr>
+<tr><td>Intensity </td>
+<td>-1.00 - 1.00 </td>
+<td>1.00 </td>
+<td>no description. </td>
+</tr>
 </table>
 <p><br>There are many ways to funnel an external (modulation) signal into a scriptnode network and one of them is using this node in order to pick up the signal created by one of the global modulators.</p>
-<p class="comment">If you use this node you will not be able to compile your network to a hardcoded FX.</p>
+<p>Depending on your project architecture, it might make more sense to use a <a href="scriptnode/list/core/extra_mod.html">extra_mod</a>
+ node instead of this node and then add global modulators or matrix modulators to the extra modulation chain, but if you want to "hardwire" a single global modulation connection to a target within your DSP network, this might come in handy.</p>
+<p class="comment">Note that before HISE 5.0 this note was not compileable, but that has changed now and it will properly connect to global modulators in a compiled C++ node now.</p>
 <div class="content-footer"><span class="content-footer-left"><a href="https://github.com/christophhart/hise_documentation/edit/master/scriptnode/list/core/global_mod.md">Edit on GitHub</a>
 </span>
 
-<span class="content-footer-right">Next: <a href="scriptnode/list/core/peak.html">peak</a>
+<span class="content-footer-right">Next: <a href="scriptnode/list/core/pitch_mod.html">pitch_mod</a>
 </span>
 
 <p class="content-footer-metadata">Christoph Hart<br>31.05.2024<br></p>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | UI Components | ModulationMatrixController</title>
+	<meta name="description" content="A UI component that can be used to manage matrix modulation connections">
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="modulationmatrixcontroller"><b>ModulationMatrixController</b>
+</h1>
+<p><br></p>
+<p>Connects to module type: MatrixProcessors</p>
+<p class="comment">A UI component that can be used to manage matrix modulation connections</p>
+<img src="images/floating-tiles/modulationmatrixcontroller.png"></img>
+<table><thead><td><b>ID </b>
+</td>
+<td><b>Default Value </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><code>ProcessorId</code>
+ </td>
+<td><code>""</code>
+ </td>
+<td>This should be set to the ID of the Global Modulator Container you are using with the matrix modulation system. </td>
+</tr>
+</table>
+<p><br>A common UI workflow when working with synthesiser plugins is to drag a modulation source to a target in order to establish a connection. This can be achieved with this UI component which adds a draggable element for every modulation source that can be dropped on any <a href="ui-components/plugin-components/knob.html">Knob</a>
+ that is associated with a modulation target.</p>
+<p>In order to use this floating tile, you have to:</p>
+<ol><li>Create a global modulator container and add multiple modulation sources</li>
+<li>Add various modulation targets and connect them to UI knobs by setting their <code>matrixTargetId</code>
+ property to the respective target ID.</li>
+<li>Add this floating tile, set its <code>ProcessorId</code>
+ property to the ID of the global modulator container</li>
+<li>Start dragging the modulation source objects to the knobs to add connections.</li>
+</ol>
+<p>Note that this is using some internals to streamline the process: as soon as you start dragging the UI elements, it will repaint all modulated knobs and update the <code>modulationDragState</code>
+ property that you can pick up in your LAF methods to show the draggability.</p>
+<p class="comment">A example snippet that shows how to use this floating tile is available <a href="tutorials/scripting/index.html#modulation-matrix-tutorial">here</a>
+.</p>
+<h3 id="bonus-level:-connection-management-buttons"><b>Bonus level: connection management buttons</b>
+</h3>
+<p>In addition to the draggable elements, you also get three buttons in this component which perform (undoable) common operations related to connection management:</p>
+<ol><li>Add a (empty) connection that you can assign in a <a href="ui-components/floating-tiles/plugin/modulationmatrix.html">ModulationMatrix</a>
+ component.</li>
+<li>Remove the last connection</li>
+<li>Clear all connections.</li>
+</ol>
+<p>Note that this functionality is not exclusive to these buttons: all of those operations are also accessible through the <a href="scripting/scripting-api/scriptmodulationmatrix/index.html">ScriptModulationMatrix</a>
+ scripting object and if you want to hide them, you can easily do so with the CSS magic spell <code>.control-button{display:none;}</code>
+ in the CSS style sheet that is applied to this UI component. But if you want a quick and convenient way to handle the modulation connections you can use these buttons for exactly that.</p>
+<h3 id="styling"><b>Styling</b>
+</h3>
+<p>Just like with the <a href="ui-components/floating-tiles/plugin/modulationmatrix.html">ModulationMatrix</a>
+ I've settled on a <b>CSS-only</b>
+ approach for styling the draggable elements (the buttons can be styled with a scripting LAF if you absolutely need to). The reason, again, is that there is a lot of positioning customization required so the power of the CSS flex box can be used to precisely control how the positioning / spacing of the draggers should occur.</p>
+<p>The CSS selectors available are:</p>
+<ul><li><code>#controller</code>
+ for rendering the background of the entire component and setting the flex-box properties of the container - eg. <code>flex-direction: row-reverse;</code>
+ will reverse the order of the child elements</li>
+<li><code>.dragger</code>
+ for every drag element.</li>
+</ul>
+<p>The dragger elements support all pseudo-classes:</p>
+<ul><li><code>:hover</code>
+ when you hover the element</li>
+<li><code>:active</code>
+ when you drag the element. This state is also used to render the static image that is dragged around the screen</li>
+</ul>
+<p>There is also a predefined default icon (the draggable +) supplied as <code>dragPath</code>
+ variable, but you can of course replace that with any other icon.</p>
+<p>The default appearance of this UI component will not win any design award, but here is a example style sheet that covers all features and can be used as a starting point for your customization:</p>
+<pre><code class="language-css line-numbers">#controller
+{
+	background: #968;
+	padding: 10px;
+	border-radius: 50%;
+	border: 1px solid #888;
+	gap: 0px;
+}
+
+.control-button { display: none; }
+
+.dragger
+{
+	background: #999;
+	color: #222;
+	border-radius: 50%;
+	padding-left: 30px;
+	padding-right: 10px;
+	margin: 10px;
+	height: 45px;
+	
+	box-shadow: 0px 2px 5px black;
+	cursor: grabbing;
+}
+
+.dragger::before
+{
+	content: '';
+	background-image: var(--dragPath);
+	width: 100vh;
+	position: absolute;
+	background-color: #555;
+	margin: 15px;
+}
+
+.dragger:active
+{
+	transform: scale(95%);
+}
+
+.dragger::before:hover
+{
+	background-color: white;
+};</code></pre>
+<div class="content-footer"><span class="content-footer-left"><a href="https://github.com/christophhart/hise_documentation/edit/master/ui-components/floating-tiles/plugin/modulationmatrixcontroller.md">Edit on GitHub</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="ui-components/floating-tiles/plugin/ahdsrgraph.html">AHDSRGraph</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>18.07.2025<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

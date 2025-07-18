@@ -2277,6 +2277,19 @@ var rootDb = {
               "Colour": "#414141",
               "Children": [
                 {
+                  "URL": "hise-modules/sound-generators/list/hardcodedsynth.html",
+                  "Title": "",
+                  "Colour": "#414141",
+                  "Children": [
+                    {
+                      "URL": "hise-modules/sound-generators/list/hardcodedsynth.html#parameters",
+                      "Title": "Parameters",
+                      "Colour": "#414141",
+                      "Children": []
+                    }
+                  ]
+                },
+                {
                   "URL": "hise-modules/sound-generators/list/audiolooper.html",
                   "Title": "Audio Loop Player",
                   "Colour": "#414141",
@@ -2332,8 +2345,14 @@ var rootDb = {
                   "Colour": "#414141",
                   "Children": [
                     {
-                      "URL": "hise-modules/sound-generators/list/globalmodulatorcontainer.html#global-envelopes",
-                      "Title": "",
+                      "URL": "hise-modules/sound-generators/list/globalmodulatorcontainer.html#global-modulator-targets",
+                      "Title": "Global Modulator targets",
+                      "Colour": "#414141",
+                      "Children": []
+                    },
+                    {
+                      "URL": "hise-modules/sound-generators/list/globalmodulatorcontainer.html#matrix-modulation-targets",
+                      "Title": "Matrix modulation targets",
                       "Colour": "#414141",
                       "Children": []
                     },
@@ -2575,6 +2594,24 @@ var rootDb = {
                   "Title": "Wavetable Synthesiser",
                   "Colour": "#414141",
                   "Children": [
+                    {
+                      "URL": "hise-modules/sound-generators/list/wavetablesynth.html#data-formats",
+                      "Title": "Data formats",
+                      "Colour": "#414141",
+                      "Children": []
+                    },
+                    {
+                      "URL": "hise-modules/sound-generators/list/wavetablesynth.html#hwt-format",
+                      "Title": "",
+                      "Colour": "#414141",
+                      "Children": []
+                    },
+                    {
+                      "URL": "hise-modules/sound-generators/list/wavetablesynth.html#using-audio-files",
+                      "Title": "",
+                      "Colour": "#414141",
+                      "Children": []
+                    },
                     {
                       "URL": "hise-modules/sound-generators/list/wavetablesynth.html#parameters",
                       "Title": "Parameters",
@@ -3122,6 +3159,32 @@ var rootDb = {
                   "Colour": "#1088CC",
                   "Children": [
                     {
+                      "URL": "hise-modules/modulators/envelopes/list/hardcoded-envelope-modulator.html",
+                      "Title": "",
+                      "Colour": "#1088CC",
+                      "Children": [
+                        {
+                          "URL": "hise-modules/modulators/envelopes/list/hardcoded-envelope-modulator.html#parameters",
+                          "Title": "Parameters",
+                          "Colour": "#1088CC",
+                          "Children": []
+                        }
+                      ]
+                    },
+                    {
+                      "URL": "hise-modules/modulators/envelopes/list/flexahdsr.html",
+                      "Title": "",
+                      "Colour": "#1088CC",
+                      "Children": [
+                        {
+                          "URL": "hise-modules/modulators/envelopes/list/flexahdsr.html#parameters",
+                          "Title": "Parameters",
+                          "Colour": "#1088CC",
+                          "Children": []
+                        }
+                      ]
+                    },
+                    {
                       "URL": "hise-modules/modulators/envelopes/list/ahdsr.html",
                       "Title": "AHDSR Envelope",
                       "Colour": "#1088CC",
@@ -3154,6 +3217,73 @@ var rootDb = {
                       "Children": [
                         {
                           "URL": "hise-modules/modulators/envelopes/list/globalenvelopemodulator.html#parameters",
+                          "Title": "Parameters",
+                          "Colour": "#1088CC",
+                          "Children": []
+                        }
+                      ]
+                    },
+                    {
+                      "URL": "hise-modules/modulators/envelopes/list/matrixmodulator.html",
+                      "Title": "Matrix Modulator",
+                      "Colour": "#1088CC",
+                      "Children": [
+                        {
+                          "URL": "hise-modules/modulators/envelopes/list/matrixmodulator.html#connectability",
+                          "Title": "",
+                          "Colour": "#1088CC",
+                          "Children": []
+                        },
+                        {
+                          "URL": "hise-modules/modulators/envelopes/list/matrixmodulator.html#flexibility",
+                          "Title": "",
+                          "Colour": "#1088CC",
+                          "Children": []
+                        },
+                        {
+                          "URL": "hise-modules/modulators/envelopes/list/matrixmodulator.html#data-model",
+                          "Title": "",
+                          "Colour": "#1088CC",
+                          "Children": []
+                        },
+                        {
+                          "URL": "hise-modules/modulators/envelopes/list/matrixmodulator.html#ui-integration",
+                          "Title": "",
+                          "Colour": "#1088CC",
+                          "Children": []
+                        },
+                        {
+                          "URL": "hise-modules/modulators/envelopes/list/matrixmodulator.html#connection-properties",
+                          "Title": "Connection Properties",
+                          "Colour": "#1088CC",
+                          "Children": []
+                        },
+                        {
+                          "URL": "hise-modules/modulators/envelopes/list/matrixmodulator.html#source-target",
+                          "Title": "",
+                          "Colour": "#1088CC",
+                          "Children": []
+                        },
+                        {
+                          "URL": "hise-modules/modulators/envelopes/list/matrixmodulator.html#inverted-intensity-mode",
+                          "Title": "",
+                          "Colour": "#1088CC",
+                          "Children": []
+                        },
+                        {
+                          "URL": "hise-modules/modulators/envelopes/list/matrixmodulator.html#auxindex-/-auxintensity",
+                          "Title": "",
+                          "Colour": "#1088CC",
+                          "Children": []
+                        },
+                        {
+                          "URL": "hise-modules/modulators/envelopes/list/matrixmodulator.html#pseudocode",
+                          "Title": "",
+                          "Colour": "#1088CC",
+                          "Children": []
+                        },
+                        {
+                          "URL": "hise-modules/modulators/envelopes/list/matrixmodulator.html#parameters",
                           "Title": "Parameters",
                           "Colour": "#1088CC",
                           "Children": []
@@ -3286,6 +3416,19 @@ var rootDb = {
                   "Children": [
                     {
                       "URL": "hise-modules/effects/list/polyshapefx.html#parameters",
+                      "Title": "Parameters",
+                      "Colour": "#3A6666",
+                      "Children": []
+                    }
+                  ]
+                },
+                {
+                  "URL": "hise-modules/effects/list/noisegrainplayer.html",
+                  "Title": "",
+                  "Colour": "#3A6666",
+                  "Children": [
+                    {
+                      "URL": "hise-modules/effects/list/noisegrainplayer.html#parameters",
                       "Title": "Parameters",
                       "Colour": "#3A6666",
                       "Children": []
@@ -3902,8 +4045,26 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "ui-components/floating-tiles/plugin/modulationmatrix.html",
+                  "Title": "ModulationMatrix",
+                  "Colour": "#9064FF",
+                  "Children": []
+                },
+                {
+                  "URL": "ui-components/floating-tiles/plugin/modulationmatrixcontroller.html",
+                  "Title": "ModulationMatrixController",
+                  "Colour": "#9064FF",
+                  "Children": []
+                },
+                {
                   "URL": "ui-components/floating-tiles/plugin/ahdsrgraph.html",
                   "Title": "AHDSRGraph",
+                  "Colour": "#9064FF",
+                  "Children": []
+                },
+                {
+                  "URL": "ui-components/floating-tiles/plugin/flexahdsrgraph.html",
+                  "Title": "FlexAHDSRGraph",
                   "Colour": "#9064FF",
                   "Children": []
                 },
@@ -4193,6 +4354,12 @@ var rootDb = {
                 {
                   "URL": "ui-components/floating-tiles/hise/interfacepropertyeditor.html",
                   "Title": "InterfacePropertyEditor",
+                  "Colour": "#9064FF",
+                  "Children": []
+                },
+                {
+                  "URL": "ui-components/floating-tiles/hise/scriptcomponentcssdebugger.html",
+                  "Title": "ScriptComponentCSSDebugger",
                   "Colour": "#9064FF",
                   "Children": []
                 },
@@ -5681,6 +5848,18 @@ var rootDb = {
               "Colour": "#D557D9",
               "Children": [
                 {
+                  "URL": "scripting/scripting-api/buffer/index.html#applymedianfilter",
+                  "Title": "applyMedianFilter",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/buffer/index.html#decompose",
+                  "Title": "decompose",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/buffer/index.html#detectpitch",
                   "Title": "detectPitch",
                   "Colour": "#D557D9",
@@ -5933,6 +6112,18 @@ var rootDb = {
                   "Title": "setBypassed",
                   "Colour": "#D557D9",
                   "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/childsynth/index.html#seteffectchainorder",
+                  "Title": "setEffectChainOrder",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/childsynth/index.html#setmodulationinitialvalue",
+                  "Title": "setModulationInitialValue",
+                  "Colour": "#D557D9",
+                  "Children": []
                 }
               ]
             },
@@ -6156,6 +6347,181 @@ var rootDb = {
               ]
             },
             {
+              "URL": "scripting/scripting-api/containerchild/index.html",
+              "Title": "ContainerChild",
+              "Colour": "#D557D9",
+              "Children": [
+                {
+                  "URL": "scripting/scripting-api/containerchild/index.html#addchildcomponent",
+                  "Title": "addChildComponent",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/containerchild/index.html#addstatetouserpreset",
+                  "Title": "addStateToUserPreset",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/containerchild/index.html#changed",
+                  "Title": "changed",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/containerchild/index.html#frombase64",
+                  "Title": "fromBase64",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/containerchild/index.html#get",
+                  "Title": "get",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/containerchild/index.html#getallcomponents",
+                  "Title": "getAllComponents",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/containerchild/index.html#getchildcomponentindex",
+                  "Title": "getChildComponentIndex",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/containerchild/index.html#getcomponent",
+                  "Title": "getComponent",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/containerchild/index.html#getlocalbounds",
+                  "Title": "getLocalBounds",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/containerchild/index.html#getnumchildcomponents",
+                  "Title": "getNumChildComponents",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/containerchild/index.html#getparent",
+                  "Title": "getParent",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/containerchild/index.html#getvalue",
+                  "Title": "getValue",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/containerchild/index.html#isequal",
+                  "Title": "isEqual",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/containerchild/index.html#isvalid",
+                  "Title": "isValid",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/containerchild/index.html#losefocus",
+                  "Title": "loseFocus",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/containerchild/index.html#removeallchildren",
+                  "Title": "removeAllChildren",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/containerchild/index.html#removefromparent",
+                  "Title": "removeFromParent",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/containerchild/index.html#resetvaluetodefault",
+                  "Title": "resetValueToDefault",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/containerchild/index.html#sendrepaintmessage",
+                  "Title": "sendRepaintMessage",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/containerchild/index.html#set",
+                  "Title": "set",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/containerchild/index.html#setbounds",
+                  "Title": "setBounds",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/containerchild/index.html#setchildcallback",
+                  "Title": "setChildCallback",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/containerchild/index.html#setcontrolcallback",
+                  "Title": "setControlCallback",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/containerchild/index.html#setpaintroutine",
+                  "Title": "setPaintRoutine",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/containerchild/index.html#setvalue",
+                  "Title": "setValue",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/containerchild/index.html#setvaluewithundo",
+                  "Title": "setValueWithUndo",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/containerchild/index.html#tobase64",
+                  "Title": "toBase64",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/containerchild/index.html#updatevaluefromprocessorconnection",
+                  "Title": "updateValueFromProcessorConnection",
+                  "Colour": "#D557D9",
+                  "Children": []
+                }
+              ]
+            },
+            {
               "URL": "scripting/scripting-api/content/index.html",
               "Title": "Content",
               "Colour": "#D557D9",
@@ -6175,6 +6541,12 @@ var rootDb = {
                 {
                   "URL": "scripting/scripting-api/content/index.html#addcombobox",
                   "Title": "addComboBox",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/content/index.html#adddynamiccontainer",
+                  "Title": "addDynamicContainer",
                   "Colour": "#D557D9",
                   "Children": []
                 },
@@ -6499,6 +6871,12 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scripting/scripting-api/displaybuffer/index.html#frombase64",
+                  "Title": "fromBase64",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/displaybuffer/index.html#getreadbuffer",
                   "Title": "getReadBuffer",
                   "Colour": "#D557D9",
@@ -6519,6 +6897,12 @@ var rootDb = {
                 {
                   "URL": "scripting/scripting-api/displaybuffer/index.html#setringbufferproperties",
                   "Title": "setRingBufferProperties",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/displaybuffer/index.html#tobase64",
+                  "Title": "toBase64",
                   "Colour": "#D557D9",
                   "Children": []
                 }
@@ -6858,6 +7242,12 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scripting/scripting-api/effect/index.html#getdraggablefilterdata",
+                  "Title": "getDraggableFilterData",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/effect/index.html#getid",
                   "Title": "getId",
                   "Colour": "#D557D9",
@@ -6908,6 +7298,12 @@ var rootDb = {
                 {
                   "URL": "scripting/scripting-api/effect/index.html#setbypassed",
                   "Title": "setBypassed",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/effect/index.html#setdraggablefilterdata",
+                  "Title": "setDraggableFilterData",
                   "Colour": "#D557D9",
                   "Children": []
                 }
@@ -7467,6 +7863,12 @@ var rootDb = {
                 {
                   "URL": "scripting/scripting-api/engine/index.html#gettemponame",
                   "Title": "getTempoName",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/engine/index.html#gettextforvalue",
+                  "Title": "getTextForValue",
                   "Colour": "#D557D9",
                   "Children": []
                 },
@@ -8961,6 +9363,12 @@ var rootDb = {
                 {
                   "URL": "scripting/scripting-api/graphics/index.html#drawimage",
                   "Title": "drawImage",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/graphics/index.html#drawinnershadowfrompath",
+                  "Title": "drawInnerShadowFromPath",
                   "Colour": "#D557D9",
                   "Children": []
                 },
@@ -10612,6 +11020,12 @@ var rootDb = {
                   "Title": "setIsBipolar",
                   "Colour": "#D557D9",
                   "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/modulator/index.html#setmatrixproperties",
+                  "Title": "setMatrixProperties",
+                  "Colour": "#D557D9",
+                  "Children": []
                 }
               ]
             },
@@ -10852,8 +11266,8 @@ var rootDb = {
                   "Children": []
                 },
                 {
-                  "URL": "scripting/scripting-api/node/index.html#getparameter",
-                  "Title": "getParameter",
+                  "URL": "scripting/scripting-api/node/index.html#getorcreateparameter",
+                  "Title": "getOrCreateParameter",
                   "Colour": "#D557D9",
                   "Children": []
                 },
@@ -10896,6 +11310,61 @@ var rootDb = {
                 {
                   "URL": "scripting/scripting-api/node/index.html#setparent",
                   "Title": "setParent",
+                  "Colour": "#D557D9",
+                  "Children": []
+                }
+              ]
+            },
+            {
+              "URL": "scripting/scripting-api/parameter/index.html",
+              "Title": "Parameter",
+              "Colour": "#D557D9",
+              "Children": [
+                {
+                  "URL": "scripting/scripting-api/parameter/index.html#addconnectionfrom",
+                  "Title": "addConnectionFrom",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/parameter/index.html#getid",
+                  "Title": "getId",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/parameter/index.html#getrangeobject",
+                  "Title": "getRangeObject",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/parameter/index.html#getvalue",
+                  "Title": "getValue",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/parameter/index.html#setrangefromobject",
+                  "Title": "setRangeFromObject",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/parameter/index.html#setrangeproperty",
+                  "Title": "setRangeProperty",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/parameter/index.html#setvalueasync",
+                  "Title": "setValueAsync",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/parameter/index.html#setvaluesync",
+                  "Title": "setValueSync",
                   "Colour": "#D557D9",
                   "Children": []
                 }
@@ -11027,6 +11496,12 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scripting/scripting-api/path/index.html#getyat",
+                  "Title": "getYAt",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/path/index.html#lineto",
                   "Title": "lineTo",
                   "Colour": "#D557D9",
@@ -11053,6 +11528,12 @@ var rootDb = {
                 {
                   "URL": "scripting/scripting-api/path/index.html#scaletofit",
                   "Title": "scaleToFit",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/path/index.html#setbounds",
+                  "Title": "setBounds",
                   "Colour": "#D557D9",
                   "Children": []
                 },
@@ -11860,6 +12341,12 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scripting/scripting-api/scriptaudiowaveform/index.html#getpopupmenutarget",
+                  "Title": "getPopupMenuTarget",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/scriptaudiowaveform/index.html#getrangeend",
                   "Title": "getRangeEnd",
                   "Colour": "#D557D9",
@@ -12125,6 +12612,12 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scripting/scripting-api/scriptbutton/index.html#getpopupmenutarget",
+                  "Title": "getPopupMenuTarget",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/scriptbutton/index.html#getvalue",
                   "Title": "getValue",
                   "Colour": "#D557D9",
@@ -12372,6 +12865,12 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scripting/scripting-api/scriptcombobox/index.html#getpopupmenutarget",
+                  "Title": "getPopupMenuTarget",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/scriptcombobox/index.html#getvalue",
                   "Title": "getValue",
                   "Colour": "#D557D9",
@@ -12524,6 +13023,247 @@ var rootDb = {
               ]
             },
             {
+              "URL": "scripting/scripting-api/scriptdynamiccontainer/index.html",
+              "Title": "ScriptDynamicContainer",
+              "Colour": "#D557D9",
+              "Children": [
+                {
+                  "URL": "scripting/scripting-api/scriptdynamiccontainer/index.html#addtomacrocontrol",
+                  "Title": "addToMacroControl",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptdynamiccontainer/index.html#changed",
+                  "Title": "changed",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptdynamiccontainer/index.html#createlocallookandfeel",
+                  "Title": "createLocalLookAndFeel",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptdynamiccontainer/index.html#fadecomponent",
+                  "Title": "fadeComponent",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptdynamiccontainer/index.html#get",
+                  "Title": "get",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptdynamiccontainer/index.html#getallproperties",
+                  "Title": "getAllProperties",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptdynamiccontainer/index.html#getchildcomponents",
+                  "Title": "getChildComponents",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptdynamiccontainer/index.html#getglobalpositionx",
+                  "Title": "getGlobalPositionX",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptdynamiccontainer/index.html#getglobalpositiony",
+                  "Title": "getGlobalPositionY",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptdynamiccontainer/index.html#getheight",
+                  "Title": "getHeight",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptdynamiccontainer/index.html#getid",
+                  "Title": "getId",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptdynamiccontainer/index.html#getlocalbounds",
+                  "Title": "getLocalBounds",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptdynamiccontainer/index.html#getvalue",
+                  "Title": "getValue",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptdynamiccontainer/index.html#getvaluenormalized",
+                  "Title": "getValueNormalized",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptdynamiccontainer/index.html#getwidth",
+                  "Title": "getWidth",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptdynamiccontainer/index.html#grabfocus",
+                  "Title": "grabFocus",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptdynamiccontainer/index.html#losefocus",
+                  "Title": "loseFocus",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptdynamiccontainer/index.html#sendrepaintmessage",
+                  "Title": "sendRepaintMessage",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptdynamiccontainer/index.html#set",
+                  "Title": "set",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptdynamiccontainer/index.html#setcolour",
+                  "Title": "setColour",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptdynamiccontainer/index.html#setconsumedkeypresses",
+                  "Title": "setConsumedKeyPresses",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptdynamiccontainer/index.html#setcontrolcallback",
+                  "Title": "setControlCallback",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptdynamiccontainer/index.html#setdata",
+                  "Title": "setData",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptdynamiccontainer/index.html#setkeypresscallback",
+                  "Title": "setKeyPressCallback",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptdynamiccontainer/index.html#setlocallookandfeel",
+                  "Title": "setLocalLookAndFeel",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptdynamiccontainer/index.html#setposition",
+                  "Title": "setPosition",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptdynamiccontainer/index.html#setpropertiesfromjson",
+                  "Title": "setPropertiesFromJSON",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptdynamiccontainer/index.html#setstylesheetclass",
+                  "Title": "setStyleSheetClass",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptdynamiccontainer/index.html#setstylesheetproperty",
+                  "Title": "setStyleSheetProperty",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptdynamiccontainer/index.html#setstylesheetpseudostate",
+                  "Title": "setStyleSheetPseudoState",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptdynamiccontainer/index.html#settooltip",
+                  "Title": "setTooltip",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptdynamiccontainer/index.html#setvalue",
+                  "Title": "setValue",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptdynamiccontainer/index.html#setvaluecallback",
+                  "Title": "setValueCallback",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptdynamiccontainer/index.html#setvaluenormalized",
+                  "Title": "setValueNormalized",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptdynamiccontainer/index.html#setvaluewithundo",
+                  "Title": "setValueWithUndo",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptdynamiccontainer/index.html#setzlevel",
+                  "Title": "setZLevel",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptdynamiccontainer/index.html#showcontrol",
+                  "Title": "showControl",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptdynamiccontainer/index.html#updatecontentpropertyinternal",
+                  "Title": "updateContentPropertyInternal",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptdynamiccontainer/index.html#updatevaluefromprocessorconnection",
+                  "Title": "updateValueFromProcessorConnection",
+                  "Colour": "#D557D9",
+                  "Children": []
+                }
+              ]
+            },
+            {
               "URL": "scripting/scripting-api/scriptedviewport/index.html",
               "Title": "ScriptedViewport",
               "Colour": "#D557D9",
@@ -12603,6 +13343,12 @@ var rootDb = {
                 {
                   "URL": "scripting/scripting-api/scriptedviewport/index.html#getoriginalrowindex",
                   "Title": "getOriginalRowIndex",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptedviewport/index.html#getpopupmenutarget",
+                  "Title": "getPopupMenuTarget",
                   "Colour": "#D557D9",
                   "Children": []
                 },
@@ -12866,6 +13612,12 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scripting/scripting-api/scriptfloatingtile/index.html#getpopupmenutarget",
+                  "Title": "getPopupMenuTarget",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/scriptfloatingtile/index.html#getvaluenormalized",
                   "Title": "getValueNormalized",
                   "Colour": "#D557D9",
@@ -13085,6 +13837,12 @@ var rootDb = {
                 {
                   "URL": "scripting/scripting-api/scriptimage/index.html#getlocalbounds",
                   "Title": "getLocalBounds",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptimage/index.html#getpopupmenutarget",
+                  "Title": "getPopupMenuTarget",
                   "Colour": "#D557D9",
                   "Children": []
                 },
@@ -13330,6 +14088,12 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scripting/scripting-api/scriptlabel/index.html#getpopupmenutarget",
+                  "Title": "getPopupMenuTarget",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/scriptlabel/index.html#getvalue",
                   "Title": "getValue",
                   "Colour": "#D557D9",
@@ -13542,18 +14306,6 @@ var rootDb = {
               "Colour": "#D557D9",
               "Children": [
                 {
-                  "URL": "scripting/scripting-api/scriptmodulationmatrix/index.html#addmodulatortarget",
-                  "Title": "addModulatorTarget",
-                  "Colour": "#D557D9",
-                  "Children": []
-                },
-                {
-                  "URL": "scripting/scripting-api/scriptmodulationmatrix/index.html#addparametertarget",
-                  "Title": "addParameterTarget",
-                  "Colour": "#D557D9",
-                  "Children": []
-                },
-                {
                   "URL": "scripting/scripting-api/scriptmodulationmatrix/index.html#canconnect",
                   "Title": "canConnect",
                   "Colour": "#D557D9",
@@ -13578,26 +14330,8 @@ var rootDb = {
                   "Children": []
                 },
                 {
-                  "URL": "scripting/scripting-api/scriptmodulationmatrix/index.html#getcomponentid",
-                  "Title": "getComponentId",
-                  "Colour": "#D557D9",
-                  "Children": []
-                },
-                {
-                  "URL": "scripting/scripting-api/scriptmodulationmatrix/index.html#getconnectiondata",
-                  "Title": "getConnectionData",
-                  "Colour": "#D557D9",
-                  "Children": []
-                },
-                {
-                  "URL": "scripting/scripting-api/scriptmodulationmatrix/index.html#getintensitysliderdata",
-                  "Title": "getIntensitySliderData",
-                  "Colour": "#D557D9",
-                  "Children": []
-                },
-                {
-                  "URL": "scripting/scripting-api/scriptmodulationmatrix/index.html#getmodvalue",
-                  "Title": "getModValue",
+                  "URL": "scripting/scripting-api/scriptmodulationmatrix/index.html#getcomponent",
+                  "Title": "getComponent",
                   "Colour": "#D557D9",
                   "Children": []
                 },
@@ -13620,12 +14354,6 @@ var rootDb = {
                   "Children": []
                 },
                 {
-                  "URL": "scripting/scripting-api/scriptmodulationmatrix/index.html#getvaluemodedata",
-                  "Title": "getValueModeData",
-                  "Colour": "#D557D9",
-                  "Children": []
-                },
-                {
                   "URL": "scripting/scripting-api/scriptmodulationmatrix/index.html#setconnectioncallback",
                   "Title": "setConnectionCallback",
                   "Colour": "#D557D9",
@@ -13638,38 +14366,8 @@ var rootDb = {
                   "Children": []
                 },
                 {
-                  "URL": "scripting/scripting-api/scriptmodulationmatrix/index.html#setnummodulationslots",
-                  "Title": "setNumModulationSlots",
-                  "Colour": "#D557D9",
-                  "Children": []
-                },
-                {
-                  "URL": "scripting/scripting-api/scriptmodulationmatrix/index.html#setuseundomanager",
-                  "Title": "setUseUndoManager",
-                  "Colour": "#D557D9",
-                  "Children": []
-                },
-                {
                   "URL": "scripting/scripting-api/scriptmodulationmatrix/index.html#tobase64",
                   "Title": "toBase64",
-                  "Colour": "#D557D9",
-                  "Children": []
-                },
-                {
-                  "URL": "scripting/scripting-api/scriptmodulationmatrix/index.html#updateconnectiondata",
-                  "Title": "updateConnectionData",
-                  "Colour": "#D557D9",
-                  "Children": []
-                },
-                {
-                  "URL": "scripting/scripting-api/scriptmodulationmatrix/index.html#updateintensity",
-                  "Title": "updateIntensity",
-                  "Colour": "#D557D9",
-                  "Children": []
-                },
-                {
-                  "URL": "scripting/scripting-api/scriptmodulationmatrix/index.html#updatevaluemode",
-                  "Title": "updateValueMode",
                   "Colour": "#D557D9",
                   "Children": []
                 }
@@ -13791,6 +14489,12 @@ var rootDb = {
                 {
                   "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#getlocalbounds",
                   "Title": "getLocalBounds",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmultipagedialog/index.html#getpopupmenutarget",
+                  "Title": "getPopupMenuTarget",
                   "Colour": "#D557D9",
                   "Children": []
                 },
@@ -14086,6 +14790,12 @@ var rootDb = {
                 {
                   "URL": "scripting/scripting-api/scriptpanel/index.html#getparentpanel",
                   "Title": "getParentPanel",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptpanel/index.html#getpopupmenutarget",
+                  "Title": "getPopupMenuTarget",
                   "Colour": "#D557D9",
                   "Children": []
                 },
@@ -14446,6 +15156,12 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scripting/scripting-api/scriptslider/index.html#connecttomodulatedparameter",
+                  "Title": "connectToModulatedParameter",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/scriptslider/index.html#contains",
                   "Title": "contains",
                   "Colour": "#D557D9",
@@ -14526,6 +15242,12 @@ var rootDb = {
                 {
                   "URL": "scripting/scripting-api/scriptslider/index.html#getminvalue",
                   "Title": "getMinValue",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptslider/index.html#getpopupmenutarget",
+                  "Title": "getPopupMenuTarget",
                   "Colour": "#D557D9",
                   "Children": []
                 },
@@ -14813,6 +15535,12 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scripting/scripting-api/scriptsliderpack/index.html#getpopupmenutarget",
+                  "Title": "getPopupMenuTarget",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/scriptsliderpack/index.html#getslidervalueat",
                   "Title": "getSliderValueAt",
                   "Colour": "#D557D9",
@@ -15090,6 +15818,12 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scripting/scripting-api/scripttable/index.html#getpopupmenutarget",
+                  "Title": "getPopupMenuTarget",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/scripttable/index.html#gettablevalue",
                   "Title": "getTableValue",
                   "Colour": "#D557D9",
@@ -15182,6 +15916,12 @@ var rootDb = {
                 {
                   "URL": "scripting/scripting-api/scripttable/index.html#setlocallookandfeel",
                   "Title": "setLocalLookAndFeel",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scripttable/index.html#setmousehandlingproperties",
+                  "Title": "setMouseHandlingProperties",
                   "Colour": "#D557D9",
                   "Children": []
                 },
@@ -15381,6 +16121,12 @@ var rootDb = {
                 {
                   "URL": "scripting/scripting-api/scriptwebview/index.html#getlocalbounds",
                   "Title": "getLocalBounds",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptwebview/index.html#getpopupmenutarget",
+                  "Title": "getPopupMenuTarget",
                   "Colour": "#D557D9",
                   "Children": []
                 },
@@ -16406,6 +17152,12 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scripting/scripting-api/synth/index.html#getwavetablecontroller",
+                  "Title": "getWavetableController",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/synth/index.html#isartificialeventactive",
                   "Title": "isArtificialEventActive",
                   "Colour": "#D557D9",
@@ -17245,6 +17997,67 @@ var rootDb = {
                 {
                   "URL": "scripting/scripting-api/userpresethandler/index.html#updatesaveinpresetcomponents",
                   "Title": "updateSaveInPresetComponents",
+                  "Colour": "#D557D9",
+                  "Children": []
+                }
+              ]
+            },
+            {
+              "URL": "scripting/scripting-api/wavetablecontroller/index.html",
+              "Title": "WavetableController",
+              "Colour": "#D557D9",
+              "Children": [
+                {
+                  "URL": "scripting/scripting-api/wavetablecontroller/index.html#getresynthesisoptions",
+                  "Title": "getResynthesisOptions",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/wavetablecontroller/index.html#loaddata",
+                  "Title": "loadData",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/wavetablecontroller/index.html#resynthesise",
+                  "Title": "resynthesise",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/wavetablecontroller/index.html#saveasaudiofile",
+                  "Title": "saveAsAudioFile",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/wavetablecontroller/index.html#saveashwt",
+                  "Title": "saveAsHwt",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/wavetablecontroller/index.html#setenableresynthesiscache",
+                  "Title": "setEnableResynthesisCache",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/wavetablecontroller/index.html#seterrorhandler",
+                  "Title": "setErrorHandler",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/wavetablecontroller/index.html#setpostfxprocessors",
+                  "Title": "setPostFXProcessors",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/wavetablecontroller/index.html#setresynthesisoptions",
+                  "Title": "setResynthesisOptions",
                   "Colour": "#D557D9",
                   "Children": []
                 }
@@ -18988,8 +19801,8 @@ var rootDb = {
                   "Children": []
                 },
                 {
-                  "URL": "scriptnode/list/core/extra_mod.html",
-                  "Title": "extra_mod",
+                  "URL": "scriptnode/list/core/global_mod.html",
+                  "Title": "global_mod",
                   "Colour": "#F15761",
                   "Children": []
                 },
@@ -19000,8 +19813,14 @@ var rootDb = {
                   "Children": []
                 },
                 {
-                  "URL": "scriptnode/list/core/global_mod.html",
-                  "Title": "global_mod",
+                  "URL": "scriptnode/list/core/extra_mod.html",
+                  "Title": "extra_mod",
+                  "Colour": "#F15761",
+                  "Children": []
+                },
+                {
+                  "URL": "scriptnode/list/core/matrix_mod.html",
+                  "Title": "matrix_mod",
                   "Colour": "#F15761",
                   "Children": []
                 },
@@ -19238,6 +20057,12 @@ var rootDb = {
                 {
                   "URL": "scriptnode/list/envelope/ahdsr.html",
                   "Title": "ahdsr",
+                  "Colour": "#F15761",
+                  "Children": []
+                },
+                {
+                  "URL": "scriptnode/list/envelope/flex_ahdsr.html",
+                  "Title": "flex_ahdsr",
                   "Colour": "#F15761",
                   "Children": []
                 },
@@ -20888,6 +21713,31 @@ var rootDb = {
             {
               "URL": "glossary/macrocontrols.html#set-the-macro-value-using-the-scripting-api",
               "Title": "",
+              "Colour": "#BD6F50",
+              "Children": []
+            }
+          ]
+        },
+        {
+          "URL": "glossary/matrix-modulation.html",
+          "Title": "Matrix Modulation System",
+          "Colour": "#BD6F50",
+          "Children": [
+            {
+              "URL": "glossary/matrix-modulation.html#introduction",
+              "Title": "Introduction",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/matrix-modulation.html#how-to-use-this-system",
+              "Title": "How to use this system",
+              "Colour": "#BD6F50",
+              "Children": []
+            },
+            {
+              "URL": "glossary/matrix-modulation.html#scriptnode-/-modulation-bridge",
+              "Title": "Scriptnode / Modulation bridge",
               "Colour": "#BD6F50",
               "Children": []
             }

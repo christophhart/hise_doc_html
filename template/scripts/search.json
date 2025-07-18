@@ -1992,6 +1992,18 @@
     "color": "#414141"
   },
   {
+    "key": "Global Modulator Container: Global Modulator targets",
+    "url": "hise-modules/sound-generators/list/globalmodulatorcontainer.html#global-modulator-targets",
+    "weight": 50,
+    "color": "#414141"
+  },
+  {
+    "key": "Global Modulator Container: Matrix modulation targets",
+    "url": "hise-modules/sound-generators/list/globalmodulatorcontainer.html#matrix-modulation-targets",
+    "weight": 50,
+    "color": "#414141"
+  },
+  {
     "key": "Global Modulator Container: Parameters",
     "url": "hise-modules/sound-generators/list/globalmodulatorcontainer.html#parameters",
     "weight": 50,
@@ -2108,6 +2120,12 @@
   {
     "key": "Waveform Generator: Parameters",
     "url": "hise-modules/sound-generators/list/wavesynth.html#parameters",
+    "weight": 50,
+    "color": "#414141"
+  },
+  {
+    "key": "Wavetable Synthesiser: Data formats",
+    "url": "hise-modules/sound-generators/list/wavetablesynth.html#data-formats",
     "weight": 50,
     "color": "#414141"
   },
@@ -2592,6 +2610,12 @@
     "color": "#1088CC"
   },
   {
+    "key": "List of Envelopes: Matrix Modulator",
+    "url": "hise-modules/modulators/envelopes/list/matrixmodulator.html",
+    "weight": 50,
+    "color": "#1088CC"
+  },
+  {
     "key": "List of Envelopes: MPE Modulator",
     "url": "hise-modules/modulators/envelopes/list/mpemodulator.html",
     "weight": 50,
@@ -2636,6 +2660,18 @@
   {
     "key": "Global Envelope Modulator: Parameters",
     "url": "hise-modules/modulators/envelopes/list/globalenvelopemodulator.html#parameters",
+    "weight": 40,
+    "color": "#1088CC"
+  },
+  {
+    "key": "Matrix Modulator: Connection Properties",
+    "url": "hise-modules/modulators/envelopes/list/matrixmodulator.html#connection-properties",
+    "weight": 40,
+    "color": "#1088CC"
+  },
+  {
+    "key": "Matrix Modulator: Parameters",
+    "url": "hise-modules/modulators/envelopes/list/matrixmodulator.html#parameters",
     "weight": 40,
     "color": "#1088CC"
   },
@@ -3258,8 +3294,26 @@
     "color": "#9064FF"
   },
   {
+    "key": "Plugin Floating Tiles: ModulationMatrix",
+    "url": "ui-components/floating-tiles/plugin/modulationmatrix.html",
+    "weight": 60,
+    "color": "#9064FF"
+  },
+  {
+    "key": "Plugin Floating Tiles: ModulationMatrixController",
+    "url": "ui-components/floating-tiles/plugin/modulationmatrixcontroller.html",
+    "weight": 60,
+    "color": "#9064FF"
+  },
+  {
     "key": "Plugin Floating Tiles: AHDSRGraph",
     "url": "ui-components/floating-tiles/plugin/ahdsrgraph.html",
+    "weight": 60,
+    "color": "#9064FF"
+  },
+  {
+    "key": "Plugin Floating Tiles: FlexAHDSRGraph",
+    "url": "ui-components/floating-tiles/plugin/flexahdsrgraph.html",
     "weight": 60,
     "color": "#9064FF"
   },
@@ -3542,6 +3596,12 @@
   {
     "key": "HISE Floating tiles: InterfacePropertyEditor",
     "url": "ui-components/floating-tiles/hise/interfacepropertyeditor.html",
+    "weight": 60,
+    "color": "#9064FF"
+  },
+  {
+    "key": "HISE Floating tiles: ScriptComponentCSSDebugger",
+    "url": "ui-components/floating-tiles/hise/scriptcomponentcssdebugger.html",
     "weight": 60,
     "color": "#9064FF"
   },
@@ -3996,6 +4056,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "Scripting API: ContainerChild",
+    "url": "scripting/scripting-api/containerchild/index.html",
+    "weight": 70,
+    "color": "#D557D9"
+  },
+  {
     "key": "Scripting API: Content",
     "url": "scripting/scripting-api/content/index.html",
     "weight": 70,
@@ -4218,6 +4284,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "Scripting API: Parameter",
+    "url": "scripting/scripting-api/parameter/index.html",
+    "weight": 70,
+    "color": "#D557D9"
+  },
+  {
     "key": "Scripting API: Path",
     "url": "scripting/scripting-api/path/index.html",
     "weight": 70,
@@ -4262,6 +4334,12 @@
   {
     "key": "Scripting API: ScriptComboBox",
     "url": "scripting/scripting-api/scriptcombobox/index.html",
+    "weight": 70,
+    "color": "#D557D9"
+  },
+  {
+    "key": "Scripting API: ScriptDynamicContainer",
+    "url": "scripting/scripting-api/scriptdynamiccontainer/index.html",
     "weight": 70,
     "color": "#D557D9"
   },
@@ -4436,6 +4514,12 @@
   {
     "key": "Scripting API: UserPresetHandler",
     "url": "scripting/scripting-api/userpresethandler/index.html",
+    "weight": 70,
+    "color": "#D557D9"
+  },
+  {
+    "key": "Scripting API: WavetableController",
+    "url": "scripting/scripting-api/wavetablecontroller/index.html",
     "weight": 70,
     "color": "#D557D9"
   },
@@ -5088,6 +5172,18 @@
     "color": "#D557D9"
   },
   {
+    "key": "Buffer.applyMedianFilter()",
+    "url": "scripting/scripting-api/buffer/index.html#applymedianfilter",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "Buffer.decompose()",
+    "url": "scripting/scripting-api/buffer/index.html#decompose",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "Buffer.detectPitch()",
     "url": "scripting/scripting-api/buffer/index.html#detectpitch",
     "weight": 60,
@@ -5328,6 +5424,18 @@
     "color": "#D557D9"
   },
   {
+    "key": "ChildSynth.setEffectChainOrder()",
+    "url": "scripting/scripting-api/childsynth/index.html#seteffectchainorder",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ChildSynth.setModulationInitialValue()",
+    "url": "scripting/scripting-api/childsynth/index.html#setmodulationinitialvalue",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "Colours.fromHsl()",
     "url": "scripting/scripting-api/colours/index.html#fromhsl",
     "weight": 60,
@@ -5526,6 +5634,174 @@
     "color": "#D557D9"
   },
   {
+    "key": "ContainerChild.addChildComponent()",
+    "url": "scripting/scripting-api/containerchild/index.html#addchildcomponent",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ContainerChild.addStateToUserPreset()",
+    "url": "scripting/scripting-api/containerchild/index.html#addstatetouserpreset",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ContainerChild.changed()",
+    "url": "scripting/scripting-api/containerchild/index.html#changed",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ContainerChild.fromBase64()",
+    "url": "scripting/scripting-api/containerchild/index.html#frombase64",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ContainerChild.get()",
+    "url": "scripting/scripting-api/containerchild/index.html#get",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ContainerChild.getAllComponents()",
+    "url": "scripting/scripting-api/containerchild/index.html#getallcomponents",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ContainerChild.getChildComponentIndex()",
+    "url": "scripting/scripting-api/containerchild/index.html#getchildcomponentindex",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ContainerChild.getComponent()",
+    "url": "scripting/scripting-api/containerchild/index.html#getcomponent",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ContainerChild.getLocalBounds()",
+    "url": "scripting/scripting-api/containerchild/index.html#getlocalbounds",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ContainerChild.getNumChildComponents()",
+    "url": "scripting/scripting-api/containerchild/index.html#getnumchildcomponents",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ContainerChild.getParent()",
+    "url": "scripting/scripting-api/containerchild/index.html#getparent",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ContainerChild.getValue()",
+    "url": "scripting/scripting-api/containerchild/index.html#getvalue",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ContainerChild.isEqual()",
+    "url": "scripting/scripting-api/containerchild/index.html#isequal",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ContainerChild.isValid()",
+    "url": "scripting/scripting-api/containerchild/index.html#isvalid",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ContainerChild.loseFocus()",
+    "url": "scripting/scripting-api/containerchild/index.html#losefocus",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ContainerChild.removeAllChildren()",
+    "url": "scripting/scripting-api/containerchild/index.html#removeallchildren",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ContainerChild.removeFromParent()",
+    "url": "scripting/scripting-api/containerchild/index.html#removefromparent",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ContainerChild.resetValueToDefault()",
+    "url": "scripting/scripting-api/containerchild/index.html#resetvaluetodefault",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ContainerChild.sendRepaintMessage()",
+    "url": "scripting/scripting-api/containerchild/index.html#sendrepaintmessage",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ContainerChild.set()",
+    "url": "scripting/scripting-api/containerchild/index.html#set",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ContainerChild.setBounds()",
+    "url": "scripting/scripting-api/containerchild/index.html#setbounds",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ContainerChild.setChildCallback()",
+    "url": "scripting/scripting-api/containerchild/index.html#setchildcallback",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ContainerChild.setControlCallback()",
+    "url": "scripting/scripting-api/containerchild/index.html#setcontrolcallback",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ContainerChild.setPaintRoutine()",
+    "url": "scripting/scripting-api/containerchild/index.html#setpaintroutine",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ContainerChild.setValue()",
+    "url": "scripting/scripting-api/containerchild/index.html#setvalue",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ContainerChild.setValueWithUndo()",
+    "url": "scripting/scripting-api/containerchild/index.html#setvaluewithundo",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ContainerChild.toBase64()",
+    "url": "scripting/scripting-api/containerchild/index.html#tobase64",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ContainerChild.updateValueFromProcessorConnection()",
+    "url": "scripting/scripting-api/containerchild/index.html#updatevaluefromprocessorconnection",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "Content.addAudioWaveform()",
     "url": "scripting/scripting-api/content/index.html#addaudiowaveform",
     "weight": 60,
@@ -5540,6 +5816,12 @@
   {
     "key": "Content.addComboBox()",
     "url": "scripting/scripting-api/content/index.html#addcombobox",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "Content.addDynamicContainer()",
+    "url": "scripting/scripting-api/content/index.html#adddynamiccontainer",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -5850,6 +6132,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "DisplayBuffer.fromBase64()",
+    "url": "scripting/scripting-api/displaybuffer/index.html#frombase64",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "DisplayBuffer.getReadBuffer()",
     "url": "scripting/scripting-api/displaybuffer/index.html#getreadbuffer",
     "weight": 60,
@@ -5870,6 +6158,12 @@
   {
     "key": "DisplayBuffer.setRingBufferProperties()",
     "url": "scripting/scripting-api/displaybuffer/index.html#setringbufferproperties",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "DisplayBuffer.toBase64()",
+    "url": "scripting/scripting-api/displaybuffer/index.html#tobase64",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -6174,6 +6468,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "Effect.getDraggableFilterData()",
+    "url": "scripting/scripting-api/effect/index.html#getdraggablefilterdata",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "Effect.getId()",
     "url": "scripting/scripting-api/effect/index.html#getid",
     "weight": 60,
@@ -6224,6 +6524,12 @@
   {
     "key": "Effect.setBypassed()",
     "url": "scripting/scripting-api/effect/index.html#setbypassed",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "Effect.setDraggableFilterData()",
+    "url": "scripting/scripting-api/effect/index.html#setdraggablefilterdata",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -6776,6 +7082,12 @@
   {
     "key": "Engine.getTempoName()",
     "url": "scripting/scripting-api/engine/index.html#gettemponame",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "Engine.getTextForValue()",
+    "url": "scripting/scripting-api/engine/index.html#gettextforvalue",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -8186,6 +8498,12 @@
   {
     "key": "Graphics.drawImage()",
     "url": "scripting/scripting-api/graphics/index.html#drawimage",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "Graphics.drawInnerShadowFromPath()",
+    "url": "scripting/scripting-api/graphics/index.html#drawinnershadowfrompath",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -9756,6 +10074,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "Modulator.setMatrixProperties()",
+    "url": "scripting/scripting-api/modulator/index.html#setmatrixproperties",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "ModuleIds.getObjectName()",
     "url": "scripting/scripting-api/moduleids/index.html#getobjectname",
     "weight": 60,
@@ -9966,8 +10290,8 @@
     "color": "#D557D9"
   },
   {
-    "key": "Node.getParameter()",
-    "url": "scripting/scripting-api/node/index.html#getparameter",
+    "key": "Node.getOrCreateParameter()",
+    "url": "scripting/scripting-api/node/index.html#getorcreateparameter",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -10010,6 +10334,54 @@
   {
     "key": "Node.setParent()",
     "url": "scripting/scripting-api/node/index.html#setparent",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "Parameter.addConnectionFrom()",
+    "url": "scripting/scripting-api/parameter/index.html#addconnectionfrom",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "Parameter.getId()",
+    "url": "scripting/scripting-api/parameter/index.html#getid",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "Parameter.getRangeObject()",
+    "url": "scripting/scripting-api/parameter/index.html#getrangeobject",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "Parameter.getValue()",
+    "url": "scripting/scripting-api/parameter/index.html#getvalue",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "Parameter.setRangeFromObject()",
+    "url": "scripting/scripting-api/parameter/index.html#setrangefromobject",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "Parameter.setRangeProperty()",
+    "url": "scripting/scripting-api/parameter/index.html#setrangeproperty",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "Parameter.setValueAsync()",
+    "url": "scripting/scripting-api/parameter/index.html#setvalueasync",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "Parameter.setValueSync()",
+    "url": "scripting/scripting-api/parameter/index.html#setvaluesync",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -10134,6 +10506,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "Path.getYAt()",
+    "url": "scripting/scripting-api/path/index.html#getyat",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "Path.lineTo()",
     "url": "scripting/scripting-api/path/index.html#lineto",
     "weight": 60,
@@ -10160,6 +10538,12 @@
   {
     "key": "Path.scaleToFit()",
     "url": "scripting/scripting-api/path/index.html#scaletofit",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "Path.setBounds()",
+    "url": "scripting/scripting-api/path/index.html#setbounds",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -10932,6 +11316,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "ScriptAudioWaveform.getPopupMenuTarget()",
+    "url": "scripting/scripting-api/scriptaudiowaveform/index.html#getpopupmenutarget",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "ScriptAudioWaveform.getRangeEnd()",
     "url": "scripting/scripting-api/scriptaudiowaveform/index.html#getrangeend",
     "weight": 60,
@@ -11190,6 +11580,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "ScriptButton.getPopupMenuTarget()",
+    "url": "scripting/scripting-api/scriptbutton/index.html#getpopupmenutarget",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "ScriptButton.getValue()",
     "url": "scripting/scripting-api/scriptbutton/index.html#getvalue",
     "weight": 60,
@@ -11430,6 +11826,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "ScriptComboBox.getPopupMenuTarget()",
+    "url": "scripting/scripting-api/scriptcombobox/index.html#getpopupmenutarget",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "ScriptComboBox.getValue()",
     "url": "scripting/scripting-api/scriptcombobox/index.html#getvalue",
     "weight": 60,
@@ -11580,6 +11982,240 @@
     "color": "#D557D9"
   },
   {
+    "key": "ScriptDynamicContainer.addToMacroControl()",
+    "url": "scripting/scripting-api/scriptdynamiccontainer/index.html#addtomacrocontrol",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptDynamicContainer.changed()",
+    "url": "scripting/scripting-api/scriptdynamiccontainer/index.html#changed",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptDynamicContainer.createLocalLookAndFeel()",
+    "url": "scripting/scripting-api/scriptdynamiccontainer/index.html#createlocallookandfeel",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptDynamicContainer.fadeComponent()",
+    "url": "scripting/scripting-api/scriptdynamiccontainer/index.html#fadecomponent",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptDynamicContainer.get()",
+    "url": "scripting/scripting-api/scriptdynamiccontainer/index.html#get",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptDynamicContainer.getAllProperties()",
+    "url": "scripting/scripting-api/scriptdynamiccontainer/index.html#getallproperties",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptDynamicContainer.getChildComponents()",
+    "url": "scripting/scripting-api/scriptdynamiccontainer/index.html#getchildcomponents",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptDynamicContainer.getGlobalPositionX()",
+    "url": "scripting/scripting-api/scriptdynamiccontainer/index.html#getglobalpositionx",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptDynamicContainer.getGlobalPositionY()",
+    "url": "scripting/scripting-api/scriptdynamiccontainer/index.html#getglobalpositiony",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptDynamicContainer.getHeight()",
+    "url": "scripting/scripting-api/scriptdynamiccontainer/index.html#getheight",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptDynamicContainer.getId()",
+    "url": "scripting/scripting-api/scriptdynamiccontainer/index.html#getid",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptDynamicContainer.getLocalBounds()",
+    "url": "scripting/scripting-api/scriptdynamiccontainer/index.html#getlocalbounds",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptDynamicContainer.getValue()",
+    "url": "scripting/scripting-api/scriptdynamiccontainer/index.html#getvalue",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptDynamicContainer.getValueNormalized()",
+    "url": "scripting/scripting-api/scriptdynamiccontainer/index.html#getvaluenormalized",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptDynamicContainer.getWidth()",
+    "url": "scripting/scripting-api/scriptdynamiccontainer/index.html#getwidth",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptDynamicContainer.grabFocus()",
+    "url": "scripting/scripting-api/scriptdynamiccontainer/index.html#grabfocus",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptDynamicContainer.loseFocus()",
+    "url": "scripting/scripting-api/scriptdynamiccontainer/index.html#losefocus",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptDynamicContainer.sendRepaintMessage()",
+    "url": "scripting/scripting-api/scriptdynamiccontainer/index.html#sendrepaintmessage",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptDynamicContainer.set()",
+    "url": "scripting/scripting-api/scriptdynamiccontainer/index.html#set",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptDynamicContainer.setColour()",
+    "url": "scripting/scripting-api/scriptdynamiccontainer/index.html#setcolour",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptDynamicContainer.setConsumedKeyPresses()",
+    "url": "scripting/scripting-api/scriptdynamiccontainer/index.html#setconsumedkeypresses",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptDynamicContainer.setControlCallback()",
+    "url": "scripting/scripting-api/scriptdynamiccontainer/index.html#setcontrolcallback",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptDynamicContainer.setData()",
+    "url": "scripting/scripting-api/scriptdynamiccontainer/index.html#setdata",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptDynamicContainer.setKeyPressCallback()",
+    "url": "scripting/scripting-api/scriptdynamiccontainer/index.html#setkeypresscallback",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptDynamicContainer.setLocalLookAndFeel()",
+    "url": "scripting/scripting-api/scriptdynamiccontainer/index.html#setlocallookandfeel",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptDynamicContainer.setPosition()",
+    "url": "scripting/scripting-api/scriptdynamiccontainer/index.html#setposition",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptDynamicContainer.setPropertiesFromJSON()",
+    "url": "scripting/scripting-api/scriptdynamiccontainer/index.html#setpropertiesfromjson",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptDynamicContainer.setStyleSheetClass()",
+    "url": "scripting/scripting-api/scriptdynamiccontainer/index.html#setstylesheetclass",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptDynamicContainer.setStyleSheetProperty()",
+    "url": "scripting/scripting-api/scriptdynamiccontainer/index.html#setstylesheetproperty",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptDynamicContainer.setStyleSheetPseudoState()",
+    "url": "scripting/scripting-api/scriptdynamiccontainer/index.html#setstylesheetpseudostate",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptDynamicContainer.setTooltip()",
+    "url": "scripting/scripting-api/scriptdynamiccontainer/index.html#settooltip",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptDynamicContainer.setValue()",
+    "url": "scripting/scripting-api/scriptdynamiccontainer/index.html#setvalue",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptDynamicContainer.setValueCallback()",
+    "url": "scripting/scripting-api/scriptdynamiccontainer/index.html#setvaluecallback",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptDynamicContainer.setValueNormalized()",
+    "url": "scripting/scripting-api/scriptdynamiccontainer/index.html#setvaluenormalized",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptDynamicContainer.setValueWithUndo()",
+    "url": "scripting/scripting-api/scriptdynamiccontainer/index.html#setvaluewithundo",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptDynamicContainer.setZLevel()",
+    "url": "scripting/scripting-api/scriptdynamiccontainer/index.html#setzlevel",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptDynamicContainer.showControl()",
+    "url": "scripting/scripting-api/scriptdynamiccontainer/index.html#showcontrol",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptDynamicContainer.updateContentPropertyInternal()",
+    "url": "scripting/scripting-api/scriptdynamiccontainer/index.html#updatecontentpropertyinternal",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptDynamicContainer.updateValueFromProcessorConnection()",
+    "url": "scripting/scripting-api/scriptdynamiccontainer/index.html#updatevaluefromprocessorconnection",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "ScriptedViewport.addToMacroControl()",
     "url": "scripting/scripting-api/scriptedviewport/index.html#addtomacrocontrol",
     "weight": 60,
@@ -11654,6 +12290,12 @@
   {
     "key": "ScriptedViewport.getOriginalRowIndex()",
     "url": "scripting/scripting-api/scriptedviewport/index.html#getoriginalrowindex",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptedViewport.getPopupMenuTarget()",
+    "url": "scripting/scripting-api/scriptedviewport/index.html#getpopupmenutarget",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -11910,6 +12552,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "ScriptFloatingTile.getPopupMenuTarget()",
+    "url": "scripting/scripting-api/scriptfloatingtile/index.html#getpopupmenutarget",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "ScriptFloatingTile.getValueNormalized()",
     "url": "scripting/scripting-api/scriptfloatingtile/index.html#getvaluenormalized",
     "weight": 60,
@@ -12122,6 +12770,12 @@
   {
     "key": "ScriptImage.getLocalBounds()",
     "url": "scripting/scripting-api/scriptimage/index.html#getlocalbounds",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptImage.getPopupMenuTarget()",
+    "url": "scripting/scripting-api/scriptimage/index.html#getpopupmenutarget",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -12360,6 +13014,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "ScriptLabel.getPopupMenuTarget()",
+    "url": "scripting/scripting-api/scriptlabel/index.html#getpopupmenutarget",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "ScriptLabel.getValue()",
     "url": "scripting/scripting-api/scriptlabel/index.html#getvalue",
     "weight": 60,
@@ -12558,18 +13218,6 @@
     "color": "#D557D9"
   },
   {
-    "key": "ScriptModulationMatrix.addModulatorTarget()",
-    "url": "scripting/scripting-api/scriptmodulationmatrix/index.html#addmodulatortarget",
-    "weight": 60,
-    "color": "#D557D9"
-  },
-  {
-    "key": "ScriptModulationMatrix.addParameterTarget()",
-    "url": "scripting/scripting-api/scriptmodulationmatrix/index.html#addparametertarget",
-    "weight": 60,
-    "color": "#D557D9"
-  },
-  {
     "key": "ScriptModulationMatrix.canConnect()",
     "url": "scripting/scripting-api/scriptmodulationmatrix/index.html#canconnect",
     "weight": 60,
@@ -12594,26 +13242,8 @@
     "color": "#D557D9"
   },
   {
-    "key": "ScriptModulationMatrix.getComponentId()",
-    "url": "scripting/scripting-api/scriptmodulationmatrix/index.html#getcomponentid",
-    "weight": 60,
-    "color": "#D557D9"
-  },
-  {
-    "key": "ScriptModulationMatrix.getConnectionData()",
-    "url": "scripting/scripting-api/scriptmodulationmatrix/index.html#getconnectiondata",
-    "weight": 60,
-    "color": "#D557D9"
-  },
-  {
-    "key": "ScriptModulationMatrix.getIntensitySliderData()",
-    "url": "scripting/scripting-api/scriptmodulationmatrix/index.html#getintensitysliderdata",
-    "weight": 60,
-    "color": "#D557D9"
-  },
-  {
-    "key": "ScriptModulationMatrix.getModValue()",
-    "url": "scripting/scripting-api/scriptmodulationmatrix/index.html#getmodvalue",
+    "key": "ScriptModulationMatrix.getComponent()",
+    "url": "scripting/scripting-api/scriptmodulationmatrix/index.html#getcomponent",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -12636,12 +13266,6 @@
     "color": "#D557D9"
   },
   {
-    "key": "ScriptModulationMatrix.getValueModeData()",
-    "url": "scripting/scripting-api/scriptmodulationmatrix/index.html#getvaluemodedata",
-    "weight": 60,
-    "color": "#D557D9"
-  },
-  {
     "key": "ScriptModulationMatrix.setConnectionCallback()",
     "url": "scripting/scripting-api/scriptmodulationmatrix/index.html#setconnectioncallback",
     "weight": 60,
@@ -12654,38 +13278,8 @@
     "color": "#D557D9"
   },
   {
-    "key": "ScriptModulationMatrix.setNumModulationSlots()",
-    "url": "scripting/scripting-api/scriptmodulationmatrix/index.html#setnummodulationslots",
-    "weight": 60,
-    "color": "#D557D9"
-  },
-  {
-    "key": "ScriptModulationMatrix.setUseUndoManager()",
-    "url": "scripting/scripting-api/scriptmodulationmatrix/index.html#setuseundomanager",
-    "weight": 60,
-    "color": "#D557D9"
-  },
-  {
     "key": "ScriptModulationMatrix.toBase64()",
     "url": "scripting/scripting-api/scriptmodulationmatrix/index.html#tobase64",
-    "weight": 60,
-    "color": "#D557D9"
-  },
-  {
-    "key": "ScriptModulationMatrix.updateConnectionData()",
-    "url": "scripting/scripting-api/scriptmodulationmatrix/index.html#updateconnectiondata",
-    "weight": 60,
-    "color": "#D557D9"
-  },
-  {
-    "key": "ScriptModulationMatrix.updateIntensity()",
-    "url": "scripting/scripting-api/scriptmodulationmatrix/index.html#updateintensity",
-    "weight": 60,
-    "color": "#D557D9"
-  },
-  {
-    "key": "ScriptModulationMatrix.updateValueMode()",
-    "url": "scripting/scripting-api/scriptmodulationmatrix/index.html#updatevaluemode",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -12800,6 +13394,12 @@
   {
     "key": "ScriptMultipageDialog.getLocalBounds()",
     "url": "scripting/scripting-api/scriptmultipagedialog/index.html#getlocalbounds",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptMultipageDialog.getPopupMenuTarget()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#getpopupmenutarget",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -13088,6 +13688,12 @@
   {
     "key": "ScriptPanel.getParentPanel()",
     "url": "scripting/scripting-api/scriptpanel/index.html#getparentpanel",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptPanel.getPopupMenuTarget()",
+    "url": "scripting/scripting-api/scriptpanel/index.html#getpopupmenutarget",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -13434,6 +14040,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "ScriptSlider.connectToModulatedParameter()",
+    "url": "scripting/scripting-api/scriptslider/index.html#connecttomodulatedparameter",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "ScriptSlider.contains()",
     "url": "scripting/scripting-api/scriptslider/index.html#contains",
     "weight": 60,
@@ -13514,6 +14126,12 @@
   {
     "key": "ScriptSlider.getMinValue()",
     "url": "scripting/scripting-api/scriptslider/index.html#getminvalue",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptSlider.getPopupMenuTarget()",
+    "url": "scripting/scripting-api/scriptslider/index.html#getpopupmenutarget",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -13794,6 +14412,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "ScriptSliderPack.getPopupMenuTarget()",
+    "url": "scripting/scripting-api/scriptsliderpack/index.html#getpopupmenutarget",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "ScriptSliderPack.getSliderValueAt()",
     "url": "scripting/scripting-api/scriptsliderpack/index.html#getslidervalueat",
     "weight": 60,
@@ -14064,6 +14688,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "ScriptTable.getPopupMenuTarget()",
+    "url": "scripting/scripting-api/scripttable/index.html#getpopupmenutarget",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "ScriptTable.getTableValue()",
     "url": "scripting/scripting-api/scripttable/index.html#gettablevalue",
     "weight": 60,
@@ -14156,6 +14786,12 @@
   {
     "key": "ScriptTable.setLocalLookAndFeel()",
     "url": "scripting/scripting-api/scripttable/index.html#setlocallookandfeel",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptTable.setMouseHandlingProperties()",
+    "url": "scripting/scripting-api/scripttable/index.html#setmousehandlingproperties",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -14348,6 +14984,12 @@
   {
     "key": "ScriptWebView.getLocalBounds()",
     "url": "scripting/scripting-api/scriptwebview/index.html#getlocalbounds",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptWebView.getPopupMenuTarget()",
+    "url": "scripting/scripting-api/scriptwebview/index.html#getpopupmenutarget",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -15324,6 +15966,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "Synth.getWavetableController()",
+    "url": "scripting/scripting-api/synth/index.html#getwavetablecontroller",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "Synth.isArtificialEventActive()",
     "url": "scripting/scripting-api/synth/index.html#isartificialeventactive",
     "weight": 60,
@@ -16100,6 +16748,60 @@
   {
     "key": "UserPresetHandler.updateSaveInPresetComponents()",
     "url": "scripting/scripting-api/userpresethandler/index.html#updatesaveinpresetcomponents",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "WavetableController.getResynthesisOptions()",
+    "url": "scripting/scripting-api/wavetablecontroller/index.html#getresynthesisoptions",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "WavetableController.loadData()",
+    "url": "scripting/scripting-api/wavetablecontroller/index.html#loaddata",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "WavetableController.resynthesise()",
+    "url": "scripting/scripting-api/wavetablecontroller/index.html#resynthesise",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "WavetableController.saveAsAudioFile()",
+    "url": "scripting/scripting-api/wavetablecontroller/index.html#saveasaudiofile",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "WavetableController.saveAsHwt()",
+    "url": "scripting/scripting-api/wavetablecontroller/index.html#saveashwt",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "WavetableController.setEnableResynthesisCache()",
+    "url": "scripting/scripting-api/wavetablecontroller/index.html#setenableresynthesiscache",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "WavetableController.setErrorHandler()",
+    "url": "scripting/scripting-api/wavetablecontroller/index.html#seterrorhandler",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "WavetableController.setPostFXProcessors()",
+    "url": "scripting/scripting-api/wavetablecontroller/index.html#setpostfxprocessors",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "WavetableController.setResynthesisOptions()",
+    "url": "scripting/scripting-api/wavetablecontroller/index.html#setresynthesisoptions",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -16968,8 +17670,8 @@
     "color": "#F15761"
   },
   {
-    "key": "core: extra_mod",
-    "url": "scriptnode/list/core/extra_mod.html",
+    "key": "core: global_mod",
+    "url": "scriptnode/list/core/global_mod.html",
     "weight": 60,
     "color": "#F15761"
   },
@@ -16980,8 +17682,14 @@
     "color": "#F15761"
   },
   {
-    "key": "core: global_mod",
-    "url": "scriptnode/list/core/global_mod.html",
+    "key": "core: extra_mod",
+    "url": "scriptnode/list/core/extra_mod.html",
+    "weight": 60,
+    "color": "#F15761"
+  },
+  {
+    "key": "core: matrix_mod",
+    "url": "scriptnode/list/core/matrix_mod.html",
     "weight": 60,
     "color": "#F15761"
   },
@@ -17204,6 +17912,12 @@
   {
     "key": "envelope: ahdsr",
     "url": "scriptnode/list/envelope/ahdsr.html",
+    "weight": 60,
+    "color": "#F15761"
+  },
+  {
+    "key": "envelope: flex_ahdsr",
+    "url": "scriptnode/list/envelope/flex_ahdsr.html",
     "weight": 60,
     "color": "#F15761"
   },
@@ -17940,6 +18654,12 @@
     "color": "#BD6F50"
   },
   {
+    "key": "Glossary: Matrix Modulation System",
+    "url": "glossary/matrix-modulation.html",
+    "weight": 80,
+    "color": "#BD6F50"
+  },
+  {
     "key": "Glossary: Multipage Dialog Reference",
     "url": "glossary/multipageproperties.html",
     "weight": 80,
@@ -18200,6 +18920,24 @@
   {
     "key": "Macro Control System: Using macro controls",
     "url": "glossary/macrocontrols.html#using-macro-controls",
+    "weight": 70,
+    "color": "#BD6F50"
+  },
+  {
+    "key": "Matrix Modulation System: Introduction",
+    "url": "glossary/matrix-modulation.html#introduction",
+    "weight": 70,
+    "color": "#BD6F50"
+  },
+  {
+    "key": "Matrix Modulation System: How to use this system",
+    "url": "glossary/matrix-modulation.html#how-to-use-this-system",
+    "weight": 70,
+    "color": "#BD6F50"
+  },
+  {
+    "key": "Matrix Modulation System: Scriptnode / Modulation bridge",
+    "url": "glossary/matrix-modulation.html#scriptnode-/-modulation-bridge",
     "weight": 70,
     "color": "#BD6F50"
   },

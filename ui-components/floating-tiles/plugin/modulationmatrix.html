@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="https://docs.hise.dev/"/>
+	<title>HISE | UI Components | ModulationMatrix</title>
+	<meta name="description" content="A UI component to control matrix modulation connections">
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<script src="/template/scripts/toc.json"></script>
+	<script language="javascript" src="/template/scripts/generate.js"></script>
+</head>
+<body>
+	<header>
+		<a id="nav-button">
+		</a>
+		<logo>
+			
+			<a href="/">
+				<div class="heading">HISE Docs</div>
+			</a>
+		</logo>
+		<div class="search">
+			<input id="autoComplete" tabindex="1">
+		</div>
+	</header>
+
+	<div class="container">
+		<nav class="toc">
+			<script>
+				for (rootIndex in rootDb.Children) {
+					document.write(createTocElement(rootDb.Children[rootIndex]));
+				}
+			</script>
+
+		</nav>
+
+		<div class="content"><h1 id="modulationmatrix"><b>ModulationMatrix</b>
+</h1>
+<p><br></p>
+<p>Connects to module type: MatrixProcessors</p>
+<p class="comment">A UI component to control matrix modulation connections</p>
+<img src="images/floating-tiles/modulationmatrix.png"></img>
+<table><thead><td><b>ID </b>
+</td>
+<td><b>Default Value </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><code>ProcessorId</code>
+ </td>
+<td><code>""</code>
+ </td>
+<td>The ID of the module that is used for showing the modulation connections. </td>
+</tr>
+<tr><td><code>SliderType</code>
+ </td>
+<td>Knob </td>
+<td>if <code>MatrixType</code>
+ is <code>"SliderMatrix"</code>
+, then this defines the slider style <code>["Knob", "Horizontal", "Vertical"]</code>
+. </td>
+</tr>
+<tr><td><code>MatrixType</code>
+ </td>
+<td>TableMatrix </td>
+<td>there are two different modulation matrix types and this property chooses which mode to use. If you set this to <code>"SliderMatrix"</code>
+, then it will display a matrix with sliders for all available connections, in all other cases it will show a matrix with one row per active connection as default. </td>
+</tr>
+<tr><td><code>TargetFilter</code>
+ </td>
+<td><code>""</code>
+ </td>
+<td>overrides the processor ID as filter of which modulation connections should be displayed. </td>
+</tr>
+</table>
+<p><br>This floating tile offers a ready-made UI component that represents the connections of the HISE 5.0 modulation system powered by the <a href="hise-modules/modulators/envelopes/list/matrixmodulator.html">Matrix Modulator</a>
+. It is a feature-packed reproduction of the common element found in most synthesiser plugins with a complex modulation architecture that comes in two different modes.</p>
+<p class="comment">Check out the <a href="tutorials/scripting/index.html#modulation-matrix-tutorial">Modulation Matrix Tutorial</a>
+ snippet for an example use case & customization.</p>
+<h2 id="how-to-use-it"><b>How to use it</b>
+</h2>
+<p>In order to use this floating tile in your project, you need to:</p>
+<ol><li>Add a <a href="hise-modules/sound-generators/list/globalmodulatorcontainer.html">Global Modulator Container</a>
+ and all the modulation sources you want to provide.</li>
+<li>For every modulation target you want to offer, add a <a href="hise-modules/modulators/envelopes/list/matrixmodulator.html">Matrix Modulator</a>
+ to the respective modulation chain. If you want to add a modulation target that is not represented by a modulation chain (eg. the wet level of the simple reverb as in the example above), use the <code>matrixTargetId</code>
+ property of the respective UI knob that is controlling the parameter.</li>
+<li>Add this floating tile on your UI and set the <code>ProcessorId</code>
+ to the ID of the global modulator container. This will show all connections of the system</li>
+<li>If you only want to show the connections for a given modulation target, you can set the <code>ProcessorId</code>
+ property to the ID of the Matrix modulator or use the <code>TargetFilter</code>
+ property to override that value.</li>
+<li>If you want to programmatically add / remove connections, attach script callbacks to connection events and store the connections in the user preset system, create a <a href="scripting/scripting-api/scriptmodulationmatrix/index.html">ScriptModulationMatrix</a>
+ which will offer this functionality out of the box.</li>
+<li>If you want to offer the user the ability of adding connections by dragging something on UI knobs, take a look at the <a href="ui-components/floating-tiles/plugin/modulationmatrixcontroller.html">Modulationmatrixcontroller</a>
+ floating tile which offers this functionality.</li>
+</ol>
+<h2 id="matrix-types"><b>Matrix Types</b>
+</h2>
+<p>This floating tile comes in two variants which can be set using the <code>MatrixType</code>
+ property:</p>
+<ol><li>The default appearance which shows one row with UI components for each active connection.</li>
+<li>The Slider matrix which shows a matrix of sliders for <b>every</b>
+ connection. Changing the value of one of the sliders from zero to non zero will add the connection (and double clicking to reset the slider will remove the connection).</li>
+</ol>
+<p>The modulation matrix tutorial shows how both types work - they also work next to each other as the connections are managed on an underlying data model that is synchronized between each matrix.</p>
+<h2 id="ui-elements"><b>UI Elements</b>
+</h2>
+<p>Now let's take a look at all the available UI elements and what they do. We'll start from top to bottom.</p>
+<p class="comment">Note that you can always hide any of these elements by looking up its CSS selector and adding the <code>display:none;</code>
+ property.</p>
+<h3 id="search-bar"><b>Search Bar</b>
+</h3>
+<p>If you have a complex modulation setup, keeping the overview of the connections might be a bit tricky. The searchbar allows you to filter which connections are displayed by matching either the source or the target ID against the search term. It is case insensitive and as soon as you enter a search term it will only show the matching connections.</p>
+<h3 id="table-header"><b>Table Header</b>
+</h3>
+<p>Before the rows are displayed, there is a table header that shows what each column is representing. It automatically adjusts the column width to whatever is required by the UI component.</p>
+<p class="comment">Note that every element of the table header shares the id CSS selector with its UI components, so in order to hide any column you can use the <code>#columnid</code>
+ CSS selector.</p>
+<h3 id="connection-row"><b>Connection Row</b>
+</h3>
+<p>Now comes the most important part of this matrix: for every connection you get a row with UI components to edit all properties - as well as a mod plotter that displays a histogram of the modulation signal coming in.</p>
+<p class="comment">For a functional description of every property, take a look <a href="hise-modules/modulators/envelopes/list/matrixmodulator.html#connection-properties">here</a>
+, as this chapter will only contain a brief overview as well as some UI related information.</p>
+<ol><li>Source: a combobox that controls the modulation source of this connection. </li>
+<li>Target: a combobox that controls the modulation target of this connection. Setting either of these to <b>No connection</b>
+ will remove the row.</li>
+<li>Mode: a combobox controlling the modulation mode (Scaled, Unipolar or Bipolar) for the given connection.</li>
+<li>Inverted: whether the modulation signal should be inverted or not</li>
+<li>Intensity: A knob (or slider) that will control how much the modulation signal is applied to the target. The type of this is defined by the <code>SliderType</code>
+ property of this floating tile.</li>
+<li>Aux: a combobox that controls the aux connection to any modulation source</li>
+<li>Aux Intensity: if Aux is connected, this will be enabled and control how much the aux modulation signal is affecting the modulation intensity.</li>
+</ol>
+<h2 id="customization"><b>Customization</b>
+</h2>
+<p>While the functionality of this UI component is almost the same on every plugin, there is obviously a high demand for a full customizability of the appearance. Due to the complexity of this element and the required flexibility over styling / layout, I've picked a <b>CSS-only</b>
+ approach to the customization as this is much more flexible when it comes to positioning.</p>
+<p class="comment">Of course the various UI elements in the connections rows like Knobs & comboboxes can also be styled with a scripting LAF.</p>
+<p>The most straightforward way of skinning the matrix is to use the CSS debugger that you can find below the Component properties in the interface designer. Activate the debug hover mode and when you hover over your UI (in the non-edit mode) it will highlight the hovered UI element and display every selector that is associated with the currently hovered UI element. </p>
+<img src="images/custom/cssdebugger.png"></img>
+<p>So instead of listing all CSS selectors, I'll just add a few remarks & notable exceptions:</p>
+<ol><li>If the matrix has no connections, the background will be rendered with the <code>:empty</code>
+ pseudo class selector, so you can add a placeholder text with <code>.matrix:empty{ content: 'My Placeholder';}</code>
+.</li>
+<li>The rows are using the CSS flex box system so you can change the width / spacing of each element using <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">this cheatsheet</a>
+. It comes with some properties set to a reasonable but non-intuitive default (eg. the plotter has <code>flex-grow</code>
+ set to fill the remaining space) so you might have to fight against the finnickiness of this system but there will come a point where it looks like you want it to so you can move on and never touch that code again.<br></li>
+<li>There are a few inbuilt path variables (eg. the search icon or the delete icon for the clear button). The CSS debugger will show them as CSS variable properties if you click on the hovered element in question.</li>
+<li>If the connection's intensity is zero, the intensity sliders will have the <code>:empty</code>
+ pseudo class set in addition to all other pseudo classes.</li>
+<li>The plotter cannot be styled with CSS - the reason is that the path needs to be converted to a base64 and for the signal path this comes with a significant performance overhead so in this case it's recommended to stick to the common scripting LAF tools for skinning a display buffer element.</li>
+</ol>
+<div class="content-footer"><span class="content-footer-left"><a href="https://github.com/christophhart/hise_documentation/edit/master/ui-components/floating-tiles/plugin/modulationmatrix.md">Edit on GitHub</a>
+</span>
+
+<span class="content-footer-right">Next: <a href="ui-components/floating-tiles/plugin/modulationmatrixcontroller.html">ModulationMatrixController</a>
+</span>
+
+<p class="content-footer-metadata">Christoph Hart<br>18.07.2025<br></p>
+</div>
+
+			<!-- content end -->
+		</div>
+
+		<!-- container end -->
+	</div>
+
+	 <footer>  
+		 <div> <a href="https://github.com/christophhart/hise_documentation/tree/master"> HISE Docs </a> <img src="/template/css/images/pd.svg" width="12px" id="year" style="padding:2px 2px" /></div> 
+	 </footer>  
+
+	<script>   document.getElementById("year").innerHTML = new Date().getFullYear();  </script>
+	<script src="/template/scripts/prism.js"></script>
+	<script src="/template/scripts/autoComplete.js"></script>
+	<script src="/template/scripts/search.js"></script>
+	
+</body>
+</html>

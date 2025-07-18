@@ -50,7 +50,7 @@
 <h2 id="general-syntax-of-css"><b>General Syntax of CSS</b>
 </h2>
 <p>A CSS file is a collection of style rules. Each style rule consists of a selector and a declaration block. The selector points to the HISE UI Element you want to style. The declaration block contains one or more declarations separated by semicolons.</p>
-<pre><code class="language-javascript line-numbers">selector 
+<pre><code class="language-css line-numbers">selector 
 {
 	/* this is a comment. */
     property: value;
@@ -58,14 +58,14 @@
 <p class="comment">Quick tip: If you're editing the CSS file in the HISE code editor, use <code>Ctrl+#</code>
  for toggling the comment of a line.</p>
 <p>For example:</p>
-<pre><code class="language-javascript line-numbers">button 
+<pre><code class="language-css line-numbers">button 
 {
     color: blue;
     font-size: 14px;
     font-size: 18px; /* this will override the previous line. */
 }</code></pre>
 <p>Note that you can define multiple selectors with the same type and they will be coallascated into a single style sheet in the order of appearance.</p>
-<pre><code class="language-javascript line-numbers">button 
+<pre><code class="language-css line-numbers">button 
 {
     color: green;
     /** this overrides the green property */
@@ -83,7 +83,7 @@ button
 <h3 id="universal-selector"><b>Universal Selector</b>
 </h3>
 <p>Selects all elements. This selector is being overriden by any other selector and can be used as "fallback" selector or defining global properties like the font style etc. </p>
-<pre><code class="language-javascript line-numbers">* {
+<pre><code class="language-css line-numbers">* {
     margin: 0;
     padding: 0;
 }</code></pre>
@@ -121,7 +121,7 @@ button
 <li><code>.popup-item</code>
 : The item of a context menu</li>
 </ul>
-<pre><code class="language-javascript line-numbers">.scriptslider 
+<pre><code class="language-css line-numbers">.scriptslider 
 {
     font-weight: bold;
 }</code></pre>
@@ -155,7 +155,7 @@ b2.setControlCallback(onButton2Control);</code></pre>
 </h3>
 <p>ID selectors have the <code>#id</code>
  syntax and select an element with a specific ID. In HISE this is simply the Component ID. You can use this selector to single out a specific component that you want to style different than the other components. The properties in the ID selector will have the highest priority and always override the other selectors.</p>
-<pre><code class="language-javascript line-numbers">#Knob1 
+<pre><code class="language-css line-numbers">#Knob1 
 {
     text-align: center;
 }</code></pre>
@@ -163,7 +163,7 @@ b2.setControlCallback(onButton2Control);</code></pre>
 </h3>
 <p>You can inspect what classes are applied to a component with the right click <b>Show CSS debugger tool</b>
 . For the code example above, it will show something like this:</p>
-<pre><code class="language-javascript line-numbers">/** Component stylesheet: */
+<pre><code class="language-css line-numbers">/** Component stylesheet: */
 button #Button1 .scriptbutton .greenbg {
   background-color[]: 0xFF008000
 }
@@ -207,7 +207,7 @@ button {
 : used when the element is not enabled (from <code>Knob1.set("enabled", false)</code>
 ).</li>
 </ul>
-<pre><code class="language-javascript line-numbers">button
+<pre><code class="language-css line-numbers">button
 {
  background-color: red;
 }
@@ -230,7 +230,7 @@ button:checked {
  pseudo state.</p>
 <p class="comment">Note that you always have to set the <code>content</code>
  property of the element so that it shows up.</p>
-<pre><code class="language-javascript line-numbers">select
+<pre><code class="language-css line-numbers">select
 {
 	background: blue;
 }
@@ -243,7 +243,7 @@ select::before
 <h2 id="color-specifications"><b>Color Specifications</b>
 </h2>
 <p>CSS allows you to specify colors in several ways:</p>
-<pre><code class="language-javascript line-numbers">button
+<pre><code class="language-css line-numbers">button
 {
 	color: red; /* Predefined color names. */
 	color: #ff0000; /* Represent colors with a hex code */
@@ -260,7 +260,7 @@ select::before
 <h3 id="linear-gradients"><b>Linear Gradients</b>
 </h3>
 <p>Linear gradients transition colors along a straight line.</p>
-<pre><code class="language-javascript line-numbers">button 
+<pre><code class="language-css line-numbers">button 
 {
     background: linear-gradient(to right, red, yellow);
 }</code></pre>
@@ -273,7 +273,7 @@ select::before
  is the space between the content of an element and its border. It creates space inside the element.</p>
 <h4 id="examples"><b>Examples</b>
 </h4>
-<pre><code class="language-javascript line-numbers">button {
+<pre><code class="language-css line-numbers">button {
     padding-top: 20px;
     padding-right: 15px;
     padding-bottom: 20px;
@@ -294,7 +294,7 @@ button {
 <p><code>margin</code>
  is the space outside the border of an element. It creates space between elements.</p>
 <p class="comment">Note that in HISE there is a big difference to how the CSS Standard uses the margin - usually it extends the layout and makes room between the elements. However since the positioning in HISE is fixed, this will not work, therefore the margin is defined as the distance between the component bounds and the background you draw (including border-radius, custom paths, etc)</p>
-<pre><code class="language-javascript line-numbers">button {
+<pre><code class="language-css line-numbers">button {
     margin-top: 10px;
     margin-right: 20px;
     margin-bottom: 10px;
@@ -313,7 +313,7 @@ button {
 <h3 id="border"><b>Border</b>
 </h3>
 <p>The border is the area between the padding and the margin. It surrounds the padding and content of an element.</p>
-<pre><code class="language-javascript line-numbers">/* Specifying border width, style, and color */
+<pre><code class="language-css line-numbers">/* Specifying border width, style, and color */
 button {
     border-width: 2px;
     border-style: solid;
@@ -342,7 +342,7 @@ button {
 <h2 id="transitions"><b>Transitions</b>
 </h2>
 <p>CSS transitions allow you to change property values smoothly over a given duration and is the easiest way to achieve some animations in HISE.</p>
-<pre><code class="language-javascript line-numbers">button {
+<pre><code class="language-css line-numbers">button {
 	background-color: red;
     transition: background-color 0.5s ease;
 }
@@ -373,7 +373,7 @@ button:hover {
  property, but for custom fonts that you have loaded with <code>Engine.loadFontAs()</code>
 , you will need to import the font using the at rule defined by the <code>@font-face</code>
  selector:</p>
-<pre><code class="language-javascript line-numbers">@font-face {
+<pre><code class="language-css line-numbers">@font-face {
     /* imports the font as FunkyFont */
     font-family: FunkyFont;
     /* This is optional if you haven't already called Engine.loadFontAs
@@ -407,7 +407,7 @@ button {
 </ul>
 <p>To use a variable, use the <code>var()</code>
  function.</p>
-<pre><code class="language-javascript line-numbers">button {
+<pre><code class="language-css line-numbers">button {
     background-color: var(--bgColour);
     color: var(--textColour);
 }</code></pre>
@@ -424,14 +424,14 @@ button {
 </h3>
 <p>The <code>text-shadow</code>
  property adds shadow to text.</p>
-<pre><code class="language-javascript line-numbers">button {
+<pre><code class="language-css line-numbers">button {
     text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
 }</code></pre>
 <h3 id="box-shadows"><b>Box Shadows</b>
 </h3>
 <p>The <code>box-shadow</code>
  property adds shadow to elements.</p>
-<pre><code class="language-javascript line-numbers">button {
+<pre><code class="language-css line-numbers">button {
     box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
 }</code></pre>
 <h2 id="keyword-reference"><b>Keyword reference</b>

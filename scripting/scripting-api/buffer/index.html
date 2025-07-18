@@ -146,6 +146,18 @@ Console.print(b.getMagnitude(2, 2)); // 3</code></pre>
 <h1 id="class-methods
 "><b>Class methods<br></b>
 </h1>
+<h2 id="applymedianfilter"><b>applyMedianFilter</b>
+</h2>
+<p class="comment">Applies a median filter with zero padding to the buffer and returns the filtered median values. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/buffer/applymedianfilter">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">Buffer.applyMedianFilter(int windowSize)</code></pre>
+<p><br><br></p>
+<h2 id="decompose"><b>decompose</b>
+</h2>
+<p class="comment">Analyses the sample and splits it into sinusoidal, transient & residual noise components. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/buffer/decompose">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">Buffer.decompose(double sampleRate, var configData)</code></pre>
+<p><br><br></p>
 <h2 id="detectpitch"><b>detectPitch</b>
 </h2>
 <p class="comment">Detects the pitch of the given buffer. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/buffer/detectpitch.md">Edit on GitHub</a>

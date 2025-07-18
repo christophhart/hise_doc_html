@@ -41,7 +41,6 @@
 
 		<div class="content"><h1 id="filterdisplay"><b>FilterDisplay</b>
 </h1>
-<p><br></p>
 <p>Connects to module type: <a href="hise-modules/effects/list/polyphonicfilter.html">Filter</a>
 </p>
 <p class="comment">Displays the Filter Curve on the interface</p>
@@ -67,18 +66,12 @@
  </td>
 <td><code>""</code>
  </td>
-<td>Put the ProcessorID of the Filter here </td>
+<td>The ID of the module that connects to the filter graph </td>
 </tr>
 <tr><td><code>Index</code>
  </td>
 <td>-1 </td>
-<td>In this case you can ignore the index </td>
-</tr>
-<tr><td><code>FollowWorkspace</code>
- </td>
-<td><code>false</code>
- </td>
-<td>no description </td>
+<td>this is the display index slot that is assigned to the filter coefficents you want to display </td>
 </tr>
 <tr><td><code>ShowLines</code>
  </td>
@@ -91,8 +84,26 @@
 <td>24.0 </td>
 <td>no description </td>
 </tr>
+<tr><td><code>PathMargin</code>
+ </td>
+<td>3.0 </td>
+<td>no description </td>
+</tr>
+<tr><td><code>PathType</code>
+ </td>
+<td>StrokeFullWidth </td>
+<td>no description </td>
+</tr>
 </table>
-<p><br></p>
+<p>This UI elements displays the frequency / magnitude response of any module that provides FilterCoefficients.</p>
+<p class="comment">If you want a interactive element that allows you to drag the filter parameters, take a look at the<br> <a href="ui-components/floating-tiles/plugin/draggablefilterpanel.html">DraggableFilterPanel</a>
+ floating tile.</p>
+<h3 id="css-styling"><b>CSS styling</b>
+</h3>
+<p><br>You can style the filter display with the <code>filtergraph</code>
+ class selector. In order to draw the frequency response, you can use the path supplied with the variable <code>var(--filterPath)</code>
+ as <code>background-image</code>
+ property.</p>
 <div class="content-footer"><span class="content-footer-left"><a href="https://github.com/christophhart/hise_documentation/edit/master/ui-components/floating-tiles/plugin/filterdisplay.md">Edit on GitHub</a>
 </span>
 

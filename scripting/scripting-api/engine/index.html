@@ -252,10 +252,12 @@ const var bc = Engine.createBroadcaster({
 <p><br><br></p>
 <h2 id="createmodulationmatrix"><b>createModulationMatrix</b>
 </h2>
-<p class="comment">Creates a modulation matrix object that handles dynamic modulation using the given Global Modulator Container as source. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/engine/createmodulationmatrix.md">Edit on GitHub</a>
-</p>
+<p class="comment">Creates a modulation matrix object that handles dynamic modulation using the given Global Modulator Container as source.</p>
 <pre><code class="language-javascript line-numbers">Engine.createModulationMatrix(String containerId)</code></pre>
-<p><br><br></p>
+<p><br>This function can be used to create a <a href="scripting/scripting-api/scriptmodulationmatrix/index.html">ScriptModulationMatrix</a>
+ object that encapsulates the management of dynamic modulation systems found in complex synths.</p>
+<p>It expects a single argument with the ID of the Global Modulator Container that should be used as modulation source. It will then create and return an object that you can use to define your modulation system and it automatically creates a global cable for each global modulator that will (asynchronously) receive its modulation value.</p>
+<p><br></p>
 <h2 id="createneuralnetwork"><b>createNeuralNetwork</b>
 </h2>
 <p class="comment">Creates a neural network with the given ID. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/engine/createneuralnetwork.md">Edit on GitHub</a>
@@ -693,6 +695,12 @@ modeSelector.setControlCallback(modeCallback);</code></pre>
 <p class="comment">Returns the tempo name for the given index <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/engine/gettemponame.md">Edit on GitHub</a>
 </p>
 <pre><code class="language-javascript line-numbers">Engine.getTempoName(int tempoIndex)</code></pre>
+<p><br><br></p>
+<h2 id="gettextforvalue"><b>getTextForValue</b>
+</h2>
+<p class="comment">Uses one of the inbuilt text converters to prettify a numeric value. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/engine/gettextforvalue.md">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">Engine.getTextForValue(double value, String converterMode)</code></pre>
 <p><br><br></p>
 <h2 id="getuptime"><b>getUptime</b>
 </h2>

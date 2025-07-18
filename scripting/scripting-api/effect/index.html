@@ -109,6 +109,12 @@
 </p>
 <pre><code class="language-javascript line-numbers">Effect.getCurrentLevel(bool leftChannel)</code></pre>
 <p><br><br></p>
+<h2 id="getdraggablefilterdata"><b>getDraggableFilterData</b>
+</h2>
+<p class="comment">Returns the draggable filter data object (if applicable).</p>
+<pre><code class="language-javascript line-numbers">Effect.getDraggableFilterData()</code></pre>
+<p><br>This returns a JSON with the current draggable filter data information. You can modify this JSON object and send it back to <a href="scripting/scripting-api/effect/index.html">setDraggableFilterData()</a>
+ to update the properties for the given effect.<br></p>
 <h2 id="getid"><b>getId</b>
 </h2>
 <p class="comment">Returns the ID of the effect. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/effect/getid.md">Edit on GitHub</a>
@@ -163,6 +169,119 @@
 </p>
 <pre><code class="language-javascript line-numbers">Effect.setBypassed(bool shouldBeBypassed)</code></pre>
 <p><br><br></p>
+<h2 id="setdraggablefilterdata"><b>setDraggableFilterData</b>
+</h2>
+<p class="comment">Sets the draggable filter data object (if applicable).</p>
+<pre><code class="language-javascript line-numbers">Effect.setDraggableFilterData(var filterData)</code></pre>
+<p><br>Until HISE 5.0, the only way to use the <a href="ui-components/floating-tiles/plugin/draggablefilterpanel.html">DraggableFilterPanel</a>
+ was by connecting it to a <a href="hise-modules/effects/list/curveeq.html">Parametric EQ</a>
+ module. </p>
+<p>This has changed now and the panel now supports connections to these types:</p>
+<ul><li><a href="hise-modules/effects/list/curveeq.html">Parametric EQ</a>
+</li>
+<li><a href="hise-modules/effects/list/polyphonicfilter.html">Filter</a>
+</li>
+<li><a href="hise-modules/effects/list/hardcoded-master-fx.html">Hardcoded Master FX</a>
+</li>
+<li><a href="hise-modules/effects/list/hardcodedpolyphonicfx.html">HardcodedPolyphonicFX</a>
+</li>
+<li><a href="hise-modules/effects/list/scriptfx.html">Script FX</a>
+</li>
+<li><a href="hise-modules/effects/list/polyscriptfx.html">Polyphonic Script FX</a>
+</li>
+</ul>
+<p>However, these new connection types cannot deduce the parameter indexes for each filter band parameter automatically, so if you start dragging around the filter drag handles, HISE has no way of knowing whether to change the parameter index 5 or 17 or 2 accordingly - with the parametric EQ it can simply be calculated with the formula:</p>
+<pre><code class="language-javascript line-numbers">parameterIndex = 0 + bandIndex * BandOffset + bandParameterIndex
+P			   = O + I         * N          + B</code></pre>
+<p>(we'll refer to the variable names <code>P, O, I, N and B</code>
+ down below). So for all the other module types, you will need to provide additional information about the properties of the filter module that will be picked up by the draggable filter panel to adjust it's behaviour.</p>
+<p class="comment">Note that these properties are not persistently stored in the module tree, so you have to call this function in the onInit callback for each module.</p>
+<p>These properties are available:</p>
+<table><thead><td><b>Property </b>
+</td>
+<td><b>Type </b>
+</td>
+<td><b>Default </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>NumFilterBands </td>
+<td>int </td>
+<td>1 </td>
+<td>The fixed amount of filter bands of this module. Note that this is a hard limitation and the only module that allows a dynamic amount of filter bands remains the Parametric EQ. </td>
+</tr>
+<tr><td>FilterDataSlot </td>
+<td>int </td>
+<td>0 </td>
+<td>the slot of the filter coefficients. This defaults to zero and you can assign all your filter nodes to the same coefficient object, but if you have a more complex node where the filter is only a part of the signal chain, you can define which filter coefficient slot it should use for the draggable display. </td>
+</tr>
+<tr><td>FirstBandOffset </td>
+<td>int </td>
+<td>0 </td>
+<td>the parameterOffset for the first band (<code>O</code>
+ in the formula above). This can be used if your filter module has parameters that come before the range of filter parameters and will be used as constant offset in the formula that calculates the filter band parameter (see below). </td>
+</tr>
+<tr><td>TypeList </td>
+<td>Array </td>
+<td>see below </td>
+<td>This is a list of strings that define the type names as they will show up in the context menu when you right click on a filter drag handle. </td>
+</tr>
+<tr><td>ParameterOrder </td>
+<td>Array </td>
+<td>see below </td>
+<td>This is a list of (predefined) string that will define in what order the filter parameters are defined. The length of this list will be <code>N</code>
+ in the formula above and it will calculate the bandParameterIndex <code>B</code>
+ from the index of the parameter name within that list. </td>
+</tr>
+<tr><td>FFTDisplayBufferIndex </td>
+<td>int </td>
+<td>-1 </td>
+<td>This is the index of the display buffer that will be used to show the spectrum analyser. If you set this to anything other than -1, it must point to a external display buffer that is connected to a <a href="scriptnode/list/analyse/fft.html">analyse.fft</a>
+ node. </td>
+</tr>
+<tr><td>DragActions </td>
+<td>Array </td>
+<td>see below </td>
+<td>This is a list of predefined strings that define the mouse behaviour and what parameter you want to control. Eg, by default the y-axis is assigned to the gain parameter, but in a synth filter context you might want to reroute this to the resonance of the filter and this is the place to do so. </td>
+</tr>
+</table>
+<p>If you define this JSON object and pass it to this method, HISE has all information it needs to calculate the band parameter index from the attribute index of the module parameter:</p>
+<pre><code class="language-javascript line-numbers">O = FirstBandOffset
+N = TypeList.length
+B = TypeList.indexOf(BAND_PARAMETER)
+
+parameterIndex = FirstBandOffset + bandIndex * TypeList.length + TypeList.indexOf(BAND_PARAMETER)</code></pre>
+<p>Here is a list of all default values as JSON (that is also returned by <a href="scripting/scripting-api/effect/index.html#getdraggablefilterdata">Effect.getDraggableFilterData()</a>
+)</p>
+<pre><code class="language-javascript line-numbers">{
+  NumFilterBands: 1, 
+  FilterDataSlot: 0, 
+  FirstBandOffset: 0, 
+  TypeList: [
+    "Low Pass", 
+    "High Pass",
+    "Low Shelf",
+    "High Shelf",
+    "Peak"
+  ],
+  ParameterOrder: [
+    "Gain",
+    "Freq",
+    "Q",
+    "Enabled",
+    "Type"
+  ],
+  FFTDisplayBufferIndex: -1, 
+  DragActions: {
+    DragX: "Freq",
+    DragY: "Gain", 
+    ShiftDrag: "Q", 
+    DoubleClick: "Enabled",
+    RightClick: ""
+  }
+};</code></pre>
+<p><br></p>
 <div class="content-footer"><span class="content-footer-left"><a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/effect/Readme.md">Edit on GitHub</a>
 </span>
 

@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<base href="https://docs.hise.dev/"/>
 	<title>HISE | Scripting | ScriptModulationMatrix</title>
-	<meta name="description" content="The ScriptModulationMatrix object.">
+	<meta name="description" content="A class that encapsulates the management of complex modulation systems">
 	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
 	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
 	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
@@ -41,141 +41,160 @@
 
 		<div class="content"><h1 id="scriptmodulationmatrix"><b>ScriptModulationMatrix</b>
 </h1>
-<p><br><br></p>
+<p>This class provides programmatical access to the new matrix modulation system in HISE 5.0. It offers convenient methods to query modulation properties, be notified over connection events as well as programmatically perform connection changes.</p>
+<p>In addition to these features, this class will also act as data management tool and automatically register itself to the user preset system so that all modulation connections are stored / restored in the user preset.</p>
+<p>This class is just a simple wrapper around the functions available at different locations within HISE, so for a detailed overview of the entire matrix modulation system, please take a look at these sections:</p>
+<ul><li>The <a href="hise-modules/modulators/envelopes/list/matrixmodulator.html">Matrix Modulator</a>
+ module for a explanation of the (new) architecture that is powering the modulation matrix system.</li>
+<li>The <a href="ui-components/floating-tiles/plugin/modulationmatrix.html">ModulationMatrix</a>
+ and <a href="ui-components/floating-tiles/plugin/modulationmatrixcontroller.html">ModulationMatrixController</a>
+ floating tiles for a explanation of the available UI building blocks.</li>
+</ul>
+<p>In order to use this class make sure to setup your system to work with matrix modulators:</p>
+<ol><li>Create a global modulator container and add modulation sources in there</li>
+<li>Add Matrix modulators to every target that you want to modulate</li>
+<li>Add / customize the floating tiles to display / edit the modulation connections</li>
+<li>Create this object in the <code>onInit</code>
+ callback with <a href="scripting/scripting-api/engine/index.html#createmodulationmatrix">Engine.createModulationMatrix()</a>
+ and then register callbacks / perform operations on this object.</li>
+</ol>
+<p class="comment">Note that this object was completely redesigned in HISE 5.0 with absolutely no attention paid to remaining backwards compatible to the API of older versions, so if you were using this object before, you will need to completely rewrite your modulation logic.<br></p>
 <h1 id="class-methods
 "><b>Class methods<br></b>
 </h1>
-<h2 id="addmodulatortarget"><b>addModulatorTarget</b>
-</h2>
-<p class="comment">Adds a global modulator at the given mod chain for sample accurate modulation. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptmodulationmatrix/addmodulatortarget.md">Edit on GitHub</a>
-</p>
-<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.addModulatorTarget(var targetData)</code></pre>
-<p><br><br></p>
-<h2 id="addparametertarget"><b>addParameterTarget</b>
-</h2>
-<p class="comment">Adds a (low resolution) parameter modulation slot. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptmodulationmatrix/addparametertarget.md">Edit on GitHub</a>
-</p>
-<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.addParameterTarget(var targetData)</code></pre>
-<p><br><br></p>
 <h2 id="canconnect"><b>canConnect</b>
 </h2>
-<p class="comment">Checks whether the modulation connection can be made. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptmodulationmatrix/canconnect.md">Edit on GitHub</a>
-</p>
+<p class="comment">Checks whether the modulation connection can be made.</p>
 <pre><code class="language-javascript line-numbers">ScriptModulationMatrix.canConnect(String source, String target)</code></pre>
-<p><br><br></p>
+<p><br>This method checks whether the source and target IDs are valid (= they exist) and are not connected.</p>
+<ul><li>it returns true if both IDs are valid and there is no connection</li>
+<li>it returns false if one of the IDs are invalid or there is already a connection</li>
+</ul>
+<p>Note that you don't need to call this method if you intend to call <a href="scripting/scripting-api/scriptmodulationmatrix/index.html#connect">connect()</a>
+, as this method performs this check internally too.<br></p>
 <h2 id="clearallconnections"><b>clearAllConnections</b>
 </h2>
-<p class="comment">Removes all connections. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptmodulationmatrix/clearallconnections.md">Edit on GitHub</a>
-</p>
-<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.clearAllConnections()</code></pre>
-<p><br><br></p>
+<p class="comment">Removes all connections for the given target (or all connections if no target is specified).</p>
+<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.clearAllConnections(String targetId)</code></pre>
+<p><br>This clears all connections for the given target ID or all connections if you pass in an empty string. </p>
+<p class="comment">This action is fully undoable with <code>Engine.undo()</code>
+. Note that this will kill all voices and perform this operation on the scripting thread to avoid audio glitches.<br></p>
 <h2 id="connect"><b>connect</b>
 </h2>
-<p class="comment">Adds (or removes) a connection from the source to the target. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptmodulationmatrix/connect.md">Edit on GitHub</a>
-</p>
+<p class="comment">Adds (or removes) a connection from the source to the target.</p>
 <pre><code class="language-javascript line-numbers">ScriptModulationMatrix.connect(String sourceId, String targetId, bool addConnection)</code></pre>
-<p><br><br></p>
+<p><br>This method allows you to programmatically connect modulators (just like using the UI functions). Calling this method connects / disconnects the given source modulator to the specified target and returns true if a connection was established. If there was already a connection or one of the IDs was invalid, it will return false.</p>
+<p class="comment">This action is fully undoable with <code>Engine.undo()</code>
+. Note that this will kill all voices and perform this operation on the scripting thread to avoid audio glitches.</p>
+<p><br></p>
 <h2 id="frombase64"><b>fromBase64</b>
 </h2>
-<p class="comment">Loads the state from a previously exported Base64 string. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptmodulationmatrix/frombase64.md">Edit on GitHub</a>
-</p>
+<p class="comment">Loads the state from a previously exported Base64 string.</p>
 <pre><code class="language-javascript line-numbers">ScriptModulationMatrix.fromBase64(String b64)</code></pre>
-<p><br><br></p>
-<h2 id="getcomponentid"><b>getComponentId</b>
+<p><br>This restores all modulation connections from a given Base64 string. Note that by default a ScriptModulationMatrix will register itself to the user preset system and automatically restore / save its connections into user presets, but this function alongside with <a href="scripting/scripting-api/scriptmodulationmatrix/index.html#tobase64">ScriptModulationMatrix.toBase64()</a>
+ allows you to manually save / restore the modulation setup of your synth.</p>
+<p class="comment">This action is fully undoable with <code>Engine.undo()</code>
+. Note that this will kill all voices and perform this operation on the scripting thread to avoid audio glitches.<br></p>
+<h2 id="getcomponent"><b>getComponent</b>
 </h2>
-<p class="comment">Get the component ID for the given modulation target ID. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptmodulationmatrix/getcomponentid.md">Edit on GitHub</a>
-</p>
-<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.getComponentId(String targetId)</code></pre>
-<p><br><br></p>
-<h2 id="getconnectiondata"><b>getConnectionData</b>
-</h2>
-<p class="comment">Get the connection data for the given component. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptmodulationmatrix/getconnectiondata.md">Edit on GitHub</a>
-</p>
-<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.getConnectionData(String componentId)</code></pre>
-<p><br><br></p>
-<h2 id="getintensitysliderdata"><b>getIntensitySliderData</b>
-</h2>
-<p class="comment">Creates a range object that can be passed into setTableRowData to update the slider range. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptmodulationmatrix/getintensitysliderdata.md">Edit on GitHub</a>
-</p>
-<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.getIntensitySliderData(String sourceId, String targetId)</code></pre>
-<p><br><br></p>
-<h2 id="getmodvalue"><b>getModValue</b>
-</h2>
-<p class="comment">Get the current modulation value for the connected component. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptmodulationmatrix/getmodvalue.md">Edit on GitHub</a>
-</p>
-<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.getModValue(var component)</code></pre>
-<p><br><br></p>
+<p class="comment">Get the component reference for the given modulation target ID.</p>
+<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.getComponent(String targetId)</code></pre>
+<p><br>This function returns a reference to the first UI component that is assigned to a given modulation target. </p>
+<p class="comment">Note that this does not return the ID but the component reference itself so you don't need to call <code>Content.getComponent()</code>
+ afterwards.</p>
+<p><br></p>
 <h2 id="getsourcelist"><b>getSourceList</b>
 </h2>
-<p class="comment">Return a list of all sources. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptmodulationmatrix/getsourcelist.md">Edit on GitHub</a>
-</p>
+<p class="comment">Return a list of all sources.</p>
 <pre><code class="language-javascript line-numbers">ScriptModulationMatrix.getSourceList()</code></pre>
-<p><br><br></p>
+<p><br>This function returns a list of all available modulation sources, which are basically just the IDs of all modulators in the global modulator container.<br></p>
 <h2 id="gettargetid"><b>getTargetId</b>
 </h2>
-<p class="comment">Get the target ID for the given component. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptmodulationmatrix/gettargetid.md">Edit on GitHub</a>
-</p>
-<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.getTargetId(String componentId)</code></pre>
-<p><br><br></p>
+<p class="comment">Get the target ID (either ID of the matrix modulator or matrixTargetId property) for the given component.</p>
+<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.getTargetId(var componentOrId)</code></pre>
+<p><br>This function returns the associated target ID for the given component. The argument can be either a ID (then it will search all UI component for the first match) or a direct reference to the UI element.</p>
+<p>This is basically the reverse function to <a href="scripting/scripting-api/scriptmodulationmatrix/index.html#getcomponent">ScriptModulationMatrix.getComponent()</a>
+.<br></p>
 <h2 id="gettargetlist"><b>getTargetList</b>
 </h2>
-<p class="comment">Return a list of all targets. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptmodulationmatrix/gettargetlist.md">Edit on GitHub</a>
-</p>
+<p class="comment">Return a list of all targets.</p>
 <pre><code class="language-javascript line-numbers">ScriptModulationMatrix.getTargetList()</code></pre>
-<p><br><br></p>
-<h2 id="getvaluemodedata"><b>getValueModeData</b>
-</h2>
-<p class="comment">Creates a JSON object that can be passed into the setTableRowData to update the combobox. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptmodulationmatrix/getvaluemodedata.md">Edit on GitHub</a>
-</p>
-<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.getValueModeData(String sourceId, String targetId)</code></pre>
-<p><br><br></p>
+<p><br>This function returns a list of all available modulation targets. This will be the ID of all matrix modulators as well as all ScriptSlider components that have the <code>matrixTargetId</code>
+ property set (in that case it will not return the UI component's ID but the actual value string of the <code>matrixTargetId</code>
+ property).</p>
+<p><br></p>
 <h2 id="setconnectioncallback"><b>setConnectionCallback</b>
 </h2>
-<p class="comment">Set a callback that will be executed whenever the matrix state changes. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptmodulationmatrix/setconnectioncallback.md">Edit on GitHub</a>
-</p>
+<p class="comment">Set a callback that will be executed whenever the matrix state changes.</p>
 <pre><code class="language-javascript line-numbers">ScriptModulationMatrix.setConnectionCallback(var updateFunction)</code></pre>
-<p><br><br></p>
+<p><br>This function will be executed whenever a connection was added or removed. It expects a function / callable object with three parameters:</p>
+<ol><li>the source ID</li>
+<li>the target ID</li>
+<li>whether it was added or removed.</li>
+</ol>
+<p>Note that this function will be executed for every connection, so if you clear all connection at once it will be executed multiple times. So if you use a broadcaster for the notification callback make sure you enable the queue with <a href="scripting/scripting-api/broadcaster/index.html#setenablequeue">Broadcaster.setEnableQueue()</a>
+, otherwise it will only fire with the last event.</p>
+<pre><code class="language-javascript line-numbers">const var m = Engine.createModulationMatrix("Global Modulator Container1");
+
+// setup a connection callback
+m.setConnectionCallback(function(source, target, wasAdded)
+{
+	// dump the event data
+	Console.print(trace({
+		source: source,
+		target: target,
+		wasAdded: wasAdded
+	}));
+});
+
+// connect the LFO to the OSC1 Gain target
+// It assumes that you have set this up!
+m.connect("LFO", "OSC1 Gain", true);
+
+// Clear the connection again
+m.clearAllConnections("");;</code></pre>
+<p>Output:</p>
+<pre><code class="language-javascript line-numbers">Interface: {
+  "source": "LFO",
+  "target": "OSC1 Gain",
+  "wasAdded": true
+}
+Interface: {
+  "source": "LFO",
+  "target": "OSC1 Gain",
+  "wasAdded": false
+}</code></pre>
+<p><br></p>
 <h2 id="seteditcallback"><b>setEditCallback</b>
 </h2>
-<p class="comment">Set a callback that will be executed when the user clicks on "Edit connections". <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptmodulationmatrix/seteditcallback.md">Edit on GitHub</a>
-</p>
-<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.setEditCallback(var editFunction)</code></pre>
-<p><br><br></p>
-<h2 id="setnummodulationslots"><b>setNumModulationSlots</b>
-</h2>
-<p class="comment">Sets the amount of modulation targets created for each [voice start, time-variant, envelope] modulation type. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptmodulationmatrix/setnummodulationslots.md">Edit on GitHub</a>
-</p>
-<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.setNumModulationSlots(var numSlotArray)</code></pre>
-<p><br><br></p>
-<h2 id="setuseundomanager"><b>setUseUndoManager</b>
-</h2>
-<p class="comment">Enables the undo manager for all modulation edit actions. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptmodulationmatrix/setuseundomanager.md">Edit on GitHub</a>
-</p>
-<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.setUseUndoManager(bool shouldUseUndoManager)</code></pre>
-<p><br><br></p>
+<p class="comment">Set a callback that will be executed when the user clicks on "Edit connections".</p>
+<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.setEditCallback(var menuItems, var editFunction)</code></pre>
+<p><br>This function can be used to supply additional functions in the context menu of a modulatable UI component.</p>
+<p>This method expects two arguments:</p>
+<ol><li>A single string or an array of strings for each menu item</li>
+<li>a function or callable object with two parameters that will be executed when you click on said context menu item with the zero based index of the clicked item and the associated target ID of the UI component.</li>
+</ol>
+<p class="comment">If you want to find out the component that was clicked just pass that into the <a href="scripting/scripting-api/scriptmodulationmatrix/index.html#getcomponent">ScriptModulationMatrix.getComponent()</a>
+ method.</p>
+<pre><code class="language-javascript line-numbers">const var m = Engine.createModulationMatrix("Global Modulator Container1");
+
+m.setEditCallback(["funky", "noice"], function(idx, targetId)
+{
+	Console.print(idx); // 0 if you click funky, 1 if you click on noice...
+
+	Console.print("TARGET: " + targetId);
+	Console.print("COMPONENT: " + this.getComponent(targetId).get("id"));
+});</code></pre>
+<p>The use cases for this method are pretty diverse:</p>
+<ul><li>you can use it to "edit the connections" by showing a matrix component with all connections of the target</li>
+<li>you can use it to add a "clear all connections" function for the given component (or other data management functions like custom save / restore)</li>
+<li>you can use it to reset the intensity values<br></li>
+</ul>
 <h2 id="tobase64"><b>toBase64</b>
 </h2>
 <p class="comment">Creates a Base64 string of all connections. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptmodulationmatrix/tobase64.md">Edit on GitHub</a>
 </p>
 <pre><code class="language-javascript line-numbers">ScriptModulationMatrix.toBase64()</code></pre>
-<p><br><br></p>
-<h2 id="updateconnectiondata"><b>updateConnectionData</b>
-</h2>
-<p class="comment">Update the connections in the list. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptmodulationmatrix/updateconnectiondata.md">Edit on GitHub</a>
-</p>
-<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.updateConnectionData(var connectionList)</code></pre>
-<p><br><br></p>
-<h2 id="updateintensity"><b>updateIntensity</b>
-</h2>
-<p class="comment">Update the intensity for the given connection. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptmodulationmatrix/updateintensity.md">Edit on GitHub</a>
-</p>
-<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.updateIntensity(String source, String target, float intensityValue)</code></pre>
-<p><br><br></p>
-<h2 id="updatevaluemode"><b>updateValueMode</b>
-</h2>
-<p class="comment">Update the value mode from the combobox item ID. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptmodulationmatrix/updatevaluemode.md">Edit on GitHub</a>
-</p>
-<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.updateValueMode(String source, String target, String valueMode)</code></pre>
 <p><br><br></p>
 <div class="content-footer"><span class="content-footer-left"><a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptmodulationmatrix/Readme.md">Edit on GitHub</a>
 </span>
@@ -183,7 +202,7 @@
 <span class="content-footer-right">Next: <a href="scripting/scripting-api/scriptmultipagedialog/index.html">ScriptMultipageDialog</a>
 </span>
 
-<p class="content-footer-metadata">Christoph Hart<br>30.07.2024<br></p>
+<p class="content-footer-metadata">Christoph Hart<br>30.05.2025<br></p>
 </div>
 
 			<!-- content end -->

@@ -42,22 +42,35 @@
 		<div class="content"><h1 id="wavetable-synthesiser"><b>Wavetable Synthesiser</b>
 </h1>
 <p>Type ID: <code>WavetableSynth</code>
-<br>Interface classes: <a href="scripting/scripting-api/routingmatrix/index.html">RoutingMatrix</a>
+<br>Interface classes: <a href="scripting/scripting-api/audiosampleprocessor/index.html">AudioSampleProcessor</a>
+ <a href="scripting/scripting-api/routingmatrix/index.html">RoutingMatrix</a>
 <br></p>
 <p class="comment"><b>A two-dimensional wavetable synthesiser.</b>
 <br></p>
 <img src="images/module_screenshot_wavetablesynth.png"></img>
 <p><br></p>
 <p>This is a generic purpose wavetable synthesiser with a two dimensional wavetable space: note number and table index. The note number that started the voice picks an array of wavetables that can then be modulated using the table index modulation chains (both with intensity and bipolar modulation). The amount of notes and number of different wavetables per note is arbitrary and can range from 1 to whatever value doesn't blow up your hard drive.</p>
-<p>The wavetable synthesiser uses a custom data format called <code>.hwt</code>
- (HISE Wavetable), which contains the audio data along with some metadata on how the table layout is defined. The files will either be fetched from the AudioFiles folder, or can be distributed as a big monolith chunk that will reside in the Samples folder using the <a href="working-with-hise/menu-reference/export/index.html#export-wavetables-to-monolith">Export -> Export Wavetables as monolith</a>
+<p>The wavetable playback engine uses linear or cubic interpolation but in order to remove aliasing at higher notes, the conversion process will create mip maps for each octave (or smaller sub-steps) and then filter all harmonics beyond the nyquist frequency before resampling the wavetable to the new frequency).</p>
+<h2 id="data-formats"><b>Data formats</b>
+</h2>
+<p>The wavetable synthesiser can be fed with two different data types:</p>
+<ol><li>An audio file</li>
+<li>The custom wavetable format <code>.hwt</code>
+ (.HiseWaveTable)</li>
+</ol>
+<h3 id="hwt-format"><b>HWT Format</b>
+</h3>
+<p>The custom data format contains the audio data along with some metadata on how the table layout is defined. The files will either be fetched from the AudioFiles folder, or can be distributed as a big monolith chunk that will reside in the Samples folder using the <a href="working-with-hise/menu-reference/export/index.html#export-wavetables-to-monolith">Export -> Export Wavetables as monolith</a>
  option from the menu, so you can pick whatever distribution mode you prefer.</p>
 <p class="comment">Be aware that the wavetables will not be embedded into the binary, so if you don't want to use the monolith format, you have to untick the <b>Embed AudioFiles</b>
  option in your project settings. Also the Monolith file takes precedence over the source .hwt files, so as soon as you've created a .hwc file in the sample folder, the list of available wavetables will not reflect the audio file folder content.</p>
 <p>You can use the <a href="working-with-hise/menu-reference/tools/index.html#convert-samplemap-to-wavetable-bank">Tools -> Convert Samplemap to Wavetable Bank</a>
-<b> popup to create HWT files. The workflow mandates that you first create samplemaps with the note mapping that you then load into the converter. If the source audio files are already properly formatted wavetable files (with a cycle length that is a power of two), you can just use the "Resample" mode to convert it to a valid .hwt. However you can also use the Resynthesis option, which will analyse and resynthesise the harmonic spectrum of almost every input signal using the Loris library (you will need to install the Loris library obviously).</b>
-</p>
-<p>The wavetable playback engine uses linear or cubic interpolation but in order to remove aliasing at higher notes, the conversion process will create mip maps for each octave (or smaller sub-steps) and then filter all harmonics beyond the nyquist frequency before resampling the wavetable to the new frequency).</p>
+ popup to create HWT files. The workflow mandates that you first create samplemaps with the note mapping that you then load into the converter. If the source audio files are already properly formatted wavetable files (with a cycle length that is a power of two), you can just use the "Resample" mode to convert it to a valid .hwt. However you can also use the Resynthesis option, which will analyse and resynthesise the harmonic spectrum of almost every input signal using the Loris library (you will need to install the Loris library obviously).</p>
+<h3 id="using-audio-files"><b>Using audio files</b>
+</h3>
+<p>With the recent rehaul of the Wavetable Synthesiser at HISE 4.1.0 the wavetable synthesiser is now also a <code>AudioSampleProcessor</code>
+, which means that it has an audio file slot that you can use to load any arbitrary wavefile into the wavetable synthesiser. This heavily streamlines the process of creating wavetables as well as provides the user the ability of loading own wavetables. You can even create wavetables programatically and <a href="scripting/scripting-api/wavetablecontroller/index.html#loaddata">send</a>
+ it directly to the synthesiser to be played back. </p>
 <h2 id="parameters-"><b>Parameters </b>
 </h2>
 <table><thead><td><b>#</b>
@@ -86,7 +99,7 @@
 <tr><td>7 </td>
 <td><code>RefreshMipmap</code>
  </td>
-<td>- </td>
+<td>If this is enabled, the wavetable voice will pick another mipmap when the pitch modulation goes outside the original frequency range. This allows extreme pitch shifting without creating aliasing artifacts. </td>
 </tr>
 </table>
 <h2 id="chains-"><b>Chains </b>

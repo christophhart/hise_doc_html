@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<base href="https://docs.hise.dev/"/>
 	<title>HISE | ScriptNode | pitch_mod</title>
-	<meta name="description" content="Sends the polyphonic pitch modulation of the Scriptnode Synthesiser to the DSP network">
+	<meta name="description" content="receives the polyphonic pitch modulation signal of the parent sound generator">
 	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
 	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
 	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
@@ -44,15 +44,44 @@
 <p class="comment"><code>core.pitch_mod</code>
 </p>
 <img src="images/sn_screen_core__pitch_mod.png"></img>
-<p>Sends the polyphonic pitch modulation of the Scriptnode Synthesiser to the DSP network<br>This node will receive the modulation signal of the pitch modulation chain of the Scriptnode Synthesiser. You can use it to allow HISE modulators control the pitch (just like with any other hardcoded HISE sound generator).</p>
-<p>It will create a normalised signal and the best way to apply this is to modulate any <b>FreqRatio</b>
- parameter like shown in the screenshot above.</p>
-<p class="comment">You can right click on the parameter range editor and select a predefined range preset called <b>Freq Ratio Detune Coarse</b>
- which will map the 0...1 exactly to the -12 + 12 semitone range of the other HISE sound generators.</p>
+<p>receives the polyphonic pitch modulation signal of the parent sound generator</p>
+<h2 id="parameters"><b>Parameters</b>
+</h2>
+<table><thead><td><b>ID </b>
+</td>
+<td><b>Range </b>
+</td>
+<td><b>Default </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>ProcessSignal </td>
+<td>0.00 - 1.00 </td>
+<td>0.00 </td>
+<td>no description. </td>
+</tr>
+</table>
+<p><br>This node will receive the modulation signal of the pitch modulation chain of the parent sound generator:</p>
+<ul><li>if the network is loaded in a ScriptnodeSynthesiser, then it will pickup the modulation signal from the pitch modulation chain of itself</li>
+<li>if the network is loaded in a FX module (either Script FX or Polyphonic Script FX), then it will pickup the pitch modulation signal from the sound generator that the FX is residing in.</li>
+<li>if the network is loaded in a modulator module (either Script Envelope or Script TimeVariant Modulator), then it won't work and likely crash.</li>
+</ul>
+<p>Note that while the plotter signal in the UI of this node suggests a normalised range from 0 to 1, the value that is sent out of the modulation output is actually a <b>raw pitch ratio value</b>
+ that can be directly fed into the <b>FreqRatio</b>
+ parameter of any oscillator without conversion. If you modulate a LFO with the full bipolar intensity to get a +- 12 semitone modulation range, the values from this node will oscillate between <code>0.5</code>
+ (=-1 octave) and <code>2.0</code>
+ as you can see here:</p>
+<img src="images/custom/scriptnode/pitchmod.png"></img>
+<p>)</p>
+<p>The rationale is that if you start modulating this on a per sample basis for FM stuff or other things that require a good pitch resolution, the overhead of converting the range to a pitch ratio comes with a non-signifant overhead (also the pitch ratio was already calculated, so we would have to calculate that again).</p>
+<p>By using the pitch ratio domain and the <a href="scriptnode/manual/glossary.html#scaled-vs.-unscaled-parameters">unscaled modulation mode</a>
+, this node achieves the best performance possible for that setup.</p>
+<p class="comment">As with all other modulation nodes: starting with HISE 5.0 you can use them in all configurations, even in compiled networks.</p>
 <div class="content-footer"><span class="content-footer-left"><a href="https://github.com/christophhart/hise_documentation/edit/master/scriptnode/list/core/pitch_mod.md">Edit on GitHub</a>
 </span>
 
-<span class="content-footer-right">Next: <a href="scriptnode/list/core/global_mod.html">global_mod</a>
+<span class="content-footer-right">Next: <a href="scriptnode/list/core/extra_mod.html">extra_mod</a>
 </span>
 
 <p class="content-footer-metadata">Christoph Hart<br>31.05.2024<br></p>
