@@ -22191,6 +22191,12 @@ var rootDb = {
               "Children": []
             },
             {
+              "URL": "tutorials/all/index.html#knob-with-modulation-scaling",
+              "Title": "Knob with Modulation Scaling",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
               "URL": "tutorials/all/index.html#horizontal-linear-slider-laf",
               "Title": "Horizontal Linear Slider LAF",
               "Colour": "#C5AC43",
@@ -22210,6 +22216,18 @@ var rootDb = {
           "Colour": "#C5AC43",
           "Children": [
             {
+              "URL": "tutorials/modules/index.html#flex-ahdsr-envelope-example",
+              "Title": "Flex AHDSR Envelope Example",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/modules/index.html#wavetable-postprocessing",
+              "Title": "Wavetable Postprocessing",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
               "URL": "tutorials/modules/index.html#control-current-eq-band",
               "Title": "Control current EQ band",
               "Colour": "#C5AC43",
@@ -22224,6 +22242,12 @@ var rootDb = {
             {
               "URL": "tutorials/modules/index.html#minimal-sampler-example",
               "Title": "Minimal Sampler Example",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/modules/index.html#serum-style-waterfall",
+              "Title": "Serum style Waterfall",
               "Colour": "#C5AC43",
               "Children": []
             },
@@ -22314,14 +22338,14 @@ var rootDb = {
           "Colour": "#C5AC43",
           "Children": [
             {
-              "URL": "tutorials/scripting/index.html#console",
-              "Title": "Console",
+              "URL": "tutorials/scripting/index.html#modulation-matrix-tutorial",
+              "Title": "Modulation Matrix Tutorial",
               "Colour": "#C5AC43",
               "Children": []
             },
             {
-              "URL": "tutorials/scripting/index.html#modulation-matrix-tutorial",
-              "Title": "Modulation Matrix Tutorial",
+              "URL": "tutorials/scripting/index.html#console",
+              "Title": "Console",
               "Colour": "#C5AC43",
               "Children": []
             },
@@ -22357,8 +22381,20 @@ var rootDb = {
           "Colour": "#C5AC43",
           "Children": [
             {
+              "URL": "tutorials/scriptnode/index.html#custom-draggable-eq",
+              "Title": "Custom Draggable EQ",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
               "URL": "tutorials/scriptnode/index.html#continuous-per-event-modulation",
               "Title": "Continuous Per-Event Modulation",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/scriptnode/index.html#karplus-strong",
+              "Title": "Karplus Strong",
               "Colour": "#C5AC43",
               "Children": []
             },
@@ -22478,8 +22514,14 @@ var rootDb = {
           "Colour": "#C5AC43",
           "Children": [
             {
-              "URL": "tutorials/ui/index.html#glsl-slider",
-              "Title": "GLSL Slider",
+              "URL": "tutorials/ui/index.html#modulationdisplay",
+              "Title": "ModulationDisplay",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/ui/index.html#expandable-gui",
+              "Title": "Expandable GUI",
               "Colour": "#C5AC43",
               "Children": []
             },
@@ -22490,14 +22532,20 @@ var rootDb = {
               "Children": []
             },
             {
+              "URL": "tutorials/ui/index.html#scriptpanel-drag-example",
+              "Title": "ScriptPanel Drag Example",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
               "URL": "tutorials/ui/index.html#rotate-an-image",
               "Title": "Rotate an image",
               "Colour": "#C5AC43",
               "Children": []
             },
             {
-              "URL": "tutorials/ui/index.html#expandable-gui",
-              "Title": "Expandable GUI",
+              "URL": "tutorials/ui/index.html#glsl-slider",
+              "Title": "GLSL Slider",
               "Colour": "#C5AC43",
               "Children": []
             },
@@ -22532,8 +22580,8 @@ var rootDb = {
               "Children": []
             },
             {
-              "URL": "tutorials/ui/index.html#zoomable-waveform-start+end",
-              "Title": "Zoomable waveform (Start+End)",
+              "URL": "tutorials/ui/index.html#draggable-filter-example",
+              "Title": "Draggable Filter Example",
               "Colour": "#C5AC43",
               "Children": []
             },
@@ -22558,6 +22606,12 @@ var rootDb = {
             {
               "URL": "tutorials/ui/index.html#draggable-filter",
               "Title": "Draggable Filter",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/ui/index.html#filterdisplay-pathtype-example",
+              "Title": "FilterDisplay PathType Example",
               "Colour": "#C5AC43",
               "Children": []
             },
@@ -22682,14 +22736,8 @@ var rootDb = {
               "Children": []
             },
             {
-              "URL": "tutorials/ui/index.html#two-linked-sliders",
-              "Title": "Two linked Sliders",
-              "Colour": "#C5AC43",
-              "Children": []
-            },
-            {
-              "URL": "tutorials/ui/index.html#saving-custom-lfo-shapes",
-              "Title": "Saving custom LFO Shapes",
+              "URL": "tutorials/ui/index.html#zoomable-waveform-start+end",
+              "Title": "Zoomable waveform (Start+End)",
               "Colour": "#C5AC43",
               "Children": []
             },
@@ -22700,8 +22748,26 @@ var rootDb = {
               "Children": []
             },
             {
+              "URL": "tutorials/ui/index.html#saving-custom-lfo-shapes",
+              "Title": "Saving custom LFO Shapes",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/ui/index.html#two-linked-sliders",
+              "Title": "Two linked Sliders",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
               "URL": "tutorials/ui/index.html#colour-the-keyboard",
               "Title": "Colour the Keyboard",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/ui/index.html#drag-modulated-parameter",
+              "Title": "Drag Modulated Parameter",
               "Colour": "#C5AC43",
               "Children": []
             }
