@@ -14360,8 +14360,20 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scripting/scripting-api/scriptmodulationmatrix/index.html#setcurrentlyselectedsource",
+                  "Title": "setCurrentlySelectedSource",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/scriptmodulationmatrix/index.html#seteditcallback",
                   "Title": "setEditCallback",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmodulationmatrix/index.html#setsourceselectioncallback",
+                  "Title": "setSourceSelectionCallback",
                   "Colour": "#D557D9",
                   "Children": []
                 },
@@ -22520,14 +22532,14 @@ var rootDb = {
               "Children": []
             },
             {
-              "URL": "tutorials/ui/index.html#expandable-gui",
-              "Title": "Expandable GUI",
+              "URL": "tutorials/ui/index.html#glsl-slider",
+              "Title": "GLSL Slider",
               "Colour": "#C5AC43",
               "Children": []
             },
             {
-              "URL": "tutorials/ui/index.html#glsl-morphball",
-              "Title": "GLSL MorphBall",
+              "URL": "tutorials/ui/index.html#expandable-gui",
+              "Title": "Expandable GUI",
               "Colour": "#C5AC43",
               "Children": []
             },
@@ -22544,8 +22556,8 @@ var rootDb = {
               "Children": []
             },
             {
-              "URL": "tutorials/ui/index.html#glsl-slider",
-              "Title": "GLSL Slider",
+              "URL": "tutorials/ui/index.html#glsl-morphball",
+              "Title": "GLSL MorphBall",
               "Colour": "#C5AC43",
               "Children": []
             },
@@ -22606,6 +22618,12 @@ var rootDb = {
             {
               "URL": "tutorials/ui/index.html#draggable-filter",
               "Title": "Draggable Filter",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/ui/index.html#exclusive-matrix-modulation-source",
+              "Title": "Exclusive Matrix Modulation Source",
               "Colour": "#C5AC43",
               "Children": []
             },

@@ -13272,8 +13272,20 @@
     "color": "#D557D9"
   },
   {
+    "key": "ScriptModulationMatrix.setCurrentlySelectedSource()",
+    "url": "scripting/scripting-api/scriptmodulationmatrix/index.html#setcurrentlyselectedsource",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "ScriptModulationMatrix.setEditCallback()",
     "url": "scripting/scripting-api/scriptmodulationmatrix/index.html#seteditcallback",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptModulationMatrix.setSourceSelectionCallback()",
+    "url": "scripting/scripting-api/scriptmodulationmatrix/index.html#setsourceselectioncallback",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -19356,14 +19368,14 @@
     "color": "#C5AC43"
   },
   {
-    "key": "UI Snippets: Expandable GUI",
-    "url": "tutorials/ui/index.html#expandable-gui",
+    "key": "UI Snippets: GLSL Slider",
+    "url": "tutorials/ui/index.html#glsl-slider",
     "weight": 70,
     "color": "#C5AC43"
   },
   {
-    "key": "UI Snippets: GLSL MorphBall",
-    "url": "tutorials/ui/index.html#glsl-morphball",
+    "key": "UI Snippets: Expandable GUI",
+    "url": "tutorials/ui/index.html#expandable-gui",
     "weight": 70,
     "color": "#C5AC43"
   },
@@ -19380,8 +19392,8 @@
     "color": "#C5AC43"
   },
   {
-    "key": "UI Snippets: GLSL Slider",
-    "url": "tutorials/ui/index.html#glsl-slider",
+    "key": "UI Snippets: GLSL MorphBall",
+    "url": "tutorials/ui/index.html#glsl-morphball",
     "weight": 70,
     "color": "#C5AC43"
   },
@@ -19442,6 +19454,12 @@
   {
     "key": "UI Snippets: Draggable Filter",
     "url": "tutorials/ui/index.html#draggable-filter",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "UI Snippets: Exclusive Matrix Modulation Source",
+    "url": "tutorials/ui/index.html#exclusive-matrix-modulation-source",
     "weight": 70,
     "color": "#C5AC43"
   },

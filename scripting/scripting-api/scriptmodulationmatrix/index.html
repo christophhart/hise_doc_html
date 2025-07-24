@@ -165,6 +165,13 @@ Interface: {
   "wasAdded": false
 }</code></pre>
 <p><br></p>
+<h2 id="setcurrentlyselectedsource"><b>setCurrentlySelectedSource</b>
+</h2>
+<p class="comment">Sets the currently selected source.</p>
+<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.setCurrentlySelectedSource(String sourceId)</code></pre>
+<p><br>This method can be used to programatically change the currently selected source. Usually this is done automatically by the <a href="ui-components/floating-tiles/plugin/modulationmatrixcontroller.html">ModulationMatrixController</a>
+, but if you are implementing a custom UI replacement for that UI component, you can use this functionality.</p>
+<p class="comment">Note that whenever you call this function (or drag a dragger), it will automatically close all hover popups that are currently active.<br></p>
 <h2 id="seteditcallback"><b>setEditCallback</b>
 </h2>
 <p class="comment">Set a callback that will be executed when the user clicks on "Edit connections".</p>
@@ -190,6 +197,24 @@ m.setEditCallback(["funky", "noice"], function(idx, targetId)
 <li>you can use it to add a "clear all connections" function for the given component (or other data management functions like custom save / restore)</li>
 <li>you can use it to reset the intensity values<br></li>
 </ul>
+<h2 id="setsourceselectioncallback"><b>setSourceSelectionCallback</b>
+</h2>
+<p class="comment">Attaches a callback to be notified whenever a new modulation source is selected.</p>
+<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.setSourceSelectionCallback(var sourceSelectionCallback)</code></pre>
+<p><br>This function can be used to attach a callback to be notified when the <b>currently selected</b>
+ modulation source is changed. This is caused by one of two events:</p>
+<ol><li>You click on a dragger from a <a href="ui-components/floating-tiles/plugin/modulationmatrixcontroller.html">ModulationMatrixController</a>
+.</li>
+<li>You call <a href="scripting/scripting-api/scriptmodulationmatrix/index.html#setcurrentlyselectedsource">ScriptModulationMatrix.setCurrentlySelectedSource()</a>
+ (most likely because you're reimplementing something like the modulation matrix controller with a ScriptPanel).</li>
+</ol>
+<p>This can now be used for different things, eg:</p>
+<ul><li>changing the layout of the hover popup that shows all modulation connections of a given UI knob</li>
+<li>highlighting the modulator module on your UI</li>
+</ul>
+<p>The function expects a callable object with a single parameter that will be called with the ID string of the source (= the modulator's ID).</p>
+<p class="comment">Take a look at <a href="tutorials/ui/index.html#exclusive-matrix-modulation-source">this snippet</a>
+ for an example use case (showing only the currently selected modulation connection when you hover over a knob).<br></p>
 <h2 id="tobase64"><b>toBase64</b>
 </h2>
 <p class="comment">Creates a Base64 string of all connections. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptmodulationmatrix/tobase64.md">Edit on GitHub</a>

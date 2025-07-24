@@ -101,6 +101,9 @@
  when you hover the element</li>
 <li><code>:active</code>
  when you drag the element. This state is also used to render the static image that is dragged around the screen</li>
+<li><code>:checked</code>
+ when the element is corresponding to the current modulation source connection. This is automatically engaged when you click on a dragger, but can also be changed <a href="scripting/scripting-api/scriptmodulationmatrix/index.html#setcurrentlyselectedsource">programmatically</a>
+.</li>
 </ul>
 <p>There is also a predefined default icon (the draggable +) supplied as <code>dragPath</code>
  variable, but you can of course replace that with any other icon.</p>
@@ -138,6 +141,12 @@
 	position: absolute;
 	background-color: #555;
 	margin: 15px;
+}
+
+/** this will be enabled if the dragger is corresponding to the currently selected modulation source. */
+.dragger:checked
+{
+	background: #aaa;
 }
 
 .dragger:active
