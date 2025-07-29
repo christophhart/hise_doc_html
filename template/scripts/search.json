@@ -2670,6 +2670,12 @@
     "color": "#1088CC"
   },
   {
+    "key": "Matrix Modulator: Modulation and UI Range",
+    "url": "hise-modules/modulators/envelopes/list/matrixmodulator.html#modulation-and-ui-range",
+    "weight": 40,
+    "color": "#1088CC"
+  },
+  {
     "key": "Matrix Modulator: Parameters",
     "url": "hise-modules/modulators/envelopes/list/matrixmodulator.html#parameters",
     "weight": 40,
@@ -7998,6 +8004,18 @@
     "color": "#D557D9"
   },
   {
+    "key": "FileSystem.browseForMultipleDirectories()",
+    "url": "scripting/scripting-api/filesystem/index.html#browseformultipledirectories",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "FileSystem.browseForMultipleFiles()",
+    "url": "scripting/scripting-api/filesystem/index.html#browseformultiplefiles",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "FileSystem.decryptWithRSA()",
     "url": "scripting/scripting-api/filesystem/index.html#decryptwithrsa",
     "weight": 60,
@@ -13248,6 +13266,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "ScriptModulationMatrix.getMatrixModulationProperties()",
+    "url": "scripting/scripting-api/scriptmodulationmatrix/index.html#getmatrixmodulationproperties",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "ScriptModulationMatrix.getSourceList()",
     "url": "scripting/scripting-api/scriptmodulationmatrix/index.html#getsourcelist",
     "weight": 60,
@@ -13272,6 +13296,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "ScriptModulationMatrix.setConnectionProperty()",
+    "url": "scripting/scripting-api/scriptmodulationmatrix/index.html#setconnectionproperty",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "ScriptModulationMatrix.setCurrentlySelectedSource()",
     "url": "scripting/scripting-api/scriptmodulationmatrix/index.html#setcurrentlyselectedsource",
     "weight": 60,
@@ -13280,6 +13310,12 @@
   {
     "key": "ScriptModulationMatrix.setEditCallback()",
     "url": "scripting/scripting-api/scriptmodulationmatrix/index.html#seteditcallback",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptModulationMatrix.setMatrixModulationProperties()",
+    "url": "scripting/scripting-api/scriptmodulationmatrix/index.html#setmatrixmodulationproperties",
     "weight": 60,
     "color": "#D557D9"
   },

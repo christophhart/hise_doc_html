@@ -103,6 +103,13 @@
 <p class="comment">Note that this does not return the ID but the component reference itself so you don't need to call <code>Content.getComponent()</code>
  afterwards.</p>
 <p><br></p>
+<h2 id="getmatrixmodulationproperties"><b>getMatrixModulationProperties</b>
+</h2>
+<p class="comment">Returns a JSON object with the current matrix modulation properties.</p>
+<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.getMatrixModulationProperties()</code></pre>
+<p><br>This will return a JSON object with all the properties of the matrix modulation system. Usually you call this method, modify the object and then pass it back to <a href="scripting/scripting-api/scriptmodulationmatrix/index.html#setmatrixmodulationproperties">ScriptModulationMatrix.setMatrixModulationProperties()</a>
+ to apply the changes in the onInit callback.</p>
+<p><br></p>
 <h2 id="getsourcelist"><b>getSourceList</b>
 </h2>
 <p class="comment">Return a list of all sources.</p>
@@ -165,13 +172,22 @@ Interface: {
   "wasAdded": false
 }</code></pre>
 <p><br></p>
+<h2 id="setconnectionproperty"><b>setConnectionProperty</b>
+</h2>
+<p class="comment">Sets the property of a modulation connection (with undo). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptmodulationmatrix/setconnectionproperty">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.setConnectionProperty(String sourceId, String targetId, String propertyId, var value)</code></pre>
+<p><br><br></p>
 <h2 id="setcurrentlyselectedsource"><b>setCurrentlySelectedSource</b>
 </h2>
 <p class="comment">Sets the currently selected source.</p>
 <pre><code class="language-javascript line-numbers">ScriptModulationMatrix.setCurrentlySelectedSource(String sourceId)</code></pre>
 <p><br>This method can be used to programatically change the currently selected source. Usually this is done automatically by the <a href="ui-components/floating-tiles/plugin/modulationmatrixcontroller.html">ModulationMatrixController</a>
 , but if you are implementing a custom UI replacement for that UI component, you can use this functionality.</p>
-<p class="comment">Note that whenever you call this function (or drag a dragger), it will automatically close all hover popups that are currently active.<br></p>
+<p>Note that whenever you call this function (or drag a dragger), it will automatically close all hover popups that are currently active.</p>
+<p class="comment">This functionality can be disabled with the <a href="scripting/scripting-api/scriptmodulationmatrix/index.html#setmatrixmodulationproperties">ScriptModulationMatrix.setMatrixModulationProperties()</a>
+ function.</p>
+<p><br></p>
 <h2 id="seteditcallback"><b>setEditCallback</b>
 </h2>
 <p class="comment">Set a callback that will be executed when the user clicks on "Edit connections".</p>
@@ -197,6 +213,84 @@ m.setEditCallback(["funky", "noice"], function(idx, targetId)
 <li>you can use it to add a "clear all connections" function for the given component (or other data management functions like custom save / restore)</li>
 <li>you can use it to reset the intensity values<br></li>
 </ul>
+<h2 id="setmatrixmodulationproperties"><b>setMatrixModulationProperties</b>
+</h2>
+<p class="comment">Sets the global properties for the matrix modulation system.</p>
+<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.setMatrixModulationProperties(var newProperties)</code></pre>
+<p><br>This function can be used to modify the behaviour / properties of the entire matrix modulation system. Currently you can:</p>
+<ul><li>Enable / Disable the <a href="scripting/scripting-api/scriptmodulationmatrix/index.html#setcurrentlyselectedsource">exclusive source selection</a>
+ feature.</li>
+<li>Change the default intensity values and modulation mode for each target that are used when adding a new connection</li>
+<li>Change the range properties of every matrix modulator (this can also be achieved with <a href="scripting/scripting-api/modulator/index.html#setmatrixproperties">Modulator.setMatrixProperties()</a>
+), however this function allows you to set all ranges in one go without having to fetch references to each modulator.</li>
+</ul>
+<p class="comment">The best way to go about this is to fetch the current state with <a href="scripting/scripting-api/scriptmodulationmatrix/index.html#getmatrixmodulationproperties">ScriptModulationMatrix.getModulationProperties()</a>
+, modify that object and then call this method to ensure that the object layout is valid.</p>
+<p>The JSON object will expect these properties:</p>
+<table><thead><td><b>Key </b>
+</td>
+<td><b>Type </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><code>SelectableSources</code>
+ </td>
+<td>bool </td>
+<td>Defines whether to use the exclusive source feature. If this is true, then the callbacks that will fire when switching the currently selected source are disabled. </td>
+</tr>
+<tr><td><code>DefaultInitValues</code>
+ </td>
+<td>JSON </td>
+<td>Defines the initial intensity and modulation mode values for new connections for each target. This must be a JSON object with the target ID as key for each target you want to customize. (see below for a detailed description). </td>
+</tr>
+<tr><td><code>RangeProperties</code>
+ </td>
+<td>JSON </td>
+<td>Defines the range properties for each modulation target. This must be a JSON object with the target IDs as keys for each target you want to customize. Look <a href="scripting/scripting-api/modulator/index.html#setmatrixproperties">here</a>
+ for a description of all properties of each item. </td>
+</tr>
+</table>
+<h3 id="defaultinitvalues-items"><b>DefaultInitValues items</b>
+</h3>
+<p>If the user adds a new connection from a modulation to a target source there is a sensible default for each target type:</p>
+<ul><li>if the modulation target is Gain modulation, it will pick the <code>"Scale"</code>
+ mode with 100% intensity.</li>
+<li>otherwise it will use 0% intensity and <code>"Bipolar"</code>
+ modulation as default.</li>
+</ul>
+<p>You can override this behaviour - eg. if you want to add a little bit of intensity so that there is an immediate effect when adding a modulation connection. In order to do so, just pass in a JSON object as <code>DefaultInitValues</code>
+ key that defines a JSON object for each target. The properties you need to define here are:</p>
+<table><thead><td><b>Key </b>
+</td>
+<td><b>Type </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><code>Intensity</code>
+ </td>
+<td>double </td>
+<td>The intensity value that should be initialised. The value domain of this is defined by the <code>IsNormalized</code>
+ property explained below. </td>
+</tr>
+<tr><td><code>Mode</code>
+ </td>
+<td>String </td>
+<td>One of the following strings that define the mode: <code>["Scale", "Unipolar", "Bipolar"]</code>
+. </td>
+</tr>
+<tr><td><code>IsNormalized</code>
+ </td>
+<td>bool </td>
+<td>Whether to convert the <code>Intensity</code>
+ value from the input range of the target modulator. So eg. if you have a pitch modulator set to +-12 semitones and want to set the initial modulation intensity to 3 semitones, you would set this property to <code>false</code>
+ and <code>Intensity</code>
+ to <code>3.0</code>
+. By default this is deactivated so it will pickup the "raw" intensity value that will be applied to the modulation connection. </td>
+</tr>
+</table>
+<p><br></p>
 <h2 id="setsourceselectioncallback"><b>setSourceSelectionCallback</b>
 </h2>
 <p class="comment">Attaches a callback to be notified whenever a new modulation source is selected.</p>

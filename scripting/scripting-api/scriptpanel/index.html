@@ -395,6 +395,8 @@ panel.setKeyPressCallback(function(obj)
  or <code>*.*</code>
 .<br>If you want multiple wildcards, use a semicolon or comma: <code>*.aiff,*.wav,*.mp3</code>
 .</p>
+<p class="comment">if you want to only allow folders to be dropped, you need to supply the string <code>"{FOLDER}"</code>
+ as wildcard.</p>
 <p>The third parameter is the function that is executed at all events specified by the callback level parameter. It must be a (inline) function with a single parameter that contains a JSON object with the file drop status information:</p>
 <table><thead><td><b>Property </b>
 </td>
@@ -442,7 +444,7 @@ panel.setKeyPressCallback(function(obj)
 <td><code>String</code>
  </td>
 <td>Drop </td>
-<td>The absolute path of the file being dropped. </td>
+<td>The absolute path of the file being dropped. If more than one file is dropped, then this will be an array with all matching filenames. </td>
 </tr>
 </table>
 <p class="comment">If you need a <a href="scripting/scripting-api/file/index.html">File</a>

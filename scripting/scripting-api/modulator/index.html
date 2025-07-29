@@ -207,10 +207,34 @@
 <p><br><br></p>
 <h2 id="setmatrixproperties"><b>setMatrixProperties</b>
 </h2>
-<p class="comment">Sets the data for the input & output ranges if this modulator is a MatrixModulator. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/modulator/setmatrixproperties">Edit on GitHub</a>
-</p>
+<p class="comment">Sets the data for the input & output ranges if this modulator is a MatrixModulator.</p>
 <pre><code class="language-javascript line-numbers">Modulator.setMatrixProperties(var matrixData)</code></pre>
-<p><br><br></p>
+<p><br>This function can be called in order to programmatically change the <a href="hise-modules/modulators/envelopes/list/matrixmodulator.html#modulation-and-ui-range">Modulation / UI Ranges</a>
+<br>of a matrix modulator.</p>
+<p class="comment">This obviously only works when called with a reference to a <a href="hise-modules/modulators/envelopes/list/matrixmodulator.html">Matrix Modulator</a>
+.</p>
+<p>The function expects a JSON object with this format:</p>
+<pre><code class="language-javascript line-numbers">mod.setMatrixProperties({
+	InputRange: // defines the range of the UI knob
+	{
+		min: 0.0,
+		max: 1.0,
+		middlePosition: 0.5,
+		mode: "NormalizedPercentage",
+		stepSize: 0.0,
+	},
+	OutputRange: // defines the range of the scaled modulation output signal
+	{
+		min: 0.0,
+		max: 1.0,
+		middlePosition: 0.5,
+		stepSize: 0.0,
+		UseMidPositionAsZero: false
+	}
+});</code></pre>
+<p class="comment">Note that if you want to supply a text converter, it will only lookup the <code>mode</code>
+ property in the input range. If you want to change the mid position to be used as zero position, then you need to set the <code>UseMidPositionAsZero</code>
+ property of the output range<br></p>
 <div class="content-footer"><span class="content-footer-left"><a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/modulator/Readme.md">Edit on GitHub</a>
 </span>
 

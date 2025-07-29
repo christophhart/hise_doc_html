@@ -213,6 +213,142 @@ for(c in offsetConnections)
 	else
 		parameterValue += intensity * mv;
 }</code></pre>
+<h2 id="modulation-and-ui-range"><b>Modulation and UI Range</b>
+</h2>
+<p>When you connect a matrix modulator to a UI knob of your interface, it will control the <b>Value</b>
+ parameter of this modulator:</p>
+<p class="comment">Note that this is agnostic of how you connected the modulator: if you assign it through the <code>matrixTargetId</code>
+ property, it will still internally call the <b>Value</b>
+ parameter change when the target is a matrix modulator.</p>
+<p>This value parameter will control the <b>base offset</b>
+ of the modulation signal so the target parameter will be modulated using this parameter as "starting point" (eg. if you have no modulation connections present, the target modulation value will correlate 1:1 with the value parameter).</p>
+<p>Now with this direct connection there comes a problem: in some cases you want to modify the modulation range and customize it to your project. However if you do so, the UI knob looses the ability of converting the modulation range to its displayed range and all the nice UI features with the modulation visualization go out of the window. Since all modulation in HISE boil down to a control signal between 0.0 and 1.0, the only option you would have is to set every knob to the <code>"NormalizedPercentage"</code>
+ mode from 0 to 1.</p>
+<p>That would be a very limiting feature, and this is where the Modulation / UI Range comes in: you can define two ranges, one for the UI knob and one for the modulation output and the matrix modulator will use this to figure out the connection between the UI and the modulation signal:</p>
+<ul><li>whenever you change a value on your UI, it will use the UI Range (aka <b>InputRange</b>
+) to convert it to a normalised signal, then use this value as the <b>base offset</b>
+ for the modulation signal. Then you just have make sure to set the knob range of your UI knob to the same range and you're good.</li>
+<li>after all modulation signals have been calculated, it will use the Modulation Range (aka <b>OutputRange</b>
+) to convert the signal to the modulation output. This is required so that the UI value will actually match the outcome of the modulation signal.</li>
+</ul>
+<p>You can modify these ranges in three ways:</p>
+<ol><li>Editing the ranges directly in the editor of the matrix modulator. Click on the <b>Edit value range</b>
+ knob and modify the values.</li>
+<li>Use the <a href="scripting/scripting-api/modulator/index.html#setmatrixproperties">Modulator.setMatrixProperties()</a>
+ function to modify them via script.</li>
+<li><a href="scripting/scripting-api/scriptmodulationmatrix/index.html#setmatrixmodulationproperties">ScriptModulationMatrix.setMatrixModulationProperties()</a>
+ to change them for all target modulators at once (alongside with other properties).</li>
+</ol>
+<p>Now making sure that the input and output ranges are setup correctly is a bit tricky and there are a few ready-made presets for most modulation target styles, but first let's take a look at a simple example on how to do this the "hard" way.</p>
+<h3 id="example"><b>Example</b>
+</h3>
+<p>Let's take a look at a simple example: a matrix modulator in the Gain modulation chain of a sound generator. Now by default the normalized range from 0...1 means that the gain modulation output range will be from -100dB to 0dB with a -6dB midpoint (0.5 = -6dB). This is how all gain modulation in HISE works. On the UI we want to display a knob that controls the volume of the sound generator and represents the gain modulation, but we want:</p>
+<ol><li>the gain value being displayed as Decibel.</li>
+<li>the range to be extended so that you can push the volume above unity gain. </li>
+</ol>
+<p>For the example to remain as math-free as possible, we pick +6dB as max gain and 0dB as mid point (you'll see soon why that is the simplest example). So we set these values to be the input range:</p>
+<pre><code class="language-javascript line-numbers">InputRange = {
+	min: -100.0,
+	max: 6.0,
+	middlePosition: 0.0,
+	stepSize: 0.0
+	mode: "Decibel"
+}</code></pre>
+<p class="comment">Note that this is the proper syntax for the scripting calls and the range definitions use the same key names as the Slider range properties.</p>
+<p>We can now set our UI knob to the same range and now we can control the volume correctly, as the matrix modulator knows how to convert that incoming weird decibel value to a nice lean number between 0.0 and 1.0. However that's only part 1 of the system, because if you go completely insane and crank that bad boy up to +6dB like there is no tomorrow, the modulation output will still only be 1.0 (aka 0dB) because that is the default maximum modulation output value. </p>
+<p>In order to reflect the desire for absolute mayhem and destruction we need to tell the modulator output that +6dB actually means +6dB. Now our idea of keeping the math as simple as possible pays off big time: +6dB just means a gain factor of 2.0, so what we need to do is to change the output range to:</p>
+<pre><code class="language-javascript line-numbers">OutputRange = {
+	min: 0.0,
+	max: 2.0,
+	middlePosition: 1.0,
+	stepSize: 0.0
+}</code></pre>
+<p>This range will now be used to scale the output modulation value and now the UI knob does control the actual volume of that sound generator exactly how you would expect. No you might think that this was very complicated for such a basic function, but the idea here is to allow basically every input to output range conversion possible. </p>
+<p>Now for most use cases you will never have to think about this concept, because there are a few ready made presets that you can simply select with the Presets dropdown </p>
+<p class="comment">if you call one the scripting methods, you can just supply a String that matches one of the presets described below instead of the Range JSON.</p>
+<h3 id="range-presets"><b>Range Presets</b>
+</h3>
+<p>These presets will setup the values of the input and output range automatically and should cover almost all use cases (and if not, you can easily start from a preset and modify it to match your requirements). Currently these presets are available:</p>
+<table><thead><td><b>Preset </b>
+</td>
+<td><b>Expected Target </b>
+</td>
+<td><b>Zero Position </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><code>NormalizedPercentage</code>
+ </td>
+<td>Anything </td>
+<td>0% </td>
+<td>The default raw modulation from 0...1. </td>
+</tr>
+<tr><td><code>Gain0dB</code>
+ </td>
+<td>Gain Modulation </td>
+<td>0% </td>
+<td>The default raw modulation from 0...1 but with a UI display in "Decibel" mode </td>
+</tr>
+<tr><td><code>Gain6dB</code>
+ </td>
+<td>Gain Modulation </td>
+<td>0% </td>
+<td>modulation from -100dB to +6dB (exactly what we have in our example). </td>
+</tr>
+<tr><td><code>Pitch1Octave</code>
+ </td>
+<td>Pitch Modulation </td>
+<td>50% </td>
+<td>The default pitch modulation from -12 to +12 semitones. The step size is 1 semitone. </td>
+</tr>
+<tr><td><code>Pitch2Octaves</code>
+ </td>
+<td>Pitch Modulation </td>
+<td>50% </td>
+<td>The default pitch modulation with an extended -24 to +24 semitone range. The step size is 1 semitone. </td>
+</tr>
+<tr><td><code>Pitch1Semitone</code>
+ </td>
+<td>Pitch Modulation </td>
+<td>50% </td>
+<td>This will use the full modulation range to apply a +-1 semitone modulation so you can connect this to something like a "Fine Detune" knob. </td>
+</tr>
+<tr><td><code>FilterFreq</code>
+ </td>
+<td>Filter Frequency </td>
+<td>0% </td>
+<td>The frequency modulation from 20Hz to 20kHz without any skewing (the mid-modulation position will be 10kHz). This is the default HISE filter frequency modulation behaviour and might not be the best sounding one. </td>
+</tr>
+<tr><td><code>FilterFreqLog</code>
+ </td>
+<td>Filter Frequency </td>
+<td>0% </td>
+<td>The frequency modulation range from 20Hz to 20kHz but with a 2kHz midpoint. </td>
+</tr>
+<tr><td><code>Stereo</code>
+ </td>
+<td>Stereo Modulation </td>
+<td>50% </td>
+<td>A modulation range from -100L to 100R. </td>
+</tr>
+</table>
+<h3 id="zeroposition"><b>ZeroPosition</b>
+</h3>
+<p>As you can see, there is an additional property <b>Zero Position</b>
+ (or <code>UseMidPositionAsZero</code>
+ when you set this programatically) that defines how the intensity is calculated: For all targets that are bipolar in nature (eg. stereo balance or pitch modulation) you want the modulation to scale agains the mid point: if the modulation output signal is zero, the stereo position should be dead center and not hanging on the left speaker like a modulation signal of 0.0 would sound like. This is precisely what this property sets: it applies the modulation scaling to the middle of the input / output range.</p>
+<p class="comment">Obviously this only affects modulation connections in the <code>"Scale"</code>
+ mode, as unipolar or bipolar modulation connections are simply adding their value to the modulation signal and will not be affected by this setting.</p>
+<h3 id="performance-considerations"><b>Performance considerations</b>
+</h3>
+<p>The modulation output range will be used to convert the calculated modulation signal directly in the audio thread before it's sent to the target parameter. If that conversion needs to apply a skew factor (because the <code>middlePosition</code>
+ is not exactly in the middle between <code>min</code>
+ and <code>max</code>
+, this might come with a non-significant overhead so I highly suggest to evaluate whether this justifies the performance:</p>
+<ol><li>for a filter frequency modulation slot it makes sense because we perceive frequency logarithmically so modulating around a 10kHz mid point feels off.</li>
+<li>for a gain modulation slot to scale every single voice with a non-default skew factor might not worth the performance overhead, as people are used to a linear modulation of gain (and the "logarithmic" scaling often happens already on the modulation source side, eg. "Linear" vs. "Exponential" envelope curves etc).</li>
+</ol>
 <h2 id="parameters-"><b>Parameters </b>
 </h2>
 <table><thead><td><b>#</b>

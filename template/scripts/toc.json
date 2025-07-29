@@ -3283,6 +3283,36 @@ var rootDb = {
                           "Children": []
                         },
                         {
+                          "URL": "hise-modules/modulators/envelopes/list/matrixmodulator.html#modulation-and-ui-range",
+                          "Title": "Modulation and UI Range",
+                          "Colour": "#1088CC",
+                          "Children": []
+                        },
+                        {
+                          "URL": "hise-modules/modulators/envelopes/list/matrixmodulator.html#example",
+                          "Title": "",
+                          "Colour": "#1088CC",
+                          "Children": []
+                        },
+                        {
+                          "URL": "hise-modules/modulators/envelopes/list/matrixmodulator.html#range-presets",
+                          "Title": "",
+                          "Colour": "#1088CC",
+                          "Children": []
+                        },
+                        {
+                          "URL": "hise-modules/modulators/envelopes/list/matrixmodulator.html#zeroposition",
+                          "Title": "",
+                          "Colour": "#1088CC",
+                          "Children": []
+                        },
+                        {
+                          "URL": "hise-modules/modulators/envelopes/list/matrixmodulator.html#performance-considerations",
+                          "Title": "",
+                          "Colour": "#1088CC",
+                          "Children": []
+                        },
+                        {
                           "URL": "hise-modules/modulators/envelopes/list/matrixmodulator.html#parameters",
                           "Title": "Parameters",
                           "Colour": "#1088CC",
@@ -8821,6 +8851,18 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scripting/scripting-api/filesystem/index.html#browseformultipledirectories",
+                  "Title": "browseForMultipleDirectories",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/filesystem/index.html#browseformultiplefiles",
+                  "Title": "browseForMultipleFiles",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/filesystem/index.html#decryptwithrsa",
                   "Title": "decryptWithRSA",
                   "Colour": "#D557D9",
@@ -14336,6 +14378,12 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scripting/scripting-api/scriptmodulationmatrix/index.html#getmatrixmodulationproperties",
+                  "Title": "getMatrixModulationProperties",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/scriptmodulationmatrix/index.html#getsourcelist",
                   "Title": "getSourceList",
                   "Colour": "#D557D9",
@@ -14360,6 +14408,12 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scripting/scripting-api/scriptmodulationmatrix/index.html#setconnectionproperty",
+                  "Title": "setConnectionProperty",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/scriptmodulationmatrix/index.html#setcurrentlyselectedsource",
                   "Title": "setCurrentlySelectedSource",
                   "Colour": "#D557D9",
@@ -14368,6 +14422,12 @@ var rootDb = {
                 {
                   "URL": "scripting/scripting-api/scriptmodulationmatrix/index.html#seteditcallback",
                   "Title": "setEditCallback",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmodulationmatrix/index.html#setmatrixmodulationproperties",
+                  "Title": "setMatrixModulationProperties",
                   "Colour": "#D557D9",
                   "Children": []
                 },

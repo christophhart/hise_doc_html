@@ -41,14 +41,29 @@
 
 		<div class="content"><h1 id="node"><b>Node</b>
 </h1>
-<p><br>The <code>Node</code>
- object is how you can access <a href="scriptnode/list/index.html">ScriptNode nodes</a>
- with scripting. The <a href="working-with-hise/hise-interface/scriptnode-editor/index.html">ScriptNode Editor</a>
- is normally taking care of a lot of these functions, but if you want to manipulate a <a href="scripting/scripting-api/dspnetwork/index.html">DSPNetwork</a>
- via script, this gives you access to each single nodes properties and methods.</p>
-<pre><code class="language-javascript line-numbers">const var sn = Engine.createDspNetwork("ScriptNode");
+<p><br>The "Script" part of <a href="scriptnode/index.html">Scriptnode</a>
+ means that you can use HiseScript to programmatically modify, add or remove nodes within a DSP network. This can be used to build up dynamic FX chains, programmatically create complex patches that would be annoying to patch up <a href="working-with-hise/hise-interface/scriptnode-editor/index.html">manually</a>
+ or other use cases that require you to change the layout of your DSP network.<br>The <code>Node</code>
+ object is how you can access a <a href="scriptnode/list/index.html">node</a>
+ with scripting. It is usually created / referenced from a <a href="scripting/scripting-api/dspnetwork/index.html">DSPNetwork</a>
+ scripting object and then can perform almost every operation that you do in the scriptnode workspace:</p>
+<ul><li>create / remove nodes from a container</li>
+<li>setting parameters or properties</li>
+<li>adding / connecting parameters or modulation outputs</li>
+<li>bypassing / move the nodes within the parent container</li>
+</ul>
+<pre><code class="language-javascript line-numbers">// create a reference to a scriptnode network with the given ID
+const var sn = Engine.createDspNetwork("my_network");
 
+// create a reference to the root container of that network
+// (!= the network itself)
+const var rootNode = sn.get("my_network");
+
+// Add a oscillator with the ID "osc"
 const var node = sn.create("core.oscillator", "osc");
+
+// Add the oscillator to the root container.
+node.setParent(rootNode, -1);
 
 Console.print(node.getNumParameters());</code></pre>
 <p><br></p>
@@ -57,10 +72,19 @@ Console.print(node.getNumParameters());</code></pre>
 </h1>
 <h2 id="connectto"><b>connectTo</b>
 </h2>
-<p class="comment">Connects this node to the given parameter target. sourceInfo is either the parameter name (String) or output slot (integer). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/node/connectto.md">Edit on GitHub</a>
-</p>
+<p class="comment">Connects this node to the given parameter target. sourceInfo is either the parameter name (String) or output slot (integer).</p>
 <pre><code class="language-javascript line-numbers">Node.connectTo(var parameterTarget, var sourceInfo)</code></pre>
-<p><br><br></p>
+<p><br>This function can be used to connect the modulation output of this node to a target parameter.</p>
+<p class="comment">If you want to connect a parameter of a container to another parameter you will need to use the <a href="scripting/scripting-api/parameter/index.html#addconnectionfrom">Parameter.addConnectionFrom()</a>
+ method which operates on the target parameter.</p>
+<p>You can call this method on any node that has one or more modulation outputs. This modulation output will be the <b>source</b>
+ of the connection and the method will create a connection from this output to the targetParameter:</p>
+<ul><li>the parameterTarget parameter must be a <a href="scripting/scripting-api/parameter/index.html">Parameter</a>
+ object that references the parameter that will be the target of the connection.</li>
+<li>the sourceInfo parameter is providing additional information for certain cases. If the node has multiple modulation outputs (like eg. the <a href="scriptnode/list/control/xfader.html">control.xfader</a>
+ node), you can specify at which output slot it should connect to. For single modulation slots this parameter is ignored.</li>
+</ul>
+<p><br></p>
 <h2 id="connecttobypass"><b>connectToBypass</b>
 </h2>
 <p class="comment">Connects the bypass button of this node to the given source info ("NodeId.ParameterId"). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/node/connecttobypass.md">Edit on GitHub</a>
@@ -99,7 +123,7 @@ Console.print(node.getNumParameters());</code></pre>
 <p><br><br></p>
 <h2 id="getorcreateparameter"><b>getOrCreateParameter</b>
 </h2>
-<p class="comment">Returns a reference to a parameter or creates a parameter (if non existent and possible). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/node/getorcreateparameter">Edit on GitHub</a>
+<p class="comment">Returns a reference to a parameter or creates a parameter (if non existent and possible). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/node/getorcreateparameter.md">Edit on GitHub</a>
 </p>
 <pre><code class="language-javascript line-numbers">Node.getOrCreateParameter(var indexOrId)</code></pre>
 <p><br><br></p>
@@ -123,10 +147,27 @@ Console.print(node.getNumParameters());</code></pre>
 <p><br><br></p>
 <h2 id="set"><b>set</b>
 </h2>
-<p class="comment">Sets the property of the node. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/node/set.md">Edit on GitHub</a>
-</p>
+<p class="comment">Sets the property of the node.</p>
 <pre><code class="language-javascript line-numbers">Node.set(var id, var value)</code></pre>
-<p><br><br></p>
+<p><br>There are two concepts of "states" for a node:</p>
+<ul><li><a href="scriptnode/manual/glossary.html#parameter">Parameters</a>
+ are single double precision float numbers which can be changed in realtime via modulation slots or parameter connections. They are always dynamic and if you compile the network to a C++ class, you can still modify these through the parameter connections.</li>
+<li><a href="scriptnode/manual/glossary.html#property">Properties</a>
+ are type-agnostic values that define a static property of a node. If you compile a network to a C++ class, these will be turned into compile-time constants that define the behaviour.</li>
+</ul>
+<p><b>Examples for parameters:</b>
+</p>
+<ul><li>volume parameter of a gain node</li>
+<li>frequency parameter of an oscillator</li>
+<li>filter type of a EQ</li>
+</ul>
+<p><b>Examples for properties</b>
+</p>
+<ul><li>data slot index to an external audio file slot</li>
+<li>crossfade curve of the xfader node</li>
+<li>conversion function of the converter node</li>
+</ul>
+<p><br></p>
 <h2 id="setbypassed"><b>setBypassed</b>
 </h2>
 <p class="comment">Bypasses the node. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/node/setbypassed.md">Edit on GitHub</a>
