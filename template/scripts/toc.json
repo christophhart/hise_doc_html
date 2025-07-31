@@ -14420,6 +14420,12 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scripting/scripting-api/scriptmodulationmatrix/index.html#setdragcallback",
+                  "Title": "setDragCallback",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/scriptmodulationmatrix/index.html#seteditcallback",
                   "Title": "setEditCallback",
                   "Colour": "#D557D9",

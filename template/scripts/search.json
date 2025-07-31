@@ -13308,6 +13308,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "ScriptModulationMatrix.setDragCallback()",
+    "url": "scripting/scripting-api/scriptmodulationmatrix/index.html#setdragcallback",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "ScriptModulationMatrix.setEditCallback()",
     "url": "scripting/scripting-api/scriptmodulationmatrix/index.html#seteditcallback",
     "weight": 60,

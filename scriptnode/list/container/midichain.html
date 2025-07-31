@@ -44,7 +44,25 @@
 <p class="comment"><code>container.midichain</code>
 </p>
 <img src="images/sn_screen_container__midichain.png"></img>
-<p>A container that enables MIDI processing for its children.<br>A scriptnode graph will process incoming MIDI messages depending on the context where it's being used: The default behaviour for an effect is no processing. However if some of your nodes need to react on incoming MIDI messages, you need to wrap them into one of these.</p>
+<p>A container that enables MIDI processing for its children.</p>
+<h2 id="properties"><b>Properties</b>
+</h2>
+<table><thead><td><b>ID </b>
+</td>
+<td><b>Type </b>
+</td>
+<td><b>Default </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>IsVertical </td>
+<td>bool </td>
+<td>true </td>
+<td>no description. </td>
+</tr>
+</table>
+<p><br>A scriptnode graph will process incoming MIDI messages depending on the context where it's being used: The default behaviour for an effect is no processing. However if some of your nodes need to react on incoming MIDI messages, you need to wrap them into one of these.</p>
 <p class="comment">Be aware that all other processing contexts (synthesiser, envelope, time variant modulator) will automatically forward the MIDI messages to any node.</p>
 <p>In addition to just receiving the MIDI events, this chain will also split up the incoming signal into chunks depending on the MIDI input. So if for example a MIDI message with the timestamp 200 is received alongside a 512 sample buffer, it will process the input in this order:</p>
 <ol><li>Process the first 200 samples</li>

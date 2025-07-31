@@ -188,6 +188,40 @@ Interface: {
 <p class="comment">This functionality can be disabled with the <a href="scripting/scripting-api/scriptmodulationmatrix/index.html#setmatrixmodulationproperties">ScriptModulationMatrix.setMatrixModulationProperties()</a>
  function.</p>
 <p><br></p>
+<h2 id="setdragcallback"><b>setDragCallback</b>
+</h2>
+<p class="comment">Attaches a callback to be notified wheneve a modulation connection is being dragged.</p>
+<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.setDragCallback(var newDragCallback)</code></pre>
+<p><br>If you setup a UI component for dragging modulation connections on a target, you can attach a callback to drag events using that method. This function expects a callable object with 3 parameters:</p>
+<ol><li>The source modulator ID</li>
+<li>The target ID if the user drags a connection over a modulatable knob</li>
+<li>A string with the event type</li>
+</ol>
+<p>This function will now get executed with the following string values as third event type parameter:</p>
+<ul><li><code>"DragStart"</code>
+ whenever the user starts dragging a modulation connection with the <a href="ui-components/floating-tiles/plugin/modulationmatrixcontroller.html">ModulationMatrixController</a>
+ or via <a href="scripting/scripting-api/scriptpanel/index.html#startinternaldrag">ScriptPanel.startInternalDrag()</a>
+ (if the drag data is connected to the modulation system). In that case the <code>targetId</code>
+ parameter will be empty.</li>
+<li><code>"DragEnd"</code>
+ if the user stops dragging the source or is dropped on a illegal target.<br>In that case the <code>sourceId</code>
+ and<br><code>targetId</code>
+ parameters will be empty.</li>
+<li><code>"Drop"</code>
+ whenever the user drops the modulation connection on a valid UI knob. In that case the <code>targetId</code>
+ parameter will be the <code>matrixTargetId</code>
+ of the hovered knob.</li>
+</ul>
+<ul><li><code>"Hover"</code>
+ if the user drags the connection over a valid target knob (on hover).<br>In that case the <code>targetId</code>
+ parameter will be the <code>matrixTargetId</code>
+ of the hovered knob.</li>
+<li><code>"DisabledHover"</code>
+ if the user drags the connection over an invalid target knob (eg. because it has already a connection to that source). In that case the <code>targetId</code>
+ parameter will be the <code>matrixTargetId</code>
+ of the hovered knob.</li>
+</ul>
+<p><br></p>
 <h2 id="seteditcallback"><b>setEditCallback</b>
 </h2>
 <p class="comment">Set a callback that will be executed when the user clicks on "Edit connections".</p>

@@ -44,7 +44,25 @@
 <p class="comment"><code>container.modchain</code>
 </p>
 <img src="images/sn_screen_container__modchain.png"></img>
-<p>Create a modulation signal<br>This container will process its children without affecting the actual signal, so you can use it to create a modulation signal.<br>The child nodes will also run at a reduced sample rate / buffer size (which can be specified using the global <code>HISE_EVENT_RASTER</code>
+<p>Create a modulation signal</p>
+<h2 id="properties"><b>Properties</b>
+</h2>
+<table><thead><td><b>ID </b>
+</td>
+<td><b>Type </b>
+</td>
+<td><b>Default </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>IsVertical </td>
+<td>bool </td>
+<td>true </td>
+<td>no description. </td>
+</tr>
+</table>
+<p><br>This container will process its children without affecting the actual signal, so you can use it to create a modulation signal.<br>The child nodes will also run at a reduced sample rate / buffer size (which can be specified using the global <code>HISE_EVENT_RASTER</code>
  preprocessor, which defaults to <code>8</code>
 ).</p>
 <p>In most use cases you will have a <a href="scriptnode/list/core/peak.html">core.peak</a>

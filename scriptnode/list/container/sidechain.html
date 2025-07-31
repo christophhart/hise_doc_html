@@ -45,6 +45,23 @@
 </p>
 <img src="images/sn_screen_container__sidechain.png"></img>
 <p>Duplicates the channel count and allows side-chained processing</p>
+<h2 id="properties"><b>Properties</b>
+</h2>
+<table><thead><td><b>ID </b>
+</td>
+<td><b>Type </b>
+</td>
+<td><b>Default </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>IsVertical </td>
+<td>bool </td>
+<td>true </td>
+<td>no description. </td>
+</tr>
+</table>
 <p>Sidechaining is a very important concept in the audio effect world and allows you to control the behaviour of a given signal processor using another signal than the one that is being processed. </p>
 <p>The most classic example is a pad synth that is being compressed using the kick drum of a track and will cause a pumping dynamics of the otherwise static pad volume.</p>
 <p>If you want to implement this concept in a scriptnode network, this container will come in handy. It's base functionality is rather unintuitive, but required for the setup of this processing mode: it duplicates the channel amount and processes the child nodes with twice as many channels as possible.</p>

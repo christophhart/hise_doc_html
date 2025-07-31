@@ -44,7 +44,25 @@
 <p class="comment"><code>container.fix8_block</code>
 </p>
 <img src="images/sn_screen_container__fix8_block.png"></img>
-<p>Divides the block into chunks of 8 samples.<br>The <code>container.fixX_block</code>
+<p>Divides the block into chunks of 8 samples.</p>
+<h2 id="properties"><b>Properties</b>
+</h2>
+<table><thead><td><b>ID </b>
+</td>
+<td><b>Type </b>
+</td>
+<td><b>Default </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>IsVertical </td>
+<td>bool </td>
+<td>true </td>
+<td>no description. </td>
+</tr>
+</table>
+<p><br>The <code>container.fixX_block</code>
  nodes will divide the incoming signal into chunks of fixed length and process their child nodes with the given block size. Be aware that this doesn't mean that the block size is always this amount, it just guarantees that it will never exceed the amount of samples.</p>
 <p>This is particularly useful if you are modulating a parameter: unless the node resides in a <code>frameX_block</code>
 , the modulation value will be send once per audio buffer.This might result in a very infrequent update (eg. 20ms for 1024 samples), so if you need to make sure that the modulation is fairly precise, wrap your processing into one of these nodes.</p>

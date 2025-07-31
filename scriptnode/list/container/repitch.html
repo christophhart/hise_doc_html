@@ -67,6 +67,23 @@
 <td>the interpolation algorithm used for the resampling </td>
 </tr>
 </table>
+<h2 id="properties"><b>Properties</b>
+</h2>
+<table><thead><td><b>ID </b>
+</td>
+<td><b>Type </b>
+</td>
+<td><b>Default </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>IsVertical </td>
+<td>bool </td>
+<td>true </td>
+<td>no description. </td>
+</tr>
+</table>
 <p><br>This container node will resample the audio signal and process its child nodes using a different sample rate. There are various use cases for this functionality:</p>
 <ul><li>"change" the frequency response of static nodes (eg. convolution reverbs or neural networks). By resampling the audio you can effectively interpret the signal as having another pitch so if you can't change the frequency response of the node, this will simulate a different response. You can try this by adding a highly resonant svf filter and then process some noise through it.</li>
 <li>change the time response of delay based effects.</li>

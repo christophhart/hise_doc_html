@@ -44,7 +44,25 @@
 <p class="comment"><code>container.no_midi</code>
 </p>
 <img src="images/sn_screen_container__no_midi.png"></img>
-<p>prevents child nodes from processing MIDI messages<br>There are a few nodes that will automatically process MIDI message to change their parameters:</p>
+<p>prevents child nodes from processing MIDI messages</p>
+<h2 id="properties"><b>Properties</b>
+</h2>
+<table><thead><td><b>ID </b>
+</td>
+<td><b>Type </b>
+</td>
+<td><b>Default </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>IsVertical </td>
+<td>bool </td>
+<td>true </td>
+<td>no description. </td>
+</tr>
+</table>
+<p><br>There are a few nodes that will automatically process MIDI message to change their parameters:</p>
 <ul><li>the <a href="scriptnode/list/core/oscillator.html">Oscillator</a>
  node will change the root frequency to match the MIDI note</li>
 <li>envelope nodes will set their gate parameter to on / off to match the key press state</li>

@@ -44,7 +44,30 @@
 <p class="comment"><code>container.fix_blockx</code>
 </p>
 <img src="images/sn_screen_container__fix_blockx.png"></img>
-<p>Processes its child nodes with a static but configurable block size<br>This version is a somewhat dynamic version of the <a href="scriptnode/list/container/fix8_block.html">fix8_block</a>
+<p>Processes its child nodes with a static but configurable block size</p>
+<h2 id="properties"><b>Properties</b>
+</h2>
+<table><thead><td><b>ID </b>
+</td>
+<td><b>Type </b>
+</td>
+<td><b>Default </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td>IsVertical </td>
+<td>bool </td>
+<td>true </td>
+<td>no description. </td>
+</tr>
+<tr><td>BlockSize </td>
+<td>int </td>
+<td>64 </td>
+<td>no description. </td>
+</tr>
+</table>
+<p><br>This version is a somewhat dynamic version of the <a href="scriptnode/list/container/fix8_block.html">fix8_block</a>
 . "Somewhat dynamic" as in it allows you to change the block size during development using the property combobox.</p>
 <p class="comment">The block size selector is hidden by default, smash that parameter button to show it.</p>
 <p>Choosing a correct block size for parts of the network is a delicate process where you can make a tradeoff between performance and CPU usage. In order to evaluate which block size is the best bang for the buck, this node can be used to check different values.</p>
