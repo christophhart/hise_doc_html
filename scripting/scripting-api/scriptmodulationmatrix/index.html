@@ -103,6 +103,12 @@
 <p class="comment">Note that this does not return the ID but the component reference itself so you don't need to call <code>Content.getComponent()</code>
  afterwards.</p>
 <p><br></p>
+<h2 id="getconnectionproperty"><b>getConnectionProperty</b>
+</h2>
+<p class="comment">Returns the property of a modulation connection. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptmodulationmatrix/getconnectionproperty">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.getConnectionProperty(String sourceId, String targetId, String propertyId)</code></pre>
+<p><br><br></p>
 <h2 id="getmatrixmodulationproperties"><b>getMatrixModulationProperties</b>
 </h2>
 <p class="comment">Returns a JSON object with the current matrix modulation properties.</p>
@@ -110,6 +116,12 @@
 <p><br>This will return a JSON object with all the properties of the matrix modulation system. Usually you call this method, modify the object and then pass it back to <a href="scripting/scripting-api/scriptmodulationmatrix/index.html#setmatrixmodulationproperties">ScriptModulationMatrix.setMatrixModulationProperties()</a>
  to apply the changes in the onInit callback.</p>
 <p><br></p>
+<h2 id="getmodulationdisplaydata"><b>getModulationDisplayData</b>
+</h2>
+<p class="comment">Returns a JSON object with the visualisation data for the given modulation target. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/scriptmodulationmatrix/getmodulationdisplaydata">Edit on GitHub</a>
+</p>
+<pre><code class="language-javascript line-numbers">ScriptModulationMatrix.getModulationDisplayData(String targetId)</code></pre>
+<p><br><br></p>
 <h2 id="getsourcelist"><b>getSourceList</b>
 </h2>
 <p class="comment">Return a list of all sources.</p>

@@ -13266,8 +13266,20 @@
     "color": "#D557D9"
   },
   {
+    "key": "ScriptModulationMatrix.getConnectionProperty()",
+    "url": "scripting/scripting-api/scriptmodulationmatrix/index.html#getconnectionproperty",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "ScriptModulationMatrix.getMatrixModulationProperties()",
     "url": "scripting/scripting-api/scriptmodulationmatrix/index.html#getmatrixmodulationproperties",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptModulationMatrix.getModulationDisplayData()",
+    "url": "scripting/scripting-api/scriptmodulationmatrix/index.html#getmodulationdisplaydata",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -15428,6 +15440,12 @@
   {
     "key": "Settings.getZoomLevel()",
     "url": "scripting/scripting-api/settings/index.html#getzoomlevel",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "Settings.isIppEnabled()",
+    "url": "scripting/scripting-api/settings/index.html#isippenabled",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -19658,6 +19676,12 @@
   {
     "key": "UI Snippets: Colour the Keyboard",
     "url": "tutorials/ui/index.html#colour-the-keyboard",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "UI Snippets: RadioButton Panel",
+    "url": "tutorials/ui/index.html#radiobutton-panel",
     "weight": 70,
     "color": "#C5AC43"
   },

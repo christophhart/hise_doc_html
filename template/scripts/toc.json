@@ -14378,8 +14378,20 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scripting/scripting-api/scriptmodulationmatrix/index.html#getconnectionproperty",
+                  "Title": "getConnectionProperty",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/scriptmodulationmatrix/index.html#getmatrixmodulationproperties",
                   "Title": "getMatrixModulationProperties",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
+                  "URL": "scripting/scripting-api/scriptmodulationmatrix/index.html#getmodulationdisplaydata",
+                  "Title": "getModulationDisplayData",
                   "Colour": "#D557D9",
                   "Children": []
                 },
@@ -16607,6 +16619,12 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "scripting/scripting-api/settings/index.html#isippenabled",
+                  "Title": "isIppEnabled",
+                  "Colour": "#D557D9",
+                  "Children": []
+                },
+                {
                   "URL": "scripting/scripting-api/settings/index.html#ismidichannelenabled",
                   "Title": "isMidiChannelEnabled",
                   "Colour": "#D557D9",
@@ -18568,7 +18586,31 @@ var rootDb = {
               "Colour": "#F15761",
               "Children": [
                 {
-                  "URL": "scriptnode/manual/third_party.html#attention!",
+                  "URL": "scriptnode/manual/third_party.html#communication",
+                  "Title": "",
+                  "Colour": "#F15761",
+                  "Children": []
+                },
+                {
+                  "URL": "scriptnode/manual/third_party.html#parameter-callbacks",
+                  "Title": "",
+                  "Colour": "#F15761",
+                  "Children": []
+                },
+                {
+                  "URL": "scriptnode/manual/third_party.html#complex-data-objects",
+                  "Title": "",
+                  "Colour": "#F15761",
+                  "Children": []
+                },
+                {
+                  "URL": "scriptnode/manual/third_party.html#global-cable",
+                  "Title": "",
+                  "Colour": "#F15761",
+                  "Children": []
+                },
+                {
+                  "URL": "scriptnode/manual/third_party.html#ui-thread-considerations",
                   "Title": "",
                   "Colour": "#F15761",
                   "Children": []
@@ -22846,6 +22888,12 @@ var rootDb = {
             {
               "URL": "tutorials/ui/index.html#colour-the-keyboard",
               "Title": "Colour the Keyboard",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/ui/index.html#radiobutton-panel",
+              "Title": "RadioButton Panel",
               "Colour": "#C5AC43",
               "Children": []
             },
