@@ -698,10 +698,13 @@ modeSelector.setControlCallback(modeCallback);</code></pre>
 <p><br><br></p>
 <h2 id="gettextforvalue"><b>getTextForValue</b>
 </h2>
-<p class="comment">Uses one of the inbuilt text converters to prettify a numeric value. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/engine/gettextforvalue.md">Edit on GitHub</a>
-</p>
+<p class="comment">Uses one of the inbuilt text converters to prettify a numeric value.</p>
 <pre><code class="language-javascript line-numbers">Engine.getTextForValue(double value, String converterMode)</code></pre>
-<p><br><br></p>
+<p><br>This function can be used to get a nicely formatted string for display purposes. The days of <code>0.6999995</code>
+ showing up in the slider's text display are finally over...</p>
+<p>The function expects a numeric value and a mode name from a predefined list and returns a string that is formatted properly. </p>
+<p class="comment">For a list of available modes take a look at the counterpart of this function, <a href="scripting/scripting-api/engine/index.html#getvaluefortext">Engine.getValueForText()</a>
+<br></p>
 <h2 id="getuptime"><b>getUptime</b>
 </h2>
 <p class="comment">Returns the uptime of the engine in seconds. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/engine/getuptime.md">Edit on GitHub</a>
@@ -714,6 +717,68 @@ modeSelector.setControlCallback(modeCallback);</code></pre>
 </p>
 <pre><code class="language-javascript line-numbers">Engine.getUserPresetList()</code></pre>
 <p><br><br></p>
+<h2 id="getvaluefortext"><b>getValueForText</b>
+</h2>
+<p class="comment">Uses one of the inbuilt text converts to parse a text string to a numeric value.</p>
+<pre><code class="language-javascript line-numbers">Engine.getValueForText(String text, String convertedMode)</code></pre>
+<p><br>HISE has a few predefined value domains that can be used for parsing & displaying "prettified" Strings. This involves suffixes, number of decimal points or even a string of a predefined list like tempo values.</p>
+<p>You most likely will interact with the different value modes through the <code>mode</code>
+ property of a ScriptSlider, but in order to programmatically parse a string back to a numeric value (eg. in the callback of <a href="scripting/scripting-api/content/index.html#showmodaltextinput">Content.showModalTextInput()</a>
+), you can use this function to convert a string back to its numeric value. The function expects two arguments, the first is the value string and the second argument is one of the available mode names:</p>
+<table><thead><td><b>Mode </b>
+</td>
+<td><b>Description </b>
+</td>
+<td><b>Example </b>
+</td>
+</thead>
+<tr><td><code>"Frequency"</code>
+ </td>
+<td>A Hz value for a frequency. Values above 1000Hz are abbreviated. </td>
+<td><code>240Hz, 2.5kHz</code>
+ </td>
+</tr>
+<tr><td><code>"Time"</code>
+ </td>
+<td>A value for a duration in milliseconds or seconds. Values above 1 second will be converted to the millisecond value. </td>
+<td><code>10ms, 3.2s</code>
+ </td>
+</tr>
+<tr><td><code>"TempoSync"</code>
+ </td>
+<td>A tempo name that represents a musical time factor. Will return the index in the tempo list as used by the slider mode <code>TempoSync</code>
+. </td>
+<td><code>1/4, 1/32T</code>
+ </td>
+</tr>
+<tr><td><code>"Pan"</code>
+ </td>
+<td>A value that describes a position in the stereo field. The suffix is either L, R or C and the value range is -100 to 100. </td>
+<td><code>-50L, C, 87R</code>
+ </td>
+</tr>
+<tr><td><code>"NormalizedPercentage"</code>
+ </td>
+<td>A normalised value between 0.0 and 1.0. It will be represented as percentage from 0% to 100%. </td>
+<td><code>75%</code>
+ </td>
+</tr>
+<tr><td><code>"Decibel"</code>
+ </td>
+<td>A value in the decibel domain with a single decimal point and the <code>dB</code>
+ suffix </td>
+<td><code>-50dB, 0dB, -inf</code>
+ </td>
+</tr>
+<tr><td><code>"Semitones"</code>
+ </td>
+<td>A discrete value for a pitch relation </td>
+<td><code>-3st, 0st</code>
+ </td>
+</tr>
+</table>
+<p>There is also the inverse function <a href="scripting/scripting-api/engine/index.html#gettextforvalue">Engine.getTextForValue()</a>
+ which returns a prettified display string for a given number.<br></p>
 <h2 id="getversion"><b>getVersion</b>
 </h2>
 <p class="comment">Returns the product version (not the HISE version!). <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/engine/getversion.md">Edit on GitHub</a>

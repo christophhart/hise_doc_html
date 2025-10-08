@@ -7110,6 +7110,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "Engine.getValueForText()",
+    "url": "scripting/scripting-api/engine/index.html#getvaluefortext",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "Engine.getVersion()",
     "url": "scripting/scripting-api/engine/index.html#getversion",
     "weight": 60,
@@ -19422,6 +19428,12 @@
     "color": "#C5AC43"
   },
   {
+    "key": "UI Snippets: GLSL MorphBall",
+    "url": "tutorials/ui/index.html#glsl-morphball",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
     "key": "UI Snippets: ModulationDisplay",
     "url": "tutorials/ui/index.html#modulationdisplay",
     "weight": 70,
@@ -19434,14 +19446,14 @@
     "color": "#C5AC43"
   },
   {
-    "key": "UI Snippets: Expandable GUI",
-    "url": "tutorials/ui/index.html#expandable-gui",
+    "key": "UI Snippets: Range Slider Panel",
+    "url": "tutorials/ui/index.html#range-slider-panel",
     "weight": 70,
     "color": "#C5AC43"
   },
   {
-    "key": "UI Snippets: ScriptPanel Drag Example",
-    "url": "tutorials/ui/index.html#scriptpanel-drag-example",
+    "key": "UI Snippets: Expandable GUI",
+    "url": "tutorials/ui/index.html#expandable-gui",
     "weight": 70,
     "color": "#C5AC43"
   },
@@ -19452,14 +19464,8 @@
     "color": "#C5AC43"
   },
   {
-    "key": "UI Snippets: GLSL MorphBall",
-    "url": "tutorials/ui/index.html#glsl-morphball",
-    "weight": 70,
-    "color": "#C5AC43"
-  },
-  {
-    "key": "UI Snippets: A ball shooting Game",
-    "url": "tutorials/ui/index.html#a-ball-shooting-game",
+    "key": "UI Snippets: ScriptPanel Drag Example",
+    "url": "tutorials/ui/index.html#scriptpanel-drag-example",
     "weight": 70,
     "color": "#C5AC43"
   },
@@ -19488,12 +19494,6 @@
     "color": "#C5AC43"
   },
   {
-    "key": "UI Snippets: Draggable Filter Example",
-    "url": "tutorials/ui/index.html#draggable-filter-example",
-    "weight": 70,
-    "color": "#C5AC43"
-  },
-  {
     "key": "UI Snippets: Control 3 parameters in 3 ranges with 1 Knob",
     "url": "tutorials/ui/index.html#control-3-parameters-in-3-ranges-with-1-knob",
     "weight": 70,
@@ -19508,6 +19508,12 @@
   {
     "key": "UI Snippets: Customized Table LAF",
     "url": "tutorials/ui/index.html#customized-table-laf",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "UI Snippets: Draggable Filter Example",
+    "url": "tutorials/ui/index.html#draggable-filter-example",
     "weight": 70,
     "color": "#C5AC43"
   },
@@ -19602,8 +19608,20 @@
     "color": "#C5AC43"
   },
   {
+    "key": "UI Snippets: Skeumorphic Knob LAF",
+    "url": "tutorials/ui/index.html#skeumorphic-knob-laf",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
     "key": "UI Snippets: Script references and callbacks for components",
     "url": "tutorials/ui/index.html#script-references-and-callbacks-for-components",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "UI Snippets: A ball shooting Game",
+    "url": "tutorials/ui/index.html#a-ball-shooting-game",
     "weight": 70,
     "color": "#C5AC43"
   },
@@ -19622,12 +19640,6 @@
   {
     "key": "UI Snippets: SixState Filmstrip Button",
     "url": "tutorials/ui/index.html#sixstate-filmstrip-button",
-    "weight": 70,
-    "color": "#C5AC43"
-  },
-  {
-    "key": "UI Snippets: Skeumorphic Knob LAF",
-    "url": "tutorials/ui/index.html#skeumorphic-knob-laf",
     "weight": 70,
     "color": "#C5AC43"
   },
@@ -19656,12 +19668,6 @@
     "color": "#C5AC43"
   },
   {
-    "key": "UI Snippets: Dynamic List",
-    "url": "tutorials/ui/index.html#dynamic-list",
-    "weight": 70,
-    "color": "#C5AC43"
-  },
-  {
     "key": "UI Snippets: Saving custom LFO Shapes",
     "url": "tutorials/ui/index.html#saving-custom-lfo-shapes",
     "weight": 70,
@@ -19670,6 +19676,12 @@
   {
     "key": "UI Snippets: Two linked Sliders",
     "url": "tutorials/ui/index.html#two-linked-sliders",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "UI Snippets: Dynamic List",
+    "url": "tutorials/ui/index.html#dynamic-list",
     "weight": 70,
     "color": "#C5AC43"
   },

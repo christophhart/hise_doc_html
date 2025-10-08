@@ -72,7 +72,7 @@ Content.addButton("ButtonName", 0, 0) // Adds a button programmatically</code></
 <p><br><br></p>
 <h2 id="adddynamiccontainer"><b>addDynamicContainer</b>
 </h2>
-<p class="comment">Adds a dynamic container component. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/content/adddynamiccontainer">Edit on GitHub</a>
+<p class="comment">Adds a dynamic container component. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/content/adddynamiccontainer.md">Edit on GitHub</a>
 </p>
 <pre><code class="language-javascript line-numbers">Content.addDynamicContainer(String containerId, int x, int y)</code></pre>
 <p><br><br></p>
@@ -422,10 +422,149 @@ t.startTimer(100);</code></pre>
 .<br></p>
 <h2 id="showmodaltextinput"><b>showModalTextInput</b>
 </h2>
-<p class="comment">Opens a text input box with the given properties and executes the callback when finished. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/content/showmodaltextinput.md">Edit on GitHub</a>
-</p>
+<p class="comment">Opens a text input box with the given properties and executes the callback when finished.</p>
 <pre><code class="language-javascript line-numbers">Content.showModalTextInput(var properties, var callback)</code></pre>
-<p><br><br></p>
+<p><br>This function can be used to add a text input label to any component. You can define the appearance of the text box and supply a callback that will be executed when the user dismisses the input box.</p>
+<p>The function expects two arguments:</p>
+<ol><li>A JSON object with the properties for the textbox</li>
+<li>A callable object with two arguments that will be executed when the text input is closed. The first argument will contain the state of the text input: <code>0</code>
+ if the input was dismissed by pressing Escape or moving the keyboard focus away and <code>1</code>
+ if the user pressed enter to submit the value. The second argument will be the string that the user typed into the box.</li>
+</ol>
+<p class="comment">Be aware that you will have to convert the string to a number if you want to store it as value. You can use either <code>parseInt()</code>
+, <code>parseFloat()</code>
+ or <a href="scripting/scripting-api/engine/index.html#getvaluefortext">Engine.getValueForText()</a>
+ for a custom mode parser (like Frequency or Tempo names).</p>
+<p>Note that this text box will appear mutually exclusive, so there will only be a single text input box visible at all times.</p>
+<p>The JSON object can have these properties to define the appearance / behaviour of the input box:</p>
+<table><thead><td><b>Property </b>
+</td>
+<td><b>Type </b>
+</td>
+<td><b>Default </b>
+</td>
+<td><b>Description </b>
+</td>
+</thead>
+<tr><td><code>parentComponent</code>
+ </td>
+<td>String </td>
+<td>none </td>
+<td>the ID of the UI component that you want to show the editor for. </td>
+</tr>
+<tr><td><code>text</code>
+</td>
+<td>String </td>
+<td>none </td>
+<td>The text value that will be shown in the editor when its opened. </td>
+</tr>
+<tr><td><code>x, y, width, height</code>
+ </td>
+<td>int </td>
+<td>none </td>
+<td>the dimensions of the text input relative to the parent component. If the area defined by these properties is empty, then the text editor will use a default positioning in the centre of the UI component. </td>
+</tr>
+<tr><td><code>bgColour</code>
+ </td>
+<td>Colour </td>
+<td><code>0x88000000</code>
+ </td>
+<td>The default background colour for the text editor. </td>
+</tr>
+<tr><td><code>itemColour</code>
+ </td>
+<td>Colour </td>
+<td><code>0</code>
+ </td>
+<td>The item colour (currently unused) </td>
+</tr>
+<tr><td><code>textColour</code>
+ </td>
+<td>Colour </td>
+<td><code>0xAAFFFFFF</code>
+ </td>
+<td>The default text colour used by the text editor. </td>
+</tr>
+<tr><td><code>alignment</code>
+ </td>
+<td>String </td>
+<td><code>"centred"</code>
+ </td>
+<td>the alignment of the text editor. </td>
+</tr>
+<tr><td><code>fontName</code>
+ </td>
+<td>String </td>
+<td><code>"Lato"</code>
+ </td>
+<td>The font name. </td>
+</tr>
+<tr><td><code>fontStyle</code>
+ </td>
+<td>String </td>
+<td><code>"plain"</code>
+ </td>
+<td>The font styling (bold or italic or plain). </td>
+</tr>
+<tr><td><code>fontSize</code>
+ </td>
+<td>Number </td>
+<td><code>13.0</code>
+ </td>
+<td>The font size. </td>
+</tr>
+</table>
+<h3 id="example"><b>Example</b>
+</h3>
+<p>This example shows how to use this function with a ScriptPanel. Shift clicking on the panel opens the text box and sets the Panel's value.</p>
+<pre><code class="language-javascript line-numbers">// Attaches a text input box to the given panel.
+inline function make(n)
+{
+	local p = Content.getComponent(n);
+	
+	p.set("allowCallbacks", "Clicks Only");
+	
+	p.setPaintRoutine(function(g)
+	{
+		g.setColour(Colours.white);
+		g.drawText(this.getValue(), this.getLocalBounds(0));
+	});
+	
+	p.setMouseCallback(function(event)
+	{
+		if(event.clicked && event.shiftDown)
+		{
+			// Since we want to pass that into the textbox callback as lambda ;
+			// we need to store it as local variable before.
+			var tp = this;
+			
+			var textBoxProperties = {
+				parentComponent: this.get("id"),
+				x: 10,
+				y: 10,
+				width: 80,
+				height: 20,
+				bgColour: Colours.red,
+				textColour: Colours.black
+			};
+			
+			Content.showModalTextInput(textBoxProperties, function[tp](status, value)
+			{
+				tp.setValue(parseInt(value));
+				tp.changed();
+				tp.repaint();
+			});
+		}
+	});
+	
+	return p;
+}
+
+// Call this multiple times. If you click on the second panel while the
+// first input box is active you'll see that it works exclusively.
+make("Panel1");
+make("Panel2");</code></pre>
+<p><br></p>
 <h2 id="storeallcontrolsaspreset"><b>storeAllControlsAsPreset</b>
 </h2>
 <p class="comment">Saves all controls that should be saved into a XML data file. <a href="https://github.com/christophhart/hise_documentation/edit/master/scripting/scripting-api/content/storeallcontrolsaspreset.md">Edit on GitHub</a>
