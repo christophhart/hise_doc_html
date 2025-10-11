@@ -22640,6 +22640,12 @@ var rootDb = {
           "Colour": "#C5AC43",
           "Children": [
             {
+              "URL": "tutorials/ui/index.html#draggable-fx-chain",
+              "Title": "Draggable FX Chain",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
               "URL": "tutorials/ui/index.html#glsl-morphball",
               "Title": "GLSL MorphBall",
               "Colour": "#C5AC43",
@@ -22652,20 +22658,14 @@ var rootDb = {
               "Children": []
             },
             {
-              "URL": "tutorials/ui/index.html#glsl-slider",
-              "Title": "GLSL Slider",
-              "Colour": "#C5AC43",
-              "Children": []
-            },
-            {
               "URL": "tutorials/ui/index.html#range-slider-panel",
               "Title": "Range Slider Panel",
               "Colour": "#C5AC43",
               "Children": []
             },
             {
-              "URL": "tutorials/ui/index.html#expandable-gui",
-              "Title": "Expandable GUI",
+              "URL": "tutorials/ui/index.html#glsl-slider",
+              "Title": "GLSL Slider",
               "Colour": "#C5AC43",
               "Children": []
             },
@@ -22676,14 +22676,14 @@ var rootDb = {
               "Children": []
             },
             {
-              "URL": "tutorials/ui/index.html#scriptpanel-drag-example",
-              "Title": "ScriptPanel Drag Example",
+              "URL": "tutorials/ui/index.html#expandable-gui",
+              "Title": "Expandable GUI",
               "Colour": "#C5AC43",
               "Children": []
             },
             {
-              "URL": "tutorials/ui/index.html#an-enhanced-button-laf",
-              "Title": "An enhanced Button LAF",
+              "URL": "tutorials/ui/index.html#scriptpanel-drag-example",
+              "Title": "ScriptPanel Drag Example",
               "Colour": "#C5AC43",
               "Children": []
             },
@@ -22706,8 +22706,8 @@ var rootDb = {
               "Children": []
             },
             {
-              "URL": "tutorials/ui/index.html#control-3-parameters-in-3-ranges-with-1-knob",
-              "Title": "Control 3 parameters in 3 ranges with 1 Knob",
+              "URL": "tutorials/ui/index.html#a-ball-shooting-game",
+              "Title": "A ball shooting Game",
               "Colour": "#C5AC43",
               "Children": []
             },
@@ -22732,6 +22732,12 @@ var rootDb = {
             {
               "URL": "tutorials/ui/index.html#draggable-filter",
               "Title": "Draggable Filter",
+              "Colour": "#C5AC43",
+              "Children": []
+            },
+            {
+              "URL": "tutorials/ui/index.html#control-3-parameters-in-3-ranges-with-1-knob",
+              "Title": "Control 3 parameters in 3 ranges with 1 Knob",
               "Colour": "#C5AC43",
               "Children": []
             },
@@ -22832,8 +22838,8 @@ var rootDb = {
               "Children": []
             },
             {
-              "URL": "tutorials/ui/index.html#a-ball-shooting-game",
-              "Title": "A ball shooting Game",
+              "URL": "tutorials/ui/index.html#an-enhanced-button-laf",
+              "Title": "An enhanced Button LAF",
               "Colour": "#C5AC43",
               "Children": []
             },

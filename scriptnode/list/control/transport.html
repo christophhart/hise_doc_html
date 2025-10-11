@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<base href="https://docs.hise.dev/"/>
 	<title>HISE | ScriptNode | transport</title>
-	<meta name="description" content="Please enter a brief description.">
+	<meta name="description" content="A node that sends a value whenever the DAW's transport state changes.">
 	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
 	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
 	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
@@ -44,7 +44,16 @@
 <p class="comment"><code>control.transport</code>
 </p>
 <img src="images/sn_screen_control__transport.png"></img>
-<p>Please enter a brief description.<br></p>
+<p>A node that sends a value whenever the DAW's transport state changes.</p>
+<p>This node can be used to watch the playback state of the DAW host. You can connect the modulation output to any target and it will send 1.0 when the host starts playing and 0.0 if the host playback is stopped.</p>
+<h3 id="similar-nodes"><b>Similar nodes</b>
+</h3>
+<p>There are a few other nodes related to host transport management:</p>
+<ul><li>If you want to receive the PPQ (MIDI tick) position of the host to sync your node to the playback position, you can use the <a href="scriptnode/list/control/ppq.html">control.ppq</a>
+</li>
+<li>If you just want a ready-to-use clock synced ramp signal that you can plug into an LFO, take a look at the <a href="scriptnode/list/core/clock_ramp.html">core.clock_ramp</a>
+ node.</li>
+</ul>
 <div class="content-footer"><span class="content-footer-left"><a href="https://github.com/christophhart/hise_documentation/edit/master/scriptnode/list/control/transport.md">Edit on GitHub</a>
 </span>
 

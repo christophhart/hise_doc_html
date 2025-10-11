@@ -19428,6 +19428,12 @@
     "color": "#C5AC43"
   },
   {
+    "key": "UI Snippets: Draggable FX Chain",
+    "url": "tutorials/ui/index.html#draggable-fx-chain",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
     "key": "UI Snippets: GLSL MorphBall",
     "url": "tutorials/ui/index.html#glsl-morphball",
     "weight": 70,
@@ -19440,20 +19446,14 @@
     "color": "#C5AC43"
   },
   {
-    "key": "UI Snippets: GLSL Slider",
-    "url": "tutorials/ui/index.html#glsl-slider",
-    "weight": 70,
-    "color": "#C5AC43"
-  },
-  {
     "key": "UI Snippets: Range Slider Panel",
     "url": "tutorials/ui/index.html#range-slider-panel",
     "weight": 70,
     "color": "#C5AC43"
   },
   {
-    "key": "UI Snippets: Expandable GUI",
-    "url": "tutorials/ui/index.html#expandable-gui",
+    "key": "UI Snippets: GLSL Slider",
+    "url": "tutorials/ui/index.html#glsl-slider",
     "weight": 70,
     "color": "#C5AC43"
   },
@@ -19464,14 +19464,14 @@
     "color": "#C5AC43"
   },
   {
-    "key": "UI Snippets: ScriptPanel Drag Example",
-    "url": "tutorials/ui/index.html#scriptpanel-drag-example",
+    "key": "UI Snippets: Expandable GUI",
+    "url": "tutorials/ui/index.html#expandable-gui",
     "weight": 70,
     "color": "#C5AC43"
   },
   {
-    "key": "UI Snippets: An enhanced Button LAF",
-    "url": "tutorials/ui/index.html#an-enhanced-button-laf",
+    "key": "UI Snippets: ScriptPanel Drag Example",
+    "url": "tutorials/ui/index.html#scriptpanel-drag-example",
     "weight": 70,
     "color": "#C5AC43"
   },
@@ -19494,8 +19494,8 @@
     "color": "#C5AC43"
   },
   {
-    "key": "UI Snippets: Control 3 parameters in 3 ranges with 1 Knob",
-    "url": "tutorials/ui/index.html#control-3-parameters-in-3-ranges-with-1-knob",
+    "key": "UI Snippets: A ball shooting Game",
+    "url": "tutorials/ui/index.html#a-ball-shooting-game",
     "weight": 70,
     "color": "#C5AC43"
   },
@@ -19520,6 +19520,12 @@
   {
     "key": "UI Snippets: Draggable Filter",
     "url": "tutorials/ui/index.html#draggable-filter",
+    "weight": 70,
+    "color": "#C5AC43"
+  },
+  {
+    "key": "UI Snippets: Control 3 parameters in 3 ranges with 1 Knob",
+    "url": "tutorials/ui/index.html#control-3-parameters-in-3-ranges-with-1-knob",
     "weight": 70,
     "color": "#C5AC43"
   },
@@ -19620,8 +19626,8 @@
     "color": "#C5AC43"
   },
   {
-    "key": "UI Snippets: A ball shooting Game",
-    "url": "tutorials/ui/index.html#a-ball-shooting-game",
+    "key": "UI Snippets: An enhanced Button LAF",
+    "url": "tutorials/ui/index.html#an-enhanced-button-laf",
     "weight": 70,
     "color": "#C5AC43"
   },

@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<base href="https://docs.hise.dev/"/>
 	<title>HISE | ScriptNode | normaliser</title>
-	<meta name="description" content="Please enter a brief description.">
+	<meta name="description" content="Normalises the input value using the range of the Value parameter.">
 	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
 	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
 	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
@@ -44,7 +44,7 @@
 <p class="comment"><code>control.normaliser</code>
 </p>
 <img src="images/sn_screen_control__normaliser.png"></img>
-<p>Please enter a brief description.</p>
+<p>Normalises the input value using the range of the Value parameter.</p>
 <h2 id="parameters"><b>Parameters</b>
 </h2>
 <table><thead><td><b>ID </b>
@@ -59,10 +59,12 @@
 <tr><td>Value </td>
 <td>0.00 - 1.00 </td>
 <td>0.00 </td>
-<td>no description. </td>
+<td>Connect the modulation source to this parameter and it will use the range to convert the incoming (unscaled) value to a normalised value between 0 and 1. </td>
 </tr>
 </table>
-<p><br></p>
+<p>This node can be used if you want to connect a <a href="scriptnode/manual/glossary.html#scaled-vs.-unscaled-parameters">unscaled</a>
+ parameter to a target that should use the target's parameter range (aka normalised modulation). Just connect the modulation source to the <b>Value</b>
+ parameter (and set it's range to the desired source range), then connect the modulation output from this node to your target parameter and it will scale it correctly using the range of the target parameter.</p>
 <div class="content-footer"><span class="content-footer-left"><a href="https://github.com/christophhart/hise_documentation/edit/master/scriptnode/list/control/normaliser.md">Edit on GitHub</a>
 </span>
 
