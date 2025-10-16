@@ -2099,6 +2099,12 @@ var rootDb = {
                   "Children": []
                 },
                 {
+                  "URL": "working-with-hise/settings/development.html#recompile-on-file-change",
+                  "Title": "Recompile On File Change",
+                  "Colour": "#DEB887",
+                  "Children": []
+                },
+                {
                   "URL": "working-with-hise/settings/development.html#enable-mouse-positioning",
                   "Title": "Enable Mouse Positioning",
                   "Colour": "#DEB887",

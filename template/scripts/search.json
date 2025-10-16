@@ -1722,6 +1722,12 @@
     "color": "#DEB887"
   },
   {
+    "key": "Development: Recompile On File Change",
+    "url": "working-with-hise/settings/development.html#recompile-on-file-change",
+    "weight": 60,
+    "color": "#DEB887"
+  },
+  {
     "key": "Development: Enable Mouse Positioning",
     "url": "working-with-hise/settings/development.html#enable-mouse-positioning",
     "weight": 60,
