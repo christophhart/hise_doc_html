@@ -90,37 +90,37 @@
     "color": "#A4CC3E"
   },
   {
-    "key": "Quick Tour: Tutorial Project 1: PhaseWizard",
+    "key": "Quick Tour: \"Tutorial Project 1: PhaseWizard\"",
     "url": "introduction/tour/phase-wizard.html",
     "weight": 70,
     "color": "#A4CC3E"
   },
   {
-    "key": "Tutorial Project 1: PhaseWizard: Interface and Sliders",
+    "key": "\"Tutorial Project 1: PhaseWizard\": Interface and Sliders",
     "url": "introduction/tour/phase-wizard.html#interface-and-sliders",
     "weight": 60,
     "color": "#A4CC3E"
   },
   {
-    "key": "Tutorial Project 1: PhaseWizard: Keyboard and Visualisation ",
+    "key": "\"Tutorial Project 1: PhaseWizard\": Keyboard and Visualisation ",
     "url": "introduction/tour/phase-wizard.html#keyboard-and-visualisation-",
     "weight": 60,
     "color": "#A4CC3E"
   },
   {
-    "key": "Tutorial Project 1: PhaseWizard: ComboBox WaveForm Selector",
+    "key": "\"Tutorial Project 1: PhaseWizard\": ComboBox WaveForm Selector",
     "url": "introduction/tour/phase-wizard.html#combobox-waveform-selector",
     "weight": 60,
     "color": "#A4CC3E"
   },
   {
-    "key": "Tutorial Project 1: PhaseWizard: Settings and About",
+    "key": "\"Tutorial Project 1: PhaseWizard\": Settings and About",
     "url": "introduction/tour/phase-wizard.html#settings-and-about",
     "weight": 60,
     "color": "#A4CC3E"
   },
   {
-    "key": "Tutorial Project 1: PhaseWizard: Export & Compile",
+    "key": "\"Tutorial Project 1: PhaseWizard\": Export & Compile",
     "url": "introduction/tour/phase-wizard.html#export-&-compile",
     "weight": 60,
     "color": "#A4CC3E"
@@ -888,6 +888,12 @@
     "color": "#DEB887"
   },
   {
+    "key": "File: Open HISE asset manager",
+    "url": "working-with-hise/menu-reference/file/index.html#open-hise-asset-manager",
+    "weight": 60,
+    "color": "#DEB887"
+  },
+  {
     "key": "File: Settings",
     "url": "working-with-hise/menu-reference/file/index.html#settings",
     "weight": 60,
@@ -1068,6 +1074,12 @@
     "color": "#DEB887"
   },
   {
+    "key": "Export: Create HISE store payload from current project",
+    "url": "working-with-hise/menu-reference/export/index.html#create-hise-store-payload-from-current-project",
+    "weight": 60,
+    "color": "#DEB887"
+  },
+  {
     "key": "Export: Package sample monolith files",
     "url": "working-with-hise/menu-reference/export/index.html#package-sample-monolith-files",
     "weight": 60,
@@ -1244,6 +1256,12 @@
   {
     "key": "View: Enable Layout Mode",
     "url": "working-with-hise/menu-reference/view/index.html#enable-layout-mode",
+    "weight": 60,
+    "color": "#DEB887"
+  },
+  {
+    "key": "View: Show Plugin Preview",
+    "url": "working-with-hise/menu-reference/view/index.html#show-plugin-preview",
     "weight": 60,
     "color": "#DEB887"
   },
@@ -4056,6 +4074,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "Scripting API: ComplexGroupManager",
+    "url": "scripting/scripting-api/complexgroupmanager/index.html",
+    "weight": 70,
+    "color": "#D557D9"
+  },
+  {
     "key": "Scripting API: Connection",
     "url": "scripting/scripting-api/connection/index.html",
     "weight": 70,
@@ -4704,14 +4728,32 @@
     "color": "#D557D9"
   },
   {
+    "key": "AudioFile.getLoopRange()",
+    "url": "scripting/scripting-api/audiofile/index.html#getlooprange",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "AudioFile.getNumSamples()",
     "url": "scripting/scripting-api/audiofile/index.html#getnumsamples",
     "weight": 60,
     "color": "#D557D9"
   },
   {
+    "key": "AudioFile.getRange()",
+    "url": "scripting/scripting-api/audiofile/index.html#getrange",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "AudioFile.getSampleRate()",
     "url": "scripting/scripting-api/audiofile/index.html#getsamplerate",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "AudioFile.getTotalLengthInSamples()",
+    "url": "scripting/scripting-api/audiofile/index.html#gettotallengthinsamples",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -4794,6 +4836,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "AudioSampleProcessor.getLoopRange()",
+    "url": "scripting/scripting-api/audiosampleprocessor/index.html#getlooprange",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "AudioSampleProcessor.getNumAttributes()",
     "url": "scripting/scripting-api/audiosampleprocessor/index.html#getnumattributes",
     "weight": 60,
@@ -4806,8 +4854,20 @@
     "color": "#D557D9"
   },
   {
+    "key": "AudioSampleProcessor.getSampleRange()",
+    "url": "scripting/scripting-api/audiosampleprocessor/index.html#getsamplerange",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "AudioSampleProcessor.getSampleStart()",
     "url": "scripting/scripting-api/audiosampleprocessor/index.html#getsamplestart",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "AudioSampleProcessor.getTotalLengthInSamples()",
+    "url": "scripting/scripting-api/audiosampleprocessor/index.html#gettotallengthinsamples",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -5516,6 +5576,102 @@
   {
     "key": "Colours.withSaturation()",
     "url": "scripting/scripting-api/colours/index.html#withsaturation",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ComplexGroupManager.addGroupEventStartOffset()",
+    "url": "scripting/scripting-api/complexgroupmanager/index.html#addgroupeventstartoffset",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ComplexGroupManager.createNoteMap()",
+    "url": "scripting/scripting-api/complexgroupmanager/index.html#createnotemap",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ComplexGroupManager.delayGroupEvent()",
+    "url": "scripting/scripting-api/complexgroupmanager/index.html#delaygroupevent",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ComplexGroupManager.fadeInGroupEvent()",
+    "url": "scripting/scripting-api/complexgroupmanager/index.html#fadeingroupevent",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ComplexGroupManager.fadeOutGroupEvent()",
+    "url": "scripting/scripting-api/complexgroupmanager/index.html#fadeoutgroupevent",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ComplexGroupManager.getCurrentPeak()",
+    "url": "scripting/scripting-api/complexgroupmanager/index.html#getcurrentpeak",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ComplexGroupManager.getLayerIndex()",
+    "url": "scripting/scripting-api/complexgroupmanager/index.html#getlayerindex",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ComplexGroupManager.getLayerProperty()",
+    "url": "scripting/scripting-api/complexgroupmanager/index.html#getlayerproperty",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ComplexGroupManager.getNumGroupsInLayer()",
+    "url": "scripting/scripting-api/complexgroupmanager/index.html#getnumgroupsinlayer",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ComplexGroupManager.isNoteNumberMapped()",
+    "url": "scripting/scripting-api/complexgroupmanager/index.html#isnotenumbermapped",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ComplexGroupManager.registerGroupStartCallback()",
+    "url": "scripting/scripting-api/complexgroupmanager/index.html#registergroupstartcallback",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ComplexGroupManager.setActiveGroup()",
+    "url": "scripting/scripting-api/complexgroupmanager/index.html#setactivegroup",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ComplexGroupManager.setEnableGainTracking()",
+    "url": "scripting/scripting-api/complexgroupmanager/index.html#setenablegaintracking",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ComplexGroupManager.setFixedGroupEventLength()",
+    "url": "scripting/scripting-api/complexgroupmanager/index.html#setfixedgroupeventlength",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ComplexGroupManager.setGroupVolume()",
+    "url": "scripting/scripting-api/complexgroupmanager/index.html#setgroupvolume",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ComplexGroupManager.setLayerProperty()",
+    "url": "scripting/scripting-api/complexgroupmanager/index.html#setlayerproperty",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -7604,6 +7760,12 @@
   {
     "key": "ExpansionHandler.getExpansionList()",
     "url": "scripting/scripting-api/expansionhandler/index.html#getexpansionlist",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ExpansionHandler.getMetaDataFromPackage()",
+    "url": "scripting/scripting-api/expansionhandler/index.html#getmetadatafrompackage",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -10434,6 +10596,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "Path.addPieSegment()",
+    "url": "scripting/scripting-api/path/index.html#addpiesegment",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "Path.addPolygon()",
     "url": "scripting/scripting-api/path/index.html#addpolygon",
     "weight": 60,
@@ -10532,6 +10700,12 @@
   {
     "key": "Path.getPointOnPath()",
     "url": "scripting/scripting-api/path/index.html#getpointonpath",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "Path.getRatio()",
+    "url": "scripting/scripting-api/path/index.html#getratio",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -11016,6 +11190,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "Sampler.getComplexGroupManager()",
+    "url": "scripting/scripting-api/sampler/index.html#getcomplexgroupmanager",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "Sampler.getCurrentSampleMapId()",
     "url": "scripting/scripting-api/sampler/index.html#getcurrentsamplemapid",
     "weight": 60,
@@ -11316,6 +11496,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "ScriptAudioWaveform.getCurrentZLevel()",
+    "url": "scripting/scripting-api/scriptaudiowaveform/index.html#getcurrentzlevel",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "ScriptAudioWaveform.getGlobalPositionX()",
     "url": "scripting/scripting-api/scriptaudiowaveform/index.html#getglobalpositionx",
     "weight": 60,
@@ -11580,6 +11766,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "ScriptButton.getCurrentZLevel()",
+    "url": "scripting/scripting-api/scriptbutton/index.html#getcurrentzlevel",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "ScriptButton.getGlobalPositionX()",
     "url": "scripting/scripting-api/scriptbutton/index.html#getglobalpositionx",
     "weight": 60,
@@ -11820,6 +12012,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "ScriptComboBox.getCurrentZLevel()",
+    "url": "scripting/scripting-api/scriptcombobox/index.html#getcurrentzlevel",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "ScriptComboBox.getGlobalPositionX()",
     "url": "scripting/scripting-api/scriptcombobox/index.html#getglobalpositionx",
     "weight": 60,
@@ -12054,6 +12252,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "ScriptDynamicContainer.getCurrentZLevel()",
+    "url": "scripting/scripting-api/scriptdynamiccontainer/index.html#getcurrentzlevel",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "ScriptDynamicContainer.getGlobalPositionX()",
     "url": "scripting/scripting-api/scriptdynamiccontainer/index.html#getglobalpositionx",
     "weight": 60,
@@ -12284,6 +12488,12 @@
   {
     "key": "ScriptedViewport.getChildComponents()",
     "url": "scripting/scripting-api/scriptedviewport/index.html#getchildcomponents",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptedViewport.getCurrentZLevel()",
+    "url": "scripting/scripting-api/scriptedviewport/index.html#getcurrentzlevel",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -12552,6 +12762,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "ScriptFloatingTile.getCurrentZLevel()",
+    "url": "scripting/scripting-api/scriptfloatingtile/index.html#getcurrentzlevel",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "ScriptFloatingTile.getGlobalPositionX()",
     "url": "scripting/scripting-api/scriptfloatingtile/index.html#getglobalpositionx",
     "weight": 60,
@@ -12770,6 +12986,12 @@
   {
     "key": "ScriptImage.getChildComponents()",
     "url": "scripting/scripting-api/scriptimage/index.html#getchildcomponents",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptImage.getCurrentZLevel()",
+    "url": "scripting/scripting-api/scriptimage/index.html#getcurrentzlevel",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -13010,6 +13232,12 @@
   {
     "key": "ScriptLabel.getChildComponents()",
     "url": "scripting/scripting-api/scriptlabel/index.html#getchildcomponents",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptLabel.getCurrentZLevel()",
+    "url": "scripting/scripting-api/scriptlabel/index.html#getcurrentzlevel",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -13440,6 +13668,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "ScriptMultipageDialog.getCurrentZLevel()",
+    "url": "scripting/scripting-api/scriptmultipagedialog/index.html#getcurrentzlevel",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "ScriptMultipageDialog.getElementProperty()",
     "url": "scripting/scripting-api/scriptmultipagedialog/index.html#getelementproperty",
     "weight": 60,
@@ -13730,6 +13964,12 @@
   {
     "key": "ScriptPanel.getChildPanelList()",
     "url": "scripting/scripting-api/scriptpanel/index.html#getchildpanellist",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptPanel.getCurrentZLevel()",
+    "url": "scripting/scripting-api/scriptpanel/index.html#getcurrentzlevel",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -14166,6 +14406,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "ScriptSlider.getCurrentZLevel()",
+    "url": "scripting/scripting-api/scriptslider/index.html#getcurrentzlevel",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "ScriptSlider.getGlobalPositionX()",
     "url": "scripting/scripting-api/scriptslider/index.html#getglobalpositionx",
     "weight": 60,
@@ -14444,6 +14690,12 @@
   {
     "key": "ScriptSliderPack.getChildComponents()",
     "url": "scripting/scripting-api/scriptsliderpack/index.html#getchildcomponents",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptSliderPack.getCurrentZLevel()",
+    "url": "scripting/scripting-api/scriptsliderpack/index.html#getcurrentzlevel",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -14732,6 +14984,12 @@
   {
     "key": "ScriptTable.getChildComponents()",
     "url": "scripting/scripting-api/scripttable/index.html#getchildcomponents",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptTable.getCurrentZLevel()",
+    "url": "scripting/scripting-api/scripttable/index.html#getcurrentzlevel",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -15032,6 +15290,12 @@
   {
     "key": "ScriptWebView.getChildComponents()",
     "url": "scripting/scripting-api/scriptwebview/index.html#getchildcomponents",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "ScriptWebView.getCurrentZLevel()",
+    "url": "scripting/scripting-api/scriptwebview/index.html#getcurrentzlevel",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -16446,8 +16710,26 @@
     "color": "#D557D9"
   },
   {
+    "key": "TransportHandler.getGridLengthInSamples()",
+    "url": "scripting/scripting-api/transporthandler/index.html#getgridlengthinsamples",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "TransportHandler.getGridPosition()",
+    "url": "scripting/scripting-api/transporthandler/index.html#getgridposition",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "TransportHandler.isNonRealtime()",
     "url": "scripting/scripting-api/transporthandler/index.html#isnonrealtime",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "TransportHandler.isPlaying()",
+    "url": "scripting/scripting-api/transporthandler/index.html#isplaying",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -16466,6 +16748,18 @@
   {
     "key": "TransportHandler.setLinkBpmToSyncMode()",
     "url": "scripting/scripting-api/transporthandler/index.html#setlinkbpmtosyncmode",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "TransportHandler.setLocalGridBypassed()",
+    "url": "scripting/scripting-api/transporthandler/index.html#setlocalgridbypassed",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "TransportHandler.setLocalGridMultiplier()",
+    "url": "scripting/scripting-api/transporthandler/index.html#setlocalgridmultiplier",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -16590,6 +16884,12 @@
     "color": "#D557D9"
   },
   {
+    "key": "Unlocker.loadExpansionList()",
+    "url": "scripting/scripting-api/unlocker/index.html#loadexpansionlist",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
     "key": "Unlocker.loadKeyFile()",
     "url": "scripting/scripting-api/unlocker/index.html#loadkeyfile",
     "weight": 60,
@@ -16598,6 +16898,18 @@
   {
     "key": "Unlocker.setProductCheckFunction()",
     "url": "scripting/scripting-api/unlocker/index.html#setproductcheckfunction",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "Unlocker.unlockExpansionList()",
+    "url": "scripting/scripting-api/unlocker/index.html#unlockexpansionlist",
+    "weight": 60,
+    "color": "#D557D9"
+  },
+  {
+    "key": "Unlocker.writeExpansionKeyFile()",
+    "url": "scripting/scripting-api/unlocker/index.html#writeexpansionkeyfile",
     "weight": 60,
     "color": "#D557D9"
   },
@@ -17106,25 +17418,25 @@
     "color": "#F15761"
   },
   {
-    "key": "Scriptnode 101: Chapter 1: Convention and DSP Network",
+    "key": "Scriptnode 101: \"Chapter 1: Convention and DSP Network\"",
     "url": "scriptnode/101/dsp_network.html",
     "weight": 70,
     "color": "#F15761"
   },
   {
-    "key": "Scriptnode 101: Chapter 2: Gain Example",
+    "key": "Scriptnode 101: \"Chapter 2: Gain Example\"",
     "url": "scriptnode/101/gain_example.html",
     "weight": 70,
     "color": "#F15761"
   },
   {
-    "key": "Scriptnode 101: Chapter 3: Panner",
+    "key": "Scriptnode 101: \"Chapter 3: Panner\"",
     "url": "scriptnode/101/panner.html",
     "weight": 70,
     "color": "#F15761"
   },
   {
-    "key": "Scriptnode 101: Chapter 3: Dry / Wet FX",
+    "key": "Scriptnode 101: \"Chapter 3: Dry / Wet FX\"",
     "url": "scriptnode/101/drywet.html",
     "weight": 70,
     "color": "#F15761"
@@ -18012,6 +18324,18 @@
     "color": "#F15761"
   },
   {
+    "key": "envelope: global_mod_gate",
+    "url": "scriptnode/list/envelope/global_mod_gate.html",
+    "weight": 60,
+    "color": "#F15761"
+  },
+  {
+    "key": "envelope: extra_mod_gate",
+    "url": "scriptnode/list/envelope/extra_mod_gate.html",
+    "weight": 60,
+    "color": "#F15761"
+  },
+  {
     "key": "envelope: silent_killer",
     "url": "scriptnode/list/envelope/silent_killer.html",
     "weight": 60,
@@ -18230,6 +18554,12 @@
   {
     "key": "control: pack_resizer",
     "url": "scriptnode/list/control/pack_resizer.html",
+    "weight": 60,
+    "color": "#F15761"
+  },
+  {
+    "key": "control: branch_cable",
+    "url": "scriptnode/list/control/branch_cable.html",
     "weight": 60,
     "color": "#F15761"
   },
