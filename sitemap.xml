@@ -2,3985 +2,3985 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://docs.hise.dev/cpp_api/hise/classhise_1_1_audio_sample_processor.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/cpp_api/hise/classhise_1_1_chain.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/cpp_api/hise/classhise_1_1_controlled_object.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/cpp_api/hise/classhise_1_1_effect_processor.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/cpp_api/hise/classhise_1_1_event_id_handler.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/cpp_api/hise/classhise_1_1_hise_event.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/cpp_api/hise/classhise_1_1_hise_event_buffer.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/cpp_api/hise/classhise_1_1_lockfree_queue.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/cpp_api/hise/classhise_1_1_main_controller.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/cpp_api/hise/classhise_1_1_midi_player.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/cpp_api/hise/classhise_1_1_midi_processor.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/cpp_api/hise/classhise_1_1_modulator.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/cpp_api/hise/classhise_1_1_modulator_chain.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/cpp_api/hise/classhise_1_1_modulator_synth.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/cpp_api/hise/classhise_1_1_pool_base.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/cpp_api/hise/classhise_1_1_pooled_u_i_updater.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/cpp_api/hise/classhise_1_1_processor.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/cpp_api/hise/classhise_1_1_project_handler.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/cpp_api/hise/classhise_1_1_table.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/cpp_api/hise/classhise_1_1_tempo_listener.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/cpp_api/hise/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/cpp_api/hise/structhise_1_1_safe_function_call.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/cpp_api/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/cpp_api/raw/classhise_1_1raw_1_1_builder.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/cpp_api/raw/classhise_1_1raw_1_1_data_holder.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/cpp_api/raw/classhise_1_1raw_1_1_data_holder_base.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/cpp_api/raw/classhise_1_1raw_1_1_generic_storage.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/cpp_api/raw/classhise_1_1raw_1_1_main_processor.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/cpp_api/raw/classhise_1_1raw_1_1_plugin_parameter.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/cpp_api/raw/classhise_1_1raw_1_1_pool.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/cpp_api/raw/classhise_1_1raw_1_1_positioner.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/cpp_api/raw/classhise_1_1raw_1_1_reference.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/cpp_api/raw/classhise_1_1raw_1_1_storage.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/cpp_api/raw/classhise_1_1raw_1_1_task_after_suspension.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/cpp_api/raw/classhise_1_1raw_1_1_u_i_connection.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/cpp_api/raw/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/cpp_api/raw/structhise_1_1raw_1_1_data.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/glossary/add_custom_laf.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/glossary/code_snippets.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/glossary/command-line-tool.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/glossary/complex-group-management.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/glossary/copy-protection.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/glossary/crash-reporting.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/glossary/css.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/glossary/custom_lookandfeel.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/glossary/development_recipes.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/glossary/export.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/glossary/git.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/glossary/hise-event.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/glossary/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/glossary/macrocontrols.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/glossary/matrix-modulation.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/glossary/multipageproperties.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/glossary/plugin-parameters.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/glossary/rnbo.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/effects/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/effects/list/analyser.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/effects/list/chorus.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/effects/list/convolution.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/effects/list/curveeq.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/effects/list/delay.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/effects/list/dynamics.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/effects/list/emptyfx.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/effects/list/hardcoded-master-fx.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/effects/list/hardcodedpolyphonicfx.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/effects/list/harmonicfilter.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/effects/list/harmonicfiltermono.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/effects/list/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/effects/list/midimetronome.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/effects/list/noisegrainplayer.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/effects/list/phasefx.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/effects/list/polyphonicfilter.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/effects/list/polyscriptfx.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/effects/list/polyshapefx.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/effects/list/routefx.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/effects/list/saturator.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/effects/list/scriptfx.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/effects/list/sendfx.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/effects/list/shapefx.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/effects/list/simplegain.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/effects/list/simplereverb.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/effects/list/slotfx.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/effects/list/stereofx.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/midi-processors/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/midi-processors/list/arpeggiator.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/midi-processors/list/ccswapper.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/midi-processors/list/channelfilter.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/midi-processors/list/channelsetter.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/midi-processors/list/chokegroupprocessor.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/midi-processors/list/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/midi-processors/list/legatowithretrigger.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/midi-processors/list/midimuter.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/midi-processors/list/midiplayer.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/midi-processors/list/releasetrigger.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/midi-processors/list/scriptprocessor.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/midi-processors/list/transposer.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/modulators/envelopes/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/modulators/envelopes/list/ahdsr.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/modulators/envelopes/list/eventdataenvelope.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/modulators/envelopes/list/flexahdsr.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/modulators/envelopes/list/globalenvelopemodulator.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/modulators/envelopes/list/hardcoded-envelope-modulator.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/modulators/envelopes/list/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/modulators/envelopes/list/matrixmodulator.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/modulators/envelopes/list/mpemodulator.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/modulators/envelopes/list/scriptenvelopemodulator.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/modulators/envelopes/list/scriptnodevoicekiller.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/modulators/envelopes/list/simpleenvelope.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/modulators/envelopes/list/tableenvelope.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/modulators/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/modulators/time-variant-modulators/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/modulators/time-variant-modulators/list/globaltimevariantmodulator.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/modulators/time-variant-modulators/list/hardcoded-timevariant-modulator.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/modulators/time-variant-modulators/list/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/modulators/time-variant-modulators/list/lfo.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/modulators/time-variant-modulators/list/macromodulator.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/modulators/time-variant-modulators/list/midicontroller.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/modulators/time-variant-modulators/list/pitchwheel.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/modulators/time-variant-modulators/list/scripttimevariantmodulator.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/modulators/voice-start-modulators/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/modulators/voice-start-modulators/list/arraymodulator.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/modulators/voice-start-modulators/list/constant.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/modulators/voice-start-modulators/list/eventdatamodulator.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/modulators/voice-start-modulators/list/globalstatictimevariantmodulator.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/modulators/voice-start-modulators/list/globalvoicestartmodulator.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/modulators/voice-start-modulators/list/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/modulators/voice-start-modulators/list/keynumber.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/modulators/voice-start-modulators/list/random.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/modulators/voice-start-modulators/list/scriptvoicestartmodulator.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/modulators/voice-start-modulators/list/velocity.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/sound-generators/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/sound-generators/list/audiolooper.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/sound-generators/list/globalmodulatorcontainer.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/sound-generators/list/hardcodedsynth.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/sound-generators/list/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/sound-generators/list/macromodulationsource.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/sound-generators/list/noise.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/sound-generators/list/scriptsynth.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/sound-generators/list/sendcontainer.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/sound-generators/list/silentsynth.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/sound-generators/list/sinesynth.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/sound-generators/list/streamingsampler.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/sound-generators/list/synthchain.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/sound-generators/list/synthgroup.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/sound-generators/list/wavesynth.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/hise-modules/sound-generators/list/wavetablesynth.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/introduction/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/introduction/installation.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/introduction/tour/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/introduction/tour/phase-wizard.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/array/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/audiofile/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/audiosampleprocessor/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/backgroundtask/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/beatportmanager/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/broadcaster/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/buffer/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/builder/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/childsynth/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/colours/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/complexgroupmanager/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/connection/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/console/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/containerchild/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/content/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/date/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/displaybuffer/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/displaybuffersource/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/download/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/dspmodule/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/dspnetwork/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/effect/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/engine/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/errorhandler/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/expansion/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/expansionhandler/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/fft/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/file/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/filesystem/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/fixobjectarray/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/fixobjectfactory/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/fixobjectstack/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/globalcable/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/globalroutingmanager/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/graphics/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/lorismanager/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/macrohandler/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/markdownrenderer/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/math/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/message/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/messageholder/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/midiautomationhandler/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/midilist/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/midiplayer/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/midiprocessor/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/modifiers/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/modulator/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/moduleids/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/networktest/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/neuralnetwork/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/node/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/parameter/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/path/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/rectangle/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/routingmatrix/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/sample/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/sampler/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/scriptaudiowaveform/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/scriptbutton/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/scriptcombobox/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/scriptdynamiccontainer/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/scriptedviewport/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/scriptfloatingtile/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/scriptimage/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/scriptlabel/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/scriptlookandfeel/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/scriptmodulationmatrix/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/scriptmultipagedialog/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/scriptpanel/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/scriptshader/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/scriptslider/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/scriptsliderpack/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/scripttable/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/scriptwebview/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/server/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/settings/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/sliderpackdata/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/sliderpackprocessor/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/slotfx/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/string/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/synth/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/table/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/tableprocessor/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/threads/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/threadsafestorage/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/timer/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/transporthandler/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/unlocker/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/unorderedstack/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/userpresethandler/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-api/wavetablecontroller/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-in-hise/additions-in-hise.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-in-hise/hise-script-coding-standards.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-in-hise/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-in-hise/javascript.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scripting/scripting-in-hise/scriptpanel.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/101/drywet.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/101/dsp_network.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/101/gain_example.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/101/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/101/panner.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/analyse/fft.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/analyse/goniometer.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/analyse/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/analyse/oscilloscope.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/analyse/specs.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/container/branch.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/container/chain.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/container/clone.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/container/dynamic_blocksize.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/container/fix_blockx.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/container/fix128_block.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/container/fix16_block.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/container/fix256_block.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/container/fix32_block.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/container/fix64_block.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/container/fix8_block.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/container/frame1_block.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/container/frame2_block.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/container/framex_block.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/container/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/container/midichain.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/container/modchain.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/container/multi.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/container/no_midi.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/container/offline.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/container/oversample.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/container/oversample16x.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/container/oversample2x.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/container/oversample4x.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/container/oversample8x.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/container/repitch.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/container/sidechain.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/container/soft_bypass.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/container/split.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/control/bang.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/control/bipolar.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/control/blend.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/control/branch_cable.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/control/cable_expr.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/control/cable_pack.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/control/cable_table.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/control/change.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/control/clone_cable.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/control/clone_forward.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/control/clone_pack.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/control/compare.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/control/converter.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/control/delay_cable.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/control/file_analyser.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/control/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/control/input_toggle.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/control/intensity.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/control/locked_mod.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/control/locked_mod_unscaled.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/control/logic_op.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/control/midi.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/control/midi_cc.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/control/minmax.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/control/normaliser.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/control/pack_resizer.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/control/pack2_writer.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/control/pack3_writer.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/control/pack4_writer.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/control/pack5_writer.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/control/pack6_writer.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/control/pack7_writer.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/control/pack8_writer.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/control/pma.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/control/pma_unscaled.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/control/ppq.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/control/random.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/control/resetter.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/control/sliderbank.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/control/smoothed_parameter.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/control/smoothed_parameter_unscaled.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/control/tempo_sync.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/control/timer.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/control/transport.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/control/unscaler.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/control/voice_bang.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/control/xfader.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/control/xy.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/core/clock_ramp.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/core/extra_mod.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/core/faust.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/core/file_player.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/core/fix_delay.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/core/fm.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/core/gain.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/core/global_mod.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/core/granulator.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/core/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/core/matrix_mod.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/core/mono2stereo.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/core/oscillator.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/core/peak.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/core/peak_unscaled.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/core/phasor.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/core/phasor_fm.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/core/pitch_mod.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/core/ramp.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/core/recorder.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/core/smoother.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/core/snex_node.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/core/snex_osc.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/core/snex_shaper.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/core/stretch_player.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/core/table.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/dynamics/comp.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/dynamics/envelope_follower.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/dynamics/gate.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/dynamics/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/dynamics/limiter.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/dynamics/updown_comp.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/envelope/ahdsr.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/envelope/extra_mod_gate.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/envelope/flex_ahdsr.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/envelope/global_mod_gate.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/envelope/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/envelope/silent_killer.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/envelope/simple_ar.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/envelope/voice_manager.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/filters/allpass.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/filters/biquad.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/filters/convolution.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/filters/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/filters/ladder.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/filters/linkwitzriley.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/filters/moog.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/filters/one_pole.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/filters/ring_mod.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/filters/svf.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/filters/svf_eq.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/fx/bitcrush.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/fx/haas.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/fx/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/fx/phase_delay.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/fx/pitch_shift.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/fx/reverb.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/fx/sampleandhold.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/jdsp/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/jdsp/jchorus.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/jdsp/jcompressor.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/jdsp/jdelay.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/jdsp/jdelay_cubic.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/jdsp/jdelay_thiran.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/jdsp/jlinkwitzriley.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/jdsp/jpanner.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/math/abs.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/math/add.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/math/clear.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/math/clip.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/math/div.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/math/expr.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/math/fill1.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/math/fmod.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/math/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/math/intensity.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/math/inv.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/math/map.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/math/mod_inv.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/math/mod2sig.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/math/mul.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/math/neural.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/math/pack.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/math/pi.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/math/pow.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/math/rect.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/math/sig2mod.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/math/sin.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/math/sqrt.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/math/square.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/math/sub.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/math/table.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/math/tanh.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/routing/event_data_reader.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/routing/event_data_writer.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/routing/global_cable.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/routing/global_receive.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/routing/global_send.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/routing/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/routing/local_cable.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/routing/local_cable_unscaled.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/routing/matrix.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/routing/ms_decode.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/routing/ms_encode.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/routing/public_mod.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/routing/receive.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/routing/selector.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/list/routing/send.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/manual/cpp_generator.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/manual/global_routing_system.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/manual/glossary.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/manual/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/manual/organisation.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/manual/snex.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/manual/snex_index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/manual/third_party.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/snex_api/containers/dyn.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/snex_api/containers/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/snex_api/containers/polydata.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/snex_api/containers/span.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/snex_api/data_structures/channelptr.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/snex_api/data_structures/externaldata.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/snex_api/data_structures/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/snex_api/data_structures/preparespecs.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/snex_api/data_structures/preparespecs-1/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/snex_api/data_structures/processdata.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/snex_api/helper_classes/datareadlock.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/snex_api/helper_classes/datawritelock.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/snex_api/helper_classes/frameprocessor.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/snex_api/helper_classes/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/snex_api/helper_classes/modvalue.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/snex_api/helper_classes/sdouble.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/snex_api/helper_classes/sfloat.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/snex_api/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/snex_api/index_types/float_index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/snex_api/index_types/hermite.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/snex_api/index_types/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/snex_api/index_types/integer_index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/snex_api/index_types/lerp.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/snex_api/math_api/hmath.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/snex_api/math_api/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/snex_api/node_types/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/snex_api/node_types/snex_node.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/snex_api/node_types/snex_osc.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/snex_api/node_types/snex_shaper.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/scriptnode/snex_api/node_types/snexsource.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/tutorials/all/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/tutorials/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/tutorials/midi/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/tutorials/modules/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/tutorials/scripdnode-examples/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/tutorials/scripting/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/tutorials/scriptnode/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/tutorials/ui/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/apicollection.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/audiofilepool.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/automationdatabrowser.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/complexdatamanager.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/complexgroupeditor.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/console.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/dspnetworkgraph.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/expansioneditbar.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/fausteditorpanel.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/filebrowser.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/globalconnectorscriptprocessor.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/globalconnectorstreamingsampler.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/icon.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/imagepool.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/interfacepanel.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/interfacepropertyeditor.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/macrocontrols.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/macrotable.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/mainpanel.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/maintopbar.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/markdown-editor.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/midifilepool.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/modulebrowser.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/nodepropertypanel.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/note.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/optimisations.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/osclogger.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/patchbrowser.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/perfettowebviewer.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/pluginparametersimulator.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/profilermanager.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/profilerstatistics.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/profilerviewer.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/rlottiedevpanel.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/sampleeditor.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/samplemapbrowser.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/samplemapeditor.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/samplemappool.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/samplepooltable.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/samplertable.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/scriptbroadcastermap.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/scriptcomponentcssdebugger.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/scriptcomponentlist.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/scriptcontent.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/scripteditor.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/scriptwatchtable.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/servercontroller.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/sliderpackeditor.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/snexedittab.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/snexgraph.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/snexparameterlist.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/tableeditor.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/testcomplexdata.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/testdata.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/unuseddspnodelist.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/hise/workbenchtestplayer.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/layout/horizontaltile.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/layout/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/layout/spacer.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/layout/tabs.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/layout/verticaltile.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/layout/visibilitytogglebar.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/plugin/aboutpagepanel.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/plugin/activityled.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/plugin/ahdsrgraph.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/plugin/audioanalyser.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/plugin/customsettings.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/plugin/draggablefilterpanel.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/plugin/empty.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/plugin/filterdisplay.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/plugin/flexahdsrgraph.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/plugin/frontendmacropanel.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/plugin/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/plugin/keyboard.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/plugin/markdownpanel.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/plugin/matrixpeakmeter.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/plugin/midichannellist.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/plugin/midilearnpanel.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/plugin/midioverlaypanel.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/plugin/midisources.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/plugin/modulationmatrix.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/plugin/modulationmatrixcontroller.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/plugin/mpepanel.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/plugin/performancelabel.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/plugin/plotter.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/plugin/presetbrowser.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/plugin/tooltippanel.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/plugin/waveform.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/floating-tiles/plugin/wavetablewaterfall.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/plugin-components/audio-waveform.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/plugin-components/button.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/plugin-components/combobox.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/plugin-components/floating-tile.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/plugin-components/image.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/plugin-components/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/plugin-components/knob.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/plugin-components/label.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/plugin-components/multipagedialog.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/plugin-components/panel.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/plugin-components/sliderpack.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/plugin-components/table.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/ui-components/plugin-components/viewport.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/hise-interface/code-editor/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/hise-interface/custom-workspace/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/hise-interface/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/hise-interface/interface-designer/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/hise-interface/left-panel/api-browser.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/hise-interface/left-panel/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/hise-interface/left-panel/module-tree.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/hise-interface/left-panel/project-directory.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/hise-interface/sampler-workspace/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/hise-interface/sampler-workspace/sample-editor.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/hise-interface/sampler-workspace/sample-map-editor.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/hise-interface/sampler-workspace/sample-settings.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/hise-interface/sampler-workspace/sample-table.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/hise-interface/scriptnode-editor/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/hise-interface/top-bar/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/menu-reference/edit/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/menu-reference/export/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/menu-reference/file/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/menu-reference/help/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/menu-reference/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/menu-reference/tools/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/menu-reference/view/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/project-management/documentation/contributing.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/project-management/documentation/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/project-management/documentation/markdown.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/project-management/documentation/project-documentation.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/project-management/expansions/encrypted_expansion.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/project-management/expansions/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/project-management/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/project-management/projects-folders/additional-source-code.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/project-management/projects-folders/audio-files.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/project-management/projects-folders/binaries.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/project-management/projects-folders/documentation.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/project-management/projects-folders/dsp-networks.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/project-management/projects-folders/expansions.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/project-management/projects-folders/images.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/project-management/projects-folders/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/project-management/projects-folders/meta-data.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/project-management/projects-folders/midi-files.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/project-management/projects-folders/presets.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/project-management/projects-folders/sample-maps.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/project-management/projects-folders/samples.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/project-management/projects-folders/scripts.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/project-management/projects-folders/user-presets.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/project-management/projects-folders/xml-preset-backups.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/project-management/user-presets/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/settings/audio-midi.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/settings/development.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/settings/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/settings/project.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/workspaces/custom-workspace/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/workspaces/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/workspaces/main-workspace/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/workspaces/main-workspace/left-panel.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/workspaces/main-workspace/module-panel.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/workspaces/main-workspace/right-panel.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/workspaces/sampler-workspace/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/workspaces/sampler-workspace/sample-editor.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/workspaces/sampler-workspace/sample-map-editor.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/workspaces/sampler-workspace/sample-settings.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/workspaces/sampler-workspace/sample-table.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/workspaces/scripting-workspace/canvas.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/workspaces/scripting-workspace/code-editor.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/workspaces/scripting-workspace/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://docs.hise.dev/working-with-hise/workspaces/scripting-workspace/scriptnode.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
